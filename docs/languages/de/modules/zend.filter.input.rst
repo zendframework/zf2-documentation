@@ -278,7 +278,7 @@ Meldungen anzubieten welche von ``Zend\Filter\Input`` zurückgegeben werden.
 .. code-block:: php
    :linenos:
 
-   $translate = new Zend\Translator_Adapter\Array(array(
+   $translate = new Zend\Translator\Adapter\Array(array(
        'content' => array(
            Zend\Filter\Input::MISSING_MESSAGE => "Wo ist das Feld?"
        )

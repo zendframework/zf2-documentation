@@ -9,9 +9,9 @@ exemple, formater une date, générer des éléments de formulaire, afficher des
 utiliser des classes d'aide pour effectuer ce genre de tâches.
 
 Une aide est simplement une classe. Par exemple, nous voulons une aide nommée "foobar". Par défaut, la classe est
-préfixée avec *"Zend\View_Helper\"* (vous pouvez spécifier un préfixe personnalisé en paramétrant votre
+préfixée avec *"Zend\View\Helper\"* (vous pouvez spécifier un préfixe personnalisé en paramétrant votre
 chemin d'aide), et le dernier segment du nom de classe est le nom de l'aide ; ce segment peut être avec des
-CaracteresMajuscules ; le nom complet de la classe est alors : ``Zend\View_Helper\FooBar``. Cette classe doit
+CaracteresMajuscules ; le nom complet de la classe est alors : ``Zend\View\Helper\FooBar``. Cette classe doit
 contenir au moins une méthode, nommée comme l'aide avec la notationCamel : ``fooBar()``.
 
 .. note::
@@ -23,7 +23,7 @@ contenir au moins une méthode, nommée comme l'aide avec la notationCamel : ``f
    notationCamel.
 
 Pour utiliser une aide dans votre script de vue, appelez la en utilisant *$this->nomAide()*. Dans les coulisses,
-``Zend_View`` va charger la classe ``Zend\View_Helper\NomAide``, créer une instance de cet objet, et appeler sa
+``Zend_View`` va charger la classe ``Zend\View\Helper\NomAide``, créer une instance de cet objet, et appeler sa
 méthode ``nomAide()``. L'instance de l'objet est persistante dans l'instance de ``Zend_View``, et est réutilisée
 pour tous les appels futurs à *$this->nomAide()*.
 
@@ -281,7 +281,7 @@ aides personnalisées.
    // dans /chemin/vers/des/aides/HelperName.php en utilisant la classe
    // "Ma_View_Helper_HelperName", et finalement dans
    // Zend/View/Helpers/HelperName.php en utilisant la classe
-   // "Zend\View_Helper\HelperName"
+   // "Zend\View\Helper\HelperName"
 
 .. _zend.view.helpers.custom:
 
@@ -291,7 +291,7 @@ aides personnalisées.
 Écrire des aides personnalisées est facile, vous devez juste suivre ces règles :
 
 - Bien qu'il ne soit pas strictement nécessaire, il est recommandé soit d'implémenter
-  ``Zend\View_Helper\Interface`` ou d'étendre ``Zend\View_Helper\Abstract`` quand vous créez vos aides. Introduit
+  ``Zend\View\Helper\Interface`` ou d'étendre ``Zend\View\Helper\Abstract`` quand vous créez vos aides. Introduit
   en 1.6.0, ceux-ci définissent la méthode ``setView()``; cependant, dans les prochaines releases, nous
   prévoyons d'implémenter un motif de conception Stratégie qui permettra de simplifier en grande partie le
   schéma de nomination détaillé ci-dessous. Contruire sur ces bases à partir de maintenant vous aidera pour vos

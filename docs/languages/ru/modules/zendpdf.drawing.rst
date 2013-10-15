@@ -1,10 +1,10 @@
 .. EN-Revision: none
-.. _zend.pdf.drawing:
+.. _zendpdf.drawing:
 
 Рисование
 =========
 
-.. _zend.pdf.drawing.geometry:
+.. _zendpdf.drawing.geometry:
 
 Геометрия
 ---------
@@ -22,7 +22,7 @@ PDF использует ту же самую геометрию, что и Post
    $width  = $pdfPage->getWidth();
    $height = $pdfPage->getHeight();
 
-.. _zend.pdf.drawing.color:
+.. _zendpdf.drawing.color:
 
 Цвета
 -----
@@ -30,8 +30,8 @@ PDF использует ту же самую геометрию, что и Post
 PDF имеет мощные возможности для представления цветов. Модуль
 ZendPdf поддерживает шкалу серого цвета, цветовые пространства RGB
 и CMYK. Они могут использоваться в любом месте, где требуется
-объект *ZendPdf\Color*. Классы *ZendPdf_Color\GrayScale*, *ZendPdf_Color\RGB* и
-*ZendPdf_Color\CMYK* предоставляют этот функционал:
+объект *ZendPdf\Color*. Классы *ZendPdf\Color\GrayScale*, *ZendPdf\Color\RGB* и
+*ZendPdf\Color\CMYK* предоставляют этот функционал:
 
 .. code-block:: php
    :linenos:
@@ -39,17 +39,17 @@ ZendPdf поддерживает шкалу серого цвета, цвето�
    <?php
    // $grayLevel (число с плавающей точкой)
    // 0.0 (черный) - 1.0 (белый)
-   $color1 = new ZendPdf_Color\GrayScale($grayLevel);
+   $color1 = new ZendPdf\Color\GrayScale($grayLevel);
 
    // $r, $g, $b (числа с плавающей точкой)
    // 0.0 (минимальная интенсивность) - 1.0 (максимальная интенсивность)
-   $color2 = new ZendPdf_Color\RGB($r, $g, $b);
+   $color2 = new ZendPdf\Color\RGB($r, $g, $b);
 
    // $c, $m, $y, $k (числа с плавающей точкой)
    // 0.0 (минимальная интенсивность) - 1.0 (максимальная интенсивность)
-   $color3 = new ZendPdf_Color\CMYK($c, $m, $y, $k);
+   $color3 = new ZendPdf\Color\CMYK($c, $m, $y, $k);
 
-.. _zend.pdf.drawing.shape-drawing:
+.. _zendpdf.drawing.shape-drawing:
 
 Рисование фигур
 ---------------
@@ -171,7 +171,7 @@ ZendPdf поддерживает шкалу серого цвета, цвето�
     */
    public function drawEllipse($x1, $y1, $x2, $y2, $param5 = null, $param6 = null, $param7 = null);
 
-.. _zend.pdf.drawing.text-drawing:
+.. _zendpdf.drawing.text-drawing:
 
 Написание текста
 ----------------
@@ -196,7 +196,7 @@ ZendPdf поддерживает шкалу серого цвета, цвето�
 Для написания текста используются текущий шрифт и его текущий
 размер. См. подробное описание ниже.
 
-.. _zend.pdf.drawing.using-fonts:
+.. _zendpdf.drawing.using-fonts:
 
 Применение шрифтов
 ------------------
@@ -219,7 +219,7 @@ ZendPdf поддерживает шкалу серого цвета, цвето�
 PDF поддерживает Type1, TrueType, Type3 и составные шрифты. Он
 предоставляет еще 14 стандартных шрифтов Type1. На данный момент
 модуль *ZendPdf* предусматривает только эти стандартные шрифты.
-Они могут быть получены с помощью класса *ZendPdf_Font\Standard*.
+Они могут быть получены с помощью класса *ZendPdf\Font\Standard*.
 Конкретный шрифт указывается в качестве аргумента
 конструктора.
 
@@ -231,7 +231,7 @@ PDF поддерживает Type1, TrueType, Type3 и составные шри
    <?php
    ...
    // Создание нового шрифта
-   $font = new ZendPdf_Font\Standard(ZendPdf\Const::FONT_HELVETICA);
+   $font = new ZendPdf\Font\Standard(ZendPdf\Const::FONT_HELVETICA);
 
    // Применение шрифта
    $pdfPage->setFont($font, 36);
@@ -271,7 +271,7 @@ PDF поддерживает Type1, TrueType, Type3 и составные шри
 
 
 
-.. _zend.pdf.drawing.image-drawing:
+.. _zendpdf.drawing.image-drawing:
 
 Рисование изображений
 ---------------------
@@ -285,13 +285,13 @@ PDF поддерживает Type1, TrueType, Type3 и составные шри
    /**
     * Рисует изображение в заданной позиции на странице.
     *
-    * @param ZendPdf_Resource\Image $image
+    * @param ZendPdf\Resource\Image $image
     * @param float $x1
     * @param float $y1
     * @param float $x2
     * @param float $y2
     */
-   public function drawImage(ZendPdf_Resource\Image $image, $x1, $y1, $x2, $y2);
+   public function drawImage(ZendPdf\Resource\Image $image, $x1, $y1, $x2, $y2);
 
 Объекты изображений должны создаваться через метод
 *ZendPdf\Image::imageWithPath($filePath)* (сейчас поддерживаются изображения JPG,
@@ -319,7 +319,7 @@ PNG и TIFF):
 См. документацию PHP за более подробной информацией
 (`http://www.php.net/manual/en/ref.image.php`_). (`http://www.php.net/manual/en/ref.zlib.php`_).
 
-.. _zend.pdf.drawing.line-drawing-style:
+.. _zendpdf.drawing.line-drawing-style:
 
 Стили рисования линий
 ---------------------
@@ -350,7 +350,7 @@ PNG и TIFF):
     */
    public function setLineDashingPattern($pattern, $phase = 0);
 
-.. _zend.pdf.drawing.fill-style:
+.. _zendpdf.drawing.fill-style:
 
 Стиль заполнения
 ----------------
@@ -429,7 +429,7 @@ PNG и TIFF):
 
 
 
-.. _zend.pdf.drawing.rotations:
+.. _zendpdf.drawing.rotations:
 
 Поворот
 -------
@@ -449,7 +449,7 @@ PNG и TIFF):
     */
    public function rotate($x, $y, $angle);
 
-.. _zend.pdf.drawing.save-restore:
+.. _zendpdf.drawing.save-restore:
 
 Сохранение/восстановление графического состояния
 ------------------------------------------------
@@ -482,7 +482,7 @@ PNG и TIFF):
     */
    public function restoreGS();
 
-.. _zend.pdf.drawing.clipping:
+.. _zendpdf.drawing.clipping:
 
 Ограничение области рисования
 -----------------------------
@@ -559,7 +559,7 @@ PDF и модуль ZendPdf поддерживают ограничение об
     */
    public function clipEllipse($x1, $y1, $x2, $y2, $startAngle = null, $endAngle = null);
 
-.. _zend.pdf.drawing.styles:
+.. _zendpdf.drawing.styles:
 
 Стили
 -----

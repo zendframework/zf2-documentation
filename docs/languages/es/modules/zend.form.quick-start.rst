@@ -81,7 +81,7 @@ Algunos ejemplos:
    :linenos:
 
    // Instanciando un elemento y pasandolo al objeto form:
-   $form->addElement(new Zend\Form_Element\Text('username'));
+   $form->addElement(new Zend\Form\Element\Text('username'));
 
    // Pasando el tipo de elemento del formulario al objeto form:
    $form->addElement('text', 'username');
@@ -97,7 +97,7 @@ Veamos primero la creación de validadores para la instancia de un elemento conc
 .. code-block:: php
    :linenos:
 
-   $username = new Zend\Form_Element\Text('username');
+   $username = new Zend\Form\Element\Text('username');
 
    // Pasando un objeto Zend\Validate\*:
    $username->addValidator(new Zend\Validate\Alnum());

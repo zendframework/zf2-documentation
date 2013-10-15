@@ -24,7 +24,7 @@ use controllers in this manner.
        {
            // Setup pagination control view script. See the pagination control tutorial page
            // for more information about this view script.
-           Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
+           Zend\View\Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
            // Fetch an already instantiated database connection from the registry
            $db = Zend\Registry\Registry::get('db');

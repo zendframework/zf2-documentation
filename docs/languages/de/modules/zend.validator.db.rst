@@ -4,15 +4,15 @@
 Db_RecordExists und Db_NoRecordExists
 =====================================
 
-``Zend\Validate_Db\RecordExists`` und ``Zend\Validate_Db\NoRecordExists`` bieten die Möglichkeit zu testen ob ein
+``Zend\Validate\Db\RecordExists`` und ``Zend\Validate\Db\NoRecordExists`` bieten die Möglichkeit zu testen ob ein
 Eintrag in einer angegebenen Tabelle einer Datenbank, mit einem gegebenen Wert, existiert.
 
 .. _zend.validate.set.db.options:
 
-Unterstützte Optionen für Zend\Validate_Db\*
+Unterstützte Optionen für Zend\Validate\Db\*
 --------------------------------------------
 
-Die folgenden Optionen werden für ``Zend\Validate_Db\NoRecordExists`` und ``Zend\Validate_Db\RecordExists``
+Die folgenden Optionen werden für ``Zend\Validate\Db\NoRecordExists`` und ``Zend\Validate\Db\RecordExists``
 unterstützt:
 
 - **adapter**: Der Datenbank-Adapter welcher für die Suche verwendet wird.
@@ -36,7 +36,7 @@ Ein Beispiel der rundsätzlichen Verwendung der Validatoren:
    :linenos:
 
    // Prüft ob die Email Adresse in der Datenbank existiert
-   $validator = new Zend\Validate_Db\RecordExists(
+   $validator = new Zend\Validate\Db\RecordExists(
        array(
            'table' => 'users',
            'field' => 'emailaddress'
@@ -60,7 +60,7 @@ angezeigt.
    :linenos:
 
    // Prüft ob der Benutzername in der Datenbank existiert
-   $validator = new Zend\Validate_Db\NoRecordExists(
+   $validator = new Zend\Validate\Db\NoRecordExists(
        array(
            'table' => 'users',
            'field' => 'username'
@@ -85,7 +85,7 @@ Fehlermeldung angezeigt.
 Ausnehmen von Einträgen
 -----------------------
 
-``Zend\Validate_Db\RecordExists`` und ``Zend\Validate_Db\NoRecordExists`` bieten auch die Möglichkeit die
+``Zend\Validate\Db\RecordExists`` und ``Zend\Validate\Db\NoRecordExists`` bieten auch die Möglichkeit die
 Datenbank zu testen, wobei Teile der Tabelle hiervon ausgenommen werden, entweder indem eine where Klausel als
 String angegeben wird, oder ein Array mit den Schlüsseln "field" und "value".
 
@@ -98,7 +98,7 @@ für ein Benutzerprofil).
 
    // Prüft ob kein anderer Benutzer diesen Benutzernamen hat
    $user_id   = $user->getId();
-   $validator = new Zend\Validate_Db\NoRecordExists(
+   $validator = new Zend\Validate\Db\NoRecordExists(
        array(
            'table'   => 'users',
            'field'   => 'username',
@@ -130,7 +130,7 @@ kann. Das kann nützlich sein um bei geteilten Schlüsseln zu testen.
 
    $email     = 'user@example.com';
    $clause    = $db->quoteInto('email = ?', $email);
-   $validator = new Zend\Validate_Db\RecordExists(
+   $validator = new Zend\Validate\Db\RecordExists(
        array(
            'table'   => 'users',
            'field'   => 'username',
@@ -161,7 +161,7 @@ arbeiten die mehrere Datenbankadapter verwenden, oder wo kein Standardadapter ge
 .. code-block:: .validator.
    :linenos:
 
-   $validator = new Zend\Validate_Db\RecordExists(
+   $validator = new Zend\Validate\Db\RecordExists(
        array(
            'table'   => 'users',
            'field'   => 'id',
@@ -180,7 +180,7 @@ Array mit den Schlüsseln ``table`` und ``schema`` angegeben wird. Anbei ein Bei
 .. code-block:: .validator.
    :linenos:
 
-   $validator = new Zend\Validate_Db\RecordExists(
+   $validator = new Zend\Validate\Db\RecordExists(
        array(
            'table'  => 'users',
            'schema' => 'my',

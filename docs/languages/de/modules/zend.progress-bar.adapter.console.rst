@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.console:
 
-Zend\ProgressBar_Adapter\Console
+Zend\ProgressBar\Adapter\Console
 ================================
 
-``Zend\ProgressBar_Adapter\Console`` ist ein Textbasierter Adapter für Terminals. Er kann automatisch die
+``Zend\ProgressBar\Adapter\Console`` ist ein Textbasierter Adapter für Terminals. Er kann automatisch die
 Terminalbreite erkennen unterstützt aber auch eigene Breiten. Kann kann definieren welche Elemente mit dem
 Fortschrittsbalken angezeigt werden und auch deren Reihenfolge ändern. Man kann auch den Stil des
 Fortschrittsbalkens selbst definieren.

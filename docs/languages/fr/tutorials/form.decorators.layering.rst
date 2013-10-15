@@ -44,7 +44,7 @@ Voyons voir un exemple, le même que celui :ref:`de la section précédente <lea
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>'
                           . '<input id="%s" name="%s" type="text" value="%s"/>';
@@ -67,7 +67,7 @@ Supprimons la fonctionnalité libellé (label) et créons un décorateur spécif
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -83,7 +83,7 @@ Supprimons la fonctionnalité libellé (label) et créons un décorateur spécif
        }
    }
 
-   class My_Decorator_SimpleLabel extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleLabel extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>';
 
@@ -110,14 +110,14 @@ contenu généré :
    return $content . $markup;
 
 Le problème avec cette approche est que vous ne pouvez pas choisir où se place le contenu du décorateur en
-question. Heureusement, un mécanisme standard existe ; ``Zend\Form_Decorator\Abstract`` possède le concept de
+question. Heureusement, un mécanisme standard existe ; ``Zend\Form\Decorator\Abstract`` possède le concept de
 place et définit des constantes pour le régler. Aussi, il permet de préciser un séparateur à placer entre les
 2. Voyons celà :
 
 .. code-block:: php
    :linenos:
 
-   class My_Decorator_SimpleInput extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleInput extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<input id="%s" name="%s" type="text" value="%s"/>';
 
@@ -142,7 +142,7 @@ place et définit des constantes pour le régler. Aussi, il permet de préciser 
        }
    }
 
-   class My_Decorator_SimpleLabel extends Zend\Form_Decorator\Abstract
+   class My_Decorator_SimpleLabel extends Zend\Form\Decorator\Abstract
    {
        protected $_format = '<label for="%s">%s</label>';
 

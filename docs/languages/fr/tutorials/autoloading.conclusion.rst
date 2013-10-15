@@ -9,6 +9,6 @@ Zend Framework encourage l'utilisation de l'auto-chargement, et l'initialise mê
 ``Zend\Loader\Autoloader``, ainsi que sur son extension pour ajouter des autochargeurs personnalisés.
 
 Pour plus d'informations sur son utilisation, lisez les sections du manuel sur :ref:`Zend\Loader\Autoloader
-<zend.loader.autoloader>` et :ref:`Zend\Loader_Autoloader\Resource <zend.loader.autoloader-resource>`.
+<zend.loader.autoloader>` et :ref:`Zend\Loader\Autoloader\Resource <zend.loader.autoloader-resource>`.
 
 

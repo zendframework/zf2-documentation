@@ -9,12 +9,12 @@ LDAP Authentifizierung
 Einführung
 ----------
 
-``Zend\Auth_Adapter\Ldap`` unterstützt Webanwendungen bei der Authentifizierung mit *LDAP* Services. Die Features
+``Zend\Auth\Adapter\Ldap`` unterstützt Webanwendungen bei der Authentifizierung mit *LDAP* Services. Die Features
 beinhalten Kanonisierung von Benutzernamen und Domainnamen, Mehrfach-Domain Authentifizierung, und
 Fehlerbehandlungs Features. Es wurde getestet mit `Microsoft Active Directory`_ und `OpenLDAP`_, sollte auch mit
 anderen *LDAP* Service Provider zusammenarbeiten.
 
-Diese Dokumentation enthält eine Anleitung der Verwendung von ``Zend\Auth_Adapter\Ldap``, eine Beschreibung der
+Diese Dokumentation enthält eine Anleitung der Verwendung von ``Zend\Auth\Adapter\Ldap``, eine Beschreibung der
 *API*, eine Ausgabe der verschiedenen Optionen, Diagnostische Informationen für die Fehlerbehandlung bei
 Authentifizierungs Problemen, und Beispiel Optionen für beide, Active Directory und OpenLDAP Server.
 
@@ -23,7 +23,7 @@ Authentifizierungs Problemen, und Beispiel Optionen für beide, Active Directory
 Verwendung
 ----------
 
-Um ``Zend\Auth_Adapter\Ldap`` Authentifizierung in eigene Anwendungen schnell einzubauen, selbst wenn
+Um ``Zend\Auth\Adapter\Ldap`` Authentifizierung in eigene Anwendungen schnell einzubauen, selbst wenn
 ``Zend_Controller`` nicht verwendet wird, sollte das Fleisch des eigenen Codes in etwa wie folgt aussehen:
 
 .. code-block:: php
@@ -40,7 +40,7 @@ Um ``Zend\Auth_Adapter\Ldap`` Authentifizierung in eigene Anwendungen schnell ei
    $options = $config->ldap->toArray();
    unset($options['log_path']);
 
-   $adapter = new Zend\Auth_Adapter\Ldap($options, $username,
+   $adapter = new Zend\Auth\Adapter\Ldap($options, $username,
                                          $password);
 
    $result = $auth->authenticate($adapter);
@@ -49,8 +49,8 @@ Um ``Zend\Auth_Adapter\Ldap`` Authentifizierung in eigene Anwendungen schnell ei
        $messages = $result->getMessages();
 
        $logger = new Zend\Log\Log();
-       $logger->addWriter(new Zend\Log_Writer\Stream($log_path));
-       $filter = new Zend\Log_Filter\Priority(Zend\Log\Log::DEBUG);
+       $logger->addWriter(new Zend\Log\Writer\Stream($log_path));
+       $filter = new Zend\Log\Filter\Priority(Zend\Log\Log::DEBUG);
        $logger->addFilter($filter);
 
        foreach ($messages as $i => $message) {
@@ -62,7 +62,7 @@ Um ``Zend\Auth_Adapter\Ldap`` Authentifizierung in eigene Anwendungen schnell ei
    }
 
 Natürlich ist der Logging Code optional, aber es wird dringend empfohlen einen Logger zu verwenden.
-``Zend\Auth_Adapter\Ldap`` zeichnet fast jedes Bisschen an Information in ``$messages`` auf das irgendwer
+``Zend\Auth\Adapter\Ldap`` zeichnet fast jedes Bisschen an Information in ``$messages`` auf das irgendwer
 benötigen können (mehr anbei), was allerdings selbst ein nettes Feature für jemanden als History ist, kann
 überaus schwierig zu debuggen sein.
 
@@ -99,7 +99,7 @@ in Reihenfolge bis die Zugangsdaten erfolgreich authentifiziert wurden. Die Name
    ldap.server2.accountCanonicalForm = 3
    ldap.server2.baseDn = "CN=Users,DC=w,DC=net"
 
-Die obige Konfiguration instruiert ``Zend\Auth_Adapter\Ldap`` das es versuchen soll Benutzer zuerst mit dem
+Die obige Konfiguration instruiert ``Zend\Auth\Adapter\Ldap`` das es versuchen soll Benutzer zuerst mit dem
 OpenLDAP Server ``s0.foo.net`` authentifizieren soll. Wenn die Authentifizierung auf irgendeinem Grund
 fehlschlägt, wird der AD Server ``dc1.w.net`` versucht.
 
@@ -115,7 +115,7 @@ hat die von Windows verwendet werden bieten wir Sie hier an wegen der Kanonifizi
 Die API
 -------
 
-Der ``Zend\Auth_Adapter\Ldap`` Konstruktor akzeptiert drei Parameter.
+Der ``Zend\Auth\Adapter\Ldap`` Konstruktor akzeptiert drei Parameter.
 
 Der ``$options`` Parameter wird benötigt und muß ein Array sein das ein oder mehrere Sets von Optionen enthält.
 Es ist zu beachten das es sich um **Array von Arrays** von :ref:`Zend_Ldap <zend.ldap>` Optionen handelt. Selbst
@@ -187,17 +187,17 @@ Failover damit, wenn ein Server nicht erreichbar ist, ein anderer abgefragt wird
    Benutzernamen und Passwort das authentifiziert werden soll, auf. Die ``Zend_Ldap`` Klasse prüft um zu sehen ob
    der Benutzer mit einer Domain qualifiziert ist (hat z.B. eine Domainkomponente wie ``alice@foo.net`` oder
    ``FOO\alice``). Wenn eine Domain vorhanden ist, aber mit keiner der Domainnamen der Server (``foo.net`` oder
-   *FOO*) übereinstimmt, wird eine spezielle Ausnahme geworfen und durch ``Zend\Auth_Adapter\Ldap`` gefangen, was
+   *FOO*) übereinstimmt, wird eine spezielle Ausnahme geworfen und durch ``Zend\Auth\Adapter\Ldap`` gefangen, was
    bewirkt das der Server ignoriert wird und der nächste, in den Serveroptionen gesetzte Server, ausgewählt wird.
    Wenn eine Domain **doch** passt, oder der Benutzer keinen qualifizierten Benutzernamen angegeben hat, fährt
    ``Zend_Ldap`` weiter fort und versucht mit den angegebenen Zugangsdaten zu binden. Wenn das Binden nicht
-   erfolgreich war wirft ``Zend_Ldap`` eine ``Zend\Ldap\Exception`` welche durch ``Zend\Auth_Adapter\Ldap``
+   erfolgreich war wirft ``Zend_Ldap`` eine ``Zend\Ldap\Exception`` welche durch ``Zend\Auth\Adapter\Ldap``
    gefangen wird, und das nächste Set von Serveroptionen wird versucht. Wenn das Binden erfolgreich war, wird die
    Iteration gestoppt, und die ``authenticate()`` Methode des Adapters gibt ein erfolgreiches Ergebnis zurück.
    Wenn alle Serveroptionen ohne Erfolg durchprobiert wurden, schlägt die Authentifizierung fehl, und
    ``authenticate()`` gibt ein Fehlerergebnis zurück mit der Fehlermeldung der letzten Iteration.
 
-Die username und password Parameter des ``Zend\Auth_Adapter\Ldap`` Konstruktors repräsentieren die Zugangsdaten
+Die username und password Parameter des ``Zend\Auth\Adapter\Ldap`` Konstruktors repräsentieren die Zugangsdaten
 die authentifiziert werden sollen (z.B. die Zugangsdaten die durch den Benutzer über eine *HTML* Login Form
 angegeben werden). Alternativ können Sie auch mit den ``setUsername()`` und ``setPassword()`` Methoden gesetzt
 werden.
@@ -207,7 +207,7 @@ werden.
 Server Optionen
 ---------------
 
-Jedes Set von Serveroptionen **im Kontext von Zend\Auth_Adapter\Ldap** besteht aus den folgenden Optionen welche,
+Jedes Set von Serveroptionen **im Kontext von Zend\Auth\Adapter\Ldap** besteht aus den folgenden Optionen welche,
 großteils ungeändert, an ``Zend\Ldap\Ldap::setOptions()`` übergeben werden:
 
 .. _zend.authentication.adapter.ldap.server-options.table:
@@ -259,7 +259,7 @@ großteils ungeändert, an ``Zend\Ldap\Ldap::setOptions()`` übergeben werden:
 Debug Nachrichten sammeln
 -------------------------
 
-``Zend\Auth_Adapter\Ldap`` sammelt Debug Informationen in seiner ``authenticate()`` Methode. Diese Information wird
+``Zend\Auth\Adapter\Ldap`` sammelt Debug Informationen in seiner ``authenticate()`` Methode. Diese Information wird
 im ``Zend\Auth\Result`` Objekt als Nachrichten gespeichert. Das von ``Zend\Auth\Result::getMessages()``
 zurückgegebene Array kann wie folgt beschrieben werden:
 
@@ -318,7 +318,7 @@ Für *ADS* sind die folgenden Optionen beachtenswert:
 .. note::
 
    Technisch sollte es keine Probleme mit irrtümlichen Domain-übergreifenden Authentifizierungen mit der
-   aktuellen ``Zend\Auth_Adapter\Ldap`` Implementation geben, da Serverdomains explizit geprüft werden, aber das
+   aktuellen ``Zend\Auth\Adapter\Ldap`` Implementation geben, da Serverdomains explizit geprüft werden, aber das
    muss für zukünftige Implementationen, welche die Domain wärend der Laufzeit ermitteln, nicht wahr sein, oder
    auch wenn ein alternativer Adapter verwendet wird (z.B., Kerberos). Generell ist bekannt das die Mehrdeutigkeit
    von Accountnamen ein Sicherheitsproblem ist. Man sollte deswegen immer versuchen qualifizierte Accountnamen zu

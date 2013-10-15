@@ -38,7 +38,7 @@ Flux personnalisés
 ``Zend_Feed`` permet aux développeurs de créer du flux personnalisé très facilement. Vous devez juste créer un
 tableau et l'importer avec Zend_Feed. Ce tableau peut être importé avec ``Zend\Feed\Feed::importArray()`` ou avec
 ``Zend\Feed\Feed::importBuilder()``. Dans ce dernier cas, le tableau sera calculé instantanément par une source de
-données personnalisée implémentant ``Zend\Feed_Builder\Interface``.
+données personnalisée implémentant ``Zend\Feed\Builder\Interface``.
 
 .. _zend.feed.importing.custom.importarray:
 
@@ -266,17 +266,17 @@ Importer une source de données personnalisée
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Vous pouvez créer une instance Zeed_Feed à partir de n'importe quelle source de données implémentant
-``Zend\Feed_Builder\Interface``. Vous devez juste implémenter les méthodes ``getHeader()`` et ``getEntries()``
+``Zend\Feed\Builder\Interface``. Vous devez juste implémenter les méthodes ``getHeader()`` et ``getEntries()``
 pour pouvoir utiliser votre objet avec ``Zend\Feed\Feed::importBuilder()``. Par une simple référence d'implémentation
 vous pouvez utiliser ``Zend\Feed\Builder``, qui prend un tableau dans son constructeur, réalise quelques
 validations mineures, et peut être utilisé dans la méthode ``importBuilder()``. La méthode ``getHeader()`` doit
-retourner une instance de ``Zend\Feed_Builder\Header``, et ``getEntries()`` doit retourner un tableau d'instances
-``Zend\Feed_Builder\Entry``
+retourner une instance de ``Zend\Feed\Builder\Header``, et ``getEntries()`` doit retourner un tableau d'instances
+``Zend\Feed\Builder\Entry``
 
 .. note::
 
    ``Zend\Feed\Builder`` fournit une mise en oeuvre concrète afin de montrer l'utilisation. Les utilisateurs sont
-   encouragés à faire leurs classes propres mettre en oeuvre ``Zend\Feed_Builder\Interface``.
+   encouragés à faire leurs classes propres mettre en oeuvre ``Zend\Feed\Builder\Interface``.
 
 Voici un exemple d'utilisation de ``Zend\Feed\Feed::importBuilder()``\  :
 

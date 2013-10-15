@@ -28,7 +28,7 @@ Eine Liste von Tabellenkalkulationen erhalten
 
 Man kann eine Liste von Tabellenkalkulationen für einen bestimmten Benutzer erhalten indem die
 ``getSpreadsheetFeed()`` Methode des Tabellenkalkulationsservices verwendet wird. Der Service wird ein
-``ZendGData_Spreadsheets\SpreadsheetFeed`` Objekt zurückgeben das eine Liste von Tabellenkalkulationen enthält
+``ZendGData\Spreadsheets\SpreadsheetFeed`` Objekt zurückgeben das eine Liste von Tabellenkalkulationen enthält
 die mit dem authentifizierten Benutzer authentifiziert sind.
 
 .. code-block:: php
@@ -47,19 +47,19 @@ Eine Liste von Arbeitsblättern erhalten
 Eine gegebene Tabellenkalkulation kann mehrere Arbeitsblätter enthalten. Für jedes Arbeitsblass gibt es einen
 Arbeitsblatt Metafeed der alle Arbeitsblätter in dieser Tabellenkalkulation auflistet.
 
-Mit der Schlüssel der Tabellenkalkulation von der <id> des ``ZendGData_Spreadsheets\SpreadsheetEntry`` Objekts
+Mit der Schlüssel der Tabellenkalkulation von der <id> des ``ZendGData\Spreadsheets\SpreadsheetEntry`` Objekts
 das man bereits empfangen hat, kann mein einen Feed holen der eine Liste von Arbeitsblättern enthält die mit
 dieser Tabellenkalkulation assoziiert sind.
 
 .. code-block:: php
    :linenos:
 
-   $query = new ZendGData_Spreadsheets\DocumentQuery();
+   $query = new ZendGData\Spreadsheets\DocumentQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $feed = $spreadsheetService->getWorksheetFeed($query);
 
-Der sich ergebende ``ZendGData_Spreadsheets\WorksheetFeed`` Objektfeed repräsentiert die Antwort des Servers.
-Neben anderen Dingen enthält dieser Feed eine Liste von ``ZendGData_Spreadsheets\WorksheetEntry`` Objekten
+Der sich ergebende ``ZendGData\Spreadsheets\WorksheetFeed`` Objektfeed repräsentiert die Antwort des Servers.
+Neben anderen Dingen enthält dieser Feed eine Liste von ``ZendGData\Spreadsheets\WorksheetEntry`` Objekten
 (``$feed->entries``), wobei jedes ein einzelnes Arbeitsblatt repräsentiert.
 
 .. _zend.gdata.spreadsheets.listfeeds:
@@ -101,16 +101,16 @@ Services verwendet werden.
 .. code-block:: php
    :linenos:
 
-   $query = new ZendGData_Spreadsheets\ListQuery();
+   $query = new ZendGData\Spreadsheets\ListQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $listFeed = $spreadsheetService->getListFeed($query);
 
-Das sich ergebende ``ZendGData_Spreadsheets\ListFeed`` Objekt ``$listfeed`` repräsentiert eine Antwort vom
-Server. Neben anderen Dingen enthält dieser Feed ein Array von ``ZendGData_Spreadsheets\ListEntry`` Objekten
+Das sich ergebende ``ZendGData\Spreadsheets\ListFeed`` Objekt ``$listfeed`` repräsentiert eine Antwort vom
+Server. Neben anderen Dingen enthält dieser Feed ein Array von ``ZendGData\Spreadsheets\ListEntry`` Objekten
 (``$listFeed->entries``), wobei jedes eine einzelne Zeile in einem Arbeitsblatt repräsentiert.
 
-Jeder ``ZendGData_Spreadsheets\ListEntry`` enthält ein Array, ``custom``, welches die Daten für die Zeile
+Jeder ``ZendGData\Spreadsheets\ListEntry`` enthält ein Array, ``custom``, welches die Daten für die Zeile
 enthält. Dieses Array kann extrahiert und angezeigt werden:
 
 .. code-block:: php
@@ -137,19 +137,19 @@ Umgekehrt-sortierte Zeilen
 
 Standardmäßig werden die Zeilen im Feed in der gleichen Reihenfolge angezeigt wie in den entsprechenden Zeilen im
 GUI; das ist die Reihenfolge anhand der Zeilennummer. Um Zeilen in einer umgekehrten Reihenfolge zu erhalten, muß
-die reverse Eigenschaft des ``ZendGData_Spreadsheets\ListQuery`` Objektes auf ``TRUE`` gesetzt werden:
+die reverse Eigenschaft des ``ZendGData\Spreadsheets\ListQuery`` Objektes auf ``TRUE`` gesetzt werden:
 
 .. code-block:: php
    :linenos:
 
-   $query = new ZendGData_Spreadsheets\ListQuery();
+   $query = new ZendGData\Spreadsheets\ListQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $query->setReverse('true');
    $listFeed = $spreadsheetService->getListFeed($query);
 
 Es ist zu beachten, das wenn nach einer speziellen Spalte sortiert (oder umgekehrt sortiert) werden soll, statt
-nach der Position im Arbeitsblatt, kann der ``orderby`` Wert des ``ZendGData_Spreadsheets\ListQuery`` Objekts auf
+nach der Position im Arbeitsblatt, kann der ``orderby`` Wert des ``ZendGData\Spreadsheets\ListQuery`` Objekts auf
 **column:<Der Header dieser Spalte>** gesetzt werden.
 
 .. _zend.gdata.spreadsheets.listfeeds.sq:
@@ -157,7 +157,7 @@ nach der Position im Arbeitsblatt, kann der ``orderby`` Wert des ``ZendGData_Spr
 Eine strukturierte Abfrage senden
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Der ``sq`` Wert von ``ZendGData_Spreadsheets\ListQuery`` kann gesetzt werden um einen Feed mit Einträgen zu
+Der ``sq`` Wert von ``ZendGData\Spreadsheets\ListQuery`` kann gesetzt werden um einen Feed mit Einträgen zu
 erzeugen die ein spezielles Kriterium erfüllen. Angenommen, man hat ein Arbeitsblatt das personelle Daten
 enthält, in denen jede Zeile Informationen über eine einzelne Person repräsentiert, und man will alle Zeilen
 empfangen will in denen der Name der Person "John" ist, und das Alter der Person über 25. Um das tu tun, muß
@@ -166,7 +166,7 @@ empfangen will in denen der Name der Person "John" ist, und das Alter der Person
 .. code-block:: php
    :linenos:
 
-   $query = new ZendGData_Spreadsheets\ListQuery();
+   $query = new ZendGData\Spreadsheets\ListQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $query->setSpreadsheetQuery('name=John and age>25');
@@ -188,7 +188,7 @@ Tabellenkalkulations Services.
                                                        $worksheetId);
 
 Der ``$rowData`` Parameter enthält ein Array von Spaltenschlüssel zu Datenwerten. Die Methode gibt ein
-``ZendGData_Spreadsheets\SpreadsheetsEntry`` Objekt zurück welches die eingefügte Zeile repräsentiert.
+``ZendGData\Spreadsheets\SpreadsheetsEntry`` Objekt zurück welches die eingefügte Zeile repräsentiert.
 
 Die Tabellenkalkulation fügt die neue Zeile unmittelbar nach der letzten Zeile ein die in dem listen-basierenden
 Feed erscheint, was bedeutet unmittelbar vor der ersten komplett leeren Zeile.
@@ -198,7 +198,7 @@ Feed erscheint, was bedeutet unmittelbar vor der ersten komplett leeren Zeile.
 Eine Zeile bearbeiten
 ^^^^^^^^^^^^^^^^^^^^^
 
-Sobald ein ``ZendGData_Spreadsheets\ListEntry`` Objekt geholt wird, können diese Zeilen durch die Verwendung der
+Sobald ein ``ZendGData\Spreadsheets\ListEntry`` Objekt geholt wird, können diese Zeilen durch die Verwendung der
 ``updateRow()`` Methode des Tabellenkalkulations Services aktualisiert werden.
 
 .. code-block:: php
@@ -209,7 +209,7 @@ Sobald ein ``ZendGData_Spreadsheets\ListEntry`` Objekt geholt wird, können dies
 
 Der ``$oldListEntry`` Parameter enthält den Listeneintrag der aktualisiert werden soll. ``$newRowData`` enthält
 ein Array von Spaltenschlüssel zu Datenwerten, die als neue Zeilendaten verwendet werden. Diese Methode gibt ein
-``ZendGData_Spreadsheets\SpreadsheetsEntry`` Objekt zurück welches die aktualisierte Zeile repräsentiert.
+``ZendGData\Spreadsheets\SpreadsheetsEntry`` Objekt zurück welches die aktualisierte Zeile repräsentiert.
 
 .. _zend.gdata.spreadsheets.listfeeds.deleterow:
 
@@ -252,13 +252,13 @@ Services verwendet werden.
 .. code-block:: php
    :linenos:
 
-   $query = new ZendGData_Spreadsheets\CellQuery();
+   $query = new ZendGData\Spreadsheets\CellQuery();
    $query->setSpreadsheetKey($spreadsheetKey);
    $query->setWorksheetId($worksheetId);
    $cellFeed = $spreadsheetService->getCellFeed($query);
 
-Im resultierenden ``ZendGData_Spreadsheets\CellFeed`` Objekt repräsentiert ``$cellFeed`` eine Antwort vom Server.
-Neben anderen Dingen enthält dieser Feed ein Array von ``ZendGData_Spreadsheets\CellEntry`` Objekten
+Im resultierenden ``ZendGData\Spreadsheets\CellFeed`` Objekt repräsentiert ``$cellFeed`` eine Antwort vom Server.
+Neben anderen Dingen enthält dieser Feed ein Array von ``ZendGData\Spreadsheets\CellEntry`` Objekten
 (``$cellFeed>entries``), von denen jeder eine einzelne Zelle in einem Arbeitsblatt repräsentiert. Diese
 Information kann angezeigt werden:
 
@@ -283,7 +283,7 @@ der nur diese Spalte enthält und geht hierbei wie folgt vor:
 .. code-block:: php
    :linenos:
 
-   $query = new ZendGData_Spreadsheets\CellQuery();
+   $query = new ZendGData\Spreadsheets\CellQuery();
    $query->setMinCol(1);
    $query->setMaxCol(1);
    $query->setMinRow(2);

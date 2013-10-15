@@ -8,7 +8,7 @@ ZendService\\Delicious
 Introduction
 ------------
 
-``ZendService\Delicious`` is simple *API* for using `del.icio.us`_ *XML* and *JSON* web services. This component
+``ZendService\Delicious\Delicious`` is simple *API* for using `del.icio.us`_ *XML* and *JSON* web services. This component
 gives you read-write access to posts at del.icio.us if you provide credentials. It also allows read-only access to
 public data of all users.
 
@@ -75,7 +75,7 @@ ZendService\\Delicious\\PostList
 --------------------------------
 
 Instances of this class are returned by the ``getPosts()``, ``getAllPosts()``, ``getRecentPosts()``, and
-``getUserPosts()`` methods of ``ZendService\Delicious``.
+``getUserPosts()`` methods of ``ZendService\Delicious\Delicious``.
 
 For easier data access this class implements the *Countable*, *Iterator*, and *ArrayAccess* interfaces.
 
@@ -300,7 +300,7 @@ The del.icio.us web *API* allows access to the public data of all users.
    +----------------+---------------------------+-------------------------------+
    |getUserNetwork()|Retrieves network of a user|Array                          |
    +----------------+---------------------------+-------------------------------+
-   |getUserPosts()  |Retrieves posts of a user  |ZendService\Delicious\PostList|
+   |getUserPosts()  |Retrieves posts of a user  |ZendService\Delicious\PostList |
    +----------------+---------------------------+-------------------------------+
    |getUserTags()   |Retrieves tags of a user   |Array                          |
    +----------------+---------------------------+-------------------------------+
@@ -308,7 +308,7 @@ The del.icio.us web *API* allows access to the public data of all users.
 .. note::
 
    When using only these methods, a username and password combination is not required when constructing a new
-   ``ZendService\Delicious`` object.
+   ``ZendService\Delicious\Delicious`` object.
 
 .. _zendservice.delicious.public_data.retrieving_public_data:
 
@@ -359,8 +359,8 @@ posts, including *URL*, title, notes, and tags.
 HTTP client
 -----------
 
-``ZendService\Delicious`` uses ``Zend\Rest\Client`` for making *HTTP* requests to the del.icio.us web service. To
-change which *HTTP* client ``ZendService\Delicious`` uses, you need to change the *HTTP* client of
+``ZendService\Delicious\Delicious`` uses ``Zend\Rest\Client`` for making *HTTP* requests to the del.icio.us web service. To
+change which *HTTP* client ``ZendService\Delicious\Delicious`` uses, you need to change the *HTTP* client of
 ``Zend\Rest\Client``.
 
 .. _zendservice.delicious.httpclient.changing:
@@ -373,7 +373,7 @@ change which *HTTP* client ``ZendService\Delicious`` uses, you need to change th
    $myHttpClient = new My_Http_Client();
    Zend\Rest\Client::setHttpClient($myHttpClient);
 
-When you are making more than one request with ``ZendService\Delicious`` to speed your requests, it's better to
+When you are making more than one request with ``ZendService\Delicious\Delicious`` to speed your requests, it's better to
 configure your *HTTP* client to keep connections alive.
 
 .. _zendservice.delicious.httpclient.keepalive:
@@ -389,7 +389,7 @@ configure your *HTTP* client to keep connections alive.
 
 .. note::
 
-   When a ``ZendService\Delicious`` object is constructed, the *SSL* transport of ``Zend\Rest\Client`` is set to
+   When a ``ZendService\Delicious\Delicious`` object is constructed, the *SSL* transport of ``Zend\Rest\Client`` is set to
    *'ssl'* rather than the default of *'ssl2'*. This is because del.icio.us has some problems with *'ssl2'*, such
    as requests taking a long time to complete (around 2 seconds).
 

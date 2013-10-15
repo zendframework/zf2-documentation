@@ -139,8 +139,8 @@ Clases Abstractas
 En general, las clases abstractas siguen las mismas convenciones que las :ref:`clases
 <coding-standard.naming-conventions.classes>`, con una regla adicional: Los nombres de las clases abstractas deben
 acabar con el término, "Abstract", y ese término no debe ser precedida por un guión bajo. Ejemplo,
-``Zend\Controller_Plugin\Abstract`` es considerado un nombre no válido, pero ``Zend\Controller\PluginAbstract`` o
-``Zend\Controller_Plugin\PluginAbstract`` serian nombres válidos.
+``Zend\Controller\Plugin\Abstract`` es considerado un nombre no válido, pero ``Zend\Controller\PluginAbstract`` o
+``Zend\Controller\Plugin\PluginAbstract`` serian nombres válidos.
 
 .. note::
 
@@ -155,8 +155,8 @@ Interfaces
 En general, las clases abstractas siguen las mismas convenciones que las :ref:`classes
 <coding-standard.naming-conventions.classes>`, con una regla adicional: Los nombres de las interfaces opcionalmente
 pueden acabar con el término, "Interface",pero término no debe ser precedida por un guión bajo. Ejemplo,
-``Zend\Controller_Plugin\Interface`` es considerado un nombre no válido, pero ``Zend\Controller\PluginInterface``
-o ``Zend\Controller_Plugin\PluginInterface`` serian nombres válidos.
+``Zend\Controller\Plugin\Interface`` es considerado un nombre no válido, pero ``Zend\Controller\PluginInterface``
+o ``Zend\Controller\Plugin\PluginInterface`` serian nombres válidos.
 
 Si bien esta regla no es necesaria, se recomienda encarecidamente su uso, ya que proporciona una buena referencia
 visual a los desarrolladores, como saber que archivos contienen interfaces en lugar de clases.

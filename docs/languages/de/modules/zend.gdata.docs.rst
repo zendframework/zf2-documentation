@@ -18,7 +18,7 @@ Eine Liste von Dokumenten erhalten
 
 Man kann eine Liste von den Google Dokumenten für einen bestimmten Benutzer erhalten indem die
 ``getDocumentListFeed()`` Methode des Docs Services verwendet wird. Das Service gibt ein
-``ZendGData_Docs\DocumentListFeed`` Objekt zurück das eine Liste von Dokumenten enthält die mit dem
+``ZendGData\Docs\DocumentListFeed`` Objekt zurück das eine Liste von Dokumenten enthält die mit dem
 authentifizierten Benutzer assoziiert sind.
 
 .. code-block:: php
@@ -29,8 +29,8 @@ authentifizierten Benutzer assoziiert sind.
    $docs = new ZendGData\Docs($client);
    $feed = $docs->getDocumentListFeed();
 
-Das sich ergebende ``ZendGData_Docs\DocumentListFeed`` Objekt repräsentiert die Antwort des Servers. Dieser Feed
-enthält eine Liste von ``ZendGData_Docs\DocumentListEntry`` Objekten (``$feed->entries``), wobei jeder von Ihnen
+Das sich ergebende ``ZendGData\Docs\DocumentListFeed`` Objekt repräsentiert die Antwort des Servers. Dieser Feed
+enthält eine Liste von ``ZendGData\Docs\DocumentListEntry`` Objekten (``$feed->entries``), wobei jeder von Ihnen
 ein einzelnes Google Dokument repräsentiert.
 
 .. _zend.gdata.docs.creating:
@@ -141,7 +141,7 @@ Um eine Liste aller eigenen Google Tabellenkalkulationen zu erhalten kann die fo
 Eine Textabfrage durchführen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Der Inhalt von Dokumenten kann durch Verwendung von ``ZendGData_Docs\Query`` in der Abfrage durchsucht werden. Ein
+Der Inhalt von Dokumenten kann durch Verwendung von ``ZendGData\Docs\Query`` in der Abfrage durchsucht werden. Ein
 Abfrage Objekt kann verwendet werden um eine Abfrage *URI* zu erstellen, wobei der Suchbegriff als Parameter
 übergeben wird. Hier ist eine Beispielmethode welche die Dokumenten Liste nach Dokumenten abfrage die den
 Suchstring enthalten:
@@ -149,7 +149,7 @@ Suchstring enthalten:
 .. code-block:: php
    :linenos:
 
-   $docsQuery = new ZendGData_Docs\Query();
+   $docsQuery = new ZendGData\Docs\Query();
    $docsQuery->setQuery($query);
    $feed = $client->getDocumentListFeed($docsQuery);
 

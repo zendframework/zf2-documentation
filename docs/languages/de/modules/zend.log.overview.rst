@@ -14,14 +14,14 @@ Funktionen sind in die folgenden Objekte seperiert worden:
      Objekte haben wie man will; Sie interagieren nicht. Ein Log Objekt muß mindestens einen Schreiber beinhalten,
      und kann optional einen oder mehrere Filter beinhalten.
 
-   - Ein Writer (Abgeleitet von ``Zend\Log_Writer\Abstract``) ist dafür zuständig das Daten in den Speicher
+   - Ein Writer (Abgeleitet von ``Zend\Log\Writer\Abstract``) ist dafür zuständig das Daten in den Speicher
      geschrieben werden.
 
-   - Ein Filter (implementiert ``Zend\Log_Filter\Interface``) blockiert Logdaten vom gespeichert werden. Ein Filter
+   - Ein Filter (implementiert ``Zend\Log\Filter\Interface``) blockiert Logdaten vom gespeichert werden. Ein Filter
      kann einem individuellen Writer hinzugefügt werden, oder an ein Log wo er vor allen Writern hinzugefügt
      wird. In jedem Fall können Filter verkettet werden.
 
-   - Ein Formatter (implementiert ``Zend\Log_Formatter\Interface``) kann die Logdaten formatieren bevor diese durch
+   - Ein Formatter (implementiert ``Zend\Log\Formatter\Interface``) kann die Logdaten formatieren bevor diese durch
      den Writer geschrieben werden. Jeder Writer hat exakt einen Formatter.
 
 
@@ -37,7 +37,7 @@ Um das protokollieren zu starten, muß ein Writer instanziert werden und einer L
    :linenos:
 
    $logger = new Zend\Log\Log();
-   $writer = new Zend\Log_Writer\Stream('php://output');
+   $writer = new Zend\Log\Writer\Stream('php://output');
 
    $logger->addWriter($writer);
 
@@ -49,7 +49,7 @@ Alternativ kann ein Writer direkt dem Konstruktor von Log, als Abkürzung, über
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Stream('php://output');
+   $writer = new Zend\Log\Writer\Stream('php://output');
    $logger = new Zend\Log\Log($writer);
 
 Das Log ist nun fertig zur Verwendung.

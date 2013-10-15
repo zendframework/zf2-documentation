@@ -1,10 +1,10 @@
 .. EN-Revision: none
 .. _zend.progressbar.adapter.jspush:
 
-Zend\ProgressBar_Adapter\JsPush
+Zend\ProgressBar\Adapter\JsPush
 ===============================
 
-``Zend\ProgressBar_Adapter\JsPush`` est un adaptateur qui vous permet de mettre à jour une barre de progression
+``Zend\ProgressBar\Adapter\JsPush`` est un adaptateur qui vous permet de mettre à jour une barre de progression
 dans un navigateur au travers de Javascript. Ceci veut dire qu'une seconde connexion n'est pas nécessaire pour
 recueillir le statut du processus courant, mais que le processus lui-même envoie son statut directement au
 navigateur.

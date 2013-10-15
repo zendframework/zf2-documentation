@@ -38,10 +38,10 @@ Pour démarrer un serveur ``Zend\XmlRpc\Server``, vous devez attacher une ou plu
 serveur, grâce à ``setClass()`` et ``addFunction()``.
 
 Lorsque c'est fait, vous pouvez passer un objet ``Zend\XmlRpc\Request`` à ``Zend\XmlRpc\Server::handle()``, sinon
-par défaut il utilisera un objet ``Zend\XmlRpc_Request\Http`` qui récupérera la requête depuis *php://input*.
+par défaut il utilisera un objet ``Zend\XmlRpc\Request\Http`` qui récupérera la requête depuis *php://input*.
 
 ``Zend\XmlRpc\Server::handle()`` va alors essayer de traiter la requête. Cette méthode retournera un objet
-``Zend\XmlRpc\Response`` ou ``Zend\XmlRpc_Server\Fault``. Tous deux possèdent une méthode ``__toString()`` qui
+``Zend\XmlRpc\Response`` ou ``Zend\XmlRpc\Server\Fault``. Tous deux possèdent une méthode ``__toString()`` qui
 crée une réponse *XML* valide XML-RPC.
 
 .. _zend.xmlrpc.server.anatomy:
@@ -174,7 +174,7 @@ Si vous voulez ajouter un espace de noms aux méthodes que vous servez, procéde
 Requêtes personnalisées
 -----------------------
 
-La plupart du temps, vous utiliserez l'objet de requête par défaut ``Zend\XmlRpc_Request\Http``, sans vous en
+La plupart du temps, vous utiliserez l'objet de requête par défaut ``Zend\XmlRpc\Request\Http``, sans vous en
 occuper. En revanche si vous avez un besoin spécifique, comme par exemple journaliser la requête, traiter une
 requête CLI, GUI, ou autre environnement, vous devrez alors créer un objet étendant ``Zend\XmlRpc\Request``.
 Implémentez les méthodes ``getMethod()`` et ``getParams()`` afin que le serveur puisse analyser ces informations
@@ -186,7 +186,7 @@ Réponses personnalisées
 -----------------------
 
 Comme avec les objets de requête, ``Zend\XmlRpc\Server`` peut retourner des objets de réponse personnalisés. Par
-défaut il s'agit d'objets ``Zend\XmlRpc_Response\Http`` qui envoient un en-tête *HTTP* Content-Type *HTTP* pour
+défaut il s'agit d'objets ``Zend\XmlRpc\Response\Http`` qui envoient un en-tête *HTTP* Content-Type *HTTP* pour
 XML-RPC. Vous pourriez utiliser des objets de réponse personnalisés pour par exemple renvoyer les réponses vers
 STDOUT, ou les journaliser.
 
@@ -204,17 +204,17 @@ pas attachés dans la réponse XML-RPC. Ceci est du au fait que de telles except
 regard de la sécurité de votre application.
 
 Des classes d'exception peuvent cependant être mises en liste blanche, et donc utilisées pour les réponses
-d'erreur ("fault"). Utilisez simplement ``Zend\XmlRpc_Server\Fault::attachFaultException()`` en lui passant une
+d'erreur ("fault"). Utilisez simplement ``Zend\XmlRpc\Server\Fault::attachFaultException()`` en lui passant une
 classe d'exception :
 
 .. code-block:: php
    :linenos:
 
-   Zend\XmlRpc_Server\Fault::attachFaultException('My_Project_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('My_Project_Exception');
 
 Si vous héritez correctement vos exceptions, vous pouvez alors passer en liste blanche l'exception de plus bas
 niveau, et ainsi accepter plusieurs types d'exceptions qui en hériteront. Évidemment, les
-Zend\XmlRpc_Server\Exceptions sont elles automatiquement mises en liste blanche, afin de pouvoir traiter les
+Zend\XmlRpc\Server\Exceptions sont elles automatiquement mises en liste blanche, afin de pouvoir traiter les
 requêtes vers des méthodes inexistantes, ou toute autre erreur "générique".
 
 Toute exception rencontrée, mais non mise en liste blanche, donnera naissance à une réponse d'erreur avec le
@@ -228,7 +228,7 @@ Cacher la définition du serveur entre les requêtes
 Attacher beaucoup de classes au serveur XML-RPC peut consommer beaucoup de ressources, car l'introspection de
 chaque classe/fonction est mise en place.
 
-Pour améliorer les performances, ``Zend\XmlRpc_Server\Cache`` peut être utilisé pour mettre en cache la
+Pour améliorer les performances, ``Zend\XmlRpc\Server\Cache`` peut être utilisé pour mettre en cache la
 définition d'un serveur. Combiné à ``__autoload()``, ceci améliore grandement les performances.
 
 Un exemple d'utilisation :
@@ -244,7 +244,7 @@ Un exemple d'utilisation :
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
    $server = new Zend\XmlRpc\Server();
 
-   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc\Server\Cache::get($cacheFile, $server)) {
        require_once 'My/Services/Glue.php';
        require_once 'My/Services/Paste.php';
        require_once 'My/Services/Tape.php';
@@ -256,7 +256,7 @@ Un exemple d'utilisation :
        $server->setClass('My_Services_Tape', 'tape');
        // espace de noms tape
 
-       Zend\XmlRpc_Server\Cache::save($cacheFile, $server);
+       Zend\XmlRpc\Server\Cache::save($cacheFile, $server);
    }
 
    echo $server->handle();
@@ -435,7 +435,7 @@ XML-RPC.
    require_once 'Services/Pick.php';
 
    // Utilise les Services_Exception pour les erreurs
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');
@@ -467,7 +467,7 @@ L'exemple suivant montre comment utiliser un objet de requête personnalisé.
    require_once 'Services/Pick.php';
 
    // Utilise les Services_Exception pour les erreurs
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');
@@ -499,7 +499,7 @@ L'exemple suivant montre comment utiliser un objet de réponse personnalisé.
    require_once 'Services/Pick.php';
 
    // Utilise les Services_Exception pour les erreurs
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
    $server->setClass('Services_Comb', 'comb');
@@ -542,12 +542,12 @@ Les exemples suivants montrent comment gérer une politique de cache inter-requ�
    $cacheFile = dirname(__FILE__) . '/xmlrpc.cache';
 
    // Utilise les Services_Exception pour les erreurs
-   Zend\XmlRpc_Server\Fault::attachFaultException('Services_Exception');
+   Zend\XmlRpc\Server\Fault::attachFaultException('Services_Exception');
 
    $server = new Zend\XmlRpc\Server();
 
    // Essaye de récupérer la définition du serveur via le cache
-   if (!Zend\XmlRpc_Server\Cache::get($cacheFile, $server)) {
+   if (!Zend\XmlRpc\Server\Cache::get($cacheFile, $server)) {
        $server->setClass('Services_Comb', 'comb');
        // méthodes appelées sous la forme comb.*
        $server->setClass('Services_Brush', 'brush');
@@ -556,7 +556,7 @@ Les exemples suivants montrent comment gérer une politique de cache inter-requ�
        // méthodes appelées sous la forme pick.*
 
        // Sauve le cache
-       Zend\XmlRpc_Server\Cache::save($cacheFile, $server));
+       Zend\XmlRpc\Server\Cache::save($cacheFile, $server));
    }
 
    // Crée un objet de requête
@@ -585,10 +585,7 @@ performance differences.
 .. code-block:: php
    :linenos:
 
-   require_once 'Zend/XmlRpc/Server.php';
-   require_once 'Zend/XmlRpc/Generator/XMLWriter.php';
-
-   Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc_Generator\XMLWriter());
+   Zend\XmlRpc\Value::setGenerator(new Zend\XmlRpc\Generator\XMLWriter());
 
    $server = new Zend\XmlRpc\Server();
    ...

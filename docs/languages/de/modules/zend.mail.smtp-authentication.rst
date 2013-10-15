@@ -5,13 +5,13 @@ SMTP Authentifizierung
 ======================
 
 ``Zend_Mail`` unterstützt die Verwendung von SMTP Authentifizierung, welche eingeschaltet werden kann durch die
-Übergabe des 'auth' Parameters im Konfigurationsarray des ``Zend\Mail_Transport\Smtp`` Konstruktors. Die
+Übergabe des 'auth' Parameters im Konfigurationsarray des ``Zend\Mail\Transport\Smtp`` Konstruktors. Die
 vorhandenen eingebauten Authentifizierungsmethoden sind PLAIN, LOGIN und CRAM-MD5 welche alle einen Benutzernamen-
 ('username') und einen Passwortwert ('password') im Konfigurations Array erwarten.
 
 .. _zend.mail.smtp-authentication.example-1:
 
-.. rubric:: Authentifizierung innerhalb von Zend\Mail_Transport\Smtp einschalten
+.. rubric:: Authentifizierung innerhalb von Zend\Mail\Transport\Smtp einschalten
 
 .. code-block:: php
    :linenos:
@@ -20,7 +20,7 @@ vorhandenen eingebauten Authentifizierungsmethoden sind PLAIN, LOGIN und CRAM-MD
                    'username' => 'MeinBenutzername',
                    'password' => 'Passwort');
 
-   $transport = new Zend\Mail_Transport\Smtp('mail.server.com', $config);
+   $transport = new Zend\Mail\Transport\Smtp('mail.server.com', $config);
 
    $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Das ist der Text des Mails.');
@@ -34,7 +34,7 @@ vorhandenen eingebauten Authentifizierungsmethoden sind PLAIN, LOGIN und CRAM-MD
    **Authentifizierungs Typen**
 
    Der Authentifizierungs Typ ist Groß-Kleinschreibungs unempfindlich enthält aber keine Satzzeichen. Um z.B.
-   CRAM-MD5 zu verwenden müsste 'auth' => 'crammd5' dem ``Zend\Mail_Transport\Smtp`` Konstruktor übergeben
+   CRAM-MD5 zu verwenden müsste 'auth' => 'crammd5' dem ``Zend\Mail\Transport\Smtp`` Konstruktor übergeben
    werden.
 
 

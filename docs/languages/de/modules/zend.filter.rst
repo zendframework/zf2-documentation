@@ -142,11 +142,11 @@ Ausgabe zu erhalten indem der gegensätzliche Filter verwendet wird. Nehmen wir 
    $original = "my_original_content";
 
    // Einen Filter anwenden
-   $filter   = new Zend\Filter_Word\UnderscoreToCamelCase();
+   $filter   = new Zend\Filter\Word\UnderscoreToCamelCase();
    $filtered = $filter->filter($original);
 
    // Sein gegenstück verwenden
-   $filter2  = new Zend\Filter_Word\CamelCaseToUnderscore();
+   $filter2  = new Zend\Filter\Word\CamelCaseToUnderscore();
    $filtered = $filter2->filter($filtered)
 
 Das oben stehende Code Beispiel könnte zur Vermutung führen dass man die originale Ausgabe erhält nachdem der

@@ -180,7 +180,7 @@ subclasses directly, or use the static factory method ``Zend\XmlRpc\AbstractValu
    +----------------+--------------------------------------------------+-------------------------------+
    |ex:i8           |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_APACHEI8 |Zend\\XmlRpc\\Value\\BigInteger|
    +----------------+--------------------------------------------------+-------------------------------+
-   |double          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_DOUBLE   |Zend\\XmlRpc\\Value_Double     |
+   |double          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_DOUBLE   |Zend\\XmlRpc\\Value\Double     |
    +----------------+--------------------------------------------------+-------------------------------+
    |boolean         |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_BOOLEAN  |Zend\\XmlRpc\\Value\\Boolean   |
    +----------------+--------------------------------------------------+-------------------------------+

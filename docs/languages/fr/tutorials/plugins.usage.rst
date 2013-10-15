@@ -68,7 +68,7 @@ validateurs vont correspondre à ``Zend\Validate\NotEmpty`` et ``Zend\Validate\I
    plugin. Si le fichier n'est pas trouvé, il passe au prochain chemin.
 
    Une fois que la pile de chemins est épuisée, si aucun fichier n'a été trouvé, il enverra une
-   ``Zend\Loader_PluginLoader\Exception``.
+   ``Zend\Loader\PluginLoader\Exception``.
 
 .. _learning.plugins.usage.override:
 
@@ -77,7 +77,7 @@ validateurs vont correspondre à ``Zend\Validate\NotEmpty`` et ``Zend\Validate\I
 Une des forces du PluginLoader est qu'il utilise une pile LIFO, ceci vous permet de surcharger des plugins
 existants par les vôtres stockés dans des chemins différents en enregistrant ce chemin dans la pile.
 
-Par exemple, considérons ``Zend\View_Helper\FormButton`` (les aides de vue sont une forme de plugin). Cette aide
+Par exemple, considérons ``Zend\View\Helper\FormButton`` (les aides de vue sont une forme de plugin). Cette aide
 de vue accepte trois paramètres, un nom DOM, une valeur (utilisée comme libéllé de bouton), et un tableau
 optionnel d'options. L'aide génère du HTML concernant un élément de formulaire.
 

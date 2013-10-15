@@ -43,7 +43,7 @@ Namensraum festgelegt hast.
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend\Feed_Entry\Atom();
+   $entry = new Zend\Feed\Entry\Atom();
    // Die ID wird immer vom Server in Atom zugewiesen
    $entry->title = 'mein eigener Eintrag';
    $entry->author->name = 'Beispiel Autor';

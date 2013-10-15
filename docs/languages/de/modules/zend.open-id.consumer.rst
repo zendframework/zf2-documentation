@@ -218,7 +218,7 @@ obigen Beispiel ähnlich.
 
 .. _zend.openid.consumer.storage:
 
-ZendOpenId_Consumer\Storage
+ZendOpenId\Consumer\Storage
 ----------------------------
 
 Es gibt drei Schritte beim Authentifizierungs Prozess von OpenID, und jeder wird durch eine separate *HTTP* Anfrage
@@ -230,7 +230,7 @@ standardmäßig einen dateibasierten Speicher im temporären Verzeichnis verwend
 Trotzdem ist dieser Speicher nicht in allen Situationen richtig. Einige Entwickler wollen Informationen in einer
 Datenbank speichern, wärend andere einen üblichen Speicher für große Server-Farmen verwenden wollen.
 Glücklicherweise können Entwickler den Standardspeicher sehr einfach mit Ihrem eigenen tauschen. Um einen eigenen
-Speichermechanismus zu spezifizieren muß nur die ``ZendOpenId_Consumer\Storage`` Klasse erweitert werden und
+Speichermechanismus zu spezifizieren muß nur die ``ZendOpenId\Consumer\Storage`` Klasse erweitert werden und
 diese Unterklasse dem ``ZendOpenId\Consumer`` Konstruktor im ersten Argument übergeben werden.
 
 Das folgende Beispiel demonstriert einen einfachen Speicher Mechanismus der ``Zend_Db`` als sein Backend verwendet
@@ -246,7 +246,7 @@ verwendet werden; wenn die benötigten Tabellen nicht existieren, wird er Sie er
 .. code-block:: php
    :linenos:
 
-   class DbStorage extends ZendOpenId_Consumer\Storage
+   class DbStorage extends ZendOpenId\Consumer\Storage
    {
        private $_db;
        private $_association_table;
@@ -430,7 +430,7 @@ verwendet werden; wenn die benötigten Tabellen nicht existieren, wird er Sie er
                $ret = $this->_db->insert($table, array(
                    'nonce' => $nonce,
                ));
-           } catch (Zend\Db_Statement\Exception $e) {
+           } catch (Zend\Db\Statement\Exception $e) {
                return false;
            }
            return true;
@@ -486,7 +486,7 @@ von OpenID Providers zu fragen. Diese Informationen können folgendes beinhalten
 
 Eine OpenID-aktivierte Web-Seite kann nach jeder beliebigen Kombination dieser Felder fragen. Sie kann auch einige
 Informationen strikt fordern und es Benutzern erlauben zusätzliche Informationen anzubieten oder zu verstecken.
-Das folgende Beispiel Instanziiert die ``ZendOpenId_Extension\Sreg`` Klasse die einen **nickname** (Spitzname)
+Das folgende Beispiel Instanziiert die ``ZendOpenId\Extension\Sreg`` Klasse die einen **nickname** (Spitzname)
 benötigt und optional eine **email** (E-Mail) und einen **fullname** (vollständigen Namen) benötigt.
 
 .. _zend.openid.consumer.example-6_2:
@@ -496,7 +496,7 @@ benötigt und optional eine **email** (E-Mail) und einen **fullname** (vollstän
 .. code-block:: php
    :linenos:
 
-   $sreg = new ZendOpenId_Extension\Sreg(array(
+   $sreg = new ZendOpenId\Extension\Sreg(array(
        'nickname'=>true,
        'email'=>false,
        'fullname'=>false), null, 1.1);
@@ -508,14 +508,14 @@ benötigt und optional eine **email** (E-Mail) und einen **fullname** (vollstän
        die("OpenID Login fehlgeschlagen.");
    }
 
-Wie man sieht akzeptiert der ``ZendOpenId_Extension\Sreg`` Konstruktor ein Array von OpenId Feldern. Das Array hat
+Wie man sieht akzeptiert der ``ZendOpenId\Extension\Sreg`` Konstruktor ein Array von OpenId Feldern. Das Array hat
 den Namen der Felder als Indezes zu einem Flag das anzeigt ob das Feld benötigt wird oder nicht. ``TRUE`` bedeutet
 der Wert wird benötigt und ``FALSE`` bedeutet das Feld ist optional. Die Methode ``ZendOpenId\Consumer::login``
 akzeptiert eine Erweiterung oder ein Array von Erweiterungen als sein viertes Argument.
 
-Im dritten Schritt der Authentifikation sollte das ``ZendOpenId_Extension\Sreg`` Objekt an
+Im dritten Schritt der Authentifikation sollte das ``ZendOpenId\Extension\Sreg`` Objekt an
 ``ZendOpenId\Consumer::verify`` übergeben werden. Anschließend wird die Methode
-``ZendOpenId_Extension\Sreg::getProperties``, bei erfolgreicher Authentifizierung, ein assoziatives Array von
+``ZendOpenId\Extension\Sreg::getProperties``, bei erfolgreicher Authentifizierung, ein assoziatives Array von
 benötigten Feldern zurückgeben.
 
 .. _zend.openid.consumer.example-6_3:
@@ -525,7 +525,7 @@ benötigten Feldern zurückgeben.
 .. code-block:: php
    :linenos:
 
-   $sreg = new ZendOpenId_Extension\Sreg(array(
+   $sreg = new ZendOpenId\Extension\Sreg(array(
        'nickname'=>true,
        'email'=>false,
        'fullname'=>false), null, 1.1);
@@ -547,18 +547,18 @@ benötigten Feldern zurückgeben.
        echo "UNGÜLTIG " . htmlspecialchars($id);
    }
 
-Wenn das ``ZendOpenId_Extension\Sreg`` Objekt ohne Argumente erstellt wurde, sollte der Benutzercode selbst das
+Wenn das ``ZendOpenId\Extension\Sreg`` Objekt ohne Argumente erstellt wurde, sollte der Benutzercode selbst das
 Vorhandensein der benötigten Daten prüfen. Trotzdem, wenn das Objekt mit der gleichen Liste an benötigten
 Feldern wie im zweiten Schritt erstellt wird, wird es automatisch die Existenz der benötigten Daten prüfen. In
 diesem Fall wird ``ZendOpenId\Consumer::verify`` ``FALSE`` zurückgeben wenn irgendeines der benötigten Felder
 fehlt.
 
-``ZendOpenId_Extension\Sreg`` verwendet standardmäßig die Version 1.0 weil die Spezifikation der Version 1.1
+``ZendOpenId\Extension\Sreg`` verwendet standardmäßig die Version 1.0 weil die Spezifikation der Version 1.1
 noch nicht fertiggestellt wurde. Trotzdem unterstützen einige Bibliotheken die Version 1.0 nicht vollständig. Zum
 Beispiel benötigt www.myopenid.com einen SREG Namensraum in den Anfragen der nur in 1.1 vorhanden ist. Um mit so
-einem Server zu Arbeiten muß man die Version 1.1 explizit im ``ZendOpenId_Extension\Sreg`` Konstruktor setzen.
+einem Server zu Arbeiten muß man die Version 1.1 explizit im ``ZendOpenId\Extension\Sreg`` Konstruktor setzen.
 
-Das zweite Argument des ``ZendOpenId_Extension\Sreg`` Konstruktors ist eine Policy *URL*, die dem Benutzer durch
+Das zweite Argument des ``ZendOpenId\Extension\Sreg`` Konstruktors ist eine Policy *URL*, die dem Benutzer durch
 den Identitäts Provider zur Verfügung gestellt werden sollte.
 
 .. _zend.openid.consumer.auth:
@@ -568,7 +568,7 @@ Integration mit Zend_Auth
 
 Zend Framework bietet eine spezielle Klasse für die Unterstützung von Benutzer Authentifikation: ``Zend_Auth``.
 Diese Klasse kann zusammen mit ``ZendOpenId\Consumer`` verwendet werden. Das folgende Beispiel zeigt wie
-``OpenIdAdapter`` das ``Zend\Auth_Adapter\Interface`` mit der ``authenticate()`` Methode implementiert. Diese
+``OpenIdAdapter`` das ``Zend\Auth\Adapter\Interface`` mit der ``authenticate()`` Methode implementiert. Diese
 führt eine Authentifikations Anfrage und Verifikation durch.
 
 Der große Unterschied zwischen diesem Adapter und dem bestehenden ist, das er mit zwei *HTTP* Anfragen arbeitet
@@ -581,7 +581,7 @@ und einen Dispatch code enthält um den zweiten oder dritten Schritt der OpenID 
 .. code-block:: php
    :linenos:
 
-   class OpenIdAdapter implements Zend\Auth_Adapter\Interface {
+   class OpenIdAdapter implements Zend\Auth\Adapter\Interface {
        private $_id = null;
 
        public function __construct($id = null) {
@@ -654,13 +654,13 @@ Integration mit Zend_Controller
 
 Zuletzt ein paar Worte über die Integration in Model-View-Controller Anwendungen: Solche Zend Framework
 Anwendungen werden implementiert durch Verwenden der ``Zend_Controller`` Klasse und Sie verwenden die
-``Zend\Controller_Response\Http`` Klasse um *HTTP* Antworten vorzubereiten und an den Web Browser des Benutzers
+``Zend\Controller\Response\Http`` Klasse um *HTTP* Antworten vorzubereiten und an den Web Browser des Benutzers
 zurückzusenden.
 
 ``ZendOpenId\Consumer`` bietet keine GUI Möglichkeiten aber es führt *HTTP* Umleitungen bei erflgreichen
 ``ZendOpenId\Consumer::login`` und ``ZendOpenId\Consumer::check`` durch. Diese Umleitungen könnten nicht richtig
 funktionieren, oder sogar überhaupt nicht, wenn einige Daten bereits an den Web Browser gesendet wurden. Um *HTTP*
-Umleitungen im *MVC* Code richtig durchzuführen sollte die echte ``Zend\Controller_Response\Http`` als letztes
+Umleitungen im *MVC* Code richtig durchzuführen sollte die echte ``Zend\Controller\Response\Http`` als letztes
 Argument an ``ZendOpenId\Consumer::login`` oder ``ZendOpenId\Consumer::check`` gesendet werden.
 
 

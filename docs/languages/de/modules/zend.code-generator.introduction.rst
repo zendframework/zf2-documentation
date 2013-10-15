@@ -22,12 +22,12 @@ das Objekt ausgeben, oder dessen ``generate()`` Methode aufrufen.
    :linenos:
 
    // Konfiguration an den Construktor übergeben:
-   $file = new Zend\CodeGenerator_Php\File(array(
+   $file = new Zend\CodeGenerator\Php\File(array(
        'classes' => array(
-           new Zend\CodeGenerator_Php\Class(array(
+           new Zend\CodeGenerator\Php\Class(array(
                'name'    => 'World',
                'methods' => array(
-                   new Zend\CodeGenerator_Php\Method(array(
+                   new Zend\CodeGenerator\Php\Method(array(
                        'name' => 'hello',
                        'body' => 'echo \'Hallo Welt!\';',
                    )),
@@ -37,15 +37,15 @@ das Objekt ausgeben, oder dessen ``generate()`` Methode aufrufen.
    ));
 
    // Konfiguration nach der Initialisierung
-   $method = new Zend\CodeGenerator_Php\Method();
+   $method = new Zend\CodeGenerator\Php\Method();
    $method->setName('hello')
           ->setBody('echo \'Hallo Welt!\';');
 
-   $class = new Zend\CodeGenerator_Php\Class();
+   $class = new Zend\CodeGenerator\Php\Class();
    $class->setName('World')
          ->setMethod($method);
 
-   $file = new Zend\CodeGenerator_Php\File();
+   $file = new Zend\CodeGenerator\Php\File();
    $file->setClass($class);
 
    // Die erzeugte Datei darstellen
@@ -82,16 +82,16 @@ inkludiert haben. Wir könnten dann das folgende tun:
 .. code-block:: php
    :linenos:
 
-   $class = Zend\CodeGenerator_Php\Class::fromReflection(
+   $class = Zend\CodeGenerator\Php\Class::fromReflection(
        new Zend\Reflection\Class('World')
    );
 
-   $method = new Zend\CodeGenerator_Php\Method();
+   $method = new Zend\CodeGenerator\Php\Method();
    $method->setName('mrMcFeeley')
           ->setBody('echo \'Hallo, Mr. McFeeley!\';');
    $class->setMethod($method);
 
-   $file = new Zend\CodeGenerator_Php\File();
+   $file = new Zend\CodeGenerator\Php\File();
    $file->setClass($class);
 
    // Die erzeugte Datei darstellen

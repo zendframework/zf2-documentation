@@ -83,7 +83,7 @@ Einige Beispiele:
    :linenos:
 
    // Ein Element instanzieren und an das Form Objekt übergeben:
-   $form->addElement(new Zend\Form_Element\Text('username'));
+   $form->addElement(new Zend\Form\Element\Text('username'));
 
    // Den Fyp des Form Elements dem Form Objekt übergeben:
    $form->addElement('text', 'username');
@@ -100,7 +100,7 @@ Betrachten wir zuerst die Erstellung eines Prüfers für eine konkrete Instanz e
 .. code-block:: php
    :linenos:
 
-   $username = new Zend\Form_Element\Text('username');
+   $username = new Zend\Form\Element\Text('username');
 
    // Ein Zend\Validate\* Objekt übergeben:
    $username->addValidator(new Zend\Validate\Alnum());

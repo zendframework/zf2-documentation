@@ -57,10 +57,10 @@ objet client ``ZendGData`` utilisant l'objet ``Zend\Http\Client`` fraîchement a
    $passwd = 'xxxxxxxx';
    try {
       $client = ZendGData\ClientLogin::getHttpClient($email, $passwd, 'cl');
-   } catch (ZendGData_App\CaptchaRequiredException $cre) {
+   } catch (ZendGData\App\CaptchaRequiredException $cre) {
        echo 'l'URL de l\'image CAPTCHA est: ' . $cre->getCaptchaUrl() . "\n";
        echo 'Token ID: ' . $cre->getCaptchaToken() . "\n";
-   } catch (ZendGData_App\AuthException $ae) {
+   } catch (ZendGData\App\AuthException $ae) {
       echo 'Problème d'authentification : ' . $ae->exception() . "\n";
    }
 

@@ -17,8 +17,8 @@ wird den standardmäßigen Versandweg für die aktuellen Anfrage von ``send()`` 
 
    $mail = new Zend\Mail\Mail();
    // erstelle Nachricht...
-   $tr1 = new Zend\Mail_Transport\Smtp('server@example.com');
-   $tr2 = new Zend\Mail_Transport\Smtp('other_server@example.com');
+   $tr1 = new Zend\Mail\Transport\Smtp('server@example.com');
+   $tr2 = new Zend\Mail\Transport\Smtp('other_server@example.com');
    $mail->send($tr1);
    $mail->send($tr2);
    $mail->send();  // wieder Standardmethode verwenden
@@ -27,6 +27,6 @@ wird den standardmäßigen Versandweg für die aktuellen Anfrage von ``send()`` 
 
    **Zusätzliche Versandwege**
 
-   Weitere Versandwege können geschrieben werden, indem ``Zend\Mail_Transport\Interface`` implementiert wird.
+   Weitere Versandwege können geschrieben werden, indem ``Zend\Mail\Transport\Interface`` implementiert wird.
 
 

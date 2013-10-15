@@ -76,7 +76,7 @@ alias pour ce drapeau. Ces alias sont fusionnés avec tous les alias existants. 
 vous avez déclarés plus tôt sont toujours actifs.
 
 Un alias ne peut être déclaré qu'une seule fois. Si vous essayez de redéfinir un alias, une
-``Zend\Console_Getopt\Exception`` est levée.
+``Zend\Console\Getopt\Exception`` est levée.
 
 .. _zend.console.getopt.configuration.addaliases.example:
 

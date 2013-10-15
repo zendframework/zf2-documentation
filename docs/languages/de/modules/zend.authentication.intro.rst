@@ -33,7 +33,7 @@ unterschiedliche Optionen und Verhaltensweisen, aber einige grundlegende Dinge s
 Identitäten), das Abfragen am Authentifizierungsservice durchgeführt werden, und das Ergebnisse zurückgegeben
 werden, sind für ``Zend_Auth`` Adapter üblich.
 
-Jede ``Zend_Auth`` Adapter Klasse implementiert ``Zend\Auth_Adapter\Interface``. Dieses Interface definiert eine
+Jede ``Zend_Auth`` Adapter Klasse implementiert ``Zend\Auth\Adapter\Interface``. Dieses Interface definiert eine
 Methode, ``authenticate()``, die eine Adapter Klasse implementieren muß um eine Authentifizierungsanfrage
 auszuführen. Jede Adapter Klasse muß vorher vorbereitet sein bevor ``authenticate()`` aufgerufen wird. Diese
 Vorbereitung des Adapters enthält das Setzen der Zeugnisse (z.B. Benutzername und Passwort) und die Definition von
@@ -47,7 +47,7 @@ der Kürze halber ausgelassen:
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
+   class MyAuthAdapter implements Zend\Auth\Adapter\Interface
    {
        /**
         * Setzt Benutzername und Passwort für die Authentifizierung
@@ -62,7 +62,7 @@ der Kürze halber ausgelassen:
        /**
         * Führt einen Authentifizierungs-Versuch durch
         *
-        * @throws Zend\Auth_Adapter\Exception Wenn die Authentifizierung nicht
+        * @throws Zend\Auth\Adapter\Exception Wenn die Authentifizierung nicht
         *                                     durchgeführt wurde
         * @return Zend\Auth\Result
         */
@@ -75,7 +75,7 @@ der Kürze halber ausgelassen:
 Wie im Docblock angegeben, muß ``authenticate()`` eine Instanz von ``Zend\Auth\Result`` (oder einer von
 ``Zend\Auth\Result`` abgeleiteten Klassen) zurückgeben. Wenn aus bestimmten Gründen eine Durchführung einer
 Authentifizierungs-Anfrage nicht möglich ist, sollte ``authenticate()`` eine Ausnahme werfen die von
-``Zend\Auth_Adapter\Exception`` abgeleitet ist.
+``Zend\Auth\Adapter\Exception`` abgeleitet ist.
 
 .. _zend.authentication.introduction.results:
 
@@ -168,9 +168,9 @@ Standardmäßig bietet ``Zend_Auth`` dauerhafte Speicherung der Identität eines
 Versuches durch Verwendung der *PHP* Session. Bei einem erfolgreichen Authentifizierungs Versuch speichert
 ``Zend\Auth\Auth::authenticate()`` die Identität des Authentifizierungs Ergebnisses im persistenten Speicher. Solange
 die Konfiguration nicht verändert wird, verwendet ``Zend_Auth`` eine Speicherklasse die
-``Zend\Auth_Storage\Session`` heißt und die im Gegenzug :ref:`Zend_Session <zend.session>` verwendet. Eine eigene
+``Zend\Auth\Storage\Session`` heißt und die im Gegenzug :ref:`Zend_Session <zend.session>` verwendet. Eine eigene
 Klasse kann stattdessen verwendet werden, indem ein Objekt an ``Zend\Auth\Auth::setStorage()`` übergeben wird welches
-``Zend\Auth_Storage\Interface`` implementiert.
+``Zend\Auth\Storage\Interface`` implementiert.
 
 .. note::
 
@@ -182,8 +182,8 @@ Klasse kann stattdessen verwendet werden, indem ein Objekt an ``Zend\Auth\Auth::
 
 .. rubric:: Den Namensraum der Session ändern
 
-``Zend\Auth_Storage\Session`` verwendet einen Session Namensraum von '``Zend_Auth``'. Diese Namensraum kann
-überschrieben werden indem ein anderer Wert an den Konstruktor von ``Zend\Auth_Storage\Session`` übergeben wird,
+``Zend\Auth\Storage\Session`` verwendet einen Session Namensraum von '``Zend_Auth``'. Diese Namensraum kann
+überschrieben werden indem ein anderer Wert an den Konstruktor von ``Zend\Auth\Storage\Session`` übergeben wird,
 und dieser Wert wird intern an den Konstruktor von ``Zend\Session\Namespace`` weitergereicht. Das sollte vor einem
 Versuch einer Authentifizierung stattfinden da ``Zend\Auth\Auth::authenticate()`` die automatische Speicherung der
 Identität durchführt.
@@ -195,7 +195,7 @@ Identität durchführt.
    $auth = Zend\Auth\Auth::getInstance();
 
    // 'someNamespace' statt 'Zend_Auth' verwenden
-   $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
+   $auth->setStorage(new Zend\Auth\Storage\Session('someNamespace'));
 
    /**
     * @todo Den Auth Adapter $authAdapter erstellen
@@ -211,8 +211,8 @@ Eigene Speicher implementieren
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Zeitweise wollen Entwickler einen anderen Speichermechanismus für Identitäten verwenden als es von
-``Zend\Auth_Storage\Session`` angeboten wird. Für solche Fälle können Entwickler einfach
-``Zend\Auth_Storage\Interface`` implementieren und eine Instanz der Klasse an ``Zend\Auth\Auth::setStorage()``
+``Zend\Auth\Storage\Session`` angeboten wird. Für solche Fälle können Entwickler einfach
+``Zend\Auth\Storage\Interface`` implementieren und eine Instanz der Klasse an ``Zend\Auth\Auth::setStorage()``
 übergeben.
 
 .. _zend.authentication.introduction.persistence.custom.example:
@@ -220,17 +220,17 @@ Zeitweise wollen Entwickler einen anderen Speichermechanismus für Identitäten 
 .. rubric:: Eine eigene Speicher Klasse verwenden
 
 Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden als sie durch
-``Zend\Auth_Storage\Session`` angeboten wird, können Entwickler ``Zend\Auth_Storage\Interface`` implementieren:
+``Zend\Auth\Storage\Session`` angeboten wird, können Entwickler ``Zend\Auth\Storage\Interface`` implementieren:
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend\Auth_Storage\Interface
+   class MyStorage implements Zend\Auth\Storage\Interface
    {
        /**
         * Gibt true zurück wenn und nur wenn der Speicher leer ist
         *
-        * @throws Zend\Auth_Storage\Exception Wenn es unmöglich ist festzustellen
+        * @throws Zend\Auth\Storage\Exception Wenn es unmöglich ist festzustellen
         *                                     ob der Speicher leer ist
         * @return boolean
         */
@@ -246,7 +246,7 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
         *
         * Das Verhalten ist undefiniert wenn der Speicher leer ist.
         *
-        * @throws Zend\Auth_Storage\Exception Wenn das Lesen von Lesen vom Speicher
+        * @throws Zend\Auth\Storage\Exception Wenn das Lesen von Lesen vom Speicher
         *                                     unmöglich ist
         * @return mixed
         */
@@ -261,7 +261,7 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
         * Schreibt $contents in den Speicher
         *
         * @param  mixed $contents
-        * @throws Zend\Auth_Storage\Exception Wenn das Schreiben von $contents in
+        * @throws Zend\Auth\Storage\Exception Wenn das Schreiben von $contents in
         *                                     den Speicher unmöglich ist
         * @return void
         */
@@ -275,7 +275,7 @@ Um eine andere Speicherklasse für die Persistenz von Identitäten zu verwenden 
        /**
         * Löscht die Intalte vom Speicher
         *
-        * @throws Zend\Auth_Storage\Exception Wenn das Löschen der Inhalte vom
+        * @throws Zend\Auth\Storage\Exception Wenn das Löschen der Inhalte vom
         *                                     Speicher unmöglich ist
         * @return void
         */

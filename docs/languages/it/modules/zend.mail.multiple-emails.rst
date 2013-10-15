@@ -17,11 +17,8 @@ RSET è inviato prima di ogni consegna per verificare il corretto funzionamento 
 
    <?php
    // Carica le classi
-   require_once 'Zend/Mail.php';
-
    // Crea il transport
-   require_once 'Zend/Mail/Transport/Smtp.php';
-   $transport = new Zend\Mail_Transport\Smtp('localhost');
+   $transport = new Zend\Mail\Transport\Smtp('localhost');
 
    // Scorri i messaggi
    for ($i = 0; $i > 5; $i++) {
@@ -47,14 +44,10 @@ invio accedendo all'oggetto che rappresenta il protocollo di trasmissione.
    <?php
 
    // Carica le classi
-   require_once 'Zend/Mail.php';
-
    // Crea il transport
-   require_once 'Zend/Mail/Transport/Smtp.php';
-   $transport = new Zend\Mail_Transport\Smtp();
+   $transport = new Zend\Mail\Transport\Smtp();
 
-   require_once 'Zend/Mail/Protocol/Smtp.php';
-   $protocol = new Zend\Mail_Protocol\Smtp('localhost');
+   $protocol = new Zend\Mail\Protocol\Smtp('localhost');
    $protocol->connect();
    $protocol->helo('localhost');
 

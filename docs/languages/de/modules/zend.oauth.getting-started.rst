@@ -75,7 +75,7 @@ wird:
    // Holt den Anfragetoken
    $token = $consumer->getRequestToken();
 
-Der neue Anfragetoken (eine Instanz von ``ZendOauth_Token\Request``) ist nicht authorisiert. Um Ihn mit einem
+Der neue Anfragetoken (eine Instanz von ``ZendOauth\Token\Request``) ist nicht authorisiert. Um Ihn mit einem
 authorisierten Token zu wechseln mit dem wir auf die Twitter *API* zugreifen können, muss Ihn der Benutzer
 authorisieren. Wir bewerkstelligen das indem der Benutzer auf den Authorisierungsendpunkt von Twitter umgeleitet
 wird:

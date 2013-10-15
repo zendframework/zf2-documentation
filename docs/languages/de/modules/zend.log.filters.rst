@@ -19,10 +19,10 @@ indem die ``addFilter()`` Methode verwendet wird:
 
    $logger = new Zend\Log\Log();
 
-   $writer = new Zend\Log_Writer\Stream('php://output');
+   $writer = new Zend\Log\Writer\Stream('php://output');
    $logger->addWriter($writer);
 
-   $filter = new Zend\Log_Filter\Priority(Zend\Log\Log::CRIT);
+   $filter = new Zend\Log\Filter\Priority(Zend\Log\Log::CRIT);
    $logger->addFilter($filter);
 
    // Blockiert
@@ -47,14 +47,14 @@ werden:
 
    $logger = new Zend\Log\Log();
 
-   $writer1 = new Zend\Log_Writer\Stream('/path/to/first/logfile');
+   $writer1 = new Zend\Log\Writer\Stream('/path/to/first/logfile');
    $logger->addWriter($writer1);
 
-   $writer2 = new Zend\Log_Writer\Stream('/path/to/second/logfile');
+   $writer2 = new Zend\Log\Writer\Stream('/path/to/second/logfile');
    $logger->addWriter($writer2);
 
    // Einen Filter nur zu Writer2 hinzufügen
-   $filter = new Zend\Log_Filter\Priority(Zend\Log\Log::CRIT);
+   $filter = new Zend\Log\Filter\Priority(Zend\Log\Log::CRIT);
    $writer2->addFilter($filter);
 
    // Geloggt von Writer1, Blockiert von Writer2

@@ -35,7 +35,7 @@ Los elementos anteriores están separados por dos puntos, como en el ejemplo sig
 Detalles Específicos
 --------------------
 
-El adaptador de autenticación "Digest", ``Zend\Auth_Adapter\Digest``, requiere varios parámetros de entrada:
+El adaptador de autenticación "Digest", ``Zend\Auth\Adapter\Digest``, requiere varios parámetros de entrada:
 
 - filename - Nombre del archivo contra el que se realiza la autenticación de las consultas
 
@@ -59,7 +59,7 @@ esas claves correspondes con los valores fijados andes de llamar a ``authenticat
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Auth_Adapter\Digest($filename,
+   $adapter = new Zend\Auth\Adapter\Digest($filename,
                                            $realm,
                                            $username,
                                            $password);

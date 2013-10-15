@@ -3,7 +3,7 @@
 ZendService\\SlideShare
 =======================
 
-The ``ZendService\SlideShare`` component is used to interact with the `slideshare.net`_ web services for hosting
+The ``ZendService\SlideShare\SlideShare`` component is used to interact with the `slideshare.net`_ web services for hosting
 slide shows online. With this component, you can embed slide shows which are hosted on this web site within a web
 site and even upload new slide shows to your account.
 
@@ -12,12 +12,12 @@ site and even upload new slide shows to your account.
 Getting Started with ZendService\\SlideShare
 --------------------------------------------
 
-In order to use the ``ZendService\SlideShare`` component you must first create an account on the slideshare.net
+In order to use the ``ZendService\SlideShare\SlideShare`` component you must first create an account on the slideshare.net
 servers (more information can be found `here`_) in order to receive an *API* key, username, password and shared
-secret value -- all of which are needed in order to use the ``ZendService\SlideShare`` component.
+secret value -- all of which are needed in order to use the ``ZendService\SlideShare\SlideShare`` component.
 
-Once you have setup an account, you can begin using the ``ZendService\SlideShare`` component by creating a new
-instance of the ``ZendService\SlideShare`` object and providing these values as shown below:
+Once you have setup an account, you can begin using the ``ZendService\SlideShare\SlideShare`` component by creating a new
+instance of the ``ZendService\SlideShare\SlideShare`` object and providing these values as shown below:
 
 .. code-block:: php
    :linenos:
@@ -33,7 +33,7 @@ instance of the ``ZendService\SlideShare`` object and providing these values as 
 The SlideShow object
 --------------------
 
-All slide shows in the ``ZendService\SlideShare`` component are represented using the
+All slide shows in the ``ZendService\SlideShare\SlideShare`` component are represented using the
 ``ZendService\SlideShare\SlideShow`` object (both when retrieving and uploading new slide shows). For your
 reference a pseudo-code version of this class is provided below.
 
@@ -182,7 +182,7 @@ reference a pseudo-code version of this class is provided below.
    The above pseudo-class only shows those methods which should be used by end-user developers. Other available
    methods are internal to the component.
 
-When using the ``ZendService\SlideShare`` component, this data class will be used frequently to browse or add new
+When using the ``ZendService\SlideShare\SlideShare`` component, this data class will be used frequently to browse or add new
 slide shows to or from the web service.
 
 .. _zendservice.slideshare.getslideshow:
@@ -190,9 +190,9 @@ slide shows to or from the web service.
 Retrieving a single slide show
 ------------------------------
 
-The simplest usage of the ``ZendService\SlideShare`` component is the retrieval of a single slide show by slide
+The simplest usage of the ``ZendService\SlideShare\SlideShare`` component is the retrieval of a single slide show by slide
 show ID provided by the slideshare.net application and is done by calling the ``getSlideShow()`` method of a
-``ZendService\SlideShare`` object and using the resulting ``ZendService\SlideShare\SlideShow`` object as shown.
+``ZendService\SlideShare\SlideShare`` object and using the resulting ``ZendService\SlideShare\SlideShow`` object as shown.
 
 .. code-block:: php
    :linenos:

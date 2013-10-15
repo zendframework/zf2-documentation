@@ -38,7 +38,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
 адаптеры ``Zend_Auth`` принимают учетные данные, выполненяют запрос
 к аутентификационному сервису и возвращают результат.
 
-Каждый адаптер ``Zend_Auth`` реализует ``Zend\Auth_Adapter\Interface``. Этот
+Каждый адаптер ``Zend_Auth`` реализует ``Zend\Auth\Adapter\Interface``. Этот
 интерфейс определяет лишь один метод: ``authenticate()``, который
 должен быть реализовать для выполнения аутентификационного
 запроса. Адаптер должен быть настроен до вызова ``authenticate()``,
@@ -54,7 +54,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
+   class MyAuthAdapter implements Zend\Auth\Adapter\Interface
    {
        /**
         * Устанавливает логин и пароль для аутентификации
@@ -69,7 +69,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
        /**
         * Выполняет попытку аутентификации
         *
-        * @throws Zend\Auth_Adapter\Exception Если аутентификация не может быть выполнена
+        * @throws Zend\Auth\Adapter\Exception Если аутентификация не может быть выполнена
         * @return Zend\Auth\Result
         */
        public function authenticate()
@@ -81,7 +81,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
 Как указано в докблоке, ``authenticate()`` должен вернуть экземпляр
 ``Zend\Auth\Result`` (или унаследованный от него). Если по какой либо
 причине выполнение аутентификации невозможно, ``authenticate()``
-должен бросить исключение, происходящее от ``Zend\Auth_Adapter\Exception``.
+должен бросить исключение, происходящее от ``Zend\Auth\Adapter\Exception``.
 
 .. _zend.authentication.introduction.results:
 
@@ -186,10 +186,10 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
 
 При успешной попытке, ``Zend\Auth\Auth::authenticate()`` сохраняет идентификатор
 в постоянном хранилище. Если не настроено по другому, ``Zend_Auth``
-использует класс хранилища ``Zend\Auth_Storage\Session``, который в свою
+использует класс хранилища ``Zend\Auth\Storage\Session``, который в свою
 очередь использует :ref:`Zend_Session <zend.session>`. Вместо него может быть
 использован пользовательский класс, для этого нужно передать
-``Zend\Auth\Auth::setStorage()`` объект, реализующий ``Zend\Auth_Storage\Interface``.
+``Zend\Auth\Auth::setStorage()`` объект, реализующий ``Zend\Auth\Storage\Interface``.
 
 .. note::
 
@@ -202,9 +202,9 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
 
 .. rubric:: Изменение пространства имен в сессии
 
-``Zend\Auth_Storage\Session`` использует пространство имен '``Zend_Auth``'. Оно
+``Zend\Auth\Storage\Session`` использует пространство имен '``Zend_Auth``'. Оно
 может быть переопределено передачей другого значения
-конструктору ``Zend\Auth_Storage\Session``, которое будет дальше передано
+конструктору ``Zend\Auth\Storage\Session``, которое будет дальше передано
 конструктору ``Zend\Session\Namespace``. Это нужно сделать до того, как
 будет произведена попытка аутентификации, так как
 ``Zend\Auth\Auth::authenticate()`` выполняет автоматическое сохранение
@@ -217,7 +217,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
    $auth = Zend\Auth\Auth::getInstance();
 
    // Установка 'someNamespace' вместо 'Zend_Auth'
-   $auth->setStorage(new Zend\Auth_Storage\Session('someNamespace'));
+   $auth->setStorage(new Zend\Auth\Storage\Session('someNamespace'));
 
    /**
     * @todo подготовка адаптера, $authAdapter
@@ -234,26 +234,26 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
 
 Иногда разработчику может понадобиться использовать иной
 механизм хранения идентификаторов, нежели предоставляется в
-``Zend\Auth_Storage\Session``. В том случае он может реализовать
-``Zend\Auth_Storage\Interface`` и передать экземпляр методу ``Zend\Auth\Auth::setStorage()``.
+``Zend\Auth\Storage\Session``. В том случае он может реализовать
+``Zend\Auth\Storage\Interface`` и передать экземпляр методу ``Zend\Auth\Auth::setStorage()``.
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Использование пользовательского хранилища
 
 Для того, чтобы использовать иной класс хранилища
-пользовательских идентификаторов, нежели ``Zend\Auth_Storage\Session``,
-разработчик реализует ``Zend\Auth_Storage\Interface``:
+пользовательских идентификаторов, нежели ``Zend\Auth\Storage\Session``,
+разработчик реализует ``Zend\Auth\Storage\Interface``:
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend\Auth_Storage\Interface
+   class MyStorage implements Zend\Auth\Storage\Interface
    {
        /**
         * Возвращает  true, если хранилище пусто
         *
-        * @throws Zend\Auth_Storage\Exception В случае если невозможно
+        * @throws Zend\Auth\Storage\Exception В случае если невозможно
         *                                     определить, пусто ли
         *                                     хранилище
         * @return boolean
@@ -270,7 +270,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
         *
         * Поведение неопределено, когда хранилище пусто.
         *
-        * @throws Zend\Auth_Storage\Exception Если получение содержимого
+        * @throws Zend\Auth\Storage\Exception Если получение содержимого
         *                                     хранилища невозможно
         * @return mixed
         */
@@ -285,7 +285,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
         * Записывает $contents в хранилище
         *
         * @param  mixed $contents
-        * @throws Zend\Auth_Storage\Exception Если запись содержимого в
+        * @throws Zend\Auth\Storage\Exception Если запись содержимого в
         *                                     хранилище невозможна
         * @return void
         */
@@ -299,7 +299,7 @@ Zend Framework смотрите в :ref:`Zend\\Permissions\\Acl <zend.acl>`.
        /**
         * Очищает содержмое хранилища
         *
-        * @throws Zend\Auth_Storage\Exception Если очищение хранилища
+        * @throws Zend\Auth\Storage\Exception Если очищение хранилища
         *                                     невозможно
         * @return void
         */

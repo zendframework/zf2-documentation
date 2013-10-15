@@ -66,14 +66,14 @@ auffordert den Feed sofort vom Publizisten zu empfangen, was zu einer Verkehrssp
 verteilt der Hub das aktuelle Update in einem "Fat Ping" so dass der Publizist keine Verkehrsspitze aushalten muss.
 
 ``Zend\Feed\Pubsubhubbub`` implementiert Pubsubhubbub Publizisten und Abonnenten mit den Klassen
-``Zend\Feed_Pubsubhubbub\Publisher`` und ``Zend\Feed_Pubsubhubbub\Subscriber``. Zusätzlich kann die Implementation
+``Zend\Feed\Pubsubhubbub\Publisher`` und ``Zend\Feed\Pubsubhubbub\Subscriber``. Zusätzlich kann die Implementation
 des Abonnenten alle Feed Aktualisierungen behandeln die von einem Hub weitergeleitet werden indem
 ``Zend\Feed\Pubsubhubbub\Subscriber\Callback`` verwendet wird. Diese Klassen, deren Verwendungszweck, und die
 *API*\ s werden in den weiterführenden Abschnitten behandelt.
 
 .. _zend.feed.pubsubhubbub.zend.feed.pubsubhubbub.publisher:
 
-Zend\Feed_Pubsubhubbub\Publisher
+Zend\Feed\Pubsubhubbub\Publisher
 --------------------------------
 
 In Pubsubhubbub ist der Publizist der Teilnehmer welcher einen lebenden Feed veröffentlicht und Ihn regelmäßig
@@ -89,7 +89,7 @@ Vom Design her bedeutet dies dass der Publizist sehr wenig zu tun hat ausser die
 wenn sich seine Feeds ändern. Als Ergebnis hiervon ist die Implementation des Publizisten extrem einfach zu
 verwenden und benötigt sehr wenig Arbeit für die Einrichtung und Verwendung wenn Feeds aktualisiert werden.
 
-``Zend\Feed_Pubsubhubbub\Publisher`` implementiert einen kompletten Pubsubhubbub Publizisten. Sein Setup ist sehr
+``Zend\Feed\Pubsubhubbub\Publisher`` implementiert einen kompletten Pubsubhubbub Publizisten. Sein Setup ist sehr
 einfach und hauptsächlich müssen bei Ihm nur die *URI* Endpunkte für alle Hubs konfiguriert werden welche bei
 Aktualisierungen benachrichtigt werden müssen, und die *URI*\ s aller Themen die in Benachrichtigungen einzubinden
 sind.
@@ -105,7 +105,7 @@ geplanten Aufgabe für diesen Zweck oder einer Job Queue wenn solche extra Schri
 .. code-block:: php
    :linenos:
 
-   $publisher = new Zend\Feed_Pubsubhubbub\Publisher;
+   $publisher = new Zend\Feed\Pubsubhubbub\Publisher;
    $publisher->addHubUrls(array(
        'http://pubsubhubbub.appspot.com/',
        'http://hubbub.example.com',
@@ -144,7 +144,7 @@ anzubieten sowohl wegen deren eigenen temporären Downtime als auch den Fehlern 
 
 .. _zend.feed.pubsubhubbub.zend.feed.pubsubhubbub.subscriber:
 
-Zend\Feed_Pubsubhubbub\Subscriber
+Zend\Feed\Pubsubhubbub\Subscriber
 ---------------------------------
 
 In Pubsubhubbub ist der Abonnent ein Teilnehmer welcher Aktualisierungen zu irgendeinem Thema (einem *RSS* oder
@@ -169,7 +169,7 @@ die Callback *URL* zugegriffen wird.
 
 .. important::
 
-   ``Zend\Feed_Pubsubhubbub\Subscriber`` implementiert die Pubsubhubbub Spezifikation 0.2. Da dies eine Version der
+   ``Zend\Feed\Pubsubhubbub\Subscriber`` implementiert die Pubsubhubbub Spezifikation 0.2. Da dies eine Version der
    Spezifikation ist implementieren Sie aktuell nicht alle Hubs. Die neue Spezifikation erlaubt der Callback *URL*
    einen Abfragestring einzubinden welcher von dieser Klasse verwendet, aber nicht von allen Hubs unterstützt
    wird. Im Interesse einer maximalen Kompatibilität wird deshalb empfohlen die Komponente des Abfragestrings der
@@ -181,7 +181,7 @@ die Callback *URL* zugegriffen wird.
 Abonnieren und Abos löschen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Feed_Pubsubhubbub\Subscriber`` implementiert einen kompletten Pubsubhubbub Abonnenten der in der Lage ist
+``Zend\Feed\Pubsubhubbub\Subscriber`` implementiert einen kompletten Pubsubhubbub Abonnenten der in der Lage ist
 jedes Thema über jeden Hub der von diesem Thema vermittelt wird zu abonnieren und Abos zu löschen. Er arbeitet in
 Verbindung mit ``Zend\Feed\Pubsubhubbub\Subscriber\Callback`` welcher Anfragen von einem Hub akzeptiert um alle
 Aboanfragen und das Löschen von Abos zu bestätigen (um Missbrauch durch andere zu verhindern).
@@ -204,7 +204,7 @@ Mit der relevanten Information an der Hand kann eine Abonnierung wie anbei gezei
 
    $storage = new Zend\Feed\Pubsubhubbub\Model\Subscription;
 
-   $subscriber = new Zend\Feed_Pubsubhubbub\Subscriber;
+   $subscriber = new Zend\Feed\Pubsubhubbub\Subscriber;
    $subscriber->setStorage($storage);
    $subscriber->addHubUrl('http://hubbub.example.com');
    $subscriber->setTopicUrl('http://www.example.net/rss.xml');
@@ -213,9 +213,9 @@ Mit der relevanten Information an der Hand kann eine Abonnierung wie anbei gezei
 
 Um Abos zu speichern und Zugriff auf dessen Daten für eine generelle Verwendung zu Speichern benötigt die
 Komponente eine Datenbank (ein Schema wird später in diesem Abschnitt angeboten). Standardmäßig wird angenommen
-das der Name der Tabelle "subscription" ist und im Hintergrund ``Zend\Db_Table\Abstract`` anwendet, was bedeutet
+das der Name der Tabelle "subscription" ist und im Hintergrund ``Zend\Db\Table\Abstract`` anwendet, was bedeutet
 das der Standardadapter verwendet wird welcher in der Anwendung gesetzt ist. Man kann auch eine eigene spezielle
-Instanz von ``Zend\Db_Table\Abstract`` in das assoziierte Modell von ``Zend\Feed\Pubsubhubbub\Model\Subscription``
+Instanz von ``Zend\Db\Table\Abstract`` in das assoziierte Modell von ``Zend\Feed\Pubsubhubbub\Model\Subscription``
 übergeben. Dieser eigene Adapter kann so einfach wie gewünscht sein indem der Name der Tabelle welche zu
 verwenden ist geändert wird, oder so komplex wie es notwendig ist.
 
@@ -252,7 +252,7 @@ Im Hintergrund sendet der Abonnent eine Anfrage an den Endpunkt des Hubs welche 
    +-----------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Parameter        |Wert                                                                                             |Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    +=================+=================================================================================================+===============================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
-   |hub.callback     |http://www.mydomain.com/hubbub/callback?xhub.subscription=5536df06b5dcb966edab3a4c4d56213c16a8184|Die URI welche von einem Hub verwendet wird um den Abonnenten zu kontaktieren und entweder eine Bestätigung für eine Anfrage oder das Löschen eines Abos abzufragen oder Aktualisierungen für abonnierte Feeds zu senden. Der angehängte Abfragestring enthält einen eigenen Parameter (demzufolge der Zweck von xhub). Es ist ein Parameter für einen Abfragestring welcher vom Hub aufbewahrt um mit allen Anfragen des Abonnenten wieder versendet wird. Sein Zweck ist es dem Abonnenten zu erlauben sich zu identifizieren und die Abos zu betrachten welche mit einer beliebigen Hubanfrage in einem Backend=Speichermedium assoziiert sind. Das ist kein Standardparameter welcher von dieser Komponente verwendet wird statt einen Aboschlüssel im URI Pfad zu kodieren, was in einer Zend Framework Anwendung viel komplizierter zu implementieren wäre. Trotzdem, da nicht alle Hubs Parameter für den Abfragestring unterstützen wird empfohlen den Aboschlüssel als Pfadkomponente in der Form von http://www.mydomain.com/hubbub/callback/5536df06b5dcb966edab3a4c4d56213c16a8184 hinzuzufügen. Um das zu bewerkstelligen, wird die Definition einer Route benötigt welche in der Lage ist den endgültigen Wert des Schlüssels herauszuparsen den Wert zu erhalten und Ihn an das Callback Objekt des Abonnenten zu übergeben. Der Wert würde an die Methode Zend\Pubsubhubbub_Subscriber\Callback::setSubscriptionKey() übergeben. Ein detailiertes Beispiel wird später gezeigt.|
+   |hub.callback     |http://www.mydomain.com/hubbub/callback?xhub.subscription=5536df06b5dcb966edab3a4c4d56213c16a8184|Die URI welche von einem Hub verwendet wird um den Abonnenten zu kontaktieren und entweder eine Bestätigung für eine Anfrage oder das Löschen eines Abos abzufragen oder Aktualisierungen für abonnierte Feeds zu senden. Der angehängte Abfragestring enthält einen eigenen Parameter (demzufolge der Zweck von xhub). Es ist ein Parameter für einen Abfragestring welcher vom Hub aufbewahrt um mit allen Anfragen des Abonnenten wieder versendet wird. Sein Zweck ist es dem Abonnenten zu erlauben sich zu identifizieren und die Abos zu betrachten welche mit einer beliebigen Hubanfrage in einem Backend=Speichermedium assoziiert sind. Das ist kein Standardparameter welcher von dieser Komponente verwendet wird statt einen Aboschlüssel im URI Pfad zu kodieren, was in einer Zend Framework Anwendung viel komplizierter zu implementieren wäre. Trotzdem, da nicht alle Hubs Parameter für den Abfragestring unterstützen wird empfohlen den Aboschlüssel als Pfadkomponente in der Form von http://www.mydomain.com/hubbub/callback/5536df06b5dcb966edab3a4c4d56213c16a8184 hinzuzufügen. Um das zu bewerkstelligen, wird die Definition einer Route benötigt welche in der Lage ist den endgültigen Wert des Schlüssels herauszuparsen den Wert zu erhalten und Ihn an das Callback Objekt des Abonnenten zu übergeben. Der Wert würde an die Methode Zend\Pubsubhubbub\Subscriber\Callback::setSubscriptionKey() übergeben. Ein detailiertes Beispiel wird später gezeigt.|
    +-----------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |hub.lease_seconds|2592000                                                                                          |Die Anzahl an Sekunden für welche der Abonnenten will dass ein neues Abo gültig bleibt (z.B. ein TTL). Hubs können Ihre eigene maximale Abodauer erzwingen. Alle Abos sollten erneuert werden indem einfach erneut abonniert wird bevor die Abodauer endet um die Kontinuierlichkeit der Aktualisierungen zu gewährleisten. Hubs sollten zusätzlich versuchen Abos automatisch zu aktualisieren bevor diese auslaufen indem die Abonnenten kontaktiert werden (dies wird automatisch von der Callback Klasse behandelt).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
    +-----------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -295,7 +295,7 @@ Standardmäßig versucht eine neue Instanz von ``Zend\Pubsubhubbub\Subscriber`` 
 Speichermedium zu verwenden mit Standardwerten um den standardmäßigen ``Zend_Db`` Adapter mit dem Tabellennamen
 "subscription" zu verwenden. Es wird empfohlen eine eigene Speicherlösung zu setzen welche diese Standardwerte
 nicht verwendet, entweder duch übergabe eines neuen Modells welches das benötigte Interface unterstützt, oder
-durch Übergabe einer neuen Instanz von ``Zend\Db_Table\Abstract`` an dem Constructor des standardmäßigen Modells
+durch Übergabe einer neuen Instanz von ``Zend\Db\Table\Abstract`` an dem Constructor des standardmäßigen Modells
 um den verwendeten Tabellennamen zu verändern.
 
 .. _zend.feed.pubsubhubbub.zend.feed.pubsubhubbub.subscriber.handling.hub.callbacks:
@@ -307,7 +307,7 @@ Wann auch immer eine Aboanfrage oder eine Anfrage auf Löschen eines Abos gemach
 prüfen indem er eine neue Prüfanfrage an die Callback *URL* weiterleitet welche in den Abo or Abo löschen
 Parametern gesetzt ist. Um diese Hub Anfragen zu behandeln, welche alle zukünftigen Kommunikationen enthalten
 können wie z.B. Themenaktualisierungen (Feed), sollte die Callback *URL* die Ausführung einer Instanz von
-``Zend\Pubsubhubbub_Subscriber\Callback`` auslösen um die Anfrage zu behandeln.
+``Zend\Pubsubhubbub\Subscriber\Callback`` auslösen um die Anfrage zu behandeln.
 
 Die Callback Klasse sollte konfiguriert werden dass Sie das selbe Speichermedium wie die Subscriber Klasse
 verwendet. Ihre Verwendung ist sehr einfach da die meiste Arbeit intern erledigt wird.

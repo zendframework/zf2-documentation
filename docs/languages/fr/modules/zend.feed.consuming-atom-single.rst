@@ -28,12 +28,12 @@ Vous pouvez aussi instancier directement la classe représentant les entrées si
 
 .. _zend.feed.consuming-atom-single-entry.example.entryatom:
 
-.. rubric:: Utiliser directement l'objet Zend\Feed_Entry\Atom
+.. rubric:: Utiliser directement l'objet Zend\Feed\Entry\Atom
 
 .. code-block:: php
    :linenos:
 
-   $entree = new Zend\Feed_Entry\Atom('http://atom.exemple.com/flux/1');
+   $entree = new Zend\Feed\Entry\Atom('http://atom.exemple.com/flux/1');
    echo $entree->title();
 
 

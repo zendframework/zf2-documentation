@@ -4,7 +4,7 @@
 Writer
 ======
 
-Ein Writer ist ein Objekt das von ``Zend\Log_Writer\Abstract`` abstammt. Die Aufgabe eines Writer's ist es Log
+Ein Writer ist ein Objekt das von ``Zend\Log\Writer\Abstract`` abstammt. Die Aufgabe eines Writer's ist es Log
 Daten in ein Speicher-Backend aufzunehmen.
 
 .. _zend.log.writers.stream:
@@ -12,7 +12,7 @@ Daten in ein Speicher-Backend aufzunehmen.
 In Streams schreiben
 --------------------
 
-``Zend\Log_Writer\Stream`` sendet Log Daten in einen `PHP Stream`_.
+``Zend\Log\Writer\Stream`` sendet Log Daten in einen `PHP Stream`_.
 
 Um Log Daten in den *PHP* Ausgabebuffer zu schreiben, muß die URL ``php://output`` verwendet werden. Alternativ
 können Log Daten direkt an einen Stream wie z.B. ``STDERR`` (``php://stderr``) gesendet werden.
@@ -20,7 +20,7 @@ können Log Daten direkt an einen Stream wie z.B. ``STDERR`` (``php://stderr``) 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Stream('php://output');
+   $writer = new Zend\Log\Writer\Stream('php://output');
    $logger = new Zend\Log\Log($writer);
 
    $logger->info('Informational message');
@@ -30,15 +30,15 @@ Um Daten in eine Datei zu schreiben, muß eine der `Dateisystem URLs`_ verwendet
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Stream('/path/to/logfile');
+   $writer = new Zend\Log\Writer\Stream('/path/to/logfile');
    $logger = new Zend\Log\Log($writer);
 
    $logger->info('Informative Nachricht');
 
 Standardmäßig wird der Stream im Anhänge-Modus geöffnet ("a"). Um Ihn in einem anderen Modus zu öffnen,
-akzeptiert der ``Zend\Log_Writer\Stream`` Konstruktor einen optionalen zweiten Parameter für den Modus.
+akzeptiert der ``Zend\Log\Writer\Stream`` Konstruktor einen optionalen zweiten Parameter für den Modus.
 
-Der Konstruktor von ``Zend\Log_Writer\Stream`` akzeptiert auch eine existierende Stream Ressource:
+Der Konstruktor von ``Zend\Log\Writer\Stream`` akzeptiert auch eine existierende Stream Ressource:
 
 .. code-block:: php
    :linenos:
@@ -48,7 +48,7 @@ Der Konstruktor von ``Zend\Log_Writer\Stream`` akzeptiert auch eine existierende
        throw new Exception('Stream konnte nicht geöffnet werden');
    }
 
-   $writer = new Zend\Log_Writer\Stream($stream);
+   $writer = new Zend\Log\Writer\Stream($stream);
    $logger = new Zend\Log\Log($writer);
 
    $logger->info('Informative Nachricht');
@@ -61,8 +61,8 @@ eine ``Zend\Log\Exception`` geworfen.
 In Datenbanken schreiben
 ------------------------
 
-``Zend\Log_Writer\Db`` schreibt Log Informationen in eine Datenbank Tabelle wobei ``Zend_Db`` verwendet wird. Der
-Konstrukor von ``Zend\Log_Writer\Db`` benötigt eine ``Zend\Db\Adapter`` Instanz, einen Tabellennamen, und ein
+``Zend\Log\Writer\Db`` schreibt Log Informationen in eine Datenbank Tabelle wobei ``Zend_Db`` verwendet wird. Der
+Konstrukor von ``Zend\Log\Writer\Db`` benötigt eine ``Zend\Db\Adapter`` Instanz, einen Tabellennamen, und ein
 Abbild der Datenbankspalten zu den Elementen der Eventdaten:
 
 .. code-block:: php
@@ -75,7 +75,7 @@ Abbild der Datenbankspalten zu den Elementen der Eventdaten:
    $db = Zend\Db\Db::factory('PDO_MYSQL', $params);
 
    $columnMapping = array('lvl' => 'priority', 'msg' => 'message');
-   $writer = new Zend\Log_Writer\Db($db, 'log_table_name', $columnMapping);
+   $writer = new Zend\Log\Writer\Db($db, 'log_table_name', $columnMapping);
 
    $logger = new Zend\Log\Log($writer);
 
@@ -94,13 +94,13 @@ Spalte welche 'msg' benannt ist empfängt die Log Nachricht.
 Einen Writer abstumpfen
 -----------------------
 
-``Zend\Log_Writer\Null`` ist ein Stumpf der keine Log Daten irgendwohin schreibt. Er ist nützlich um die
+``Zend\Log\Writer\Null`` ist ein Stumpf der keine Log Daten irgendwohin schreibt. Er ist nützlich um die
 Protokollierung auszuschalten oder wärend Tests abzustumpfen:
 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Null;
+   $writer = new Zend\Log\Writer\Null;
    $logger = new Zend\Log\Log($writer);
 
    // geht nirgendwohin
@@ -111,13 +111,13 @@ Protokollierung auszuschalten oder wärend Tests abzustumpfen:
 Mit der Attrappe testen
 -----------------------
 
-``Zend\Log_Writer\Mock`` ist ein sehr einfacher Writer der die rohen Daten die er empfängt aufnimmt und in einem
+``Zend\Log\Writer\Mock`` ist ein sehr einfacher Writer der die rohen Daten die er empfängt aufnimmt und in einem
 Array als öffentliche Eigenschaft zur Verfügung stellt.
 
 .. code-block:: php
    :linenos:
 
-   $mock = new Zend\Log_Writer\Mock;
+   $mock = new Zend\Log\Writer\Mock;
    $logger = new Zend\Log\Log($mock);
 
    $logger->info('Informative Nachricht');
@@ -146,8 +146,8 @@ schreiben. Um das zu tun, muß die ``addWriter()`` Methode verwendet werden:
 .. code-block:: php
    :linenos:
 
-   $writer1 = new Zend\Log_Writer\Stream('/path/to/first/logfile');
-   $writer2 = new Zend\Log_Writer\Stream('/path/to/second/logfile');
+   $writer1 = new Zend\Log\Writer\Stream('/path/to/first/logfile');
+   $writer2 = new Zend\Log\Writer\Stream('/path/to/second/logfile');
 
    $logger = new Zend\Log\Log();
    $logger->addWriter($writer1);

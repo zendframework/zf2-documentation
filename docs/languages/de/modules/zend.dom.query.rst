@@ -21,7 +21,7 @@ Theorie der Anwendung
 
 Um ``Zend\Dom\Query`` zu verwenden muß ein ``Zend\Dom\Query`` Objekt instanziert werden, optional kann ein zu
 parsendes Dokument (ein String) übergeben werden. Sobald man ein Dokument hat, kann die ``query()`` oder die
-``queryXpath()`` Methode verwendet werden; jede Methode gibt ein ``Zend\Dom_Query\Result`` Objekt mit allen
+``queryXpath()`` Methode verwendet werden; jede Methode gibt ein ``Zend\Dom\Query\Result`` Objekt mit allen
 passenden Knoten zurück.
 
 Der grundsätzliche Unterschied zwischen ``Zend\Dom\Query`` und der Verwendung von DOMDocument + DOMXPath ist die
@@ -80,7 +80,7 @@ Möglichkeit *CSS* Selektoren auszuwählen. Alle folgenden Elemente können in j
 
 Wenn man eine Abfrage ausgeführt hat, kann man mit dem Ergebnis Objekt arbeiten um Informationen über die Knoten
 zu bekommen, sowie um Sie und/oder Ihren Inhalt direkt für die Extrahierung und Manipulation herauszuholen.
-``Zend\Dom_Query\Result`` implementiert ``Countable`` und ``Iterator`` und speichert die Ergebnisse intern als
+``Zend\Dom\Query\Result`` implementiert ``Countable`` und ``Iterator`` und speichert die Ergebnisse intern als
 DOMNodes und DOMElements. Als Beispiel nehmen wir erstmal den folgenden Aufruf an der das obige *HTML* auswählt:
 
 .. code-block:: php
@@ -95,7 +95,7 @@ DOMNodes und DOMElements. Als Beispiel nehmen wir erstmal den folgenden Aufruf a
    }
 
 ``Zend\Dom\Query`` erlaubt auch strenge XPath Abfragen durch Verwendung der ``queryXpath()`` Methode; man kann eine
-gültige XPath Abfrage an diese Methode übergeben, und Sie wird ein ``Zend\Dom_Query\Result`` Objekt zurückgeben.
+gültige XPath Abfrage an diese Methode übergeben, und Sie wird ein ``Zend\Dom\Query\Result`` Objekt zurückgeben.
 
 .. _zend.dom.query.methods:
 
@@ -131,10 +131,10 @@ Die folgenden Methoden sind in ``Zend\Dom\Query`` vorhanden:
 
 .. _zend.dom.query.methods.zenddomqueryresult:
 
-Zend\Dom_Query\Result
+Zend\Dom\Query\Result
 ^^^^^^^^^^^^^^^^^^^^^
 
-Wie vorher erwähnt, implementiert ``Zend\Dom_Query\Result`` beide, ``Iterator`` und ``Countable``, und kann
+Wie vorher erwähnt, implementiert ``Zend\Dom\Query\Result`` beide, ``Iterator`` und ``Countable``, und kann
 deswegen in einer ``foreach()`` Schleife verwendet werden wie auch mit der ``count()`` Funktion. Zusätzlich bietet
 es die folgenden Methoden an:
 
