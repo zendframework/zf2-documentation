@@ -21,7 +21,7 @@ To install the ZFTool you can use one of the following methods or you can just d
 the PHAR package and use it.
 
 Installation using `Composer`_
------------------------------
+------------------------------
 
     1. Open console (command prompt)
     2. Go to your application's directory

@@ -770,7 +770,7 @@ Zend\\Tag
 .. _zend.test:
 
 Zend\\Test
-^^^^^^^^^
+^^^^^^^^^^
 
         * :doc:`modules/zend.test.introduction`
         * :doc:`modules/zend.test.phpunit`

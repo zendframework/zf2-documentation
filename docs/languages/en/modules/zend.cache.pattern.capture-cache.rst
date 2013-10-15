@@ -1,7 +1,7 @@
 .. _zend.cache.pattern.capture-cache:
 
 Zend\\Cache\\Pattern\\CaptureCache
-=================================
+==================================
 
 .. _zend.cache.pattern.capture-cache.overview:
 
