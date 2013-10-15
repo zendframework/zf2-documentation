@@ -8,7 +8,7 @@ The following adapters are shipped with Zend Framework by default.
 .. _zend.captcha.adapters.abstractword:
 
 Zend\\Captcha\\AbstractWord
--------------------
+---------------------------
 
 ``Zend\Captcha\AbstractWord`` is an abstract adapter that serves as the base class for most other *CAPTCHA* adapters. It
 provides mutators for specifying word length, session *TTL* and the session container object to use.

@@ -176,7 +176,7 @@ with ``table`` and ``schema`` keys. As in the example below:
 .. _zend.validator.db.using.a.select.object:
 
 Using a Select object
--------------------
+---------------------
 
 It is also possible to supply the validators with a ``Zend\Db\Sql\Select`` object in place of options.
 The validator then uses this object instead of building its own. This allows for greater flexibility with selection

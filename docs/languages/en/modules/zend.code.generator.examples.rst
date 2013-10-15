@@ -1,7 +1,7 @@
 .. _zend.code.generator.examples:
 
 Zend\Code\Generator Examples
-===========================
+============================
 
 .. _zend.code.generator.examples.class:
 
