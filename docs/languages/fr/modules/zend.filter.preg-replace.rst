@@ -17,10 +17,10 @@ a single pattern, or an array of strings for multiple pattern.
 
    $filter = new Zend\Filter\PregReplace(array('match' => '/bob/',
                                                'replace' => 'john'));
-   $input  = 'Hy bob!';
+   $input  = 'Hi bob!';
 
    $filter->filter($input);
-   // returns 'Hy john!'
+   // returns 'Hi john!'
 
 You can use ``getMatchPattern()`` and ``setMatchPattern()`` to set the matching pattern afterwards. To set the
 replacement pattern you can use ``getReplacement()`` and ``setReplacement()``.
@@ -29,9 +29,9 @@ replacement pattern you can use ``getReplacement()`` and ``setReplacement()``.
    :linenos:
 
    $filter = new Zend\Filter\PregReplace();
-   $filter->setMatchPattern(array('bob', 'Hy'))
+   $filter->setMatchPattern(array('bob', 'Hi'))
           ->setReplacement(array('john', 'Bye'));
-   $input  = 'Hy bob!";
+   $input  = 'Hi bob!';
 
    $filter->filter($input);
    // returns 'Bye john!'
