@@ -652,8 +652,8 @@ Zeit JPG, PNG und TIFF Grafiken unterstützt):
 **Wichtig! JPG Support setzt voraus, dass die GD Erweiterung für PHP konfiguriert wurde.** **Wichtig! PNG Support
 setzt voraus, dass die ZLIB Erweiterung konfiguriert wurde, um mit Grafiken mit Alphakanal zu arbeiten.**
 
-Wende dich an die *PHP* Dokumentation für weitere Informationen (`http://www.php.net/manual/de/ref.image.php`_).
-(`http://www.php.net/manual/de/ref.zlib.php`_).
+Wende dich an die *PHP* Dokumentation für weitere Informationen (http://www.php.net/manual/de/ref.image.php).
+(http://www.php.net/manual/de/ref.zlib.php).
 
 .. _zendpdf.drawing.line-drawing-style:
 
@@ -1148,5 +1148,3 @@ Transparenz kann durch Verwendung der ``ZendPdf\Page::setAlpha()`` Methode geset
 
 .. _`iconv()`: http://www.php.net/manual/function.iconv.php
 .. _`PDF Reference, Sixth Edition, version 1.7`: http://www.adobe.com/devnet/acrobat/pdfs/pdf_reference_1-7.pdf
-.. _`http://www.php.net/manual/de/ref.image.php`: http://www.php.net/manual/de/ref.image.php
-.. _`http://www.php.net/manual/de/ref.zlib.php`: http://www.php.net/manual/de/ref.zlib.php

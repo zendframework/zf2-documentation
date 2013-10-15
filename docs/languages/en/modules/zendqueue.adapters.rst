@@ -219,9 +219,9 @@ The database **CREATE TABLE ( ... )** *SQL* statement can be found in ``Zend/Que
 MemcacheQ
 ^^^^^^^^^
 
-Memcache can be downloaded from `http://www.danga.com/memcached/`_.
+Memcache can be downloaded from http://www.danga.com/memcached/.
 
-MemcacheQ can be downloaded from `http://memcachedb.org/memcacheq/`_.
+MemcacheQ can be downloaded from http://memcachedb.org/memcacheq/.
 
 - ``deleteMessage()``- Messages are deleted upon reception from the queue. Calling this function would have no
   effect. Calling this function will throw an error.
@@ -318,6 +318,4 @@ The Array queue is a *PHP* ``array()`` in local memory. The ``Zend\Queue\Adapter
 .. _`Apache ActiveMQ`: http://activemq.apache.org/
 .. _`MemcacheQ`: http://memcachedb.org/memcacheq/
 .. _`Zend Platform's`: http://www.zend.com/en/products/platform/
-.. _`http://www.danga.com/memcached/`: http://www.danga.com/memcached/
-.. _`http://memcachedb.org/memcacheq/`: http://memcachedb.org/memcacheq/
 .. _`on the zend.com website`: http://www.zend.com/en/products/platform/

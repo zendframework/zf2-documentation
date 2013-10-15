@@ -9,7 +9,7 @@ Il ne nécessite aucunes extensions *PHP* [#]_ ni que des logiciels supplémenta
 être utilisé tout de suite après l'installation du Framework Zend.
 
 ``Zend\Search\Lucene`` est un portage *PHP* du moteur de recherche full-text open source populaire connu comme
-Apache Lucene. Voir `http://lucene.apache.org/`_ pour plus de détails.
+Apache Lucene. Voir http://lucene.apache.org/ pour plus de détails.
 
 L'information doit être indexée pour être disponible à la recherche. ``Zend\Search\Lucene`` et Java Lucene
 utilise un concept de document connu sous le nom d'"indexation atomique d'élément."
@@ -64,7 +64,6 @@ segmentation, ou traitement de valeur de champ comme chaîne binaire.
 
 
 
-.. _`http://lucene.apache.org/`: http://lucene.apache.org
 
 .. [#] Bien que quelques fonctionnalités de traitement *UTF-8* nécessitent que l'extension **mbstring** soit
        activée

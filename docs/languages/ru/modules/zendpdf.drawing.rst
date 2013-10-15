@@ -317,7 +317,7 @@ PNG и TIFF):
 Альфа-каналом.**
 
 См. документацию PHP за более подробной информацией
-(`http://www.php.net/manual/en/ref.image.php`_). (`http://www.php.net/manual/en/ref.zlib.php`_).
+(http://www.php.net/manual/en/ref.image.php). (http://www.php.net/manual/en/ref.zlib.php).
 
 .. _zendpdf.drawing.line-drawing-style:
 
@@ -739,5 +739,3 @@ PDF и модуль ZendPdf поддерживают ограничение об
 
 
 
-.. _`http://www.php.net/manual/en/ref.image.php`: http://www.php.net/manual/en/ref.image.php
-.. _`http://www.php.net/manual/en/ref.zlib.php`: http://www.php.net/manual/en/ref.zlib.php

@@ -29,7 +29,7 @@ Entwickler Schlüssel und Client ID
 
 Ein Entwickler Schlüssel identifiziert den QouTube Entwickler der die *API* Anfrage schickt. Eine Client ID
 identifiziert die Anwendung für Logging und Debugging Zwecke. Schauen Sie bitte auf
-`http://code.google.com/apis/youtube/dashboard/`_ um einen Entwickler Schlüssel und eine Client ID zu erhalten.
+http://code.google.com/apis/youtube/dashboard/ um einen Entwickler Schlüssel und eine Client ID zu erhalten.
 Das angefügte Beispiel demonstriert wie der Entwickler Schlüssel und die Client ID an das `ZendGData\YouTube`_
 Service Pbjekt übergeben werden.
 
@@ -576,7 +576,6 @@ Bitte schauen Sie in die komplette Dokumentation die im `PHP Entwickler Guide`_ 
 
 .. _`PHP Entwickler Dokumentation`: http://code.google.com/apis/youtube/developers_guide_php.html
 .. _`Kapitel über Authentifizierung in der PHP Entwickler Dokumentation`: http://code.google.com/apis/youtube/developers_guide_php.html#Authentication
-.. _`http://code.google.com/apis/youtube/dashboard/`: http://code.google.com/apis/youtube/dashboard/
 .. _`ZendGData\YouTube`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube.html
 .. _`You Tube API Referenz Guide`: http://code.google.com/apis/youtube/reference.html#Video_Feeds
 .. _`Referenz Guide`: http://code.google.com/apis/youtube/reference.html#Searching_for_videos

@@ -821,7 +821,7 @@ Formato de documentación
 
 Todos los bloques de documentación ("docblocks") deben ser compatibles con el formato de phpDocumentor. Describir
 el formato de phpDocumentor está fuera del alcance de este documento. Para más información, visite:
-`http://phpdoc.org/`_
+http://phpdoc.org/
 
 Todos los archivos de clase deben contener un bloque de documentación "a nivel de archivo" al principio de cada
 archivo y un bloque de documentación "a nivel de clase" inmediatamente antes de cada clase. Ejemplo de estos
@@ -895,4 +895,3 @@ Si una función/método puede lanzar una excepción, utilice @throws para todos 
 
 
 .. _`licencia`: http://framework.zend.com/license
-.. _`http://phpdoc.org/`: http://phpdoc.org/

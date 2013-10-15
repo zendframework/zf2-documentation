@@ -7,7 +7,7 @@ Google Kalender verwenden
 Die ``ZendGData\Calendar`` Klasse kann verwendet werden um Events im Online Google Kalender Service zu sehen,
 erstellen, updaten und löschen.
 
-Siehe `http://code.google.com/apis/calendar/overview.html`_ für weitere Informationen über die Google Kalender
+Siehe http://code.google.com/apis/calendar/overview.html für weitere Informationen über die Google Kalender
 *API*.
 
 .. _zend.gdata.calendar.connecting:
@@ -686,7 +686,6 @@ Kommentars in der ``author`` Eigenschaft und der Kommentar Text in der ``content
 
 
 
-.. _`http://code.google.com/apis/calendar/overview.html`: http://code.google.com/apis/calendar/overview.html
 .. _`Authentifizierungs Übersicht im Google Data API Entwickler Guide`: http://code.google.com/apis/gdata/auth.html
 .. _`Abfrage Sektion des Google Data API Protokoll Referenz`: http://code.google.com/apis/gdata/reference.html#Queries
 .. _`Zend Framework API Dokumentation`: http://framework.zend.com/apidoc/core/

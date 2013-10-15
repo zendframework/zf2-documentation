@@ -11,7 +11,7 @@ und das Atom Syndication Format verwendet wird. Die ``ZendGData`` Komponente ist
 Zugriff auf Daten von Google von *PHP* aus. Die ``ZendGData`` Komponente unterstützt auch den Zugriff auf andere
 Services die das Atom Publishing Protokoll implementieren.
 
-Siehe `http://code.google.com/apis/gdata/`_ für mehr Informationen über die Google Data *API*.
+Siehe http://code.google.com/apis/gdata/ für mehr Informationen über die Google Data *API*.
 
 Die Services auf die durch ``ZendGData`` zugegriffen werden kann beinhalten unter anderem:
 
@@ -473,5 +473,4 @@ Um Einträge zu löschen, muß ein authentifizierter ``Zend\Http\Client`` verwen
 
 
 .. _`Atom Publishing Protokoll`: http://ietfreport.isoc.org/idref/draft-ietf-atompub-protocol/
-.. _`http://code.google.com/apis/gdata/`: http://code.google.com/apis/gdata/
 .. _`Google Blogger`: http://code.google.com/apis/blogger/developers_guide_php.html

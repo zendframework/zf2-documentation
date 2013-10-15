@@ -35,7 +35,7 @@ edilebilecek bir kopyasını almak :
      `Externals değişkeni`_ zaten SVN kullanmakta olan geliştiriciler için uygulamaların çalışan
      kopyalarını yönetmeye son derece uygun.
 
-     Zend Framework SVN deposunun trunk'ının URL'si : `http://framework.zend.com/svn/framework/trunk`_
+     Zend Framework SVN deposunun trunk'ının URL'si : http://framework.zend.com/svn/framework/trunk
 
 
 
@@ -58,7 +58,6 @@ kullanım için seçilebilir. Takip eden herbir bölüm herbir bileşenin kullan
 .. _`Çalışan kopyayı çekme`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.checkout.html
 .. _`svn update`: http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.update.html
 .. _`Externals değişkeni`: http://svnbook.red-bean.com/nightly/en/svn.advanced.externals.html
-.. _`http://framework.zend.com/svn/framework/trunk`: http://framework.zend.com/svn/framework/trunk
 .. _`bunu sağlamanın birkaç yolu`: http://www.php.net/manual/en/configuration.changes.php
 .. _`include_path`: http://www.php.net/manual/en/ini.core.php#ini.include-path
 .. _`Front Controller`: http://www.martinfowler.com/eaaCatalog/frontController.html

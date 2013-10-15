@@ -52,9 +52,9 @@ Manual Installation
 
 - Download a tarball of the ``ZendSkeletonApplication`` repository:
 
-  - Zip: `https://github.com/zendframework/ZendSkeletonApplication/zipball/master`_
+  - Zip: https://github.com/zendframework/ZendSkeletonApplication/zipball/master
 
-  - Tarball: `https://github.com/zendframework/ZendSkeletonApplication/tarball/master`_
+  - Tarball: https://github.com/zendframework/ZendSkeletonApplication/tarball/master
 
 - Deflate the archive you selected and rename the parent directory according to your project needs; we use
   "my-application" throughout this document.
@@ -78,9 +78,9 @@ Additional functionality will be provided by creating new modules.
 
 To get you started with modules, we recommend using the ``ZendSkeletonModule`` as a base. Download it from here:
 
-- Zip: `https://github.com/zendframework/ZendSkeletonModule/zipball/master`_
+- Zip: https://github.com/zendframework/ZendSkeletonModule/zipball/master
 
-- Tarball: `https://github.com/zendframework/ZendSkeletonModule/tarball/master`_
+- Tarball: https://github.com/zendframework/ZendSkeletonModule/tarball/master
 
 Deflate the package, and rename the directory "ZendSkeletonModule" to reflect the name of the new module you want
 to create; when done, move the module into your new project's ``module/`` directory.
@@ -416,7 +416,3 @@ Congratulations! You've created your first ZF2 MVC module!
 
 
 .. _`Composer`: http://getcomposer.org/
-.. _`https://github.com/zendframework/ZendSkeletonApplication/zipball/master`: https://github.com/zendframework/ZendSkeletonApplication/zipball/master
-.. _`https://github.com/zendframework/ZendSkeletonApplication/tarball/master`: https://github.com/zendframework/ZendSkeletonApplication/tarball/master
-.. _`https://github.com/zendframework/ZendSkeletonModule/zipball/master`: https://github.com/zendframework/ZendSkeletonModule/zipball/master
-.. _`https://github.com/zendframework/ZendSkeletonModule/tarball/master`: https://github.com/zendframework/ZendSkeletonModule/tarball/master

@@ -7,7 +7,7 @@ Zend\Text\Figlet
 ``Zend\Text\Figlet`` est un composant qui permet aux développeurs de créer des textes dénommés FIGlet. Un texte
 FIGlet test une chaîne de caractères, qui est représenté en "ASCII-art". FIGlet utilise une format de police
 spécial , nommée FLT (FigLet Font). Par défaut, une police standard est fourni avec ``Zend\Text\Figlet``, mais
-vous pouvez ajouter des polices additionnels à `http://www.figlet.org`_.
+vous pouvez ajouter des polices additionnels à http://www.figlet.org.
 
 .. note::
 
@@ -84,5 +84,4 @@ En considérant que vous utilisez une police à espacement fixe, vous obtiendrez
 
 
 
-.. _`http://www.figlet.org`: http://www.figlet.org/fontdb.cgi
 .. _`ici`: http://www.jave.de/figlet/figfont.txt

@@ -21,7 +21,7 @@ Déclarer des options avec la syntaxe courte
 -------------------------------------------
 
 ``Zend\Console\Getopt`` supporte une syntaxe compacte semblable à cela employée par *GNU* Getopt (voir
-`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`_). Cette syntaxe supporte seulement des drapeaux
+http://www.gnu.org/software/libc/manual/html_node/Getopt.html). Cette syntaxe supporte seulement des drapeaux
 courts (1 seul caractère). Dans une chaîne de caractère unique, vous entrez chacune des lettres qui
 correspondent aux drapeaux supportés par votre application. Une lettre suivie d'un caractère deux points
 ("**:**") indique un drapeau qui exige un paramètre.
@@ -88,4 +88,3 @@ l'option prend un paramètre optionnel de type chaîne de caractère.
 
 
 
-.. _`http://www.gnu.org/software/libc/manual/html_node/Getopt.html`: http://www.gnu.org/software/libc/manual/html_node/Getopt.html

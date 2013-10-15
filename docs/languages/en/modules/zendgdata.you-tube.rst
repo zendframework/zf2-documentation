@@ -25,7 +25,7 @@ Developer Keys and Client ID
 ----------------------------
 
 A developer key identifies the YouTube developer that is submitting an *API* request. A client ID identifies your
-application for logging and debugging purposes. Please visit `http://code.google.com/apis/youtube/dashboard/`_ to
+application for logging and debugging purposes. Please visit http://code.google.com/apis/youtube/dashboard/ to
 obtain a developer key and client ID. The example below demonstrates how to pass the developer key and client ID to
 the `ZendGData\YouTube`_ service object.
 
@@ -560,7 +560,6 @@ Please refer to the full documentation available in the `PHP Developer's Guide`_
 
 .. _`PHP Developer's Guide`: http://code.google.com/apis/youtube/developers_guide_php.html
 .. _`Authentication section in the PHP Developer's Guide`: http://code.google.com/apis/youtube/developers_guide_php.html#Authentication
-.. _`http://code.google.com/apis/youtube/dashboard/`: http://code.google.com/apis/youtube/dashboard/
 .. _`ZendGData\YouTube`: http://framework.zend.com/apidoc/core/ZendGData/ZendGData\YouTube.html
 .. _`YouTube API reference guide`: http://code.google.com/apis/youtube/reference.html#Video_Feeds
 .. _`Reference Guide`: http://code.google.com/apis/youtube/reference.html#Searching_for_videos

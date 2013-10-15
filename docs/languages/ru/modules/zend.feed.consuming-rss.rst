@@ -131,8 +131,7 @@ URI ленты:
 такая проверка будет некорректной.
 
 Для получения более подробной информации читайте официальное
-описание спецификации RSS 2.0: `http://blogs.law.harvard.edu/tech/rss`_
+описание спецификации RSS 2.0: http://blogs.law.harvard.edu/tech/rss
 
 
 
-.. _`http://blogs.law.harvard.edu/tech/rss`: http://blogs.law.harvard.edu/tech/rss

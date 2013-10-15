@@ -11,7 +11,7 @@ Introduction
 ``Zend\Text\Figlet`` is a component which enables developers to create a so called FIGlet text. A FIGlet text is a
 string, which is represented as *ASCII* art. FIGlets use a special font format, called FLT (FigLet Font). By
 default, one standard font is shipped with ``Zend\Text\Figlet``, but you can download additional fonts at
-`http://www.figlet.org`_.
+http://www.figlet.org.
 
 .. note::
 
@@ -84,5 +84,4 @@ Assuming you are using a monospace font, this would look as follows:
 
 
 
-.. _`http://www.figlet.org`: http://www.figlet.org/fontdb.cgi
 .. _`here`: http://www.jave.de/figlet/figfont.txt

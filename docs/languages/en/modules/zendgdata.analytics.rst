@@ -5,7 +5,7 @@ Using Google Analytics
 
 The Google Analytics *API* allows client applications to request data, saved in the analytics accounts.
 
-See `http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html`_ for more information about the Google
+See http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html for more information about the Google
 Analytics *API*.
 
 .. _zendgdata.analytics.accounts:
@@ -63,7 +63,6 @@ all the `metrics and dimensions`_ specified by the API. Additionally you can app
 
 
 
-.. _`http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html`: http://code.google.com/apis/analytics/docs/gdata/v2/gdataOverview.html
 .. _`metrics and dimensions`: http://code.google.com/intl/de-CH/apis/analytics/docs/gdata/dimsmets/dimsmets.html
 .. _`filters`: http://code.google.com/intl/de-CH/apis/analytics/docs/gdata/v2/gdataReferenceDataFeed.html#filters
 .. _`common data`: http://code.google.com/intl/de-CH/apis/analytics/docs/gdata/gdataCommonQueries.html

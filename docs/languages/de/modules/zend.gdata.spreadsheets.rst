@@ -10,7 +10,7 @@ Client Anwendung kann eine Liste von Tabellenkalkulationen eines Benutzer anfrag
 Arbeitsblatts der Tabellenkalkulation bearbeiten oder löschen, und den Inhalt eines bestehenden Arbeitsblatt der
 Tabellenkalkulation abfragen.
 
-Siehe `http://code.google.com/apis/spreadsheets/overview.html`_ für weitere Informationen über die Google's
+Siehe http://code.google.com/apis/spreadsheets/overview.html für weitere Informationen über die Google's
 Tabellenkalkulations *API*.
 
 .. _zend.gdata.spreadsheets.creating:
@@ -314,4 +314,3 @@ zu verändern, selbst wenn diese Zelle leer ist.
 
 
 
-.. _`http://code.google.com/apis/spreadsheets/overview.html`: http://code.google.com/apis/spreadsheets/overview.html
