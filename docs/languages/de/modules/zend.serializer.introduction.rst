@@ -18,8 +18,8 @@ Um einen Serializer zu instanzieren sollte man die Factory Methode mit dem Namen
 
    $serializer = Zend\Serializer\Serializer::factory('PhpSerialize');
    // Jetzt ist $serializer eine Instanz von
-   // Zend\Serializer_Adapter\AdapterInterface, im speziellen
-   // Zend\Serializer_Adapter\PhpSerialize
+   // Zend\Serializer\Adapter\AdapterInterface, im speziellen
+   // Zend\Serializer\Adapter\PhpSerialize
 
    try {
        $serialized = $serializer->serialize($data);

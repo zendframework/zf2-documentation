@@ -121,7 +121,7 @@ contrôleurs par défaut (nous reverrons cela). La classe ressemble à:
 
    // application/Bootstrap.php
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
    }
 
@@ -221,9 +221,9 @@ introuvable) et les erreurs *HTTP* 500 (erreurs de l'application).
            $errors = $this->_getParam('error_handler');
 
            switch ($errors->type) {
-               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
-               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
-               case Zend\Controller_Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
+               case Zend\Controller\Plugin\ErrorHandler::EXCEPTION_NO_ROUTE:
+               case Zend\Controller\Plugin\ErrorHandler::EXCEPTION_NO_CONTROLLER:
+               case Zend\Controller\Plugin\ErrorHandler::EXCEPTION_NO_ACTION:
 
                    // 404 error -- controller or action not found
                    $this->getResponse()->setHttpResponseCode(404);

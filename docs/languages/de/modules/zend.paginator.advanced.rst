@@ -12,7 +12,7 @@ Eigene Adapter für Quelldaten
 An irgendeinem Punkt kann es passieren das man auf einen Datentyp stößt der nicht von den mitgelieferten Adaptern
 abgedeckt wird. In diesem Fall muß man seinen eigenen schreiben.
 
-Um das zu tun, muß man ``Zend\Paginator_Adapter\Interface`` implementieren. Es gibt zwei Methoden die hierfür
+Um das zu tun, muß man ``Zend\Paginator\Adapter\Interface`` implementieren. Es gibt zwei Methoden die hierfür
 benötigt werden:
 
 - count()
@@ -37,7 +37,7 @@ zurückgeben. Für ein Array wurde das wie folgt funktionieren:
 
    return array_slice($this->_array, $offset, $itemCountPerPage);
 
-Man sollte einen Blick auf die mitgelieferten Adapter werfen (alle welche ``Zend\Paginator_Adapter\Interface``
+Man sollte einen Blick auf die mitgelieferten Adapter werfen (alle welche ``Zend\Paginator\Adapter\Interface``
 implementieren) um eine Idee zu bekommen wie man das selbst implementieren könnte.
 
 .. _zend.paginator.advanced.scrolling-styles:
@@ -45,7 +45,7 @@ implementieren) um eine Idee zu bekommen wie man das selbst implementieren könn
 Eigene Scrolling Stile
 ----------------------
 
-Das Erstellen von eigenen Scrolling Stilen erfordert das man ``Zend\Paginator_ScrollingStyle\Interface``
+Das Erstellen von eigenen Scrolling Stilen erfordert das man ``Zend\Paginator\ScrollingStyle\Interface``
 implementiert, welche eine einzelne Methode, ``getPages()``, definiert. Speziell,
 
 .. code-block:: php
@@ -56,7 +56,7 @@ implementiert, welche eine einzelne Methode, ``getPages()``, definiert. Speziell
 Diese Methode sollten eine untere und obere Grenze für die Seitenzahl innerhalb der sogenannten "lokalen" Seiten
 berechnen (das sind Seiten nahe der aktuellen Seite).
 
-Solange es keinen anderen Scrolling Stil erweitert (siehe zum Beispiel ``Zend\Paginator_ScrollingStyle\Elastic``,
+Solange es keinen anderen Scrolling Stil erweitert (siehe zum Beispiel ``Zend\Paginator\ScrollingStyle\Elastic``,
 wird der eigene Scrolling Stil üblicherweise mit etwas ähnlichem sie der folgenden Codezeile enden:
 
 .. code-block:: php
@@ -169,7 +169,7 @@ Zend\Paginator\AdapterAggregate Interface
 Abhängig von der Anwendung kann es gewünscht sein Objekte zu Seiten zu verarbeiten, dessen interne Datenstruktur
 identisch zu existierenden Adaptern ist, aber bei denen man nicht will das die eigene Kapselung gebrochen wird um
 Zugriff auf diese Daten zu erlauben. In anderen Fällen könnte ein Objekt in einer "hat einen Adapter" Relation
-stehen, statt in einer "ist ein Adapter" Relation die ``Zend\Paginator_Adapter\Abstract`` promotet. Für diese
+stehen, statt in einer "ist ein Adapter" Relation die ``Zend\Paginator\Adapter\Abstract`` promotet. Für diese
 Fälle kann man das ``Zend\Paginator\AdapterAggregate`` Interface verwenden das sich so verhält wie das
 ``IteratorAggregate`` Interface der SPL Erweiterung von *PHP*.
 
@@ -181,12 +181,12 @@ Fälle kann man das ``Zend\Paginator\AdapterAggregate`` Interface verwenden das 
        /**
         * Return a fully configured Paginator Adapter from this method.
         *
-        * @return Zend\Paginator_Adapter\Abstract
+        * @return Zend\Paginator\Adapter\Abstract
         */
        public function getPaginatorAdapter();
    }
 
-Das Interface ist sehr klein und erwartet nur das eine Instanz von ``Zend\Paginator_Adapter\Abstract``
+Das Interface ist sehr klein und erwartet nur das eine Instanz von ``Zend\Paginator\Adapter\Abstract``
 zurückgegeben wird. Eine Aggregate Instanz des Adapters wird dann von beiden erkannt, sowohl
 ``Zend\Paginator\Paginator::factory()`` als auch dem Constructor von ``Zend_Paginator`` und entsprechend behandelt.
 

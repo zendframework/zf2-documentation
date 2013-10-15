@@ -11,11 +11,11 @@
 
 Помощник представляет собой просто класс. Скажем, нам нужен
 помощник 'fooBar'. По умолчанию имя класса помощника начинается с
-*'Zend\View_Helper\'* (вы можете указать другой префикс при установке
+*'Zend\View\Helper\'* (вы можете указать другой префикс при установке
 путей к помощникам видов), последней частью имени класа
 является имя помощника. Все слова этой части должны писаться
 слитно, первые буквы слов - в верхнем регистре (TitleCapped); таким
-образом мы получаем имя класа ``Zend\View_Helper\FooBar``. Класс должен
+образом мы получаем имя класа ``Zend\View\Helper\FooBar``. Класс должен
 содержать как минимум один метод, названный по имени помощника
 в формате camelCase: *fooBar()*.
 
@@ -41,7 +41,7 @@
 
 Для того, чтобы использовать помощника в своем скрипте вида,
 вызывайте его, используя ``$this->имяПомощника()``. В этом случае
-``Zend_View`` загрузит класс *Zend\View_Helper\ИмяПомощника*, создаст его
+``Zend_View`` загрузит класс *Zend\View\Helper\ИмяПомощника*, создаст его
 экземпляр и вызовет его метод *имяПомощника()*. Экземпляр
 объекта сохраняется в экземпляре ``Zend_View`` и будет повторно
 использоваться им во всех будущих вызовах
@@ -334,7 +334,7 @@
    // "/path/to/some/helpers/HelperName" с классом
    // "Your_View_Helper_HelperName", затем "/other/path/to/helpers/HelperName.php"
    // с классом "My_View_Helper_HelperName", и под конец
-   // "Zend/View/Helper/HelperName.php" с классом "Zend\View_Helper\HelperName".
+   // "Zend/View/Helper/HelperName.php" с классом "Zend\View\Helper\HelperName".
 
 .. _zend.view.helpers.custom:
 
@@ -346,7 +346,7 @@
 
 - Хотя это и не является совершенно необходимым, мы рекомендуем
   при создании своего помощника реализовывать интерфейс
-  ``Zend\View_Helper\Interface`` или наследовать от класса ``Zend\View_Helper\Abstract``.
+  ``Zend\View\Helper\Interface`` или наследовать от класса ``Zend\View\Helper\Abstract``.
   Добавленные в версии 1.6.0, они определяют только метод *setView()*,
   но в будущих релизах мы планируем реализовать паттерн
   "стратегия", который значительно упростит следование
@@ -386,7 +386,7 @@
 .. code-block:: php
    :linenos:
 
-   class My_View_Helper_SpecialPurpose extends Zend\View_Helper\Abstract
+   class My_View_Helper_SpecialPurpose extends Zend\View\Helper\Abstract
    {
        protected $_count = 0;
        public function specialPurpose()
@@ -449,7 +449,7 @@
 вида и доступа к нему в вашем классе помощника остаются на ваше
 усмотрение.
 
-Если вы наследуете своего помощника от ``Zend\View_Helper\Abstract``, то вам
+Если вы наследуете своего помощника от ``Zend\View\Helper\Abstract``, то вам
 не нужно определять этот метод, поскольку он уже определен в
 родительском классе.
 

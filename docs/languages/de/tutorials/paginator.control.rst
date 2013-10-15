@@ -66,7 +66,7 @@ Navigationskontrollen darzustellen. Die folgende Zeile ist in die Bootstrap Date
 .. code-block:: php
    :linenos:
 
-   Zend\View_Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
+   Zend\View\Helper\PaginationControl::setDefaultViewPartial('controls.phtml');
 
 Der letzte Schritt ist möglicherweise der einfachste. Man muss sicherstellen dass das Paginator Objekt dem Skript
 zugeordnet ist (NICHT dem 'controls.phtml' Skript!). Das einige was noch zu tun ist, ist es den Paginator im View

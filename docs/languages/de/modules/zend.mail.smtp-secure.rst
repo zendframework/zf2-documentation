@@ -6,12 +6,12 @@ SMTP Übertragungen sichern
 
 ``Zend_Mail`` unterstützt die Verwendung von TLS oder *SSL* um SMTP Verbindungen zu sichern. Das kann
 eingeschaltet werden durch das Übergeben des 'ssl' Parameters an das Konfigurationsarray im
-``Zend\Mail_Transport\Smtp`` Konstruktor indem entweder der Wert 'ssl' oder 'tls' übergeben wird. Ein Port kann
+``Zend\Mail\Transport\Smtp`` Konstruktor indem entweder der Wert 'ssl' oder 'tls' übergeben wird. Ein Port kann
 optional angegeben werden, andernfalls ist er standardmäßig 25 für TLS oder 465 für *SSL*.
 
 .. _zend.mail.smtp-secure.example-1:
 
-.. rubric:: Aktivieren einer sicheren Verbindung innerhalb von Zend\Mail_Transport\Smtp
+.. rubric:: Aktivieren einer sicheren Verbindung innerhalb von Zend\Mail\Transport\Smtp
 
 .. code-block:: php
    :linenos:
@@ -19,7 +19,7 @@ optional angegeben werden, andernfalls ist er standardmäßig 25 für TLS oder 4
    $config = array('ssl' => 'tls',
                    'port' => 25); // Optionale unterstützte Portnummer
 
-   $transport = new Zend\Mail_Transport\Smtp('mail.server.com', $config);
+   $transport = new Zend\Mail\Transport\Smtp('mail.server.com', $config);
 
    $mail = new Zend\Mail\Mail();
    $mail->setBodyText('Das ist der Text der Mail.');

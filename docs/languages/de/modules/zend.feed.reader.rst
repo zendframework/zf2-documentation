@@ -50,7 +50,7 @@ Das importieren eines Feeds mit ``Zend\Feed\Reader`` ist zu ``Zend_Feed`` nicht 
 von einem String, einer Datei, *URI* oder einer Instanz des Typs ``Zend\Feed\Abstract`` importiert werden. Das
 importieren von einer *URI* kann zusätzlich eine konditionelle *HTTP* ``GET`` Anfrage benützen. Wenn das
 importieren fehlschlägt, wird eine Exception geworfen. Das Endergebnis wird ein Objekt des Typs
-``Zend\Feed_Reader\FeedInterface`` sein, die Core Implementation von ``Zend\Feed\Reader\Feed\Rss`` und
+``Zend\Feed\Reader\FeedInterface`` sein, die Core Implementation von ``Zend\Feed\Reader\Feed\Rss`` und
 ``Zend\Feed\Reader\Feed\Atom`` (``Zend_Feed`` hat alle kurzen Namen genommen!). Beide Objekte unterstützen mehrere
 (alle existierenden) Versionen dieser breiten Feed Typen.
 
@@ -88,7 +88,7 @@ verwendet er das Dublin Core 1.1 Modul welches Namespaced Ersteller und Datums E
 ``Zend\Feed\Reader`` fällt auf diese und ähnliche Operationen zurück wenn keine relativ nativen Elemente
 existieren. Wenn es absolut keine alternative finden kann wird es ``NULL`` zurückgeben, was anzeigt das die
 Informationen nicht im Feed gefunden werden können. Man sollte beachten das Klassen die
-``Zend\Feed_Reader\FeedInterface`` implementieren auch die *SPL* Interfaces ``Iterator`` und ``Countable``
+``Zend\Feed\Reader\FeedInterface`` implementieren auch die *SPL* Interfaces ``Iterator`` und ``Countable``
 implementieren.
 
 Feeds können auch von Strings, Dateien und sogar Objekten des Typs ``Zend\Feed\Abstract`` importiert werden.
@@ -173,7 +173,7 @@ Unterstützung für Caches in Zend\Feed\Reader hinzufügen
 ``Zend\Feed\Reader`` unterstützt die Verwendung einer Instanz von ``Zend_Cache`` um Feeds zu cachen (als *XML*) um
 unnötige Anfragen im Netzwerk zu vermeiden. Das Hinzufügen eines Caches ist hier so einfach wie bei anderen Zend
 Framework Komponenten. Den Cache erstellen und konfigurieren und dann ``Zend\Feed\Reader`` mitteilen das er
-verwendet werden soll! Der verwendete Cache Schlüssel ist "``Zend\Feed_Reader\``" gefolgt von dem *MD5* Hash der
+verwendet werden soll! Der verwendete Cache Schlüssel ist "``Zend\Feed\Reader\``" gefolgt von dem *MD5* Hash der
 *URI* des Feeds.
 
 .. code-block:: php
@@ -323,7 +323,7 @@ Der neue Klassentyp arbeitet identisch zu ``ArrayObject``, mit der gleichen klei
 Methode ``getValues()`` existiert welche ein einfaches flaches Array zurückgibt dass die meisten relevanten
 Informationen enthält.
 
-Ein einfaches Beispiel hiervon ist ``Zend\Feed_Reader\FeedInterface::getCategories()``. Wenn es in irgendeinem
+Ein einfaches Beispiel hiervon ist ``Zend\Feed\Reader\FeedInterface::getCategories()``. Wenn es in irgendeinem
 *RSS* oder Atom Feed verwendet wird, gibt diese Methode Daten der Kategorie als Container Objekt zurück welches
 ``Zend\Feed\Reader\Collection\Category`` genannt wird. Das Container Objekt wird, für jede Kategorie, drei Felder
 an Daten enthalten: term, schema und label. "term" ist der grundsätzliche Name der Kategorie, oft Maschinen lesbar

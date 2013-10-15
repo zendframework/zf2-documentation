@@ -20,7 +20,7 @@ Manipuler les exceptions Getopt
 -------------------------------
 
 Si l'utilisateur a donné des options invalides sur la ligne de commande, la fonction d'analyse syntaxique lève
-une ``Zend\Console_Getopt\Exception``. Vous devrez récupérer cette exception dans votre code d'application. Vous
+une ``Zend\Console\Getopt\Exception``. Vous devrez récupérer cette exception dans votre code d'application. Vous
 pouvez utiliser la méthode ``parse()`` pour forcer l'objet à analyser les arguments. C'est utile parce que vous
 pouvez invoquer ``parse()`` dans un bloc **try**. S'il passe, vous pouvez être sûrs que l'analyse syntaxique ne
 lèvera pas d'exception de nouveau. L'exception est lancée via une méthode personnalisée ``getUsageMessage()``,
@@ -37,7 +37,7 @@ déclarées.
    try {
        $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend\Console_Getopt\Exception $e) {
+   } catch (Zend\Console\Getopt\Exception $e) {
        echo $e->getUsageMessage();
        exit;
    }

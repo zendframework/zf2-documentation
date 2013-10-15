@@ -289,7 +289,7 @@ eintragen. Die Implementierung dieses GUI würde den Rahmen dieses Handbuches sp
    if (!$server->hasUser(TEST_ID)) {
        $server->register(TEST_ID, TEST_PASSWORD);
        $server->login(TEST_ID, TEST_PASSWORD);
-       $sreg = new ZendOpenId_Extension\Sreg(array(
+       $sreg = new ZendOpenId\Extension\Sreg(array(
            'nickname' =>'test',
            'email' => 'test@test.com'
        ));
@@ -318,7 +318,7 @@ Methode im Identitäts Skript hergestellt. Die gleiche Methode assoziiert das Pr
 Dieses Profil wird automatisch für eine Anfrage von der vertrauten *URL* zurückgegeben.
 
 Um die einfache Registrierungs Erweiterung funktionsfähig zu machen ist einfach die Übergabe einer Instanz von
-``ZendOpenId_Extension\Sreg`` als zweites Argument der ``ZendOpenId\Provider::handle()`` Methode.
+``ZendOpenId\Extension\Sreg`` als zweites Argument der ``ZendOpenId\Provider::handle()`` Methode.
 
 .. _zend.openid.provider.example-7:
 
@@ -328,7 +328,7 @@ Um die einfache Registrierungs Erweiterung funktionsfähig zu machen ist einfach
    :linenos:
 
    $server = new ZendOpenId\Provider();
-   $sreg = new ZendOpenId_Extension\Sreg();
+   $sreg = new ZendOpenId\Extension\Sreg();
 
    define("TEST_ID", ZendOpenId\OpenId::absoluteURL("example-10-id.php"));
    define("TEST_PASSWORD", "123");

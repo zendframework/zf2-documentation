@@ -9,7 +9,7 @@ tâches qui doivent être réalisées souvent sur les fichier. Notez que tout fi
 validation. De plus les filtres de fichiers se comportent légèrement différemment des autres filtres. Ils
 retourneront toujours le nom de fichier et non le contenu modifié (ce qui serait une mauvaise idée en travaillant
 avec un fichier d'1Go par exemple). Tous les filtres fournis avec ``Zend\File\Transfer`` peuvent être trouvés
-dans le composant ``Zend_Filter`` et sont nommés ``Zend\Filter_File\*``. Les filtres suivants sont actuellement
+dans le composant ``Zend_Filter`` et sont nommés ``Zend\Filter\File\*``. Les filtres suivants sont actuellement
 disponibles :
 
 - *Decrypt*\  : ce filtre peut décrypter un fichier.

@@ -30,7 +30,7 @@ comportamientos muy diferentes, pero algunas cosas básicas son comunes entre lo
 ejemplo, aceptar credenciales de autenticación (incluyendo una identidad supuesta), realizar consultas ante el
 servicio de autenticación, y regresar resultados, son comunes para los adaptadores ``Zend_Auth``.
 
-Cada clase adaptadora ``Zend_Auth`` implementa ``Zend\Auth_Adapter\Interface``. Esta interface define un metodo,
+Cada clase adaptadora ``Zend_Auth`` implementa ``Zend\Auth\Adapter\Interface``. Esta interface define un metodo,
 ``authenticate()``, que la clase adaptadora debe implementar para realizar una peticion de autenticación. Cada
 clase adaptadora debe ser preparada antes de llamar a ``authenticate()``. Esta preparación del adaptador incluye
 la creación de credenciales (p.ej. nombre de usuario y contraseña) y la definición de valores para opciones de
@@ -44,7 +44,7 @@ autenticación, han sido omitídos por brevedad:
 .. code-block:: php
    :linenos:
 
-   class MyAuthAdapter implements Zend\Auth_Adapter\Interface
+   class MyAuthAdapter implements Zend\Auth\Adapter\Interface
    {
        /**
         * Establece nombre de usuario y contraseña para autenticación
@@ -59,7 +59,7 @@ autenticación, han sido omitídos por brevedad:
        /**
         * Realiza un intento de autenticación
         *
-        * @throws Zend\Auth_Adapter\Exception Si la autenticación no puede
+        * @throws Zend\Auth\Adapter\Exception Si la autenticación no puede
         *                                     ser realizada
         * @return Zend\Auth\Result
         */
@@ -72,7 +72,7 @@ autenticación, han sido omitídos por brevedad:
 Como se ha indicado en su docblock, ``authenticate()`` debe regresar una instancia de ``Zend\Auth\Result`` (o de
 una clase derivada de ``Zend\Auth\Result``). Si por alguna razón es imposible realizar una petición de
 autenticación, ``authenticate()`` debería arrojar una excepción que se derive de
-``Zend\Auth_Adapter\Exception``.
+``Zend\Auth\Adapter\Exception``.
 
 .. _zend.authentication.introduction.results:
 
@@ -161,9 +161,9 @@ Persistencia por Defecto en la Sesión PHP
 Por defecto, ``Zend_Auth`` provee almacenamiento persistente de la identidad desde un intento de autenticación
 exitoso usando la sesión *PHP*. En un intento de autenticación exitoso, ``end_Auth::authenticate()`` almacena la
 identidad del resultado de autenticación en almacenamiento persistente. A menos que se configure diferente,
-``Zend_Auth`` usa una clase de almacenamiento llamada ``Zend\Auth_Storage\Session``, la cual, a su vez usa
+``Zend_Auth`` usa una clase de almacenamiento llamada ``Zend\Auth\Storage\Session``, la cual, a su vez usa
 :ref:`Zend_Session <zend.session>`. Una clase diferente podría ser utilizada mediante proveer un objeto que
-implemente ``Zend\Auth_Storage\Interface`` a ``Zend\Auth\Auth::setStorage()``
+implemente ``Zend\Auth\Storage\Interface`` a ``Zend\Auth\Auth::setStorage()``
 
 .. note::
 
@@ -175,8 +175,8 @@ implemente ``Zend\Auth_Storage\Interface`` a ``Zend\Auth\Auth::setStorage()``
 
 .. rubric:: Modifying the Session Namespace
 
-``Zend\Auth_Storage\Session`` usa un espacionombre (namespace) de sesión 'Zend_Auth'. Este espacio-nombre podría
-ser OVERRIDDEN al pasar un valor diferente al contructor de ``Zend\Auth_Storage\Session``, y este valor es pasado
+``Zend\Auth\Storage\Session`` usa un espacionombre (namespace) de sesión 'Zend_Auth'. Este espacio-nombre podría
+ser OVERRIDDEN al pasar un valor diferente al contructor de ``Zend\Auth\Storage\Session``, y este valor es pasado
 internamente al constructor de ``Zend\Session\Namespace``. Esto debería ocurrir antes de que se intente la
 autenticación, ya que ``Zend\Auth\Auth::authenticate()`` realiza el almacenamiento automático de la identidad.
 
@@ -187,7 +187,7 @@ autenticación, ya que ``Zend\Auth\Auth::authenticate()`` realiza el almacenamie
    $auth = Zend\Auth\Auth::getInstance();
 
    // Usa 'unEspacionombre' en lugar de 'Zend_Auth'
-   $auth->setStorage(new Zend\Auth_Storage\Session('unEspacionombre'));
+   $auth->setStorage(new Zend\Auth\Storage\Session('unEspacionombre'));
 
    /**
     * @todo Set up the auth adapter, $authAdapter
@@ -203,25 +203,25 @@ Implementando Almacenamiento Personalizado
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En ocaciones los desarrolladores podrían necesitar usar un diferente comportamiento de persistencia de identidad
-que el provisto por ``Zend\Auth_Storage\Session``. Para esos casos los desarrolladores podrían simplemente
-implementar ``Zend\Auth_Storage\Interface`` y suplir una instancia de la clase a ``Zend\Auth\Auth::setStorage()``.
+que el provisto por ``Zend\Auth\Storage\Session``. Para esos casos los desarrolladores podrían simplemente
+implementar ``Zend\Auth\Storage\Interface`` y suplir una instancia de la clase a ``Zend\Auth\Auth::setStorage()``.
 
 .. _zend.authentication.introduction.persistence.custom.example:
 
 .. rubric:: Usando una Clase de Almacenamiento Personalizada
 
-Para poder utilizar una clase de almacenamiento persistente de identidad diferente a ``Zend\Auth_Storage\Session``,
-el desarrollador implementa ``Zend\Auth_Storage\Interface``:
+Para poder utilizar una clase de almacenamiento persistente de identidad diferente a ``Zend\Auth\Storage\Session``,
+el desarrollador implementa ``Zend\Auth\Storage\Interface``:
 
 .. code-block:: php
    :linenos:
 
-   class MyStorage implements Zend\Auth_Storage\Interface
+   class MyStorage implements Zend\Auth\Storage\Interface
    {
        /**
         * Regresa true si y solo si el almacenamiento esta vacio
         *
-        * @arroja Zend\Auth_Storage\Exception Si es imposible
+        * @arroja Zend\Auth\Storage\Exception Si es imposible
         *                                     determinar si el almacenamiento
         *                                     esta vacio
         * @regresa boleano
@@ -238,7 +238,7 @@ el desarrollador implementa ``Zend\Auth_Storage\Interface``:
         *
         * El comportamiento es indefinido cuando el almacenamiento esta vacio
         *
-        * @arroja Zend\Auth_Storage\Exception Si leer contenido de
+        * @arroja Zend\Auth\Storage\Exception Si leer contenido de
         *                                     almacenamiento es imposible
         * @regresa mixto
         */
@@ -253,7 +253,7 @@ el desarrollador implementa ``Zend\Auth_Storage\Interface``:
         * Escribe $contents al almacenamiento
         *
         * @parametros mezclado $contents
-        * @arroja Zend\Auth_Storage\Exception Si escribir $contents al
+        * @arroja Zend\Auth\Storage\Exception Si escribir $contents al
         *                                     almacenamiento es imposible
         * @regresa boleano
         */
@@ -267,7 +267,7 @@ el desarrollador implementa ``Zend\Auth_Storage\Interface``:
        /**
         * limpia contenidos del almacenamiento
         *
-        * @arroja Zend\Auth_Storage\Exception Si limpiar contenidos del
+        * @arroja Zend\Auth\Storage\Exception Si limpiar contenidos del
         *                                     almacenamiento es imposible
         * @regresa void
         */

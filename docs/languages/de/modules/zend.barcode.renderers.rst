@@ -24,19 +24,19 @@ Renderer haben einige gemeinsame Optionen. Diese Optionen können auf vier Wegen
    $options = array('topOffset' => 10);
 
    // Fall 1
-   $renderer = new Zend\Barcode_Renderer\Pdf($options);
+   $renderer = new Zend\Barcode\Renderer\Pdf($options);
 
    // Fall 2
-   $renderer = new Zend\Barcode_Renderer\Pdf();
+   $renderer = new Zend\Barcode\Renderer\Pdf();
    $renderer->setOptions($options);
 
    // Fall 3
    $config   = new Zend\Config\Config($options);
-   $renderer = new Zend\Barcode_Renderer\Pdf();
+   $renderer = new Zend\Barcode\Renderer\Pdf();
    $renderer->setConfig($config);
 
    // Fall 4
-   $renderer = new Zend\Barcode_Renderer\Pdf();
+   $renderer = new Zend\Barcode\Renderer\Pdf();
    $renderer->setTopOffset(10);
 
 .. _zend.barcode.renderers.common.options:
@@ -75,11 +75,11 @@ Getter dem "get" vorangestellt ist (z.B. "getBarHeight"). Die vorhandenen Option
    +--------------------+-------------------+---------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Es existiert ein zusätzlicher Getter: ``getType()``. Er gibt den Namen der Renderer Klasse ohne den Namespace
-zurück (z.B. gibt ``Zend\Barcode_Renderer\Image``"image" zurück.
+zurück (z.B. gibt ``Zend\Barcode\Renderer\Image``"image" zurück.
 
 .. _zend.barcode.renderers.image:
 
-Zend\Barcode_Renderer\Image
+Zend\Barcode\Renderer\Image
 ---------------------------
 
 Der Image Renderer zeichnet die Anweisungsliste des Barcode Obejekts in eine Bild Ressource. Die Komponente
@@ -89,7 +89,7 @@ Vorhandene Optionen sind:
 
 .. _zend.barcode.renderers.image.table:
 
-.. table:: Zend\Barcode_Renderer\Image Optionen
+.. table:: Zend\Barcode\Renderer\Image Optionen
 
    +---------+---------+------------+-------------------------------------------------------------------------------------------------------------------------------+
    |Option   |Daten Typ|Standardwert|Beschreibung                                                                                                                   |
@@ -103,7 +103,7 @@ Vorhandene Optionen sind:
 
 .. _zend.barcode.renderers.pdf:
 
-Zend\Barcode_Renderer\Pdf
+Zend\Barcode\Renderer\Pdf
 -------------------------
 
 Der *PDF* Renderer zeichnet die Anweisungsliste des Barcode Objekts in ein *PDF* Dokument. Die Standardbreite eines

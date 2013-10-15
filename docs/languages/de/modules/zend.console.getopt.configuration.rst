@@ -77,7 +77,7 @@ Aliase werden mit jedem existierenden Alias für dieses Flag gemischt. Mit ander
 Aliase sind noch immer in Verwendung.
 
 Ein Alias kann nur einmal definiert werden. Wenn versucht wird einen Alias nochmals zu definieren wird eine
-``Zend\Console_Getopt\Exception`` geworfen.
+``Zend\Console\Getopt\Exception`` geworfen.
 
 .. _zend.console.getopt.configuration.addaliases.example:
 

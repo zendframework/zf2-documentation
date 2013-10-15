@@ -345,7 +345,7 @@ Zusätzlich zum obigen Container, wird das folgende Setup angenommen:
    $router->addDefaultRoutes();
    $router->addRoute(
        'archive',
-       new Zend\Controller_Router\Route(
+       new Zend\Controller\Router\Route(
            '/archive/:year',
            array(
                'module'     => 'company',

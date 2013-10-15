@@ -13,8 +13,8 @@ El siguiente ejemplo genera una clase vacía con una clase de nivel DocBlock.
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend\CodeGenerator_Php\Class();
-   $docblock = new Zend\CodeGenerator_Php\Docblock(array(
+   $foo      = new Zend\CodeGenerator\Php\Class();
+   $docblock = new Zend\CodeGenerator\Php\Docblock(array(
        'shortDescription' => 'Sample generated class',
        'longDescription'  => 'This is a class generated with Zend_CodeGenerator.',
        'tags'             => array(
@@ -60,8 +60,8 @@ Basándonos en el ejemplo anterior, ahora agreguemos propiedades a nuestra clase
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend\CodeGenerator_Php\Class();
-   $docblock = new Zend\CodeGenerator_Php\Docblock(array(
+   $foo      = new Zend\CodeGenerator\Php\Class();
+   $docblock = new Zend\CodeGenerator\Php\Docblock(array(
        'shortDescription' => 'Sample generated class',
        'longDescription'  => 'This is a class generated with Zend_CodeGenerator.',
        'tags'             => array(
@@ -125,14 +125,14 @@ Lo anterior resulta en la siguiente definición de clase:
 
 .. rubric:: Generando clases PHP con métodos de clase
 
-``Zend\CodeGenerator_Php\Class`` le permite adjuntar métodos con contenido opcional a sus clases. Los métodos
+``Zend\CodeGenerator\Php\Class`` le permite adjuntar métodos con contenido opcional a sus clases. Los métodos
 pueden adjuntarse tanto como arrays o como instancias concretas de ``Zend\Code\Generator\MethodGenerator``.
 
 .. code-block:: php
    :linenos:
 
-   $foo      = new Zend\CodeGenerator_Php\Class();
-   $docblock = new Zend\CodeGenerator_Php\Docblock(array(
+   $foo      = new Zend\CodeGenerator\Php\Class();
+   $docblock = new Zend\CodeGenerator\Php\Docblock(array(
        'shortDescription' => 'Sample generated class',
        'longDescription'  => 'This is a class generated with Zend_CodeGenerator.',
        'tags'             => array(
@@ -173,7 +173,7 @@ pueden adjuntarse tanto como arrays o como instancias concretas de ``Zend\Code\G
                    array('name' => 'bar'),
                ),
                'body'       => '$this->_bar = $bar;' . "\n" . 'return $this;',
-               'docblock'   => new Zend\CodeGenerator_Php\Docblock(array(
+               'docblock'   => new Zend\CodeGenerator\Php\Docblock(array(
                    'shortDescription' => 'Set the bar property',
                    'tags'             => array(
                        new Zend\CodeGenerator\Php\Docblock\Tag\Param(array(
@@ -187,10 +187,10 @@ pueden adjuntarse tanto como arrays o como instancias concretas de ``Zend\Code\G
                )),
            ),
            // Método pasado como instancia concreta
-           new Zend\CodeGenerator_Php\Method(array(
+           new Zend\CodeGenerator\Php\Method(array(
                'name' => 'getBar',
                'body'       => 'return $this->_bar;',
-               'docblock'   => new Zend\CodeGenerator_Php\Docblock(array(
+               'docblock'   => new Zend\CodeGenerator\Php\Docblock(array(
                    'shortDescription' => 'Retrieve the bar property',
                    'tags'             => array(
                        new Zend\CodeGenerator\Php\Docblock\Tag\Return(array(
@@ -253,9 +253,9 @@ Lo anterior genera la siguiente salida:
 
 .. rubric:: Generando archivos PHP
 
-``Zend\CodeGenerator_Php\File`` puede ser utilizada para generar el contenido de un archivo *PHP*. Usted puede
+``Zend\CodeGenerator\Php\File`` puede ser utilizada para generar el contenido de un archivo *PHP*. Usted puede
 incluir clases, así como el contenido arbitrario del cuerpo. Cuando acople clases, debe adjuntar instancias
-concretas de ``Zend\CodeGenerator_Php\Class`` o un array definiendo la clase.
+concretas de ``Zend\CodeGenerator\Php\Class`` o un array definiendo la clase.
 
 En el ejemplo siguiente, asumiremos que ha definido ``$foo`` como una de las definiciones de clase del ejemplo
 anterior.
@@ -263,9 +263,9 @@ anterior.
 .. code-block:: php
    :linenos:
 
-   $file = new Zend\CodeGenerator_Php\File(array(
+   $file = new Zend\CodeGenerator\Php\File(array(
        'classes'  => array($foo);
-       'docblock' => new Zend\CodeGenerator_Php\Docblock(array(
+       'docblock' => new Zend\CodeGenerator\Php\Docblock(array(
            'shortDescription' => 'Foo class file',
            'tags'             => array(
                array(
@@ -351,7 +351,7 @@ reflection on it. The static method ``fromReflectedFileName()`` allows you to do
 .. code-block:: php
    :linenos:
 
-   $generator = Zend\CodeGenerator_Php\File::fromReflectedFileName($path);
+   $generator = Zend\CodeGenerator\Php\File::fromReflectedFileName($path);
    $body = $generator->getBody();
    $body .= "\n\$foo->bar();";
    file_put_contents($path, $generator->generate());
@@ -366,7 +366,7 @@ into a generator object. From there, you may add additional properties or method
 .. code-block:: php
    :linenos:
 
-   $generator = Zend\CodeGenerator_Php\Class::fromReflection(
+   $generator = Zend\CodeGenerator\Php\Class::fromReflection(
        new Zend\Reflection\Class($class)
    );
    $generator->setMethod(array(
@@ -375,7 +375,7 @@ into a generator object. From there, you may add additional properties or method
            array('name' => 'baz'),
        ),
        'body'       => '$this->_baz = $baz;' . "\n" . 'return $this;',
-       'docblock'   => new Zend\CodeGenerator_Php\Docblock(array(
+       'docblock'   => new Zend\CodeGenerator\Php\Docblock(array(
            'shortDescription' => 'Set the baz property',
            'tags'             => array(
                new Zend\CodeGenerator\Php\Docblock\Tag\Param(array(

@@ -59,7 +59,7 @@ Here's what the class would look like:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
+   class My_Form_Element_Date extends Zend\Form\Element\Xhtml
    {
        protected $_dateFormat = '%year%-%month%-%day%';
        protected $_day;
@@ -157,7 +157,7 @@ discrete view helper to render individual form inputs; these will then be aggreg
 .. code-block:: php
    :linenos:
 
-   class My_Form_Decorator_Date extends Zend\Form_Decorator\Abstract
+   class My_Form_Decorator_Date extends Zend\Form\Decorator\Abstract
    {
        public function render($content)
        {
@@ -208,7 +208,7 @@ constructor:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
+   class My_Form_Element_Date extends Zend\Form\Element\Xhtml
    {
        // ...
 
@@ -235,7 +235,7 @@ Next, we need to override the ``loadDefaultDecorators()`` method to use our new 
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
+   class My_Form_Element_Date extends Zend\Form\Element\Xhtml
    {
        // ...
 

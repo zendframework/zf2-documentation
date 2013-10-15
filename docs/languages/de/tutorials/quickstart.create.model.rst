@@ -16,7 +16,7 @@ angenommen das Sie mit einen gemeinsamen Präfix beginnen, dem Namen des Moduls.
 Modul -- das "default" oder "application" Modul. Als solches richten wir das Autoloading für Ressourcen in diesem
 Verzeichnis ein.
 
-``Zend\Application_Module\Autoloader`` bietet die Funktionalität welche benötigt wird um die verschiedenen
+``Zend\Application\Module\Autoloader`` bietet die Funktionalität welche benötigt wird um die verschiedenen
 Ressourcen unter einem Modul mit den richtigen Verzeichnissen zu verbinden, und auch einen standardmäßigen
 Namensmechanismus. Standardmäßig wird eine Instanz der Klasse wärend der Initialisierung des Bootstrap Objekts
 erstellt; unser Application Bootstrap verwendet standardmäßig das Modulpräfix "Application". Daher beginnen alle
@@ -236,7 +236,7 @@ erstellen:
    ));
    try {
        $getopt->parse();
-   } catch (Zend\Console_Getopt\Exception $e) {
+   } catch (Zend\Console\Getopt\Exception $e) {
        // Schlechte Option übergeben: Verwendung ausgeben
        echo $e->getUsageMessage();
        return false;
@@ -363,7 +363,7 @@ wird man den folgenden Inhalt sehen:
    /**
     * Das ist die DbTable Klasse für die Guestbook Tabelle.
     */
-   class Application_Model_DbTable_Guestbook extends Zend\Db_Table\Abstract
+   class Application_Model_DbTable_Guestbook extends Zend\Db\Table\Abstract
    {
        /** Tabellenname */
        protected $_name    = 'guestbook';
@@ -419,7 +419,7 @@ gefunden werden kann so geändert werden dass Sie wie folgt zu lesen ist:
            if (is_string($dbTable)) {
                $dbTable = new $dbTable();
            }
-           if (!$dbTable instanceof Zend\Db_Table\Abstract) {
+           if (!$dbTable instanceof Zend\Db\Table\Abstract) {
                throw new Exception('Ungültiges Table Data Gateway angegeben');
            }
            $this->_dbTable = $dbTable;

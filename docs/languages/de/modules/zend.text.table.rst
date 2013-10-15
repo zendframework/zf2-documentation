@@ -16,13 +16,13 @@ Colspan und auch Ausrichtung.
 
    ``Zend\Text\Table`` erwartet die Strings standardmäßig als UTF-8 kodiert. Wenn das nicht der Fall ist, kann
    entweder die Zeichenkodierung als Parameter an den ``constructor()`` übergeben werden, oder an die
-   ``setContent()`` Methode von ``Zend\Text_Table\Column``. Wenn man im kompletten Prozess eine andere Kodierung
+   ``setContent()`` Methode von ``Zend\Text\Table\Column``. Wenn man im kompletten Prozess eine andere Kodierung
    verwendet, kann man die standardmäßige Eingabekodierung mit ``Zend\Text\Table::setInputCharset($charset)``
    setzen. Im Fall, das man eine andere Ausgabekodierung für die Tabelle benötigt, kann diese mit
    ``Zend\Text\Table::setOutputCharset($charset)`` gesetzt werden.
 
 Ein ``Zend\Text\Table`` Objekt besteht aus Zeilen, die Spalten enthalten, repräsentiert durch
-``Zend\Text_Table\Row`` und ``Zend\Text_Table\Column``. Wenn eine Tabelle erstellt wird, kann ein Array mit
+``Zend\Text\Table\Row`` und ``Zend\Text\Table\Column``. Wenn eine Tabelle erstellt wird, kann ein Array mit
 Optionen für die Tabelle angegeben werden: Diese sind:
 
 
@@ -52,16 +52,16 @@ Optionen für die Tabelle angegeben werden: Diese sind:
 
 
 
-Zeilen werden zur Tabelle einfach hinzugefügt indem eine neue Instanz von ``Zend\Text_Table\Row`` erstellt, und
+Zeilen werden zur Tabelle einfach hinzugefügt indem eine neue Instanz von ``Zend\Text\Table\Row`` erstellt, und
 der Tabelle über die ``appendRow()`` Methode angehängt wird. Zeilen selbst haben keine Optionen. Man kann der
 ``appendRow()`` Methode auch direkt auch ein Array geben, welches dann automatisch in ein Zeilenobjekt konvertiert
 wird, welches mehrere Spaltenobjekte enthält.
 
 Auf dem gleichen Weg kann man Spalten zu Zeilen hinzufügen. Man erstellt eine neue Instanz von
-``Zend\Text_Table\Column`` und setzt dann entweder die Zeilenoptionen im Constructor, oder später mit den
+``Zend\Text\Table\Column`` und setzt dann entweder die Zeilenoptionen im Constructor, oder später mit den
 ``set*()`` Methoden. Der erste Parameter ist der Inhalt der Spalte, welcher mehrere Zeilen haben kann, welche im
 besten Fall einfach durch das '\\n' Zeichen getrennt sind. Der zweite Parameter definiert die Ausrichtung, welche
-standardmäßig 'left' ist, und eine der Klassenkonstanten von ``Zend\Text_Table\Column`` sein kann:
+standardmäßig 'left' ist, und eine der Klassenkonstanten von ``Zend\Text\Table\Column`` sein kann:
 
 
 
@@ -96,10 +96,10 @@ Ein Beispiel zeigt die grundsätzliche Verwendung von ``Zend\Text\Table`` um ein
    $table->appendRow(array('Zend', 'Framework'));
 
    // Oder wortreich
-   $row = new Zend\Text_Table\Row();
+   $row = new Zend\Text\Table\Row();
 
-   $row->appendColumn(new Zend\Text_Table\Column('Zend'));
-   $row->appendColumn(new Zend\Text_Table\Column('Framework'));
+   $row->appendColumn(new Zend\Text\Table\Column('Zend'));
+   $row->appendColumn(new Zend\Text\Table\Column('Framework'));
 
    $table->appendRow($row);
 

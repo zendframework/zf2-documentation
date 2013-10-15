@@ -28,7 +28,7 @@ les en-têtes comme décrit dans les exemples suivants :
    // considérablement différent des langues basées sur des lettres romaines
    $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend\Mail_Transport\Smtp`` encode les lignes commençant par un ou deux points, ainsi l'émail ne viole pas le
+``Zend\Mail\Transport\Smtp`` encode les lignes commençant par un ou deux points, ainsi l'émail ne viole pas le
 protocole SMTP.
 
 

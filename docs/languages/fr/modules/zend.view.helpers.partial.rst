@@ -84,7 +84,7 @@ Qui vous retournerait :
       // partial view script:
       $view->partialLoop()->setObjectKey('model');
 
-   Cette technique est particulièrement utile quand vous fournissez un ``Zend\Db_Table\Rowset``\ s à
+   Cette technique est particulièrement utile quand vous fournissez un ``Zend\Db\Table\Rowset``\ s à
    ``partialLoop()``, ainsi vous avez un accès complet à vos objets *Row* à l'intérieur de vos scripts de vue,
    permettant d'appeler des méthodes sur ceux-ci (comme récupérer des valeurs d'un *Row* parent ou dépendant).
 

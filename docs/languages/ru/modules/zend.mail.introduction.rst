@@ -11,8 +11,8 @@
 
 ``Zend_Mail`` предоставляет обобщенный функционал для формирования
 и отправки как текстовых, так и *MIME*-сообщений электронной
-почты. Сообщения могут отправляться через ``Zend\Mail_Transport\Sendmail``
-(используется по умолчанию) или через ``Zend\Mail_Transport\Smtp``.
+почты. Сообщения могут отправляться через ``Zend\Mail\Transport\Sendmail``
+(используется по умолчанию) или через ``Zend\Mail\Transport\Smtp``.
 
 .. _zend.mail.introduction.example-1:
 
@@ -21,7 +21,7 @@
 Простое сообщение электронной почты состоит из нескольких
 получателей, заголовка сообщения, тела сообщения и
 отправителя. Чтобы отправить такое сообщение, используя
-``Zend\Mail_Transport\Sendmail``, сделайте следующее:
+``Zend\Mail\Transport\Sendmail``, сделайте следующее:
 
 .. code-block:: php
    :linenos:
@@ -62,7 +62,7 @@
 -------------------------------------------------------
 
 Для экземпляра ``Zend_Mail`` по умолчанию используется
-``Zend\Mail_Transport\Sendmail``. По существу он является оберткой к
+``Zend\Mail\Transport\Sendmail``. По существу он является оберткой к
 *PHP*-функции `mail()`_. Если вы хотите передавать функции `mail()`_
 дополнительные параметры, то просто создайте новый экземпляр
 транспорта и передайте свои параметры его конструктору. После
@@ -72,7 +72,7 @@
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Передача дополнительных параметров транспорту Zend\Mail_Transport\Sendmail
+.. rubric:: Передача дополнительных параметров транспорту Zend\Mail\Transport\Sendmail
 
 Этот пример демонстрирует, как изменить заголовок Return-Path для
 функции `mail()`_.
@@ -80,7 +80,7 @@
 .. code-block:: php
    :linenos:
 
-   $tr = new Zend\Mail_Transport\Sendmail('-freturn_to_me@example.com');
+   $tr = new Zend\Mail\Transport\Sendmail('-freturn_to_me@example.com');
    Zend\Mail\Mail::setDefaultTransport($tr);
 
    $mail = new Zend\Mail\Mail();

@@ -59,7 +59,7 @@ premier lieu la barre de menu dans une méthode du bootstrap :
 .. code-block:: php
    :linenos:
 
-   class Bootstrap extends Zend\Application_Bootstrap\Bootstrap
+   class Bootstrap extends Zend\Application\Bootstrap\Bootstrap
    {
        // ...
 

@@ -10,7 +10,7 @@ bedeutet aber das die eigenen Klassendateien nicht vom Autoloader gefunden werde
 
 Wenn man :ref:`die Design Ziele <learning.autoloading.design>` für den Autoloader durchliest, zeigt der letzte
 Punkt in diesem Kapitel das die Lösung diese Situation abdecken könnte. Zend Framework macht das mit der
-``Zend\Loader_Autoloader\Resource``.
+``Zend\Loader\Autoloader\Resource``.
 
 Eine Ressource ist nur ein Name der mit dem Namespace einer Komponente korrespondiert (welche dem Namespace des
 Autoloaders angehängt wird) und einem Pfad (der relativ zum Basispfad des Autoloaders ist). In Aktion könnte man
@@ -19,7 +19,7 @@ etwas wie folgt machen:
 .. code-block:: php
    :linenos:
 
-   $loader = new Zend\Application_Module\Autoloader(array(
+   $loader = new Zend\Application\Module\Autoloader(array(
        'namespace' => 'Blog',
        'basePath'  => APPLICATION_PATH . '/modules/blog',
    ));
@@ -46,12 +46,12 @@ Unser erster Schritt ist die Erstellung des Ressource Loaders:
 .. code-block:: php
    :linenos:
 
-   $loader = new Zend\Loader_Autoloader\Resource(array(
+   $loader = new Zend\Loader\Autoloader\Resource(array(
        'basePath'  => 'path/to/some/resources/',
        'namespace' => 'Foo',
    ));
 
-Als nächstes müssen wir einige Ressource Typen definieren. ``Zend\Loader_Autoloader\Resourse::addResourceType()``
+Als nächstes müssen wir einige Ressource Typen definieren. ``Zend\Loader\Autoloader\Resourse::addResourceType()``
 hat drei Argumente: den Typ ("type") der Ressource (ein eigener String), den Pfad unter dem Basispfad in dem der
 Ressource Typ gefunden werden kann, und der Präfix der Komponente welcher für den Ressource Typ zu verwenden ist.
 Im obigen Baum haben wir drei Ressource Typen: form (im Unterverzeichnis "forms", mit dem Komponenten Präfix
@@ -83,7 +83,7 @@ Sobald Sie definiert sind, können diese Klassen einfach verwendet werden:
    Framework :ref:`empfiehlt sogar ein Standard Verzeichnis Layout für Module <project-structure.filesystem>`.
    Ressource Autoloader sind deshalb recht nützlich in diesem Paradigma -- so nützlich das Sie standardmäßig
    aktiviert sind wenn man eine Bootstrap Klasse für eigene Module erstellt welche
-   ``Zend\Application_Module\Bootstrap`` erweitert. Für weitere Informationen kann in der
-   :ref:`Zend\Loader_Autoloader\Module Dokumentation <zend.loader.autoloader-resource.module>` nachgelesen werden.
+   ``Zend\Application\Module\Bootstrap`` erweitert. Für weitere Informationen kann in der
+   :ref:`Zend\Loader\Autoloader\Module Dokumentation <zend.loader.autoloader-resource.module>` nachgelesen werden.
 
 

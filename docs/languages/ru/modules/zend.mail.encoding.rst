@@ -32,7 +32,7 @@ base64 через метод ``setHeaderEncoding()``. Все другие вло
    // Переключение на base64
    $mail->setHeaderEncoding(Zend\Mime\Mime::ENCODING_BASE64);
 
-``Zend\Mail_Transport\Smtp`` кодирует строки, начинающиеся с одной или двух
+``Zend\Mail\Transport\Smtp`` кодирует строки, начинающиеся с одной или двух
 точек, поэтому сообщение не будет нарушать протокол SMTP.
 
 

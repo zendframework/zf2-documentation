@@ -312,10 +312,10 @@ The *API* of the class is as follows:
 
 .. _zend.code.generator.reference.concrete.member-container:
 
-Zend\Code\Generator\Member_ContainerGenerator
+Zend\Code\Generator\Member\ContainerGenerator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``Zend\Code\Generator\Member_ContainerGenerator`` is used internally by ``Zend\Code\Generator\ClassGenerator`` to keep track of
+``Zend\Code\Generator\Member\ContainerGenerator`` is used internally by ``Zend\Code\Generator\ClassGenerator`` to keep track of
 class members -- properties and methods alike. These are indexed by name, using the concrete instances of the
 members as values.
 
@@ -324,7 +324,7 @@ The *API* of the class is as follows:
 .. code-block:: php
    :linenos:
 
-   class Zend\Code\Generator\Member_ContainerGenerator extends ArrayObject
+   class Zend\Code\Generator\Member\ContainerGenerator extends ArrayObject
    {
        public function __construct($type = self::TYPE_PROPERTY)
    }

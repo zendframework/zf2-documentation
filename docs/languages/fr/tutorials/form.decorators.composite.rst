@@ -61,7 +61,7 @@ Voici à quoi ressemblerait la classe:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
+   class My_Form_Element_Date extends Zend\Form\Element\Xhtml
    {
        protected $_dateFormat = '%year%-%month%-%day%';
        protected $_day;
@@ -160,7 +160,7 @@ rendu final.
 .. code-block:: php
    :linenos:
 
-   class My_Form_Decorator_Date extends Zend\Form_Decorator\Abstract
+   class My_Form_Decorator_Date extends Zend\Form\Decorator\Abstract
    {
        public function render($content)
        {
@@ -211,7 +211,7 @@ informer l'élément du chemin vers notre décorateur. Nous pouvons effectuer ce
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
+   class My_Form_Element_Date extends Zend\Form\Element\Xhtml
    {
        // ...
 
@@ -239,7 +239,7 @@ décorateur ``Date``:
 .. code-block:: php
    :linenos:
 
-   class My_Form_Element_Date extends Zend\Form_Element\Xhtml
+   class My_Form_Element_Date extends Zend\Form\Element\Xhtml
    {
        // ...
 

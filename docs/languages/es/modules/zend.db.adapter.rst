@@ -99,8 +99,6 @@ parámetros que hubiera enviado al constructor del adaptador.
    // el archivo Zend\Db\Adapter\Pdo\Mysql será cargado para nosotros por el método
    // factory de Zend_Db.
 
-   // require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
-
    // carga automaticamente la clase Zend\Db\Adapter\Pdo\Mysql
    // y crea una instancia de la misma
    $db = Zend\Db\Db::factory('Pdo_Mysql', array(
@@ -110,7 +108,7 @@ parámetros que hubiera enviado al constructor del adaptador.
        'dbname'   => 'test'
    ));
 
-Si crea su propia clase que extiende a ``Zend\Db_Adapter\Abstract``, pero no nombra su clase con el prefijo de
+Si crea su propia clase que extiende a ``Zend\Db\Adapter\Abstract``, pero no nombra su clase con el prefijo de
 paquete "``Zend\Db\Adapter``", se puede utilizar el método ``factory()`` para cargar su adaptador si se especifica
 la parte principal de la clase del adaptador con la clave "adapterNamespace" en el conjunto de parámetros
 
@@ -350,7 +348,7 @@ yourself. You can make the adapter auto-reconnect by passing the ``Zend\Db\Db::A
    try {
        $db = Zend\Db\Db::factory('Pdo_Mysql', $parameters);
        $db->getConnection();
-   } catch (Zend\Db_Adapter\Exception $e) {
+   } catch (Zend\Db\Adapter\Exception $e) {
        // perhaps a failed login credential, or perhaps the RDBMS is not running
    } catch (Zend_Exception $e) {
        // perhaps factory() failed to load the specified Adapter class
@@ -1228,7 +1226,7 @@ Running Other Database Statements
 
 There might be cases in which you need to access the connection object directly, as provided by the *PHP* database
 extension. Some of these extensions may offer features that are not surfaced by methods of
-``Zend\Db_Adapter\Abstract``.
+``Zend\Db\Adapter\Abstract``.
 
 For example, all *SQL* statements run by ``Zend_Db`` are prepared, then executed. However, some database features
 are incompatible with prepared statements. DDL statements like CREATE and ALTER cannot be prepared in MySQL. Also,
@@ -1347,7 +1345,7 @@ Microsoft SQL Server
   the last value generated for an auto-increment key if a table name is specified or a last insert query returned
   id. The ``lastSequenceId()`` method returns ``NULL``.
 
-- ``Zend\Db_Adapter\Sqlsrv`` sets ``QUOTED_IDENTIFIER ON`` immediately after connecting to a *SQL* Server database.
+- ``Zend\Db\Adapter\Sqlsrv`` sets ``QUOTED_IDENTIFIER ON`` immediately after connecting to a *SQL* Server database.
   This makes the driver use the standard *SQL* identifier delimiter symbol (**"**) instead of the proprietary
   square-brackets syntax *SQL* Server uses for delimiting identifiers.
 

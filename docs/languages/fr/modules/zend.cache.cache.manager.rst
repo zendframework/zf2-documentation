@@ -7,7 +7,7 @@ Le gestionnaire de Cache
 Une application comporte par nature plusieurs caches de types différents fonctions du contrôleur ou du modèle
 accédé. Afin de faciliter la création et la manipulation des options de ``Zend_Cache`` au plus tôt (par exemple
 en bootstrap), ``Zend\Cache\Manager`` a été créée. Cette classe est accompagnée de
-``Zend\Application_Resource\Cachemanager`` pour tout ce qui concerne le bootstrap et
+``Zend\Application\Resource\Cachemanager`` pour tout ce qui concerne le bootstrap et
 ``Zend\Controller\Action\Helper\Cache`` afin d'accéder aux caches depuis les contrôleurs et autres aides
 d'action.
 
@@ -160,7 +160,7 @@ template de cache après l'avoir saisie, ceci au moyen de ``Zend\Cache\Manager::
    $manager->setTemplateOptions('database', $fineTuning);
    $databaseCache = $manager->getCache('database');
 
-Pour rendre le gestionnaire de cache plus utile, il est accompagné de ``Zend\Application_Resource\Cachemanager``
+Pour rendre le gestionnaire de cache plus utile, il est accompagné de ``Zend\Application\Resource\Cachemanager``
 et ``Zend\Controller\Action\Helper\Cache``. Toutes deux sont décrites dans leurs pages respectives de la
 documentation.
 

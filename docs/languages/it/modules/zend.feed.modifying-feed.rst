@@ -44,7 +44,7 @@ si specifica esplicitamente un namespace alternativo.
    :linenos:
 
    <?php
-   $entry = new Zend\Feed_Entry\Atom();
+   $entry = new Zend\Feed\Entry\Atom();
    // id è sempre assegnato dal server ad Atom
    $entry->title = 'il mio elemento personalizzato';
    $entry->author->name = 'Autore di Esempio';

@@ -16,14 +16,14 @@ können, wird eine Ausnahme geworfen wenn versucht wird einen Formatter zu setze
 Einfache Formatierung
 ---------------------
 
-``Zend\Log_Formatter\Simple`` ist der Standard Formatter. Er ist automatisch konfiguriert wenn kein Formatter
+``Zend\Log\Formatter\Simple`` ist der Standard Formatter. Er ist automatisch konfiguriert wenn kein Formatter
 definiert wird. Die Standard Konfiguration ist identisch mit dem folgenden:
 
 .. code-block:: php
    :linenos:
 
    $format = '%timestamp% %priorityName% (%priority%): %message%' . PHP_EOL;
-   $formatter = new Zend\Log_Formatter\Simple($format);
+   $formatter = new Zend\Log\Formatter\Simple($format);
 
 Ein Formatter wird einem individuellen Writer Objekt gesetzt durch Verwenden der ``setFormatter()`` Methode des
 Writer's:
@@ -31,8 +31,8 @@ Writer's:
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Stream('php://output');
-   $formatter = new Zend\Log_Formatter\Simple('Hallo %message%' . PHP_EOL);
+   $writer = new Zend\Log\Writer\Stream('php://output');
+   $formatter = new Zend\Log\Formatter\Simple('Hallo %message%' . PHP_EOL);
    $writer->setFormatter($formatter);
 
    $logger = new Zend\Log\Log();
@@ -42,24 +42,24 @@ Writer's:
 
    // Gibt "Hallo dort" aus
 
-Der Konstruktor von ``Zend\Log_Formatter\Simple`` akzeptiert einen einzelnen Parameter: Den Format String. Dieser
+Der Konstruktor von ``Zend\Log\Formatter\Simple`` akzeptiert einen einzelnen Parameter: Den Format String. Dieser
 String enthält Schlüssel die durch Prozentzeichen begrenzt sind (z.B. ``%message%``). Der Format String kann
 jeden Schlüssel des Event Data Arrays enthalten. Die Standardschlüssel können durch Verwendung der
-DEFAULT_FORMAT Konstante von ``Zend\Log_Formatter\Simple`` empfangen werden.
+DEFAULT_FORMAT Konstante von ``Zend\Log\Formatter\Simple`` empfangen werden.
 
 .. _zend.log.formatters.xml:
 
 In XML formatieren
 ------------------
 
-``Zend\Log_Formatter\Xml`` formatiert Log Daten in einen *XML* String. Standardmäßig loggt er automatisch alle
+``Zend\Log\Formatter\Xml`` formatiert Log Daten in einen *XML* String. Standardmäßig loggt er automatisch alle
 Elemente des Event Data Arrays:
 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Stream('php://output');
-   $formatter = new Zend\Log_Formatter\Xml();
+   $writer = new Zend\Log\Writer\Stream('php://output');
+   $formatter = new Zend\Log\Formatter\Xml();
    $writer->setFormatter($formatter);
 
    $logger = new Zend\Log\Log();
@@ -80,14 +80,14 @@ Der obige Code gibt das folgende *XML* aus (Leerzeichen werden für Klarstellung
    </logEntry>
 
 Es ist möglich das Root Element anzupassen sowie ein Mapping von *XML* Elementen zu den Elementen im Event Data
-Array zu definieren. Der Konstruktor von ``Zend\Log_Formatter\Xml`` akzeptiert einen String mit dem Namen des Root
+Array zu definieren. Der Konstruktor von ``Zend\Log\Formatter\Xml`` akzeptiert einen String mit dem Namen des Root
 Elements als ersten Parameter und ein assoziatives Array mit den gemappten Elementen als zweiten Parameter:
 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log_Writer\Stream('php://output');
-   $formatter = new Zend\Log_Formatter\Xml('log',
+   $writer = new Zend\Log\Writer\Stream('php://output');
+   $formatter = new Zend\Log\Formatter\Xml('log',
                                            array('msg' => 'message',
                                                  'level' => 'priorityName')
                                           );

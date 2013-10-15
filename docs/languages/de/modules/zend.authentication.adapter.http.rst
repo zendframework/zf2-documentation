@@ -9,7 +9,7 @@ HTTP Authentication Adapter
 Einführung
 ----------
 
-``Zend\Auth_Adapter\Http`` bietet die am meisten entsprechende Implementation von `RFC-2617`_, `Basis`_ und
+``Zend\Auth\Adapter\Http`` bietet die am meisten entsprechende Implementation von `RFC-2617`_, `Basis`_ und
 `Digest`_ *HTTP* Authentifizierung. Digest Authentifizierung ist eine Methode der *HTTP* Authentifikation welche
 die Basis Authentifizierung erweitert indem ein Weg angeboten wird um sich zu Authentifizieren ohne dass das
 Passwort im Klartext über das Netzwerk geschickt werden muß.
@@ -52,7 +52,7 @@ ob die Authentifizierung erfolgreich war.
 Konfigurations Optionen
 -----------------------
 
-Die ``Zend\Auth_Adapter\Http`` Klasse benötigt ein Konfigurations Array das Ihrem Konstruktor übergeben werden
+Die ``Zend\Auth\Adapter\Http`` Klasse benötigt ein Konfigurations Array das Ihrem Konstruktor übergeben werden
 muß. Es sind verschiedene Konfigurations Optionen vorhanden, und einige davon werden benötigt:
 
 .. _zend.authentication.adapter.configuration_options.table:
@@ -90,7 +90,7 @@ Der Job des Auflösers ist es einen Benutzernamen und einen Bereich, und gibt ei
 Basis Authentifizierung erwartet einen Hash des Benutzernamens, des Bereichs, und dessen Passwörter (jedes
 seperiert durch ein Komma). Aktuell ist der einzige unterstützte Hash Algorithmus *MD5*.
 
-``Zend\Auth_Adapter\Http`` ist darauf angewiesen das Objekte ``Zend\Auth\Adapter\Http\Resolver\Interface``
+``Zend\Auth\Adapter\Http`` ist darauf angewiesen das Objekte ``Zend\Auth\Adapter\Http\Resolver\Interface``
 implementieren. Eine Textdatei Auflöser Klasse ist mit diesem Adapter inkludiert, aber jede Art von Auflöser kann
 einfach erstellt werden indem das Resolver Interface implementiert wird.
 
@@ -156,12 +156,12 @@ einen authentifizierten Zugriff auf alle Areale der Site unter ``/members_only``
 Wert wird normalerweise durch den Browser in der Passwort Dialog Box angezeigt. ``nonce_timeout`` verhält sich
 natürlich so wie oben beschrieben.
 
-Dann wird ein ``Zend\Auth_Adapter\Http`` Objekt erstellt:
+Dann wird ein ``Zend\Auth\Adapter\Http`` Objekt erstellt:
 
 .. code-block:: php
    :linenos:
 
-   $adapter = new Zend\Auth_Adapter\Http($config);
+   $adapter = new Zend\Auth\Adapter\Http($config);
 
 Da beides, Basis und Digest Authentifizierung, unterstützt werden, werden zwei unterschiedliche
 Auflösungs-Objekte benötigt. Man könnte das auch einfach durch die Verwendung von zwei unterschiedlichen Klassen
@@ -185,8 +185,8 @@ und Antwort Objekten um seinen Job durchführen zu können:
 .. code-block:: php
    :linenos:
 
-   assert($request instanceof Zend\Controller_Request\Http);
-   assert($response instanceof Zend\Controller_Response\Http);
+   assert($request instanceof Zend\Controller\Request\Http);
+   assert($response instanceof Zend\Controller\Response\Http);
 
    $adapter->setRequest($request);
    $adapter->setResponse($response);

@@ -33,7 +33,7 @@ nur einem ``<entry>`` Eintrag abrufst:
 .. code-block:: php
    :linenos:
 
-   $entry = new Zend\Feed_Entry\Atom('http://atom.example.com/feed/1');
+   $entry = new Zend\Feed\Entry\Atom('http://atom.example.com/feed/1');
    echo $entry->title();
 
 

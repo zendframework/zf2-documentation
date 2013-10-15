@@ -18,7 +18,7 @@ souhaitez pas utiliser ``Zend\Session\Namespace`` pour la persistance. ``Zend\Ca
 logique de validation.
 
 Par défaut la taille du mot est de 8 caractères, le timeout de session est de 5 minutes et l'objet d'espace de
-nom de session utilisé est ``Zend\Session\Namespace`` (avec l'espace de nom ("``Zend\Form_Captcha\<captcha
+nom de session utilisé est ``Zend\Session\Namespace`` (avec l'espace de nom ("``Zend\Form\Captcha\<captcha
 ID>``").
 
 En plus des méthodes standards fournies par ``Zend\Captcha\Adapter``, ``Zend\Captcha\Word`` propose les méthodes
@@ -133,7 +133,7 @@ constructeur utilise. ("suffix", "height", "imgUrl", etc...).
 Zend\Captcha\ReCaptcha
 ----------------------
 
-L'adaptateur ``Zend\Captcha\ReCaptcha`` utilise :ref:`Zend\Service\ReCaptcha <zend.service.recaptcha>` pour
+L'adaptateur ``Zend\Captcha\ReCaptcha`` utilise :ref:`ZendService\ReCaptcha\ReCaptcha <zendservice.recaptcha>` pour
 générer des *CAPTCHA*. Les méthodes suivantes lui sont propres :
 
 - ``setPrivKey($key)`` et ``getPrivKey()`` vous permettent de gérer la clé privée utilisée avec le service
@@ -142,7 +142,7 @@ générer des *CAPTCHA*. Les méthodes suivantes lui sont propres :
 - ``setPubKey($key)`` et ``getPubKey()`` vous permettent de gérer la clé publique utilisée avec le service
   ReCaptcha. Cette clé doit être spécifiée en constructeur, mais peut être ensuite modifiée.
 
-- ``setService(Zend\Service\ReCaptcha $service)`` et ``getService()`` vous permettent d'interagir directement avec
+- ``setService(ZendService\ReCaptcha\ReCaptcha $service)`` et ``getService()`` vous permettent d'interagir directement avec
   l'objet service ReCaptcha utilisé par l'adaptateur.
 
 
