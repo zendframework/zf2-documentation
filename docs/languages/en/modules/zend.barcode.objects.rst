@@ -158,7 +158,7 @@ Common Additional Getters
    |getOffsetLeft($recalculate = false)|Integer  |Return the position of the left of the barcode calculated after possible rotation                                      |
    +-----------------------------------+---------+-----------------------------------------------------------------------------------------------------------------------+
 
-.. include:: zend.barcode.objects.details.rst
+.. include:: include/zend.barcode.objects.details.rst
 
 
 .. _`Traversable`: http://php.net/traversable

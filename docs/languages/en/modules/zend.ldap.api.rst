@@ -60,13 +60,13 @@ API Reference
 
    Method names in **italics** are static methods.
 
-.. include:: zend.ldap.api.ldap.rst
-.. include:: zend.ldap.api.ldap.attribute.rst
-.. include:: zend.ldap.api.ldap.converter.converter.rst
-.. include:: zend.ldap.api.ldap.dn.rst
-.. include:: zend.ldap.api.ldap.filter.rst
-.. include:: zend.ldap.api.ldap.node.rst
-.. include:: zend.ldap.api.ldap.node.root-dse.rst
-.. include:: zend.ldap.api.ldap.node.schema.rst
-.. include:: zend.ldap.api.ldap.ldif.encoder.rst
+.. include:: include/zend.ldap.api.ldap.rst
+.. include:: include/zend.ldap.api.ldap.attribute.rst
+.. include:: include/zend.ldap.api.ldap.converter.converter.rst
+.. include:: include/zend.ldap.api.ldap.dn.rst
+.. include:: include/zend.ldap.api.ldap.filter.rst
+.. include:: include/zend.ldap.api.ldap.node.rst
+.. include:: include/zend.ldap.api.ldap.node.root-dse.rst
+.. include:: include/zend.ldap.api.ldap.node.schema.rst
+.. include:: include/zend.ldap.api.ldap.ldif.encoder.rst
 

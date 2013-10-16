@@ -43,7 +43,7 @@ it is available but will function properly if it is not. Many components will au
 if they are available to optimize performance but will execute code with similar functionality in the component
 itself if the extensions are unavailable.
 
-.. include:: requirements.php.extensions.table.rst
+.. include:: include/requirements.php.extensions.table.rst
 .. _requirements.zendcomponents:
 
 Zend Framework Components
@@ -59,7 +59,7 @@ it is available but will function properly if it is not. Many components will au
 if they are available to optimize performance but will execute code with similar functionality in the component
 itself if the extensions are unavailable.
 
-.. include:: requirements.zendcomponents.table.rst
+.. include:: include/requirements.zendcomponents.table.rst
 .. _requirements.dependencies:
 
 Zend Framework Dependencies
@@ -79,5 +79,5 @@ that these components can be used by subcomponents in special situations or with
    Even if it's possible to separate single components for usage from the complete Zend Framework you should keep
    in mind that this can lead to problems when files are missed or components are used dynamically.
 
-.. include:: requirements.dependencies.table.rst
+.. include:: include/requirements.dependencies.table.rst
 

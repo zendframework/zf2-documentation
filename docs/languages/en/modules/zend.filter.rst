@@ -57,7 +57,7 @@ you can also use them as such:
    echo $strtolower('I LOVE ZF2!'); // i love zf2!
    $zf2love = $strtolower('I LOVE ZF2!');
 
-.. include:: zend.filter.static-filter.rst
+.. include:: include/zend.filter.static-filter.rst
 
 .. _zend.filter.introduction.caveats:
 
