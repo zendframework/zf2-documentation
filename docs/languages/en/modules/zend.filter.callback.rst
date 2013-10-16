@@ -14,7 +14,7 @@ The following options are supported for ``Zend\Filter\Callback``:
 
 - **callback**: This sets the callback which should be used.
 
-- **options**: This property sets the options which are used when the callback is processed.
+- **callback_params**: This property sets the options which are used when the callback is processed.
 
 .. _zend.filter.set.callback.basic:
 
