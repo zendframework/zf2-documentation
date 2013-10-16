@@ -126,7 +126,7 @@ example the default input specification provides a ``Zend\Filter\StringTrim`` fi
 validator that validates that the value optionally has a + sign at the beginning and is followed by 11 or 12
 digits.
 
-The easiest way of start using your new custom element in your forms is to use the custom element's FCQN:
+The easiest way of start using your new custom element in your forms is to use the custom element's FQCN:
 
 .. code-block:: php
     :linenos:
@@ -160,7 +160,7 @@ Or, if you are extending ``Zend\Form\Form``:
     }
 
 
-If you don't want to use the custom element's FCQN, but rather a short name, as of Zend Framework 2.1 you can do so
+If you don't want to use the custom element's FQCN, but rather a short name, as of Zend Framework 2.1 you can do so
 by adding them to the ``Zend\Form\FormElementManager`` plugin manager by utilising the ``getFormElementConfig`` function.
 
 .. warning::
@@ -207,7 +207,7 @@ You can use a factory instead of an invokable in order to handle dependencies in
 **And now comes the first catch.**
 
 If you are creating your form class by extending ``Zend\Form\Form``, you *must not* add the custom element in the
-``__construct``-or (as we have done in the previous example where we used the custom element's FCQN),
+``__construct``-or (as we have done in the previous example where we used the custom element's FQCN),
 but rather in the ``init()`` method:
 
 .. code-block:: php
