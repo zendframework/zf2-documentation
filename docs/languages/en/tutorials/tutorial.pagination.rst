@@ -312,7 +312,7 @@ Creating the Pagination Control Partial
 Much like we created a custom breadcrumbs partial to render our breadcrumb in the last tutorial, we need to
 create a custom pagination control partial to render our pagination control just the way we want it. Again,
 because we are using Twitter Bootstrap, this should be as simple as outputting correctly formatted html to get
-a pretty control. Let's create the partail in the ``module/Application/view/partial/`` folder, so that we can
+a pretty control. Let's create the partial in the ``module/Application/view/partial/`` folder, so that we can
 use the control in all our modules:
 
 ``module/Application/view/partial/paginator.phtml``
