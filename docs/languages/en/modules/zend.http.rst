@@ -10,7 +10,7 @@ Overview
 
 ``Zend\Http`` is a primary foundational component of Zend Framework. Since much of what PHP does is web-based,
 specifically HTTP, it makes sense to have a performant, extensible, concise and consistent API to do all things
-HTTP. In nutshell, there are several parts of ``Zend\Http:``
+HTTP. In nutshell, there are several parts of ``Zend\Http``:
 
 - Context-less ``Request`` and ``Response`` classes that expose a fluent API for introspecting several aspects of
   HTTP messages:
