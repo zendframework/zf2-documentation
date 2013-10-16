@@ -46,7 +46,7 @@ The first thing to do is to defining rule. You may want to add this in your ``Mo
 
 The string reads like that:
 
-1. First, we specify how many plurals form we have. For French, only two (singular/plural).
+1. First, we specify how many plurals forms we have. For French, only two (singular/plural).
 2. Then, we specify the rule. Here, if the count is 0 or 1, this is rule n°0 (singular) while it's rule n°1 otherwise.
 
 As we said earlier, English consider "1" as singular, and "0/other" as plural. Here is such a rule:
