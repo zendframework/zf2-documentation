@@ -39,14 +39,14 @@ The first thing to do is to defining rule. You may want to add this in your ``Mo
    // Get the ViewHelperPlugin Manager from Service manager, so we can fetch the ``Plural``
    // helper and add the plural rule for the application's language
    $viewHelperManager = $serviceManager->get('ViewHelperManager');
-   $pluralHelper      = $viewHelperManager->get('Plural);
+   $pluralHelper      = $viewHelperManager->get('Plural');
    
    // Here is the rule for French
    $pluralHelper->setPluralRule('nplurals=2; plural=(n==0 || n==1 ? 0 : 1)');
 
 The string reads like that:
 
-1. First, we specify how many plurals form do we have. For French, only two (singular/plural).
+1. First, we specify how many plurals form we have. For French, only two (singular/plural).
 2. Then, we specify the rule. Here, if the count is 0 or 1, this is rule n°0 (singular) while it's rule n°1 otherwise.
 
 As we said earlier, English consider "1" as singular, and "0/other" as plural. Here is such a rule:
