@@ -62,7 +62,7 @@ Attaching a translator and setting a text domain:
 
    Note: If you have a translator in the Service Manager under the key, 'translator', the view helper plugin
    manager will automatically attach the translator to the FormLabel view helper. See
-   ``Zend\\View\\HelperPluginManager::injectTranslator()`` for more information.
+   ``Zend\View\HelperPluginManager::injectTranslator()`` for more information.
 
 .. _zend.form.view.helper.form-label.methods:
 
