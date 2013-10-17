@@ -158,7 +158,7 @@ you from setting a translator manually for all validator classes, and simplifies
 
    Zend\Validator\AbstractValidator::setDefaultTranslator($translate);
 
-Sometimes it is necessary to disable the translator within a validator. To archive this you can use the
+Sometimes it is necessary to disable the translator within a validator. To achieve this you can use the
 ``setDisableTranslator()`` method, which accepts a boolean parameter, and ``isTranslatorDisabled()`` to get the set
 value.
 
