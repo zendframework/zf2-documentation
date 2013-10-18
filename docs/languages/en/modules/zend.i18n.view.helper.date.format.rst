@@ -74,4 +74,4 @@ inside a DateTime object. To change the timezone when formatting, use the ``setT
 
 
 
-.. _`IntlDateFormatter constants`: http://us.php.net/manual/en/class.intldateformatter.php#intl.intldateformatter-constants
+.. _`IntlDateFormatter constants`: http://www.php.net/manual/class.intldateformatter.php#intl.intldateformatter-constants
