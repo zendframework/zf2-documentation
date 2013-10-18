@@ -74,5 +74,5 @@ each time the helper is used.
 
 
 
-.. _`format style constants`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
-.. _`formatting type`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types
+.. _`format style constants`: http://www.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
+.. _`formatting type`: http://www.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types
