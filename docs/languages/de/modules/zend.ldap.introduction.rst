@@ -144,7 +144,7 @@ Die Standardmäßige Kanonisierung hängt davon ab welche Optionen für Account 
 Die Kanonisierung des Account Namens stellt sicher das der String der zur Identifikation des Accounts verwendet
 wird konsistent ist, unabhängig davon was an ``bind()`` übergeben wurde. Wenn der Benutzer, zum Beispiel, den
 Account Namen ``abaker@example.com`` oder nur **abaker** angibt, und **accountCanonicalForm** auf 3 gesetzt ist,
-wird der resultierende kanonisierte Name **EXAMPLE\abaker** sein.
+wird der resultierende kanonisierte Name **EXAMPLE\\abaker** sein.
 
 .. _zend.ldap.introduction.theory-of-operations.multi-domain-failover:
 
@@ -217,7 +217,7 @@ Serveroptionen stellt sicher das die kanonisierte Form angenommen wird, egal wel
 wird.
 
 Die spezielle Exception ``LDAP_X_DOMAIN_MISMATCH`` tritt auf wenn ein Account Name bei einer Domain Komponente
-übergeben wurde (z.B. ``abaker@foo.net`` oder **FOO\abaker** und nicht nur **abaker**) aber die Domain Komponente
+übergeben wurde (z.B. ``abaker@foo.net`` oder **FOO\\abaker** und nicht nur **abaker**) aber die Domain Komponente
 keiner der Domains in den aktuell ausgewählten Server Optionen entspricht. Diese Exception zeigt das der Server
 keine Autorität für den Account ist. In diesem Fall wird das Binden nicht durchgeführt, und damit unnötige
 Kommunikation mit dem Server verhindert. Es ist zu beachten das die **continue** Anweisung in diesem Beispiel
