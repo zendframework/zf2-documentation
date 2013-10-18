@@ -138,7 +138,7 @@ Otherwise, if **accountDomainName** was supplied, the default is ``ACCTNAME_FORM
 Account name canonicalization ensures that the string used to identify an account is consistent regardless of what
 was supplied to ``bind()``. For example, if the user supplies an account name of ``abaker@example.com`` or just
 **abaker** and the **accountCanonicalForm** is set to 3, the resulting canonicalized name would be
-**EXAMPLE\abaker**.
+**EXAMPLE\\abaker**.
 
 .. _zend.ldap.introduction.theory-of-operations.multi-domain-failover:
 
@@ -211,7 +211,7 @@ associate data with such as preferences. The **accountCanonicalForm = 4** in all
 canonical form is consistent regardless of which server was ultimately used.
 
 The special ``LDAP_X_DOMAIN_MISMATCH`` exception occurs when an account name with a domain component was supplied
-(e.g., ``abaker@foo.net`` or **FOO\abaker** and not just **abaker**) but the domain component did not match either
+(e.g., ``abaker@foo.net`` or **FOO\\abaker** and not just **abaker**) but the domain component did not match either
 domain in the currently selected server options. This exception indicates that the server is not an authority for
 the account. In this case, the bind will not be performed, thereby eliminating unnecessary communication with the
 server. Note that the **continue** instruction has no effect in this example, but in practice for error handling
