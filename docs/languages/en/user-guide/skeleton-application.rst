@@ -5,13 +5,15 @@ Getting started: A skeleton application
 
 In order to build our application, we will start with the
 `ZendSkeletonApplication <https://github.com/zendframework/ZendSkeletonApplication>`_ 
-available on `github <https://github.com/>`_. Use Composer (http://getcomposer.org)
+available on `github <https://github.com/>`_. We will be using Composer (http://getcomposer.org)
 to create a new project from scratch with Zend Framework:
 
 .. code-block:: bash
    :linenos:
 
-    php composer.phar create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+    curl -s https://getcomposer.org/installer | php --
+    php composer.phar create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application zf2-tutorial
+    cd zf2-tutorial
     php composer.phar update
 
 .. note::
