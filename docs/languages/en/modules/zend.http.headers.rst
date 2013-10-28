@@ -294,7 +294,7 @@ Zend\\Http\\Header\\* Base Methods
 
    Cast to string as a well formed HTTP header line
 
-   Returns in form of "NAME: VALUE\\r\\n"
+   Returns in form of "NAME: VALUE"
 
    Returns string
 
