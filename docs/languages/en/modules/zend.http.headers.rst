@@ -298,6 +298,129 @@ Zend\\Http\\Header\\HeaderInterface Methods
 
    Returns string
 
+.. _zend.http.header.abstractaccept.methods:
+
+Zend\\Http\\Header\\AbstractAccept Methods
+------------------------------------------
+
+**parseHeaderLine**
+   ``parseHeaderLine(string $headerLine)``
+
+   Parse the given header line and add the values
+
+   Returns void
+
+**getFieldValuePartsFromHeaderLine**
+   ``getFieldValuePartsFromHeaderLine(string $headerLine)``
+
+   Parse the Field Value Parts represented by a header line
+
+   Throws ``Zend\Http\Header\Exception\InvalidArgumentException`` if the header is invalid
+
+   Returns array
+
+**getFieldValue**
+   ``getFieldValue(array|null $values = null)``
+
+   Get field value
+
+   Returns string
+
+**match**
+   ``match(array|string $matchAgainst)``
+
+   Match a media string against this header. Returns the matched value or false
+
+   Returns ``Accept\FieldValuePart\AcceptFieldValuePart`` or bool
+
+**getPrioritized**
+   ``getPrioritized()``
+
+   Returns all the keys, values and parameters this header represents
+
+   Returns array
+
+.. _zend.http.header.abstractdate.methods:
+
+Zend\\Http\\Header\\AbstractDate Methods
+----------------------------------------
+
+**setDateFormat**
+   static ``setDateFormat(int $format)``
+
+   Set date output format.
+
+   Returns void
+
+**getDateFormat**
+   static ``getDateFormat()``
+
+   Return current date output format
+
+   Returns string
+
+**setDate**
+   ``setDate(string|DateTime $date)``
+
+   Set the date for this header, this can be a string or an instance of \DateTime
+
+   Throws ``Zend\Http\Header\Exception\InvalidArgumentException`` if the date is neither a valid string
+   nor an instance of ``\DateTime``.
+
+   Returns self
+
+**getDate**
+   ``getDate()``
+
+   Return date for this header
+
+   Returns self
+
+**date**
+   ``date()``
+
+   Return date for this header as an instance of ``\DateTime``
+
+   Returns ``\DateTime``
+
+**compareTo**
+   ``compareTo(string|DateTime $date)``
+
+   Compare provided date to date for this header.
+   Returns < 0 if date in header is less than ``$date``; > 0 if it's greater, and 0 if they are equal.
+   See `strcmp <http://www.php.net/manual/en/function.strcmp.php>`_.
+
+   Returns int
+
+.. _zend.http.header.abstractlocation.methods:
+
+Zend\\Http\\Header\\AbstractLocation Methods
+--------------------------------------------
+
+**setUri**
+   ``setUri(string|Zend\Uri\UriInterface $uri)``
+
+   Set the URI/URL for this header, this can be a string or an instance of ``Zend\Uri\Http``
+
+   Throws ``Zend\Http\Header\Exception\InvalidArgumentException`` if ``$uri`` is neither a valid
+   URL nor an instance of ``Zend\Uri\UriInterface``.
+
+   Returns self
+
+**getUri**
+   ``getUri()``
+
+   Return the URI for this header
+
+   Returns string
+
+**uri**
+   ``uri()``
+
+   Return the URI for this header as an instance of ``Zend\Uri\Http``
+
+   Returns ``Zend\Uri\UriInterface``
+
 .. _zend.http.header-types.list:
 
 List of HTTP Header Types
@@ -310,22 +433,62 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.accept.methods:
 
 **Accept**
-   No additional methods
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addMediaType(string $type, int|float $priority = 1)``
+      Add a media type, with the given priority
+
+      Returns self
+
+   ``hasMediaType(string $type)``
+      Does the header have the requested media type?
+
+      Returns bool
 
 .. _zend.http.header.acceptcharset.methods:
 
 **AcceptCharset**
-   No additional methods
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addCharset(string $type, int|float $priority = 1)``
+      Add a charset, with the given priority
+
+      Returns self
+
+   ``hasCharset(string $type)``
+      Does the header have the requested charset?
+
+      Returns bool
 
 .. _zend.http.header.acceptencoding.methods:
 
 **AcceptEncoding**
-   No additional methods
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addEncoding(string $type, int|float $priority = 1)``
+      Add an encoding, with the given priority
+
+      Returns self
+
+   ``hasEncoding(string $type)``
+      Does the header have the requested encoding?
+
+      Returns bool
 
 .. _zend.http.header.acceptlanguage.methods:
 
 **AcceptLanguage**
-   No additional methods
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addLanguage(string $type, int|float $priority = 1)``
+      Add a language, with the given priority
+
+      Returns self
+
+   ``hasLanguage(string $type)``
+      Does the header have the requested language?
+
+      Returns bool
 
 .. _zend.http.header.acceptranges.methods:
 
@@ -465,7 +628,7 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.contentlocation.methods:
 
 **ContentLocation**
-   No additional methods
+   See ``Zend\Http\Header\AbstractLocation`` :ref:`methods<zend.http.header.abstractlocation.methods>`.
 
 .. _zend.http.header.contentmd5.methods:
 
@@ -561,7 +724,7 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.date.methods:
 
 **Date**
-   No additional methods
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
 
 .. _zend.http.header.etag.methods:
 
@@ -576,7 +739,7 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.expires.methods:
 
 **Expires**
-   No additional methods
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
 
 .. _zend.http.header.from.methods:
 
@@ -596,7 +759,7 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.ifmodifiedsince.methods:
 
 **IfModifiedSince**
-   No additional methods
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
 
 .. _zend.http.header.ifnonematch.methods:
 
@@ -611,7 +774,7 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.ifunmodifiedsince.methods:
 
 **IfUnmodifiedSince**
-   No additional methods
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
 
 .. _zend.http.header.keepalive.methods:
 
@@ -621,12 +784,12 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.lastmodified.methods:
 
 **LastModified**
-   No additional methods
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
 
 .. _zend.http.header.location.methods:
 
 **Location**
-   No additional methods
+   See ``Zend\Http\Header\AbstractLocation`` :ref:`methods<zend.http.header.abstractlocation.methods>`.
 
 .. _zend.http.header.maxforwards.methods:
 
@@ -661,7 +824,7 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.referer.methods:
 
 **Referer**
-   No additional methods
+   See ``Zend\Http\Header\AbstractLocation`` :ref:`methods<zend.http.header.abstractlocation.methods>`.
 
 .. _zend.http.header.refresh.methods:
 
@@ -671,7 +834,17 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
 .. _zend.http.header.retryafter.methods:
 
 **RetryAfter**
-   No additional methods
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+   ``setDeltaSeconds(int $delta)``
+      Set number of seconds
+
+      Returns self
+
+   ``getDeltaSeconds()``
+      Get number of seconds
+
+      Returns int
 
 .. _zend.http.header.server.methods:
 
@@ -702,20 +875,68 @@ these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`metho
    ``getVersion()`` / ``setVersion(int $version)``
       The cookie version
 
-   ``isSecure()`` / ``setSecure(bool $secure)``
+   ``isSecure()``
       Whether the cookies contains the Secure flag
 
-   ``isHttponly()`` / ``setHttponly(bool $httponly)``
+      Returns bool
+
+   ``setSecure(bool $secure)``
+      Set whether the cookies contains the Secure flag
+
+      Returns self
+
+   ``isHttponly()``
       Whether the cookies can be accessed via HTTP only
 
-   ``isSessionCookie()``
-      Whether the cookie is a session cookie
+      Returns bool
+
+   ``setHttponly(bool $httponly)``
+      Set whether the cookies can be accessed via HTTP only
+
+      Returns self
 
    ``isExpired()``
       Whether the cookie is expired
 
+      Returns bool
+
+   ``isSessionCookie()``
+      Whether the cookie is a session cookie
+
+      Returns bool
+
+   ``setQuoteFieldValue(bool $quotedValue)``
+      Set whether the value for this cookie should be quoted
+
+      Returns self
+
+   ``hasQuoteFieldValue()``
+      Check whether the value for this cookie should be quoted
+
+      Returns bool
+
    ``isValidForRequest()``
       Whether the cookie is valid for a given request domain, path and isSecure
+
+      Returns bool
+
+   ``match(string $uri, bool $matchSessionCookies, int $now)``
+      Checks whether the cookie should be sent or not in a specific scenario
+
+      Returns bool
+
+   static ``matchCookieDomain(string $cookieDomain, string $host)``
+      Check if a cookie's domain matches a host name.
+
+      Returns bool
+
+   static ``matchCookiePath(string $cookiePath, string $path)``
+      Check if a cookie's path matches a URL path
+
+      Returns bool
+
+   ``toStringMultipleHeaders(array $headers)``
+      Returns string
 
 .. _zend.http.header.te.methods:
 
