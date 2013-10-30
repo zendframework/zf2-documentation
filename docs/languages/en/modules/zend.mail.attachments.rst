@@ -25,6 +25,7 @@ Using Zend\\Mime\\Part
    $fileContents = fopen($somefilePath, 'r');
    $attachment = new Mime\Part($fileContent);
    $attachment->type = 'image/jpg';
+   $attachment->filename = 'image-file-name.jpg';
    $attachment->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
    
    // then add them to a MIME message
