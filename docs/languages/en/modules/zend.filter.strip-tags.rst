@@ -88,7 +88,7 @@ It is also possible to strip all but allowed attributes from a tag.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\StripTags(array('allowAttribs' => 'src'));
+   $filter = new Zend\Filter\StripTags(array('allowTags' => 'img', 'allowAttribs' => 'src'));
 
    $input  = "A text with <br/> a <img src='picture.com' width='100'>picture</img>";
    print $filter->filter($input);
