@@ -430,11 +430,13 @@ You will then pull that value back into your method.
        if (!$values) {
            return;
        }
+
        if (!isset($values['date'])) {
            $values['date'] = new \DateTime('now');
-           return;
+       } else {
+           $values['date'] = new \Datetime($values['date']);
        }
-       $values['date'] = new \Datetime($values['date']);
+       
        $e->setParam('values', $values);
    });
 
