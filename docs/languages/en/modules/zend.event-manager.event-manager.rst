@@ -435,6 +435,7 @@ You will then pull that value back into your method.
            return;
        }
        $values['date'] = new \Datetime($values['date']);
+       $e->setParam('values', $values);
    });
 
    $v->inject(array(
