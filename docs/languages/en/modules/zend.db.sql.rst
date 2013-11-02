@@ -3,7 +3,7 @@
 Zend\\Db\\Sql
 =============
 
-``Zend\Db\Sql`` is a SQL abstraction layer for building platform specific SQL queries via a object-oriented API.
+``Zend\Db\Sql`` is a SQL abstraction layer for building platform specific SQL queries via an object-oriented API.
 The end result of an ``Zend\Db\Sql`` object will be to either produce a Statement and Parameter container that
 represents the target query, or a full string that can be directly executed against the database platform. To
 achieve this, ``Zend\Db\Sql`` objects require a ``Zend\Db\Adapter\Adapter`` object in order to produce the
