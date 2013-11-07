@@ -76,7 +76,7 @@ to create a new project from scratch with Zend Framework:
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar update
 
-We can now move on to the virtual host.
+We can now move on to the web server setup.
 
 Using the Apache Web Server
 ---------------------------
@@ -114,15 +114,16 @@ define a virtual host along these lines:
 Make sure that you update your ``/etc/hosts`` or
 ``c:\windows\system32\drivers\etc\hosts`` file so that ``zf2-tutorial.localhost``
 is mapped to ``127.0.0.1``. The website can then be accessed using
-http://zf2-tutorial.localhost.  
+http://zf2-tutorial.localhost.
 
 .. code-block:: txt
    :linenos:
 
     127.0.0.1               zf2-tutorial.localhost localhost
 
-Restart your web server.
-If you’ve done it right, you should see something like this:
+Restart Apache.
+
+If you've done it correctly, it should look something like this:
 
 .. image:: ../images/user-guide.skeleton-application.hello-world.png
     :width: 940 px
@@ -145,12 +146,36 @@ before continuing.  If you're are using IIS with the URL Rewrite Module, import 
 You now have a working skeleton application and we can start adding the specifics
 for our application.
 
+Using the Built-in PHP CLI Server
+---------------------------------
+
+Alternatively — if you are using PHP 5.4 or above — you can use the built-in CLI server (cli-server). To do this, you
+just start the server in the root directory:
+
+.. code-block:: bash
+    :linenos:
+    
+    php -S 0.0.0.0:8080 -t public/ public/index.php
+
+This will make the website available on port 8080 on all network interfaces, using
+``public/index.php`` to handle routing. This means the site is accessible via http://localhost:8080
+or http://<your-local-IP>:8080.
+
+If you’ve done it right, you should see the same result as with Apache above.
+
+To test that your routing is working, navigate to
+http://localhost:8080/1234 and you should see the same error page as with Apache above.
+
+.. note::
+
+    The built-in CLI server is **for development only**.
+
 Error reporting
 ---------------
 
-Optionally, you can use the ``APPLICATION_ENV`` setting in your virtualhost to
-let PHP output all its errors to the browser. This can be useful when during
-development of your application.
+Optionally, *when using Apache*, you can use the ``APPLICATION_ENV`` setting in 
+your ``VirtualHost`` to let PHP output all its errors to the browser. This can be 
+useful when during development of your application.
 
 Edit ``index.php`` from the ``zf2-tutorial/public/`` directory and change it to
 the following:
