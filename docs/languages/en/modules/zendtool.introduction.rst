@@ -25,7 +25,11 @@ Installation using `Composer`_
 
     1. Open console (command prompt)
     2. Go to your application's directory
-    3. Run `composer require zendframework/zftool:dev-master`
+    3. Run `php composer.phar require zendframework/zftool:dev-master`
+
+Composer will be installed into the `vendor/bin` folder so you may want to add that directory to your PATH variable so you are
+able to invoke zf.php from the command line withour pre-pending the full path.
+
 
 Manual installation
 -------------------
