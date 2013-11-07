@@ -45,6 +45,8 @@ Usage
 
 In the following usage examples, the **zf.php** command can be replaced with **zftool.phar**.
 
+For windows users : the **zf.php** command can be replaced with **vendor\bin\zf.php.bat** and run from the root application folder, eg: zf2-tutorial.
+
 Basic information
 ^^^^^^^^^^^^^^^^^
 
