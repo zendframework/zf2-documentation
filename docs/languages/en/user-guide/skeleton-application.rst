@@ -82,7 +82,7 @@ Using the Apache Web Server
 ---------------------------
 
 You now need to create an Apache virtual host for the application and edit your
-hosts file so that http://zf2-tutorial.localhost will serve ``index.php`` from the
+hosts file so that ``http://zf2-tutorial.localhost`` will serve ``index.php`` from the
 ``zf2-tutorial/public`` directory.
 
 Setting up the virtual host is usually done within ``httpd.conf`` or
@@ -114,7 +114,7 @@ define a virtual host along these lines:
 Make sure that you update your ``/etc/hosts`` or
 ``c:\windows\system32\drivers\etc\hosts`` file so that ``zf2-tutorial.localhost``
 is mapped to ``127.0.0.1``. The website can then be accessed using
-http://zf2-tutorial.localhost.  
+``http://zf2-tutorial.localhost``.
 
 .. code-block:: txt
    :linenos:
@@ -128,7 +128,7 @@ If you’ve done it right, you should see something like this:
     :width: 940 px
 
 To test that your ``.htaccess`` file is working, navigate to
-http://zf2-tutorial.localhost/1234 and you should see this:
+``http://zf2-tutorial.localhost/1234`` and you should see this:
 
 .. image:: ../images/user-guide.skeleton-application.404.png
     :width: 940 px
