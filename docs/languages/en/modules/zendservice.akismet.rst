@@ -88,7 +88,8 @@ invalid.
 
 .. _zendservice.akismet.isspam.example-1:
 
-.. rubric:: isSpam() Usage
+isSpam() Usage
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -124,7 +125,8 @@ value. An exception will be raised if the *API* key used is invalid.
 
 .. _zendservice.akismet.submitspam.example-1:
 
-.. rubric:: submitSpam() Usage
+submitSpam() Usage
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -156,7 +158,8 @@ like ``submitSpam()``, does not return a value. An exception will be raised if t
 
 .. _zendservice.akismet.submitham.example-1:
 
-.. rubric:: submitHam() Usage
+submitHam() Usage
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
