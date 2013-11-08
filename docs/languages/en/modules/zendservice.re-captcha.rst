@@ -25,9 +25,10 @@ Simplest use
 
 Instantiate a ``ZendService\ReCaptcha\ReCaptcha`` object, passing it your public and private keys:
 
-.. _zendservice.recaptcha.example-1:
+.. _zendservice.recaptcha.simplestuse.example-1:
 
-.. rubric:: Creating an instance of the reCAPTCHA service
+Creating an instance of the reCAPTCHA service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -36,9 +37,10 @@ Instantiate a ``ZendService\ReCaptcha\ReCaptcha`` object, passing it your public
 
 To render the reCAPTCHA, simply call the ``getHTML()`` method:
 
-.. _zendservice.recaptcha.example-2:
+.. _zendservice.recaptcha.simplestuse.example-2:
 
-.. rubric:: Displaying the reCAPTCHA
+Displaying the reCAPTCHA
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -48,9 +50,10 @@ To render the reCAPTCHA, simply call the ``getHTML()`` method:
 When the form is submitted, you should receive two fields, 'recaptcha_challenge_field' and
 'recaptcha_response_field'. Pass these to the reCAPTCHA object's ``verify()`` method:
 
-.. _zendservice.recaptcha.example-3:
+.. _zendservice.recaptcha.simplestuse.example-3:
 
-.. rubric:: Verifying the form fields
+Verifying the form fields
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -63,9 +66,10 @@ When the form is submitted, you should receive two fields, 'recaptcha_challenge_
 Once you have the result, test against it to see if it is valid. The result is a
 ``ZendService\ReCaptcha\Response`` object, which provides an ``isValid()`` method.
 
-.. _zendservice.recaptcha.example-4:
+.. _zendservice.recaptcha.simplestuse.example-4:
 
-.. rubric:: Validating the reCAPTCHA
+Validating the reCAPTCHA
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -92,7 +96,8 @@ In order to use this component you will need `an account`_ to generate public an
 
 .. _zendservice.recaptcha.mailhide.example-1:
 
-.. rubric:: Using the mail hide component
+Using the mail hide component
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -142,7 +147,8 @@ The configuration options can be set by sending them as the fourth argument to t
 
 .. _zendservice.recaptcha.mailhide.example-2:
 
-.. rubric:: Generating many hidden email addresses
+Generating many hidden email addresses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
