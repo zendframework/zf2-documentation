@@ -1,7 +1,7 @@
 .. _zendservice.livedocx:
 
-``ZendService\LiveDocx\LiveDocx``
-========================
+ZendService\LiveDocx\LiveDocx
+=============================
 
 .. _zendservice.livedocx.introduction:
 
@@ -366,7 +366,9 @@ Resulting document as *PDF* in Document Viewer 2.26.1.
 
 You can download the *DOC* `template file`_ and the resulting `PDF document`_.
 
-**NOTE:** blocks may not be nested.
+.. note::
+
+   Blocks may not be nested.
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/telephone-bill``.
@@ -680,8 +682,10 @@ which are not available on the server, font-substitution will take place. This m
 
     unset($mailMerge);
 
-**NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
-such as ``Zend\Cache\Cache``- this will considerably speed up your application.
+.. note::
+
+   As the return value of this method changes very infrequently, it is highly recommended to use a cache,
+   such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-fonts``.
@@ -710,8 +714,10 @@ format of the documentation generation process.
 
     unset($mailMerge);
 
-**NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
-such as ``Zend\Cache\Cache``- this will considerably speed up your application.
+.. note::
+
+   As the return value of this method changes very infrequently, it is highly recommended to use a cache,
+   such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
@@ -767,8 +773,10 @@ the documentation generation process.
 
     unset($mailMerge);
 
-**NOTE:** As the return value of this method changes very infrequently, it is highly recommended to use a cache,
-such as ``Zend\Cache\Cache``- this will considerably speed up your application.
+.. note::
+
+   As the return value of this method changes very infrequently, it is highly recommended to use a cache,
+   such as ``Zend\Cache\Cache``- this will considerably speed up your application.
 
 For executable demo applications, which illustrate the above, please take a look at
 ``/demos/ZendService/LiveDocx/MailMerge/supported-formats``.
