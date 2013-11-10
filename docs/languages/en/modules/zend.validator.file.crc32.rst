@@ -17,7 +17,8 @@ to provide a convenient validator that only supports the ``crc32`` algorithm.
 
 .. _zend.validator.file.crc32.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -27,7 +28,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.crc32.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -46,7 +48,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.crc32.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 .. function:: getCrc32()
    :noindex:
