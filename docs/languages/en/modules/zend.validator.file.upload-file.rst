@@ -13,7 +13,8 @@ and will return descriptive messages for any upload errors.
 
 .. _zend.validator.file.upload-file.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

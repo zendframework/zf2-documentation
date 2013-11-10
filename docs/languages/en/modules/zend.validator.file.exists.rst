@@ -9,7 +9,8 @@ This validator is inversely related to the :ref:`NotExists validator <zend.valid
 
 .. _zend.validator.file.exists.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -18,7 +19,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.exists.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

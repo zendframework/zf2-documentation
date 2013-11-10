@@ -1,4 +1,4 @@
-.. _zend.validator.Db:
+.. _zend.validator.db:
 
 Db\\RecordExists and Db\\NoRecordExists
 =======================================

@@ -17,7 +17,8 @@ to provide a convenient validator that only supports the ``md5`` algorithm.
 
 .. _zend.validator.file.md5.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -27,7 +28,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.md5.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -48,7 +50,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.md5.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 .. function:: getMd5()
    :noindex:

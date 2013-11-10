@@ -3,6 +3,11 @@
 Validator Chains
 ================
 
+.. _zend.validator.validator_chains.overview:
+
+Overview
+--------
+
 Often multiple validations should be applied to some value in a particular order. The following code demonstrates a
 way to solve the example from the :ref:`introduction <zend.validator.introduction>`, where a username must be
 between 6 and 12 alphanumeric characters:
