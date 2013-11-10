@@ -19,7 +19,8 @@ This validator is inversely related to the :ref:`ExcludeMimeType validator <zend
 
 .. _zend.validator.file.mime-type.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -34,7 +35,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.mime-type.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

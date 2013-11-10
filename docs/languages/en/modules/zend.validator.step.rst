@@ -27,12 +27,13 @@ A basic example is the following one:
 .. code-block:: php
    :linenos:
 
-               $validator = new Zend\Validator\Step();
-               if ($validator->isValid(1)) {
-               // value is a valid step value
-               } else {
-               // false
-               }
+   $validator = new Zend\Validator\Step();
+
+   if ($validator->isValid(1)) {
+       // value is a valid step value
+   } else {
+       // false
+   }
 
 .. _zend.validate.set.step.floatingvalues:
 
@@ -46,14 +47,16 @@ This validator also supports floating-point base value and step value. Here is a
 .. code-block:: php
    :linenos:
 
-               $validator = new Zend\Validator\Step(array(
-               'baseValue' => 1.1,
-               'step' => 2.2
-               ));
+   $validator = new Zend\Validator\Step(
+       array(
+           'baseValue' => 1.1,
+           'step'      => 2.2,
+       )
+   );
 
-               echo $validator->isValid(1.1); // prints true
-               echo $validator->isValid(3.3); // prints true
-               echo $validator->isValid(3.35); // prints false
-               echo $validator->isValid(2.2); // prints false
+   echo $validator->isValid(1.1); // prints true
+   echo $validator->isValid(3.3); // prints true
+   echo $validator->isValid(3.35); // prints false
+   echo $validator->isValid(2.2); // prints false
 
 

@@ -10,7 +10,8 @@ This validator is inversely related to the :ref:`ExcludeExtension validator <zen
 
 .. _zend.validator.file.extension.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -21,7 +22,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.extension.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -43,7 +45,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.extension.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 .. function:: addExtension(string|array $options)
    :noindex:

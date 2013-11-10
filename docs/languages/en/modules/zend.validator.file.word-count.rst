@@ -7,7 +7,8 @@ WordCount
 
 .. _zend.validator.file.word-count.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -18,7 +19,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.word-count.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
