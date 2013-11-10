@@ -17,7 +17,8 @@ matches the supplied hash(es) and algorithm(s).
 
 .. _zend.validator.file.hash.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -29,7 +30,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.hash.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -48,7 +50,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.hash.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 .. function:: getHash()
    :noindex:

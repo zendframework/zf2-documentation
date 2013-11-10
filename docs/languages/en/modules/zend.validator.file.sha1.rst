@@ -17,7 +17,8 @@ to provide a convenient validator that only supports the ``sha1`` algorithm.
 
 .. _zend.validator.file.sha1.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -27,7 +28,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.sha1.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -48,7 +50,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.sha1.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 .. function:: getSha1()
    :noindex:
