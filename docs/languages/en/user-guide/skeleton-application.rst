@@ -141,7 +141,7 @@ before continuing.  If you're are using IIS with the URL Rewrite Module, import 
    :linenos:
 
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^.*$ index.php [NC,L]
+    RewriteRule ^ index.php [NC,L]
 
 You now have a working skeleton application and we can start adding the specifics
 for our application.
