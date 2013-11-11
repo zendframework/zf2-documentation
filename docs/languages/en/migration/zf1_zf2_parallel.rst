@@ -109,9 +109,9 @@ the instructions in the note below):
    RewriteCond %{REQUEST_FILENAME} -s [OR]
    RewriteCond %{REQUEST_FILENAME} -l [OR]
    RewriteCond %{REQUEST_FILENAME} -d
-   RewriteRule ^.*$ - [NC,L]
+   RewriteRule ^ - [NC,L]
    RewriteRule ^album(/.*)?$ index_zf2.php [NC,L]
-   RewriteRule ^.*$ index.php [NC,L]
+   RewriteRule ^ index.php [NC,L]
 
 ``index_zf2.php`` is a PHP script that includes as the typical
 ``public/index.php`` file of ZF2.  Here is the source code for
