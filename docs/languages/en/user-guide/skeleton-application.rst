@@ -75,6 +75,34 @@ to create a new project from scratch with Zend Framework:
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar update
+        
+.. note::
+
+   For windows users with wamp:
+   
+   1. Install composer for windows
+      Check composer is properly installed by running 
+      
+      .. code-block:: bash
+         :linenos:
+         
+         composer
+         
+   2. Install git for windows. Also need to add git path in windows environment variable
+      Check git is properly installed by running
+      
+      .. code-block:: bash
+         :linenos:
+         
+         git
+         
+   3. Now install zf2 using command
+      
+      .. code-block:: bash
+         :linenos:
+         
+         composer create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+   
 
 We can now move on to the web server setup.
 
