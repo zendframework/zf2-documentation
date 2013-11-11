@@ -201,8 +201,8 @@ matching file is found under the ``document_root``.
            RewriteCond %{REQUEST_FILENAME} -s [OR]
            RewriteCond %{REQUEST_FILENAME} -l [OR]
            RewriteCond %{REQUEST_FILENAME} -d
-           RewriteRule ^.*$ - [NC,L]
-           RewriteRule ^.*$ /index.php [NC,L]
+           RewriteRule ^ - [NC,L]
+           RewriteRule ^ /index.php [NC,L]
        </Location>
    </VirtualHost>
 
@@ -224,8 +224,8 @@ configuration, except that it specifies only the rewrite rules, and the leading 
    RewriteCond %{REQUEST_FILENAME} -s [OR]
    RewriteCond %{REQUEST_FILENAME} -l [OR]
    RewriteCond %{REQUEST_FILENAME} -d
-   RewriteRule ^.*$ - [NC,L]
-   RewriteRule ^.*$ index.php [NC,L]
+   RewriteRule ^ - [NC,L]
+   RewriteRule ^ index.php [NC,L]
 
 There are many ways to configure ``mod_rewrite``; if you would like more information, see Jayson Minard's
 `Blueprint for PHP Applications: Bootstrapping`_.

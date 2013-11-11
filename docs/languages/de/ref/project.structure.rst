@@ -215,8 +215,8 @@ Hier ist eine sehr grundsätzliche Definition eines virtuellen Hosts. Diese Rege
            RewriteCond %{REQUEST_FILENAME} -s [OR]
            RewriteCond %{REQUEST_FILENAME} -l [OR]
            RewriteCond %{REQUEST_FILENAME} -d
-           RewriteRule ^.*$ - [NC,L]
-           RewriteRule ^.*$ /index.php [NC,L]
+           RewriteRule ^ - [NC,L]
+           RewriteRule ^ /index.php [NC,L]
        </Location>
    </VirtualHost>
 
@@ -239,8 +239,8 @@ für virtuelle Hosts, ausser das Sie nur die Rewrite Regeln spezifiziert, und de
    RewriteCond %{REQUEST_FILENAME} -s [OR]
    RewriteCond %{REQUEST_FILENAME} -l [OR]
    RewriteCond %{REQUEST_FILENAME} -d
-   RewriteRule ^.*$ - [NC,L]
-   RewriteRule ^.*$ index.php [NC,L]
+   RewriteRule ^ - [NC,L]
+   RewriteRule ^ index.php [NC,L]
 
 Es gibt viele Wege um ``mod_rewrite`` zu konfigurieren; wenn man weitere Informationen haben will, dann sollte man
 in Jayson Minard's `Blueprint for PHP Applications: Bootstrapping`_ sehen.
