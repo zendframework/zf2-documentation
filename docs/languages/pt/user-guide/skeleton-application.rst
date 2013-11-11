@@ -127,7 +127,7 @@ antes de continuar.  Se estiver usando IIS com o módulo URL Rewrite utilize o s
 .. code-block:: apache
 
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^.*$ index.php [NC,L]
+    RewriteRule ^ index.php [NC,L]
 
 Você agora tem sua Skeleton Application funcionando e pode começar a desenvolver sua aplicação.
 
