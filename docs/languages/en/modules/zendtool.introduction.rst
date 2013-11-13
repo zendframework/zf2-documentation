@@ -43,7 +43,14 @@ Without installation, using the PHAR file
 Usage
 -----
 
-In the following usage examples, the **zf.php** command can be replaced with **zftool.phar**.
+From Composer or Manual install:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The `zf.php` should be installed into the `vendor/ZFTool` directory (relative to your project root) - however, the command needs to be run from your project root in order for it to work correctly. You can symlink `vendor/ZFTool/zf.php` to your project root, or alternatively substitute `zf.php` for `vendor/ZFTool/zf.php` in the examples below.
+
+Using the PHAR:
+^^^^^^^^^^^^^^^
+Simply substitute `zftool.phar` for `zf.php` in the below examples.
+
 
 Basic information
 ^^^^^^^^^^^^^^^^^
