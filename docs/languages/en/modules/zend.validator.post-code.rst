@@ -1,7 +1,7 @@
-.. _zend.validator.set.post_code:
+.. _zend.validator.post_code:
 
-PostCode
-========
+PostCode Validator
+==================
 
 ``Zend\Validator\PostCode`` allows you to determine if a given value is a valid postal code. Postal codes are
 specific to cities, and in some locales termed *ZIP* codes.
@@ -58,7 +58,7 @@ by setting the locale, does not fit your needs, then you can also manually set a
    You should also be aware that postcode values are always be validated in a strict way. This means that they have
    to be written standalone without additional characters when they are not covered by the format.
 
-.. _zend.validator.set.post_code.constructor:
+.. _zend.validator.post_code.constructor:
 
 Constructor options
 -------------------
@@ -84,7 +84,7 @@ object.
        'format' => 'AT_\d+'
    ));
 
-.. _zend.validator.set.post_code.options:
+.. _zend.validator.post_code.options:
 
 Supported options for Zend\\Validator\\PostCode
 -----------------------------------------------

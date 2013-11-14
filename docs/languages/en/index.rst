@@ -235,7 +235,32 @@
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
-   modules/zend.validator.file
+   modules/zend.validator.alnum
+   modules/zend.validator.alpha
+   modules/zend.validator.barcode
+   modules/zend.validator.between
+   modules/zend.validator.callback
+   modules/zend.validator.creditcard
+   modules/zend.validator.date
+   modules/zend.validator.db
+   modules/zend.validator.digits
+   modules/zend.validator.email_address
+   modules/zend.validator.file 
+   modules/zend.validator.greaterthan
+   modules/zend.validator.hex
+   modules/zend.validator.hostname
+   modules/zend.validator.iban
+   modules/zend.validator.identical
+   modules/zend.validator.in_array
+   modules/zend.validator.ip
+   modules/zend.validator.isbn
+   modules/zend.validator.lessthan
+   modules/zend.validator.notempty
+   modules/zend.validator.post_code
+   modules/zend.validator.regex
+   modules/zend.validator.sitemap
+   modules/zend.validator.step
+   modules/zend.validator.stringlength
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
@@ -797,7 +822,32 @@ Zend\\Validator
 
         * :doc:`modules/zend.validator`
         * :doc:`modules/zend.validator.set`
+        * :doc:`modules/zend.validator.alnum`
+        * :doc:`modules/zend.validator.alpha`
+        * :doc:`modules/zend.validator.barcode`
+        * :doc:`modules/zend.validator.between`
+        * :doc:`modules/zend.validator.callback`
+        * :doc:`modules/zend.validator.creditcard`
+        * :doc:`modules/zend.validator.date`
+        * :doc:`modules/zend.validator.db`
+        * :doc:`modules/zend.validator.digits`
+        * :doc:`modules/zend.validator.email_address`
         * :doc:`modules/zend.validator.file`
+        * :doc:`modules/zend.validator.greaterthan`
+        * :doc:`modules/zend.validator.hex`
+        * :doc:`modules/zend.validator.hostname`
+        * :doc:`modules/zend.validator.iban`
+        * :doc:`modules/zend.validator.identical`
+        * :doc:`modules/zend.validator.in_array`
+        * :doc:`modules/zend.validator.ip`
+        * :doc:`modules/zend.validator.isbn`
+        * :doc:`modules/zend.validator.lessthan`
+        * :doc:`modules/zend.validator.notempty`
+        * :doc:`modules/zend.validator.post_code`
+        * :doc:`modules/zend.validator.regex`
+        * :doc:`modules/zend.validator.sitemap`
+        * :doc:`modules/zend.validator.step`
+        * :doc:`modules/zend.validator.stringlength`
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`

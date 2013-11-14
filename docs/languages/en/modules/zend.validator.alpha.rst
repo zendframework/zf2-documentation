@@ -1,13 +1,13 @@
-.. _zend.validator.set.alpha:
+.. _zend.validator.alpha:
 
-Alpha
-=====
+Alpha Validator
+===============
 
 ``Zend\Validator\Alpha`` allows you to validate if a given value contains only alphabetical characters. There is no
 length limitation for the input you want to validate. This validator is related to the ``Zend\Validator\Alnum``
 validator with the exception that it does not accept digits.
 
-.. _zend.validator.set.alpha.options:
+.. _zend.validator.alpha.options:
 
 Supported options for Zend\\Validator\\Alpha
 --------------------------------------------
@@ -16,7 +16,7 @@ The following options are supported for ``Zend\Validator\Alpha``:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to ``FALSE``
 
-.. _zend.validator.set.alpha.basic:
+.. _zend.validator.alpha.basic:
 
 Basic usage
 -----------
@@ -33,7 +33,7 @@ A basic example is the following one:
        // false
    }
 
-.. _zend.validator.set.alpha.whitespace:
+.. _zend.validator.alpha.whitespace:
 
 Using whitespaces
 -----------------
@@ -55,7 +55,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
        // false
    }
 
-.. _zend.validator.set.alpha.languages:
+.. _zend.validator.alpha.languages:
 
 Using different languages
 -------------------------
