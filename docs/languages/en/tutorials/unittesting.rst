@@ -225,7 +225,7 @@ Testing controllers is never an easy task, but Zend Framework 2 comes
 with the ``Zend\Test`` component which should make testing much less
 cumbersome.
 
-First, create ``IndexControllerTest.php`` under
+First, create ``AlbumControllerTest.php`` under
 ``zf2-tutorial/module/Album/test/AlbumTest/Controller`` with
 the following contents:
 
