@@ -1,14 +1,12 @@
-:orphan:
+.. _zend.validator.iban:
 
-.. _zend.validator.set.iban:
-
-Iban
-====
+Iban Validator
+==============
 
 ``Zend\Validator\Iban`` validates if a given value could be a *IBAN* number. *IBAN* is the abbreviation for
 "International Bank Account Number".
 
-.. _zend.validator.set.iban.options:
+.. _zend.validator.iban.options:
 
 Supported options for Zend\\Validator\\Iban
 -------------------------------------------
@@ -17,7 +15,7 @@ The following options are supported for ``Zend\Validator\Iban``:
 
 - **country_code**: Sets the country code which is used to get the *IBAN* format for validation.
 
-.. _zend.validator.set.iban.basic:
+.. _zend.validator.iban.basic:
 
 IBAN validation
 ---------------
@@ -26,7 +24,7 @@ IBAN validation
 *IBAN* numbers. This is the reason why *IBAN* numbers always need a country code. By knowing this we already know how to
 use ``Zend\Validator\Iban``.
 
-.. _zend.validator.set.iban.basic.false:
+.. _zend.validator.iban.basic.false:
 
 Ungreedy IBAN validation
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +47,7 @@ want to validate it against a defined country. This can be done by using a ``FAL
 So **any** *IBAN* number will be valid. Note that this should not be done when you accept only accounts from a
 single country.
 
-.. _zend.validator.set.iban.basic.aware:
+.. _zend.validator.iban.basic.aware:
 
 Region aware IBAN validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

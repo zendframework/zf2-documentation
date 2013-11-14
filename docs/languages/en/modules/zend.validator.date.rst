@@ -1,13 +1,11 @@
-:orphan:
+.. _zend.validator.date:
 
-.. _zend.validator.set.date:
-
-Date
-====
+Date Validator
+==============
 
 ``Zend\Validator\Date`` allows you to validate if a given value contains a date.
 
-.. _zend.validator.set.date.options:
+.. _zend.validator.date.options:
 
 Supported options for Zend\\Validator\\Date
 -------------------------------------------
@@ -16,7 +14,9 @@ The following options are supported for ``Zend\Validator\Date``:
 
 - **format**: Sets the format which is used to write the date.
 
-.. _zend.validator.set.date.basic:
+- **locale**: Sets the locale which will be used to validate date values.
+
+.. _zend.validator.date.basic:
 
 Default date validation
 -----------------------
@@ -34,7 +34,7 @@ been given.
 
 The default date format for ``Zend\Validator\Date`` is 'yyyy-MM-dd'.
 
-.. _zend.validator.set.date.formats:
+.. _zend.validator.date.formats:
 
 Self defined date validation
 ----------------------------
