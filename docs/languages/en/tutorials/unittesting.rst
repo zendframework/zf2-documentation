@@ -465,6 +465,15 @@ Running ``phpunit`` gives us the following output:
 Testing the ``editAction`` and ``deleteAction`` methods can be easily done in a manner similar
 as shown for the ``addAction``.
 
+When testing the editAction you will also need to mock out the ``getAlbum`` method:
+    
+.. code-block:: php
+
+    $albumTableMock->expects($this->once())
+        ->method('getAlbum')
+        ->will($this->returnValue(new \Album\Model\Album()));
+
+
 .. _testing-model-entities:
 
 Testing model entities
