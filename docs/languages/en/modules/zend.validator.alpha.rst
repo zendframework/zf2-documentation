@@ -3,7 +3,7 @@
 Alpha
 =====
 
-``Zend\Validator\Alpha`` allows you to validate if a given value contains only alphabetical characters. There is no
+``Zend\I18n\Validator\Alpha`` allows you to validate if a given value contains only alphabetical characters. There is no
 length limitation for the input you want to validate. This validator is related to the ``Zend\Validator\Alnum``
 validator with the exception that it does not accept digits.
 
@@ -12,7 +12,7 @@ validator with the exception that it does not accept digits.
 Supported options for Zend\\Validator\\Alpha
 --------------------------------------------
 
-The following options are supported for ``Zend\Validator\Alpha``:
+The following options are supported for ``Zend\I18n\Validator\Alpha``:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to ``FALSE``
 
@@ -26,7 +26,7 @@ A basic example is the following one:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Alpha();
+   $validator = new Zend\I18n\Validator\Alpha();
    if ($validator->isValid('Abcd')) {
        // value contains only allowed chars
    } else {
@@ -48,7 +48,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Alpha(array('allowWhiteSpace' => true));
+   $validator = new Zend\I18n\Validator\Alpha(array('allowWhiteSpace' => true));
    if ($validator->isValid('Abcd and efg')) {
        // value contains only allowed chars
    } else {
@@ -60,7 +60,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
 Using different languages
 -------------------------
 
-When using ``Zend\Validator\Alpha`` then the language which the user sets within his browser will be used to set
+When using ``Zend\I18n\Validator\Alpha`` then the language which the user sets within his browser will be used to set
 the allowed characters. This means when your user sets **de** for german then he can also enter characters like
 **ä**, **ö** and **ü** additionally to the characters from the english alphabet.
 
