@@ -4,7 +4,7 @@ Alpha
 =====
 
 ``Zend\I18n\Validator\Alpha`` allows you to validate if a given value contains only alphabetical characters. There is no
-length limitation for the input you want to validate. This validator is related to the ``Zend\Validator\Alnum``
+length limitation for the input you want to validate. This validator is related to the ``Zend\I18n\Validator\Alnum``
 validator with the exception that it does not accept digits.
 
 .. _zend.validator.set.alpha.options:

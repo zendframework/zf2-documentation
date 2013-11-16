@@ -25,7 +25,7 @@ A basic example is the following one:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Alnum();
+   $validator = new Zend\I18n\Validator\Alnum();
    if ($validator->isValid('Abcd12')) {
        // value contains only allowed chars
    } else {
@@ -47,7 +47,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Alnum(array('allowWhiteSpace' => true));
+   $validator = new Zend\I18n\Validator\Alnum(array('allowWhiteSpace' => true));
    if ($validator->isValid('Abcd and 12')) {
        // value contains only allowed chars
    } else {
