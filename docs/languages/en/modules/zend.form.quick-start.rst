@@ -885,9 +885,9 @@ Annotations allow us to solve this problem. You can define the following behavio
 
 - *ComposedObject*: specify another object with annotations to parse. Typically, this is used if a property
   references another object, which will then be added to your form as an additional fieldset. Expects a string
-  value indicating the class for the object being composed or an array to compose a collection: ``@ComposedObject({
-  "target_object":"Universe\Model\Quest\QuestCompleteOption", "is_collection":"true", "options":{"count":2}})`` 
-  Target object is the element to compose, is_collection flags this as a collection and options can take an array
+  value indicating the class for the object being composed ``@ComposedObject("Namespace\Model\ComposedObject")`` or an array to compose a collection: ``@ComposedObject({
+  "target_object":"Namespace\Model\ComposedCollection", "is_collection":"true", "options":{"count":2}})`` 
+  ``target_object`` is the element to compose, ``is_collection`` flags this as a collection and ``options`` can take an array
   of options to pass into the collection. 
 
 - *ErrorMessage*: specify the error message to return for an element in the case of a failed validation. Expects a
