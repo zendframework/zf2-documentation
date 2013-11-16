@@ -822,32 +822,6 @@ Zend\\Validator
 
         * :doc:`modules/zend.validator`
         * :doc:`modules/zend.validator.set`
-        * :doc:`modules/zend.validator.alnum`
-        * :doc:`modules/zend.validator.alpha`
-        * :doc:`modules/zend.validator.barcode`
-        * :doc:`modules/zend.validator.between`
-        * :doc:`modules/zend.validator.callback`
-        * :doc:`modules/zend.validator.creditcard`
-        * :doc:`modules/zend.validator.date`
-        * :doc:`modules/zend.validator.db`
-        * :doc:`modules/zend.validator.digits`
-        * :doc:`modules/zend.validator.email_address`
-        * :doc:`modules/zend.validator.file`
-        * :doc:`modules/zend.validator.greaterthan`
-        * :doc:`modules/zend.validator.hex`
-        * :doc:`modules/zend.validator.hostname`
-        * :doc:`modules/zend.validator.iban`
-        * :doc:`modules/zend.validator.identical`
-        * :doc:`modules/zend.validator.in_array`
-        * :doc:`modules/zend.validator.ip`
-        * :doc:`modules/zend.validator.isbn`
-        * :doc:`modules/zend.validator.lessthan`
-        * :doc:`modules/zend.validator.notempty`
-        * :doc:`modules/zend.validator.post_code`
-        * :doc:`modules/zend.validator.regex`
-        * :doc:`modules/zend.validator.sitemap`
-        * :doc:`modules/zend.validator.step`
-        * :doc:`modules/zend.validator.stringlength`
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`
