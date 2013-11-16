@@ -14,7 +14,7 @@ zeigt wie eine Verkettung von zwei Filtern für das übermitteln eines Benutzern
 
    // Eine Filterkette erstellen und die Filter der Kette hinzufügen
    $filterChain = new Zend\Filter\Filter();
-   $filterChain->addFilter(new Zend\Filter\Alpha())
+   $filterChain->addFilter(new Zend\I18n\Filter\Alpha())
                ->addFilter(new Zend\Filter\StringToLower());
 
    // Den Benutzernamen filtern
@@ -45,7 +45,7 @@ Benutzernamens:
    $filterChain->appendFilter(new Zend\Filter\StringToLower());
 
    // Dieser Filter wird am Beginn der Kette vorangestellt
-   $filterChain->prependFilter(new Zend\Filter\Alpha());
+   $filterChain->prependFilter(new Zend\I18n\Filter\Alpha());
 
    // Nach dem Benutzernamen filtern
    $username = $filterChain->filter($_POST['username']);

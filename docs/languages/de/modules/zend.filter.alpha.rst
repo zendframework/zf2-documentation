@@ -4,15 +4,15 @@
 Alpha
 =====
 
-``Zend\Filter\Alpha`` ist ein Filter der den String ``$value`` zurückgibt, wobei er alle Zeichen entfernt die
+``Zend\I18n\Filter\Alpha`` ist ein Filter der den String ``$value`` zurückgibt, wobei er alle Zeichen entfernt die
 keine alphanummerischen Zeichen sind. Dieser Filter enthält eine Option welche Leerzeichen erlaubt.
 
 .. _zend.filter.set.alpha.options:
 
-Unterstützte Optionen für Zend\Filter\Alpha
+Unterstützte Optionen für Zend\I18n\Filter\Alpha
 -------------------------------------------
 
-Die folgenden Optionen werden für ``Zend\Filter\Alpha`` unterstützt:
+Die folgenden Optionen werden für ``Zend\I18n\Filter\Alpha`` unterstützt:
 
 - **allowwhitespace**: Wenn diese Option gesetzt wird dann werden Leerzeichen erlaubt. Andernfalls werden Sie
   unterdrückt. Standardmäßig sind Leerzeichen nicht erlaubt.
@@ -27,7 +27,7 @@ Ein einfaches Beispiel der Verwendung ist anbei:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\Alpha();
+   $filter = new Zend\I18n\Filter\Alpha();
 
    print $filter->filter('Das ist (mein) Inhalt: 123');
 
@@ -36,7 +36,7 @@ entfernt werden.
 
 .. note::
 
-   ``Zend\Filter\Alpha`` arbeitet mit den meisten Sprachen; trotzdem gibt es drei Ausnahmen: Chinesisch, Japanisch
+   ``Zend\I18n\Filter\Alpha`` arbeitet mit den meisten Sprachen; trotzdem gibt es drei Ausnahmen: Chinesisch, Japanisch
    und Koreanisch. Bei diesen Sprachen wird das englische Alphabeth verwenden. Die Sprache wird durch die
    Verwendung von ``Zend_Locale`` erkannt.
 
@@ -45,13 +45,13 @@ entfernt werden.
 Leerzeichen erlauben
 --------------------
 
-``Zend\Filter\Alpha`` kann auch Leerzeichen erlauben. Dies kann nützlich sein wenn man spezielle Zeichen von einem
+``Zend\I18n\Filter\Alpha`` kann auch Leerzeichen erlauben. Dies kann nützlich sein wenn man spezielle Zeichen von einem
 Statz entfernen will. Siehe das folgende Beispiel:
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\Alpha(array('allowwhitespace' => true));
+   $filter = new Zend\I18n\Filter\Alpha(array('allowwhitespace' => true));
 
    print $filter->filter('Das ist (mein) Inhalt: 123');
 
