@@ -480,7 +480,7 @@ mencionadas en un documento o una página:
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($documentPath);
+   $pdf = ZendPdf\PdfDocument::load($documentPath);
    ...
    // Obtener todas las fuentes del documento
    $fontList = $pdf->extractFonts();
@@ -511,7 +511,7 @@ mencionadas en un documento o una página:
    :linenos:
 
    ...
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
@@ -531,7 +531,7 @@ mencionadas en un documento o una página:
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($docPath);
+   $pdf = ZendPdf\PdfDocument::load($docPath);
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
