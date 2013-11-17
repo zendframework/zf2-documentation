@@ -50,7 +50,7 @@ rule provided will be used to inflect the text. Classes are typically specified 
 filter name stripped of any common prefix.
 
 As an example, you can use any ``Zend\Filter`` concrete implementations; however, instead of referring to them as
-'``Zend\Filter\Alpha``' or '``Zend\Filter\StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
+'``Zend\I18n\Filter\Alpha``' or '``Zend\Filter\StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
 
 .. _zend.filter.inflector.custom-filters:
 

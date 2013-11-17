@@ -7,7 +7,7 @@ Alnum
 ``Zend\Validate\Alnum`` erlaubt es zu prüfen ob ein angegebener Wert nur alphabetische Zeichen und Ziffern
 enthält. Es gibt keine Begrenzung der Länge für die Eingabe welche geprüft werden soll.
 
-.. _zend.validator.set.alnum.options:
+.. _zend.i18n.validator.alnum.options:
 
 Unterstützte Optionen für Zend\Validate\Alnum
 ---------------------------------------------

@@ -18,7 +18,7 @@
 
       // Создание цепочки фильтров и добавление в нее фильтров
       $filterChain = new Zend\Filter\Filter();
-      $filterChain->addFilter(new Zend\Filter\Alpha())
+      $filterChain->addFilter(new Zend\I18n\Filter\Alpha())
                   ->addFilter(new Zend\Filter\StringToLower());
 
       // Фильтрация имени пользователя

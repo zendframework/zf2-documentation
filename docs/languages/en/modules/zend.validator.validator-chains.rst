@@ -20,7 +20,7 @@ between 6 and 12 alphanumeric characters:
    $validatorChain->attach(
                        new Zend\Validator\StringLength(array('min' => 6,
                                                             'max' => 12)))
-                  ->attach(new Zend\Validator\Alnum());
+                  ->attach(new Zend\I18n\Validator\Alnum());
 
    // Validate the username
    if ($validatorChain->isValid($username)) {
@@ -52,7 +52,7 @@ string length validation fails:
                        new Zend\Validator\StringLength(array('min' => 6,
                                                             'max' => 12)),
                        true)
-                  ->attach(new Zend\Validator\Alnum());
+                  ->attach(new Zend\I18n\Validator\Alnum());
 
 Any object that implements ``Zend\Validator\ValidatorInterface`` may be used in a validator chain.
 

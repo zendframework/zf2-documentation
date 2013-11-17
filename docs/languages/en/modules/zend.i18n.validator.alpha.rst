@@ -1,21 +1,22 @@
-.. _zend.validator.set.alnum:
+.. _zend.validator.set.alpha:
 
-Alnum
+Alpha
 =====
 
-``Zend\I18n\Validator\Alnum`` allows you to validate if a given value contains only alphabetical characters and digits.
-There is no length limitation for the input you want to validate.
+``Zend\I18n\Validator\Alpha`` allows you to validate if a given value contains only alphabetical characters. There is no
+length limitation for the input you want to validate. This validator is related to the ``Zend\I18n\Validator\Alnum``
+validator with the exception that it does not accept digits.
 
-.. _zend.validator.set.alnum.options:
+.. _zend.i18n.validator.alpha.options:
 
-Supported options for Zend\I18n\Validator\Alnum
------------------------------------------------
+Supported options for Zend\\I18n\\Validator\\Alpha
+--------------------------------------------------
 
-The following options are supported for ``Zend\I18n\Validator\Alnum``:
+The following options are supported for ``Zend\I18n\Validator\Alpha``:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to ``FALSE``
 
-.. _zend.validator.set.alnum.basic:
+.. _zend.validator.set.alpha.basic:
 
 Basic usage
 -----------
@@ -25,14 +26,14 @@ A basic example is the following one:
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Alnum();
-   if ($validator->isValid('Abcd12')) {
+   $validator = new Zend\I18n\Validator\Alpha();
+   if ($validator->isValid('Abcd')) {
        // value contains only allowed chars
    } else {
        // false
    }
 
-.. _zend.validator.set.alnum.whitespace:
+.. _zend.validator.set.alpha.whitespace:
 
 Using whitespaces
 -----------------
@@ -47,19 +48,19 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
 .. code-block:: php
    :linenos:
 
-   $validator = new Zend\Validator\Alnum(array('allowWhiteSpace' => true));
-   if ($validator->isValid('Abcd and 12')) {
+   $validator = new Zend\I18n\Validator\Alpha(array('allowWhiteSpace' => true));
+   if ($validator->isValid('Abcd and efg')) {
        // value contains only allowed chars
    } else {
        // false
    }
 
-.. _zend.validator.set.alnum.languages:
+.. _zend.validator.set.alpha.languages:
 
 Using different languages
 -------------------------
 
-When using ``Zend\I18n\Validator\Alnum`` then the language which the user sets within his browser will be used to set
+When using ``Zend\I18n\Validator\Alpha`` then the language which the user sets within his browser will be used to set
 the allowed characters. This means when your user sets **de** for german then he can also enter characters like
 **ä**, **ö** and **ü** additionally to the characters from the english alphabet.
 

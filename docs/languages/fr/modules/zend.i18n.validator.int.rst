@@ -6,7 +6,7 @@ Int
 
 ``Zend\Validate\Int`` valide une valeur envers un entier. Les entiers localisés sont aussi gérés.
 
-.. _zend.validator.set.int.options:
+.. _zend.i18n.validator.int.options:
 
 Options supportées par Zend\Validate\Int
 ----------------------------------------

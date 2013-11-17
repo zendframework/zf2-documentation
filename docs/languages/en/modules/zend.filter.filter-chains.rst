@@ -13,7 +13,7 @@ submitted username:
 
    // Create a filter chain and add filters to the chain
    $filterChain = new Zend\Filter\FilterChain();
-   $filterChain->attach(new Zend\Filter\Alpha())
+   $filterChain->attach(new Zend\I18n\Filter\Alpha())
                ->attach(new Zend\Filter\StringToLower());
 
    // Filter the username
@@ -38,7 +38,7 @@ characters are removed.
 
    // Create a filter chain and add filters to the chain
    $filterChain = new Zend\Filter\FilterChain();
-   $filterChain->attach(new Zend\Filter\Alpha())
+   $filterChain->attach(new Zend\I18n\Filter\Alpha())
                ->attach(new Zend\Filter\StringToLower(), 500);
 
 .. _zend.filter.filter_chains.plugin_manager:
@@ -79,5 +79,5 @@ You can also add your own ``FilterPluginManager`` implementation.
 
    $filterChain = new Zend\Filter\FilterChain();
    $filterChain->setPluginManager(new MyFilterPluginManager());
-   $filterChain->attach(new Zend\Filter\Alpha())
+   $filterChain->attach(new Zend\I18n\Filter\Alpha())
                ->attach(new MyCustom\Filter\MyNewFilter());

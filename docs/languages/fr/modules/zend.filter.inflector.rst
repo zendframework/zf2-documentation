@@ -52,7 +52,7 @@ et simples. Sinon, la classe qui correspond à la règle sera utilisée pour ana
 spécifiées par leur nom (du filtre), non préfixé.
 
 Par exemple, vous pouvez utiliser n'importe quelle instance de ``Zend_Filter``. Cependant, plutôt que d'y faire
-référence via "``Zend\Filter\Alpha``" ou "``Zend\Filter\StringToLower``", vous spécifierez seulement "*Alpha*"
+référence via "``Zend\I18n\Filter\Alpha``" ou "``Zend\Filter\StringToLower``", vous spécifierez seulement "*Alpha*"
 ou encore "*StringToLower*".
 
 .. _zend.filter.inflector.paths:

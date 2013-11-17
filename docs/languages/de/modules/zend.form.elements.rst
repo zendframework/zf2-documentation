@@ -157,7 +157,7 @@ Sehen wir uns einige Beispiele an:
    :linenos:
 
    // Konkrete Filterinstanz:
-   $element->addFilter(new Zend\Filter\Alnum());
+   $element->addFilter(new Zend\I18n\Filter\Alnum());
 
    // Kurzname des Filters:
    $element->addFilter('Alnum');
