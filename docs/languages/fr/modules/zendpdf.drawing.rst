@@ -533,7 +533,7 @@ mentionnés à l'intérieur d'un document ou d'une page :
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($cheminVersDocument);
+   $pdf = ZendPdf\PdfDocument::load($cheminVersDocument);
    ...
    // Récupère toutes les polices du document
    $listePolice = $pdf->extractFonts();
@@ -563,7 +563,7 @@ mentionnés à l'intérieur d'un document ou d'une page :
    :linenos:
 
    ...
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
@@ -581,7 +581,7 @@ mentionnés à l'intérieur d'un document ou d'une page :
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($cheminVersDocument);
+   $pdf = ZendPdf\PdfDocument::load($cheminVersDocument);
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
