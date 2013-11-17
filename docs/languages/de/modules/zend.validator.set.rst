@@ -6,7 +6,7 @@ Standard Prüfklassen
 
 Zend Framework kommt mit einem Standardset von Prüfklassen, welche fertig zur Verwendung sind.
 
-.. include:: zend.validator.alnum.rst
+.. include:: zend.i18n.validator.alnum.rst
 .. include:: zend.validator.alpha.rst
 .. include:: zend.validator.barcode.rst
 .. include:: zend.validator.between.rst

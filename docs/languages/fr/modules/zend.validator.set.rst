@@ -7,7 +7,7 @@ Classes de validation standard
 Zend Framework est fourni avec un jeu de classes de validation standard, qui sont directement utilisables par votre
 application.
 
-.. include:: zend.validator.alnum.rst
+.. include:: zend.i18n.validator.alnum.rst
 .. include:: zend.validator.alpha.rst
 .. include:: zend.validator.barcode.rst
 .. include:: zend.validator.between.rst

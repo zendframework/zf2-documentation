@@ -5,7 +5,7 @@ Standard Validation Classes
 
 Zend Framework comes with a standard set of validation classes, which are ready for you to use.
 
-.. include:: zend.validator.alnum.rst
+.. include:: zend.i18n.validator.alnum.rst
 .. include:: zend.validator.alpha.rst
 .. include:: zend.validator.barcode.rst
 .. include:: zend.validator.between.rst
