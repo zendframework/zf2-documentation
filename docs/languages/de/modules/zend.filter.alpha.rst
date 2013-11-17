@@ -10,7 +10,7 @@ keine alphanummerischen Zeichen sind. Dieser Filter enthält eine Option welche 
 .. _zend.filter.set.alpha.options:
 
 Unterstützte Optionen für Zend\I18n\Filter\Alpha
--------------------------------------------
+------------------------------------------------
 
 Die folgenden Optionen werden für ``Zend\I18n\Filter\Alpha`` unterstützt:
 

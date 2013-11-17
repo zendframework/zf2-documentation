@@ -10,7 +10,7 @@ validator with the exception that it does not accept digits.
 .. _zend.validator.set.alpha.options:
 
 Supported options for Zend\\I18n\\Validator\\Alpha
---------------------------------------------
+--------------------------------------------------
 
 The following options are supported for ``Zend\I18n\Validator\Alpha``:
 

@@ -10,7 +10,7 @@ werden unterdrückt.
 .. _zend.filter.set.alnum.options:
 
 Unterstützte Optionen für Zend\I18n\Filter\Alnum
--------------------------------------------
+------------------------------------------------
 
 Die folgenden Optionen werden für ``Zend\I18n\Filter\Alnum`` unterstützt:
 
