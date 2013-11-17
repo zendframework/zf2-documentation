@@ -33,7 +33,7 @@ Ccnum
 .. include:: zend.validator.iban.rst
 .. include:: zend.validator.identical.rst
 .. include:: zend.validator.in-array.rst
-.. include:: zend.validator.int.rst
+.. include:: zend.i18n.validator.int.rst
 .. include:: zend.validator.isbn.rst
 .. include:: zend.validator.ip.rst
 .. include:: zend.validator.less-than.rst
