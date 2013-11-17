@@ -6,7 +6,7 @@ Standard Filter Klassen
 
 Zend Framework kommt mit einem Standardset von Filtern, welche bereits zur Verwendung fertig sind.
 
-.. include:: zend.filter.alnum.rst
+.. include:: zend.i18n.filter.alnum.rst
 .. include:: zend.filter.alpha.rst
 .. include:: zend.filter.base-name.rst
 .. include:: zend.filter.boolean.rst
