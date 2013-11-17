@@ -6,7 +6,7 @@ Alnum
 ``Zend\I18n\Validator\Alnum`` allows you to validate if a given value contains only alphabetical characters and digits.
 There is no length limitation for the input you want to validate.
 
-.. _zend.validator.set.alnum.options:
+.. _zend.i18n.validator.alnum.options:
 
 Supported options for Zend\I18n\Validator\Alnum
 -----------------------------------------------

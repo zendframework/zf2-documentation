@@ -7,7 +7,7 @@ Int
 ``Zend\Validate\Int`` prüft ob ein angegebener Wert ein Integer (Ganzzahl) ist. Auch lokalisierte Integerwerte
 werden erkannt und können geprüft werden.
 
-.. _zend.validator.set.int.options:
+.. _zend.i18n.validator.int.options:
 
 Unterstützte Optionen für Zend\Validate\Int
 -------------------------------------------

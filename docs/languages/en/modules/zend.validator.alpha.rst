@@ -7,7 +7,7 @@ Alpha
 length limitation for the input you want to validate. This validator is related to the ``Zend\I18n\Validator\Alnum``
 validator with the exception that it does not accept digits.
 
-.. _zend.validator.set.alpha.options:
+.. _zend.i18n.validator.alpha.options:
 
 Supported options for Zend\\I18n\\Validator\\Alpha
 --------------------------------------------------

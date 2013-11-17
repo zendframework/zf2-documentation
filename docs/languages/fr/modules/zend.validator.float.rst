@@ -7,7 +7,7 @@ Float
 ``Zend\Validate\Float`` permet de valider si une donnée contient une valeur flottante. Les entrées localisées
 sont supportées.
 
-.. _zend.validator.set.float.options:
+.. _zend.i18n.validator.float.options:
 
 Options supportées par Zend\Validate\Float
 ------------------------------------------

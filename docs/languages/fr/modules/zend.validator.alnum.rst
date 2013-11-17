@@ -7,7 +7,7 @@ Alnum
 ``Zend\Validate\Alnum`` permet de valider des données contenant des caractères alphabétiques et des chiffres. Il
 n'y a pas de limite de taille.
 
-.. _zend.validator.set.alnum.options:
+.. _zend.i18n.validator.alnum.options:
 
 Options supportées par Zend\Validate\Alnum
 ------------------------------------------
