@@ -6,7 +6,7 @@ Int
 ``Zend\I18n\Validator\Int`` validates if a given value is an integer. Also localized integer values are recognised and
 can be validated.
 
-.. _zend.validator.set.int.options:
+.. _zend.i18n.validator.int.options:
 
 Supported options for Zend\\I18n\\Validator\\Int
 ------------------------------------------------

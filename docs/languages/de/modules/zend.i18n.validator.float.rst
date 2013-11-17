@@ -7,7 +7,7 @@ Float
 ``Zend\Validate\Float`` erlaubt es zu prüfen ob ein angegebener Wert eine Gleitkommazahl enthält. Diese Prüfung
 kann auch lokalisierte Eingaben prüfen.
 
-.. _zend.validator.set.float.options:
+.. _zend.i18n.validator.float.options:
 
 Unterstützte Optionen für Zend\Validate\Float
 ---------------------------------------------

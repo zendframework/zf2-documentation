@@ -6,8 +6,8 @@ Classes de filtre standards
 
 Zend Framework est fourni avec un jeu de filtres standards, qui sont directement utilisables.
 
-.. include:: zend.filter.alnum.rst
-.. include:: zend.filter.alpha.rst
+.. include:: zend.i18n.filter.alnum.rst
+.. include:: zend.i18n.alpha.alnum.rst
 .. include:: zend.filter.base-name.rst
 .. include:: zend.filter.boolean.rst
 .. include:: zend.filter.callback.rst

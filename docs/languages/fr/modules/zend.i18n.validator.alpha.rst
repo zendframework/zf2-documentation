@@ -8,7 +8,7 @@ Alpha
 pas de limite de taille. Ce validateur fonctionne comme le validateur ``Zend\Validate\Alnum`` à l'exception qu'il
 n'accepte pas les chiffres.
 
-.. _zend.validator.set.alpha.options:
+.. _zend.i18n.validator.alpha.options:
 
 Options supportées par Zend\Validate\Alpha
 ------------------------------------------
