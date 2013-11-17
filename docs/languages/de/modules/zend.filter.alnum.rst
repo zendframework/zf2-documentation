@@ -7,7 +7,7 @@ Alnum
 ``Zend\I18n\Filter\Alnum`` ist ein Filter welche nur alphabetische Zeichen und Ziffern zurückgibt. Alle anderen Zeichen
 werden unterdrückt.
 
-.. _zend.filter.set.alnum.options:
+.. _zend.i18n.filter.alnum.options:
 
 Unterstützte Optionen für Zend\I18n\Filter\Alnum
 ------------------------------------------------

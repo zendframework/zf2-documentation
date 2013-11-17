@@ -7,7 +7,7 @@ Alpha
 ``Zend\I18n\Filter\Alpha`` ist ein Filter der den String ``$value`` zurückgibt, wobei er alle Zeichen entfernt die
 keine alphanummerischen Zeichen sind. Dieser Filter enthält eine Option welche Leerzeichen erlaubt.
 
-.. _zend.filter.set.alpha.options:
+.. _zend.i18n.filter.alpha.options:
 
 Unterstützte Optionen für Zend\I18n\Filter\Alpha
 ------------------------------------------------
