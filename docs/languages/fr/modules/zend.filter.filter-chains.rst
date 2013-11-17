@@ -14,7 +14,7 @@ suivant illustre comment chaîner deux filtres pour l'identifiant soumis :
 
       // Création d'une chaîne de filtrage et ajout de filtres à celle-ci
       $filtreChaine = new Zend\Filter\Filter();
-      $filtreChaine->addFilter(new Zend\Filter\Alpha())
+      $filtreChaine->addFilter(new Zend\I18n\Filter\Alpha())
                    ->addFilter(new Zend\Filter\StringToLower());
 
       // Filtrage de l'identifiant
@@ -44,7 +44,7 @@ example, the next piece of code does exactly the same as the other username filt
    $filterChain->appendFilter(new Zend\Filter\StringToLower());
 
    // this filter will be prepended at the beginning of the filter chain.
-   $filterChain->prependFilter(new Zend\Filter\Alpha());
+   $filterChain->prependFilter(new Zend\I18n\Filter\Alpha());
 
    // Filter the username
    $username = $filterChain->filter($_POST['username']);

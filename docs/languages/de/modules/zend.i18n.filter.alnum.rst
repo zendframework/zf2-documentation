@@ -4,15 +4,15 @@
 Alnum
 =====
 
-``Zend\Filter\Alnum`` ist ein Filter welche nur alphabetische Zeichen und Ziffern zurückgibt. Alle anderen Zeichen
+``Zend\I18n\Filter\Alnum`` ist ein Filter welche nur alphabetische Zeichen und Ziffern zurückgibt. Alle anderen Zeichen
 werden unterdrückt.
 
-.. _zend.filter.set.alnum.options:
+.. _zend.i18n.filter.alnum.options:
 
-Unterstützte Optionen für Zend\Filter\Alnum
--------------------------------------------
+Unterstützte Optionen für Zend\I18n\Filter\Alnum
+------------------------------------------------
 
-Die folgenden Optionen werden für ``Zend\Filter\Alnum`` unterstützt:
+Die folgenden Optionen werden für ``Zend\I18n\Filter\Alnum`` unterstützt:
 
 - **allowwhitespace**: Wenn diese Option gesetzt wird dann sind Leerzeichen erlaubt. Andernfalls werden Sie
   unterdrückt. Standardmäßig sind Leerzeichen nicht erlaubt.
@@ -27,7 +27,7 @@ Das folgende Beispiel zeigt das Standardverhalten dieses Filters.
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\Alnum();
+   $filter = new Zend\I18n\Filter\Alnum();
    $return = $filter->filter('This is (my) content: 123');
    // Gibt 'Thisismycontent123' zurück
 
@@ -36,7 +36,7 @@ die Klammern gefiltert.
 
 .. note::
 
-   ``Zend\Filter\Alnum`` arbeitet auf fast allen Sprachen. Aber aktuell gibt es drei Ausnahmen: Chinesisch,
+   ``Zend\I18n\Filter\Alnum`` arbeitet auf fast allen Sprachen. Aber aktuell gibt es drei Ausnahmen: Chinesisch,
    Japanisch und Koreanisch. In diesen Sprachen wird statt dessen das englische Alphabeth statt den Zeichen dieser
    Sprache verwendet. Die Sprache selbst wird durch Verwendung von ``Zend_Locale`` erkannt.
 
@@ -45,13 +45,13 @@ die Klammern gefiltert.
 Leerzeichen erlauben
 --------------------
 
-``Zend\Filter\Alnum`` kann auch Leerzeichen erlauben. Das kann nützlich sein wenn man spezielle Zeichen von einem
+``Zend\I18n\Filter\Alnum`` kann auch Leerzeichen erlauben. Das kann nützlich sein wenn man spezielle Zeichen von einem
 Text entfernen will. Siehe das folgende Beispiel:
 
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\Alnum(array('allowwhitespace' => true));
+   $filter = new Zend\I18n\Filter\Alnum(array('allowwhitespace' => true));
    $return = $filter->filter('This is (my) content: 123');
    // Gibt 'This is my content 123' zurück
 
