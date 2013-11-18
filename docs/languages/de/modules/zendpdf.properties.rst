@@ -14,7 +14,7 @@ und geschrieben werden:
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($pdfPath);
+   $pdf = ZendPdf\PdfDocument::load($pdfPath);
 
    echo $pdf->properties['Title'] . "\n";
    echo $pdf->properties['Author'] . "\n";
@@ -100,13 +100,13 @@ Die folgenden Schlüssel sind im *PDF* v1.4 (Acrobat 5) Standard definiert:
 Seit *PDF* v 1.6 können Metadaten in einem speziellen *XML* Dokument gespeichert werden das dem *PDF* angehängt
 wird (XMP -`Extensible Metadata Platform`_).
 
-Dieses *XML* Dokument kann empfangen und dem PDF mit der ``ZendPdf\Pdf::getMetadata()`` und der
-``ZendPdf\Pdf::setMetadata($metadata)`` Methode wieder hinzugefügt werden:
+Dieses *XML* Dokument kann empfangen und dem PDF mit der ``ZendPdf\PdfDocument::getMetadata()`` und der
+``ZendPdf\PdfDocument::setMetadata($metadata)`` Methode wieder hinzugefügt werden:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($pdfPath);
+   $pdf = ZendPdf\PdfDocument::load($pdfPath);
    $metadata = $pdf->getMetadata();
    $metadataDOM = new DOMDocument();
    $metadataDOM->loadXML($metadata);

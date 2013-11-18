@@ -23,12 +23,12 @@ También está el archivo ``test.pdf``, que puede ser usado con esta demo con fi
    }
 
    try {
-       $pdf = ZendPdf\Pdf::load($argv[1]);
+       $pdf = ZendPdf\PdfDocument::load($argv[1]);
    } catch (ZendPdf\Exception $e) {
        if ($e->getMessage() == 'Can not open \'' . $argv[1] .
                                '\' file for reading.') {
            // Crear un nuevo archivo PDF si no existe
-           $pdf = new ZendPdf\Pdf();
+           $pdf = new ZendPdf\PdfDocument();
 
            if (!isset($argv[2])) {
                // forzar una reescritura completa del archivo (en vez de actualizar)

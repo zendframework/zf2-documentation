@@ -496,7 +496,7 @@ or a page:
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($documentPath);
+   $pdf = ZendPdf\PdfDocument::load($documentPath);
    ...
    // Get all document fonts
    $fontList = $pdf->extractFonts();
@@ -527,7 +527,7 @@ or a page:
    :linenos:
 
    ...
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
@@ -547,7 +547,7 @@ or a page:
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($docPath);
+   $pdf = ZendPdf\PdfDocument::load($docPath);
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
