@@ -14,12 +14,12 @@ Les pages d'un document *PDF* sont représentés par la classe ``ZendPdf\Page``
 Les pages d'un *PDF* proviennent d'un *PDF* existant, ou sont créées à partir de rien.
 
 Une nouvelle page peut-être obtenu en créant un nouvel objet ``ZendPdf\Page`` ou en appelant la méthode
-``ZendPdf\Pdf::newPage()``\ qui retourne un objet ``ZendPdf\Page``. La différence est que la méthode
-``ZendPdf\Pdf::newPage()`` crée une page directement attachée au document. A la différence des pages non attachées
+``ZendPdf\PdfDocument::newPage()``\ qui retourne un objet ``ZendPdf\Page``. La différence est que la méthode
+``ZendPdf\PdfDocument::newPage()`` crée une page directement attachée au document. A la différence des pages non attachées
 à un document, elle ne peut-être utilisée dans plusieurs documents *PDF*, mais est un peu plus performante.
 [#]_. C'est à vous de choisir quel approche doit-être utilisée.
 
-Les méthodes ``ZendPdf\Pdf::newPage()`` et ``ZendPdf\Page`` prennent le même paramètre. C'est la taille de la page
+Les méthodes ``ZendPdf\PdfDocument::newPage()`` et ``ZendPdf\Page`` prennent le même paramètre. C'est la taille de la page
 ($x, $y) en point (1/72 inch soit 0,352778 mm), ou une constante prédéfinie, qui correspond au format du papier :
 
 
