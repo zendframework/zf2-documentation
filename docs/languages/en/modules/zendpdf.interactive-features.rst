@@ -252,26 +252,26 @@ Named destination object may be created using ``ZendPdf\Destination\Named::creat
 Document level destination processing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``ZendPdf\Pdf`` class provides a set of destinations processing methods.
+``ZendPdf\PdfDocument`` class provides a set of destinations processing methods.
 
 Each destination object (including named destinations) can be resolved using the
 ``resolveDestination($destination)`` method. It returns corresponding ``ZendPdf\Page`` object, if destination
 target is found, or ``NULL`` otherwise.
 
-``ZendPdf\Pdf::resolveDestination()`` method also takes an optional boolean parameter
-``$refreshPageCollectionHashes``, which is ``TRUE`` by default. It forces ``ZendPdf\Pdf`` object to refresh internal
-page collection hashes since document pages list may be updated by user using ``ZendPdf\Pdf::$pages`` property
+``ZendPdf\PdfDocument::resolveDestination()`` method also takes an optional boolean parameter
+``$refreshPageCollectionHashes``, which is ``TRUE`` by default. It forces ``ZendPdf\PdfDocument`` object to refresh internal
+page collection hashes since document pages list may be updated by user using ``ZendPdf\PdfDocument::$pages`` property
 (:ref:`Working with Pages <zendpdf.pages>`). It may be turned off for performance reasons, if it's known that
 document pages list wasn't changed since last method request.
 
-Complete list of named destinations can be retrieved using ``ZendPdf\Pdf::getNamedDestinations()`` method. It returns
+Complete list of named destinations can be retrieved using ``ZendPdf\PdfDocument::getNamedDestinations()`` method. It returns
 an array of ``ZendPdf\Target`` objects, which are actually either an explicit destination or a GoTo action
 (:ref:`Actions <zendpdf.pages.interactive-features.actions>`).
 
-``ZendPdf\Pdf::getNamedDestination(string $name)`` method returns specified named destination (an explicit destination
+``ZendPdf\PdfDocument::getNamedDestination(string $name)`` method returns specified named destination (an explicit destination
 or a GoTo action).
 
-*PDF* document named destinations dictionary may be updated with ``ZendPdf\Pdf::setNamedDestination(string $name,
+*PDF* document named destinations dictionary may be updated with ``ZendPdf\PdfDocument::setNamedDestination(string $name,
 $destination)`` method, where ``$destination`` is either an explicit destination (any destination except
 ``ZendPdf\Destination\Named``) or a GoTo action.
 
@@ -288,7 +288,7 @@ If ``NULL`` is specified in place of ``$destination``, then specified named dest
 .. code-block:: php
    :linenos:
 
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    $page1 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    $page2 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    $page3 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
@@ -403,7 +403,7 @@ It's an array of ``ZendPdf\Action`` objects, which also may have their sub-actio
 .. code-block:: php
    :linenos:
 
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    $page1 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    $page2 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    // Page created, but not included into pages list
@@ -446,7 +446,7 @@ Document Open Action
 Special open action may be specify a destination to be displayed or an action to be performed when the document is
 opened.
 
-``ZendPdf\Target ZendPdf\Pdf::getOpenAction()`` method returns current document open action (or ``NULL`` if open
+``ZendPdf\Target ZendPdf\PdfDocument::getOpenAction()`` method returns current document open action (or ``NULL`` if open
 action is not set).
 
 ``setOpenAction(ZendPdf\Target $openAction = null)`` method sets document open action or clean it if
@@ -466,12 +466,12 @@ closed, selectively revealing or hiding further parts of the hierarchy. When an 
 descendants in the hierarchy are hidden. Clicking the text of any visible item activates the item, causing the
 viewer application to jump to a destination or trigger an action associated with the item.
 
-``ZendPdf\Pdf`` class provides public property ``$outlines`` which is an array of ``ZendPdf\Outline`` objects.
+``ZendPdf\PdfDocument`` class provides public property ``$outlines`` which is an array of ``ZendPdf\Outline`` objects.
 
    .. code-block:: php
       :linenos:
 
-      $pdf = ZendPdf\Pdf::load($path);
+      $pdf = ZendPdf\PdfDocument::load($path);
 
       // Remove outline item
       unset($pdf->outlines[0]->childOutlines[1]);
@@ -534,7 +534,7 @@ RecursiveIteratorIterator:
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($path);
+   $pdf = ZendPdf\PdfDocument::load($path);
 
    foreach ($pdf->outlines as $documentRootOutlineEntry) {
        $iterator = new RecursiveIteratorIterator(
