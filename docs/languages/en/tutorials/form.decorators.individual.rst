@@ -22,7 +22,7 @@ previous example:
            'My_Decorator' => 'path/to/decorators/',
        )),
        'decorators' => array(
-           'SimpleInput'
+           'SimpleInput',
            array('SimpleLabel', array('placement' => 'append')),
        ),
    ));
