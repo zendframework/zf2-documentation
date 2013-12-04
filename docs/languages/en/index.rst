@@ -892,6 +892,11 @@ ZendService\\Google\\Gcm
 
         * :doc:`modules/zendservice.google.gcm`
 
+ZendService\\LogEntries
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zendservice.logentries`
+
 ZendService\\LiveDocx
 ^^^^^^^^^^^^^^^^^^^^^
 
