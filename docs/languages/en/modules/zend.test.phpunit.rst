@@ -169,18 +169,21 @@ Query assertions include:
 
 * ``assertQuery($path)``: assert that one or more DOM elements matching the given CSS selector are present.
 
-* ``assertQueryContentContains($path, $match)``: assert that one or more DOM elements matching the given CSS selector are present,
-and that at least one contains the content provided in $match.
+* ``assertQueryContentContains($path, $match)``: assert that one or more DOM elements matching the given CSS
+  selector are present, and that at least one contains the content provided in $match.
 
-* ``assertQueryContentRegex($path, $pattern)``: assert that one or more DOM elements matching the given CSS selector are present,
-and that at least one matches the regular expression provided in $pattern. If a $message is present, it will be prepended to any
-failed assertion message.
+* ``assertQueryContentRegex($path, $pattern)``: assert that one or more DOM elements matching the given CSS
+  selector are present, and that at least one matches the regular expression provided in $pattern. If a $message is
+  present, it will be prepended to any failed assertion message.
 
-* ``assertQueryCount($path, $count)``: assert that there are exactly $count DOM elements matching the given CSS selector present.
+* ``assertQueryCount($path, $count)``: assert that there are exactly $count DOM elements matching the given CSS
+  selector present.
 
-* ``assertQueryCountMin($path, $count)``: assert that there are at least $count DOM elements matching the given CSS selector present.
+* ``assertQueryCountMin($path, $count)``: assert that there are at least $count DOM elements matching the given CSS
+  selector present.
 
-* ``assertQueryCountMax($path, $count)``: assert that there are no more than $count DOM elements matching the given CSS selector present.
+* ``assertQueryCountMax($path, $count)``: assert that there are no more than $count DOM elements matching the given
+  CSS selector present.
 
 Additionally, each of the above has a 'Not' variant that provides a negative assertion: assertNotQuery(), assertNotQueryContentContains(),
 assertNotQueryContentRegex(), and assertNotQueryCount(). (Note that the min and max counts do not have these variants, for what should
