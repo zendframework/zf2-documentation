@@ -817,7 +817,7 @@ fine, so now we can add the rest of the test methods:
 
         $albumTable = new AlbumTable($mockTableGateway);
         
-        $this->setExpectedException('Exception');
+        $this->setExpectedException('Exception', 'Expected exception was not thrown');
         $albumTable->getAlbum(123);
     }
 
