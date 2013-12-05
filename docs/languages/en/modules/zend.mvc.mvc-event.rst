@@ -303,7 +303,7 @@ This event is triggered by the following classes:
    +-------------------------------------------+-------------+-------------------------------------------------------------------+
    |``Zend\Mvc\Controller\AbstractController`` |``dispatch`` |If a listener returns a ``Response`` object, it stops propagation. |
    |                                           |             |Note: every ``AbstractController`` listen to this event and execute|
-   |                                           |             |the ``onBootstrap`` method when it is triggered.                   |
+   |                                           |             |the ``onDispatch`` method when it is triggered.                   |
    +-------------------------------------------+-------------+-------------------------------------------------------------------+
 
 
