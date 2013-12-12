@@ -8,7 +8,7 @@ There is no length limitation for the input you want to validate.
 
 .. _zend.i18n.validator.alnum.options:
 
-Supported options for Zend\I18n\Validator\Alnum
+Supported options for Zend\\I18n\\Validator\\Alnum
 -----------------------------------------------
 
 The following options are supported for ``Zend\I18n\Validator\Alnum``:
