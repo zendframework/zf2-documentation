@@ -14,7 +14,7 @@ forma conjunta.
 Algumas Suposições
 ------------------
 
-Esse tutorial assume que você tenha pelo menos um servidor apache com PHP 5.3.3 rodando
+Esse tutorial assume que você tenha pelo menos um servidor apache com PHP 5.3.23 rodando
 e um servidor MySQL, acessível pela extensão PDO. Sua configuração do Apache deve ter a 
 extensão mod_rewrite instalada e habilitada.
 
