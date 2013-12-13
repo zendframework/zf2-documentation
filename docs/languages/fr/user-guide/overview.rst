@@ -16,7 +16,7 @@ comprendre comment elle fonctionne et comment interagissent ses différents
 Quelques prérequis
 ----------------
 
-Ce tutoriel suppose que vous avez un environnement PHP 5.3.3 avec un serveur web
+Ce tutoriel suppose que vous avez un environnement PHP 5.3.23 avec un serveur web
 Apache web et une base MySQL, accessible via l'extension PDO. Votre installation
 Apache doit inclure l'extension mod_rewrite correctement configurée.
 
