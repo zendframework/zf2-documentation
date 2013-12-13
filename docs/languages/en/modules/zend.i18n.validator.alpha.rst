@@ -60,13 +60,6 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
 Using different languages
 -------------------------
 
-When using ``Zend\I18n\Validator\Alpha`` then the language which the user sets within his browser will be used to set
-the allowed characters. This means when your user sets **de** for german then he can also enter characters like
-**ä**, **ö** and **ü** additionally to the characters from the english alphabet.
-
-Which characters are allowed depends completely on the used language as every language defines it's own set of
-characters.
-
 There are actually 3 languages which are not accepted in their own script. These languages are **korean**,
 **japanese** and **chinese** because this languages are using an alphabet where a single character is build by
 using multiple characters.
