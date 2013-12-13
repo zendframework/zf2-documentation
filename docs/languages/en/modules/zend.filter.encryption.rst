@@ -15,10 +15,10 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 - **adapter**: This sets the encryption adapter which should be used
 
 - **algorithm**: Only ``BlockCipher``. The algorithm which has to be used by the adapter
- ``Zend\Crypt\Symmetric\Mcrypt``. It should be one of the algorithm ciphers supported by
- ``Zend\Crypt\Symmetric\Mcrypt`` (see the ``getSupportedAlgorithms()`` method). If not set it
- defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>`
- for more details).
+  ``Zend\Crypt\Symmetric\Mcrypt``. It should be one of the algorithm ciphers supported by
+  ``Zend\Crypt\Symmetric\Mcrypt`` (see the ``getSupportedAlgorithms()`` method). If not set it
+  defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>`
+  for more details).
 
 - **compression**: If the encrypted value should be compressed. Default is no compression.
 

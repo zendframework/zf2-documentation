@@ -23,11 +23,11 @@ This filter can strip XML and HTML tags from given content.
 
 The following options are supported for ``Zend\Filter\StripTags``:
 
-- **allowAttribs**: This option sets the attributes which are accepted. All other attributes are
-stripped from the given content.
+- **allowAttribs**: This option sets the attributes which are accepted. All other attributes are stripped from the
+  given content.
 
-- **allowTags**: This option sets the tags which are accepted. All other tags will be stripped
-from the given content.
+- **allowTags**: This option sets the tags which are accepted. All other tags will be stripped from the given
+  content.
 
 .. _zend.filter.set.striptags.basic:
 
