@@ -168,3 +168,7 @@ appropriate object. You may create either ``Input`` or ``InputFilter`` objects i
    ));
 
 
+Also see
+
+- :ref:`Zend\\Filter<zend.filter.introduction>`
+- :ref:`Zend\\Validator<zend.validator.introduction>`

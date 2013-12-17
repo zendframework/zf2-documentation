@@ -65,3 +65,9 @@ Usage of ``FileInput`` is essentially the same as ``Input``:
        }
    }
 
+
+Also see
+
+- :ref:`File filter classes<zend.filter.file>`
+- :ref:`File validator classesr<zend.validator.file>`
+
