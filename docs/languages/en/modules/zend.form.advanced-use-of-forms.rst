@@ -453,8 +453,9 @@ Therefore, the previous example can be rewritten as such:
     use Zend\Form\Fieldset;
     use Zend\ServiceManager\ServiceLocatorAwareInterface;
     use Zend\ServiceManager\ServiceLocatorInterface;
+    use Zend\Stdlib\InitializableInterface;
 
-    class AlbumFieldset extends Fieldset implements ServiceLocatorAwareInterface
+    class AlbumFieldset extends Fieldset implements ServiceLocatorAwareInterface, InitializableInterface
     {
         protected $serviceLocator;
 
