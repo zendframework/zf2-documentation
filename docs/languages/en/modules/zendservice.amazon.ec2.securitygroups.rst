@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2.securitygroups:
 
 ZendService\Amazon\Ec2: Security Groups

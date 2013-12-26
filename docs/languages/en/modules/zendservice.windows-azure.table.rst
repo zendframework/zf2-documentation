@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.windowsazure.storage.table:
 
 ZendService\\WindowsAzure\\Storage\\Table

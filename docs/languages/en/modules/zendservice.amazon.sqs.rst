@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.sqs:
 
 ZendService\Amazon\Sqs

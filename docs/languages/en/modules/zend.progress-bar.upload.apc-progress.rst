@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.progress-bar.upload.apc-progress:
 
 APC Progress Handler

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.code.generator.examples:
 
 Zend\Code\Generator Examples

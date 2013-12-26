@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.console.getopt.introduction:
 
 Introduction

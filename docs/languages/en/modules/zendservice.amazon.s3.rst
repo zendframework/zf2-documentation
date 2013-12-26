@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.s3:
 
 ZendService\Amazon\S3

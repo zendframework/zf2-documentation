@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.form.element.week:
 
 Week

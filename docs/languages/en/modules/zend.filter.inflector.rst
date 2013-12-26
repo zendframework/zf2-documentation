@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.inflector:
 
 Zend\\Filter\\Inflector

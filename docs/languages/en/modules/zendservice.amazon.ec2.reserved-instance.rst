@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2.reserved.instance:
 
 ZendService\Amazon\Ec2: Reserved Instances

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.progress-bar.adapter.console:
 
 Console Adapter

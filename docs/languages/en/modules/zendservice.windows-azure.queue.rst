@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.windowsazure.storage.queue:
 
 ZendService\\WindowsAzure\\Storage\Queue

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.i18n.filter.number-parse:
 
 NumberParse

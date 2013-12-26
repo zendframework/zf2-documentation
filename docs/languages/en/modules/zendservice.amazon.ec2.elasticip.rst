@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2.elasticip:
 
 ZendService\Amazon\Ec2: Elastic IP Addresses

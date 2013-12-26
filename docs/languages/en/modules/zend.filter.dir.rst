@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.dir:
 
 Dir

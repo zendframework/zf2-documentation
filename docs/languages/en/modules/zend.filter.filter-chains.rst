@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.filter_chains:
 
 Filter Chains

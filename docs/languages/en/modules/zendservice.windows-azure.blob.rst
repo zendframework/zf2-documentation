@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.windowsazure.storage.blob:
 
 ZendService\\WindowsAzure\\Storage\\Blob

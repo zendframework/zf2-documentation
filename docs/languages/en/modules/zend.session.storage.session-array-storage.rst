@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.session.storage.session-array-storage:
 
 Session Array Storage

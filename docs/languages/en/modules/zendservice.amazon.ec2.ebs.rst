@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2.ebs:
 
 ZendService\Amazon\Ec2: Elastic Block Storage (EBS)

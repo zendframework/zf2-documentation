@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.i18n.view.helper.currency-format:
 
 CurrencyFormat Helper

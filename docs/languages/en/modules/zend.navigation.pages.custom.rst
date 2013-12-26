@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.navigation.pages.custom:
 
 Creating custom page types

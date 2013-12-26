@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.progress-bar.upload.session-progress:
 
 Session Progress Handler

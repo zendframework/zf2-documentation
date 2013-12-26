@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.progress-bar.upload.upload-progress:
 
 Upload Progress Handler

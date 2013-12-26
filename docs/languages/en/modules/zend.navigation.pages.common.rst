@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.navigation.pages.common:
 
 Common page features

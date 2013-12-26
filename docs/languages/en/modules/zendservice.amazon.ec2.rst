@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2:
 
 ZendService\Amazon\Ec2

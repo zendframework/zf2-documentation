@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2.keypairs:
 
 ZendService\Amazon\Ec2: Keypairs

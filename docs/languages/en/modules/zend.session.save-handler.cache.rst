@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.session.save-handler.cache:
 
 Cache

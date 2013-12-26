@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendservice.amazon.ec2.zones:
 
 ZendService\Amazon\Ec2: Regions and Availability Zones

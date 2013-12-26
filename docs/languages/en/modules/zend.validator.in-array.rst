@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.validator.set.in_array:
 
 InArray

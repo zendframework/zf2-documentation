@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.code.generator.reference:
 
 Zend\Code\Generator Reference

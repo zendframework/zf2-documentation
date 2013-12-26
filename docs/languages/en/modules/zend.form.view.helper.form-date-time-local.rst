@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.form.view.helper.form-date-time-local:
 
 FormDateTimeLocal
