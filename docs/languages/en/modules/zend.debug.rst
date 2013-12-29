@@ -7,9 +7,11 @@ The static method ``Zend\Debug\Debug::dump()`` prints or returns information abo
 of debugging is common because it is easy to use in an ad hoc fashion and requires no initialization, special
 tools, or debugging environment.
 
+
 .. _zend.debug.dumping.example:
 
-.. rubric:: Example of dump() method
+Example of dump() method
+------------------------
 
 .. code-block:: php
    :linenos:

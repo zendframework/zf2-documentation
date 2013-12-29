@@ -78,6 +78,7 @@
    modules/zend.db.table-gateway
    modules/zend.db.row-gateway
    modules/zend.db.metadata
+   modules/zend.debug
    modules/zend.di.introduction
    modules/zend.di.quick-start
    modules/zend.di.definitions
@@ -95,6 +96,7 @@
    modules/zend.escaper.escaping-css
    modules/zend.escaper.escaping-url
    modules/zend.event-manager.event-manager
+   modules/zend.exception
    modules/zend.feed.introduction
    modules/zend.feed.importing
    modules/zend.feed.find-feeds
@@ -112,6 +114,7 @@
    modules/zend.filter.file
    modules/zend.filter.filter-chains
    modules/zend.filter.inflector
+   modules/zend.filter.static-filter
    modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
@@ -165,6 +168,9 @@
    modules/zend.mail.smtp.options
    modules/zend.mail.file.options
    modules/zend.math.introduction
+   modules/zend.memory.overview
+   modules/zend.memory.memory-manager
+   modules/zend.memory.memory-objects
    modules/zend.mime
    modules/zend.mime.message
    modules/zend.mime.part
@@ -428,6 +434,13 @@ Zend\\Db
         * :doc:`modules/zend.db.row-gateway`
         * :doc:`modules/zend.db.metadata`
 
+.. _zend.debug:
+
+Zend\\Debug
+^^^^^^^^^^^
+
+        * :doc:`modules/zend.debug`
+
 .. _zend.di:
 
 Zend\\Di
@@ -469,6 +482,14 @@ Zend\\EventManager
 
         * :doc:`modules/zend.event-manager.event-manager`
 
+
+.. _zend.exception:
+
+Zend\\Exception
+^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.exception`
+
 .. _zend.feed:
 
 Zend\\Feed
@@ -488,7 +509,7 @@ Zend\\Feed
 .. _zend.file:
 
 Zend\\File
-^^^^^^^^^^^^
+^^^^^^^^^^
 
         * :doc:`modules/zend.file.class-file-locator`
 
@@ -503,6 +524,7 @@ Zend\\Filter
         * :doc:`modules/zend.filter.file`
         * :doc:`modules/zend.filter.filter-chains`
         * :doc:`modules/zend.filter.inflector`
+        * :doc:`modules/zend.filter.static-filter`
         * :doc:`modules/zend.filter.writing-filters`
 
 .. _zend.form:
@@ -616,6 +638,15 @@ Zend\\Math
 ^^^^^^^^^^
 
         * :doc:`modules/zend.math.introduction`
+
+.. _zend.memory:
+
+Zend\\Memory
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.memory.overview`
+        * :doc:`modules/zend.memory.memory-manager`
+        * :doc:`modules/zend.memory.memory-objects`
 
 Zend\\Mime
 ^^^^^^^^^^
@@ -888,7 +919,7 @@ ZendService\\Flickr
         * :doc:`modules/zendservice.flickr`
 
 ZendService\\Google\\Gcm
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.google.gcm`
 
