@@ -1,7 +1,7 @@
 .. _zend.console.controllers:
 
 Console-aware action controllers
-===================================
+================================
 
 Zend Framework 2 has built-in :doc:`MVC integration with the console<zend.console.introduction>`. When the user runs
 an application in a console window, the request will be routed. By matching command line arguments against
@@ -17,7 +17,7 @@ In this chapter we will learn how ZF2 Controllers can interact with and return o
 
 
 Handling console requests
----------------------------
+-------------------------
 
 Console requests are very similar to HTTP requests. In fact, they implement a common interface and are created at the
 same time in the MVC workflow. :doc:`Console routes <zend.console.routes>` match against command line arguments
@@ -175,7 +175,7 @@ and displayed in the console window.
 
 
 Are we in a console?
----------------------
+--------------------
 
 Sometimes we might need to check if our method is being called from a console or from a web request. This is useful
 to block certain methods from running in the console or to change their behavior based on that context.
@@ -257,7 +257,7 @@ The example below shows how a single controller method can handle **both Console
 
 
 Reading values from console parameters
----------------------------------------
+--------------------------------------
 
 There are several types of parameters recognized by the Console component - all of them are described in
 :doc:`the console routing chapter <zend.console.routes>`. Here, we'll focus on how to retrieve values from distinct

@@ -1,7 +1,7 @@
 .. _zend.console.adapter:
 
 Console adapters
-==================
+================
 
 Zend Framework 2 provides console abstraction layer, which works around various bugs and limitations in operating
 systems. It handles displaying of colored text, retrieving console window size, charset and provides basic line
@@ -65,7 +65,7 @@ If you are using ``Zend\Console`` without MVC, we can get adapter using the foll
 
 
 Using console adapter
------------------------------
+---------------------
 
 Window size and title
 ^^^^^^^^^^^^^^^^^^^^^
@@ -103,7 +103,7 @@ Character set
     the readable charset that can be used for line-drawing. It is automatically detected by the adapter.
 
 Writing to console
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 **$console->write( string $text, $color = null, $bgColor = null )**
     Write a ``$text`` to the console, optionally using foreground ``$color`` and background ``$bgColor``.
@@ -120,7 +120,7 @@ Writing to console
 
 
 Reading from console
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 **$console->readChar( string $mask = null )**
     (`string`) Read a single character from console. Optional ``(string) $mask`` can be provided to force entering only a

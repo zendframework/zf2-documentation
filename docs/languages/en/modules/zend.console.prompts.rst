@@ -1,7 +1,7 @@
 .. _zend.console.prompts:
 
 Console prompts
-==================
+===============
 
 In addition to :doc:`console abstraction layer <zend.console.adapter>` Zend Framework 2 provides numerous convenience
 classes for interacting with the user in console environment. This chapter describes available ``Zend\Console\Prompt``
@@ -48,7 +48,7 @@ Both of above examples will display something like this:
 
 
 Confirm
----------------------------------
+-------
 
 This prompt is best used for a **yes** / **no** type of choices.
 
@@ -83,7 +83,7 @@ Example usage:
 
 
 Line
----------------------------------
+----
 
 This prompt asks for a line of text input.
 
@@ -124,7 +124,7 @@ Example usage:
 
 
 Char
----------------------------------
+----
 
 This prompt reads a single keystroke and optionally validates it against a list o allowed characters.
 
@@ -179,7 +179,7 @@ Example usage:
 
 
 Select
----------------------------------
+------
 
 This prompt displays a number of choices and asks the user to pick one.
 

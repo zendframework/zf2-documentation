@@ -1,7 +1,7 @@
 .. _zend.db.sql.ddl:
 
 Zend\\Db\\Sql\\Ddl
-======================
+==================
 
 ``Zend\Db\Sql\Ddl`` is a sub-component of ``Zend\Db\Sql`` that allows consumers
 to create statement objects that will produce DDL (Data Definition Language) SQL
