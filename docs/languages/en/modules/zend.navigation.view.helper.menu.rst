@@ -536,3 +536,45 @@ Output:
    <a href="/products">Products</a>
    <a title="About us" href="/company/about">Company</a>
    <a href="/community">Community</a>
+
+.. _zend.navigation.view.helper.menu.partial.using-options:
+
+Using menu options in partial view script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In a layout:
+
+.. code-block:: php
+   :linenos:
+
+   // Set options
+   $this->navigation()->menu()->setUlClass('my-nav')
+                              ->setPartial('my-module/partials/menu');
+
+   // Output menu
+   echo $this->navigation()->menu()->render();
+
+In *module/MyModule/view/my-module/partials/menu.phtml*:
+
+.. code-block:: php
+   :linenos:
+
+   <div class"<?php echo $this->navigation()->menu()->getUlClass(); ?>">
+       <?php
+       foreach ($this->container as $page) {
+           echo $this->navigation()->menu()->htmlify($page) . PHP_EOL;
+       }
+       ?>
+   </div>
+
+Output:
+
+.. code-block:: html
+   :linenos:
+
+   <div class="my-nav">
+       <a title="Go Home" href="/">Home</a>
+       <a href="/products">Products</a>
+       <a title="About us" href="/company/about">Company</a>
+       <a href="/community">Community</a>
+   </div>
