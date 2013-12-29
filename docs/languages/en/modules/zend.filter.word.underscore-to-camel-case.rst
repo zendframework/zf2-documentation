@@ -7,13 +7,15 @@ This filter modifies a given string such that 'words_with_underscores' are conve
 
 .. _zend.filter.set.underscoretocamelcase.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Word\UnderscoreToCamelCase``:
 
 .. _zend.filter.set.underscoretocamelcase.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

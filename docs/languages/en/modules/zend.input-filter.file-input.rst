@@ -17,6 +17,11 @@ While ``FileInput`` uses the same interface as ``Input``, it differs in a few wa
 The biggest thing to be concerned about is that if you are using a ``<input type="file">`` element in your form,
 you will need to use the ``FileInput`` **instead of** ``Input`` or else you will encounter issues.
 
+.. _zend.input-filter.file-input.basic-usage:
+
+Basic Usage
+^^^^^^^^^^^
+
 Usage of ``FileInput`` is essentially the same as ``Input``:
 
 .. code-block:: php

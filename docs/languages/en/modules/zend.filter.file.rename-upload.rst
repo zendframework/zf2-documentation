@@ -8,7 +8,8 @@ to a new path.
 
 .. _zend.filter.file.rename-upload.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -49,7 +50,8 @@ be filtered with the same option settings.
 
 .. _zend.filter.file.rename-upload.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 Move all filtered files to a different directory:
 

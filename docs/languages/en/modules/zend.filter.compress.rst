@@ -7,7 +7,8 @@ These two filters are capable of compressing and decompressing strings, files, a
 
 .. _zend.filter.set.compress.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Compress`` and ``Zend\Filter\Decompress``:
 
@@ -18,7 +19,8 @@ The following options are supported for ``Zend\Filter\Compress`` and ``Zend\Filt
 
 .. _zend.filter.set.compress.basic:
 
-.. rubric:: Supported Compression Adapters
+Supported Compression Adapters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following compression formats are supported by their own adapter:
 
@@ -40,7 +42,8 @@ approximately the same ways, and differ primarily in the options available and t
 
 .. _zend.filter.set.compress.generic:
 
-.. rubric:: Generic Handling
+Generic Handling
+^^^^^^^^^^^^^^^^
 
 To create a compression filter you need to select the compression format you want to use. The following description
 takes the **Bz2** adapter. Details for all other adapters are described after this section.
@@ -114,7 +117,8 @@ Decompression works the same way.
 
 .. _zend.filter.set.compress.archive:
 
-.. rubric:: Creating an Archive
+Creating an Archive
+^^^^^^^^^^^^^^^^^^^
 
 Creating an archive file works almost the same as compressing a string. However, in this case we need an additional
 parameter which holds the name of the archive we want to create.
@@ -178,7 +182,8 @@ subdirectories will be compressed into the archive.
 
 .. _zend.filter.set.compress.decompress:
 
-.. rubric:: Decompressing an Archive
+Decompressing an Archive
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Decompressing an archive file works almost like compressing it. You must specify either the ``archive`` parameter,
 or give the filename of the archive when you decompress the file.
@@ -214,7 +219,8 @@ parameter.
 
 .. _zend.filter.set.compress.bz2:
 
-.. rubric:: Bz2 Adapter
+Bz2 Adapter
+^^^^^^^^^^^
 
 The Bz2 Adapter can compress and decompress:
 
@@ -238,7 +244,8 @@ accepts all options as array.
 
 .. _zend.filter.set.compress.gz:
 
-.. rubric:: Gz Adapter
+Gz Adapter
+^^^^^^^^^^
 
 The Gz Adapter can compress and decompress:
 
@@ -263,7 +270,8 @@ All options can be set at initiation or by using a related method. For example, 
 
 .. _zend.filter.set.compress.lzf:
 
-.. rubric:: Lzf Adapter
+Lzf Adapter
+^^^^^^^^^^^
 
 The Lzf Adapter can compress and decompress:
 
@@ -281,7 +289,8 @@ There are no options available to customize this adapter.
 
 .. _zend.filter.set.compress.rar:
 
-.. rubric:: Rar Adapter
+Rar Adapter
+^^^^^^^^^^^
 
 The Rar Adapter can compress and decompress:
 
@@ -321,7 +330,8 @@ array.
 
 .. _zend.filter.set.compress.tar:
 
-.. rubric:: Tar Adapter
+Tar Adapter
+^^^^^^^^^^^
 
 The Tar Adapter can compress and decompress:
 
@@ -360,7 +370,8 @@ array.
 
 .. _zend.filter.set.compress.zip:
 
-.. rubric:: Zip Adapter
+Zip Adapter
+^^^^^^^^^^^
 
 The Zip Adapter can compress and decompress:
 

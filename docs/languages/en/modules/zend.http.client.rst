@@ -1,7 +1,7 @@
 .. _zend.http.client:
 
-HTTP Client - Overview
-======================
+HTTP Client
+===========
 
 .. _zend.http.client.intro:
 

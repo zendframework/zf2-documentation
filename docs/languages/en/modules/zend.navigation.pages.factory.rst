@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.factory:
 
 Creating pages using the page factory
-=====================================
+-------------------------------------
 
 All pages (also custom classes), can be created using the page factory,
 ``Zend\Navigation\Page\AbstractPage::factory()``. The
@@ -15,7 +15,8 @@ value is *mvc* or *uri* and *MVC*/URI page will be created.
 
 .. _zend.navigation.pages.factory.example.mvc:
 
-.. rubric:: Creating an MVC page using the page factory
+Creating an MVC page using the page factory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -43,7 +44,8 @@ value is *mvc* or *uri* and *MVC*/URI page will be created.
 
 .. _zend.navigation.pages.factory.example.uri:
 
-.. rubric:: Creating a URI page using the page factory
+Creating a URI page using the page factory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -71,7 +73,8 @@ value is *mvc* or *uri* and *MVC*/URI page will be created.
 
 .. _zend.navigation.pages.factory.example.custom:
 
-.. rubric:: Creating a custom page type using the page factory
+Creating a custom page type using the page factory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create a custom page type using the factory, use the option *type* to specify a class name to instantiate.
 

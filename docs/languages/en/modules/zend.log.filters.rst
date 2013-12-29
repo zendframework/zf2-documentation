@@ -3,6 +3,11 @@
 Filters
 =======
 
+.. _zend.log.filters.overview:
+
+Overview
+--------
+
 A Filter object blocks a message from being written to the log.
 
 You can add a filter to a specific Writer using ``addFilter()`` method of that Writer:

@@ -22,7 +22,8 @@ config object or a ``Zend\Navigation\Page\AbstractPage`` instance.
 
 .. _zend.navigation.containers.creating.example.array:
 
-.. rubric:: Creating a container using an array
+Creating a container using an array
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -196,7 +197,8 @@ config object or a ``Zend\Navigation\Page\AbstractPage`` instance.
 
 .. _zend.navigation.containers.creating.example.config:
 
-.. rubric:: Creating a container using a config object
+Creating a container using a config object
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -398,10 +400,6 @@ Adding pages
 Adding pages to a container can be done with the methods ``addPage()``, ``addPages()``, or ``setPages()``. See
 examples below for explanation.
 
-.. _zend.navigation.containers.adding.example:
-
-.. rubric:: Adding pages to a container
-
 .. code-block:: php
    :linenos:
 
@@ -459,10 +457,6 @@ Removing pages can be done with ``removePage()`` or ``removePages()``. The first
 page, or an integer. The integer corresponds to the ``order`` a page has. The latter method will remove all pages
 in the container.
 
-.. _zend.navigation.containers.removing.example:
-
-.. rubric:: Removing pages from a container
-
 .. code-block:: php
    :linenos:
 
@@ -511,10 +505,6 @@ The finder methods can also be used magically by appending the property name to 
 ``findAllBy``, e.g. ``findOneByLabel('Home')`` to return the first matching page with label 'Home'. Other
 combinations are ``findByLabel(...)``, ``findOneByTitle(...)``, ``findAllByController(...)``, etc. Finder methods
 also work on custom properties, such as ``findByFoo('bar')``.
-
-.. _zend.navigation.containers.finding.example:
-
-.. rubric:: Finding pages in a container
 
 .. code-block:: php
    :linenos:
@@ -606,10 +596,6 @@ Iterating containers
 ``Zend\Navigation\AbstractContainer`` implements ``RecursiveIterator``, and can be iterated using any ``Iterator``
 class. To iterate a container recursively, use the ``RecursiveIteratorIterator`` class.
 
-.. _zend.navigation.containers.iterating.example:
-
-.. rubric:: Iterating a container
-
 .. code-block:: php
    :linenos:
 
@@ -670,7 +656,8 @@ and debugging.
 
 .. _zend.navigation.containers.other.example.toarray:
 
-.. rubric:: Converting a container to an array
+Converting a container to an array
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

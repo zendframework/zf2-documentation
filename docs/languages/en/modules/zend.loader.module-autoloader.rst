@@ -35,8 +35,6 @@ Configuration Options
 
 The ``ModuleAutoloader`` defines the following options.
 
-.. rubric:: ModuleAutoloader Options
-
 **$options**
     The ``ModuleAutoloader`` expects an array of options, where each option is either a path to scan for modules,
     or a key/value pair of explicit module paths. In the case of explicit module paths, the key is the module's

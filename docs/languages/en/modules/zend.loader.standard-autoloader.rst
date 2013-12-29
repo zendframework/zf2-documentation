@@ -69,7 +69,8 @@ directory above where its own classfile is located on the filesystem.
 
 .. _zend.loader.standard-autoloader.quick-start.example-manual-configuration:
 
-.. rubric:: Manual Configuration
+Manual Configuration
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -95,7 +96,8 @@ directory above where its own classfile is located on the filesystem.
 
 .. _zend.loader.standard-autoloader.quick-start.example-constructor-configuration:
 
-.. rubric:: Configuration at Instantiation
+Configuration at Instantiation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``StandardAutoloader`` may also be configured at instantiation. Please note:
 
@@ -129,8 +131,6 @@ Configuration Options
 ---------------------
 
 The ``StandardAutoloader`` defines the following options.
-
-.. rubric:: StandardAutoloader Options
 
 **namespaces**
    An associative array of namespace/path pairs. The path should be an absolute path or path relative to the

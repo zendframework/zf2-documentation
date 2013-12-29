@@ -8,7 +8,8 @@ characters are suppressed.
 
 .. _zend.i18n.filter.alpha.options:
 
-.. rubric:: Supported Options for Alpha Filter
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Alpha``:
 
@@ -27,7 +28,8 @@ The following options are supported for ``Alpha``:
 
 .. _zend.i18n.filter.alpha.usage:
 
-.. rubric:: Alpha Filter Usage
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

@@ -7,13 +7,15 @@ This filter modifies a given string such that 'words_with_underscores' are conve
 
 .. _zend.filter.set.underscoretodash.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Word\UnderscoreToDash``:
 
 .. _zend.filter.set.underscoretodash.basic:
 
-.. rubric:: Basic usage
+Basic usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

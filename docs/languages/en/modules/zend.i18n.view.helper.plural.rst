@@ -15,7 +15,8 @@ Internally, the ``Plural`` helper uses the ``Zend\I18n\Translator\Plural\Rule`` 
 
 .. _zend.i18n.view.helper.plural.setup:
 
-**Setup**
+Setup
+^^^^^
 
 In Zend Framework 1, there was a similar helper. However, this helper hardcoded rules for mostly every languages. The problem
 with this approach is that languages are alive and can evolve over time. Therefore, we would need to change the rules and
@@ -29,7 +30,8 @@ plural rules for tons of languages:
 
 .. _zend.i18n.view.helper.plural.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 The first thing to do is to defining rule. You may want to add this in your ``Module.php`` file, for example:
 

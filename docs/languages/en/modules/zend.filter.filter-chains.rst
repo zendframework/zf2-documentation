@@ -27,7 +27,7 @@ Any object that implements ``Zend\Filter\FilterInterface`` may be used in a filt
 .. _zend.filter.filter_chains.order:
 
 Setting Filter Chain Order
----------------------------
+--------------------------
 
 For each filter added to the ``FilterChain`` you can set a priority to define the chain order. The default value is
 ``1000``. In the following example, any uppercase characters are converted to lowercase before any non-alphabetic
