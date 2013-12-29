@@ -7,8 +7,8 @@ Once you call ``render()``, ``Zend\View\Renderer\PhpRenderer`` then ``include()`
 executes it "inside" the scope of the ``PhpRenderer`` instance. Therefore, in your view scripts, references to
 ``$this`` actually point to the ``PhpRenderer`` instance itself.
 
-Variables assigned to the view -- either via a :ref:`View Model <zend.view.model>`, :ref:`Variables container
-<zend.view.variables>`, or simply by passing an array of variables to ``render()``-- may be retrieved in three
+Variables assigned to the view -- either via a :ref:`View Model <zend.view.quick-start.usage.controllers>`, :ref:`Variables container
+<zend.view.quick-start.intro>`, or simply by passing an array of variables to ``render()``-- may be retrieved in three
 ways:
 
 - Explicitly, by retrieving them from the ``Variables`` container composed in the ``PhpRenderer``:

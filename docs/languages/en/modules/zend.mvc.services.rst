@@ -445,7 +445,7 @@ Form configuration follows the same configuration you would use with a form fact
 difference is that all plugin managers have already been injected for you, allowing you the
 possibility of custom objects or substitutions.
 
-See the :ref:`form factory documentation <zend.form.quick-start.creation-via-factory>` for more
+See the :ref:`form factory documentation <zend.form.quick-start.factory>` for more
 configuration options.
 
 Zend\\Log\\LoggerAbstractServiceFactory

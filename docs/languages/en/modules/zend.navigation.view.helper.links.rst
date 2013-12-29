@@ -68,7 +68,7 @@ To customize which relations should be rendered, the helper uses a render flag. 
 value, and will be used in a `bitwise and (&) operation`_ against the helper's render constants to determine if the
 relation that belongs to the render constant should be rendered.
 
-See the :ref:`example below <zend.navigation.view.helper.links.example3>` for more information.
+See the :ref:`example below <zend.navigation.view.helper.links.specify-rendering>` for more information.
 
 - ``Zend\View\Helper\Navigation\Links::RENDER_ALTERNATE``
 

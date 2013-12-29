@@ -118,7 +118,10 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Checkbox. Accepted options, in addition to the inherited :ref:`options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"`` and ``"empty_option"``, which call ``setValueOptions`` and ``setEmptyOption``, respectively.
+   Set options for an element. Accepted options, in addition to the inherited
+   :ref:`options of Zend\\Form\\Element <zend.form.element.methods.set-options>`, are: ``"value_options"``,
+   ``"empty_option"`` and ``"disable_inarray_validator"``, which call ``setValueOptions``, ``setEmptyOption`` and
+   ``setDisableInArrayValidator``, respectively.
    
 .. function:: setValueOptions(array $options)
    :noindex:

@@ -86,7 +86,7 @@ The Socket adapter allows several extra configuration options that can be set us
       before using this option.
 
       Additionally, when using persistent connections it is recommended to enable Keep-Alive *HTTP* requests as
-      described in :ref:`the configuration section <zend.http.client.configuration>`- otherwise persistent
+      described in :ref:`the configuration section <zend.http.client.options>`- otherwise persistent
       connections might have little or no effect.
 
 

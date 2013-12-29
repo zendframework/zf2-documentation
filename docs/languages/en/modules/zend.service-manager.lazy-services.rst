@@ -24,7 +24,7 @@ Proxying the database connection would allow to delay that overhead until the ob
 Setup
 ^^^^^
 
-``Zend\ServiceManager\Proxy\LazyServiceFactory`` is a :ref:`delegator factory` capable of generating
+``Zend\ServiceManager\Proxy\LazyServiceFactory`` is a :ref:`delegator factory <zend.service-manager.delegator-factories>` capable of generating
 lazy loading proxies for your services.
 
 The ``LazyServiceFactory`` depends on `ProxyManager`_, so be sure to install it before going through

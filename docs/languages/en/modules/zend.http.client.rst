@@ -59,7 +59,7 @@ The constructor and setOptions() method accept an associative array of configura
 
 
 
-      .. _zend.http.client.configuration.table:
+      .. _zend.http.client.options.table:
 
       .. table:: Zend\\Http\\Client configuration parameters
 

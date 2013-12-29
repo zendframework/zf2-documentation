@@ -9,7 +9,7 @@ The ``FormRadio`` view helper can be used to render a group ``<input type="radio
 form inputs. It is meant to work with the :ref:`Zend\\Form\\Element\\Radio <zend.form.element.radio>`
 element, which provides a default input specification for validating a radio.
 
-``FormRadio`` extends from :ref:`Zend\\Form\\View\\Helper\\FormMultiCheckbox <zend.form.view.helper.form-multicheckbox.methods>`.
+``FormRadio`` extends from :ref:`Zend\\Form\\View\\Helper\\FormMultiCheckbox <zend.form.view.helper.form-multicheckbox>`.
 
 .. _zend.form.view.helper.form-radio.usage:
 

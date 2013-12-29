@@ -11,7 +11,7 @@ Overview
 The script ``bin/classmap_generator.php`` can be used to generate class map files for use with :ref:`the
 ClassMapAutoloader <zend.loader.class-map-autoloader>`.
 
-Internally, it consumes both :ref:`Zend\\Console\\Getopt <zend.console.getopt>` (for parsing command-line options)
+Internally, it consumes both :ref:`Zend\\Console\\Getopt <zend.console.getopt.introduction>` (for parsing command-line options)
 and :ref:`Zend\\File\\ClassFileLocator <zend.file.class-file-locator>` for recursively finding all PHP class files
 in a given tree.
 
