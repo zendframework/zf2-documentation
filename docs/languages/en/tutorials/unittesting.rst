@@ -816,16 +816,9 @@ fine, so now we can add the rest of the test methods:
                          ->will($this->returnValue($resultSet));
 
         $albumTable = new AlbumTable($mockTableGateway);
-
-        try {
-            $albumTable->getAlbum(123);
-        }
-        catch (\Exception $e) {
-            $this->assertSame('Could not find row 123', $e->getMessage());
-            return;
-        }
-
-        $this->fail('Expected exception was not thrown');
+        
+        $this->setExpectedException('Exception', 'Expected exception was not thrown');
+        $albumTable->getAlbum(123);
     }
 
 These tests are nothing complicated and they should be self explanatory. In each test
