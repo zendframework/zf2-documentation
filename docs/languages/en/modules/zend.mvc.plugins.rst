@@ -192,7 +192,73 @@ exposes a number of methods:
    ``false`` if none existed.
 
    :rtype: ``boolean``
+   
+.. function:: clearMessagesFromContainer()
+   :noindex:
 
+   Clear all messages from the container. Returns ``true`` if any messages were cleared, ``false`` if none existed.
+
+   :rtype: ``boolean``
+   
+
+This plugin also provides four meaningful namespaces, namely: INFO, ERROR, WARNING, SUCCESS. The following functions are related to these namespaces:
+   
+.. function:: addInfoMessage()
+   :noindex:
+   
+    Add a message to "info" namespace
+
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
+   
+.. function:: hasCurrentInfoMessages()
+   :noindex:
+   
+    Check to see if messages have been added to "info" namespace within this request
+
+   :rtype: ``boolean``
+   
+.. function:: addWarningMessage()
+   :noindex:
+   
+    Add a message to "warning" namespace
+
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
+   
+.. function:: hasCurrentWarningMessages()
+   :noindex:
+   
+    Check to see if messages have been added to "warning" namespace within this request
+
+   :rtype: ``boolean``
+
+.. function:: addErrorMessage()
+   :noindex:
+   
+    Add a message to "error" namespace
+
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
+   
+.. function:: hasCurrentErrorMessages()
+   :noindex:
+   
+    Check to see if messages have been added to "error" namespace within this request
+
+   :rtype: ``boolean``
+   
+.. function:: addSuccessMessage()
+   :noindex:
+   
+    Add a message to "success" namespace
+    
+   :rtype: ``Zend\Mvc\Controller\Plugin\FlashMessenger``
+   
+.. function:: hasCurrentSuccessMessages()
+   :noindex:
+   
+    Check to see if messages have been added to "success" namespace within this request
+
+   :rtype: ``boolean``
+   
 Additionally, the ``FlashMessenger`` implements both ``IteratorAggregate`` and ``Countable``, allowing you to
 iterate over and count the flash messages in the current namespace within the session container.
 
