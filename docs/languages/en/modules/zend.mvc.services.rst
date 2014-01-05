@@ -29,7 +29,7 @@ three: ``SharedEventManager``, ``EventManager``, and ``ModuleManager``.
 
 After this, the ``Application`` calls for the ``ModuleManager``. At this point, the
 ``ModuleManager`` further configures the ``ServiceManager`` with services and factories provided in
-``Zend\Mvc\Service\ServiceLocator``.  This approach allows us to keep the main application
+``Zend\Mvc\Service\ServiceListenerFactory``.  This approach allows us to keep the main application
 configuration concise, and to give the developer the power to configure different parts of the `MVC`
 system from within the modules, overriding any default configuration in these `MVC` services.
 
