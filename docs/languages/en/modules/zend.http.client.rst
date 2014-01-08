@@ -466,7 +466,7 @@ Examples
 Performing a Simple GET Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Performing simple *HTTP* requests is very easily done using the setRequest() and dispatch() methods:
+Performing simple *HTTP* requests is very easily done using the dispatch() method:
 
 .. code-block:: php
    :linenos:
@@ -476,8 +476,7 @@ Performing simple *HTTP* requests is very easily done using the setRequest() and
 
    $request = new Request();
    $client = new Client('http://example.org');
-   $client->setRequest($request);
-   $response = $client->dispatch();
+   $response = $client->dispatch($request);
 
 The ``request`` object can be configured using his methods as shown in the
 :ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
@@ -507,8 +506,7 @@ called, the default request method is ``GET`` (see the above example).
 
    // Performing a POST request
    $request->setMethod(Request::METHOD_POST);
-   $client->setRequest($request);
-   $response = $client->dispatch();
+   $response = $client->dispatch($request);
 
 .. _zend.http.client.parameters.example-1:
 
