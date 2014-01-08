@@ -31,7 +31,8 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
         {
             // we want to ignore the name passed
             parent::__construct('album');
-
+            
+            $this->setAttribute('method', 'post');
             $this->add(array(
                 'name' => 'id',
                 'type' => 'Hidden',
