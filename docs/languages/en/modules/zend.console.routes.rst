@@ -425,8 +425,8 @@ This special route will catch all console requests, regardless of the parameters
     :emphasize-lines: 3
 
     'default-route' => array(
+        'type'     => 'catchall',
         'options' => array(
-            'type'     => 'catchall',
             'defaults' => array(
                 'controller' => 'Application\Controller\Index',
                 'action'     => 'consoledefault'
