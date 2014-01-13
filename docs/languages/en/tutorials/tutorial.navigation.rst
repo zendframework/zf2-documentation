@@ -55,7 +55,6 @@ application, and not just to our album pages:
 
     'service_manager' => array(
         'factories' => array(
-            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', // <-- add this
         ),
     ),
@@ -113,7 +112,7 @@ with labels linking to the given route names. You can define highly
 complex hierarchical sites here with pages and sub-pages linking to route
 names, controller/action pairs or external uris. For more information
 see the docs
-`here <http://framework.zend.com/manual/2.1/en/modules/zend.navigation.quick-start.html>`__.
+`here <http://framework.zend.com/manual/2.2/en/modules/zend.navigation.quick-start.html>`__.
 
 Adding the Menu View Helper
 ---------------------------
@@ -128,8 +127,8 @@ layout by using the :ref:`menu view helper <zend.navigation.view.helper.menu>`:
    :linenos:
 
     ...
-    <a class="brand"
-           href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
     <?php // <-- Add this !!
     echo $this->navigation('navigation')->menu();
     ?>
@@ -145,8 +144,8 @@ just a few tweaks however, we can make it look awesome:
 .. code-block:: php
    :linenos:
 
-    <a class="brand"
-       href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
     <?php // <-- Update this !!
     echo $this->navigation('navigation')
               ->menu()
@@ -210,7 +209,6 @@ album specific):
                 if ($key < count($this->pages) - 1):
                     ?>
                     <a href="<?php echo $page->getHref(); ?>"><?php echo $page->getLabel(); ?></a>
-                    <span class="divider">/</span>
                 <?php
                 // otherwise, just output the name
                 else:
