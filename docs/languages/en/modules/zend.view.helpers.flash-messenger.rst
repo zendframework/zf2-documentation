@@ -150,3 +150,24 @@ the same output multiple times only having different ``CSS`` classes applied.
            <li>You, who's reading the docs, are AWESOME!</li>
        </ul>
    </div>
+
+Alternative Configuration of the ViewHelper Layout
+--------------------------------------------------
+
+The FlashMessengerFactory checks the Configuration of the application. Therefore it is possible to
+set up the FlashMessenger strings through your `module.config.php`, too. The next example will set 
+up the output to be identical with the above Twitter Bootstrap 3 Example
+
+.. code-block:: php
+   :linenos:
+   
+    'flashmessenger' => [
+        'view_helper_config' => [
+            'flashmessenger' => [
+                'message_open_format'      => '<div%s><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul><li>',
+                'message_close_string'     => '</li></ul></div>',
+                'message_separator_string' => '</li><li>'
+            ]
+        ]
+    ],
+  
