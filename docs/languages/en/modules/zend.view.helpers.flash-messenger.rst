@@ -161,13 +161,11 @@ up the output to be identical with the above Twitter Bootstrap 3 Example
 .. code-block:: php
    :linenos:
    
-    'flashmessenger' => array(
-        'view_helper_config' => array(
-            'flashmessenger' => array(
-                'message_open_format'      => '<div%s><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul><li>',
-                'message_close_string'     => '</li></ul></div>',
-                'message_separator_string' => '</li><li>'
-            )
-        )
-    ),
+   'view_helper_config' => array(
+       'flashmessenger' => array(
+           'message_open_format'      => '<div%s><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul><li>',
+           'message_close_string'     => '</li></ul></div>',
+           'message_separator_string' => '</li><li>'
+       )
+   )
   
