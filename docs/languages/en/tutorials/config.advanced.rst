@@ -346,15 +346,13 @@ file, what has precedence?
 
 The order in which they are merged is:
 
-- configuration returned by ``getConfig()``
 - configuration returned by the various service configuration methods in a
   module class
+- configuration returned by ``getConfig()``
 
-In other words, your various service configuration methods win. Additionally,
-and of particular note: the configuration returned from those methods will *not*
-be cached. The reason for this is that it is not uncommon to use closures or
-factory instances in configuration returned from your ``Module`` class -- which
-cannot be cached reliably.
+In other words, your ``getConfig()`` win over the various service configuration methods.
+Additionally, and of particular note: the configuration returned from those methods will *not*
+be cached.
 
 .. note::
 
