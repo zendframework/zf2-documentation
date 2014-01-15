@@ -14,6 +14,9 @@ Configuration of Zend Framework 2 applications happens in several steps:
 - Once configuration is aggregated from all modules, the ``ConfigListener`` will
   also merge application configuration globbed in specified directories
   (typically ``config/autoload/``).
+- Finally, immediately prior to the merged application configuration being
+  passed to the ``ServiceManager``, it is passed to a special
+  ``EVENT_MERGE_CONFIG`` event to allow further modification.
 
 In this tutorial, we'll look at the exact sequence, and how you can tie into it.
 
@@ -105,7 +108,8 @@ before your application is ready. The configuration is usually brief, and quite
 minimal.
 
 Also, system configuration is used *immediately*, and is not merged with any
-other configuration -- which means it cannot be overridden by a module.
+other configuration -- which means, with the exception of the values under the
+'service_manager' key, it cannot be overridden by a module.
 
 This leads us to our first trick: how do you provide environment-specific
 system configuration?
@@ -360,6 +364,69 @@ cannot be cached reliably.
     initializers. This prevents caching problems, and also allows you to write
     your configuration files in other markup formats.
 
+.. _tutorials.config.advanced.manipulating-merged-configuration:
+
+Manipulating merged configuration
+---------------------------------
+
+Occasionally you will want to not just override an application configuration
+key, but actually remove it. Since merging will not remove keys, how can you
+handle this?
+
+``Zend\ModuleManager\Listener\ConfigListener`` triggers a special event,
+``Zend\ModuleManager\ModuleEvent::EVENT_MERGE_CONFIG``, after merging all
+configuration, but prior to it being passed to the ``ServiceManager``. By
+listening to this event, you can inspect the merged configuration and manipulate
+it.
+
+The ``ConfigListener`` itself listens to the event at priority 1000 (i.e., very
+high), which is when the configuration is merged. You can tie into this to
+modify the merged configuration from your module, via the ``init()`` method.
+
+.. code-block:: php
+    :linenos:
+
+    namespace Foo;
+
+    use Zend\ModuleManager\ModuleEvent;
+    use Zend\ModuleManager\ModuleManager;
+
+    class Module
+    {
+        public function init(ModuleManager $moduleManager)
+        {
+            $events = $moduleManager->getEventManager();
+
+            // Registering a listener at default priority, 1, which will trigger
+            // after the ConfigListener merges config.
+            $events->attach(ModuleEvent::EVENT_MERGE_CONFIG, array($this, 'onMergeConfig'));
+        }
+
+        public function onMergeConfig(ModuleEvent $e)
+        {
+            $configListener = $e->getConfigListener();
+            $config         = $configListener->getMergedConfig(false);
+
+            // Modify the configuration; here, we'll remove a specific key:
+            if (isset($config['some_key'])) {
+                unset($config['some_key']);
+            }
+
+            // Pass the changed configuration back to the listener:
+            $configListener->setMergedConfig($config);
+        }
+    }
+
+At this point, the merged application configuration will no longer contain the
+key ``some_key``.
+
+.. note::
+
+    If a cached config is used by the ``ModuleManager``, the
+    ``EVENT_MERGE_CONFIG`` event will not be triggered. However, typically that
+    means that what is cached will be what was originally manipulated by your
+    listener.
+
 .. _tutorials.config.advanced.workflow:
 
 Configuration merging workflow
@@ -390,4 +457,7 @@ merged.
 
   - Files detected from the **service configuration** ``config_glob_paths``
     setting are merged, based on the order they resolve in the glob path.
+  - ``ConfigListener`` triggers ``EVENT_MERGE_CONFIG``:
+    - ``ConfigListener`` merges configuration
+    - Any other event listeners manipulate the configuration
   - Merged configuration is finally passed to the ``ServiceManager``
