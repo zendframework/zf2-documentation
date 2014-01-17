@@ -51,7 +51,7 @@ all given plugins at once.
 The ClearExpiredByFactor Plugin
 -------------------------------
 
-   The ``Zend\Cache\Storage\Adapter\ClearExpiredByFactor`` plugin calls the
+   The ``Zend\Cache\Storage\Plugin\ClearExpiredByFactor`` plugin calls the
    storage method ``clearExpired()`` randomly (by factor) after every call of
    ``setItem()``, ``setItems()``, ``addItem()`` and ``addItems()``.
 
@@ -77,7 +77,7 @@ The ClearExpiredByFactor Plugin
 The ExceptionHandler Plugin
 ---------------------------
 
-   The ``Zend\Cache\Storage\Adapter\ExceptionHandler`` plugin catches all
+   The ``Zend\Cache\Storage\Plugin\ExceptionHandler`` plugin catches all
    exceptions thrown on reading or writing to cache and sends the exception
    to a defined callback function.
    
@@ -102,7 +102,7 @@ The ExceptionHandler Plugin
 The IgnoreUserAbort Plugin
 --------------------------
 
-   The ``Zend\Cache\Storage\Adapter\IgnoreUserAbort`` plugin ignores script
+   The ``Zend\Cache\Storage\Plugin\IgnoreUserAbort`` plugin ignores script
    terminations by users until write operations to cache finished.
 
 .. _zend.cache.storage.plugin.ignore-user-abort.options:
@@ -120,7 +120,7 @@ The IgnoreUserAbort Plugin
 The OptimizeByFactor Plugin
 ---------------------------
 
-   The ``Zend\Cache\Storage\Adapter\OptimizeByFactor`` plugin calls the storage
+   The ``Zend\Cache\Storage\Plugin\OptimizeByFactor`` plugin calls the storage
    method ``optimize()`` randomly (by factor) after removing items from cache.
 
 .. _zend.cache.storage.plugin.optimize-by-factor.options:
@@ -145,7 +145,7 @@ The OptimizeByFactor Plugin
 The Serializer Plugin
 ---------------------
 
-   The ``Zend\Cache\Storage\Adapter\Serializer`` plugin will serialize data on
+   The ``Zend\Cache\Storage\Plugin\Serializer`` plugin will serialize data on
    writing to cache and unserialize on reading. So it's possible to store
    different datatypes into cache storages only support strings.
 
