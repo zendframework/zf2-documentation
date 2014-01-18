@@ -503,26 +503,31 @@ Performing simple *HTTP* requests is very easily done:
 Using Request Methods Other Than GET
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET,
-Zend\\Http\\Request::METHOD_POST and so on.
-
-If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never
-called, the default request method is ``GET`` (see the above example).
+The request method can be set using ``setMethod()``. If no method is specified, the method set by the last
+``setMethod()`` call is used. If ``setMethod()`` was never called, the default request method is ``GET``.
 
 .. code-block:: php
    :linenos:
 
    use Zend\Http\Client;
-   use Zend\Http\Request;
 
-   $request = new Request();
-   $request->setUri('http://example.org');
-   $client = new Client();
+   $client = new Client('http://example.org');
 
    // Performing a POST request
-   $request->setMethod(Request::METHOD_POST);
-   $client->setRequest($request);
-   $response = $client->dispatch();
+   $client->setMethod('POST');
+   $response = $client->send();
+
+For convenience, ``Zend\Http\Request`` defines all the request methods as class constants, Zend\\Http\\Request::METHOD_GET,
+Zend\\Http\\Request::METHOD_POST and so on:
+
+   use Zend\Http\Client;
+   use Zend\Http\Request;
+
+   $client = new Client('http://example.org');
+
+   // Performing a POST request
+   $client->setMethod(Request::METHOD_POST);
+   $response = $client->send();
 
 .. _zend.http.client.parameters.example-1:
 
@@ -581,26 +586,43 @@ request is a ``POST`` request, ``POST`` parameters are simply ignored.
 A Complete Example
 ^^^^^^^^^^^^^^^^^^
 
+.. code-block:: php
+   :linenos:
 
+   use Zend\Http\Client;
+
+   $client = new Client();
+   $client->setUri('http://www.example.com');
+   $client->setMethod('POST');
+   $client->setParameterPost(array(
+      'foo' => 'bar'
+   ));
+
+   $response = $client->send();
+
+   if ($response->isSuccess()) {
+       // the POST was successful
+   }
+
+or the same thing, using a request object:
 
 .. code-block:: php
    :linenos:
 
-   use Zend\Http\Request;
    use Zend\Http\Client;
+   use Zend\Http\Request;
+
    $request = new Request();
-   $request->setUri('http://www.test.com');
+   $request->setUri('http://www.example.com');
    $request->setMethod('POST');
    $request->getPost()->set('foo', 'bar');
 
    $client = new Client();
-   $response = $client->dispatch($request);
+   $response = $client->send($request);
 
    if ($response->isSuccess()) {
-       //  the POST was successful
+       // the POST was successful
    }
-
-
 
 
 .. [#] See RFC 2616 -http://www.w3.org/Protocols/rfc2616/rfc2616.html.
