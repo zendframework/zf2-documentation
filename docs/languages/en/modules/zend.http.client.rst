@@ -21,8 +21,8 @@ Quick Start
 
 The class constructor optionally accepts a URL as its first parameter (can be either a string or a
 ``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options.
-The ``send()`` method is used to submit the request to the remote server, and returns a
-``Zend\Http\Response`` object:
+The ``send()`` method is used to submit the request to the remote server, and a ``Zend\Http\Response`` object is
+returned:
 
 .. code-block:: php
    :linenos:
@@ -50,13 +50,21 @@ Both constructor parameters can be left out, and set later using the setUri() an
    ));
    $response = $client->send();
 
-You can also pass a ``Zend\Config\Config`` object to set the client's configuration:
+``Zend\Http\Client`` can also dispatch requests using a separately configured ``request`` object (see the
+:ref:`Zend\\Http\\Request manual page<zend.http.request>` for full details of the methods available):
 
 .. code-block:: php
    :linenos:
 
-   $config = Zend\Config\Factory::fromFile('httpclient.ini');
-   $client->setOptions($config);
+   use Zend\Http\Client;
+   use Zend\Http\Request;
+
+   $request = new Request();
+   $request->setUri('http://example.org');
+
+   $client = new Client();
+
+   $response = $client->send($request);
 
 .. note::
 
@@ -65,12 +73,11 @@ You can also pass a ``Zend\Config\Config`` object to set the client's configurat
 
 .. _zend.http.client.options:
 
-Configuration Options
----------------------
+Configuration
+-------------
 
-The constructor and setOptions() method accept an associative array of configuration parameters, or a
+The constructor and setOptions() method accepts an associative array of configuration parameters, or a
 ``Zend\Config\Config`` object. Setting these parameters is optional, as they all have default values.
-
 
 
       .. _zend.http.client.configuration.table:
@@ -102,6 +109,7 @@ The constructor and setOptions() method accept an associative array of configura
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
          |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                           |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
+
 
 .. _zend.http.client.methods:
 
@@ -489,26 +497,6 @@ Performing simple *HTTP* requests is very easily done:
 
    $client = new Client('http://example.org');
    $response = $client->send();
-
-The ``Zend\Http\Client` can also dispatch requests using a pre-configured request object:
-
-.. code-block:: php
-   :linenos:
-
-   use Zend\Http\Client;
-   use Zend\Http\Request;
-
-   $request = new Request();
-   $request->setUri('http://example.org');
-
-   $client = new Client();
-
-   $response = $client->send($request);
-
-The ``request`` object can be configured using his methods as shown in the
-:ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
-to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``,
-``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
 
 .. _zend.http.client.basic-requests.example-2:
 
