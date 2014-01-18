@@ -21,7 +21,8 @@ Quick Start
 
 The class constructor optionally accepts a URL as its first parameter (can be either a string or a
 ``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options.
-The ``send()`` method then sends the request to the remote server, returning a ``Zend\Http\Response`` object:
+The ``send()`` method is used to submit the request to the remote server, and returns a
+``Zend\Http\Response`` object:
 
 .. code-block:: php
    :linenos:
@@ -479,7 +480,17 @@ Examples
 Performing a Simple GET Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Performing simple *HTTP* requests is very easily done using the setRequest() and dispatch() methods:
+Performing simple *HTTP* requests is very easily done:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
+   $client = new Client('http://example.org');
+   $response = $client->send();
+
+The ``Zend\Http\Client` can also dispatch requests using a pre-configured request object:
 
 .. code-block:: php
    :linenos:
@@ -488,9 +499,11 @@ Performing simple *HTTP* requests is very easily done using the setRequest() and
    use Zend\Http\Request;
 
    $request = new Request();
-   $client = new Client('http://example.org');
-   $client->setRequest($request);
-   $response = $client->dispatch();
+   $request->setUri('http://example.org');
+
+   $client = new Client();
+
+   $response = $client->send($request);
 
 The ``request`` object can be configured using his methods as shown in the
 :ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
