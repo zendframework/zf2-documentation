@@ -20,27 +20,40 @@ Quick Start
 -----------
 
 The class constructor optionally accepts a URL as its first parameter (can be either a string or a
-``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options. Both can
-be left out, and set later using the setUri() and setConfig() methods.
+``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options.
+The ``send()`` method then sends the request to the remote server, returning a ``Zend\Http\Response`` object:
 
 .. code-block:: php
    :linenos:
 
    use Zend\Http\Client;
+
    $client = new Client('http://example.org', array(
        'maxredirects' => 0,
        'timeout'      => 30
    ));
+   $response = $client->send();
 
-   // This is actually exactly the same:
+Both constructor parameters can be left out, and set later using the setUri() and setConfig() methods:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
    $client = new Client();
    $client->setUri('http://example.org');
    $client->setOptions(array(
        'maxredirects' => 0,
        'timeout'      => 30
    ));
+   $response = $client->send();
 
-   // You can also pass a Zend\Config\Config object to set the client's configuration
+You can also pass a ``Zend\Config\Config`` object to set the client's configuration:
+
+.. code-block:: php
+   :linenos:
+
    $config = Zend\Config\Factory::fromFile('httpclient.ini');
    $client->setOptions($config);
 
