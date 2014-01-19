@@ -110,6 +110,10 @@ The constructor and setOptions() method accepts an associative array of configur
          |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                           |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
 
+The options are also passed to the adapter class upon instantiation, so the same array or ``Zend\Config\Config``
+object) can be used for adapter configuration. See the
+:ref:`Zend Http Client adapter section<zend.http.client.adapters>` for more information on the
+adapter-specific options available.
 
 .. _zend.http.client.methods:
 
@@ -520,6 +524,9 @@ The request method can be set using ``setMethod()``. If no method is specified, 
 For convenience, ``Zend\Http\Request`` defines all the request methods as class constants, Zend\\Http\\Request::METHOD_GET,
 Zend\\Http\\Request::METHOD_POST and so on:
 
+.. code-block:: php
+   :linenos:
+
    use Zend\Http\Client;
    use Zend\Http\Request;
 
@@ -568,6 +575,7 @@ done with the ``setParameterPost()`` method, which is identical to the ``setPara
    :linenos:
 
    use Zend\Http\Client;
+
    $client = new Client();
 
    // Setting several POST parameters, one of them with several values
@@ -582,6 +590,40 @@ setting POST parameters on a non-``POST`` request will not trigger an error, ren
 request is a ``POST`` request, ``POST`` parameters are simply ignored.
 
 .. _zend.http.client.request-object-usage:
+
+Connecting to SSL URLs
+^^^^^^^^^^^^^^^^^^^^^^
+
+If you are trying to connect to an SSL (https) URL and are using the default (``Zend\Http\Client\Adapter\Socket``)
+adapter, you may need to set the ``sslcapath`` configuration option in order to allow PHP to validate the
+SSL certificate:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
+   $client = new Client('https://example.org', array(
+      'sslcapath' => '/etc/ssl/certs'
+   ));
+   $response = $client->send();
+
+The exact path to use will vary depending on your Operating System. Without this you'll get the exception
+"Unable to enable crypto on TCP connection" when trying to connect.
+
+Alternatively, you could switch to the curl adapter, which negotiates SSL connections more transparently:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
+   $client = new Client('https://example.org', array(
+      'adapter' => 'Zend\Http\Client\Adapter\Curl'
+   ));
+   $response = $client->send();
+
+.. _zend.http.client.ssl-example:
 
 A Complete Example
 ^^^^^^^^^^^^^^^^^^
