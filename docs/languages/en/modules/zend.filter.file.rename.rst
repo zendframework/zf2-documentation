@@ -53,7 +53,7 @@ Rename all filtered files to a new name:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\Filter\File\Rename("/tmp/newfile.txt");
+   $filter = new \Zend\Filter\File\Rename("/tmp/newfile.txt");
    echo $filter->filter("./myfile.txt");
    // File has been renamed to "/tmp/newfile.txt"
 
@@ -62,7 +62,7 @@ Move to a new path and randomize file names:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\Filter\File\Rename(array(
+   $filter = new \Zend\Filter\File\Rename(array(
        "target"    => "/tmp/newfile.txt",
        "randomize" => true,
    ));
@@ -74,7 +74,7 @@ Configure different options for several possible source files:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\Filter\File\Rename(array(
+   $filter = new \Zend\Filter\File\Rename(array(
        array(
            "source"    => "fileA.txt"
            "target"    => "/dest1/newfileA.txt",
