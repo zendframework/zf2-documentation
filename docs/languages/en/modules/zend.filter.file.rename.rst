@@ -44,7 +44,7 @@ Move all filtered files to a different directory:
    :linenos:
 
    // 'target' option is assumed if param is a string
-   $filter = \Zend\Filter\File\Rename("/tmp/");
+   $filter = new \Zend\Filter\File\Rename("/tmp/");
    echo $filter->filter("./myfile.txt");
    // File has been moved to "/tmp/myfile.txt"
 
