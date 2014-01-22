@@ -64,7 +64,7 @@ Move all filtered files to a different directory:
    // i.e. $files['my-upload']['name'] === 'myfile.txt'
 
    // 'target' option is assumed if param is a string
-   $filter = new\Zend\Filter\File\RenameUpload("./data/uploads/");
+   $filter = new \Zend\Filter\File\RenameUpload("./data/uploads/");
    echo $filter->filter($files['my-upload']);
    // File has been moved to "./data/uploads/php5Wx0aJ"
 
