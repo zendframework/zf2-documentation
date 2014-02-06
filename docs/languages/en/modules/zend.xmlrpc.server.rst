@@ -63,7 +63,7 @@ Services change over time and while webservices are generally less change intens
 recommended to version your service. Do so to lay grounds to provide compatibility for clients using older versions
 of your service and manage your service lifecycle including deprecation timeframes. To do so just include a version
 number into your *URI*. It is also recommended to include the remote protocol name in the *URI* to allow easy
-integration of upcoming remoting technologies. http://myservice.ws/**1.0/XMLRPC/**.
+integration of upcoming remoting technologies. ``http://myservice.ws/1.0/XMLRPC/``.
 
 .. _zend.xmlrpc.server.anatomy.expose:
 
