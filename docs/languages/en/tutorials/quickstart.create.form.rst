@@ -150,7 +150,7 @@ Of course, we also need to edit the view script; edit ``application/views/script
 
    **Checkpoint**
 
-   Now browse to "http://localhost/guestbook/sign". You should see the following in your browser:
+   Now browse to ``http://localhost/guestbook/sign``. You should see the following in your browser:
 
    .. image:: ../images/learning.quickstart.create-form.png
       :width: 421
