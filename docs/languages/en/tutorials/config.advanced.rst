@@ -317,7 +317,7 @@ Configuration mapping table
 +==============================+=======================================+=================================+========================+
 | ``ControllerPluginManager``  | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
-| ``ControllerLoader``         | ``ControllerProviderInterface``       | ``getControllerConfig()``       | ``controllers``        |
+| ``ControllerManager``         | ``ControllerProviderInterface``       | ``getControllerConfig()``       | ``controllers``        |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
 | ``FilterManager``            | ``FilterProviderInterface``           | ``getFilterConfig()``           | ``filters``            |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
