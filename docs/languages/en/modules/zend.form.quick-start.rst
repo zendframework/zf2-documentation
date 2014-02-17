@@ -323,6 +323,9 @@ defining a form for re-use in your application.
 
        public function __construct(CaptchaAdapter $captcha)
        {
+       
+           parent::__construct();
+           
            $this->captcha = $captcha;
 
            // add() can take either an Element/Fieldset instance,
