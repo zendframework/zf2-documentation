@@ -7,7 +7,8 @@ This filter will resolve given links and pathnames and returns canonicalized abs
 
 .. _zend.filter.set.realpath.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\RealPath``:
 
@@ -15,7 +16,8 @@ The following options are supported for ``Zend\Filter\RealPath``:
 
 .. _zend.filter.set.realpath.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 For any given link of pathname its absolute path will be returned. References to '``/./``', '``/../``' and extra
 '``/``' characters in the input path will be stripped. The resulting path will not have any symbolic link,
@@ -36,7 +38,8 @@ return ``FALSE``.
 
 .. _zend.filter.set.realpath.exists:
 
-.. rubric:: Non-Existing Paths
+Non-Existing Paths
+^^^^^^^^^^^^^^^^^^
 
 Sometimes it is useful to get also paths when they don't exist, f.e. when you want to get the real path for a path
 which you want to create. You can then either give a ``FALSE`` at initiation, or use ``setExists()`` to set it.

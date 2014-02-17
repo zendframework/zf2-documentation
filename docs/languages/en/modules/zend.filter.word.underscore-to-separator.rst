@@ -7,7 +7,8 @@ This filter modifies a given string such that 'words_with_underscores' are conve
 
 .. _zend.filter.set.underscoretoseparator.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\UnderscoreToSeparator``:
 
@@ -15,7 +16,8 @@ The following options are supported for ``Zend\Filter\Word\UnderscoreToSeparator
 
 .. _zend.filter.set.underscoretoseparator.basic:
 
-.. rubric:: Basic usage
+Basic usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -29,7 +31,10 @@ A basic example of usage is below:
 
 The above example returns 'this+is+my+content'.
 
-.. rubric:: Default Behavior
+.. _zend.filter.set.underscoretoseparator.default-behavior:
+
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

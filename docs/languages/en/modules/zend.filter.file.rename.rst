@@ -8,7 +8,8 @@ file to a new path.
 
 .. _zend.filter.file.rename.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -36,7 +37,8 @@ options set.
 
 .. _zend.filter.file.rename.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 Move all filtered files to a different directory:
 
@@ -94,7 +96,8 @@ Configure different options for several possible source files:
 
 .. _zend.filter.file.rename.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 The specific public methods for the ``Rename`` filter, besides the common ``filter()`` method, are as follows:
 

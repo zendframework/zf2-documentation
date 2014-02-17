@@ -7,7 +7,8 @@ This filter converts any input to be uppercased.
 
 .. _zend.filter.set.stringtoupper.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\StringToUpper``:
 
@@ -15,7 +16,8 @@ The following options are supported for ``Zend\Filter\StringToUpper``:
 
 .. _zend.filter.set.stringtoupper.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 This is a basic example for using the ``StringToUpper`` filter:
 
@@ -29,7 +31,8 @@ This is a basic example for using the ``StringToUpper`` filter:
 
 .. _zend.filter.set.stringtoupper.encoding:
 
-.. rubric:: Different Encoded Strings
+Different Encoded Strings
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Like the ``StringToLower`` filter, this filter handles only characters from the actual locale of your server. Using
 different character sets works the same as with ``StringToLower``.

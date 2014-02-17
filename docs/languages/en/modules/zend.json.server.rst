@@ -3,6 +3,11 @@
 Zend\\Json\\Server - JSON-RPC server
 ====================================
 
+.. _zend.json.server.introduction:
+
+Introduction
+------------
+
 ``Zend\Json\Server`` is a `JSON-RPC`_ server implementation. It supports both the `JSON-RPC version 1
 specification`_ as well as the `version 2 specification`_; additionally, it provides a *PHP* implementation of the
 `Service Mapping Description (SMD) specification`_ for providing service metadata to service consumers.
@@ -31,7 +36,8 @@ server end point to both handle requests as well as to deliver the service SMD, 
 
 .. _zend.json.server.usage:
 
-.. rubric:: Zend\\Json\\Server Usage
+Basic Usage
+-----------
 
 First, let's define a class we wish to expose via the JSON-RPC server. We'll call the class 'Calculator', and
 define methods for 'add', 'subtract', 'multiply', and 'divide':

@@ -1,14 +1,15 @@
 .. _zend.i18n.filter.number-parse:
 
 NumberParse
-------------
+-----------
 
 The ``NumberParse`` filter can be used to parse a number from a string. It acts as a
 wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.filter.number-parse.options:
 
-.. rubric:: Supported Options for NumberParse Filter
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``NumberParse``:
 
@@ -31,7 +32,8 @@ The following options are supported for ``NumberParse``:
 
 .. _zend.i18n.filter.number-parse.usage:
 
-.. rubric:: NumberParse Filter Usage
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

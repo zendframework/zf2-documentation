@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.mvc:
 
 Zend\\Navigation\\Page\\Mvc
-===========================
+---------------------------
 
 *MVC* pages are defined using *MVC* parameters known from the ``Zend\Mvc`` component. An *MVC* page will use
 ``Zend\Mvc\Router\RouteStackInterface`` internally in the ``getHref()`` method to generate hrefs, and the
@@ -47,7 +47,8 @@ determine if the page is active.
 
 .. _zend.navigation.pages.mvc.example.getHref:
 
-.. rubric:: getHref() generates the page URI
+getHref() generates the page URI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example show that *MVC* pages use ``Zend\Mvc\Router\RouteStackInterface`` internally to generate *URI*\ s when
 calling *$page->getHref()*.
@@ -86,7 +87,8 @@ calling *$page->getHref()*.
 
 .. _zend.navigation.pages.mvc.example.isActive:
 
-.. rubric:: isActive() determines if page is active
+isActive() determines if page is active
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example show that *MVC* pages determine whether they are active by using the params found in the route
 match object.
@@ -143,7 +145,8 @@ match object.
 
 .. _zend.navigation.pages.mvc.example.routes:
 
-.. rubric:: Using routes
+Using routes
+^^^^^^^^^^^^
 
 Routes can be used with *MVC* pages. If a page has a route, this route will be used in ``getHref()`` to generate
 the *URL* for the page.

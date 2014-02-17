@@ -7,13 +7,15 @@ This filter modifies a given string such that 'words-with-dashes' are converted 
 
 .. _zend.filter.set.dashtounderscore.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Word\DashToUnderscore``:
 
 .. _zend.filter.set.dashtounderscore.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
