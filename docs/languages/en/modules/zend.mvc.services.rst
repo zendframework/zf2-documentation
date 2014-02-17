@@ -91,7 +91,7 @@ services configured out of the box.
     configuration from the module event. As such, this service contains the entire, merged
     application configuration.
 
-  - ``ControllerLoader``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. This creates an
+  - ``ControllerManager``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. This creates an
     instance of ``Zend\Mvc\Controller\ControllerManager``, passing the service manager instance.
 
     Additionally, it uses the ``DiStrictAbstractServiceFactory`` service -- effectively allowing you
@@ -483,7 +483,7 @@ Plugin Managers
 
 The following plugin managers are configured by default:
 
-- **ControllerLoader**, corresponding to ``Zend\Mvc\Controller\ControllerManager``, and used to
+- **ControllerManager**, corresponding to ``Zend\Mvc\Controller\ControllerManager``, and used to
   manage controller instances.
 
 - **ControllerPluginManager**, corresponding to ``Zend\Mvc\Controller\PluginManager``, and used to
