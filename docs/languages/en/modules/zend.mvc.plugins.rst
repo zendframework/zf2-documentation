@@ -564,8 +564,8 @@ This plugin can be invoked with three arguments:
        ))
    );
 
-   // Pass in the route/url you want to redirect to after the POST
-   $prg = $this->prg($myForm, '/user/profile-pic', true);
+   // Pass in the form and optional the route/url you want to redirect to after the POST
+   $prg = $this->fileprg($myForm, '/user/profile-pic', true);
 
    if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
        // Returned a response to redirect us
