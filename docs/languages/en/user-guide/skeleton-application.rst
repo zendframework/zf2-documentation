@@ -144,7 +144,7 @@ Make sure that you update your ``/etc/hosts`` or
 is mapped to ``127.0.0.1``. The website can then be accessed using
 http://zf2-tutorial.localhost.
 
-.. code-block:: txt
+.. code-block::
    :linenos:
 
     127.0.0.1               zf2-tutorial.localhost localhost
