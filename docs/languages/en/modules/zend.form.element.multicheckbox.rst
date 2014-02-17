@@ -74,3 +74,8 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    Return the value options.
 
    :rtype: array
+
+.. function:: unsetValueOption($key)
+   :noindex:
+
+   Unset the value option from the multi-checkbox.
