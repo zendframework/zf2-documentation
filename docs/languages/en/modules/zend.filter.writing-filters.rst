@@ -9,6 +9,11 @@ for their particular use cases. The task of writing a custom filter is facilitat
 
 ``Zend\Filter\FilterInterface`` defines a single method, ``filter()``, that may be implemented by user classes.
 
+.. _zend.filter.writing_filters.example:
+
+Example
+-------
+
 The following example demonstrates how to write a custom filter:
 
 .. code-block:: php

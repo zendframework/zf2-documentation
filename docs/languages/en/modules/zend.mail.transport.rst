@@ -27,7 +27,8 @@ message to it.
 
 .. _zend.mail.transport.quick-start.sendmail-usage:
 
-.. rubric:: Sendmail Transport Usage
+Sendmail Transport Usage
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -46,7 +47,8 @@ message to it.
 
 .. _zend.mail.transport.quick-start.smtp-usage:
 
-.. rubric:: SMTP Transport Usage
+SMTP Transport Usage
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -77,7 +79,8 @@ message to it.
 
 .. _zend.mail.transport.quick-start.file-usage:
 
-.. rubric:: File Transport Usage
+File Transport Usage
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

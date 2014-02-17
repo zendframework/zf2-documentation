@@ -15,10 +15,6 @@ This document details the various options available to the ``Zend\Mail\Transport
 Quick Start
 -----------
 
-.. _zend.mail.file-options.quick-start.usage:
-
-.. rubric:: File Transport Usage
-
 .. code-block:: php
    :linenos:
 
@@ -39,8 +35,6 @@ Quick Start
 
 Configuration Options
 ---------------------
-
-.. rubric:: Configuration Options
 
 .. _zend.mail.file-options.options.path:
 

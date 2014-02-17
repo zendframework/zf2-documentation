@@ -1,7 +1,7 @@
 .. _zend.form.intro:
 
-Introduction to Zend\\Form
-==========================
+Introduction
+============
 
 ``Zend\Form`` is intended primarily as a bridge between your domain models and the View Layer. It composes a thin
 layer of objects representing form elements, an :ref:`InputFilter <zend.input-filter>`, and a small number of
@@ -14,7 +14,7 @@ The ``Zend\Form`` component consists of the following objects:
 - ``Fieldsets``, which extend from ``Elements``, but allow composing other fieldsets and elements.
 
 - ``Forms``, which extend from ``Fieldsets`` (and thus ``Elements``). They provide data and object binding, and compose
-  :ref:`InputFilters <zend.input-filter.intro>`. Data binding is done via :ref:`Zend\Stdlib\Hydrator <zend.stdlib.hydrator>`.
+  :ref:`InputFilters <zend.input-filter.intro>`. Data binding is done via :ref:`Zend\\Stdlib\\Hydrator <zend.stdlib.hydrator>`.
 
 To facilitate usage with the view layer, the ``Zend\Form`` component also aggregates a number of form-specific view
 helpers. These accept elements, fieldsets, and/or forms, and use the attributes they compose to render markup.

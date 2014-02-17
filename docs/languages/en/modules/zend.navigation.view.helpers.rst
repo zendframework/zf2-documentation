@@ -87,7 +87,8 @@ container when calling ``$helper->getContainer()``.
 
 .. _zend.navigation.view.helpers.proxy.example:
 
-.. rubric:: Proxying calls to the navigation container
+Proxying calls to the navigation container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Navigation view helpers use the magic method ``__call()`` to proxy method calls to the navigation container that is
 registered in the view helper.

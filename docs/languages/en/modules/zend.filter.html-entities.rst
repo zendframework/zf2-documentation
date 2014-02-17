@@ -8,7 +8,8 @@ exist.
 
 .. _zend.filter.set.htmlentities.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\HtmlEntities``:
 
@@ -34,7 +35,8 @@ The following options are supported for ``Zend\Filter\HtmlEntities``:
 
 .. _zend.filter.set.htmlentities.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 See the following example for the default behavior of this filter.
 
@@ -47,7 +49,8 @@ See the following example for the default behavior of this filter.
 
 .. _zend.filter.set.htmlentities.quotestyle:
 
-.. rubric:: Quote Style
+Quote Style
+^^^^^^^^^^^
 
 ``Zend\Filter\HtmlEntities`` allows changing the quote style used. This can be useful when you want to leave
 double, single, or both types of quotes un-filtered. See the following example:
@@ -87,7 +90,8 @@ altered.
 
 .. _zend.filter.set.htmlentities.:
 
-.. rubric:: Helper Methods
+Helper Methods
+^^^^^^^^^^^^^^
 
 To change or retrieve the ``quotestyle`` after instantiation, the two methods ``setQuoteStyle()`` and
 ``getQuoteStyle()`` may be used respectively. ``setQuoteStyle()`` accepts one parameter ``$quoteStyle``. The

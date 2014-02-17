@@ -8,7 +8,8 @@ The ``Alnum`` filter can be used to return only alphabetic characters and digits
 
 .. _zend.i18n.filter.alnum.options:
 
-.. rubric:: Supported Options for Alnum Filter
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Alnum``:
 
@@ -27,7 +28,8 @@ The following options are supported for ``Alnum``:
 
 .. _zend.i18n.filter.alnum.usage:
 
-.. rubric:: Alnum Filter Usage
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
