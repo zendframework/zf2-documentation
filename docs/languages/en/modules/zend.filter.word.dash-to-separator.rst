@@ -7,7 +7,8 @@ This filter modifies a given string such that 'words-with-dashes' are converted 
 
 .. _zend.filter.set.dashtoseparator.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\DashToSeparator``:
 
@@ -15,7 +16,8 @@ The following options are supported for ``Zend\Filter\Word\DashToSeparator``:
 
 .. _zend.filter.set.dashtoseparator.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -29,7 +31,10 @@ A basic example of usage is below:
 
 The above example returns 'this+is+my+content'.
 
-.. rubric:: Default Behavior
+.. _zend.filter.set.dashtoseparator.default-behavior:
+
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

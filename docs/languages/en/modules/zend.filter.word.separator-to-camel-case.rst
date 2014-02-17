@@ -7,7 +7,8 @@ This filter modifies a given string such that 'words with separators' are conver
 
 .. _zend.filter.set.separatortocamelcase.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\SeparatorToCamelCase``:
 
@@ -15,7 +16,8 @@ The following options are supported for ``Zend\Filter\Word\SeparatorToCamelCase`
 
 .. _zend.filter.set.separatortocamelcase.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -29,7 +31,10 @@ A basic example of usage is below:
 
 The above example returns 'ThisIsMyContent'.
 
-.. rubric:: Default Behavior
+.. _zend.filter.set.separatortocamelcase.default-behavior:
+
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

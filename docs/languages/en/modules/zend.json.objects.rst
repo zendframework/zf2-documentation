@@ -1,7 +1,7 @@
 .. _zend.json.advanced:
 
-Advanced Usage of Zend\\Json
-============================
+Advanced Usage
+==============
 
 .. _zend.json.advanced.objects1:
 

@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.common:
 
 Common page features
-====================
+--------------------
 
 All page classes must extend ``Zend\Navigation\Page\AbstractPage``, and will thus share a common set of features
 and properties. Most notably they share the options in the table below and the same initialization process.
@@ -64,7 +64,8 @@ Read more on extending ``Zend\Navigation\Page\AbstractPage`` in :ref:`Creating c
 
 .. _zend.navigation.pages.common.example.customprops:
 
-.. rubric:: Custom page properties
+Custom page properties
+^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how custom properties can be used.
 

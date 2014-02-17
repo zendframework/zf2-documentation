@@ -8,7 +8,8 @@ The ``Translate`` view helper can be used to translate content. It acts as a wra
 
 .. _zend.i18n.view.helper.translate.setup:
 
-**Setup**
+Setup
+^^^^^
 
 Before using the ``Translate`` view helper, you must have first created a ``Translator`` object and have attached
 it to the view helper. If you use the ``Zend\View\HelperPluginManager`` to invoke the view helper,
@@ -16,7 +17,8 @@ this will be done automatically for you.
 
 .. _zend.i18n.view.helper.translate.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -40,7 +42,10 @@ this will be done automatically for you.
 
    :param $locale: (Optional) Locale in which the message would be translated (locale name, e.g. en_US). If unset, it will use the default locale (``Locale::getDefault()``)
 
-**Gettext**
+.. _zend.i18n.view.helper.translate.gettext:
+
+Gettext
+^^^^^^^
 
 The ``xgettext`` utility can be used to compile \*.po files from PHP source files containing the translate view helper.
 
@@ -52,7 +57,8 @@ See the `Gettext Wikipedia page <http://en.wikipedia.org/wiki/Gettext>`_ for mor
 
 .. _zend.i18n.view.helper.translate.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 Public methods for setting a ``Zend\I18n\Translator\Translator`` and a default text domain are inherited from
  :ref:`Zend\\I18n\\View\\Helper\\AbstractTranslatorHelper <zend.i18n.view.helper.abstract-translator-helper.methods>`.

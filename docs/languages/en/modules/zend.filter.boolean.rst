@@ -8,7 +8,8 @@ when processing form values.
 
 .. _zend.filter.set.boolean.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Boolean``:
 
@@ -21,7 +22,8 @@ The following options are supported for ``Zend\Filter\Boolean``:
 
 .. _zend.filter.set.boolean.default:
 
-.. rubric:: Default Behavior
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 By default, this filter works by casting the input to a ``BOOLEAN`` value; in other words, it operates in a similar
 fashion to calling ``(boolean) $value``.
@@ -39,7 +41,8 @@ This means that without providing any configuration, ``Zend\Filter\Boolean`` acc
 
 .. _zend.filter.set.boolean.types:
 
-.. rubric:: Changing the Default Behavior
+Changing the Default Behavior
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes casting with ``(boolean)`` will not suffice. ``Zend\Filter\Boolean`` allows you to configure specific
 types to convert, as well as which to omit.
@@ -105,7 +108,8 @@ use the ``setType()`` method.
 
 .. _zend.filter.set.boolean.localized:
 
-.. rubric:: Localized Booleans
+Localized Booleans
+^^^^^^^^^^^^^^^^^^
 
 As mentioned previously, ``Zend\Filter\Boolean`` can also recognise localized "yes" and "no" strings. This means
 that you can ask your customer in a form for "yes" or "no" within his native language and ``Zend\Filter\Boolean``
@@ -131,7 +135,8 @@ To set the desired locale, you can either use the ``locale`` option, or the meth
 
 .. _zend.filter.set.boolean.casting:
 
-.. rubric:: Disable Casting
+Disable Casting
+^^^^^^^^^^^^^^^
 
 Sometimes it is necessary to recognise only ``TRUE`` or ``FALSE`` and return all other values without changes.
 ``Zend\Filter\Boolean`` allows you to do this by setting the ``casting`` option to ``FALSE``.

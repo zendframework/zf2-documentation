@@ -7,13 +7,15 @@ Returns the string ``$value``, removing all but digits.
 
 .. _zend.filter.set.digits.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Digits``.
 
 .. _zend.filter.set.digits.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

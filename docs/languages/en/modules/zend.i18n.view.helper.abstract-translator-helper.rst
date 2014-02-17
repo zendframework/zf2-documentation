@@ -9,7 +9,8 @@ which allows injecting a translator and setting a text domain.
 
 .. _zend.i18n.view.helper.abstract-translator-helper.methods:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 .. _zend.i18n.view.helper.abstract-translator-helper.methods.set-translator:
 

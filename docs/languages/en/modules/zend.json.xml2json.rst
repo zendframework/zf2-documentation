@@ -26,6 +26,11 @@ tree.  It supports recursion upto 25 levels deep. Beyond that depth, it will thr
 are several *XML* files with varying degree of complexity provided in the tests directory of Zend Framework. They
 can be used to test the functionality of the xml2json feature.
 
+.. _zend.json.xml2json.example:
+
+Example
+-------
+
 The following is a simple example that shows both the *XML* input string passed to and the *JSON* output string
 returned as a result from the ``Zend\Json\Json::fromXml()`` function. This example used the optional function parameter
 as not to ignore the *XML* attributes during the conversion. Hence, you can notice that the resulting *JSON* string

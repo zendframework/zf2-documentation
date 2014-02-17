@@ -7,7 +7,8 @@ This filter modifies a given string such that certain characters are removed fro
 
 .. _zend.filter.set.stringtrim.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\StringTrim``:
 
@@ -17,7 +18,8 @@ The following options are supported for ``Zend\Filter\StringTrim``:
 
 .. _zend.filter.set.stringtrim.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -32,7 +34,8 @@ The above example returns 'This is (my) content:'. Notice that the whitespace ch
 
 .. _zend.filter.set.stringtrim.types:
 
-.. rubric:: Default Behavior
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
