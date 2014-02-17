@@ -97,7 +97,7 @@ wir Dojo, jQuery usw zu verwenden. Es gibt zum Beispiel:
 
 - Dojo: http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html
 
-- jQuery: http://t.wits.sg/2008/06/20/jquery-progress-bar-11/
+- jQuery: https://api.jqueryui.com/progressbar/
 
 - MooTools: http://davidwalsh.name/dw-content/progress-bar.php
 
