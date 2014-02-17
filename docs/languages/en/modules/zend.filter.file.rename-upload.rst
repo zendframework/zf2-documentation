@@ -64,7 +64,7 @@ Move all filtered files to a different directory:
    // i.e. $files['my-upload']['name'] === 'myfile.txt'
 
    // 'target' option is assumed if param is a string
-   $filter = \Zend\Filter\File\RenameUpload("./data/uploads/");
+   $filter = new \Zend\Filter\File\RenameUpload("./data/uploads/");
    echo $filter->filter($files['my-upload']);
    // File has been moved to "./data/uploads/php5Wx0aJ"
 
@@ -85,7 +85,7 @@ Rename all filtered files to a new name:
    $files   = $request->getFiles();
    // i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
 
-   $filter = \Zend\Filter\File\Rename("./data/uploads/newfile.txt");
+   $filter = new \Zend\Filter\File\Rename("./data/uploads/newfile.txt");
    echo $filter->filter($files['my-upload']);
    // File has been renamed to "./data/uploads/newfile.txt"
 
@@ -100,7 +100,7 @@ Move to a new path and randomize file names:
    $files   = $request->getFiles();
    // i.e. $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
 
-   $filter = \Zend\Filter\File\Rename(array(
+   $filter = new \Zend\Filter\File\Rename(array(
        "target"    => "./data/uploads/newfile.txt",
        "randomize" => true,
    ));
