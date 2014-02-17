@@ -8,7 +8,8 @@ wrapper for the ``IntlDateFormatter`` class within the Internationalization exte
 
 .. _zend.i18n.view.helper.date-format.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -55,7 +56,8 @@ wrapper for the ``IntlDateFormatter`` class within the Internationalization exte
 
 .. _zend.i18n.view.helper.date-format.setter-usage:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The ``$locale`` option can be set prior to formatting with the ``setLocale()`` method and will be applied each time
 the helper is used.

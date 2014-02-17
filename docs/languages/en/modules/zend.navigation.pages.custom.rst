@@ -1,7 +1,7 @@
 .. _zend.navigation.pages.custom:
 
 Creating custom page types
-==========================
+--------------------------
 
 When extending ``Zend\Navigation\Page\AbstractPage``, there is usually no need to override the constructor or the
 methods ``setOptions()`` or ``setConfig()``. The page constructor takes a single parameter, an ``Array`` or a
@@ -13,7 +13,8 @@ via ``$internalId = $page->internal_id;`` or ``$internalId = $page->get('interna
 
 .. _zend.navigation.custom.example.simple:
 
-.. rubric:: The most simple custom page
+The most simple custom page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The only thing a custom page class needs to implement is the ``getHref()`` method.
 
@@ -30,7 +31,8 @@ The only thing a custom page class needs to implement is the ``getHref()`` metho
 
 .. _zend.navigation.custom.example.properties:
 
-.. rubric:: A custom page with properties
+A custom page with properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When adding properties to an extended page, there is no need to override/modify ``setOptions()`` or
 ``setConfig()``.

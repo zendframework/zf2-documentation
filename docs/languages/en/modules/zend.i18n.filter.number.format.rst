@@ -9,7 +9,8 @@ extension (Intl).
 
 .. _zend.i18n.filter.number-format.options:
 
-.. rubric:: Supported Options for NumberFormat Filter
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``NumberFormat``:
 
@@ -32,7 +33,8 @@ The following options are supported for ``NumberFormat``:
 
 .. _zend.i18n.filter.number-format.usage:
 
-.. rubric:: NumberFormat Filter Usage
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

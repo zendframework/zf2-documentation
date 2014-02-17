@@ -33,8 +33,6 @@ directory, and will write the script to ``autoloader_classmap.php`` in the direc
 Configuration Options
 ---------------------
 
-.. rubric:: Class Map Generator Options
-
 **--help or -h**
    Returns the usage message. If any other options are provided, they will be ignored.
 
