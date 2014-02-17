@@ -5,7 +5,7 @@ Encrypt/decrypt using block ciphers
 
 ``Zend\Crypt\BlockCipher`` implements the encrypt-then-authenticate mode using `HMAC`_ to provide authentication.
 
-The symmetric cipher can be choose with a specific adapter that implements the
+The symmetric cipher can be chosen with a specific adapter that implements the
 ``Zend\Crypt\Symmetric\SymmetricInterface``. We support the standard algorithms of the `Mcrypt`_ extension. The
 adapter that implements the Mcrypt is ``Zend\Crypt\Symmetric\Mcrypt``.
 
