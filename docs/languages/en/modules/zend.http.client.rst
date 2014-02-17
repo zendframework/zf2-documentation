@@ -20,29 +20,51 @@ Quick Start
 -----------
 
 The class constructor optionally accepts a URL as its first parameter (can be either a string or a
-``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options. Both can
-be left out, and set later using the setUri() and setConfig() methods.
+``Zend\Uri\Http`` object), and an array or ``Zend\Config\Config`` object containing configuration options.
+The ``send()`` method is used to submit the request to the remote server, and a ``Zend\Http\Response`` object is
+returned:
 
 .. code-block:: php
    :linenos:
 
    use Zend\Http\Client;
+
    $client = new Client('http://example.org', array(
        'maxredirects' => 0,
        'timeout'      => 30
    ));
+   $response = $client->send();
 
-   // This is actually exactly the same:
+Both constructor parameters can be left out, and set later using the setUri() and setConfig() methods:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
    $client = new Client();
    $client->setUri('http://example.org');
    $client->setOptions(array(
        'maxredirects' => 0,
        'timeout'      => 30
    ));
+   $response = $client->send();
 
-   // You can also pass a Zend\Config\Config object to set the client's configuration
-   $config = Zend\Config\Factory::fromFile('httpclient.ini');
-   $client->setOptions($config);
+``Zend\Http\Client`` can also dispatch requests using a separately configured ``request`` object (see the
+:ref:`Zend\\Http\\Request manual page<zend.http.request>` for full details of the methods available):
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+   use Zend\Http\Request;
+
+   $request = new Request();
+   $request->setUri('http://example.org');
+
+   $client = new Client();
+
+   $response = $client->send($request);
 
 .. note::
 
@@ -51,12 +73,11 @@ be left out, and set later using the setUri() and setConfig() methods.
 
 .. _zend.http.client.options:
 
-Configuration Options
----------------------
+Configuration
+-------------
 
-The constructor and setOptions() method accept an associative array of configuration parameters, or a
+The constructor and setOptions() method accepts an associative array of configuration parameters, or a
 ``Zend\Config\Config`` object. Setting these parameters is optional, as they all have default values.
-
 
 
       .. _zend.http.client.configuration.table:
@@ -89,372 +110,11 @@ The constructor and setOptions() method accept an associative array of configura
          |rfc3986strict  |Whether to strictly adhere to RFC 3986 (in practice, this means replacing '+' with '%20')                                                                                           |boolean        |FALSE                                |
          +---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------------------------------+
 
-.. _zend.http.client.methods:
+The options are also passed to the adapter class upon instantiation, so the same array or ``Zend\Config\Config``
+object) can be used for adapter configuration. See the
+:ref:`Zend Http Client adapter section<zend.http.client.adapters>` for more information on the
+adapter-specific options available.
 
-Available Methods
------------------
-
-.. _zend.http.client.methods.__construct:
-
-**__construct**
-   ``__construct(string $uri, array|Traversable $config)``
-
-   Constructor
-
-
-
-   Returns void
-
-.. _zend.http.client.methods.set-options:
-
-**setOptions**
-   ``setOptions(array|Traversable $config = array ())``
-
-   Set configuration parameters for this HTTP client
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.set-adapter:
-
-**setAdapter**
-   ``setAdapter(Zend\Http\Client\Adapter|string $adapter)``
-
-   Load the connection adapter
-
-   While this method is not called more than once for a client, it is separated from ->send() to preserve logic
-   and readability
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.get-adapter:
-
-**getAdapter**
-   ``getAdapter()``
-
-   Retrieve the connection adapter
-
-   Returns Zend\\Http\\Client\\Adapter\\AdapterInterface
-
-.. _zend.http.client.methods.set-request:
-
-**setRequest**
-   ``setRequest(Zend\Http\Request $request)``
-
-   Set request object
-
-   Returns void
-
-.. _zend.http.client.methods.get-request:
-
-**getRequest**
-   ``getRequest()``
-
-   Get Request object
-
-   Returns Zend\\Http\\Request
-
-.. _zend.http.client.methods.get-last-raw-request:
-
-**getLastRawRequest**
-   ``getLastRawRequest()``
-
-   Get the last request (as a string)
-
-   Returns string
-
-.. _zend.http.client.methods.set-response:
-
-**setResponse**
-   ``setResponse(Zend\Http\Response $response)``
-
-   Set response
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.get-response:
-
-**getResponse**
-   ``getResponse()``
-
-   Get Response object
-
-   Returns Zend\\Http\\Response
-
-.. _zend.http.client.methods.get-last-raw-response:
-
-**getLastRawResponse**
-   ``getLastRawResponse()``
-
-   Get the last response (as a string)
-
-   Returns string
-
-.. _zend.http.client.methods.get-redirections-count:
-
-**getRedirectionsCount**
-   ``getRedirectionsCount()``
-
-   Get the redirections count
-
-   Returns integer
-
-.. _zend.http.client.methods.set-uri:
-
-**setUri**
-   ``setUri(string|Zend\Http\Zend\Uri\Http $uri)``
-
-   Set Uri (to the request)
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.get-uri:
-
-**getUri**
-   ``getUri()``
-
-   Get uri (from the request)
-
-   Returns Zend\\Uri\\Http
-
-.. _zend.http.client.methods.set-method:
-
-**setMethod**
-   ``setMethod(string $method)``
-
-   Set the HTTP method (to the request)
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.get-method:
-
-**getMethod**
-   ``getMethod()``
-
-   Get the HTTP method
-
-   Returns string
-
-.. _zend.http.client.methods.set-enc-type:
-
-**setEncType**
-   ``setEncType(string $encType, string $boundary)``
-
-   Set the encoding type and the boundary (if any)
-
-   Returns void
-
-.. _zend.http.client.methods.get-enc-type:
-
-**getEncType**
-   ``getEncType()``
-
-   Get the encoding type
-
-   Returns type
-
-.. _zend.http.client.methods.set-raw-body:
-
-**setRawBody**
-   ``setRawBody(string $body)``
-
-   Set raw body (for advanced use cases)
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.set-parameter-post:
-
-**setParameterPost**
-   ``setParameterPost(array $post)``
-
-   Set the POST parameters
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.set-parameter-get:
-
-**setParameterGet**
-   ``setParameterGet(array $query)``
-
-   Set the GET parameters
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.get-cookies:
-
-**getCookies**
-   ``getCookies()``
-
-   Return the current cookies
-
-   Returns array
-
-.. _zend.http.client.methods.add-cookie:
-
-**addCookie**
-   ``addCookie(ArrayIterator|SetCookie|string $cookie, string $value = null, string $expire = null, string $path = null, string $domain = null, boolean $secure = false, boolean $httponly = true, string $maxAge = null, string $version = null)``
-
-   Add a cookie
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.set-cookies:
-
-**setCookies**
-   ``setCookies(array $cookies)``
-
-   Set an array of cookies
-
-
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.clear-cookies:
-
-**clearCookies**
-   ``clearCookies()``
-
-   Clear all the cookies
-
-
-
-   Returns void
-
-.. _zend.http.client.methods.set-headers:
-
-**setHeaders**
-   ``setHeaders(Zend\Http\Headers|array $headers)``
-
-   Set the headers (for the request)
-
-
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.has-header:
-
-**hasHeader**
-   ``hasHeader(string $name)``
-
-   Check if exists the header type specified
-
-
-
-   Returns boolean
-
-.. _zend.http.client.methods.get-header:
-
-**getHeader**
-   ``getHeader(string $name)``
-
-   Get the header value of the request
-
-
-
-   Returns string|boolean
-
-.. _zend.http.client.methods.set-stream:
-
-**setStream**
-   ``setStream(string|boolean $streamfile = true)``
-
-   Set streaming for received data
-
-
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.get-stream:
-
-**getStream**
-   ``getStream()``
-
-   Get status of streaming for received data
-
-
-
-   Returns boolean|string
-
-.. _zend.http.client.methods.set-auth:
-
-**setAuth**
-   ``setAuth(string $user, string $password, string $type = 'basic')``
-
-   Create a HTTP authentication "Authorization:" header according to the specified user, password and
-   authentication method.
-
-
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.reset-parameters:
-
-**resetParameters**
-   ``resetParameters()``
-
-   Reset all the HTTP parameters (auth,cookies,request, response, etc)
-
-
-
-   Returns void
-
-.. _zend.http.client.methods.dispatch:
-
-**dispatch**
-   ``dispatch(Zend\Stdlib\RequestInterface $request, Zend\Stdlib\ResponseInterface $response= null)``
-
-   Dispatch HTTP request
-
-
-
-   Returns Response
-
-
-.. _zend.http.client.methods.send:
-
-**send**
-   ``send(Zend\Http\Request $request)``
-
-   Send HTTP request
-
-
-
-   Returns Response
-
-.. _zend.http.client.methods.set-file-upload:
-
-**setFileUpload**
-   ``setFileUpload(string $filename, string $formname, string $data = null, string $ctype = null)``
-
-   Set a file to upload (using a POST request)
-
-   Can be used in two ways: 1. $data is null (default): $filename is treated as the name if a local file which will
-   be read and sent. Will try to guess the content type using mime_content_type(). 2. $data is set - $filename is
-   sent as the file name, but $data is sent as the file contents and no file is read from the file system. In this
-   case, you need to manually set the Content-Type ($ctype) or it will default to application/octet-stream.
-
-   Returns Zend\\Http\\Client
-
-.. _zend.http.client.methods.remove-file-upload:
-
-**removeFileUpload**
-   ``removeFileUpload(string $filename)``
-
-   Remove a file to upload
-
-
-
-   Returns boolean
-
-.. _zend.http.client.methods.encode-form-data:
-
-**encodeFormData**
-   ``encodeFormData(string $boundary, string $name, mixed $value, string $filename = null, array $headers = array ( ))``
-
-   Encode data to a multipart/form-data part suitable for a POST request.
-
-
-
-   Returns string
 
 .. _zend.http.client.examples:
 
@@ -466,34 +126,37 @@ Examples
 Performing a Simple GET Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Performing simple *HTTP* requests is very easily done using the setRequest() and dispatch() methods:
+Performing simple *HTTP* requests is very easily done:
 
 .. code-block:: php
    :linenos:
 
    use Zend\Http\Client;
-   use Zend\Http\Request;
 
-   $request = new Request();
    $client = new Client('http://example.org');
-   $client->setRequest($request);
-   $response = $client->dispatch();
-
-The ``request`` object can be configured using his methods as shown in the
-:ref:`Zend\\Http\\Request manual page<zend.http.request>`. One of these methods is ``setMethod`` which refers
-to the HTTP Method. This can be either ``GET``, ``POST``, ``PUT``, ``HEAD``, ``DELETE``, ``TRACE``,
-``OPTIONS`` or ``CONNECT`` as defined by the *HTTP* protocol [#]_.
+   $response = $client->send();
 
 .. _zend.http.client.basic-requests.example-2:
 
 Using Request Methods Other Than GET
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For convenience, these are all defined as class constants: Zend\\Http\\Request::METHOD_GET,
-Zend\\Http\\Request::METHOD_POST and so on.
+The request method can be set using ``setMethod()``. If no method is specified, the method set by the last
+``setMethod()`` call is used. If ``setMethod()`` was never called, the default request method is ``GET``.
 
-If no method is specified, the method set by the last ``setMethod()`` call is used. If ``setMethod()`` was never
-called, the default request method is ``GET`` (see the above example).
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
+   $client = new Client('http://example.org');
+
+   // Performing a POST request
+   $client->setMethod('POST');
+   $response = $client->send();
+
+For convenience, ``Zend\Http\Request`` defines all the request methods as class constants, ``Zend\Http\Request::METHOD_GET``,
+``Zend\Http\Request::METHOD_POST`` and so on:
 
 .. code-block:: php
    :linenos:
@@ -501,14 +164,11 @@ called, the default request method is ``GET`` (see the above example).
    use Zend\Http\Client;
    use Zend\Http\Request;
 
-   $request = new Request();
-   $request->setUri('http://example.org');
-   $client = new Client();
+   $client = new Client('http://example.org');
 
    // Performing a POST request
-   $request->setMethod(Request::METHOD_POST);
-   $client->setRequest($request);
-   $response = $client->dispatch();
+   $client->setMethod(Request::METHOD_POST);
+   $response = $client->send();
 
 .. _zend.http.client.parameters.example-1:
 
@@ -549,6 +209,7 @@ done with the ``setParameterPost()`` method, which is identical to the ``setPara
    :linenos:
 
    use Zend\Http\Client;
+
    $client = new Client();
 
    // Setting several POST parameters, one of them with several values
@@ -564,29 +225,80 @@ request is a ``POST`` request, ``POST`` parameters are simply ignored.
 
 .. _zend.http.client.request-object-usage:
 
-A Complete Example
-^^^^^^^^^^^^^^^^^^
+Connecting to SSL URLs
+^^^^^^^^^^^^^^^^^^^^^^
 
-
+If you are trying to connect to an SSL (https) URL and are using the default (``Zend\Http\Client\Adapter\Socket``)
+adapter, you may need to set the ``sslcapath`` configuration option in order to allow PHP to validate the
+SSL certificate:
 
 .. code-block:: php
    :linenos:
 
-   use Zend\Http\Request;
    use Zend\Http\Client;
+
+   $client = new Client('https://example.org', array(
+      'sslcapath' => '/etc/ssl/certs'
+   ));
+   $response = $client->send();
+
+The exact path to use will vary depending on your Operating System. Without this you'll get the exception
+"Unable to enable crypto on TCP connection" when trying to connect.
+
+Alternatively, you could switch to the curl adapter, which negotiates SSL connections more transparently:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
+   $client = new Client('https://example.org', array(
+      'adapter' => 'Zend\Http\Client\Adapter\Curl'
+   ));
+   $response = $client->send();
+
+.. _zend.http.client.ssl-example:
+
+A Complete Example
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+
+   $client = new Client();
+   $client->setUri('http://www.example.com');
+   $client->setMethod('POST');
+   $client->setParameterPost(array(
+      'foo' => 'bar'
+   ));
+
+   $response = $client->send();
+
+   if ($response->isSuccess()) {
+       // the POST was successful
+   }
+
+or the same thing, using a request object:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Http\Client;
+   use Zend\Http\Request;
+
    $request = new Request();
-   $request->setUri('http://www.test.com');
+   $request->setUri('http://www.example.com');
    $request->setMethod('POST');
    $request->getPost()->set('foo', 'bar');
 
    $client = new Client();
-   $response = $client->dispatch($request);
+   $response = $client->send($request);
 
    if ($response->isSuccess()) {
-       //  the POST was successful
+       // the POST was successful
    }
-
-
 
 
 .. [#] See RFC 2616 -http://www.w3.org/Protocols/rfc2616/rfc2616.html.
