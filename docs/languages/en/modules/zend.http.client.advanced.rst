@@ -99,7 +99,7 @@ adding the new cookies:
 For more information about ``Zend\Http\Header\SetCookie`` objects, see :ref:`this section <zend.http.header.set-cookie>`.
 
 ``Zend\Http\Client`` also provides a means for simplifying cookie stickiness - that is having the client internally
-store all sent and received cookies, and resend them on subsequent requests: ``Zend\Http\Client\Cookies``. This is
+store all sent and received cookies, and resend them on subsequent requests: ``Zend\Http\Cookies``. This is
 useful, for example when you need to log in to a remote site first and receive and authentication or session ID
 cookie before sending further requests.
 
@@ -123,7 +123,7 @@ cookie before sending further requests.
    $client->addCookies($cookies->getMatchingCookies($client->getUri());
    $client->request('GET');
 
-For more information about the ``Zend\Http\Client\Cookies`` class, see :ref:`this section
+For more information about the ``Zend\Http\Cookies`` class, see :ref:`this section
 <zend.http.client.cookies>`.
 
 .. _zend.http.client.custom_headers:
@@ -331,7 +331,7 @@ body and headers are reset and are not reused in the next request.
    To clean all cookies as well, use ``resetParameters(true)``, or call ``clearCookies()`` after
    calling ``resetParameters()``.
 
-Another feature designed specifically for consecutive requests is the ``Zend\Http\Client\Cookies`` object.
+Another feature designed specifically for consecutive requests is the ``Zend\Http\Cookies`` object.
 This "Cookie Jar" allow you to save cookies set by the server in a request, and send them back on consecutive
 requests transparently. This allows, for example, going through an authentication request before sending
 the actual data-fetching request.
@@ -354,7 +354,7 @@ session. This way, you will only need to authenticate the user once every sessio
 
    // Do we have the cookies stored in our session?
    if (isset($_SESSION['cookiejar']) &&
-       $_SESSION['cookiejar'] instanceof Zend\Http\Client\Cookies) {
+       $_SESSION['cookiejar'] instanceof Zend\Http\Cookies) {
 
        $cookieJar = $_SESSION['cookiejar'];
    } else {
@@ -365,7 +365,7 @@ session. This way, you will only need to authenticate the user once every sessio
            'pass' => 'somesecret'
        ));
        $response = $client->setMethod('POST')->send();
-       $cookieJar = Zend\Http\Client\Cookies::fromResponse($response);
+       $cookieJar = Zend\Http\Cookies::fromResponse($response);
 
        // Now, clear parameters and set the URI to the original one
        // (note that the cookies that were set by the server are now
