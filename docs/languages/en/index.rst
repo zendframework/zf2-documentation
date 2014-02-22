@@ -69,6 +69,10 @@
    modules/zend.console.controllers
    modules/zend.console.adapter
    modules/zend.console.prompts
+   modules/zend.console.getopt.introduction
+   modules/zend.console.getopt.rules
+   modules/zend.console.getopt.fetching
+   modules/zend.console.getopt.configuration
    modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
@@ -421,6 +425,15 @@ Zend\\Console
         * :doc:`modules/zend.console.adapter`
         * :doc:`modules/zend.console.prompts`
 
+.. _zend.console.getopt:
+
+Zend\\Console\\Getopt
+^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.console.getopt.introduction`
+        * :doc:`modules/zend.console.getopt.rules`
+        * :doc:`modules/zend.console.getopt.fetching`
+        * :doc:`modules/zend.console.getopt.configuration`
 
 .. _zend.crypt:
 

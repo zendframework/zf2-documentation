@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.console.getopt.rules:
 
 Declaring Getopt Rules
