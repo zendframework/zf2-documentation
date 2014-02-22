@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.navigation.pages.factory:
 
 Creating pages using the page factory

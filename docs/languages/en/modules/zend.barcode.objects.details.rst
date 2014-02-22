@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.barcode.objects.details:
 
 Description of shipped barcodes

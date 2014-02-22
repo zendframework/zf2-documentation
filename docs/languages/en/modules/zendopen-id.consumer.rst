@@ -1,7 +1,7 @@
 .. _zendopenid.consumer:
 
 ZendOpenId\Consumer Basics
-===========================
+==========================
 
 ``ZendOpenId\Consumer`` can be used to implement OpenID authentication for web sites.
 
@@ -212,7 +212,7 @@ examples above.
 .. _zendopenid.consumer.storage:
 
 ZendOpenId\Consumer\Storage
-----------------------------
+---------------------------
 
 There are three steps in the OpenID authentication procedure, and each step is performed by a separate *HTTP*
 request. To store information between requests, ``ZendOpenId\Consumer`` uses internal storage.

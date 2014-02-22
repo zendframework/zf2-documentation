@@ -51,7 +51,7 @@ The services that are accessible by ``ZendGData`` include the following:
 .. _zendgdata.introduction.structure:
 
 Structure of ZendGData
------------------------
+----------------------
 
 ``ZendGData`` is composed of several types of classes:
 
@@ -110,7 +110,7 @@ application.
 .. _zendgdata.introduction.magicfactory:
 
 Obtaining instances of ZendGData classes
------------------------------------------
+----------------------------------------
 
 The Zend Framework naming standards require that all classes be named based upon the directory structure in which
 they are located. For instance, extensions related to Spreadsheets are stored in:
