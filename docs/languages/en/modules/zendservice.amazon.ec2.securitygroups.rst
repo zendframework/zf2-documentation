@@ -1,9 +1,7 @@
-:orphan:
-
 .. _zendservice.amazon.ec2.securitygroups:
 
 ZendService\Amazon\Ec2: Security Groups
-========================================
+=======================================
 
 A security group is a named collection of access rules. These access rules specify which ingress (i.e., incoming)
 network traffic should be delivered to your instance. All other ingress traffic will be discarded.

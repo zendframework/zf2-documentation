@@ -1,9 +1,7 @@
-:orphan:
-
 .. _zendservice.amazon.ec2.windows.instance:
 
 ZendService\Amazon\Ec2: Windows Instances
-==========================================
+=========================================
 
 Using Amazon EC2 instances running Windows is similar to using instances running Linux and UNIX. The following are
 the major differences between instances that use Linux or UNIX and Windows:

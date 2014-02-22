@@ -281,6 +281,18 @@
    modules/zend.xmlrpc.server
    modules/zendservice.akismet
    modules/zendservice.amazon
+   modules/zendservice.amazon.s3
+   modules/zendservice.amazon.sqs
+   modules/zendservice.amazon.ec2
+   modules/zendservice.amazon.ec2.cloudwatch
+   modules/zendservice.amazon.ec2.ebs
+   modules/zendservice.amazon.ec2.elasticip
+   modules/zendservice.amazon.ec2.instance
+   modules/zendservice.amazon.ec2.keypairs
+   modules/zendservice.amazon.ec2.zones
+   modules/zendservice.amazon.ec2.reserved.instance
+   modules/zendservice.amazon.ec2.securitygroups
+   modules/zendservice.amazon.ec2.windows.instance
    modules/zendservice.apple.apns
    modules/zendservice.audioscrobbler
    modules/zendservice.delicious
@@ -290,6 +302,8 @@
    modules/zendservice.livedocx
    modules/zendservice.nirvanix
    modules/zendservice.rackspace
+   modules/zendservice.rackspace.servers
+   modules/zendservice.rackspace.files
    modules/zendservice.re-captcha
    modules/zendservice.slide-share
    modules/zendservice.strike-iron.overview
@@ -917,6 +931,18 @@ ZendService\\Amazon
 ^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.amazon`
+        * :doc:`modules/zendservice.amazon.s3`
+        * :doc:`modules/zendservice.amazon.sqs`
+        * :doc:`modules/zendservice.amazon.ec2`
+        * :doc:`modules/zendservice.amazon.ec2.cloudwatch`
+        * :doc:`modules/zendservice.amazon.ec2.ebs`
+        * :doc:`modules/zendservice.amazon.ec2.elasticip`
+        * :doc:`modules/zendservice.amazon.ec2.instance`
+        * :doc:`modules/zendservice.amazon.ec2.keypairs`
+        * :doc:`modules/zendservice.amazon.ec2.zones`
+        * :doc:`modules/zendservice.amazon.ec2.reserved.instance`
+        * :doc:`modules/zendservice.amazon.ec2.securitygroups`
+        * :doc:`modules/zendservice.amazon.ec2.windows.instance`
 
 ZendService\\Apple\Apns
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -962,6 +988,8 @@ ZendService\\Rackspace
 ^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.rackspace`
+        * :doc:`modules/zendservice.rackspace.servers`
+        * :doc:`modules/zendservice.rackspace.files`
 
 ZendService\\ReCaptcha
 ^^^^^^^^^^^^^^^^^^^^^^

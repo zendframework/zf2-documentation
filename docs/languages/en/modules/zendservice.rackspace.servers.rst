@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zendservice.rackspace.servers:
 
 Zend\\Service\\Rackspace\\Servers

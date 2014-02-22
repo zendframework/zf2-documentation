@@ -1,9 +1,7 @@
-:orphan:
-
 .. _zendservice.amazon.ec2.images:
 
 ZendService\Amazon\Ec2: Amazon Machine Images (AMI)
-====================================================
+===================================================
 
 Amazon Machine Images (AMIs) are preconfigured with an ever-growing list of operating systems.
 

@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zendservice.rackspace.files:
 
 Zend\\Service\\Rackspace\\Files

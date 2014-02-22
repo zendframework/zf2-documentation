@@ -1,9 +1,7 @@
-:orphan:
-
 .. _zendservice.amazon.sqs:
 
 ZendService\Amazon\Sqs
-=======================
+======================
 
 .. _zendservice.amazon.sqs.introduction:
 
