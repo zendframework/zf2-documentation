@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendoauth.introduction.security-architecture:
 
 Security Architecture

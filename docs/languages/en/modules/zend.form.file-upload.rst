@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.form.file-upload:
 
 File Uploading
