@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.code.generator.introduction:
 
 Introduction

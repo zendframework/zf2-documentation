@@ -54,6 +54,9 @@
    modules/zend.captcha.intro
    modules/zend.captcha.operation
    modules/zend.captcha.adapters
+   modules/zend.code.generator.introduction
+   modules/zend.code.generator.reference
+   modules/zend.code.generator.examples
    modules/zend.config.introduction
    modules/zend.config.theory-of-operation
    modules/zend.config.reader
@@ -384,6 +387,15 @@ Zend\\Captcha
         * :doc:`modules/zend.captcha.intro`
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
+
+.. _zend.code.generator:
+
+Zend\\Code\\Generator
+^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.code.generator.introduction`
+        * :doc:`modules/zend.code.generator.reference`
+        * :doc:`modules/zend.code.generator.examples`
 
 .. _zend.config:
 
