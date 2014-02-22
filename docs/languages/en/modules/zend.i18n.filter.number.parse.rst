@@ -3,7 +3,7 @@
 .. _zend.i18n.filter.number-parse:
 
 NumberParse
-------------
+-----------
 
 The ``NumberParse`` filter can be used to parse a number from a string. It acts as a
 wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).

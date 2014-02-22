@@ -356,7 +356,7 @@ create the given service.
 
 
 Zend\\Cache\\Service\\StorageCacheAbstractServiceFactory 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This abstract factory is opt-in, but registered by default in the skeleton application. It uses the
 top-level configuration key "caches".

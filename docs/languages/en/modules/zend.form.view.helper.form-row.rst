@@ -3,7 +3,7 @@
 .. _zend.form.view.helper.form-row:
 
 FormRow
-^^^^^^^^^^^^^^
+^^^^^^^
 
 TODO
 

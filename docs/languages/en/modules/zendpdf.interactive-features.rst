@@ -33,7 +33,7 @@ The following types are supported by ``ZendPdf`` component.
 .. _zendpdf.pages.interactive-features.destinations.types.zoom:
 
 ZendPdf\Destination\Zoom
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with the coordinates (left, top) positioned at the upper-left corner of the window and
 the contents of the page magnified by the factor zoom.
@@ -70,7 +70,7 @@ Where:
 .. _zendpdf.pages.interactive-features.destinations.types.fit:
 
 ZendPdf\Destination\Fit
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with the coordinates (left, top) positioned at the upper-left corner of the window and
 the contents of the page magnified by the factor zoom. Display the specified page, with its contents magnified just
@@ -85,7 +85,7 @@ Where ``$page`` is a destination page (a ``ZendPdf\Page`` object or a page numbe
 .. _zendpdf.pages.interactive-features.destinations.types.fit-horizontally:
 
 ZendPdf\Destination\FitHorizontally
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with the vertical coordinate top positioned at the top edge of the window and the
 contents of the page magnified just enough to fit the entire width of the page within the window.
@@ -107,7 +107,7 @@ Where:
 .. _zendpdf.pages.interactive-features.destinations.types.fit-vertically:
 
 ZendPdf\Destination\FitVertically
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with the horizontal coordinate left positioned at the left edge of the window and the
 contents of the page magnified just enough to fit the entire height of the page within the window.
@@ -129,7 +129,7 @@ Where:
 .. _zendpdf.pages.interactive-features.destinations.types.fit-rectangle:
 
 ZendPdf\Destination\FitRectangle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with its contents magnified just enough to fit the rectangle specified by the
 coordinates left, bottom, right, and top entirely within the window both horizontally and vertically. If the
@@ -172,7 +172,7 @@ Where:
 .. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box:
 
 ZendPdf\Destination\FitBoundingBox
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with its contents magnified just enough to fit its bounding box entirely within the
 window both horizontally and vertically. If the required horizontal and vertical magnification factors are
@@ -186,7 +186,7 @@ Where ``$page`` is a destination page (a ``ZendPdf\Page`` object or a page numbe
 .. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box-horizontally:
 
 ZendPdf\Destination\FitBoundingBoxHorizontally
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with the vertical coordinate top positioned at the top edge of the window and the
 contents of the page magnified just enough to fit the entire width of its bounding box within the window.
@@ -209,7 +209,7 @@ Where
 .. _zendpdf.pages.interactive-features.destinations.types.fit-bounding-box-vertically:
 
 ZendPdf\Destination\FitBoundingBoxVertically
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the specified page, with the horizontal coordinate left positioned at the left edge of the window and the
 contents of the page magnified just enough to fit the entire height of its bounding box within the window.
@@ -232,7 +232,7 @@ Where
 .. _zendpdf.pages.interactive-features.destinations.types.named:
 
 ZendPdf\Destination\Named
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All destinations listed above are "Explicit Destinations".
 
