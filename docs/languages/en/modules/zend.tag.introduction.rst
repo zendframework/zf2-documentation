@@ -43,7 +43,7 @@ This example illustrates how to create a list of tags and spread absolute weight
 This will output the three items "Code", "Zend Framework" and "PHP" with the
 absolute values 10, 1 and 2.
 
-.. code-block::
+.. code-block:: none
    :linenos:
 
    Code: 10
