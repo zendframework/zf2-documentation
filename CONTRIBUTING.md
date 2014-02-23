@@ -101,3 +101,5 @@ root of the English directory that you must not translate:
 
 All sentences in these files that need a translation are handled by the reST substitution syntax. You can find them
 in the 'translated-snippets.rst' file.
+
+Ignore this change
