@@ -2,8 +2,8 @@
 
 .. _zendservice.amazon.ec2.cloudwatch:
 
-ZendService\Amazon\Ec2: CloudWatch Monitoring
-=============================================
+ZendService\\Amazon\\Ec2: CloudWatch Monitoring
+===============================================
 
 Amazon CloudWatch is an easy-to-use web service that provides comprehensive monitoring for Amazon Elastic Compute
 Cloud (Amazon *EC2*) and Elastic Load Balancing. For more details information check out the `Amazon CloudWatch
@@ -16,7 +16,8 @@ CloudWatch Usage
 
 .. _zendservice.amazon.ec2.cloudwatch.usage.list:
 
-.. rubric:: Listing Available Metrics
+Listing Available Metrics
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``listMetrics()`` returns a list of up to 500 valid metrics for which there is recorded data available to a you and
 a NextToken string that can be used to query for the next set of results.
@@ -29,7 +30,8 @@ a NextToken string that can be used to query for the next set of results.
 
 .. _zendservice.amazon.ec2.cloudwatch.usage.getmetricstatistics:
 
-.. rubric:: Return Statistics for a given metric
+Return Statistics for a given metric
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``getMetricStatistics()`` Returns data for one or more statistics of given a metric.
 

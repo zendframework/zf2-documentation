@@ -1,13 +1,14 @@
 .. _zendservice.amazon.ec2.keypairs:
 
-ZendService\Amazon\Ec2: Keypairs
-================================
+ZendService\\Amazon\\Ec2: Keypairs
+==================================
 
 Keypairs are used to access instances.
 
 .. _zendservice.amazon.ec2.keypairs.create:
 
-.. rubric:: Creating a new Amazon Keypair
+Creating a new Amazon Keypair
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *create*, creates a new 2048 bit RSA key pair and returns a unique ID that can be used to reference this key pair
 when launching new instances.
@@ -22,7 +23,8 @@ when launching new instances.
 
 .. _zendservice.amazon.ec2.keypairs.delete:
 
-.. rubric:: Deleting an Amazon Keypair
+Deleting an Amazon Keypair
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *delete*, will delete the key pair. This will only prevent it from being used with new instances. Instances
 currently running with the keypair will still allow you to access them.
@@ -37,7 +39,8 @@ currently running with the keypair will still allow you to access them.
 
 .. _zendservice.amazon.ec2.describe:
 
-.. rubric:: Describe an Amazon Keypair
+Describe an Amazon Keypair
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *describe* returns information about key pairs available to you. If you specify key pairs, information about those
 key pairs is returned. Otherwise, information for all registered key pairs is returned.
