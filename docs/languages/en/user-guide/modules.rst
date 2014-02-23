@@ -3,7 +3,7 @@
 Modules
 =======
 
-Zend Framework 2 uses a module system and you organise your main
+Zend Framework 2 uses a module system to organise your main
 application-specific code within each module. The Application module provided by
 the skeleton is used to provide bootstrapping, error and routing configuration to
 the whole application. It is usually used to provide application level
