@@ -1,7 +1,7 @@
 .. _zend.console.modules:
 
 Console-aware modules
-===========================
+=====================
 
 Zend Framework 2 has :doc:`native MVC integration with console<zend.console.introduction>`. The integration also
 works with :doc:`modules loaded with Module Manager <zend.module-manager.intro>`.
@@ -10,7 +10,6 @@ ZF2 ships with ``RouteNotFoundStrategy`` which is responsible of displaying usag
 in case the user has not provided any arguments, or arguments could not be understood. The strategy currently
 supports two types of information: :ref:`application banners <banner>` and :ref:`usage information<usage>`.
 
-.. _banner:
 
 .. _zend.console.modules.application-banner:
 
@@ -108,12 +107,11 @@ Because ``User`` module is loaded after ``Application`` module, the result will 
     Application banner is displayed as-is - no trimming or other adjustments will be performed on the text. As you can see,
     banners are also automatically colorized as blue.
 
-.. _usage:
 
-.. _zend.console.modules.usage-information:
+.. _zend.console.modules.basic-usage:
 
-Usage information
-------------------
+Basic usage
+-----------
 
 In order to display usage information, our Module class has to implement
 ``Zend\ModuleManager\Feature\ConsoleUsageProviderInterface``. Let's modify our example and add new method:
@@ -167,12 +165,10 @@ component colorizes those in red.
     In order to handle real console requests you need to define 1 or more :doc:`console routes <zend.console.routes>`.
 
 
-.. _free-form:
-
 .. _zend.console.modules.free-form-text:
 
 Free-form text
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 In order to output free-form text as usage information, ``getConsoleUsage()`` can return a string,
 or an array of strings, for example:
@@ -199,7 +195,7 @@ or an array of strings, for example:
 .. _zend.console.modules.command-list:
 
 List of commands
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 If ``getConsoleUsage()`` returns and associative array, it will be automatically aligned in 2 columns. The first
 column will be prepended with script name (the entry point for the application). This is useful to display different
@@ -233,7 +229,7 @@ ways of running the application.
 .. _zend.console.modules.params-list:
 
 List of params and flags
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returning an array of arrays from ``getConsoleUsage()`` will produce a listing of parameters. This is useful for
 explaining flags, switches, possible values and other information. The output will be aligned in multiple columns for
@@ -293,7 +289,7 @@ Using this method, we can display more than 2 columns of information, for exampl
 .. _zend.console.modules.mixing-styles:
 
 Mixing styles
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 You can use mix together all of the above styles to provide comprehensive usage information, for example:
 

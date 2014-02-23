@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2:
 
 ZendService\Amazon\Ec2
-=======================
+======================
 
 .. _zendservice.amazon.ec2.introduction:
 

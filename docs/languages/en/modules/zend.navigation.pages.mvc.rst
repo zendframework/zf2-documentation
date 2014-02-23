@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.navigation.pages.mvc:
 
 Zend\\Navigation\\Page\\Mvc

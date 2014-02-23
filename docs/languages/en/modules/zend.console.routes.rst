@@ -1,7 +1,7 @@
 .. _zend.console.routes:
 
 Console routes and routing
-===========================
+==========================
 
 Zend Framework 2 has :doc:`native MVC integration with console<zend.console.introduction>`,
 which means that command line arguments are read and used to determine the appropriate
@@ -91,7 +91,7 @@ This is the default route type for console. It recognizes the following types of
 .. _literal-params:
 
 Literal parameters
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 These parameters are expected to appear on the command line exactly the way they are spelled in the route. For example:
 
@@ -178,7 +178,7 @@ commands such:
 .. _literal-flags:
 
 Literal flags
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 Flags are a common concept for console tools. You can define any number of optional and mandatory flags. The order of
 flags is ignored. The can be defined in any order and the user can provide them in any other order.
@@ -260,7 +260,7 @@ Now we can use short versions of our flags:
 .. _value-positional:
 
 Positional value parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Value parameters capture any text-based input and come in two forms - positional and flags.
 
@@ -442,7 +442,7 @@ This special route will catch all console requests, regardless of the parameters
 
 
 Console routes cheat-sheet
----------------------------
+--------------------------
 
 +-------------------------------------+------------------------------+-------------------------------------------------------------------------------+
 | Param type                          | Example route definition     |  Explanation                                                                  |

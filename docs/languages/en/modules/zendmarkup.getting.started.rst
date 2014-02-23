@@ -1,7 +1,7 @@
 .. _zendmarkup.getting-started:
 
 Getting Started With ZendMarkup
-================================
+===============================
 
 This guide to get you started with ``ZendMarkup`` uses the BBCode parser and *HTML* renderer. The principles
 discussed can be adapted to other parsers and renderers.

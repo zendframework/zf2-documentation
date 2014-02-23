@@ -13,7 +13,7 @@ code. The configuration data may come from a variety of media supporting hierarc
 Using Zend\\Config\\Config with a Reader Class
 ----------------------------------------------
 
-Normally, it is expected that users would use one of the :ref:`reader classes <zend.config.reader>` to read a 
+Normally, it is expected that users would use one of the :ref:`reader classes <zend.config.reader.introduction>` to read a
 configuration file, but if configuration data are available in a *PHP* array, one may simply pass the data
 to ``Zend\Config\Config``'s constructor in order to utilize a simple object-oriented interface:
 

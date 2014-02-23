@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.validator.file.mime-type:
 
 MimeType

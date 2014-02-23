@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.validator.set.in_array:
 
 InArray
@@ -76,7 +78,7 @@ Alternatively, you can define the array to validate against after object constru
 .. _zend.validator.set.in_array.strict:
 
 Array validation modes
--------------------------------
+----------------------
 
 As previously mentioned, there are possible security issues when using the default non-strict comparison mode, so rather than restricting the developer, we've chosen to offer both strict and non-strict comparisons and adding a safer middle-ground.
 

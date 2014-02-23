@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.session.config.session-config:
 
 Session Config
