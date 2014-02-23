@@ -91,7 +91,7 @@ Finally, you'll need to assign the paginator instance to your view. If you're us
 .. _zend.paginator.usage.dbselect:
 
 The DbSelect adapter
---------------------------------------
+--------------------
 
 The usage of most adapters is pretty straight-forward. However, the database adapter requires a more detailed
 explanation regarding the retrieval and count of the data from the database.

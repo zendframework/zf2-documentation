@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.form.view.helper.form-file-upload-progress:
 
 FormFileUploadProgress

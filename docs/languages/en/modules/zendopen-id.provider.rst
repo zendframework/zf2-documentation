@@ -1,7 +1,7 @@
 .. _zendopenid.provider:
 
 ZendOpenId\Provider
-====================
+===================
 
 ``ZendOpenId\Provider`` can be used to implement OpenID servers. This chapter provides examples that demonstrate
 how to build a very basic server. However, for implementation of a production OpenID server (such as

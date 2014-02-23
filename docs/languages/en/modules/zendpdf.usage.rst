@@ -1,7 +1,7 @@
 .. _zendpdf.usage:
 
 ZendPdf module usage example
-=============================
+============================
 
 This section provides an example of module usage.
 

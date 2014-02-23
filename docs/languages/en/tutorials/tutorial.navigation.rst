@@ -1,7 +1,7 @@
 Using Zend\\Navigation in your Album Module
 ===========================================
 
-In this tutorial we will use the :ref:`Zend\\Navigation component <zend.navigation.intro>`
+In this tutorial we will use the :ref:`Zend\\Navigation component <zend.navigation.introduction>`
 to add a navigation menu to the black bar at the top of the screen, and add
 breadcrumbs above the main site content.
 

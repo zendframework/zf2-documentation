@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.ldap.api.reference.zend-ldap-node-rootdse:
 
 Zend\\Ldap\\Node\\RootDse

@@ -823,7 +823,7 @@ The WinCache Adapter
 .. _zend.cache.storage.adapter.xcache:
 
 The XCache Adapter
---------------------
+------------------
 
    The ``Zend\Cache\Storage\Adapter\XCache`` adapter stores cache items into
    shared memory through the required PHP extension XCache_.
