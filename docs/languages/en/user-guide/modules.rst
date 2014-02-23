@@ -59,7 +59,10 @@ Create a file called ``Module.php`` under ``zf2-tutorial/module/Album``:
 
     namespace Album;
 
-    class Module
+    use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+    use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
+    class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         public function getAutoloaderConfig()
         {
