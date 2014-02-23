@@ -1,7 +1,7 @@
 .. _zendservice.amazon.sqs:
 
-ZendService\Amazon\Sqs
-======================
+ZendService\\Amazon\\Sqs
+========================
 
 .. _zendservice.amazon.sqs.introduction:
 
@@ -69,7 +69,8 @@ The following example demonstrates creating a queue, storing and retrieving mess
 
 .. _zendservice.amazon.sqs.storing-your-first.example:
 
-.. rubric:: ZendService\Amazon\Sqs Usage Example
+ZendService\\Amazon\\Sqs Usage Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
