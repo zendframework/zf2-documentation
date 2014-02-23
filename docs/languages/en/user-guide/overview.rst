@@ -39,7 +39,7 @@ correctly.
 
 .. note::
 
-Alternatively, if you are using PHP 5.4+ you may use the built-in web server instead of Apache for development.
+   Alternatively, if you are using PHP 5.4+ you may use the built-in web server instead of Apache for development.
 
 The tutorial application
 ------------------------
