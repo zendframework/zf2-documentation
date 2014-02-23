@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2.instance:
 
-ZendService\Amazon\Ec2: Instances
-=================================
+ZendService\\Amazon\\Ec2: Instances
+===================================
 
 .. _zendservice.amazon.ec2.instance.types:
 
@@ -52,7 +52,8 @@ This section describes the operation methods for maintaining Amazon EC2 Instance
 
 .. _zendservice.amazon.ec2.instance.operations.run:
 
-.. rubric:: Starting New Ec2 Instances
+Starting New Ec2 Instances
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *run* will launch a specified number of EC2 Instances. *run* takes an array of parameters to start, below is a
 table containing the valid values.
@@ -111,7 +112,8 @@ table containing the valid values.
 
 .. _zendservice.amazon.ec2.instance.operations.reboot:
 
-.. rubric:: Rebooting an Ec2 Instances
+Rebooting an Ec2 Instances
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *reboot* will reboot one or more instances.
 
@@ -129,7 +131,8 @@ succeed if the instances are valid and belong to the user. Requests to reboot te
 
 .. _zendservice.amazon.ec2.instance.operations.terminate:
 
-.. rubric:: Terminating an Ec2 Instances
+Terminating an Ec2 Instances
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *terminate* shuts down one or more instances. This operation is idempotent; if you terminate an instance more than
 once, each call will succeed.
@@ -159,7 +162,8 @@ product code.
 
 .. _zendservice.amazon.ec2.instance.utility.describe:
 
-.. rubric:: Describing Instances
+Describing Instances
+^^^^^^^^^^^^^^^^^^^^
 
 *describe* returns information about instances that you own.
 
@@ -186,7 +190,8 @@ fault is returned. If you specify an instance that you do not own, it will not b
 
 .. _zendservice.amazon.ec2.instance.utility.describebyimageid:
 
-.. rubric:: Describing Instances By Image Id
+Describing Instances By Image Id
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *describeByImageId* is functionally the same as *describe* but it will only return the instances that are using the
 provided imageId.
@@ -211,7 +216,8 @@ in imageId
 
 .. _zendservice.amazon.ec2.instance.utility.consoleOutput:
 
-.. rubric:: Retrieving Console Output
+Retrieving Console Output
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *consoleOutput* retrieves console output for the specified instance.
 
@@ -230,7 +236,8 @@ from the console.
 
 .. _zendservice.amazon.ec2.instance.utility.confirmproduct:
 
-.. rubric:: Confirm Product Code on an Instance
+Confirm Product Code on an Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *confirmProduct* returns ``TRUE`` if the specified product code is attached to the specified instance. The
 operation returns ``FALSE`` if the product code is not attached to the instance.
@@ -247,7 +254,8 @@ owner is providing support and wants to verify whether a user's instance is elig
 
 .. _zendservice.amazon.ec2.instance.utility.monitor:
 
-.. rubric:: Turn on CloudWatch Monitoring on an Instance(s)
+Turn on CloudWatch Monitoring on an Instance(s)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *monitor* returns the list of instances and their current state of the CloudWatch Monitoring. If the instance does
 not currently have Monitoring enabled it will be turned on.
@@ -261,7 +269,8 @@ not currently have Monitoring enabled it will be turned on.
 
 .. _zendservice.amazon.ec2.instance.utility.unmonitor:
 
-.. rubric:: Turn off CloudWatch Monitoring on an Instance(s)
+Turn off CloudWatch Monitoring on an Instance(s)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *monitor* returns the list of instances and their current state of the CloudWatch Monitoring. If the instance
 currently has Monitoring enabled it will be turned off.
