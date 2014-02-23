@@ -65,7 +65,7 @@ following sequence diagram:
 .. _zendopenid.introduction.structure:
 
 ZendOpenId Structure
----------------------
+--------------------
 
 ``ZendOpenId`` consists of two sub-packages. The first one is ``ZendOpenId\Consumer`` for developing
 OpenID-enabled sites, and the second is ``ZendOpenId\Provider`` for developing OpenID servers. They are completely

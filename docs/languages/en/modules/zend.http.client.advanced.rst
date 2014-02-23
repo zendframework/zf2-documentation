@@ -96,7 +96,7 @@ adding the new cookies:
     ));
 
 
-For more information about ``Zend\Http\Header\SetCookie`` objects, see :ref:`this section <zend.http.header.set-cookie>`.
+For more information about ``Zend\Http\Header\SetCookie`` objects, see :ref:`this section <zend.http.headers>`.
 
 ``Zend\Http\Client`` also provides a means for simplifying cookie stickiness - that is having the client internally
 store all sent and received cookies, and resend them on subsequent requests: ``Zend\Http\Client\Cookies``. This is

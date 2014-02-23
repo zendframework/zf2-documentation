@@ -12,7 +12,7 @@ The ``Message`` class encapsulates a single email message as described in RFCs `
 basically as a value object for setting mail headers and content.
 
 If desired, multi-part email messages may also be created. This is as trivial as creating the message body using
-the :ref:`Zend\\Mime <zend.mime>` component, assigning it to the mail message body.
+the :ref:`Zend\\Mime <zend.mime.mime>` component, assigning it to the mail message body.
 
 The ``Message`` class is simply a value object. It is not capable of sending or storing itself; for those purposes,
 you will need to use, respectively, a :ref:`Transport adapter <zend.mail.transport>` or :ref:`Storage adapter

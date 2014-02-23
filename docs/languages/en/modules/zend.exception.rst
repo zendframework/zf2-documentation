@@ -5,9 +5,11 @@ Using Exceptions
 
 ``Zend_Exception`` is simply the base class for all exceptions thrown within Zend Framework.
 
+
 .. _zend.exception.using.example:
 
-.. rubric:: Catching an Exception
+Catching an Exception
+---------------------
 
 The following code listing demonstrates how to catch an exception thrown in a Zend Framework class:
 
@@ -30,5 +32,3 @@ Zend Framework classes. This can be useful when the program can not recover by c
 The documentation for each Zend Framework component and class will contain specific information on which methods
 throw exceptions, the circumstances that cause an exception to be thrown, and the various exception types that may
 be thrown.
-
-

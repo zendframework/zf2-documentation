@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.session.validator.remote-addr:
 
 Remote Addr
