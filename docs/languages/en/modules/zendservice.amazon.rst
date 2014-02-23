@@ -43,7 +43,8 @@ additional secret key.
 
 .. _zendservice.amazon.introduction.example.itemsearch:
 
-.. rubric:: Search Amazon Using the Traditional API
+Search Amazon Using the Traditional API
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this example, we search for *PHP* books at Amazon and loop through the results, printing them.
 
@@ -59,7 +60,8 @@ In this example, we search for *PHP* books at Amazon and loop through the result
 
 .. _zendservice.amazon.introduction.example.query_api:
 
-.. rubric:: Search Amazon Using the Query API
+Search Amazon Using the Query API
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here, we also search for *PHP* books at Amazon, but we instead use the Query *API*, which resembles the Fluent
 Interface design pattern.
@@ -86,7 +88,8 @@ different country, simply specify the appropriate country code string as the sec
 
 .. _zendservice.amazon.countrycodes.example.country_code:
 
-.. rubric:: Choosing an Amazon Web Service Country
+Choosing an Amazon Web Service Country
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -109,7 +112,8 @@ The ``itemLookup()`` method provides the ability to fetch a particular Amazon it
 
 .. _zendservice.amazon.itemlookup.example.asin:
 
-.. rubric:: Looking up a Specific Amazon Item by ASIN
+Looking up a Specific Amazon Item by ASIN
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -137,7 +141,8 @@ as in the following example:
 
 .. _zendservice.amazon.itemsearch.example.basic:
 
-.. rubric:: Performing Amazon Item Searches
+Performing Amazon Item Searches
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -151,7 +156,8 @@ as in the following example:
 
 .. _zendservice.amazon.itemsearch.example.responsegroup:
 
-.. rubric:: Using the ResponseGroup Option
+Using the ResponseGroup Option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *ResponseGroup* option is used to control the specific information that will be returned in the response.
 
@@ -258,8 +264,7 @@ encompasses all of the items attributes, including title, description, reviews, 
 
 .. _zendservice.amazon.classes.item.asxml:
 
-ZendService\\Amazon\\Item::asXML()
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: ZendService\\Amazon\\Item::asXML()
 
 string:``asXML()``
 
@@ -268,8 +273,7 @@ Return the original *XML* for the item
 
 .. _zendservice.amazon.classes.item.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 ``ZendService\Amazon\Item`` has a number of properties directly related to their standard Amazon *API*
 counterparts.
@@ -323,8 +327,7 @@ ZendService\\Amazon\\Image
 
 .. _zendservice.amazon.classes.image.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.image.properties.table-1:
 
@@ -359,8 +362,7 @@ ZendService\\Amazon\\ResultSet
 
 .. _zendservice.amazon.classes.resultset.totalresults:
 
-ZendService\\Amazon\\ResultSet::totalResults()
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: ZendService\\Amazon\\ResultSet::totalResults()
 
 int:``totalResults()``
 Returns the total number of results returned by the search
@@ -378,8 +380,7 @@ Each result returned by :ref:`ZendService\Amazon\Amazon::itemSearch() <zendservi
 
 .. _zendservice.amazon.classes.offerset.parameters:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.offerset.parameters.table-1:
 
@@ -418,8 +419,7 @@ Each offer for an item is returned as an ``ZendService\Amazon\Offer`` object.
 
 .. _zendservice.amazon.classes.offer.properties:
 
-ZendService\\Amazon\\Offer Properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.offer.properties.table-1:
 
@@ -462,8 +462,7 @@ item.
 
 .. _zendservice.amazon.classes.similarproduct.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.similarproduct.properties.table-1:
 
@@ -488,8 +487,7 @@ Accessories for the returned item are represented as ``ZendService\Amazon\Access
 
 .. _zendservice.amazon.classes.accessories.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.accessories.properties.table-1:
 
@@ -514,8 +512,7 @@ Each Customer Review is returned as a ``ZendService\Amazon\CustomerReview`` obje
 
 .. _zendservice.amazon.classes.customerreview.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.customerreview.properties.table-1:
 
@@ -550,8 +547,7 @@ Each items Editorial Reviews are returned as a ``ZendService\Amazon\EditorialRev
 
 .. _zendservice.amazon.classes.editorialreview.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.editorialreview.properties.table-1:
 
@@ -576,8 +572,7 @@ Each results List Mania List items are returned as ``ZendService\Amazon\Listmani
 
 .. _zendservice.amazon.classes.listmania.properties:
 
-Properties
-^^^^^^^^^^
+.. rubric:: Properties
 
 .. _zendservice.amazon.classes.listmania.properties.table-1:
 
