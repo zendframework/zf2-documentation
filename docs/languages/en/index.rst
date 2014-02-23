@@ -284,15 +284,15 @@
    modules/zendservice.amazon.s3
    modules/zendservice.amazon.sqs
    modules/zendservice.amazon.ec2
-   modules/zendservice.amazon.ec2.cloudwatch
+   modules/zendservice.amazon.ec2.cloud-watch
    modules/zendservice.amazon.ec2.ebs
    modules/zendservice.amazon.ec2.elasticip
    modules/zendservice.amazon.ec2.instance
-   modules/zendservice.amazon.ec2.keypairs
-   modules/zendservice.amazon.ec2.zones
-   modules/zendservice.amazon.ec2.reserved.instance
+   modules/zendservice.amazon.ec2.keypair
+   modules/zendservice.amazon.ec2.regions-and-avalibility-zones
+   modules/zendservice.amazon.ec2.reserved-instance
    modules/zendservice.amazon.ec2.securitygroups
-   modules/zendservice.amazon.ec2.windows.instance
+   modules/zendservice.amazon.ec2.windows-instance
    modules/zendservice.apple.apns
    modules/zendservice.audioscrobbler
    modules/zendservice.delicious
