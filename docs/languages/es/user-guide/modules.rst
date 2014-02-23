@@ -57,8 +57,11 @@ Cree el archivo Module.php en el módulo Album:
 
     // module/Album/Module.php
     namespace Album;
+
+    use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+    use Zend\ModuleManager\Feature\ConfigProviderInterface;
     
-    class Module
+    class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         public function getAutoloaderConfig()
         {
