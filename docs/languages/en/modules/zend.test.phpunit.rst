@@ -226,7 +226,7 @@ with a handful of assertions.
 * ``assertRedirectTo($url)``: assert that a redirect has occurred, and that the value of the Location header is the $url provided.
 
 * ``assertRedirectRegex($pattern)``: assert that a redirect has occurred, and that the value of the Location header matches the regular
-expression provided by $pattern.
+  expression provided by $pattern.
 
 Each also has a 'Not' variant for negative assertions.
 
