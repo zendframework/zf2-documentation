@@ -1,7 +1,7 @@
 .. _zendservice.rackspace.files:
 
-Zend\\Service\\Rackspace\\Files
-===============================
+ZendService\\Rackspace\\Files
+=============================
 
 .. _zendservice.rackspace.files.intro:
 

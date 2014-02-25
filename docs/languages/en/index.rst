@@ -954,13 +954,13 @@ ZendService\\Audioscrobbler
 
         * :doc:`modules/zendservice.audioscrobbler`
 
-ZendService\\Del.icio.us
-^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Delicious
+^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.delicious`
 
-ZendService\\Developer Garden
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\DeveloperGarden
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.developer-garden`
 
@@ -1018,8 +1018,8 @@ ZendService\\Twitter
 
         * :doc:`modules/zendservice.twitter`
 
-ZendService\\Windows Azure
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\WindowsAzure
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.windows-azure`
 

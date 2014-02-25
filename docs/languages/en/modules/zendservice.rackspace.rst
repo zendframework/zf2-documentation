@@ -1,7 +1,7 @@
 .. _zendservice.rackspace:
 
-Zend\\Service\\Rackspace
-========================
+ZendService\\Rackspace
+======================
 
 .. _zendservice.rackspace.introduction:
 
