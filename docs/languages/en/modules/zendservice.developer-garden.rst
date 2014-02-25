@@ -5,8 +5,8 @@ ZendService\\DeveloperGarden
 
 .. _zendservice.developergarden.introduction:
 
-Introduction to DeveloperGarden
--------------------------------
+Introduction
+------------
 
 Developer Garden is the name of Deutsche Telekom’s developer community. Developer Garden offers you access to
 core services of Deutsche Telekom, such as voice connections (Voice Call) or sending text messages (Send SMS) via

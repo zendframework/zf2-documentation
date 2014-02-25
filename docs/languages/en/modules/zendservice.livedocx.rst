@@ -1,12 +1,12 @@
 .. _zendservice.livedocx:
 
-ZendService\LiveDocx\LiveDocx
-=============================
+ZendService\\LiveDocx
+=====================
 
 .. _zendservice.livedocx.introduction:
 
-Introduction to LiveDocx
-------------------------
+Introduction
+------------
 
 LiveDocx is a *SOAP* service that allows developers to generate word processing documents by combining structured
 textual or image data from *PHP* with a template, created in a word processor. The resulting document can be
