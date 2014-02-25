@@ -1,7 +1,7 @@
 .. _zend.stdlib.aggregate.hydrator:
 
-Zend\\Stdlib\\Hydrator\\Aggregate\\AggregateHydrator
-====================================================
+AggregateHydrator
+=================
 
 ``Zend\Stdlib\Hydrator\Aggregate\AggregateHydrator`` is an implementation of
 ``Zend\Stdlib\Hydrator\HydratorInterface`` that composes multiple hydrators
@@ -11,10 +11,10 @@ You typically want to use an aggregate hydrator when you want to hydrate or
 extract data from complex objects that implement multiple interfaces, and therefore
 need multiple hydrators to handle that in subsequent steps.
 
-.. _zend.stdlib.aggregate.hydrator.installation.requirements:
+.. _zend.stdlib.aggregate.hydrator.installation-requirements:
 
-Installation requirements for the AggregateHydrator
----------------------------------------------------
+Installation requirements
+-------------------------
 
 The ``AggregateHydrator`` is based on the ``Zend\EventManager`` component, so be
 sure to have it installed before getting started:
@@ -23,10 +23,10 @@ sure to have it installed before getting started:
 
    php composer.phar require zendframework/zend-eventmanager:2.*
 
-.. _zend.stdlib.aggregate.hydrator.usage:
+.. _zend.stdlib.aggregate.hydrator.basic-usage:
 
-Example of AggregateHydrator usage
-----------------------------------
+Basic usage
+-----------
 
 A simple use case may be hydrating a ``BlogPost`` object, which contains data for
 the user that created it, the time it was created, the current publishing status, etc:
@@ -94,10 +94,10 @@ just ignore any unknown object type passed in, such as in following example:
        }
    }
 
-.. _zend.stdlib.aggregate.hydrator.advanced.use.cases:
+.. _zend.stdlib.aggregate.hydrator.advanced-use-cases:
 
-Advanced use cases of the AggregateHydrator
--------------------------------------------
+Advanced use cases
+------------------
 
 Since the ``AggregateHydrator`` is event-driven, you can use the ``EventManager``
 API to tweak its behaviour.
