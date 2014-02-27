@@ -1,60 +1,60 @@
+#Bienvenido a la documentacion *Zend Framework 2*
+
+## INFORMACIONES DE LIBERACION
+
+Esta documentacion esta badado en *Zend Framework 2* (rama master)
+
+## VER LA DOCUMENTACION ONLINE
+
+Utilizamos el proyecto [readthedocs.org] (http://readthedocs.org/) para hacer en línea la versión de desarrollo de la 
+documentación de Zend Framework 2.
+
+Usted puede leer la documentación en línea en el desarrollo 
+[http://zf2.readthedocs.org] (http://zf2.readthedocs.org/en/latest/index.html).
 # Welcome to the *Zend Framework 2* documentation
 
-## RELEASE INFORMATION
-
-This documentation is based on *Zend Framework 2* (master branch)
-
-
-## VIEW THE DOCUMENTATION ONLINE
-
-We used the [readthedocs.org](http://readthedocs.org/) project to render online the development version of the
-documentation of Zend Framework 2.
-
-You can read the development online documentation in 
-[http://zf2.readthedocs.org](http://zf2.readthedocs.org/en/latest/index.html).
-
-You can read the last stable documentation in 
+Usted puede leer la última documentación estable en 
 [http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).
 
-## BUILDING DOCUMENTATION
+# # CONSTRUCCIÓN DE DOCUMENTACIÓN
 
-Building the documentation requires [Sphinx](http://sphinx-doc.org/).
+La construcción de la documentación requiere [Sphinx] (http://sphinx-doc.org/).
 
-Descend into the `docs/` directory, and run `make` with one of the following
-targets:
+Descienda al directorio `docs /`, y ejecute `make` con uno de los siguientes 
+objetivos:
 
-- `epub` - build epub (ebook) documentation (requires
-  [Calibre](http://calibre-ebook.com/) to build cross-platform epub versions)
-- `help` - build Windows help files
-- `html` - build HTML documentation
-- `info` - build Unix info pages
-- `latexpdf` - build PDF documentation (requires a working `latex` toolchain)
-- `man` - build Unix manpages
-- `text` - build ANSI text manual files
+- `Epub` - construir epub (ebook ) Documentación (requiere
+  [Calibre] ( http://calibre-ebook.com/ ) para construir versiones epub , multi-plataforma )
+- `Ayuda` - crear archivos de ayuda de Windows
+- `HTML` - generar la documentación HTML
+- `Info' - construir Unix páginas de información sobre
+- `Latexpdf` - construir documentación en formato PDF ( requiere un conjunto de herramientas de trabajo ` ` latex )
+- `Man` - construir páginas de manual Unix
+- `Texto` - crear archivos manual de texto ANSI
 
-Examples:
+Ejemplos:
 
-```sh
+``` sh
 make html
 ```
 
-You can cleanup by running `make clean`.
+Usted puede limpiar ejecutando `make clean`.
 
-## CONTRIBUTING
+## CONTRIBUIR
 
-If you wish to contribute to the documentation of Zend Framework 2, please read the
-CONTRIBUTING.md file.
+Si usted desea contribuir a la documentación de Zend Framework 2 , por favor, lea el
+Archivo CONTRIBUTING.md .
 
-If you don't know where to begin, or where you can best help, please review the
-TODO.md file.
+Si usted no sabe por dónde empezar , o donde usted puede ayudar mejor , por favor, revise la
+Archivo TODO.md .
 
-## LICENSE
+# # LICENCIA
 
-The files in this archive are released under the Zend Framework license.
-You can find a copy of this license in LICENSE.txt.
+Los archivos de este archivo se publican bajo la licencia de Zend Framework .
+Puede encontrar una copia de esta licencia en LICENSE.txt .
 
-## ACKNOWLEDGEMENTS
+# # AGRADECIMIENTOS
 
-The Zend Framework team would like to thank all the [contributors](https://github.com/zendframework/zf2-documentation/contributors) to the Zend
-Framework Documentation project, our corporate sponsor, and you, the Zend Framework user.
-Please visit us sometime soon at http://framework.zend.com.
+El equipo de Zend Framework quiere agradecer a todos los contribuyentes [ ] ( https://github.com/zendframework/zf2-documentation/contributors ) al Zend
+Proyecto de documentación Marco , nuestro patrocinador corporativo , y usted, el usuario Zend Framework .
+Por favor, visítenos en algún momento en http://framework.zend.com .
