@@ -11,7 +11,6 @@ documentación de Zend Framework 2.
 
 Usted puede leer la documentación en línea en el desarrollo 
 [http://zf2.readthedocs.org] (http://zf2.readthedocs.org/en/latest/index.html).
-# Welcome to the *Zend Framework 2* documentation
 
 Usted puede leer la última documentación estable en 
 [http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).
@@ -27,8 +26,8 @@ objetivos:
   [Calibre] ( http://calibre-ebook.com/ ) para construir versiones epub , multi-plataforma )
 - `Ayuda` - crear archivos de ayuda de Windows
 - `HTML` - generar la documentación HTML
-- `Info' - construir Unix páginas de información sobre
-- `Latexpdf` - construir documentación en formato PDF ( requiere un conjunto de herramientas de trabajo ` ` latex )
+- `Info` - construir Unix páginas de información sobre
+- `Latexpdf` - construir documentación en formato PDF ( requiere un conjunto de herramientas de trabajo (` latex `)
 - `Man` - construir páginas de manual Unix
 - `Texto` - crear archivos manual de texto ANSI
 
