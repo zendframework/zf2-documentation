@@ -50,8 +50,7 @@ You can provide this service to the ``ServiceManager`` in a configuration file:
                 'Zend\Authentication\AuthenticationService' => 'my_auth_service',
             ),
             'invokables' => array(
-                'my_auth_service' => 'Zend\Authentication\AuthenticationService';
-                },
+                'my_auth_service' => 'Zend\Authentication\AuthenticationService',
             ),
         ),
     );
