@@ -47,17 +47,26 @@ Basic usage
 
 This example shows how to render breadcrumbs with default settings.
 
+In a view script or layout:
+
 .. code-block:: php
    :linenos:
 
-   In a view script or layout:
    <?php echo $this->navigation()->breadcrumbs(); ?>
 
-   The two calls above take advantage of the magic __toString() method,
-   and are equivalent to:
+The two calls above take advantage of the magic __toString() method,
+and are equivalent to:
+
+.. code-block:: php
+   :linenos:
+
    <?php echo $this->navigation()->breadcrumbs()->render(); ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 
 .. _zend.navigation.view.helper.breadcrumbs.specifying-indentation:
@@ -67,14 +76,19 @@ Specifying indentation
 
 This example shows how to render breadcrumbs with initial indentation.
 
+Rendering with 8 spaces indentation:
+
 .. code-block:: php
    :linenos:
 
-   Rendering with 8 spaces indentation:
    <?php echo $this->navigation()->breadcrumbs()->setIndent(8);?>
 
-   Output:
-           <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
+Output:
+
+.. code-block:: html
+   :linenos:
+
+   <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 
 .. _zend.navigation.view.helper.breadcrumbs.customize-output:
 
@@ -83,10 +97,10 @@ Customize output
 
 This example shows how to customize breadcrumbs output by specifying various options.
 
+In a view script or layout:
+
 .. code-block:: php
    :linenos:
-
-   In a view script or layout:
 
    <?php
    echo $this->navigation()
@@ -96,21 +110,27 @@ This example shows how to customize breadcrumbs output by specifying various opt
              ->setSeparator(' ▶' . PHP_EOL); // cool separator with newline
    ?>
 
-   Output:
+Output:
+
+.. code-block:: html
+   :linenos:
+
    <a href="/products">Products</a> ▶
    <a href="/products/server">Foo Server</a>
 
-   /////////////////////////////////////////////////////
+Setting minimum depth required to render breadcrumbs:
 
-   Setting minimum depth required to render breadcrumbs:
+.. code-block:: php
+   :linenos:
 
    <?php
    $this->navigation()->breadcrumbs()->setMinDepth(10);
    echo $this->navigation()->breadcrumbs();
    ?>
 
-   Output:
-   Nothing, because the deepest active page is not at level 10 or deeper.
+Output:
+
+Nothing, because the deepest active page is not at level 10 or deeper.
 
 .. _zend.navigation.view.helper.breadcrumbs.using-partial:
 
@@ -141,7 +161,7 @@ Contents of *module/MyModule/view/my-module/partials/breadcrumbs.phtml*:
 
 Output:
 
-.. code-block:: php
+.. code-block:: html
    :linenos:
 
    Products, Foo Server, FAQ
