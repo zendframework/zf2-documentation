@@ -643,7 +643,7 @@ And, of course, we need a view script to go along with that. Edit
 
    **Checkpoint**
 
-   Now browse to "http://localhost/guestbook". You should see the following in your browser:
+   Now browse to ``http://localhost/guestbook``. You should see the following in your browser:
 
    .. image:: ../images/learning.quickstart.create-model.png
       :width: 525
