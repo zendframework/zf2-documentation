@@ -108,7 +108,8 @@ before your application is ready. The configuration is usually brief, and quite
 minimal.
 
 Also, system configuration is used *immediately*, and is not merged with any
-other configuration -- which means it cannot be overridden by a module.
+other configuration -- which means, with the exception of the values under the
+'service_manager' key, it cannot be overridden by a module.
 
 This leads us to our first trick: how do you provide environment-specific
 system configuration?
