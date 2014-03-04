@@ -33,7 +33,7 @@ app, a home page, and an albums area.
     ),
 
 This change means that if you go to the home page of your application
-(http://zf2-tutorial.localhost/), you see the default skeleton
+(``http://zf2-tutorial.localhost/``), you see the default skeleton
 application introduction. Your list of albums is still available at the
 /album route.
 

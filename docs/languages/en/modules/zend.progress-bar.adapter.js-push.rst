@@ -94,13 +94,13 @@ content then.
 Instead of creating your custom progressbar, you may want to use one of the available JavaScript libraries like
 Dojo, jQuery etc. For example, there are:
 
-- Dojo: http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html
+- Dojo: `http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html`_
 
-- jQuery: https://api.jqueryui.com/progressbar/
+- jQuery: `https://api.jqueryui.com/progressbar/`_
 
-- MooTools: http://davidwalsh.name/dw-content/progress-bar.php
+- MooTools: `http://davidwalsh.name/dw-content/progress-bar.php`_
 
-- Prototype: http://livepipe.net/control/progressbar
+- Prototype: `http://livepipe.net/control/progressbar`_
 
 .. note::
 
@@ -112,3 +112,7 @@ Dojo, jQuery etc. For example, there are:
 
 
 
+.. _`http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html`: http://dojotoolkit.org/reference-guide/dijit/ProgressBar.html
+.. _`http://t.wits.sg/2008/06/20/jquery-progress-bar-11/`: http://t.wits.sg/2008/06/20/jquery-progress-bar-11/
+.. _`http://davidwalsh.name/dw-content/progress-bar.php`: http://davidwalsh.name/dw-content/progress-bar.php
+.. _`http://livepipe.net/control/progressbar`: http://livepipe.net/control/progressbar
