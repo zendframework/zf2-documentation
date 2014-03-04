@@ -18,40 +18,40 @@ This element automatically adds a ``"type"`` attribute of value ``"checkbox"`` f
 .. code-block:: php
    :linenos:
 
-   	use Zend\Form\Element;
-   	use Zend\Form\Form;
+       use Zend\Form\Element;
+       use Zend\Form\Form;
 
-   	$multiCheckbox = new Element\MultiCheckbox('multi-checkbox');
-   	$multiCheckbox->setLabel('What do you like ?');
-   	$multiCheckbox->setValueOptions(array(
-   			'0' => 'Apple',
-   			'1' => 'Orange',
-   			'2' => 'Lemon'
-   	));
+       $multiCheckbox = new Element\MultiCheckbox('multi-checkbox');
+       $multiCheckbox->setLabel('What do you like ?');
+       $multiCheckbox->setValueOptions(array(
+               '0' => 'Apple',
+               '1' => 'Orange',
+               '2' => 'Lemon'
+       ));
 
-   	$form = new Form('my-form');
-   	$form->add($multiCheckbox);
+       $form = new Form('my-form');
+       $form->add($multiCheckbox);
 
 Using the array notation:
 
 .. code-block:: php
    :linenos:
 
-    use Zend\Form\Form;
+       use Zend\Form\Form;
 
-   	$form = new Form('my-form');
-   	$form->add(array(
-   		'type' => 'Zend\Form\Element\MultiCheckbox',
-   		'name' => 'multi-checkbox',
-   		'options' => array(
-   			'label' => 'What do you like ?',
-   			'value_options' => array(
-   				'0' => 'Apple',
-   				'1' => 'Orange',
-   				'2' => 'Lemon',
-   			),
-   		)
-   	));
+       $form = new Form('my-form');
+       $form->add(array(
+           'type' => 'Zend\Form\Element\MultiCheckbox',
+           'name' => 'multi-checkbox',
+           'options' => array(
+               'label' => 'What do you like ?',
+               'value_options' => array(
+                   '0' => 'Apple',
+                   '1' => 'Orange',
+                   '2' => 'Lemon',
+               ),
+           )
+       ));
 
 .. _zend.form.element.multicheckbox.advanced:
 
@@ -67,42 +67,42 @@ following keys are supported:
 * ``"label_attributes"`` - Array of html attributes that will be set on the label. Merged with the attributes set on the element's label.
 
 .. code-block:: php
-	:linenos:
-	
-   	$form = new Form('my-form');
-   	$form->add(array(
-   		'type' => 'Zend\Form\Element\MultiCheckbox',
-   		'name' => 'multi-checkbox',
-   		'options' => array(
-   			'label' => 'What do you like ?',
-   			'value_options' => array(
-   				array(
-					'value' => '0',
-					'label' => 'Apple',
-					'selected' => false,
-					'disabled' => false,
-					'attributes' => array(
-						'id' => 'apple_option',
-						'data-fruit' => 'apple',
-					),
-					'label_attributes' => array(
-						'id' => 'apple_label',
-					),
-				),
-   				array(
-					'value' => '1',
-					'label' => 'Orange',
-					'selected' => true,
-				),
-   				array(
-					'value' => '2',
-					'label' => 'Lemon',
-				),
-   			),
-   		)
-   	));
-	
-	
+    :linenos:
+    
+       $form = new Form('my-form');
+       $form->add(array(
+           'type' => 'Zend\Form\Element\MultiCheckbox',
+           'name' => 'multi-checkbox',
+           'options' => array(
+               'label' => 'What do you like ?',
+               'value_options' => array(
+                   array(
+                       'value' => '0',
+                       'label' => 'Apple',
+                       'selected' => false,
+                       'disabled' => false,
+                       'attributes' => array(
+                           'id' => 'apple_option',
+                           'data-fruit' => 'apple',
+                       ),
+                       'label_attributes' => array(
+                           'id' => 'apple_label',
+                       ),
+                   ),
+                   array(
+                       'value' => '1',
+                       'label' => 'Orange',
+                       'selected' => true,
+                   ),
+                   array(
+                       'value' => '2',
+                       'label' => 'Lemon',
+                   ),
+               ),
+           ),
+       ));
+    
+    
 .. _zend.form.element.multicheckbox.methods:
 
 .. rubric:: Public Methods
