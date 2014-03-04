@@ -22,7 +22,7 @@ A basic example is one like the following:
    use Zend\Session\SessionManager;
 
    $cache = StorageFactory::factory(array(
-       array(
+       'adapter' => array(
           'name' => 'memcached',
           'options' => array(
               'server' => '127.0.0.1',
