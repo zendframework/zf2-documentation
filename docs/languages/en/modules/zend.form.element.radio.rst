@@ -18,18 +18,18 @@ This element automatically adds a ``"type"`` attribute of value ``"radio"`` for 
 .. code-block:: php
    :linenos:
 
-   	use Zend\Form\Element;
-   	use Zend\Form\Form;
+       use Zend\Form\Element;
+       use Zend\Form\Form;
 
-   	$radio = new Element\Radio('gender');
-   	$radio->setLabel('What is your gender ?');
-   	$radio->setValueOptions(array(
-   			'0' => 'Female',
-   			'1' => 'Male',
-   	));
+       $radio = new Element\Radio('gender');
+       $radio->setLabel('What is your gender ?');
+       $radio->setValueOptions(array(
+           '0' => 'Female',
+           '1' => 'Male',
+       ));
 
-   	$form = new Form('my-form');
-   	$form->add($radio);
+       $form = new Form('my-form');
+       $form->add($radio);
 
 Using the array notation:
 
@@ -38,19 +38,23 @@ Using the array notation:
 
     use Zend\Form\Form;
 
-   	$form = new Form('my-form');
-   	$form->add(array(
-   		'type' => 'Zend\Form\Element\Radio',
-   		'name' => 'gender',
-   		'options' => array(
-   			'label' => 'What is your gender ?',
-   			'value_options' => array(
-   				'0' => 'Female',
-   				'1' => 'Male',
-   			),
-   		)
-   	));
+       $form = new Form('my-form');
+       $form->add(array(
+           'type' => 'Zend\Form\Element\Radio',
+           'name' => 'gender',
+           'options' => array(
+               'label' => 'What is your gender ?',
+               'value_options' => array(
+                   '0' => 'Female',
+                   '1' => 'Male',
+               ),
+           ),
+       ));
 
+.. rubric:: Advanced Usage
+
+See :ref:`MultiCheckbox for examples<zend.form.element.multicheckbox.advanced>` of how to apply attributes and options to each radio button. 
+    
 
 .. _zend.form.element.radio.methods:
 
