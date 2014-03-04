@@ -115,7 +115,7 @@ Sometimes you may want to specify listeners without yet having an object instanc
 ``EventManager``. Zend Framework enables this through the concept of a ``SharedEventCollection``. Simply put, you
 can inject individual ``EventManager`` instances with a well-known ``SharedEventCollection``, and the
 ``EventManager`` instance will query it for additional listeners. Listeners attach to a ``SharedEventCollection``
-in roughly the same way the do normal event managers; the call to ``attach`` is identical to the ``EventManager``,
+in roughly the same way they do to normal event managers; the call to ``attach`` is identical to the ``EventManager``,
 but expects an additional parameter at the beginning: a named instance. Remember the example of composing an
 ``EventManager``, how we passed it ``__CLASS__``? That value, or any strings you provide in an array to the
 constructor, may be used to identify an instance when using a ``SharedEventCollection``. As an example, assuming we
