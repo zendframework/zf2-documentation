@@ -24,7 +24,7 @@ You can use ``Gravatar`` helper wherever you want in .phtml view files as in thi
 	echo $this->gravatar('email@example.com')->getImgTag();
 
 The first (and only in this example) argument passed to ``Gravatar`` helper is an e-mail for which you want grab
-image from gravatar.com. For convenience this e-mail will be automatically hashed with md5 algorithm.
+avatar from gravatar.com. For convenience this e-mail will be automatically hashed with md5 algorithm.
 
 This will render html as below:
 
@@ -44,7 +44,7 @@ You can customize request for gravatar.com image simply by using helper setters:
 	
 	$gravatar = $this->gravatar();
 	$gravatar->setEmail('email@example.com')	//Sets email if you didn't pass one in helper invocation
-		->setImgSize(40); 			//Sets image size which gravatar.com return
+		->setImgSize(40) 			//Sets image size which gravatar.com return
 		->setDefaultImg( \Zend\View\Helper\Gravatar::DEFAULT_MM )	//Sets default avatar
 		->setRating( \Zend\View\Helper\Gravatar::RATING_G ) 		//Sets rating for avatar
 		->setSecure(true); 			//Sets for using secure url in image source
@@ -67,7 +67,7 @@ or you can use array with following keys:
 .. note::
 
    Passing ``null`` to ``secure`` setting will cause that secure url will be chosen whatever current request
-   in your application is secure or not.
+   in your application is secure or not. This is default behavior.
 
 As you can see in above examples, there are predefined settings for default image and rating. Gravatar helper
 defines following constants for rating: ``RATING_G``, ``RATING_PG``, ``RATING_R``, ``RATING_X``
@@ -85,3 +85,18 @@ You may also use custom attributes in img tag. To do this simply pass attributes
 		'class' => 'gravatarcls'
 	);
 	echo $gravatar->setAttributes($attr)->getImgTag();	//Render img tag with our added attribute
+
+or you can pass this array as third argument to helper call:
+
+.. code-block:: php
+	:linenos:
+
+	$email = 'email@example.com';
+	$settings = array(
+		'default_img' => \Zend\View\Helper\Gravatar::DEFAULT_MM
+	);
+	$attr = array(
+		'class'	=> 'gravatar-image',
+		'id'	=> 'gravatar'
+	);
+	echo $this->gravatar($email,$settings,$attr)->getImgTag();
