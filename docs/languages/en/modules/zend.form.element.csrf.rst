@@ -44,6 +44,14 @@ You can change the options of the CSRF validator using the ``setCsrfValidatorOpt
     	)
     ));
 
+.. note::
+
+    If you are using more than one form on a page, and each contains its own CSRF element, you will
+    need to make sure that each form uniquely names its element; if you do not, it's possible for
+    the value of one to override the other within the server-side session storage, leading to the
+    inability to validate one or more of the forms on your page. We suggest prefixing the element
+    name with the form's name or function: "login_csrf", "registration_csrf", etc.
+
 .. _zend.form.element.csrf.methods:
 
 .. rubric:: Public Methods
