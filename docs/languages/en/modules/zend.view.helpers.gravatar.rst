@@ -43,11 +43,11 @@ You can customize request for gravatar.com image simply by using helper setters:
 	:linenos:
 	
 	$gravatar = $this->gravatar();
-	$gravatar->setEmail('email@example.com') //Sets email if you didn't pass one in helper invocation
-		->setImgSize(40); //Sets image size which gravatar.com return
-		->setDefaultImg(\Zend\View\Helper\Gravatar::DEFAULT_MM); //Sets default returned image
-		->setRating(\Zend\View\Helper\Gravatar::RATING_G) //Sets rating for avatar
-		->setSecure(true); //Sets for using https instead of http in image source
+	$gravatar->setEmail('email@example.com')	//Sets email if you didn't pass one in helper invocation
+		->setImgSize(40); 			//Sets image size which gravatar.com return
+		->setDefaultImg( \Zend\View\Helper\Gravatar::DEFAULT_MM )	//Sets default avatar
+		->setRating( \Zend\View\Helper\Gravatar::RATING_G ) 		//Sets rating for avatar
+		->setSecure(true); 			//Sets for using secure url in image source
 	echo $gravatar->getImgTag();
 
 or you can use array with following keys:
@@ -64,5 +64,23 @@ or you can use array with following keys:
 	$email = 'email@example.com';
 	echo $this->gravatar($email,$settings)->getImgTag();
 
-Passing ``null`` to ``secure`` setting will cause that ssl or non-ssl will be chosen same as current request
-in your application.
+Passing ``null`` to ``secure`` setting will cause that secure url will be chosen whatever current request in your
+application is secure or not.
+
+As you can see in above examples, there are predefined settings for default image and rating. Gravatar helper
+defines following constants for rating:
+
+``RATING_G``
+``RATING_PG``
+``RATING_R``
+``RATING_X``
+
+and following for default image:
+
+``DEFAULT_404``
+``DEFAULT_MM``
+``DEFAULT_IDENTICON``
+``DEFAULT_MONSTERID``
+``DEFAULT_WAVATAR``
+
+You may also use custom attributes in img tag. To do this simply call ``setAttributes`` on helper and pass :
