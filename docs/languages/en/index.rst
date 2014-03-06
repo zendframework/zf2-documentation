@@ -262,6 +262,7 @@
    modules/zend.view.helpers.cycle
    modules/zend.view.helpers.doctype
    modules/zend.view.helpers.flash-messenger
+   modules/zend.view.helpers.gravatar
    modules/zend.view.helpers.head-link
    modules/zend.view.helpers.head-meta
    modules/zend.view.helpers.head-script
@@ -893,6 +894,7 @@ Zend\\View
         * :doc:`modules/zend.view.helpers.cycle`
         * :doc:`modules/zend.view.helpers.doctype`
         * :doc:`modules/zend.view.helpers.flash-messenger`
+	* :doc:`modules/zend.view.helpers.gravatar`
         * :doc:`modules/zend.view.helpers.head-link`
         * :doc:`modules/zend.view.helpers.head-meta`
         * :doc:`modules/zend.view.helpers.head-script`
