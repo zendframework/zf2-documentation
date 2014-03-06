@@ -59,9 +59,9 @@ or you can use array with following keys:
 
     $settings = array(
         'img_size'    => 40,
-            'default_img' => \Zend\View\Helper\Gravatar::DEFAULT_MM,
-            'rating'      => \Zend\View\Helper\Gravatar::RATING_G,
-            'secure'      => null,
+        'default_img' => \Zend\View\Helper\Gravatar::DEFAULT_MM,
+        'rating'      => \Zend\View\Helper\Gravatar::RATING_G,
+        'secure'      => null,
     );
     $email = 'email@example.com';
     echo $this->gravatar($email,$settings)->getImgTag();    //Render img tag
