@@ -48,7 +48,7 @@ You can customize request for gravatar.com image simply by using helper setters:
 		->setDefaultImg( \Zend\View\Helper\Gravatar::DEFAULT_MM )	//Sets default avatar
 		->setRating( \Zend\View\Helper\Gravatar::RATING_G ) 		//Sets rating for avatar
 		->setSecure(true); 			//Sets for using secure url in image source
-	echo $gravatar->getImgTag();
+	echo $gravatar->getImgTag();			//Render img tag
 
 or you can use array with following keys:
 
@@ -62,25 +62,26 @@ or you can use array with following keys:
         	'secure'      => null,
 	);
 	$email = 'email@example.com';
-	echo $this->gravatar($email,$settings)->getImgTag();
+	echo $this->gravatar($email,$settings)->getImgTag();	//Render img tag
 
-Passing ``null`` to ``secure`` setting will cause that secure url will be chosen whatever current request in your
-application is secure or not.
+.. note::
+
+   Passing ``null`` to ``secure`` setting will cause that secure url will be chosen whatever current request
+   in your application is secure or not.
 
 As you can see in above examples, there are predefined settings for default image and rating. Gravatar helper
-defines following constants for rating:
-
-``RATING_G``
-``RATING_PG``
-``RATING_R``
-``RATING_X``
-
-and following for default image:
-
-``DEFAULT_404``
-``DEFAULT_MM``
-``DEFAULT_IDENTICON``
-``DEFAULT_MONSTERID``
+defines following constants for rating: ``RATING_G``, ``RATING_PG``, ``RATING_R``, ``RATING_X``
+and following for default image: ``DEFAULT_404``, ``DEFAULT_MM``, ``DEFAULT_IDENTICON``, ``DEFAULT_MONSTERID``,
 ``DEFAULT_WAVATAR``
 
-You may also use custom attributes in img tag. To do this simply call ``setAttributes`` on helper and pass :
+You may also use custom attributes in img tag. To do this simply pass attributes array to ``setAttributes`` method:
+
+.. code-block:: php
+	:linenos:
+
+	$gravatar = $this->gravatar('email@example.com');
+	//Suppose that i want to add gravatarcls class to rendered img tag
+	$attr = array(
+		'class' => 'gravatarcls'
+	);
+	echo $gravatar->setAttributes($attr)->getImgTag();	//Render img tag with our added attribute
