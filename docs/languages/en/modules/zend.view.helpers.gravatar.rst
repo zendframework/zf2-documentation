@@ -68,7 +68,7 @@ or you can use array with following keys:
 
 .. note::
 
-   Passing ``null`` to ``secure`` setting will cause that secure url will be chosen whatever current request
+   Passing ``null`` to ``secure`` setting will cause that secure url will be chosen same as current request
    in your application is secure or not. This is default behavior.
 
 As you can see in above examples, there are predefined settings for default image and rating. Gravatar helper
