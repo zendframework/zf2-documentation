@@ -415,7 +415,7 @@ execution if interesting results are obtained.
 
 .. _short-circuiting-listener-execution:
 
-Short-ciruiting listener execution
+Short-circuiting listener execution
 ----------------------------------
 
 You may want to short-ciruit execution if a particular result is obtained, or if
