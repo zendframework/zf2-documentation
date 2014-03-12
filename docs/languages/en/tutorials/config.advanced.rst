@@ -313,35 +313,35 @@ denoted in the :ref:`section on default service configuration
 Configuration mapping table
 ---------------------------
 
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| Manager name                 | Interface name                        | Module Method name                | Config key name           |
-+==============================+=======================================+===================================+===========================+
-| ``ControllerPluginManager``  | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()``   | ``controller_plugins``    |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``ControllerManager``        | ``ControllerProviderInterface``       | ``getControllerConfig()``         | ``controllers``           |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``FilterManager``            | ``FilterProviderInterface``           | ``getFilterConfig()``             | ``filters``               |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``FormElementManager``       | ``FormElementProviderInterface``      | ``getFormElementConfig()``        | ``form_elements``         |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``HydratorManager``          | ``HydratorProviderInterface``         | ``getHydratorConfig()``           | ``hydrators``             |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``InputFilterManager``       | ``InputFilterProviderInterface``      | ``getInputFilterConfig()``        | ``input_filters``         |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``RoutePluginManager``       | ``RouteProviderInterface``            | ``getRouteConfig()``              | ``route_manager``         |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``SerializerAdapterManager`` | ``SerializerProviderInterface``       | ``getSerializerConfig()``         | ``serializers``           |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``ServiceLocator``           | ``ServiceProviderInterface``          | ``getServiceConfig()``            | ``service_manager``       |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``ValidatorManager``         | ``ValidatorProviderInterface``        | ``getValidatorConfig()``          | ``validators``            |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``ViewHelperManager``        | ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``         | ``view_helpers``          |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``LogProcessorManager``      | ``log_processors``                    | ``LogProcessorProviderInterface`` | ``getLogProcessorConfig`` |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
-| ``LogWriterManager``         | ``log_writers``                       | ``LogWritersProviderInterface``   | ``getLogWriterConfig``    |
-+------------------------------+---------------------------------------+-----------------------------------+---------------------------+
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| Manager name                 | Interface name                        | Module Method name                | Config key nam       |
++==============================+=======================================+=================================+========================+
+| ``ControllerPluginManager``  | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ControllerManager``        | ``ControllerProviderInterface``       | ``getControllerConfig()``       | ``controllers``        |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``FilterManager``            | ``FilterProviderInterface``           | ``getFilterConfig()``           | ``filters``            |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``FormElementManager``       | ``FormElementProviderInterface``      | ``getFormElementConfig()``      | ``form_elements``      |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``HydratorManager``          | ``HydratorProviderInterface``         | ``getHydratorConfig()``         | ``hydrators``          |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``InputFilterManager``       | ``InputFilterProviderInterface``      | ``getInputFilterConfig()``      | ``input_filters``      |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``RoutePluginManager``       | ``RouteProviderInterface``            | ``getRouteConfig()``            | ``route_manager``      |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``SerializerAdapterManager`` | ``SerializerProviderInterface``       | ``getSerializerConfig()``       | ``serializers``        |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ServiceLocator``           | ``ServiceProviderInterface``          | ``getServiceConfig()``          | ``service_manager``    |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ValidatorManager``         | ``ValidatorProviderInterface``        | ``getValidatorConfig()``        | ``validators``         |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``ViewHelperManager``        | ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``       | ``view_helpers``       |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``LogProcessorManager``      | ``LogProcessorProviderInterface``     | ``getLogProcessorConfig``       | ``log_processors``     |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``LogWriterManager``         | ``LogWritersProviderInterface``       | ``getLogWriterConfig``          | ``log_writers``        |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
 
 Configuration Priority
 ----------------------
