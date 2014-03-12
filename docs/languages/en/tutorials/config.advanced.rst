@@ -314,7 +314,7 @@ Configuration mapping table
 ---------------------------
 
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
-| Manager name                 | Interface name                        | Module Method name                | Config key nam       |
+| Manager name                 | Interface name                        | Module Method name              | Config key nam         |
 +==============================+=======================================+=================================+========================+
 | ``ControllerPluginManager``  | ``ControllerPluginProviderInterface`` | ``getControllerPluginConfig()`` | ``controller_plugins`` |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
