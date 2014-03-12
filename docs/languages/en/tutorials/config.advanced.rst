@@ -338,6 +338,10 @@ Configuration mapping table
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
 | ``ViewHelperManager``        | ``ViewHelperProviderInterface``       | ``getViewHelperConfig()``       | ``view_helpers``       |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``LogProcessorManager``      | ``LogProcessorProviderInterface``     | ``getLogProcessorConfig``       | ``log_processors``     |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
+| ``LogWriterManager``         | ``LogWritersProviderInterface``       | ``getLogWriterConfig``          | ``log_writers``        |
++------------------------------+---------------------------------------+---------------------------------+------------------------+
 
 Configuration Priority
 ----------------------
