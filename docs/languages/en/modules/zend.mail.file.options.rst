@@ -65,7 +65,7 @@ getters are provided.
 
 .. _zend.mail.file-options.methods.set-path:
 
-**__construct**
+**setPath**
    ``setPath(string $path)``
 
    Set the path under which mail files will be written.
