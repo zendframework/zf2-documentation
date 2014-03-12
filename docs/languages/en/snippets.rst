@@ -11,6 +11,11 @@
    you various techniques and features of the framework in order to build an
    application.
 
+.. |GettingStartedWithZendStudio| replace:: Getting Started With Zend Studio 10 & Zend Server 6
+
+.. |GettingStartedWithZendStudioIntroduction| replace:: The user guide is provided to take you through
+   building a Zend Framework 2 application using Zend Studio and Zend Server.
+
 .. |LearningZendFramework| replace:: Learning Zend Framework 2
 
 .. |Migration| replace:: Migration

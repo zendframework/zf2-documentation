@@ -15,12 +15,18 @@
    ref/installation
    user-guide/overview
    user-guide/skeleton-application
-   user-guide/modules
+   user-guide/the-application
    user-guide/routing-and-controllers
    user-guide/database-and-models
    user-guide/styling-and-translations
    user-guide/forms-and-actions
    user-guide/conclusion
+   getting-started-with-zend-studio/overview
+   getting-started-with-zend-studio/skeleton-application
+   getting-started-with-zend-studio/the-application
+   getting-started-with-zend-studio/tasks
+   getting-started-with-zend-studio/diagnostics
+   getting-started-with-zend-studio/conclusion
    modules/zendtool.introduction
    tutorials/quickstart.di
    tutorials/unittesting
@@ -262,6 +268,7 @@
    modules/zend.view.helpers.cycle
    modules/zend.view.helpers.doctype
    modules/zend.view.helpers.flash-messenger
+   modules/zend.view.helpers.gravatar
    modules/zend.view.helpers.head-link
    modules/zend.view.helpers.head-meta
    modules/zend.view.helpers.head-script
@@ -333,6 +340,18 @@
     * :doc:`user-guide/styling-and-translations`
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
+
+|GettingStartedWithZendStudio|
+------------------------------
+
+|GettingStartedWithZendStudioIntroduction|
+
+    * :doc:`getting-started-with-zend-studio/overview`
+    * :doc:`getting-started-with-zend-studio/skeleton-application`
+    * :doc:`getting-started-with-zend-studio/the-application`
+    * :doc:`getting-started-with-zend-studio/tasks`
+    * :doc:`getting-started-with-zend-studio/diagnostics`
+    * :doc:`getting-started-with-zend-studio/conclusion`
 
 |ZFTool|
 --------
@@ -893,6 +912,7 @@ Zend\\View
         * :doc:`modules/zend.view.helpers.cycle`
         * :doc:`modules/zend.view.helpers.doctype`
         * :doc:`modules/zend.view.helpers.flash-messenger`
+        * :doc:`modules/zend.view.helpers.gravatar`
         * :doc:`modules/zend.view.helpers.head-link`
         * :doc:`modules/zend.view.helpers.head-meta`
         * :doc:`modules/zend.view.helpers.head-script`

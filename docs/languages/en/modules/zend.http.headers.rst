@@ -257,8 +257,8 @@ Available Methods
 
 .. _zend.http.headers.header-description:
 
-Zend\\Http\\Header\\* Base Methods
-----------------------------------
+Zend\\Http\\Header\\HeaderInterface Methods
+-------------------------------------------
 
 .. _zend.http.header.generic-header.methods.from-string:
 
@@ -298,134 +298,690 @@ Zend\\Http\\Header\\* Base Methods
 
    Returns string
 
+.. _zend.http.header.abstractaccept.methods:
+
+Zend\\Http\\Header\\AbstractAccept Methods
+------------------------------------------
+
+**parseHeaderLine**
+   ``parseHeaderLine(string $headerLine)``
+
+   Parse the given header line and add the values
+
+   Returns void
+
+**getFieldValuePartsFromHeaderLine**
+   ``getFieldValuePartsFromHeaderLine(string $headerLine)``
+
+   Parse the Field Value Parts represented by a header line
+
+   Throws ``Zend\Http\Header\Exception\InvalidArgumentException`` if the header is invalid
+
+   Returns array
+
+**getFieldValue**
+   ``getFieldValue(array|null $values = null)``
+
+   Get field value
+
+   Returns string
+
+**match**
+   ``match(array|string $matchAgainst)``
+
+   Match a media string against this header. Returns the matched value or false
+
+   Returns ``Accept\FieldValuePart\AcceptFieldValuePart`` or bool
+
+**getPrioritized**
+   ``getPrioritized()``
+
+   Returns all the keys, values and parameters this header represents
+
+   Returns array
+
+.. _zend.http.header.abstractdate.methods:
+
+Zend\\Http\\Header\\AbstractDate Methods
+----------------------------------------
+
+**setDateFormat**
+   static ``setDateFormat(int $format)``
+
+   Set date output format.
+
+   Returns void
+
+**getDateFormat**
+   static ``getDateFormat()``
+
+   Return current date output format
+
+   Returns string
+
+**setDate**
+   ``setDate(string|DateTime $date)``
+
+   Set the date for this header, this can be a string or an instance of \DateTime
+
+   Throws ``Zend\Http\Header\Exception\InvalidArgumentException`` if the date is neither a valid string
+   nor an instance of ``\DateTime``.
+
+   Returns self
+
+**getDate**
+   ``getDate()``
+
+   Return date for this header
+
+   Returns self
+
+**date**
+   ``date()``
+
+   Return date for this header as an instance of ``\DateTime``
+
+   Returns ``\DateTime``
+
+**compareTo**
+   ``compareTo(string|DateTime $date)``
+
+   Compare provided date to date for this header.
+   Returns < 0 if date in header is less than ``$date``; > 0 if it's greater, and 0 if they are equal.
+   See `strcmp <http://www.php.net/manual/en/function.strcmp.php>`_.
+
+   Returns int
+
+.. _zend.http.header.abstractlocation.methods:
+
+Zend\\Http\\Header\\AbstractLocation Methods
+--------------------------------------------
+
+**setUri**
+   ``setUri(string|Zend\Uri\UriInterface $uri)``
+
+   Set the URI/URL for this header, this can be a string or an instance of ``Zend\Uri\Http``
+
+   Throws ``Zend\Http\Header\Exception\InvalidArgumentException`` if ``$uri`` is neither a valid
+   URL nor an instance of ``Zend\Uri\UriInterface``.
+
+   Returns self
+
+**getUri**
+   ``getUri()``
+
+   Return the URI for this header
+
+   Returns string
+
+**uri**
+   ``uri()``
+
+   Return the URI for this header as an instance of ``Zend\Uri\Http``
+
+   Returns ``Zend\Uri\UriInterface``
+
 .. _zend.http.header-types.list:
 
 List of HTTP Header Types
 -------------------------
 
-.. table:: Zend\\Http\\Header\\* Classes
+Some header classes expose methods for manipulating their value. The following list contains all of the
+classes available in the ``Zend\Http\Header\*`` namespace, as well as any specific methods they contain. All
+these classes implement ``Zend\Http\Header\HeaderInterface`` and its :ref:`methods<zend.http.headers.header-description>`.
 
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Class Name        |Additional Methods                                                                             |
-   +==================+===============================================================================================+
-   |Accept            |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |AcceptCharset     |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |AcceptEncoding    |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |AcceptLanguage    |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |AcceptRanges      |getRangeUnit() / setRangeUnit() - The range unit of the accept ranges header                   |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Age               |getDeltaSeconds() / setDeltaSeconds() - The age in delta seconds                               |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Allow             |getAllowedMethods() / setAllowedMethods() - An array of allowed methods                        |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |AuthenticationInfo|N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Authorization     |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |CacheControl      |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Connection        |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentDisposition|N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentEncoding   |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentLanguage   |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentLength     |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentLocation   |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentMD5        |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentRange      |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ContentType       |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Cookie            |Extends \\ArrayObject                                                                          |
-   |                  |setEncodeValue() / getEncodeValue() - Whether or not to encode values                          |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Date              |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Etag              |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Expect            |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Expires           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |From              |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Host              |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |IfMatch           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |IfModifiedSince   |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |IfNoneMatch       |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |IfRange           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |IfUnmodifiedSince |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |KeepAlive         |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |LastModified      |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Location          |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |MaxForwards       |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Pragma            |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ProxyAuthenticate |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |ProxyAuthorization|N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Range             |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Referer           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Refresh           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |RetryAfter        |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Server            |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |SetCookie         |getName() / setName() - The cookie name                                                        |
-   |                  |getValue() / setValue() - The cookie value                                                     |
-   |                  |getExpires() / setExpires() - The time frame the cookie is valid for, null is a session cookie |
-   |                  |getPath() / setPath() - The uri path the cookie is bound to                                    |
-   |                  |getDomain() / setDomain() - The domain the cookie applies to                                   |
-   |                  |getMaxAge() / setMaxAge() - The maximum age of the cookie                                      |
-   |                  |getVersion() / setVersion() - The cookie version                                               |
-   |                  |isSecure() / setSecure() - Whether the cookies contains the Secure flag                        |
-   |                  |isHttponly() / setHttponly() - Whether the cookies can be accessed via HTTP only               |
-   |                  |isSessionCookie() - Whether the cookie is a session cookie                                     |
-   |                  |isExpired() - Whether the cookie is expired                                                    |
-   |                  |isValidForRequest() - Whether the cookie is valid for a given request domain, path and isSecure|
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |TE                |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Trailer           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |TransferEncoding  |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Upgrade           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |UserAgent         |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Vary              |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Via               |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |Warning           |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
-   |WWWAuthenticate   |N/A                                                                                            |
-   +------------------+-----------------------------------------------------------------------------------------------+
+.. _zend.http.header.accept.methods:
+
+**Accept**
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addMediaType(string $type, int|float $priority = 1)``
+      Add a media type, with the given priority
+
+      Returns self
+
+   ``hasMediaType(string $type)``
+      Does the header have the requested media type?
+
+      Returns bool
+
+.. _zend.http.header.acceptcharset.methods:
+
+**AcceptCharset**
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addCharset(string $type, int|float $priority = 1)``
+      Add a charset, with the given priority
+
+      Returns self
+
+   ``hasCharset(string $type)``
+      Does the header have the requested charset?
+
+      Returns bool
+
+.. _zend.http.header.acceptencoding.methods:
+
+**AcceptEncoding**
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addEncoding(string $type, int|float $priority = 1)``
+      Add an encoding, with the given priority
+
+      Returns self
+
+   ``hasEncoding(string $type)``
+      Does the header have the requested encoding?
+
+      Returns bool
+
+.. _zend.http.header.acceptlanguage.methods:
+
+**AcceptLanguage**
+   See ``Zend\Http\Header\AbstractAccept`` :ref:`methods<zend.http.header.abstractaccept.methods>`.
+
+   ``addLanguage(string $type, int|float $priority = 1)``
+      Add a language, with the given priority
+
+      Returns self
+
+   ``hasLanguage(string $type)``
+      Does the header have the requested language?
+
+      Returns bool
+
+.. _zend.http.header.acceptranges.methods:
+
+**AcceptRanges**
+   ``getRangeUnit()``
+
+   ``setRangeUnit($rangeUnit)``
+
+.. _zend.http.header.age.methods:
+
+**Age**
+   ``getDeltaSeconds()``
+      Get number of seconds
+
+      Returns int
+
+   ``setDeltaSeconds()``
+      Set number of seconds
+
+      Returns self
+
+.. _zend.http.header.allow.methods:
+
+**Allow**
+   ``getAllMethods()``
+      Get list of all defined methods
+
+      Returns array
+
+   ``getAllowedMethods()``
+      Get list of allowed methods
+
+      Returns array
+
+   ``allowMethods(array|string $allowedMethods)``
+      Allow methods or list of methods
+
+      Returns self
+
+   ``disallowMethods(array|string $allowedMethods)``
+      Disallow methods or list of methods
+
+      Returns self
+
+   ``denyMethods(array|string $allowedMethods)``
+      Convenience alias for ``disallowMethods()``
+
+      Returns self
+
+   ``isAllowedMethod(string $method)``
+      Check whether method is allowed
+
+      Returns bool
+
+.. _zend.http.header.authenticationinfo.methods:
+
+**AuthenticationInfo**
+   No additional methods
+
+.. _zend.http.header.authorization.methods:
+
+**Authorization**
+   No additional methods
+
+.. _zend.http.header.cachecontrol.methods:
+
+**CacheControl**
+   ``isEmpty()``
+      Checks if the internal directives array is empty
+
+      Returns bool
+
+   ``addDirective(string $key, string|bool $value)``
+      Add a directive
+
+      For directives like 'max-age=60', $value = '60'
+
+      For directives like 'private', use the default $value = true
+
+      Returns self
+
+   ``hasDirective(string $key)``
+      Check the internal directives array for a directive
+
+      Returns bool
+
+   ``getDirective(string $key)``
+      Fetch the value of a directive from the internal directive array
+
+      Returns string|null
+
+   ``removeDirective(string $key)``
+      Remove a directive
+
+      Returns self
+
+.. _zend.http.header.connection.methods:
+
+**Connection**
+   ``setValue($value)``
+      Set arbitrary header value
+
+      RFC allows any token as value, 'close' and 'keep-alive' are commonly used
+
+      Returns self
+
+   ``isPersistent()``
+      Whether the connection is persistent
+
+      Returns bool
+
+   ``setPersistent(bool $flag)``
+      Set Connection header to define persistent connection
+
+      Returns self
+
+.. _zend.http.header.contentdisposition.methods:
+
+**ContentDisposition**
+   No additional methods
+
+.. _zend.http.header.contentencoding.methods:
+
+**ContentEncoding**
+   No additional methods
+
+.. _zend.http.header.contentlanguage.methods:
+
+**ContentLanguage**
+   No additional methods
+
+.. _zend.http.header.contentlength.methods:
+
+**ContentLength**
+   No additional methods
+
+.. _zend.http.header.contentlocation.methods:
+
+**ContentLocation**
+   See ``Zend\Http\Header\AbstractLocation`` :ref:`methods<zend.http.header.abstractlocation.methods>`.
+
+.. _zend.http.header.contentmd5.methods:
+
+**ContentMD5**
+   No additional methods
+
+.. _zend.http.header.contentrange.methods:
+
+**ContentRange**
+   No additional methods
+
+.. _zend.http.header.contentsecuritypolicy.methods:
+
+**ContentSecurityPolicy**
+   ``getDirectives()``
+      Retrieve the defined directives for the policy
+
+      Returns an array
+
+   ``setDirective(string $name, array $sources)``
+      Set the directive with the given name to include the sources
+
+      As an example: an auction site wishes to load images from any URI, plugin content from
+      a list of trusted media providers (including a content distribution network), and scripts
+      only from a server under its control hosting sanitized ECMAScript:
+
+      .. code-block:: php
+
+         // http://www.w3.org/TR/2012/CR-CSP-20121115/#sample-policy-definitions
+         // Example #2
+         $csp = new ContentSecurityPolicy();
+         $csp->setDirective('default-src', array()) // No sources
+             ->setDirective('img-src', array('*'))
+             ->setDirective('object-src' array('media1.example.com', 'media2.example.com', '*.cdn.example.com'))
+             ->setDirective('script-src', array('trustedscripts.example.com'));
+
+      Returns self
+
+.. _zend.http.header.contenttransferencoding.methods:
+
+**ContentTransferEncoding**
+   No additional methods
+
+.. _zend.http.header.contenttype.methods:
+
+**ContentType**
+   ``match(array|string $matchAgainst)``
+      Determine if the mediatype value in this header matches the provided criteria
+
+      Returns bool|string
+
+   ``getMediaType()``
+      Get the media type
+
+      Returns string
+
+   ``setMediaType(string $mediaType)``
+      Set the media type
+
+      Returns self
+
+   ``getParameters()``
+      Get any additional content-type parameters currently set
+
+      Returns array
+
+   ``setParameters(array $parameters)``
+      Set additional content-type parameters
+
+      Returns self
+
+   ``getCharset()``
+      Get the content-type character set encoding, if any
+
+      Returns string|null
+
+   ``setCharset(string $charset)``
+      Set the content-type character set encoding
+
+      Returns self
+
+.. _zend.http.header.cookie.methods:
+
+**Cookie**
+   Extends ``ArrayObject``
+
+   static ``fromSetCookieArray(array $setCookies)``
+
+   ``setEncodeValue()``
+
+   ``getEncodeValue()``
+
+.. _zend.http.header.date.methods:
+
+**Date**
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+.. _zend.http.header.etag.methods:
+
+**Etag**
+   No additional methods
+
+.. _zend.http.header.expect.methods:
+
+**Expect**
+   No additional methods
+
+.. _zend.http.header.expires.methods:
+
+**Expires**
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+.. _zend.http.header.from.methods:
+
+**From**
+   No additional methods
+
+.. _zend.http.header.host.methods:
+
+**Host**
+   No additional methods
+
+.. _zend.http.header.ifmatch.methods:
+
+**IfMatch**
+   No additional methods
+
+.. _zend.http.header.ifmodifiedsince.methods:
+
+**IfModifiedSince**
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+.. _zend.http.header.ifnonematch.methods:
+
+**IfNoneMatch**
+   No additional methods
+
+.. _zend.http.header.ifrange.methods:
+
+**IfRange**
+   No additional methods
+
+.. _zend.http.header.ifunmodifiedsince.methods:
+
+**IfUnmodifiedSince**
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+.. _zend.http.header.keepalive.methods:
+
+**KeepAlive**
+   No additional methods
+
+.. _zend.http.header.lastmodified.methods:
+
+**LastModified**
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+.. _zend.http.header.location.methods:
+
+**Location**
+   See ``Zend\Http\Header\AbstractLocation`` :ref:`methods<zend.http.header.abstractlocation.methods>`.
+
+.. _zend.http.header.maxforwards.methods:
+
+**MaxForwards**
+   No additional methods
+
+.. _zend.http.header.origin.methods:
+
+**Origin**
+   No additional methods
+
+.. _zend.http.header.pragma.methods:
+
+**Pragma**
+   No additional methods
+
+.. _zend.http.header.proxyauthenticate.methods:
+
+**ProxyAuthenticate**
+   ``toStringMultipleHeaders(array $headers)``
+
+.. _zend.http.header.proxyauthorization.methods:
+
+**ProxyAuthorization**
+   No additional methods
+
+.. _zend.http.header.range.methods:
+
+**Range**
+   No additional methods
+
+.. _zend.http.header.referer.methods:
+
+**Referer**
+   See ``Zend\Http\Header\AbstractLocation`` :ref:`methods<zend.http.header.abstractlocation.methods>`.
+
+.. _zend.http.header.refresh.methods:
+
+**Refresh**
+   No additional methods
+
+.. _zend.http.header.retryafter.methods:
+
+**RetryAfter**
+   See ``Zend\Http\Header\AbstractDate`` :ref:`methods<zend.http.header.abstractdate.methods>`.
+
+   ``setDeltaSeconds(int $delta)``
+      Set number of seconds
+
+      Returns self
+
+   ``getDeltaSeconds()``
+      Get number of seconds
+
+      Returns int
+
+.. _zend.http.header.server.methods:
+
+**Server**
+   No additional methods
+
+.. _zend.http.header.setcookie.methods:
+
+**SetCookie**
+   ``getName()`` / ``setName(string $name)``
+      The cookie name
+
+   ``getValue()`` / ``setValue(string $value)``
+      The cookie value
+
+   ``getExpires()`` / ``setExpires(int|string $expires)``
+      The time frame the cookie is valid for, null is a session cookie
+
+   ``getPath()`` / ``setPath(string $path)``
+      The URI path the cookie is bound to
+
+   ``getDomain()`` / ``setDomain(string $domain)``
+      The domain the cookie applies to
+
+   ``getMaxAge()`` / ``setMaxAge(int $maxAge)``
+      The maximum age of the cookie
+
+   ``getVersion()`` / ``setVersion(int $version)``
+      The cookie version
+
+   ``isSecure()``
+      Whether the cookies contains the Secure flag
+
+      Returns bool
+
+   ``setSecure(bool $secure)``
+      Set whether the cookies contains the Secure flag
+
+      Returns self
+
+   ``isHttponly()``
+      Whether the cookies can be accessed via HTTP only
+
+      Returns bool
+
+   ``setHttponly(bool $httponly)``
+      Set whether the cookies can be accessed via HTTP only
+
+      Returns self
+
+   ``isExpired()``
+      Whether the cookie is expired
+
+      Returns bool
+
+   ``isSessionCookie()``
+      Whether the cookie is a session cookie
+
+      Returns bool
+
+   ``setQuoteFieldValue(bool $quotedValue)``
+      Set whether the value for this cookie should be quoted
+
+      Returns self
+
+   ``hasQuoteFieldValue()``
+      Check whether the value for this cookie should be quoted
+
+      Returns bool
+
+   ``isValidForRequest()``
+      Whether the cookie is valid for a given request domain, path and isSecure
+
+      Returns bool
+
+   ``match(string $uri, bool $matchSessionCookies, int $now)``
+      Checks whether the cookie should be sent or not in a specific scenario
+
+      Returns bool
+
+   static ``matchCookieDomain(string $cookieDomain, string $host)``
+      Check if a cookie's domain matches a host name.
+
+      Returns bool
+
+   static ``matchCookiePath(string $cookiePath, string $path)``
+      Check if a cookie's path matches a URL path
+
+      Returns bool
+
+   ``toStringMultipleHeaders(array $headers)``
+      Returns string
+
+.. _zend.http.header.te.methods:
+
+**TE**
+   No additional methods
+
+.. _zend.http.header.trailer.methods:
+
+**Trailer**
+   No additional methods
+
+.. _zend.http.header.transferencoding.methods:
+
+**TransferEncoding**
+   No additional methods
+
+.. _zend.http.header.upgrade.methods:
+
+**Upgrade**
+   No additional methods
+
+.. _zend.http.header.useragent.methods:
+
+**UserAgent**
+   No additional methods
+
+.. _zend.http.header.vary.methods:
+
+**Vary**
+   No additional methods
+
+.. _zend.http.header.via.methods:
+
+**Via**
+   No additional methods
+
+.. _zend.http.header.warning.methods:
+
+**Warning**
+   No additional methods
+
+.. _zend.http.header.wwwauthenticate.methods:
+
+**WWWAuthenticate**
+   ``toStringMultipleHeaders(array $headers)``
 
 .. _zend.http.headers.examples:
 

@@ -67,7 +67,7 @@ file:
    :linenos:
 
    "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.23",
         "zendframework/zendframework1": "1.12",
         ...
     }
