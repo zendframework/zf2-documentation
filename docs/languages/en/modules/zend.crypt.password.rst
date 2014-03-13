@@ -29,11 +29,14 @@ due to the amount of time that its need.
 Bcrypt uses a *cost* parameter that specify the number of cycles to use in the algorithm. Increasing
 this number the algorithm will spend more time to generate the hash output. The *cost* parameter is
 represented by an integer value between 4 to 31. The default *cost* value of the ``Zend\Crypt\Password\Bcrypt``
-component is 14, that means almost a second using a CPU Intel i5 at 3.3Ghz (the *cost* parameter is a
+component is 10, that means about 0.07 second using a CPU Intel i5 at 3.3Ghz (the *cost* parameter is a
 relative value according to the speed of the CPU used).
 
 If you want to change the *cost* parameter of the bcrypt algorithm you can use the ``setCost()`` method.
-Please note that if you change the cost parameter, the resulting hash will be different.
+Before change the *cost* parameter, we suggest to read this article about `Aggressive password stretching`_
+to better understand the implication of potential denial-of-service attacks.
+
+Please note, if you change the cost parameter, the resulting hash will be different.
 This will not affect the verification process of the algorithm, therefore not breaking the password hashes
 you already have stored. Bcrypt reads the *cost* parameter from the hash value, during the password
 authentication. All of the parts needed to verify the hash are all together, separated with $'s, first the
@@ -85,7 +88,7 @@ reported an example:
 
    $bcrypt = new Bcrypt(array(
        'salt' => 'random value',
-       'cost' => 13
+       'cost' => 11
    ));
 
 
@@ -155,6 +158,7 @@ for the digest format.
 
 .. _`bcrypt`: http://en.wikipedia.org/wiki/Bcrypt
 .. _`read this post to know why`: http://codahale.com/how-to-safely-store-a-password/
+.. _`Aggressive password stretching`: http://timoh6.github.io/2013/11/26/Aggressive-password-stretching.html
 .. _`here's the security report`: http://php.net/security/crypt_blowfish.php
 .. _`Apache`: http://httpd.apache.org/docs/2.2/misc/password_encryptions.html
 
