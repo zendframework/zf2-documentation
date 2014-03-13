@@ -47,7 +47,7 @@ Basic Usage
          'fragment' => 'promo',
       ),
    );
-<a href="<?= $url ?>">Logout</a>
+   <a href="<?= $url ?>">Logout</a>
 
 Output:
 
