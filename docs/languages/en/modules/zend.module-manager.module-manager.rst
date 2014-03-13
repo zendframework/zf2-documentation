@@ -161,7 +161,7 @@ By default, Zend Framework provides several useful module manager listeners.
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
    | ``Zend\View\LogProcessorManager``              | ``log_processors``     | ``LogProcessorProviderInterface``     | ``getLogProcessorConfig``     |
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-   | ``Zend\View\LogWriterManager``                 | ``log_writers``        | ``LogWritersProviderInterface``       | ``getLogWriterConfig``        |
+   | ``Zend\View\LogWriterManager``                 | ``log_writers``        | ``LogWriterProviderInterface``        | ``getLogWriterConfig``        |
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
    
    Configuration follows the examples in the :ref:`ServiceManager configuration

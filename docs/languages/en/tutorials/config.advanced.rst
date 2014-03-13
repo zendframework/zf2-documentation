@@ -340,7 +340,7 @@ Configuration mapping table
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
 | ``LogProcessorManager``      | ``LogProcessorProviderInterface``     | ``getLogProcessorConfig``       | ``log_processors``     |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
-| ``LogWriterManager``         | ``LogWritersProviderInterface``       | ``getLogWriterConfig``          | ``log_writers``        |
+| ``LogWriterManager``         | ``LogWriterProviderInterface``        | ``getLogWriterConfig``          | ``log_writers``        |
 +------------------------------+---------------------------------------+---------------------------------+------------------------+
 
 Configuration Priority
