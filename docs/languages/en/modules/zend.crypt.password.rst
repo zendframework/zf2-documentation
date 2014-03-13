@@ -30,12 +30,9 @@ Bcrypt uses a *cost* parameter that specify the number of cycles to use in the a
 this number the algorithm will spend more time to generate the hash output. The *cost* parameter is
 represented by an integer value between 4 to 31. The default *cost* value of the ``Zend\Crypt\Password\Bcrypt``
 component is 10, that means about 0.07 second using a CPU Intel i5 at 3.3Ghz (the *cost* parameter is a
-relative value according to the speed of the CPU used).
+relative value according to the speed of the CPU used). We changed the default value of the cost parameter from 14 to 10, starting from Zend Framework 2.3.0, due to high computational time to prevent potential denial-of-service attacks (you can read this article `Aggressive password stretching`_ for more information). 
 
 If you want to change the *cost* parameter of the bcrypt algorithm you can use the ``setCost()`` method.
-Before change the *cost* parameter, we suggest to read this article about `Aggressive password stretching`_
-to better understand the implication of potential denial-of-service attacks.
-
 Please note, if you change the cost parameter, the resulting hash will be different.
 This will not affect the verification process of the algorithm, therefore not breaking the password hashes
 you already have stored. Bcrypt reads the *cost* parameter from the hash value, during the password
