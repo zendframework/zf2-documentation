@@ -135,6 +135,60 @@ The above code-sample would output:
    
 .. _zend.view.helpers.initial.url.reusingmatchedparameters:
 
+Hash-Tags
+---------
+
+Another entry within the ``$options`` is the assignment of hashtags using the ``fragment`` key. Let's assume we want
+to enter a link for users to directly jump to the comment section of a details page:
+
+.. code-block:: html
+   :lineos:
+   <?php
+   $url = $this->url(
+       'news',
+       array('action' => 'details', 'id' => 42),
+       array(
+           'fragment' => 'comments'
+       )
+   );
+   ?>
+   <a href="<?php echo $url;?>">CommentSection of News #42</a>
+   
+The above code-sample would output:
+
+.. code-block:: html
+   :lineos:
+   
+   <a href="/news/details/42#comments">CommentSection of News #42</a>
+   
+Of course ``fragment`` and ``query`` options can be used at the same time, too!
+
+.. code-block:: html
+   :lineos:
+   <?php
+   $url = $this->url(
+       'news',
+       array('action' => 'details', 'id' => 42),
+       array(
+           'query' => array(
+               'commentPage' => 3
+           ),
+           'fragment' => 'comments'
+       )
+   );
+   ?>
+   <a href="<?php echo $url;?>">CommentSection of News #42</a>
+   
+The above code-sample would output:
+
+.. code-block:: html
+   :lineos:
+   
+   <a href="/news/details/42?commentPage=3#comments">CommentSection of News #42</a>
+
+   
+.. _zend.view.helpers.initial.url.reusingmatchedparameters:
+
 Reusing Matched Parameters
 --------------------------
 
