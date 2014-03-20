@@ -12,7 +12,6 @@ to create a new project from scratch with Zend Framework:
    :linenos:
 
     php composer.phar create-project -s dev zendframework/skeleton-application path/to/install
-    php composer.phar update
 
 .. note::
 
@@ -36,7 +35,6 @@ to create a new project from scratch with Zend Framework:
 
         php composer.phar self-update
         php composer.phar install
-        php composer.phar update
 
     from the ``zf2-tutorial`` folder. This takes a while. You should see an output like:
 
@@ -66,7 +64,6 @@ to create a new project from scratch with Zend Framework:
        :linenos:
 
         php composer.phar install
-        php composer.phar update
 
     run instead:
 
@@ -74,7 +71,6 @@ to create a new project from scratch with Zend Framework:
        :linenos:
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
-        COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar update
         
 .. note::
 
