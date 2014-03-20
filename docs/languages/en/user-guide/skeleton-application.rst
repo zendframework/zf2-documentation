@@ -203,7 +203,7 @@ Error reporting
 
 Optionally, *when using Apache*, you can use the ``APPLICATION_ENV`` setting in 
 your ``VirtualHost`` to let PHP output all its errors to the browser. This can be 
-useful when during development of your application.
+useful during the development of your application.
 
 Edit ``index.php`` from the ``zf2-tutorial/public/`` directory and change it to
 the following:
