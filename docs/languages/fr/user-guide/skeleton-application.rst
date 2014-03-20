@@ -12,7 +12,7 @@ Zend Framework:
 
 .. code-block:: bash
 
-    php composer.phar create-project --repository-url="http://packages.zendframework.com" zendframework/skeleton-application path/to/install
+    php composer.phar create-project -s dev zendframework/skeleton-application path/to/install
 
 .. note::
 
