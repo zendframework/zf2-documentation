@@ -213,7 +213,7 @@ this method to the bottom of the ``Module.php`` file in ``module/Album``.
     }
 
 This method returns an array of ``factories`` that are all merged together by
-the ``ModuleManager`` before passing to the ``ServiceManager``. The factory
+the ``ModuleManager`` before passing them to the ``ServiceManager``. The factory
 for ``Album\Model\AlbumTable`` uses the ``ServiceManager`` to create an
 ``AlbumTableGateway`` to pass to the ``AlbumTable``. We also tell the
 ``ServiceManager`` that an ``AlbumTableGateway`` is created by getting a
