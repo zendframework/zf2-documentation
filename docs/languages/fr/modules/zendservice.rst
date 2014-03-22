@@ -26,8 +26,6 @@ des informations spécifiques à chaque service Web supporté.
 
 - :ref:`LiveDocx <zendservice.livedocx>`
 
-- :ref:`Nirvanix <zendservice.nirvanix>`
-
 - :ref:`ReCaptcha <zendservice.recaptcha>`
 
 - :ref:`Simpy <zendservice.simpy>`
@@ -45,5 +43,3 @@ des informations spécifiques à chaque service Web supporté.
 - :ref:`Yahoo! <zendservice.yahoo>`
 
 D'autres services devraient être ajoutés prochainement.
-
-
