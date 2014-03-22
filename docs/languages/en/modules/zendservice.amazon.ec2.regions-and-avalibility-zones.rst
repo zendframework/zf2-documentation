@@ -1,4 +1,4 @@
-.. _zendservice.amazon.ec2.zones:
+.. _zendservice.amazon.ec2.regions-and-avalibility-zones:
 
 ZendService\\Amazon\\Ec2: Regions and Availability Zones
 ========================================================

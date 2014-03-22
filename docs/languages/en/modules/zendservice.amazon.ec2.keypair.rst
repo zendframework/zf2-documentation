@@ -1,4 +1,4 @@
-.. _zendservice.amazon.ec2.keypairs:
+.. _zendservice.amazon.ec2.keypair:
 
 ZendService\\Amazon\\Ec2: Keypairs
 ==================================
