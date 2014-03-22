@@ -100,7 +100,7 @@ Basic Configuration Options
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |namespace     |``string``               |"zfcache"       |The "namespace" in which cache items will live   |
    +--------------+-------------------------+----------------+-------------------------------------------------+
-   |key_pattern   |``null``|``string``      |``null``        |Pattern against which to validate cache keys     |
+   |key_pattern   |``null|string``          |``null``        |Pattern against which to validate cache keys     |
    +--------------+-------------------------+----------------+-------------------------------------------------+
    |readable      |``boolean``              |``true``        |Enable/Disable reading data from cache           |
    +--------------+-------------------------+----------------+-------------------------------------------------+
