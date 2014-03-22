@@ -1,4 +1,4 @@
-.. _zendservice.amazon.ec2.windows.instance:
+.. _zendservice.amazon.ec2.windows-instance:
 
 ZendService\\Amazon\\Ec2: Windows Instances
 ===========================================
