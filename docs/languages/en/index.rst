@@ -307,7 +307,6 @@
    modules/zendservice.flickr
    modules/zendservice.google.gcm
    modules/zendservice.livedocx
-   modules/zendservice.nirvanix
    modules/zendservice.rackspace
    modules/zendservice.rackspace.servers
    modules/zendservice.rackspace.files
@@ -999,11 +998,6 @@ ZendService\\LiveDocx
 
         * :doc:`modules/zendservice.livedocx`
 
-ZendService\\Nirvanix
-^^^^^^^^^^^^^^^^^^^^^
-
-        * :doc:`modules/zendservice.nirvanix`
-
 ZendService\\Rackspace
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1055,4 +1049,3 @@ Copyright
 
 * :doc:`index`
 * :ref:`search`
-
