@@ -1,6 +1,6 @@
 :orphan:
 
-.. _zendservice.amazon.ec2.cloudwatch:
+.. _zendservice.amazon.ec2.cloud-watch:
 
 ZendService\\Amazon\\Ec2: CloudWatch Monitoring
 ===============================================

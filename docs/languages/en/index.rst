@@ -954,15 +954,15 @@ ZendService\\Amazon
         * :doc:`modules/zendservice.amazon.s3`
         * :doc:`modules/zendservice.amazon.sqs`
         * :doc:`modules/zendservice.amazon.ec2`
-        * :doc:`modules/zendservice.amazon.ec2.cloudwatch`
+        * :doc:`modules/zendservice.amazon.ec2.cloud-watch`
         * :doc:`modules/zendservice.amazon.ec2.ebs`
         * :doc:`modules/zendservice.amazon.ec2.elasticip`
         * :doc:`modules/zendservice.amazon.ec2.instance`
-        * :doc:`modules/zendservice.amazon.ec2.keypairs`
-        * :doc:`modules/zendservice.amazon.ec2.zones`
-        * :doc:`modules/zendservice.amazon.ec2.reserved.instance`
+        * :doc:`modules/zendservice.amazon.ec2.keypair`
+        * :doc:`modules/zendservice.amazon.ec2.regions-and-avalibility-zones`
+        * :doc:`modules/zendservice.amazon.ec2.reserved-instance`
         * :doc:`modules/zendservice.amazon.ec2.securitygroups`
-        * :doc:`modules/zendservice.amazon.ec2.windows.instance`
+        * :doc:`modules/zendservice.amazon.ec2.windows-instance`
 
 ZendService\\Apple\Apns
 ^^^^^^^^^^^^^^^^^^^^^^^
