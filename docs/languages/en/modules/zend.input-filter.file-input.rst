@@ -53,7 +53,7 @@ Usage of ``FileInput`` is essentially the same as ``Input``:
 
    // Merge $_POST and $_FILES data together
    $request  = new Request();
-   $postData = array_merge_recursive($request->getPost(), $request->getFiles());
+   $postData = array_merge_recursive($request->getPost()->toArray(), $request->getFiles()->toArray());
 
    $inputFilter = new InputFilter();
    $inputFilter->add($description)
