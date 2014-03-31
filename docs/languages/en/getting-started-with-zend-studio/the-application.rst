@@ -363,7 +363,7 @@ press Finish.
 
 This will create a blank PHP file. Update it so that it looks like this:
 
-**module/Checklist/src/Checklist/TaskEntity.php:**
+**module/Checklist/src/Checklist/Model/TaskEntity.php:**
 
 .. code-block:: php
     
