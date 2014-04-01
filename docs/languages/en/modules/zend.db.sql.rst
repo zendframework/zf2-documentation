@@ -15,8 +15,8 @@ Zend\\Db\\Sql\\Sql (Quickstart)
 -------------------------------
 
 As there are four primary tasks associated with interacting with a database (from the DML, or Data Manipulation
-Language): selecting, inserting, updating and deleting. As such, there are four primary objects that developers can
-interact or building queries, ``Zend\Db\Sql\Select``, ``Insert``, ``Update`` and ``Delete``.
+Language): selecting, inserting, updating and deleting; there are four primary objects that developers can
+interact or building queries: ``Zend\Db\Sql\Select``, ``Insert``, ``Update`` and ``Delete``.
 
 Since these four tasks are so closely related, and generally used together within the same application,
 ``Zend\Db\Sql\Sql`` objects help you create them and produce the result you are attempting to achieve.
