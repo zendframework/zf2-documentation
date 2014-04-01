@@ -646,7 +646,7 @@ add a method to the controller to retrieve it. Add ``getTaskMapper()`` to the
     public function getTaskMapper()
     {
         $sm = $this->getServiceLocator();
-        return $sm->get('Checklist\Model\TaskMapper');
+        return $sm->get('TaskMapper');
     }
 
 We can now call ``getTaskMapper()`` from within our controller whenever we need
