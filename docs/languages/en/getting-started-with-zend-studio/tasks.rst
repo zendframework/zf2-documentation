@@ -728,7 +728,7 @@ in the ``module/Checklist/view/checklist/task`` folder with this content:
     <h1><?php echo $this->escapeHtml($title); ?></h1>
 
     <p>Are you sure that you want to delete the
-      '<?php echo $this->escapeHtml($task->title); ?>' task?
+      '<?php echo $this->escapeHtml($task->getTitle()); ?>' task?
     </p>
     <?php
     $url = $this->url('task', array('action' => 'delete', 'id'=>$id)); ?>
