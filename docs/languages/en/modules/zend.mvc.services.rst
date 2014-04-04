@@ -524,7 +524,7 @@ ViewManager
 -----------
 
 The View layer within ``Zend\Mvc`` consists of a large number of collaborators and event listeners. As such,
-``Zend\Mvc\View\ViewManager`` was created to handle creation of the various objects, as well as wiring them
+``Zend\Mvc\View\Http\ViewManager`` was created to handle creation of the various objects, as well as wiring them
 together and establishing event listeners.
 
 The ``ViewManager`` itself is an event listener on the ``bootstrap`` event. It retrieves the ``ServiceManager``
