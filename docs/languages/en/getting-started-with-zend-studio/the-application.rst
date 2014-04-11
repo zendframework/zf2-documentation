@@ -530,6 +530,7 @@ implementing getServiceConfig() and write a closure that creates a
 ** module/Checklist/Module.php:**
 
 .. code-block:: php
+   :linenos:
 
     class Module
     {
@@ -583,6 +584,7 @@ Open ``config/autoload/global.php`` and replace the empty array with:
 **config/autoload/global.php:**
 
 .. code-block:: php
+   :linenos:
 
     return array(
         'service_manager' => array(
@@ -624,6 +626,7 @@ Open ``config/autoload/local.php`` and replace the empty array with:
 **config/autoload/global.php:**
 
 .. code-block:: php
+   :linenos:
 
     return array(
         'db' => array(
@@ -642,6 +645,7 @@ add a method to the controller to retrieve it. Add ``getTaskMapper()`` to the
 **module/Checklist/src/Checklist/Controller/TaskController.php:**
 
 .. code-block:: php
+   :linenos:
 
     public function getTaskMapper()
     {
