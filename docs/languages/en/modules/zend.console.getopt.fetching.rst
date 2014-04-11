@@ -26,7 +26,8 @@ all declared options.
 
 .. _zend.console.getopt.fetching.exceptions.example:
 
-.. rubric:: Catching Getopt Exceptions
+Catching Getopt Exceptions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -58,7 +59,8 @@ the method returns ``TRUE``. Otherwise the method returns ``NULL``.
 
 .. _zend.console.getopt.fetching.byname.example.setoption:
 
-.. rubric:: Using getOption()
+Using getOption()
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -72,7 +74,8 @@ member variable. The ``__isset()`` magic method is also implemented.
 
 .. _zend.console.getopt.fetching.byname.example.magic:
 
-.. rubric:: Using \__get() and \__isset() Magic Methods
+Using \__get() and \__isset() Magic Methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -117,7 +120,8 @@ array of the strings that were not part of any options.
 
 .. _zend.console.getopt.fetching.remainingargs.example:
 
-.. rubric:: Using getRemainingArgs()
+Using getRemainingArgs()
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
