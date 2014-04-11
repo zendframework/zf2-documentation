@@ -957,7 +957,7 @@ ZendService\\Amazon
         * :doc:`modules/zendservice.amazon.ec2.ebs`
         * :doc:`modules/zendservice.amazon.ec2.elasticip`
         * :doc:`modules/zendservice.amazon.ec2.instance`
-        * :doc:`modules/zendservice.amazon.ec2.keypair`
+        * :doc:`modules/zendservice.amazon.ec2.keypairs`
         * :doc:`modules/zendservice.amazon.ec2.regions-and-avalibility-zones`
         * :doc:`modules/zendservice.amazon.ec2.reserved-instance`
         * :doc:`modules/zendservice.amazon.ec2.securitygroups`

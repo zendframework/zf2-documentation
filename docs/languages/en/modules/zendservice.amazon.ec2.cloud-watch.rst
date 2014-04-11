@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zendservice.amazon.ec2.cloud-watch:
 
 ZendService\\Amazon\\Ec2: CloudWatch Monitoring
@@ -9,12 +7,12 @@ Amazon CloudWatch is an easy-to-use web service that provides comprehensive moni
 Cloud (Amazon *EC2*) and Elastic Load Balancing. For more details information check out the `Amazon CloudWatch
 Developers Guide`_
 
-.. _zendservice.amazon.ec2.cloudwatch.usage:
+.. _zendservice.amazon.ec2.cloud-watch.usage:
 
 CloudWatch Usage
 ----------------
 
-.. _zendservice.amazon.ec2.cloudwatch.usage.list:
+.. _zendservice.amazon.ec2.cloud-watch.usage.list:
 
 Listing Available Metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +26,7 @@ a NextToken string that can be used to query for the next set of results.
    $ec2_ebs = new ZendService\Amazon\Ec2\CloudWatch('aws_key','aws_secret_key');
    $return = $ec2_ebs->listMetrics();
 
-.. _zendservice.amazon.ec2.cloudwatch.usage.getmetricstatistics:
+.. _zendservice.amazon.ec2.cloud-watch.usage.getmetricstatistics:
 
 Return Statistics for a given metric
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
