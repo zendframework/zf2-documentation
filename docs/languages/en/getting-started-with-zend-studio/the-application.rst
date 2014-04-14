@@ -537,7 +537,7 @@ implementing getServiceConfig() and write a closure that creates a
         {
             return array(
                 'factories' => array(
-                    'Checklist\Model\TaskMapper' => function ($sm) {
+                    'TaskMapper' => function ($sm) {
                         $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                         $mapper = new TaskMapper($dbAdapter);
                         return $mapper;
@@ -646,7 +646,7 @@ add a method to the controller to retrieve it. Add ``getTaskMapper()`` to the
     public function getTaskMapper()
     {
         $sm = $this->getServiceLocator();
-        return $sm->get('Checklist\Model\TaskMapper');
+        return $sm->get('TaskMapper');
     }
 
 We can now call ``getTaskMapper()`` from within our controller whenever we need
