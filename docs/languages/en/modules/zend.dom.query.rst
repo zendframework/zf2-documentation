@@ -18,7 +18,7 @@ Theory of Operation
 -------------------
 
 To use ``Zend\Dom\Query``, you instantiate a ``Zend\Dom\Query`` object, optionally passing a document to query (a
-string). Once you have a document, you can use either the ``query()`` or ``queryXpath()`` methods; each method will
+string). Once you have a document, you can use either the ``execute()`` or ``queryXpath()`` methods; each method will
 return a ``Zend\Dom\NodeList`` object with any matching nodes.
 
 The primary difference between ``Zend\Dom\Query`` and using `DOMDocument`_ + `DOMXPath`_ is the ability to select
