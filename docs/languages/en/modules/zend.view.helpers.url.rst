@@ -34,11 +34,24 @@ Basic Usage
    ),
 
    // In a view script:
-   <a href="<?php echo $this->url('auth', array('action' => 'logout', 'id' => 100)); ?>">Logout</a>
+   $url = $this->url(
+      'auth', 
+      array(
+         'action' => 'logout',
+         'id' => 100
+      ), 
+      array(
+         'query' => array(
+            'redirect' => '/goodbye',
+         ),
+         'fragment' => 'promo',
+      ),
+   );
+   <a href="<?= $url ?>">Logout</a>
 
 Output:
 
 .. code-block:: html
    :linenos:
 
-   <a href="/auth/logout/100">Logout</a>
+   <a href="/auth/logout/100?redirect=/goodbye#promo">Logout</a>
