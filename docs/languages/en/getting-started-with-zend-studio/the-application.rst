@@ -435,7 +435,7 @@ the database and populating them with new data. Again, right click on the Model
 folder and choose New -> PHP File and create a PHP file called
 ``TaskMapper.php``. Update it so that it looks like this:
 
-**module/Checklist/src/Checklist/TaskMapper.php:**
+**module/Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
     
@@ -646,7 +646,7 @@ add a method to the controller to retrieve it. Add ``getTaskMapper()`` to the
     public function getTaskMapper()
     {
         $sm = $this->getServiceLocator();
-        return $sm->get('Checklist\Model\TaskMapper');
+        return $sm->get('TaskMapper');
     }
 
 We can now call ``getTaskMapper()`` from within our controller whenever we need
