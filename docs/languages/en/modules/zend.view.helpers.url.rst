@@ -3,24 +3,25 @@
 View Helper - URL
 =================
 
-The URL-ViewHelper is used to create a string representation of the routes that you define within your application. The
-syntax for the ViewHelper is ``$this->url($name, $params, $options, $reuseMatchedParameters)`` and is
-to be understood in the following manner:
+The URL view helper is used to create a string representation of the routes that you define within
+your application. The syntax for the view helper is ``$this->url($name, $params, $options,
+$reuseMatchedParameters)``, using the following definitions for the helper arguments:
 
-- ``$name``: The name of the route you want to output
-- ``$params``: An array of parameters that is defined within the respective route configuration
-- ``$options``: An array of options that will be used to create the url
-- ``$reuseMatchedParams``: defines if current matched parameters of the route should be used to create the new url
+- ``$name``: The name of the route you want to output.
+- ``$params``: An array of parameters that is defined within the respective route configuration.
+- ``$options``: An array of options that will be used to create the URL.
+- ``$reuseMatchedParams``: A flag indicating if the currently matched route parameters should be
+  used when generating the new URL.
 
-Let's take a look at how this ViewHelper is used in real world applications:
+Let's take a look at how this view helper is used in real-world applications.
 
 .. _zend.view.helpers.initial.url.basicusage:
 
 Basic Usage
 -----------
 
-The following example shows a simple configuration for a news module. The route is called ``news`` and it has two 
-**optional** parameters called ``action`` and ``id``.
+The following example shows a simple configuration for a news module. The route is called ``news``
+and it has two **optional** parameters called ``action`` and ``id``.
 
 .. code-block:: php
    :linenos:
@@ -44,13 +45,13 @@ The following example shows a simple configuration for a news module. The route 
        )
    ),
 
-First, let's use the ViewHelper to create the output for the url ``/news`` without any of the optional parameters 
-being used
+First, let's use the view helper to create the output for the URL ``/news`` without any of the
+optional parameters being used:
 
 .. code-block:: html
    :linenos:
 
-   <a href="<?php echo $this->url('news');?>">News Index</a>
+   <a href="<?php echo $this->url('news'); ?>">News Index</a>
 
 This will render the output:
 
@@ -59,13 +60,16 @@ This will render the output:
    
    <a href="/news">News Index</a>
    
-Now let's assume we want to get a link to display the detail page of a single news entry. For this task the optional 
-parameters ``action`` and ``id`` need to have values assigned. This is how you do it:
+Now let's assume we want to get a link to display the detail page of a single news entry. For this
+task, the optional parameters ``action`` and ``id`` need to have values assigned. This is how you do
+it:
 
 .. code-block:: html
    :lineos:
    
-   <a href="<?php echo $this->url('news', array('action' => 'details', 'id' =>42));?>">Details of News #42</a>
+   <a href="<?php echo $this->url('news', array('action' => 'details', 'id' =>42)); ?>">
+       Details of News #42
+   </a>
    
 This will render the output:
 
@@ -74,18 +78,17 @@ This will render the output:
    
    <a href="/news/details/42">News Index</a>
    
-.. _zend.view.helpers.initial.url.queryparams:
+.. _zend.view.helpers.initial.url.querystringarguments:
 
-Query Parameters
-----------------
+Query String Arguments
+----------------------
 
-Following SEO rules it is not a good trait to put pagination parameters into the route, for example the following
-URL would be considered a bad practise ``/news/archive/page/13``, instead of putting the pagination parameter into the
-route it'd be better to have it set as a query parameter like this ``/news/archive?page=13``. To achieve this you'll 
-need to make use of the ``$options`` parameter from the ViewHelper.
+Most SEO experts agree that pagination parameters should not be part of the URL path; for example,
+the following URL would be considered a bad practice: ``/news/archive/page/13``. Pagination is more
+correctly accomplished using a query string arguments, such as ``/news/archive?page=13``. To achieve
+this, you'll need to make use of the ``$options`` argument from the view helper.
 
-We will use the same route configuration as showcased above:
-
+We will use the same route configuration as defined above:
 
 .. code-block:: php
    :linenos:
@@ -109,7 +112,8 @@ We will use the same route configuration as showcased above:
        )
    ),
    
-To create query parameters you need to assign them as the third parameter using the ``query`` key like this:
+To generate query string arguments from the view helper, you need to assign them as the third
+argument using the ``query`` key like this:
 
 .. code-block:: html
    :lineos:
@@ -119,27 +123,28 @@ To create query parameters you need to assign them as the third parameter using 
        array('action' => 'archive'),
        array(
            'query' => array(
-               'page' => 13
-           )
+               'page' => 13,
+           ).
        )
    );
    ?>
-   <a href="<?php echo $url;?>">News Archive Page #13</a>
+   <a href="<?php echo $url; ?>">News Archive Page #13</a>
    
-The above code-sample would output:
+The above code sample would output:
 
 .. code-block:: html
    :lineos:
    
    <a href="/news/archive?page=13">News Archive Page #13</a>
    
-.. _zend.view.helpers.initial.url.reusingmatchedparameters:
+.. _zend.view.helpers.initial.url.fragments:
 
-Hash-Tags
+Fragments
 ---------
 
-Another entry within the ``$options`` is the assignment of hashtags using the ``fragment`` key. Let's assume we want
-to enter a link for users to directly jump to the comment section of a details page:
+Another possible entry within the ``$options`` array is the assignment of URL fragments (typically
+used to link to in-page anchors), denoted with  using the ``fragment`` key. Let's assume we want to
+enter a link for users to directly jump to the comment section of a details page:
 
 .. code-block:: html
    :lineos:
@@ -148,20 +153,20 @@ to enter a link for users to directly jump to the comment section of a details p
        'news',
        array('action' => 'details', 'id' => 42),
        array(
-           'fragment' => 'comments'
+           'fragment' => 'comments',
        )
    );
    ?>
-   <a href="<?php echo $url;?>">CommentSection of News #42</a>
+   <a href="<?php echo $url; ?>">Comment Section of News #42</a>
    
-The above code-sample would output:
+The above code sample would output:
 
 .. code-block:: html
    :lineos:
    
-   <a href="/news/details/42#comments">CommentSection of News #42</a>
+   <a href="/news/details/42#comments">Comment Section of News #42</a>
    
-Of course ``fragment`` and ``query`` options can be used at the same time, too!
+You can use ``fragment`` and ``query`` options at the same time!
 
 .. code-block:: html
    :lineos:
@@ -171,20 +176,20 @@ Of course ``fragment`` and ``query`` options can be used at the same time, too!
        array('action' => 'details', 'id' => 42),
        array(
            'query' => array(
-               'commentPage' => 3
+               'commentPage' => 3,
            ),
-           'fragment' => 'comments'
+           'fragment' => 'comments',
        )
    );
    ?>
-   <a href="<?php echo $url;?>">CommentSection of News #42</a>
+   <a href="<?php echo $url; ?>">Comment Section of News #42</a>
    
-The above code-sample would output:
+The above code sample would output:
 
 .. code-block:: html
    :lineos:
    
-   <a href="/news/details/42?commentPage=3#comments">CommentSection of News #42</a>
+   <a href="/news/details/42?commentPage=3#comments">Comment Section of News #42</a>
 
    
 .. _zend.view.helpers.initial.url.reusingmatchedparameters:
@@ -192,23 +197,24 @@ The above code-sample would output:
 Reusing Matched Parameters
 --------------------------
 
-When you're on a route that has many parameters, often times it makes sense to simply reuse currently matched 
-parameters instead of assigning them new all over. In this case the parameter ``$reuseMatchedParams`` will come in 
-handy.
+When you're on a route that has many parameters, often times it makes sense to reuse currently
+matched parameters instead of assigning them new explicitly. In this case, the argument
+``$reuseMatchedParams`` will come in handy.
 
-For a simply example we will imagine us being on a detail page for our news-route. And now we want to display links to
-the ``èdit`` and ``delete`` actions without having to assign the ID again. This is how you would do it:
+As an example, we will imagine being on a detail page for our "news" route. We want to display links
+to the ``èdit`` and ``delete`` actions without having to assign the ID again. This is how you would
+do it:
 
 .. code-block:: html
    :lineos:
    
    // Currently url /news/details/777
    
-   <a href="<?php echo $this->url('news', array('action' => 'edit'), null, true);?>">Edit Me</a>
-   <a href="<?php echo $this->url('news', array('action' => 'delete'), null, true);?>">Edit Me</a>
+   <a href="<?php echo $this->url('news', array('action' => 'edit'), null, true); ?>">Edit Me</a>
+   <a href="<?php echo $this->url('news', array('action' => 'delete'), null, true); ?>">Delete Me</a>
    
-Notice the ``true`` parameter. This will tell the ViewHelper to use the matched ``id`` (``777``) when creating the new 
-url-output:
+Notice the ``true`` argument in the fourth position. This tells the view helper to use the matched
+``id`` (``777``) when creating the new URL:
 
 .. code-block:: html
    :lineos:
@@ -218,9 +224,9 @@ url-output:
    
 **Shorthand**
 
-Due to the fact that re-using parameters is a use-case that can happen when no route-options are set the third
-parameter for the URL ViewHelper will be checked against their type and when it's a boolean it will automatically
-assume to be the fourth parameters instead. See this example:
+Due to the fact that reusing parameters is a use case that can happen when no route options are set,
+the third argument for the URL view helper will be checked against its type; when a boolean is
+passed, the helper uses it to set the value of the ``$reuseMatchedParams`` flag:
 
 .. code-block:: php
    :lineos:
@@ -229,4 +235,4 @@ assume to be the fourth parameters instead. See this example:
    // is equal to
    $this->url('news', array('action' => 'archive'), true);
    
-   
+
