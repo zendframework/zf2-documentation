@@ -10,6 +10,7 @@ pass them to the view. To do this, we fill in ``indexAction()`` within
 **module/Checklist/src/Checklist/Controller/TaskController.php:**
 
 .. code-block:: php
+   :linenos:
 
     public function indexAction()
     {
@@ -34,6 +35,7 @@ with this new code:
 **module/Checklist/view/checklist/task/index.phtml:**
 
 .. code-block:: html+php
+   :linenos:
 
     <?php
     $title = 'My task list';
@@ -119,6 +121,7 @@ Change the ``indexAction()`` method so that it reads:
 **module/Application/src/Application/Controller/IndexController.php:**
 
 .. code-block:: php
+   :linenos:
     
     public function indexAction()
     {
@@ -204,6 +207,7 @@ with these contents:
 **module/Checklist/src/Checklist/Form/TaskForm.php:**
 
 .. code-block:: php
+   :linenos:
 
     <?php
     namespace Checklist\Form;
@@ -277,6 +281,7 @@ Create a new PHP file called ``TaskFilter.php`` in the
 **module/Checklist/src/Checklist/Form/TaskFilter.php:**
 
 .. code-block:: php
+   :linenos:
     
     <?php
     namespace Checklist\Form;
@@ -338,6 +343,7 @@ method called ``addAction()`` to the class that looks like this:
 **module/Checklist/src/Checklist/Controller/TaskController.php:**
 
 .. code-block:: php
+   :linenos:
 
     public function addAction()
     {
@@ -365,6 +371,7 @@ the list of use statements at the top of the file.
 Let's look at what the ``addAction()`` does in detail.
 
 .. code-block:: php
+   :linenos:
     
     $form = new TaskForm();
     $task = new TaskEntity();
@@ -383,6 +390,7 @@ When adding a new task, we only need to worry about point 2, however for editing
 an item, we need data transfer in both directions.
 
 .. code-block:: php
+   :linenos:
     
     $request = $this->getRequest();
     if ($request->isPost()) {
@@ -397,6 +405,7 @@ bound to the form using the  registered hydrator. This means that after
 ``isValid()`` is called, ``$task`` now contains the submitted form data.
 
 .. code-block:: php
+   :linenos:
 
     $this->getTaskMapper()->saveTask($task);
 
@@ -404,6 +413,7 @@ As the form is valid, we can save ``$task`` to the database using the mapper's
 ``saveTask()`` method.
 
 .. code-block:: php
+   :linenos:
 
     // Redirect to list of tasks
     return $this->redirect()->toRoute('task');
@@ -412,6 +422,7 @@ After we have saved the new task, we redirect back to the list of tasks using
 the ``Redirect`` controller plugin.
 
 .. code-block:: php
+   :linenos:
 
     return array('form' => $form);
 
@@ -425,6 +436,7 @@ the end of the class:
 **module/Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
+
 
     public function saveTask(TaskEntity $task)
     {
@@ -470,6 +482,7 @@ folder and add this code:
 **module/Checklist/view/checklist/task/add.phtml:**
 
 .. code-block:: html+php
+   :linenos:
 
     <?php
     $title = 'Add new task';
@@ -523,6 +536,7 @@ This time we use ``editAction()`` in the ``TaskController``. Open
 **module/Checklist/src/Checklist/Controller/TaskController.php:**
 
 .. code-block:: php
+   :linenos:
     
     public function editAction()
     {
@@ -556,6 +570,7 @@ task: We look for the id that is in the matched route and use it to load the
 task to be edited:
 
 .. code-block:: php
+   :linenos:
 
     $id = (int)$this->params('id');
     if (!$id) {
@@ -580,6 +595,7 @@ this method:
 **module/Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
+   :linenos:
 
     public function getTask($id)
     {
@@ -613,6 +629,7 @@ this code:
 **module/Checklist/view/checklist/task/edit.phtml:**
 
 .. code-block:: html+php
+   :linenos:
 
     <?php
     $title = 'Edit task';
@@ -663,6 +680,7 @@ Open ``TaskController.php`` and add this method to it:
 **module/Checklist/src/Checklist/Controller/TaskController.php:**
 
 .. code-block:: php
+   :linenos:
     
     public function deleteAction()
     {
@@ -700,6 +718,7 @@ method:
 **module/Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
+   :linenos:
 
     public function deleteTask($id)
     {
@@ -720,6 +739,7 @@ in the ``module/Checklist/view/checklist/task`` folder with this content:
 **module/Checklist/view/checklist/task/delete.phtml:**
 
 .. code-block:: html+php
+   :linenos:
 
     <?php
     $title = 'Delete task';
