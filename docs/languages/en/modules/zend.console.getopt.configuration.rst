@@ -1,7 +1,7 @@
 .. _zend.console.getopt.configuration:
 
-Configuring Zend\Console\Getopt
-===============================
+Configuring Zend\\Console\\Getopt
+=================================
 
 .. _zend.console.getopt.configuration.addrules:
 
@@ -16,7 +16,8 @@ array in the format of a long syntax options specification. See :ref:`Declaring 
 
 .. _zend.console.getopt.configuration.addrules.example:
 
-.. rubric:: Using addRules()
+Using addRules()
+^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -43,7 +44,8 @@ associative array, in which the key is a flag, and the value is a corresponding 
 
 .. _zend.console.getopt.configuration.addhelp.example:
 
-.. rubric:: Using setHelp()
+Using setHelp()
+^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -74,7 +76,8 @@ An alias may be declared only once. If you try to redefine an alias, a ``Zend\Co
 
 .. _zend.console.getopt.configuration.addaliases.example:
 
-.. rubric:: Using setAliases()
+Using setAliases()
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -107,7 +110,8 @@ for the current arguments.
 
 .. _zend.console.getopt.configuration.addargs.example:
 
-.. rubric:: Using addArguments() and setArguments()
+Using addArguments() and setArguments()
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -161,7 +165,8 @@ The two arguments to the ``setOption()`` method are a configuration option name 
 
 .. _zend.console.getopt.configuration.config.example.setoption:
 
-.. rubric:: Using setOption()
+Using setOption()
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -175,7 +180,8 @@ The configuration values you specify are merged with the current configuration; 
 
 .. _zend.console.getopt.configuration.config.example.setoptions:
 
-.. rubric:: Using setOptions()
+Using setOptions()
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
