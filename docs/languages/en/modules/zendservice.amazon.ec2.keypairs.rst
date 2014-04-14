@@ -1,4 +1,4 @@
-.. _zendservice.amazon.ec2.keypair:
+.. _zendservice.amazon.ec2.keypairs:
 
 ZendService\\Amazon\\Ec2: Keypairs
 ==================================
@@ -37,7 +37,7 @@ currently running with the keypair will still allow you to access them.
    $ec2_kp = new ZendService\Amazon\Ec2\Keypair('aws_key','aws_secret_key');
    $return = $ec2_kp->delete('my-new-key');
 
-.. _zendservice.amazon.ec2.describe:
+.. _zendservice.amazon.ec2.keypairs.describe:
 
 Describe an Amazon Keypair
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

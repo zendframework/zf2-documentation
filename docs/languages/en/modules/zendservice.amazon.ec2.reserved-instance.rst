@@ -9,7 +9,7 @@ a significant discount on the hourly usage charge for that instance.
 Amazon *EC2* Reserved Instances are based on instance type and location (region and Availability Zone) for a
 specified period of time (e.g., 1 year or 3 years) and are only available for Linux or UNIX instances.
 
-.. _zendservice.amazon.ec2.reserved.instance.howitworks:
+.. _zendservice.amazon.ec2.reserved-instance.howitworks:
 
 How Reserved Instances are Applied
 ----------------------------------
@@ -36,12 +36,12 @@ Amazon *EC2* doesn't apply the two c1.medium Reserved Instances because the c1.m
 Availability Zone and does not apply the m1.xlarge Reserved Instances because there are no running m1.xlarge
 instances.
 
-.. _zendservice.amazon.ec2.reserved.instance.operations:
+.. _zendservice.amazon.ec2.reserved-instance.operations:
 
 Reserved Instances Usage
 ------------------------
 
-.. _zendservice.amazon.ec2.reserved.instance.operations.describe:
+.. _zendservice.amazon.ec2.reserved-instance.operations.describe:
 
 Describes Reserved Instances that you purchased
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -58,7 +58,7 @@ availabilityZone, duration, fixedPrice, usagePrice, productDescription, instance
                                                         'aws_secret_key');
    $return = $ec2_instance->describeInstances('instanceId');
 
-.. _zendservice.amazon.ec2.reserved.instance.offerings.describe:
+.. _zendservice.amazon.ec2.reserved-instance.offerings.describe:
 
 Describe current Reserved Instance Offerings available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +77,7 @@ availabilityZone, duration, fixedPrice, usagePrice and productDescription.
                                                         'aws_secret_key');
    $return = $ec2_instance->describeOfferings();
 
-.. _zendservice.amazon.ec2.reserved.instance.offerings.purchase:
+.. _zendservice.amazon.ec2.reserved-instance.offerings.purchase:
 
 Turn off CloudWatch Monitoring on an Instance(s)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
