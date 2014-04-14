@@ -160,6 +160,13 @@ Let’s go ahead and create our controller class ``AlbumController.php`` at ``zf
         {
         }
     }
+    
+.. note::
+
+    Make sure to register the new ``Album`` module in the 'modules' section of your 
+    ``config/application.config.php``. You also have to provide a 
+    :ref:`Module Class <zend.module-manager.module-class>` for the Album module 
+    to be recognized by the MVC.
 
 .. note::
 
