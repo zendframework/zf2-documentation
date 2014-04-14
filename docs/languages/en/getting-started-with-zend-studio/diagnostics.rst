@@ -20,6 +20,7 @@ before the end of the ``fetchAll()`` method:
 **Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
+   :linenos:
     
     public function fetchAll()
     {
