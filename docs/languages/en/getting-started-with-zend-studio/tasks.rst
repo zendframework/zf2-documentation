@@ -436,7 +436,7 @@ the end of the class:
 **module/Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
-
+   :linenos:
 
     public function saveTask(TaskEntity $task)
     {
