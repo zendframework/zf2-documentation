@@ -3,6 +3,11 @@
 Captcha Operation
 =================
 
+.. _zend.captcha.operation.interface:
+
+The AdapterInterface
+--------------------
+
 All *CAPTCHA* adapters implement ``Zend\Captcha\AdapterInterface``, which looks like the following:
 
 .. code-block:: php
@@ -29,6 +34,11 @@ are ``generate()`` and ``render()``. ``generate()`` is used to create the *CAPTC
 will store the token in the session so that you may compare against it in subsequent requests. ``render()`` is used
 to render the information that represents the *CAPTCHA*, be it an image, a figlet, a logic problem, or some other
 *CAPTCHA*.
+
+.. _zend.captcha.operation.basic-usage:
+
+Basic Usage
+-----------
 
 A simple use case might look like the following:
 
