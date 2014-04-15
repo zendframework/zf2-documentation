@@ -1,6 +1,6 @@
 .. _zend.captcha.adapters:
 
-Captcha Adapters
+CAPTCHA Adapters
 ================
 
 The following adapters are shipped with Zend Framework by default.
