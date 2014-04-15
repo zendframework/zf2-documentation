@@ -206,6 +206,7 @@ route is defined like this:
 **module/Checklist/src/config/module.config.php:**
 
 .. code-block:: php
+   :linenos:
 
     'router' => array(
         'routes' => array(
@@ -312,6 +313,7 @@ the top of the file. Your controller should now look like this:
 **module/Checklist/src/Checklist/Controller/TaskController.php:**
 
 .. code-block:: php
+   :linenos:
 
     namespace Checklist\Controller;
 
@@ -366,6 +368,7 @@ This will create a blank PHP file. Update it so that it looks like this:
 **module/Checklist/src/Checklist/Model/TaskEntity.php:**
 
 .. code-block:: php
+   :linenos:
     
     <?php
     namespace Checklist\Model;
@@ -438,6 +441,7 @@ folder and choose New -> PHP File and create a PHP file called
 **module/Checklist/src/Checklist/Model/TaskMapper.php:**
 
 .. code-block:: php
+   :linenos:
     
     <?php
     namespace Checklist\Model;
