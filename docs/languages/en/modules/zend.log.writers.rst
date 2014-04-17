@@ -147,6 +147,30 @@ To install the FirePHPCore Library you can use composer. Add the repository and 
       }
    }
 
+.. _zend.log.writers.chromephp
+
+Writing to ChromePHP
+-----------------
+
+.. _zend.log.writers.mail
+
+Writing to Mail
+---------------
+
+.. _zend.log.writers.mongodb
+
+Writing to MongoDB
+------------------
+
+.. _zend.log.writers.syslog
+
+Writing to Syslog
+-----------------
+
+.. _zend.log.writers.zendmonitor
+
+Writing to Zend Monitor
+-----------------------
 
 .. _zend.log.writers.null:
 
