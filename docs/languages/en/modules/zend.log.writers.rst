@@ -154,7 +154,7 @@ Writing to ChromePHP
 
 ``Zend\Log\Writer\ChromePHP`` sends log data to the `ChromePHP`_ Chrome extension`.
 
-To use the ChromePHP writer, you will also need to include the `ChromePHP Library`_ library in you application include path.
+To use the ChromePHP writer, you will also need to include the `ChromePHP Library`_ library in your application include path.
 The easiest way to do this is to include the library in your composer.json file.
 
 .. code-block:: json
