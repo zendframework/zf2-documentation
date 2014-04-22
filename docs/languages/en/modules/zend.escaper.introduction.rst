@@ -9,7 +9,7 @@ was written. It offers developers a way to escape output and defend from XSS and
 **contextual escaping based on peer-reviewed rules**.
 
 ``Zend\Escaper`` was written with ease of use in mind, so it can be used completely stand-alone from the rest of
-the framework, and as such can be installed with `Composer`_.
+the framework, and as such can be installed with `Composer` using `zendframework/zend-escaper`.
 
 For easier use of the Escaper component within the framework itself, especially with the ``Zend\View`` component,
 a :ref:`set of view helpers <zend.view.helpers>` is provided.
