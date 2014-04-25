@@ -119,9 +119,7 @@ Service *API*:
    ...
    $server->handle();
 
-.. note::
-
-   **Important!**
+.. important::
 
    You should completely describe each method using method docblock if you plan to use autodiscover functionality
    to prepare corresponding Web Service WSDL.
@@ -167,9 +165,7 @@ Request and response objects handling
 
 .. note::
 
-   **Advanced**
-
-   This section describes advanced request/response processing options and may be skipped.
+   This section describes **advanced** request/response processing options and may be skipped.
 
 ``Zend\Soap\Server`` component performs request/response processing automatically, but allows to catch it and do
 some pre- and post-processing.
