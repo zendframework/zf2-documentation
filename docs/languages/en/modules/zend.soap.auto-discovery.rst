@@ -66,7 +66,7 @@ WSDL object and in conjunction with ``toXml()`` function you can posts it to the
 
 .. note::
 
-   **Zend\Soap\Autodiscover is not a Soap Server**
+   **Zend\\Soap\\Autodiscover is not a Soap Server**
 
    It is very important to note, that the class ``Zend\Soap\AutoDiscover`` does not act as a *SOAP* Server on its
    own.
