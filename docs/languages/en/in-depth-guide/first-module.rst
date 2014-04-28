@@ -5,7 +5,7 @@ Introducing our first "Album" Module
 
 Now that we know about the basics of the Zend Framework 2 Skeleton Application, let's continue and create our very own
 module. We will create a module named "Album". This module will display a list of database entries that represent a
-single music album. Each album will receive a couple of properties like ``id``, ``artist`` and ``title``. We will create
+single music album. Each album will receive three properties: ``id``, ``artist`` and ``title``. We will create
 forms to enter new albums into our database and to edit existing albums. Furthermore we will do so by using
 best-practices throughout the whole QuickStart.
 
@@ -16,7 +16,7 @@ Writing a new Module
 Let's start by creating a new folder under the ``/module`` directory called ``Album``.
 
 To be recognized as a module by the :ref:`ModuleManager <zend.module-manager-intro>`
-all we need to do is create a PHP-Class named ``Module`` under our module's namespace, which is ``Album``. Create the
+all we need to do is create a PHP class named ``Module`` under our module's namespace, which is ``Album``. Create the
 file ``/module/Album/Module.php``
 
 .. code-block:: php
@@ -30,9 +30,9 @@ file ``/module/Album/Module.php``
     {
     }
 
-We now have a module that can be detected by Zend Frameworks :ref:`ModuleManager <zend.module-manager-intro>`.
+We now have a module that can be detected by ZF2s :ref:`ModuleManager <zend.module-manager-intro>`.
 Let's add this module to our application. Although our module doesn't do anything yet, just having the ``Module.php``
-class allows it to be loaded by Zend Framework's :ref:`ModuleManager <zend.module-manager-intro>`
+class allows it to be loaded by ZF2s :ref:`ModuleManager <zend.module-manager-intro>`
 To do this, add an entry for ``Album`` to the modules array inside the main application config file at
 ``/config/application.config.php``:
 
@@ -335,9 +335,9 @@ than natural, because we have yet to actually write this view-file ourselves. Th
     <!-- Filename: /module/Album/view/album/list/index.phtml -->
     <h1>Album\ListController::indexAction()</h1>
 
-Before we continue let us quickly take a look at where we placed this file. First off, view files are not to be found
-under the ``/src`` directory because they are not source files. They are views so ``/view`` is much more logical. The
-succeeding path however deserves some explanation but it's very simple. First we have the lowercased namespace. Following
+Before we continue let us quickly take a look at where we placed this file. Note that view files are found within the
+``/view`` subdirectory, not ``/src`` as they are no PHP class files, but template files for rendering HMTL. The
+following path however deserves some explanation but it's very simple. First we have the lowercased namespace. Followed
 by the lowercased controller name without the appendix 'controller' and lastly comes the name of the action that we are
 accessing, again without the appendix 'action'. All in all it looks like this: ``/view/{namespace}/{controller}/{action}.phtml``.
 This has become a community standard but can potentionally be changed by you at any time.
@@ -365,7 +365,7 @@ The above configuration tells the application that the folder ``/module/Album/vi
 above described default scheme. It is important to note that with this you can not only ship view files for your module
 but you can also overwrite view files from other modules.
 
-Reload your site now. Finally we are at a point where we see something different than an error display. Congratulations,
-not only have you created a simple "Hello World" kinda module, you also learned about many error messages and their
-sources. If we didn't exhaust you too much, continue with our QuickStart and let's create a module that actually does
-something.
+Reload your site now. Finally we are at a point where we see something different than an error being displayed.
+Congratulations, not only have you created a simple "Hello World" style module, you also learned about many error
+messages and their causes. If we didn't exhaust you too much, continue with our QuickStart and let's create a module
+that actually does something.
