@@ -343,7 +343,6 @@
 |In-Depth Tutorial|
 -------------------
 
-    * :doc:`in-depth-guide/installation`
     * :doc:`in-depth-guide/first-module`
     * :doc:`in-depth-guide/services-and-servicemanager`
     * :doc:`in-depth-guide/preparing-db-backend`

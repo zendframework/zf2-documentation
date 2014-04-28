@@ -45,7 +45,7 @@ To do this, add an entry for ``Album`` to the modules array inside the main appl
     return array(
         'modules' => array(
             'Application',
-            'Album'         //@todo Highlight this line at .rts
+            'Album'
         ),
 
         // ...

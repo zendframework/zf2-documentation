@@ -514,8 +514,6 @@ called from the ``ControllerManager`` it will actually inject **itself** as the 
 ``ServiceManager`` to get to our Service-Classes. This is why we call the function ``getServiceLocator()` who will give us
 the real ``ServiceManager``.
 
-//@todo Appendix link. read more information about different Manager classes and there factory implementations
-
 After we have the ``$realServiceLocator`` set up we try to get a Service called ``Album\Service\AlbumServiceInterface``.
 This name that we're accessing is supposed to return a Service that matches the ``AlbumServiceInterface``. This Service
 is then passed along to the ``ListController`` which will directly be returned.
