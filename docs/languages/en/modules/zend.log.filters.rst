@@ -47,6 +47,10 @@ The Zend\\Log\\Filter available are:
 
 - **Regex**, filter out any log messages not matching the regex pattern. This filter use the preg_match() function
   of PHP.
+  
+- **Timestamp**, filters log events based on the time when they were triggered. It can be configured by specifying 
+  either idate()-compliant format character along with the desired value, or a full DateTime instance. Appropriate 
+  comparison operator must also be supplied in either cases.
 
 - **SuppressFilter**, this is a simple boolean filter. Call suppress(true) to suppress all log events. Call
   suppress(false) to accept all log events.
