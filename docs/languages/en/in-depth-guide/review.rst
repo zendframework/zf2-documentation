@@ -1,7 +1,7 @@
-Reviewing the Album-application
+Reviewing the Blog-application
 ===============================
 
-Throughout the past seven chapters we have created a fully functional CRUD-Application using music-albums as an example.
+Throughout the past seven chapters we have created a fully functional CRUD-Application using music-blogs as an example.
 While doing so we've made use of several different design-patterns and best-practices. Now it's time to reiterate and
 take a look at some of the code-samples we've written. This is going to be done in a Q&A fashion.
 
@@ -72,13 +72,13 @@ Looking back at code-examples from a couple of years back you'll notice that the
 controller. This has become a bad-practice that's known as Fat Controllers or Bloated Controllers.
 
 The major difference about each controller we have created is that there are different dependencies. For example the
-``WriteController`` required the ``AlbumForm`` as well as the ``AlbumService`` while the ``DeleteController`` only required the
-``AlbumService``. In this example it wouldn't make sense to write the ``deleteAction()`` into the ``WriteController`` because
-we then would needlessly create an instance of the ``AlbumForm`` which is not required. In large scale applications this
+``WriteController`` required the ``BlogForm`` as well as the ``BlogService`` while the ``DeleteController`` only required the
+``BlogService``. In this example it wouldn't make sense to write the ``deleteAction()`` into the ``WriteController`` because
+we then would needlessly create an instance of the ``BlogForm`` which is not required. In large scale applications this
 would create a huge bottleneck that would slow down the application.
 
 Looking at the ``DeleteController`` as well as the ``ListController`` you'll notice that both controllers have the same
-dependency. Both require only the ``AlbumService`` so why not merge them into one controller? The reason here is for
+dependency. Both require only the ``BlogService`` so why not merge them into one controller? The reason here is for
 semantical reasons. Would you look for a ``deleteAction()`` in a ``ListController``? Most of us wouldn't and therefore we
 have created a new class for that.
 

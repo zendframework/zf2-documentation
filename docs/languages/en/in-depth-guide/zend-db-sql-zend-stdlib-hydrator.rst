@@ -1,8 +1,8 @@
 Introducing Zend\\Db\\Sql and Zend\\Stdlib\\Hydrator
 ====================================================
 
-In the last chapter we have introduced the mapping layer and created the ``AlbumMapperInterface``. Now it is time to
-create an implementation of this interface so that we can make use of our ``AlbumService`` again. As an introductionary
+In the last chapter we have introduced the mapping layer and created the ``BlogMapperInterface``. Now it is time to
+create an implementation of this interface so that we can make use of our ``BlogService`` again. As an introductionary
 example we will be using the ``Zend\Db\Sql`` classes. So let's jump right into it.
 
 
@@ -10,30 +10,30 @@ Preparing the Database
 ======================
 
 Before we can start using a database we should prepare one. In this example we'll be using a MySQL-Database called
-``album`` which is accessible on the ``localhost``. The database will have one table called ``album`` with three columns
-``id``, ``artist`` and ``title`` with the ``id`` being the primary key. For demo purpose, please use this database-dump.
+``blog`` which is accessible on the ``localhost``. The database will have one table called ``blog`` with three columns
+``id``, ``title`` and ``text`` with the ``id`` being the primary key. For demo purpose, please use this database-dump.
 
 .. code-block:: text
    :linenos:
 
-    CREATE TABLE album (
+    CREATE TABLE blog (
         id int(11) NOT NULL auto_increment,
-        artist varchar(100) NOT NULL,
         title varchar(100) NOT NULL,
+        text varchar(100) NOT NULL,
         PRIMARY KEY (id)
     );
-    INSERT INTO album (artist, title)
-        VALUES  ('The  Military  Wives',  'In  My  Dreams');
-    INSERT INTO album (artist, title)
-        VALUES  ('Adele',  '21');
-    INSERT INTO album (artist, title)
-        VALUES  ('Bruce  Springsteen',  'Wrecking Ball (Deluxe)');
-    INSERT INTO album (artist, title)
-        VALUES  ('Lana  Del  Rey',  'Born  To  Die');
-    INSERT INTO album (artist, title)
-        VALUES  ('Gotye',  'Making  Mirrors');
+    INSERT INTO blog (title, text)
+        VALUES  ('Blog #1',  'Welcome to my first Blogpost');
+    INSERT INTO blog (title, text)
+        VALUES  ('Blog #2',  'Welcome to my second Blogpost');
+    INSERT INTO blog (title, text)
+        VALUES  ('Blog #3',  'Welcome to my third Blogpost');
+    INSERT INTO blog (title, text)
+        VALUES  ('Blog #4',  'Welcome to my fourth Blogpost');
+    INSERT INTO blog (title, text)
+        VALUES  ('Blog #5',  'Welcome to my fifth Blogpost');
 
-Feel free to modify the album and artist data to your liking!
+Feel free to modify the blog and text data to your liking!
 
 
 Quick Facts Zend\\Db\\Sql
@@ -50,13 +50,13 @@ level key called ``db``:
    :emphasize-lines: 4-12
 
     <?php
-    // Filename: /module/Album/config/module.config.php
+    // Filename: /module/Blog/config/module.config.php
     return array(
         'db' => array(
             'driver'         => 'Pdo',
             'username'       => 'your_username',
             'password'       => 'your_password',
-            'dsn'            => 'mysql:dbname=album;host=localhost',
+            'dsn'            => 'mysql:dbname=blog;host=localhost',
             'driver_options' => array(
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             )
@@ -81,20 +81,20 @@ look like the following:
    :emphasize-lines: 16
 
     <?php
-    // Filename: /module/Album/config/module.config.php
+    // Filename: /module/Blog/config/module.config.php
     return array(
         'db' => array(
             'driver'         => 'Pdo',
             'username'       => 'root',
             'password'       => 'admin',
-            'dsn'            => 'mysql:dbname=album;host=localhost',
+            'dsn'            => 'mysql:dbname=blog;host=localhost',
             'driver_options' => array(
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             )
         ),
         'service_manager' => array(
             'factories' => array(
-                'Album\Service\AlbumServiceInterface' => 'Album\Service\Factory\AlbumServiceFactory',
+                'Blog\Service\BlogServiceInterface' => 'Blog\Service\Factory\BlogServiceFactory',
                 'Zend\Db\Adapter\Adapter'             => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
@@ -116,31 +116,31 @@ queries. The basic workflow of these components is:
 3. Execute the query
 4. Do something with the result
 
-Knowing this we can now write the implementation for the ``AlbumMapperInterface``.
+Knowing this we can now write the implementation for the ``BlogMapperInterface``.
 
 
 Writing the mapper implementation
 =================================
 
 Our mapper implementation will reside inside the same namespace as its interface. Go ahead and create a class called
-``ZendDbSqlMapper`` and implement the ``AlbumMapperInterface``.
+``ZendDbSqlMapper`` and implement the ``BlogMapperInterface``.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines:
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -148,7 +148,7 @@ Our mapper implementation will reside inside the same namespace as its interface
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
@@ -164,13 +164,13 @@ Now recall what we have learned earlier. For ``Zend\Db\Sql`` to function we will
    :emphasize-lines: 6, 8, 13, 18-21
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -188,7 +188,7 @@ Now recall what we have learned earlier. For ``Zend\Db\Sql`` to function we will
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -196,7 +196,7 @@ Now recall what we have learned earlier. For ``Zend\Db\Sql`` to function we will
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
@@ -211,10 +211,10 @@ ahead and create a factory for our mapper implementation.
    :emphasize-lines:
 
     <?php
-    // Filename: /module/Album/src/Album/Factory/ZendDbSqlMapperFactory.php
-    namespace Album\Factory;
+    // Filename: /module/Blog/src/Blog/Factory/ZendDbSqlMapperFactory.php
+    namespace Blog\Factory;
 
-    use Album\Mapper\ZendDbSqlMapper;
+    use Blog\Mapper\ZendDbSqlMapper;
     use Zend\ServiceManager\FactoryInterface;
     use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -236,7 +236,7 @@ ahead and create a factory for our mapper implementation.
     }
 
 We're now able to register our mapper implementation as a service. If you recall from the previous chapter, or if you
-were to look at the current error message, you'll note that we call the Service ``Album\Mapper\AlbumMapperInterface`` to
+were to look at the current error message, you'll note that we call the Service ``Blog\Mapper\BlogMapperInterface`` to
 get a mapper implementation. Modify the configuration so that this key will call the newly called factory class.
 
 .. code-block:: php
@@ -244,13 +244,13 @@ get a mapper implementation. Modify the configuration so that this key will call
    :emphasize-lines: 7
 
     <?php
-    // Filename: /module/Album/config/module.config.php
+    // Filename: /module/Blog/config/module.config.php
     return array(
         'db'              => array( /** Db Config */ ),
         'service_manager' => array(
             'factories' => array(
-                'Album\Mapper\AlbumMapperInterface'   => 'Album\Factory\ZendDbSqlMapperFactory',
-                'Album\Service\AlbumServiceInterface' => 'Album\Service\Factory\AlbumServiceFactory',
+                'Blog\Mapper\BlogMapperInterface'   => 'Blog\Factory\ZendDbSqlMapperFactory',
+                'Blog\Service\BlogServiceInterface' => 'Blog\Service\Factory\BlogServiceFactory',
                 'Zend\Db\Adapter\Adapter'             => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
@@ -259,29 +259,29 @@ get a mapper implementation. Modify the configuration so that this key will call
         'router'          => array( /** Router Config */ )
     );
 
-With the adapter in place you're now able to refresh the album index at ``localhost:8080/album`` and you'll notice that
+With the adapter in place you're now able to refresh the blog index at ``localhost:8080/blog`` and you'll notice that
 the ``ServiceNotFoundException`` is gone and we get the following PHP Warning:
 
 .. code-block:: text
    :linenos:
 
-    Warning: Invalid argument supplied for foreach() in /module/Album/view/album/list/index.phtml on line 13
-    ID	Artist	Title
+    Warning: Invalid argument supplied for foreach() in /module/Blog/view/blog/list/index.phtml on line 13
+    ID	Text	Title
 
 This is due to the fact that our mapper doesn't return anything yet. Let's modify the ``findAll()`` function to return
-all albums from the database table.
+all blogs from the database table.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 37-43
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
     use Zend\Db\Adapter\AdapterInterface;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -299,7 +299,7 @@ all albums from the database table.
         /**
          * @param int|string $id
          *
-         * @return \Album\Entity\AlbumInterface
+         * @return \Blog\Entity\BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -307,12 +307,12 @@ all albums from the database table.
         }
 
         /**
-         * @return array|\Album\Entity\AlbumInterface[]
+         * @return array|\Blog\Entity\BlogInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -327,7 +327,7 @@ error message.
 .. code-block:: text
    :lineos:
 
-    Fatal error: Call to a member function getId() on a non-object in /module/Album/view/album/list/index.phtml on line 15
+    Fatal error: Call to a member function getId() on a non-object in /module/Blog/view/blog/list/index.phtml on line 15
 
 Let's not return the ``$result`` variable for now and do a dump of it to see what we get here. Change the ``findAll()``
 function and do a data dumping of the ``$result`` variable:
@@ -337,14 +337,14 @@ function and do a data dumping of the ``$result`` variable:
    :emphasize-lines: 45
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Sql\Sql;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -362,7 +362,7 @@ function and do a data dumping of the ``$result`` variable:
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -370,12 +370,12 @@ function and do a data dumping of the ``$result`` variable:
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -392,7 +392,7 @@ Refreshing the application you should now see the following output:
     object(Zend\Db\Adapter\Driver\Pdo\Result)#303 (8) {
       ["statementMode":protected] => string(7) "forward"
       ["resource":protected] => object(PDOStatement)#296 (1) {
-        ["queryString"] => string(29) "SELECT `album`.* FROM `album`"
+        ["queryString"] => string(29) "SELECT `blog`.* FROM `blog`"
       }
       ["options":protected] => NULL
       ["currentComplete":protected] => bool(false)
@@ -412,16 +412,16 @@ approach would be to pass the ``Result`` object over into a ``ResultSet`` object
    :emphasize-lines: 7, 47-53
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\ResultSet;
     use Zend\Db\Sql\Sql;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -439,7 +439,7 @@ approach would be to pass the ``Result`` object over into a ``ResultSet`` object
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -447,12 +447,12 @@ approach would be to pass the ``Result`` object over into a ``ResultSet`` object
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -489,7 +489,7 @@ Refreshing the page you should now see the dump of a ``ResultSet`` object that h
       ["dataSource":protected] => object(Zend\Db\Adapter\Driver\Pdo\Result)#303 (8) {
         ["statementMode":protected] => string(7) "forward"
         ["resource":protected] => object(PDOStatement)#296 (1) {
-          ["queryString"] => string(29) "SELECT `album`.* FROM `album`"
+          ["queryString"] => string(29) "SELECT `blog`.* FROM `blog`"
         }
         ["options":protected] => NULL
         ["currentComplete":protected] => bool(false)
@@ -503,12 +503,12 @@ Refreshing the page you should now see the dump of a ``ResultSet`` object that h
     }
 
 Another very interesting property is ``["returnType":protected] => string(11) "arrayobject"``. This tells us that all
-database entries will be returned as an ``ArrayObject``. And this is a little problem as the ``AlbumMapperInterface``
-requires us to return an array of ``AlbumInterface`` objects. Luckily there is a very simple option for us available to
+database entries will be returned as an ``ArrayObject``. And this is a little problem as the ``BlogMapperInterface``
+requires us to return an array of ``BlogInterface`` objects. Luckily there is a very simple option for us available to
 make this happen. In the examples above we have used the default ``ResultSet`` object. There is also a
 ``HydratingResultSet`` which will hydrate the given data into a provided object.
 
-This means: if we tell the ``HydratingResultSet`` to use the database data to create ``Album`` objects for us, then it will
+This means: if we tell the ``HydratingResultSet`` to use the database data to create ``Blog`` objects for us, then it will
 do exactly this. Let's modify our code:
 
 .. code-block:: php
@@ -516,16 +516,16 @@ do exactly this. Let's modify our code:
    :emphasize-lines: 47-53
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
     use Zend\Db\Sql\Sql;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -543,7 +543,7 @@ do exactly this. Let's modify our code:
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -551,18 +551,18 @@ do exactly this. Let's modify our code:
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet(new \Zend\Stdlib\Hydrator\ClassMethods(), new \Album\Model\Album());
+                $resultSet = new HydratingResultSet(new \Zend\Stdlib\Hydrator\ClassMethods(), new \Blog\Model\Blog());
 
                 return $resultSet->initialize($result);
             }
@@ -574,14 +574,14 @@ do exactly this. Let's modify our code:
 We have changed a couple of things here. Firstly instead of a normal ``ResultSet`` we are using the ``HydratingResultSet``.
 This Object requires two parameters, the second one being the object to hydrate into and the first one being the
 ``hydrator`` that will be used. A ``hydrator``, in short, is an object that changes any sort of data from one format to
-another. The InputFormat that we have is an ``ArrayObject`` but we want ``Album``-Models. The ``ClassMethods``-hydrator will
-take care of this using the setter- and getter functions of our ``Album``-model.
+another. The InputFormat that we have is an ``ArrayObject`` but we want ``Blog``-Models. The ``ClassMethods``-hydrator will
+take care of this using the setter- and getter functions of our ``Blog``-model.
 
 Instead of dumping the ``$result`` variable we now directly return the initialized ``HydratingResultSet`` so we'll be able
 to access the data stored within. In case we get something else returned that is not an instance of a ``ResultInterface``
 we return an empty array.
 
-Refreshing the page you will now see all your albums listed on the page. Great!
+Refreshing the page you will now see all your blogs listed on the page. Great!
 
 
 Refactoring hidden dependencies
@@ -596,17 +596,17 @@ to use constructor-injection for those two components which in turn makes the ma
    :emphasize-lines: 10, 19, 21, 30, 31, 59-66
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
     use Zend\Db\Sql\Sql;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -615,27 +615,27 @@ to use constructor-injection for those two components which in turn makes the ma
 
         protected $hydrator;
 
-        protected $albumPrototype;
+        protected $blogPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param AlbumInterface    $albumPrototype
+         * @param BlogInterface    $blogPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            AlbumInterface $albumPrototype
+            BlogInterface $blogPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->albumPrototype = $albumPrototype;
+            $this->blogPrototype = $blogPrototype;
         }
 
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -643,18 +643,18 @@ to use constructor-injection for those two components which in turn makes the ma
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->albumPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
 
                 return $resultSet->initialize($result);
             }
@@ -670,11 +670,11 @@ parameters.
    :linenos:
 
     <?php
-    // Filename: /module/Album/src/Album/Factory/ZendDbSqlMapperFactory.php
-    namespace Album\Factory;
+    // Filename: /module/Blog/src/Blog/Factory/ZendDbSqlMapperFactory.php
+    namespace Blog\Factory;
 
-    use Album\Mapper\ZendDbSqlMapper;
-    use Album\Model\Album;
+    use Blog\Mapper\ZendDbSqlMapper;
+    use Blog\Model\Blog;
     use Zend\ServiceManager\FactoryInterface;
     use Zend\ServiceManager\ServiceLocatorInterface;
     use Zend\Stdlib\Hydrator\ClassMethods;
@@ -693,12 +693,12 @@ parameters.
             return new ZendDbSqlMapper(
                 $serviceLocator->get('Zend\Db\Adapter\Adapter'),
                 new ClassMethods(false),
-                new Album()
+                new Blog()
             );
         }
     }
 
-With this in place you can refresh the application again and you'll see your albums listed once again. Our Mapper has
+With this in place you can refresh the application again and you'll see your blogs listed once again. Our Mapper has
 now a really good architecture and no more hidden dependencies.
 
 
@@ -713,17 +713,17 @@ method.
    :emphasize-lines: 46-57
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
     use Zend\Db\Sql\Sql;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -732,58 +732,58 @@ method.
 
         protected $hydrator;
 
-        protected $albumPrototype;
+        protected $blogPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param AlbumInterface    $albumPrototype
+         * @param BlogInterface    $blogPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            AlbumInterface $albumPrototype
+            BlogInterface $blogPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->albumPrototype = $albumPrototype;
+            $this->blogPrototype = $blogPrototype;
         }
 
         /**
          * @param int|string $id
          *
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
             $select->where(array('id = ?' => $id));
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-                return $this->hydrator->hydrate($result->current(), $this->albumPrototype);
+                return $this->hydrator->hydrate($result->current(), $this->blogPrototype);
             }
 
-            throw new \InvalidArgumentException("Album with given ID:{$id} not found.");
+            throw new \InvalidArgumentException("Blog with given ID:{$id} not found.");
         }
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->albumPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
 
                 return $resultSet->initialize($result);
             }

@@ -2,9 +2,9 @@ Understanding the Router
 ========================
 
 Right now we have a pretty solid set up for our module. However we're not really doing all too much yet, to be
-precise, all we do is display all ``Album`` entries on one page. In this chapter you will learn everything you need
-to know about the ``Router`` to create other routes to be able to display only a single album, to add new albums
-to your application and to edit and delete existing albums.
+precise, all we do is display all ``Blog`` entries on one page. In this chapter you will learn everything you need
+to know about the ``Router`` to create other routes to be able to display only a single blog, to add new blogs
+to your application and to edit and delete existing blogs.
 
 
 Different route types
@@ -19,8 +19,8 @@ Zend\\Mvc\\Router\\Http\\Literal
 The first common route type is the ``Literal``-Route. As mentioned in a previous chapter a literal route is one that
 matches a specific string. Examples for URLs that are usually literal routes are:
 
-- http://domain.com/album
-- http://domain.com/album/add
+- http://domain.com/blog
+- http://domain.com/blog/add
 - http://domain.com/about-me
 - http://domain.com/my/very/deep/page
 - http://domain.com/my/very/deep/page
@@ -58,10 +58,10 @@ within your application. Some examples for URLs that contain parameters and are 
 .. code-block:: text
    :lineos:
 
-    http://domain.com/album/1                     // parameter "1"
-    http://domain.com/album/details/1             // parameter "1"
-    http://domain.com/album/edit/1                // parameter "1"
-    http://domain.com/album/1/edit                // parameter "1"
+    http://domain.com/blog/1                     // parameter "1"
+    http://domain.com/blog/details/1             // parameter "1"
+    http://domain.com/blog/edit/1                // parameter "1"
+    http://domain.com/blog/1/edit                // parameter "1"
     http://domain.com/news/archive/2014           // parameter "2014"
     http://domain.com/news/archive/2014/january   // parameter "2014" and "january"
 
@@ -353,19 +353,19 @@ While ultimately this falls into the category of personal preference bare in min
 is significantly easier than debugging generic routes.
 
 
-A practical example for our Album Module
+A practical example for our Blog Module
 ========================================
 
-Now that we know how to configure new routes, let's first create a route to display only a single ``Album`` from our
-Database. We want to be able to identify albums by their internal ID. Given that ID is a variable parameter we need
-a route of type ``Segment``. Furthermore we want to put this route as a ``child_route`` to the route of name ``album``.
+Now that we know how to configure new routes, let's first create a route to display only a single ``Blog`` from our
+Database. We want to be able to identify blogs by their internal ID. Given that ID is a variable parameter we need
+a route of type ``Segment``. Furthermore we want to put this route as a ``child_route`` to the route of name ``blog``.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 8-36
 
     <?php
-    // FileName: /module/Album/config/module.config.php
+    // FileName: /module/Blog/config/module.config.php
     return array(
         'db'              => array( /** DB Config */ ),
         'service_manager' => array( /* ServiceManager Config */ ),
@@ -373,12 +373,12 @@ a route of type ``Segment``. Furthermore we want to put this route as a ``child_
         'controllers'     => array( /* ControllerManager Config */ ),
         'router' => array(
             'routes' => array(
-                'album' => array(
+                'blog' => array(
                     'type' => 'literal',
                     'options' => array(
-                        'route'    => '/album',
+                        'route'    => '/blog',
                         'defaults' => array(
-                            'controller' => 'Album\Controller\List',
+                            'controller' => 'Blog\Controller\List',
                             'action'     => 'index',
                         ),
                     ),
@@ -402,14 +402,14 @@ a route of type ``Segment``. Furthermore we want to put this route as a ``child_
         )
     );
 
-With this we have set up a new route that we use to display a single album entry. We have assigned a parameter
+With this we have set up a new route that we use to display a single blog entry. We have assigned a parameter
 called ``id`` that needs to be a positive digit excluding 0. Database entries usually start with a 0 when it comes
 to primary ID keys and therefore our regular expression ``constraints`` for the ``id`` fields looks a little more
 complicated. Basically we tell the router that the parameter ``id`` has to start with an integer between 1 and 9,
 that's the ``[1-9]`` part, and after that any digit can follow, but doesn't have to (that's the ``\d*`` part).
 
 The route will call the same ``controller`` like the parent route but it will call the ``detailAction()`` instead. Go
-to your browser and request the URL ``http://domain.loc/album/2``. You'll see the following error message:
+to your browser and request the URL ``http://domain.loc/blog/2``. You'll see the following error message:
 
 .. code-block:: text
    :linenos:
@@ -420,7 +420,7 @@ to your browser and request the URL ``http://domain.loc/album/2``. You'll see th
     The requested controller was unable to dispatch the request.
 
     Controller:
-    Album\Controller\List
+    Blog\Controller\List
 
     No Exception available
 
@@ -433,29 +433,29 @@ then refresh the page.
    :emphasize-lines: 28-31
 
     <?php
-    // FileName: /module/Album/src/Album/Controller/ListController.php
-    namespace Album\Controller;
+    // FileName: /module/Blog/src/Blog/Controller/ListController.php
+    namespace Blog\Controller;
 
-    use Album\Service\AlbumServiceInterface;
+    use Blog\Service\BlogServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Album\Service\AlbumServiceInterface
+         * @var \Blog\Service\BlogServiceInterface
          */
-        protected $albumService;
+        protected $blogService;
 
-        public function __construct(AlbumServiceInterface $albumService)
+        public function __construct(BlogServiceInterface $blogService)
         {
-            $this->albumService = $albumService;
+            $this->blogService = $blogService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'albums' => $this->albumService->findAllAlbums()
+                'blogs' => $this->blogService->findAllBlogs()
             ));
         }
 
@@ -466,53 +466,53 @@ then refresh the page.
     }
 
 Now you'll see the all familiar message that a template was unable to be rendered. Let's create this template now
-and assume that we will get one ``Album`` passed to the template to see the details of our album. Create a new view
-file under ``/view/album/list/detail.phtml``:
+and assume that we will get one ``Blog`` passed to the template to see the details of our blog. Create a new view
+file under ``/view/blog/list/detail.phtml``:
 
 .. code-block:: html
    :linenos:
 
-    <!-- FileName: /module/Album/view/album/list/detail.phtml -->
-    <h1>Album Details</h1>
+    <!-- FileName: /module/Blog/view/blog/list/detail.phtml -->
+    <h1>Blog Details</h1>
 
     <dl>
-        <dt>Album Title</dt>
-        <dd><?php echo $this->escapeHtml($this->album->getTitle());?></dd>
-        <dt>Album Artist</dt>
-        <dd><?php echo $this->escapeHtml($this->album->getArtist());?></dd>
+        <dt>Blog Title</dt>
+        <dd><?php echo $this->escapeHtml($this->blog->getTitle());?></dd>
+        <dt>Blog Text</dt>
+        <dd><?php echo $this->escapeHtml($this->blog->getText());?></dd>
     </dl>
 
-Looking at this template we're expecting the variable ``$this->album`` to be an instance of our ``Album``-Model. Let's
-now modify our ``ListController`` so that an ``Album`` will be passed.
+Looking at this template we're expecting the variable ``$this->blog`` to be an instance of our ``Blog``-Model. Let's
+now modify our ``ListController`` so that an ``Blog`` will be passed.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 30-34
 
     <?php
-    // FileName: /module/Album/src/Album/Controller/ListController.php
-    namespace Album\Controller;
+    // FileName: /module/Blog/src/Blog/Controller/ListController.php
+    namespace Blog\Controller;
 
-    use Album\Service\AlbumServiceInterface;
+    use Blog\Service\BlogServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Album\Service\AlbumServiceInterface
+         * @var \Blog\Service\BlogServiceInterface
          */
-        protected $albumService;
+        protected $blogService;
 
-        public function __construct(AlbumServiceInterface $albumService)
+        public function __construct(BlogServiceInterface $blogService)
         {
-            $this->albumService = $albumService;
+            $this->blogService = $blogService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'albums' => $this->albumService->findAllAlbums()
+                'blogs' => $this->blogService->findAllBlogs()
             ));
         }
 
@@ -521,15 +521,15 @@ now modify our ``ListController`` so that an ``Album`` will be passed.
             $id = $this->params()->fromRoute('id');
 
             return new ViewModel(array(
-                'album' => $this->albumService->findAlbum($id)
+                'blog' => $this->blogService->findBlog($id)
             ));
         }
     }
 
-If you refresh your application now you'll see the details for our Album to be displayed. However there is one
+If you refresh your application now you'll see the details for our Blog to be displayed. However there is one
 little Problem with what we have done. While we do have our Service set up to throw an ``\InvalidArgumentException``
-whenever no ``Album`` matching a given ``id`` is found, we don't make use of this just yet. Go to your browser and
-open the URL ``http://domain.loc/album/99``. You will see the following error message:
+whenever no ``Blog`` matching a given ``id`` is found, we don't make use of this just yet. Go to your browser and
+open the URL ``http://domain.loc/blog/99``. You will see the following error message:
 
 .. code-block:: text
    :linenos:
@@ -541,14 +541,14 @@ open the URL ``http://domain.loc/album/99``. You will see the following error me
     InvalidArgumentException
 
     File:
-    {rootPath}/module/Album/src/Album/Service/AlbumService.php:40
+    {rootPath}/module/Blog/src/Blog/Service/BlogService.php:40
 
     Message:
     Could not find row 99
 
 This is kind of ugly, so our ``ListController`` should be prepared to do something whenever an
-``InvalidArgumentException`` is thrown by the ``AlbumService``. Whenever an invalid ``Album`` is requested we want the
-User to be redirected to the Album-Overview. Let's do this by putting the call against the ``AlbumService`` in a
+``InvalidArgumentException`` is thrown by the ``BlogService``. Whenever an invalid ``Blog`` is requested we want the
+User to be redirected to the Blog-Overview. Let's do this by putting the call against the ``BlogService`` in a
 try-catch statement.
 
 .. code-block:: php
@@ -556,29 +556,29 @@ try-catch statement.
    :emphasize-lines: 30-40
 
     <?php
-    // FileName: /module/Album/src/Album/Controller/ListController.php
-    namespace Album\Controller;
+    // FileName: /module/Blog/src/Blog/Controller/ListController.php
+    namespace Blog\Controller;
 
-    use Album\Service\AlbumServiceInterface;
+    use Blog\Service\BlogServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Album\Service\AlbumServiceInterface
+         * @var \Blog\Service\BlogServiceInterface
          */
-        protected $albumService;
+        protected $blogService;
 
-        public function __construct(AlbumServiceInterface $albumService)
+        public function __construct(BlogServiceInterface $blogService)
         {
-            $this->albumService = $albumService;
+            $this->blogService = $blogService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'albums' => $this->albumService->findAllAlbums()
+                'blogs' => $this->blogService->findAllBlogs()
             ));
         }
 
@@ -587,16 +587,16 @@ try-catch statement.
             $id = $this->params()->fromRoute('id');
 
             try {
-                $album = $this->albumService->findAlbum($id);
+                $blog = $this->blogService->findBlog($id);
             } catch (\InvalidArgumentException $ex) {
-                return $this->redirect()->toRoute('album');
+                return $this->redirect()->toRoute('blog');
             }
 
             return new ViewModel(array(
-                'album' => $album
+                'blog' => $blog
             ));
         }
     }
 
-Now whenever you access an invalid ``id`` you'll be redirected to the route ``album`` which is our list of albums,
+Now whenever you access an invalid ``id`` you'll be redirected to the route ``blog`` which is our list of blogs,
 perfect!

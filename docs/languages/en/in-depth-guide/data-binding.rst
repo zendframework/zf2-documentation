@@ -21,26 +21,26 @@ form. This is done the following way inside your controller.
    :emphasize-lines: 50-53
 
     <?php
-    // Filename: /module/Album/src/Album/Controller/WriteController.php
-    namespace Album\Controller;
+    // Filename: /module/Blog/src/Blog/Controller/WriteController.php
+    namespace Blog\Controller;
 
-    use Album\Service\AlbumServiceInterface;
+    use Blog\Service\BlogServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class WriteController extends AbstractActionController
     {
-        protected $albumService;
+        protected $blogService;
 
-        protected $albumForm;
+        protected $blogForm;
 
         public function __construct(
-            AlbumServiceInterface $albumService,
-            FormInterface $albumForm
+            BlogServiceInterface $blogService,
+            FormInterface $blogForm
         ) {
-            $this->albumService = $albumService;
-            $this->albumForm    = $albumForm;
+            $this->blogService = $blogService;
+            $this->blogForm    = $blogForm;
         }
 
         public function addAction()
@@ -48,13 +48,13 @@ form. This is done the following way inside your controller.
             $request = $this->getRequest();
 
             if ($request->isPost()) {
-                $this->albumForm->setData($request->getPost());
+                $this->blogForm->setData($request->getPost());
 
-                if ($this->albumForm->isValid()) {
+                if ($this->blogForm->isValid()) {
                     try {
-                        $this->albumService->saveAlbum($this->albumForm->getData());
+                        $this->blogService->saveBlog($this->blogForm->getData());
 
-                        return $this->redirect()->toRoute('album');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -63,25 +63,25 @@ form. This is done the following way inside your controller.
             }
 
             return new ViewModel(array(
-                'form' => $this->albumForm
+                'form' => $this->blogForm
             ));
         }
 
         public function editAction()
         {
             $request = $this->getRequest();
-            $album   = $this->albumService->findAlbum($this->params('id'));
+            $blog   = $this->blogService->findBlog($this->params('id'));
 
-            $this->albumForm->bind($album);
+            $this->blogForm->bind($blog);
 
             if ($request->isPost()) {
-                $this->albumForm->setData($request->getPost());
+                $this->blogForm->setData($request->getPost());
 
-                if ($this->albumForm->isValid()) {
+                if ($this->blogForm->isValid()) {
                     try {
-                        $this->albumService->saveAlbum($album);
+                        $this->blogService->saveBlog($blog);
 
-                        return $this->redirect()->toRoute('album');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -90,18 +90,18 @@ form. This is done the following way inside your controller.
             }
 
             return new ViewModel(array(
-                'form' => $this->albumForm
+                'form' => $this->blogForm
             ));
         }
     }
 
 Compared to the ``addAction()`` the ``editAction()`` has only three different lines. The first one is used to simply get the
-relevant ``Album``-object from the service identified by the ``id``-parameter of the route (which we'll be writing soon).
+relevant ``Blog``-object from the service identified by the ``id``-parameter of the route (which we'll be writing soon).
 
 The second line then shows you how you can bind data to the ``Zend\Form``-Component. We're able to use an object here
-because our ``AlbumFieldset`` will use the hydrator to display the data coming from the object.
+because our ``BlogFieldset`` will use the hydrator to display the data coming from the object.
 
-Lastly instead of actually doing ``$form->getData()`` we simply use the previous ``$album``-variable since it will be
+Lastly instead of actually doing ``$form->getData()`` we simply use the previous ``$blog``-variable since it will be
 updated with the latest data from the form thanks to the data-binding. And that's all there is to it. The only things
 we need to add now is the new edit-route and the view for it.
 
@@ -109,7 +109,7 @@ we need to add now is the new edit-route and the view for it.
 Adding the edit-route
 =====================
 
-The edit route is a normal segment route just like the route ``album/detail``. Configure your route config to include the
+The edit route is a normal segment route just like the route ``blog/detail``. Configure your route config to include the
 new route:
 
 .. code-block:: php
@@ -117,7 +117,7 @@ new route:
    :emphasize-lines: 43-55
 
     <?php
-    // Filename: /module/Album/config/module.config.php
+    // Filename: /module/Blog/config/module.config.php
     return array(
         'db'              => array( /** Db Config */ ),
         'service_manager' => array( /** ServiceManager Config */ ),
@@ -125,12 +125,12 @@ new route:
         'controllers'     => array( /** ControllerManager Config* */ ),
         'router'          => array(
             'routes' => array(
-                'album' => array(
+                'blog' => array(
                     'type' => 'literal',
                     'options' => array(
-                        'route'    => '/album',
+                        'route'    => '/blog',
                         'defaults' => array(
-                            'controller' => 'Album\Controller\List',
+                            'controller' => 'Blog\Controller\List',
                             'action'     => 'index',
                         )
                     ),
@@ -153,7 +153,7 @@ new route:
                             'options' => array(
                                 'route'    => '/add',
                                 'defaults' => array(
-                                    'controller' => 'Album\Controller\Write',
+                                    'controller' => 'Blog\Controller\Write',
                                     'action'     => 'add'
                                 )
                             )
@@ -163,7 +163,7 @@ new route:
                             'options' => array(
                                 'route'    => '/edit/:id',
                                 'defaults' => array(
-                                    'controller' => 'Album\Controller\Write',
+                                    'controller' => 'Blog\Controller\Write',
                                     'action'     => 'edit'
                                 ),
                                 'constraints' => array(
@@ -180,18 +180,18 @@ new route:
 Creating the edit-template
 ==========================
 
-Next in line is the creation of the new template ``album/write/edit``:
+Next in line is the creation of the new template ``blog/write/edit``:
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 6
 
-    <!-- Filename: /module/Album/view/album/write/add.phtml -->
+    <!-- Filename: /module/Blog/view/blog/write/add.phtml -->
     <h1>WriteController::editAction()</h1>
     <?php
     $form = $this->form;
     $form->setAttribute('method', 'POST');
-    $form->setAttribute('action', $this->url('album/edit', array(), true));
+    $form->setAttribute('action', $this->url('blog/edit', array(), true));
     $form->prepare();
 
     echo $this->form()->openTag($form);
@@ -206,7 +206,7 @@ achieve this you have two options. The first one would be to pass the ID to the 
 .. code-block:: php
    :linenos:
 
-    $this->url('album/edit', array('id' => $id));
+    $this->url('blog/edit', array('id' => $id));
 
 The downside is that ``$id`` is not available as we have not assigned it to the view. The ``Zend\Mvc\Router``-component
 however provides us with a nice functionality to re-use the currently matched parameters. This is done by setting the
@@ -215,29 +215,29 @@ last parameter of the view-helper to ``true``.
 .. code-block:: php
    :linenos:
 
-    $this->url('album/edit', array(), true);
+    $this->url('blog/edit', array(), true);
 
 
 **Checking the status**
 
-If you go to your browser and open up the edit form at ``localhost:8080/album/edit/1`` you'll see that the form contains
-the data from your selected album. And when you submit the form you'll notice that the data has been changed
-successfully. However sadly the submit-button still contains the text ``Insert new Album``. This can be changed inside
+If you go to your browser and open up the edit form at ``localhost:8080/blog/edit/1`` you'll see that the form contains
+the data from your selected blog. And when you submit the form you'll notice that the data has been changed
+successfully. However sadly the submit-button still contains the text ``Insert new Blog``. This can be changed inside
 the view, too.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 9
 
-    <!-- Filename: /module/Album/view/album/write/add.phtml -->
+    <!-- Filename: /module/Blog/view/blog/write/add.phtml -->
     <h1>WriteController::editAction()</h1>
     <?php
     $form = $this->form;
     $form->setAttribute('method', 'POST');
-    $form->setAttribute('action', $this->url('album/edit', array(), true));
+    $form->setAttribute('action', $this->url('blog/edit', array(), true));
     $form->prepare();
 
-    $form->get('submit')->setValue('Update Album');
+    $form->get('submit')->setValue('Update Blog');
 
     echo $this->form()->openTag($form);
 
@@ -257,26 +257,26 @@ controller:
    :emphasize-lines: 11, 62-74
 
     <?php
-    // Filename: /module/Album/config/module.config.php
+    // Filename: /module/Blog/config/module.config.php
     return array(
         'db'              => array( /** Db Config */ ),
         'service_manager' => array( /** ServiceManager Config */ ),
         'view_manager'    => array( /** ViewManager Config */ ),
         'controllers'     => array(
             'factories' => array(
-                'Album\Controller\List'   => 'Album\Factory\ListControllerFactory',
-                'Album\Controller\Write'  => 'Album\Factory\WriteControllerFactory',
-                'Album\Controller\Delete' => 'Album\Factory\DeleteControllerFactory'
+                'Blog\Controller\List'   => 'Blog\Factory\ListControllerFactory',
+                'Blog\Controller\Write'  => 'Blog\Factory\WriteControllerFactory',
+                'Blog\Controller\Delete' => 'Blog\Factory\DeleteControllerFactory'
             )
         ),
         'router'          => array(
             'routes' => array(
-                'album' => array(
+                'blog' => array(
                     'type' => 'literal',
                     'options' => array(
-                        'route'    => '/album',
+                        'route'    => '/blog',
                         'defaults' => array(
-                            'controller' => 'Album\Controller\List',
+                            'controller' => 'Blog\Controller\List',
                             'action'     => 'index',
                         )
                     ),
@@ -299,7 +299,7 @@ controller:
                             'options' => array(
                                 'route'    => '/add',
                                 'defaults' => array(
-                                    'controller' => 'Album\Controller\Write',
+                                    'controller' => 'Blog\Controller\Write',
                                     'action'     => 'add'
                                 )
                             )
@@ -309,7 +309,7 @@ controller:
                             'options' => array(
                                 'route'    => '/edit/:id',
                                 'defaults' => array(
-                                    'controller' => 'Album\Controller\Write',
+                                    'controller' => 'Blog\Controller\Write',
                                     'action'     => 'edit'
                                 ),
                                 'constraints' => array(
@@ -322,7 +322,7 @@ controller:
                             'options' => array(
                                 'route'    => '/delete/:id',
                                 'defaults' => array(
-                                    'controller' => 'Album\Controller\Delete',
+                                    'controller' => 'Blog\Controller\Delete',
                                     'action'     => 'delete'
                                 ),
                                 'constraints' => array(
@@ -336,8 +336,8 @@ controller:
         )
     );
 
-Notice here that we have assigned yet another controller ``Album\Controller\Delete``. This is due to the fact that this
-controller will **not** require the ``AlbumForm``. A ``DeleteForm`` is a perfect example for when you do not even need to
+Notice here that we have assigned yet another controller ``Blog\Controller\Delete``. This is due to the fact that this
+controller will **not** require the ``BlogForm``. A ``DeleteForm`` is a perfect example for when you do not even need to
 make use of the ``Zend\Form`` component. Let's go ahead and create our controller first:
 
 **The Factory**
@@ -346,10 +346,10 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
    :linenos:
 
     <?php
-    // Filename: /module/Album/src/Album/Factory/ListControllerFactory.php
-    namespace Album\Factory;
+    // Filename: /module/Blog/src/Blog/Factory/ListControllerFactory.php
+    namespace Blog\Factory;
 
-    use Album\Controller\DeleteController;
+    use Blog\Controller\DeleteController;
     use Zend\ServiceManager\FactoryInterface;
     use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -365,9 +365,9 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
         public function createService(ServiceLocatorInterface $serviceLocator)
         {
             $realServiceLocator = $serviceLocator->getServiceLocator();
-            $albumService       = $realServiceLocator->get('Album\Service\AlbumServiceInterface');
+            $blogService       = $realServiceLocator->get('Blog\Service\BlogServiceInterface');
 
-            return new DeleteController($albumService);
+            return new DeleteController($blogService);
         }
     }
 
@@ -378,30 +378,30 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
    :emphasize-lines: 31-35
 
     <?php
-    namespace Album\Controller;
+    namespace Blog\Controller;
 
-    use Album\Service\AlbumServiceInterface;
+    use Blog\Service\BlogServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class DeleteController extends AbstractActionController
     {
         /**
-         * @var \Album\Service\AlbumServiceInterface
+         * @var \Blog\Service\BlogServiceInterface
          */
-        protected $albumService;
+        protected $blogService;
 
-        public function __construct(AlbumServiceInterface $albumService)
+        public function __construct(BlogServiceInterface $blogService)
         {
-            $this->albumService = $albumService;
+            $this->blogService = $blogService;
         }
 
         public function deleteAction()
         {
             try {
-                $album = $this->albumService->findAlbum($this->params('id'));
+                $blog = $this->blogService->findBlog($this->params('id'));
             } catch (\InvalidArgumentException $e) {
-                return $this->redirect()->toRoute('album');
+                return $this->redirect()->toRoute('blog');
             }
 
             $request = $this->getRequest();
@@ -410,24 +410,24 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
                 $del = $request->getPost('delete_confirmation', 'no');
 
                 if ($del === 'yes') {
-                    $this->albumService->deleteAlbum($album);
+                    $this->blogService->deleteBlog($blog);
                 }
 
-                return $this->redirect()->toRoute('album');
+                return $this->redirect()->toRoute('blog');
             }
 
             return new ViewModel(array(
-                'album' => $album
+                'blog' => $blog
             ));
         }
     }
 
-As you can see this is nothing new. We inject the ``AlbumService`` into the controller and inside the action we first
-check if the album exists. If so we check if it's a post request and inside there we check if a certain post parameter
-called ``delete_confirmation`` is present. If the value of that then is ``yes`` we delete the album through the
-``AlbumService``s ``deleteAlbum()`` function.
+As you can see this is nothing new. We inject the ``BlogService`` into the controller and inside the action we first
+check if the blog exists. If so we check if it's a post request and inside there we check if a certain post parameter
+called ``delete_confirmation`` is present. If the value of that then is ``yes`` we delete the blog through the
+``BlogService``s ``deleteBlog()`` function.
 
-When you're writing this code you'll notice that you don't get typehints for the ``deleteAlbum()`` function because we
+When you're writing this code you'll notice that you don't get typehints for the ``deleteBlog()`` function because we
 haven't added it to the service / interface yet. Go ahead and add the function to the interface and implement it inside
 the service.
 
@@ -438,46 +438,46 @@ the service.
    :emphasize-lines: 41
 
     <?php
-    // Filename: /module/Album/src/Album/Service/AlbumServiceInterface.php
-    namespace Album\Service;
+    // Filename: /module/Blog/src/Blog/Service/BlogServiceInterface.php
+    namespace Blog\Service;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
 
-    interface AlbumServiceInterface
+    interface BlogServiceInterface
     {
         /**
-         * Should return a set of all albums that we can iterate over. Single entries of the array or \Traversable object
-         * should be of type \Album\Model\Album
+         * Should return a set of all blogs that we can iterate over. Single entries of the array or \Traversable object
+         * should be of type \Blog\Model\Blog
          *
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
-        public function findAllAlbums();
+        public function findAllBlogs();
 
         /**
-         * Should return a single album
+         * Should return a single blog
          *
-         * @param  int $id Identifier of the Album that should be returned
-         * @return AlbumInterface
+         * @param  int $id Identifier of the Blog that should be returned
+         * @return BlogInterface
          */
-        public function findAlbum($id);
+        public function findBlog($id);
 
         /**
-         * Should save a given implementation of the AlbumInterface and return it. If it is an existing Album the Album
-         * should be updated, if it's a new Album it should be created.
+         * Should save a given implementation of the BlogInterface and return it. If it is an existing Blog the Blog
+         * should be updated, if it's a new Blog it should be created.
          *
-         * @param  AlbumInterface $album
-         * @return AlbumInterface
+         * @param  BlogInterface $blog
+         * @return BlogInterface
          */
-        public function saveAlbum(AlbumInterface $album);
+        public function saveBlog(BlogInterface $blog);
 
         /**
-         * Should delete a given implementation of the AlbumInterface and return true if the deletion has been
+         * Should delete a given implementation of the BlogInterface and return true if the deletion has been
          * successful or false if not.
          *
-         * @param  AlbumInterface $album
+         * @param  BlogInterface $blog
          * @return bool
          */
-        public function deleteAlbum(AlbumInterface $album);
+        public function deleteBlog(BlogInterface $blog);
     }
 
 **The Service**
@@ -487,103 +487,103 @@ the service.
    :emphasize-lines: 50-53
 
     <?php
-    // Filename: /module/Album/src/Album/Service/AlbumService.php
-    namespace Album\Service;
+    // Filename: /module/Blog/src/Blog/Service/BlogService.php
+    namespace Blog\Service;
 
-    use Album\Mapper\AlbumMapperInterface;
-    use Album\Model\AlbumInterface;
+    use Blog\Mapper\BlogMapperInterface;
+    use Blog\Model\BlogInterface;
 
-    class AlbumService implements AlbumServiceInterface
+    class BlogService implements BlogServiceInterface
     {
         /**
-         * @var \Album\Mapper\AlbumMapperInterface
+         * @var \Blog\Mapper\BlogMapperInterface
          */
-        protected $albumMapper;
+        protected $blogMapper;
 
         /**
-         * @param AlbumMapperInterface $albumMapper
+         * @param BlogMapperInterface $blogMapper
          */
-        public function __construct(AlbumMapperInterface $albumMapper)
+        public function __construct(BlogMapperInterface $blogMapper)
         {
-            $this->albumMapper = $albumMapper;
+            $this->blogMapper = $blogMapper;
         }
 
         /**
          * @inheritDoc
          */
-        public function findAllAlbums()
+        public function findAllBlogs()
         {
-            return $this->albumMapper->findAll();
+            return $this->blogMapper->findAll();
         }
 
         /**
          * @inheritDoc
          */
-        public function findAlbum($id)
+        public function findBlog($id)
         {
-            return $this->albumMapper->find($id);
+            return $this->blogMapper->find($id);
         }
 
         /**
          * @inheritDoc
          */
-        public function saveAlbum(AlbumInterface $album)
+        public function saveBlog(BlogInterface $blog)
         {
-            return $this->albumMapper->save($album);
+            return $this->blogMapper->save($blog);
         }
 
         /**
          * @inheritDoc
          */
-        public function deleteAlbum(AlbumInterface $album)
+        public function deleteBlog(BlogInterface $blog)
         {
-            return $this->albumMapper->delete($album);
+            return $this->blogMapper->delete($blog);
         }
     }
 
-Now we assume that the ``AlbumMapperInterface`` has a ``delete()``-function. We haven't yet implemented this one so go
-ahead and add it to the ``AlbumMapperInterface``.
+Now we assume that the ``BlogMapperInterface`` has a ``delete()``-function. We haven't yet implemented this one so go
+ahead and add it to the ``BlogMapperInterface``.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 36
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/AlbumMapperInterface.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/BlogMapperInterface.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
 
-    interface AlbumMapperInterface
+    interface BlogMapperInterface
     {
         /**
          * @param int|string $id
-         * @return AlbumInterface
+         * @return BlogInterface
          * @throws \InvalidArgumentException
          */
         public function find($id);
 
         /**
-         * @return array|AlbumInterface[]
+         * @return array|BlogInterface[]
          */
         public function findAll();
 
         /**
-         * @param AlbumInterface $albumObject
+         * @param BlogInterface $blogObject
          *
-         * @param AlbumInterface $albumObject
-         * @return AlbumInterface
+         * @param BlogInterface $blogObject
+         * @return BlogInterface
          * @throws \Exception
          */
-        public function save(AlbumInterface $albumObject);
+        public function save(BlogInterface $blogObject);
 
         /**
-         * @param AlbumInterface $albumObject
+         * @param BlogInterface $blogObject
          *
          * @return bool
          * @throws \Exception
          */
-        public function delete(AlbumInterface $albumObject);
+        public function delete(BlogInterface $blogObject);
     }
 
 Now that we have declared the function inside the interface it's time to implement it inside our ``ZendDbSqlMapper``:
@@ -593,10 +593,10 @@ Now that we have declared the function inside the interface it's time to impleme
    :emphasize-lines: 118-128
 
     <?php
-    // Filename: /module/Album/src/Album/Mapper/ZendDbSqlMapper.php
-    namespace Album\Mapper;
+    // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
+    namespace Blog\Mapper;
 
-    use Album\Model\AlbumInterface;
+    use Blog\Model\BlogInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
@@ -606,7 +606,7 @@ Now that we have declared the function inside the interface it's time to impleme
     use Zend\Db\Sql\Update;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements AlbumMapperInterface
+    class ZendDbSqlMapper implements BlogMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -615,21 +615,21 @@ Now that we have declared the function inside the interface it's time to impleme
 
         protected $hydrator;
 
-        protected $albumPrototype;
+        protected $blogPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param AlbumInterface    $albumPrototype
+         * @param BlogInterface    $blogPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            AlbumInterface $albumPrototype
+            BlogInterface $blogPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->albumPrototype = $albumPrototype;
+            $this->blogPrototype = $blogPrototype;
         }
 
         /**
@@ -638,17 +638,17 @@ Now that we have declared the function inside the interface it's time to impleme
         public function find($id)
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
             $select->where(array('id = ?' => $id));
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-                return $this->hydrator->hydrate($result->current(), $this->albumPrototype);
+                return $this->hydrator->hydrate($result->current(), $this->blogPrototype);
             }
 
-            throw new \InvalidArgumentException("Album with given ID:{$id} not found.");
+            throw new \InvalidArgumentException("Blog with given ID:{$id} not found.");
         }
 
         /**
@@ -657,13 +657,13 @@ Now that we have declared the function inside the interface it's time to impleme
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('album');
+            $select = $sql->select('blog');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->albumPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
 
                 return $resultSet->initialize($result);
             }
@@ -674,20 +674,20 @@ Now that we have declared the function inside the interface it's time to impleme
         /**
          * @inheritDoc
          */
-        public function save(AlbumInterface $albumObject)
+        public function save(BlogInterface $blogObject)
         {
-            $albumData = $this->hydrator->extract($albumObject);
-            unset($albumData['id']); // Neither Insert nor Update needs the ID in the array
+            $blogData = $this->hydrator->extract($blogObject);
+            unset($blogData['id']); // Neither Insert nor Update needs the ID in the array
 
-            if ($albumObject->getId()) {
+            if ($blogObject->getId()) {
                 // ID present, it's an Update
-                $action = new Update('album');
-                $action->set($albumData);
-                $action->where(array('id = ?' => $albumObject->getId()));
+                $action = new Update('blog');
+                $action->set($blogData);
+                $action->where(array('id = ?' => $blogObject->getId()));
             } else {
                 // ID NOT present, it's an Insert
-                $action = new Insert('album');
-                $action->values($albumData);
+                $action = new Insert('blog');
+                $action->values($blogData);
             }
 
             $sql    = new Sql($this->dbAdapter);
@@ -697,10 +697,10 @@ Now that we have declared the function inside the interface it's time to impleme
             if ($result instanceof ResultInterface) {
                 if ($newId = $result->getGeneratedValue()) {
                     // When a value has been generated, set it on the object
-                    $albumObject->setId($newId);
+                    $blogObject->setId($newId);
                 }
 
-                return $albumObject;
+                return $blogObject;
             }
 
             throw new \Exception("Database error");
@@ -709,10 +709,10 @@ Now that we have declared the function inside the interface it's time to impleme
         /**
          * @inheritDoc
          */
-        public function delete(AlbumInterface $albumObject)
+        public function delete(BlogInterface $blogObject)
         {
-            $action = new Delete('album');
-            $action->where(array('id = ?' => $albumObject->getId()));
+            $action = new Delete('blog');
+            $action->where(array('id = ?' => $blogObject->getId()));
 
             $sql    = new Sql($this->dbAdapter);
             $stmt   = $sql->prepareStatementForSqlObject($action);
@@ -723,19 +723,19 @@ Now that we have declared the function inside the interface it's time to impleme
     }
 
 The ``Delete`` statement should look fairly similar to you as this is basically the same deal as all other queries we've
-created so far. With all of this set up now we're good to go ahead and write our view file so we can delete albums.
+created so far. With all of this set up now we're good to go ahead and write our view file so we can delete blogs.
 
 .. code-block:: php
    :linenos:
 
-    <!-- Filename: /module/Album/view/album/delete/delete.phtml -->
+    <!-- Filename: /module/Blog/view/blog/delete/delete.phtml -->
     <h1>DeleteController::deleteAction()</h1>
     <p>
         Are you sure that you want to delete
-        '<?php echo $this->escapeHtml($this->album->getTitle()); ?>' by
-        '<?php echo $this->escapeHtml($this->album->getArtist()); ?>'?
+        '<?php echo $this->escapeHtml($this->blog->getTitle()); ?>' by
+        '<?php echo $this->escapeHtml($this->blog->getText()); ?>'?
     </p>
-    <form action="<?php echo $this->url('album/delete', array(), true) ?>" method="post">
+    <form action="<?php echo $this->url('blog/delete', array(), true) ?>" method="post">
         <input type="submit" name="delete_confirmation" value="yes" />
         <input type="submit" name="delete_confirmation" value="no" />
     </form>
@@ -745,7 +745,7 @@ Summary
 
 In this chapter we've learned how data binding within the ``Zend\Form``-component works and through it we have finished
 our update-routine. Then we have learned how we can use HTML-Forms and checking it's data without relying on
-``Zend\Form``, which ultimately lead us to having a full CRUD-Routine for the Album example.
+``Zend\Form``, which ultimately lead us to having a full CRUD-Routine for the Blog example.
 
 In the next chapter we'll recapitulate everything we've done. We'll talk about the design-patterns we've used and we're
 going to cover a couple of questions that highly likely arose during the course of this tutorial.
