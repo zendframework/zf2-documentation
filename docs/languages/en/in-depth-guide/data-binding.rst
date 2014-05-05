@@ -40,7 +40,7 @@ form. This is done the following way inside your controller.
             FormInterface $postForm
         ) {
             $this->postService = $postService;
-            $this->blogForm    = $postForm;
+            $this->postForm    = $postForm;
         }
 
         public function addAction()
@@ -48,11 +48,11 @@ form. This is done the following way inside your controller.
             $request = $this->getRequest();
 
             if ($request->isPost()) {
-                $this->blogForm->setData($request->getPost());
+                $this->postForm->setData($request->getPost());
 
-                if ($this->blogForm->isValid()) {
+                if ($this->postForm->isValid()) {
                     try {
-                        $this->postService->savePost($this->blogForm->getData());
+                        $this->postService->savePost($this->postForm->getData());
 
                         return $this->redirect()->toRoute('post');
                     } catch (\Exception $e) {
@@ -63,21 +63,21 @@ form. This is done the following way inside your controller.
             }
 
             return new ViewModel(array(
-                'form' => $this->blogForm
+                'form' => $this->postForm
             ));
         }
 
         public function editAction()
         {
             $request = $this->getRequest();
-            $post   = $this->postService->findPost($this->params('id'));
+            $post    = $this->postService->findPost($this->params('id'));
 
-            $this->blogForm->bind($post);
+            $this->postForm->bind($post);
 
             if ($request->isPost()) {
-                $this->blogForm->setData($request->getPost());
+                $this->postForm->setData($request->getPost());
 
-                if ($this->blogForm->isValid()) {
+                if ($this->postForm->isValid()) {
                     try {
                         $this->postService->savePost($post);
 
@@ -90,16 +90,17 @@ form. This is done the following way inside your controller.
             }
 
             return new ViewModel(array(
-                'form' => $this->blogForm
+                'form' => $this->postForm
             ));
         }
     }
 
-Compared to the ``addAction()`` the ``editAction()`` has only three different lines. The first one is used to simply get the
-relevant ``Blog``-object from the service identified by the ``id``-parameter of the route (which we'll be writing soon).
+Compared to the ``addAction()`` the ``editAction()`` has only three different lines. The first one is used to simply
+get the relevant ``Post``-object from the service identified by the ``id``-parameter of the route (which we'll be
+writing soon).
 
 The second line then shows you how you can bind data to the ``Zend\Form``-Component. We're able to use an object here
-because our ``BlogFieldset`` will use the hydrator to display the data coming from the object.
+because our ``PostFieldset`` will use the hydrator to display the data coming from the object.
 
 Lastly instead of actually doing ``$form->getData()`` we simply use the previous ``$post``-variable since it will be
 updated with the latest data from the form thanks to the data-binding. And that's all there is to it. The only things
@@ -125,7 +126,7 @@ new route:
         'controllers'     => array( /** ControllerManager Config* */ ),
         'router'          => array(
             'routes' => array(
-                'post' => array(
+                'blog' => array(
                     'type' => 'literal',
                     'options' => array(
                         'route'    => '/blog',
@@ -186,7 +187,7 @@ Next in line is the creation of the new template ``blog/write/edit``:
    :linenos:
    :emphasize-lines: 6
 
-    <!-- Filename: /module/Blog/view/blog/write/add.phtml -->
+    <!-- Filename: /module/Blog/view/blog/write/edit.phtml -->
     <h1>WriteController::editAction()</h1>
     <?php
     $form = $this->form;
@@ -237,7 +238,7 @@ the view, too.
     $form->setAttribute('action', $this->url('blog/edit', array(), true));
     $form->prepare();
 
-    $form->get('submit')->setValue('Update Blog');
+    $form->get('submit')->setValue('Update Post');
 
     echo $this->form()->openTag($form);
 
@@ -337,7 +338,7 @@ controller:
     );
 
 Notice here that we have assigned yet another controller ``Blog\Controller\Delete``. This is due to the fact that this
-controller will **not** require the ``BlogForm``. A ``DeleteForm`` is a perfect example for when you do not even need to
+controller will **not** require the ``PostForm``. A ``DeleteForm`` is a perfect example for when you do not even need to
 make use of the ``Zend\Form`` component. Let's go ahead and create our controller first:
 
 **The Factory**
@@ -365,7 +366,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
         public function createService(ServiceLocatorInterface $serviceLocator)
         {
             $realServiceLocator = $serviceLocator->getServiceLocator();
-            $postService       = $realServiceLocator->get('Blog\Service\PostServiceInterface');
+            $postService        = $realServiceLocator->get('Blog\Service\PostServiceInterface');
 
             return new DeleteController($postService);
         }
@@ -446,38 +447,38 @@ the service.
     interface PostServiceInterface
     {
         /**
-         * Should return a set of all blogs that we can iterate over. Single entries of the array or \Traversable object
-         * should be of type \Blog\Model\Post
+         * Should return a set of all blog posts that we can iterate over. Single entries of the array are supposed to be
+         * implementing \Blog\Model\PostInterface
          *
          * @return array|PostInterface[]
          */
         public function findAllPosts();
 
         /**
-         * Should return a single blog
+         * Should return a single blog post
          *
-         * @param  int $id Identifier of the Blog that should be returned
+         * @param  int $id Identifier of the Post that should be returned
          * @return PostInterface
          */
         public function findPost($id);
 
         /**
-         * Should save a given implementation of the PostInterface and return it. If it is an existing Blog the Blog
+         * Should save a given implementation of the PostInterface and return it. If it is an existing Post the Post
          * should be updated, if it's a new Post it should be created.
          *
-         * @param  PostInterface $post
+         * @param  PostInterface $blog
          * @return PostInterface
          */
-        public function savePost(PostInterface $post);
+        public function savePost(PostInterface $blog);
 
         /**
          * Should delete a given implementation of the PostInterface and return true if the deletion has been
          * successful or false if not.
          *
-         * @param  PostInterface $post
+         * @param  PostInterface $blog
          * @return bool
          */
-        public function deletePost(PostInterface $post);
+        public function deletePost(PostInterface $blog);
     }
 
 **The Service**
