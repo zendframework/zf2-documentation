@@ -354,10 +354,10 @@ is significantly easier than debugging generic routes.
 
 
 A practical example for our Blog Module
-========================================
+=======================================
 
 Now that we know how to configure new routes, let's first create a route to display only a single ``Blog`` from our
-Database. We want to be able to identify blogs by their internal ID. Given that ID is a variable parameter we need
+Database. We want to be able to identify blog posts by their internal ID. Given that ID is a variable parameter we need
 a route of type ``Segment``. Furthermore we want to put this route as a ``child_route`` to the route of name ``blog``.
 
 .. code-block:: php
@@ -409,7 +409,7 @@ complicated. Basically we tell the router that the parameter ``id`` has to start
 that's the ``[1-9]`` part, and after that any digit can follow, but doesn't have to (that's the ``\d*`` part).
 
 The route will call the same ``controller`` like the parent route but it will call the ``detailAction()`` instead. Go
-to your browser and request the URL ``http://domain.loc/blog/2``. You'll see the following error message:
+to your browser and request the URL ``http://localhost:8080/blog/2``. You'll see the following error message:
 
 .. code-block:: text
    :linenos:
@@ -436,26 +436,26 @@ then refresh the page.
     // FileName: /module/Blog/src/Blog/Controller/ListController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Blog\Service\BlogServiceInterface
+         * @var \Blog\Service\PostServiceInterface
          */
-        protected $blogService;
+        protected $postService;
 
-        public function __construct(BlogServiceInterface $blogService)
+        public function __construct(PostServiceInterface $postService)
         {
-            $this->blogService = $blogService;
+            $this->postService = $postService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'blogs' => $this->blogService->findAllBlogs()
+                'posts' => $this->postService->findAllPosts()
             ));
         }
 
@@ -466,20 +466,20 @@ then refresh the page.
     }
 
 Now you'll see the all familiar message that a template was unable to be rendered. Let's create this template now
-and assume that we will get one ``Blog`` passed to the template to see the details of our blog. Create a new view
-file under ``/view/blog/list/detail.phtml``:
+and assume that we will get one ``Post`-Object` passed to the template to see the details of our blog. Create a new
+view file under ``/view/blog/list/detail.phtml``:
 
 .. code-block:: html
    :linenos:
 
     <!-- FileName: /module/Blog/view/blog/list/detail.phtml -->
-    <h1>Blog Details</h1>
+    <h1>Post Details</h1>
 
     <dl>
-        <dt>Blog Title</dt>
-        <dd><?php echo $this->escapeHtml($this->blog->getTitle());?></dd>
-        <dt>Blog Text</dt>
-        <dd><?php echo $this->escapeHtml($this->blog->getText());?></dd>
+        <dt>Post Title</dt>
+        <dd><?php echo $this->escapeHtml($this->post->getTitle());?></dd>
+        <dt>Post Text</dt>
+        <dd><?php echo $this->escapeHtml($this->post->getText());?></dd>
     </dl>
 
 Looking at this template we're expecting the variable ``$this->blog`` to be an instance of our ``Blog``-Model. Let's
@@ -493,26 +493,26 @@ now modify our ``ListController`` so that an ``Blog`` will be passed.
     // FileName: /module/Blog/src/Blog/Controller/ListController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Blog\Service\BlogServiceInterface
+         * @var \Blog\Service\PostServiceInterface
          */
-        protected $blogService;
+        protected $postService;
 
-        public function __construct(BlogServiceInterface $blogService)
+        public function __construct(PostServiceInterface $postService)
         {
-            $this->blogService = $blogService;
+            $this->postService = $postService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'blogs' => $this->blogService->findAllBlogs()
+                'posts' => $this->postService->findAllPosts()
             ));
         }
 
@@ -521,15 +521,15 @@ now modify our ``ListController`` so that an ``Blog`` will be passed.
             $id = $this->params()->fromRoute('id');
 
             return new ViewModel(array(
-                'blog' => $this->blogService->findBlog($id)
+                'post' => $this->postService->findPost($id)
             ));
         }
     }
 
-If you refresh your application now you'll see the details for our Blog to be displayed. However there is one
+If you refresh your application now you'll see the details for our ``Post`` to be displayed. However there is one
 little Problem with what we have done. While we do have our Service set up to throw an ``\InvalidArgumentException``
-whenever no ``Blog`` matching a given ``id`` is found, we don't make use of this just yet. Go to your browser and
-open the URL ``http://domain.loc/blog/99``. You will see the following error message:
+whenever no ``Post`` matching a given ``id`` is found, we don't make use of this just yet. Go to your browser and
+open the URL ``http://localhost:8080/blog/99``. You will see the following error message:
 
 .. code-block:: text
    :linenos:
@@ -541,14 +541,14 @@ open the URL ``http://domain.loc/blog/99``. You will see the following error mes
     InvalidArgumentException
 
     File:
-    {rootPath}/module/Blog/src/Blog/Service/BlogService.php:40
+    {rootPath}/module/Blog/src/Blog/Service/PostService.php:40
 
     Message:
     Could not find row 99
 
 This is kind of ugly, so our ``ListController`` should be prepared to do something whenever an
-``InvalidArgumentException`` is thrown by the ``BlogService``. Whenever an invalid ``Blog`` is requested we want the
-User to be redirected to the Blog-Overview. Let's do this by putting the call against the ``BlogService`` in a
+``InvalidArgumentException`` is thrown by the ``PostService``. Whenever an invalid ``Post`` is requested we want the
+User to be redirected to the Post-Overview. Let's do this by putting the call against the ``PostService`` in a
 try-catch statement.
 
 .. code-block:: php
@@ -559,26 +559,26 @@ try-catch statement.
     // FileName: /module/Blog/src/Blog/Controller/ListController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Blog\Service\BlogServiceInterface
+         * @var \Blog\Service\PostServiceInterface
          */
-        protected $blogService;
+        protected $postService;
 
-        public function __construct(BlogServiceInterface $blogService)
+        public function __construct(PostServiceInterface $postService)
         {
-            $this->blogService = $blogService;
+            $this->postService = $postService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'blogs' => $this->blogService->findAllBlogs()
+                'posts' => $this->postService->findAllPosts()
             ));
         }
 
@@ -587,16 +587,16 @@ try-catch statement.
             $id = $this->params()->fromRoute('id');
 
             try {
-                $blog = $this->blogService->findBlog($id);
+                $post = $this->postService->findPost($id);
             } catch (\InvalidArgumentException $ex) {
                 return $this->redirect()->toRoute('blog');
             }
 
             return new ViewModel(array(
-                'blog' => $blog
+                'post' => $post
             ));
         }
     }
 
-Now whenever you access an invalid ``id`` you'll be redirected to the route ``blog`` which is our list of blogs,
+Now whenever you access an invalid ``id`` you'll be redirected to the route ``blog`` which is our list of blog posts,
 perfect!

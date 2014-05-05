@@ -1,8 +1,8 @@
 Introducing Zend\\Db\\Sql and Zend\\Stdlib\\Hydrator
 ====================================================
 
-In the last chapter we have introduced the mapping layer and created the ``BlogMapperInterface``. Now it is time to
-create an implementation of this interface so that we can make use of our ``BlogService`` again. As an introductionary
+In the last chapter we have introduced the mapping layer and created the ``PostMapperInterface``. Now it is time to
+create an implementation of this interface so that we can make use of our ``PostService`` again. As an introductionary
 example we will be using the ``Zend\Db\Sql`` classes. So let's jump right into it.
 
 
@@ -10,13 +10,13 @@ Preparing the Database
 ======================
 
 Before we can start using a database we should prepare one. In this example we'll be using a MySQL-Database called
-``blog`` which is accessible on the ``localhost``. The database will have one table called ``blog`` with three columns
+``blog`` which is accessible on the ``localhost``. The database will have one table called ``posts`` with three columns
 ``id``, ``title`` and ``text`` with the ``id`` being the primary key. For demo purpose, please use this database-dump.
 
 .. code-block:: text
    :linenos:
 
-    CREATE TABLE blog (
+    CREATE TABLE posts (
         id int(11) NOT NULL auto_increment,
         title varchar(100) NOT NULL,
         text varchar(100) NOT NULL,
@@ -33,8 +33,6 @@ Before we can start using a database we should prepare one. In this example we'l
     INSERT INTO blog (title, text)
         VALUES  ('Blog #5',  'Welcome to my fifth Blogpost');
 
-Feel free to modify the blog and text data to your liking!
-
 
 Quick Facts Zend\\Db\\Sql
 =========================
@@ -42,8 +40,8 @@ Quick Facts Zend\\Db\\Sql
 To create queries against a database using ``Zend\Db\Sql`` you need to have a database connection available. This
 connection is served through any class implementing the ``Zend\Db\Adapter\AdapterInterface``. The most handy way to
 create such a class is through the use of the ``Zend\Db\Adapter\AdapterServiceFactory`` which listens to the config-key
-``db``. Let's start by creating the required configuration entries and modify your ``module.config.php`` adding a new top-
-level key called ``db``:
+``db``. Let's start by creating the required configuration entries and modify your ``module.config.php`` adding a new
+top-level key called ``db``:
 
 .. code-block:: php
    :linenos:
@@ -54,8 +52,8 @@ level key called ``db``:
     return array(
         'db' => array(
             'driver'         => 'Pdo',
-            'username'       => 'your_username',
-            'password'       => 'your_password',
+            'username'       => 'SECRET_USERNAME',  //edit this
+            'password'       => 'SECRET_PASSWORD',  //edit this
             'dsn'            => 'mysql:dbname=blog;host=localhost',
             'driver_options' => array(
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
@@ -67,13 +65,16 @@ level key called ``db``:
         'router'          => array( /** Router Config */ )
     );
 
-As you can see we've added the ``db``-key and inside we create the parameters required to create a driver instance. One
-important thing to note is that in general you **do not** want to have your credentials inside the normal configuration
-file but rather in a ``/config/autoload/db.local.php`` which will **not** be pushed to servers using the zend-skeletons
-``.gitignore`` file. Keep this in mind when you share your codes!
+As you can see we've added the ``db``-key and inside we create the parameters required to create a driver instance.
 
-The next thing we need to do is by making use of the ``AdapterServiceFactory``. This is a ServiceManager entry that will
-look like the following:
+.. note::
+
+    One important thing to note is that in general you **do not** want to have your credentials inside the normal
+    configuration file but rather in a local configuration file like ``/config/autoload/db.local.php``, that will
+    **not** be pushed to servers using zend-skeletons ``.gitignore`` file. Keep this in mind when you share your codes!
+
+The next thing we need to do is by making use of the ``AdapterServiceFactory``. This is a ``ServiceManager`` entry that
+will look like the following:
 
 
 .. code-block:: php
@@ -85,8 +86,8 @@ look like the following:
     return array(
         'db' => array(
             'driver'         => 'Pdo',
-            'username'       => 'root',
-            'password'       => 'admin',
+            'username'       => 'SECRET_USERNAME',  //edit this
+            'password'       => 'SECRET_PASSWORD',  //edit this
             'dsn'            => 'mysql:dbname=blog;host=localhost',
             'driver_options' => array(
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
@@ -94,7 +95,7 @@ look like the following:
         ),
         'service_manager' => array(
             'factories' => array(
-                'Blog\Service\BlogServiceInterface' => 'Blog\Service\Factory\BlogServiceFactory',
+                'Blog\Service\PostServiceInterface' => 'Blog\Service\Factory\PostServiceFactory',
                 'Zend\Db\Adapter\Adapter'             => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
@@ -108,22 +109,22 @@ running instance of the ``Zend\Db\Adapter\AdapterInterface`` depending on what d
 
 With the adapter in place we're now able to run queries against the database. The construction of queries is best done
 through the "QueryBuilder" features of ``Zend\Db\Sql`` which are ``Zend\Db\Sql\Sql`` for select queries,
-``Zend\Db\Sql\Insert`` for insert queries, ``Zend\Db\Sql\Update`` for update queries and ``Zend\Db\Sql\Delete`` for delete
-queries. The basic workflow of these components is:
+``Zend\Db\Sql\Insert`` for insert queries, ``Zend\Db\Sql\Update`` for update queries and ``Zend\Db\Sql\Delete`` for
+delete queries. The basic workflow of these components is:
 
 1. Build a query using ``Sql``, ``Insert``, ``Update`` or ``Delete``
 2. Create an Sql-Statement from the ``Sql`` object
 3. Execute the query
 4. Do something with the result
 
-Knowing this we can now write the implementation for the ``BlogMapperInterface``.
+Knowing this we can now write the implementation for the ``PostMapperInterface``.
 
 
 Writing the mapper implementation
 =================================
 
 Our mapper implementation will reside inside the same namespace as its interface. Go ahead and create a class called
-``ZendDbSqlMapper`` and implement the ``BlogMapperInterface``.
+``ZendDbSqlMapper`` and implement the ``PostMapperInterface``.
 
 .. code-block:: php
    :linenos:
@@ -133,14 +134,14 @@ Our mapper implementation will reside inside the same namespace as its interface
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -148,7 +149,7 @@ Our mapper implementation will reside inside the same namespace as its interface
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
@@ -167,10 +168,10 @@ Now recall what we have learned earlier. For ``Zend\Db\Sql`` to function we will
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -188,7 +189,7 @@ Now recall what we have learned earlier. For ``Zend\Db\Sql`` to function we will
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -196,7 +197,7 @@ Now recall what we have learned earlier. For ``Zend\Db\Sql`` to function we will
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
@@ -236,7 +237,7 @@ ahead and create a factory for our mapper implementation.
     }
 
 We're now able to register our mapper implementation as a service. If you recall from the previous chapter, or if you
-were to look at the current error message, you'll note that we call the Service ``Blog\Mapper\BlogMapperInterface`` to
+were to look at the current error message, you'll note that we call the Service ``Blog\Mapper\PostMapperInterface`` to
 get a mapper implementation. Modify the configuration so that this key will call the newly called factory class.
 
 .. code-block:: php
@@ -249,9 +250,9 @@ get a mapper implementation. Modify the configuration so that this key will call
         'db'              => array( /** Db Config */ ),
         'service_manager' => array(
             'factories' => array(
-                'Blog\Mapper\BlogMapperInterface'   => 'Blog\Factory\ZendDbSqlMapperFactory',
-                'Blog\Service\BlogServiceInterface' => 'Blog\Service\Factory\BlogServiceFactory',
-                'Zend\Db\Adapter\Adapter'             => 'Zend\Db\Adapter\AdapterServiceFactory'
+                'Blog\Mapper\PostMapperInterface'   => 'Blog\Factory\ZendDbSqlMapperFactory',
+                'Blog\Service\PostServiceInterface' => 'Blog\Service\Factory\PostServiceFactory',
+                'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
         'view_manager'    => array( /** ViewManager Config */ ),
@@ -281,7 +282,7 @@ all blogs from the database table.
 
     use Zend\Db\Adapter\AdapterInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -299,7 +300,7 @@ all blogs from the database table.
         /**
          * @param int|string $id
          *
-         * @return \Blog\Entity\BlogInterface
+         * @return \Blog\Entity\PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -307,12 +308,12 @@ all blogs from the database table.
         }
 
         /**
-         * @return array|\Blog\Entity\BlogInterface[]
+         * @return array|\Blog\Entity\PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -340,11 +341,11 @@ function and do a data dumping of the ``$result`` variable:
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Sql\Sql;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -362,7 +363,7 @@ function and do a data dumping of the ``$result`` variable:
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -370,12 +371,12 @@ function and do a data dumping of the ``$result`` variable:
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -392,7 +393,7 @@ Refreshing the application you should now see the following output:
     object(Zend\Db\Adapter\Driver\Pdo\Result)#303 (8) {
       ["statementMode":protected] => string(7) "forward"
       ["resource":protected] => object(PDOStatement)#296 (1) {
-        ["queryString"] => string(29) "SELECT `blog`.* FROM `blog`"
+        ["queryString"] => string(29) "SELECT `posts`.* FROM `posts`"
       }
       ["options":protected] => NULL
       ["currentComplete":protected] => bool(false)
@@ -415,13 +416,13 @@ approach would be to pass the ``Result`` object over into a ``ResultSet`` object
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\ResultSet;
     use Zend\Db\Sql\Sql;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -439,7 +440,7 @@ approach would be to pass the ``Result`` object over into a ``ResultSet`` object
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -447,12 +448,12 @@ approach would be to pass the ``Result`` object over into a ``ResultSet`` object
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -489,7 +490,7 @@ Refreshing the page you should now see the dump of a ``ResultSet`` object that h
       ["dataSource":protected] => object(Zend\Db\Adapter\Driver\Pdo\Result)#303 (8) {
         ["statementMode":protected] => string(7) "forward"
         ["resource":protected] => object(PDOStatement)#296 (1) {
-          ["queryString"] => string(29) "SELECT `blog`.* FROM `blog`"
+          ["queryString"] => string(29) "SELECT `posts`.* FROM `posts`"
         }
         ["options":protected] => NULL
         ["currentComplete":protected] => bool(false)
@@ -503,13 +504,13 @@ Refreshing the page you should now see the dump of a ``ResultSet`` object that h
     }
 
 Another very interesting property is ``["returnType":protected] => string(11) "arrayobject"``. This tells us that all
-database entries will be returned as an ``ArrayObject``. And this is a little problem as the ``BlogMapperInterface``
-requires us to return an array of ``BlogInterface`` objects. Luckily there is a very simple option for us available to
+database entries will be returned as an ``ArrayObject``. And this is a little problem as the ``PostMapperInterface``
+requires us to return an array of ``PostInterface`` objects. Luckily there is a very simple option for us available to
 make this happen. In the examples above we have used the default ``ResultSet`` object. There is also a
 ``HydratingResultSet`` which will hydrate the given data into a provided object.
 
-This means: if we tell the ``HydratingResultSet`` to use the database data to create ``Blog`` objects for us, then it will
-do exactly this. Let's modify our code:
+This means: if we tell the ``HydratingResultSet`` to use the database data to create ``Post`` objects for us, then it
+will do exactly this. Let's modify our code:
 
 .. code-block:: php
    :linenos:
@@ -519,13 +520,13 @@ do exactly this. Let's modify our code:
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
     use Zend\Db\Sql\Sql;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -543,7 +544,7 @@ do exactly this. Let's modify our code:
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -551,18 +552,18 @@ do exactly this. Let's modify our code:
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet(new \Zend\Stdlib\Hydrator\ClassMethods(), new \Blog\Model\Blog());
+                $resultSet = new HydratingResultSet(new \Zend\Stdlib\Hydrator\ClassMethods(), new \Blog\Model\Post());
 
                 return $resultSet->initialize($result);
             }
@@ -571,25 +572,24 @@ do exactly this. Let's modify our code:
         }
     }
 
-We have changed a couple of things here. Firstly instead of a normal ``ResultSet`` we are using the ``HydratingResultSet``.
-This Object requires two parameters, the second one being the object to hydrate into and the first one being the
-``hydrator`` that will be used. A ``hydrator``, in short, is an object that changes any sort of data from one format to
-another. The InputFormat that we have is an ``ArrayObject`` but we want ``Blog``-Models. The ``ClassMethods``-hydrator will
-take care of this using the setter- and getter functions of our ``Blog``-model.
+We have changed a couple of things here. Firstly instead of a normal ``ResultSet`` we are using the
+``HydratingResultSet``. This Object requires two parameters, the second one being the object to hydrate into and the
+first one being the ``hydrator`` that will be used. A ``hydrator``, in short, is an object that changes any sort of
+data from one format to another. The InputFormat that we have is an ``ArrayObject`` but we want ``Post``-Models. The
+``ClassMethods``-hydrator will take care of this using the setter- and getter functions of our ``Post``-model.
 
-Instead of dumping the ``$result`` variable we now directly return the initialized ``HydratingResultSet`` so we'll be able
-to access the data stored within. In case we get something else returned that is not an instance of a ``ResultInterface``
-we return an empty array.
+Instead of dumping the ``$result`` variable we now directly return the initialized ``HydratingResultSet`` so we'll be
+able to access the data stored within. In case we get something else returned that is not an instance of a
+``ResultInterface`` we return an empty array.
 
-Refreshing the page you will now see all your blogs listed on the page. Great!
+Refreshing the page you will now see all your blog posts listed on the page. Great!
 
 
 Refactoring hidden dependencies
 ===============================
 
 There's one little thing that we have done that's not a best-practice. We use both a Hydrator and an Object inside our
-Mapper. Both of which are dependencies and components that the mapper itself shouldn't instantiate. It is much cleaner
-to use constructor-injection for those two components which in turn makes the mapper almost universally usable.
+
 
 .. code-block:: php
    :linenos:
@@ -599,43 +599,49 @@ to use constructor-injection for those two components which in turn makes the ma
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
     use Zend\Db\Sql\Sql;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
          */
         protected $dbAdapter;
 
+        /**
+         * @var \Zend\Stdlib\Hydrator\HydratorInterface
+         */
         protected $hydrator;
 
-        protected $blogPrototype;
+        /**
+         * @var \Blog\Model\PostInterface
+         */
+        protected $postPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param BlogInterface    $blogPrototype
+         * @param PostInterface    $postPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            BlogInterface $blogPrototype
+            PostInterface $postPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->blogPrototype = $blogPrototype;
+            $this->postPrototype  = $postPrototype;
         }
 
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
@@ -643,18 +649,18 @@ to use constructor-injection for those two components which in turn makes the ma
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->postPrototype);
 
                 return $resultSet->initialize($result);
             }
@@ -674,7 +680,7 @@ parameters.
     namespace Blog\Factory;
 
     use Blog\Mapper\ZendDbSqlMapper;
-    use Blog\Model\Blog;
+    use Blog\Model\Post;
     use Zend\ServiceManager\FactoryInterface;
     use Zend\ServiceManager\ServiceLocatorInterface;
     use Zend\Stdlib\Hydrator\ClassMethods;
@@ -693,13 +699,13 @@ parameters.
             return new ZendDbSqlMapper(
                 $serviceLocator->get('Zend\Db\Adapter\Adapter'),
                 new ClassMethods(false),
-                new Blog()
+                new Post()
             );
         }
     }
 
-With this in place you can refresh the application again and you'll see your blogs listed once again. Our Mapper has
-now a really good architecture and no more hidden dependencies.
+With this in place you can refresh the application again and you'll see your blog posts listed once again. Our Mapper
+has now a really good architecture and no more hidden dependencies.
 
 
 Finishing the mapper
@@ -716,74 +722,80 @@ method.
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
     use Zend\Db\Sql\Sql;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
          */
         protected $dbAdapter;
 
+        /**
+         * @var \Zend\Stdlib\Hydrator\HydratorInterface
+         */
         protected $hydrator;
 
-        protected $blogPrototype;
+        /**
+         * @var \Blog\Model\PostInterface
+         */
+        protected $postPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param BlogInterface    $blogPrototype
+         * @param PostInterface    $postPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            BlogInterface $blogPrototype
+            PostInterface $postPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->blogPrototype = $blogPrototype;
+            $this->postPrototype  = $postPrototype;
         }
 
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
             $select->where(array('id = ?' => $id));
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-                return $this->hydrator->hydrate($result->current(), $this->blogPrototype);
+                return $this->hydrator->hydrate($result->current(), $this->postPrototype);
             }
 
             throw new \InvalidArgumentException("Blog with given ID:{$id} not found.");
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->postPrototype);
 
                 return $resultSet->initialize($result);
             }
@@ -792,20 +804,20 @@ method.
         }
     }
 
-The ``find()`` function looks really similar to the ``findAll()`` function. There's just three simple differences. Firstly
-we need to add a condition to the query to only select one row. This is done using the ``where()`` function of the ``Sql``
-object. Then we also check if the ``$result`` has a row in it through ``getAffectedRows()``. The return statement then will
-be hydrated using the injected hydrator into the prototype that has also been injected.
+The ``find()`` function looks really similar to the ``findAll()`` function. There's just three simple differences.
+Firstly we need to add a condition to the query to only select one row. This is done using the ``where()`` function of
+the ``Sql`` object. Then we also check if the ``$result`` has a row in it through ``getAffectedRows()``. The return
+statement then will be hydrated using the injected hydrator into the prototype that has also been injected.
 
-This time, when we do not find a row we will throw an ``\Exception`` so that the application will easily be able to handle
-the scenario.
+This time, when we do not find a row we will throw an ``\InvalidArgumentException`` so that the application will easily
+be able to handle the scenario.
 
 
 Conclusion
 ==========
 
 Finishing this chapter you now know how to query for data using the ``Zend\Db\Sql`` classes. You have also learned about
-the ``Zend\Stdlib\Hydrator``-Component which is one of the new key components of Zend Framework. Furthermore you have once
-again proven that you are able to manage proper dependency injection.
+the ``Zend\Stdlib\Hydrator``-Component which is one of the new key components of ZF2. Furthermore you have once again
+proven that you are able to manage proper dependency injection.
 
 In the next chapter we'll take a closer look at the router so we'll be able to do some more action within our Module.

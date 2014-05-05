@@ -114,7 +114,7 @@ same directory under ``/module/Blog/src/Blog/Form/InsertBlogForm`` and add the `
                 'type' => 'submit',
                 'name' => 'submit',
                 'attributes' => array(
-                    'value' => 'Insert new Blog'
+                    'value' => 'Insert new Post'
                 )
             ));
         }
@@ -124,14 +124,14 @@ And that's our form. Nothing special here, we add our ``BlogFieldset`` to the Fo
 and nothing more. Let's now make use of the Form.
 
 
-Adding a new Blog
+Adding a new Post
 ==================
 
 Now that we have the ``BlogForm`` written we want to use it. But there's a couple more tasks that you need to do.
 The tasks that are standing right in front of you are:
 
 - create a new controller ``WriteController``
-- add ``BlogService`` as a dependency to the ``WriteController``
+- add ``PostService`` as a dependency to the ``WriteController``
 - add ``BlogForm`` as a dependency to the ``WriteController``
 - create a new route ``blog/add`` that routes to the ``WriteController`` and its ``addAction()``
 - create a new view that displays the form
@@ -141,7 +141,7 @@ Creating the WriteController
 ----------------------------
 
 As you can see from the task-list we need a new controller and this controller is supposed to have two dependencies.
-One dependency being the ``BlogService`` that's also being used within our ``ListController`` and the other dependency
+One dependency being the ``PostService`` that's also being used within our ``ListController`` and the other dependency
 being the ``BlogForm`` which is new. Since the ``BlogForm`` is a dependency that the ``ListController`` doesn't
 need to display blog-data, we will create a new controller to keep things properly separated. First, register a
 controller-factory within the configuration:
@@ -184,12 +184,12 @@ required dependencies within the constructor.
         public function createService(ServiceLocatorInterface $serviceLocator)
         {
             $realServiceLocator = $serviceLocator->getServiceLocator();
-            $blogService       = $realServiceLocator->get('Blog\Service\BlogServiceInterface');
-            $blogInsertForm    = $realServiceLocator->get('FormElementManager')->get('Blog\Form\BlogForm');
+            $postService       = $realServiceLocator->get('Blog\Service\PostServiceInterface');
+            $postInsertForm    = $realServiceLocator->get('FormElementManager')->get('Blog\Form\BlogForm');
 
             return new WriteController(
-                $blogService,
-                $blogInsertForm
+                $postService,
+                $postInsertForm
             );
         }
     }
@@ -210,22 +210,22 @@ Next up is the creation of our controller. Be sure to type hint the dependencies
     // Filename: /module/Blog/src/Blog/Controller/WriteController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
 
     class WriteController extends AbstractActionController
     {
-        protected $blogService;
+        protected $postService;
 
-        protected $blogForm;
+        protected $postForm;
 
         public function __construct(
-            BlogServiceInterface $blogService,
-            FormInterface $blogForm
+            PostServiceInterface $postService,
+            FormInterface $postForm
         ) {
-            $this->blogService = $blogService;
-            $this->blogForm    = $blogForm;
+            $this->postService = $postService;
+            $this->blogForm    = $postForm;
         }
 
         public function addAction()
@@ -248,7 +248,7 @@ Right on to creating the new route:
         'controllers'     => array( /** Controller Config */ ),
         'router'          => array(
             'routes' => array(
-                'blog' => array(
+                'post' => array(
                     'type' => 'literal',
                     'options' => array(
                         'route'    => '/blog',
@@ -348,7 +348,7 @@ include the signature of the ``__construct()`` function which accepts a couple o
                 'type' => 'submit',
                 'name' => 'submit',
                 'attributes' => array(
-                    'value' => 'Insert new Blog'
+                    'value' => 'Insert new Post'
                 )
             ));
         }
@@ -416,23 +416,23 @@ form is passed to the view.
     // Filename: /module/Blog/src/Blog/Controller/WriteController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class WriteController extends AbstractActionController
     {
-        protected $blogService;
+        protected $postService;
 
-        protected $blogForm;
+        protected $postForm;
 
         public function __construct(
-            BlogServiceInterface $blogService,
-            FormInterface $blogForm
+            PostServiceInterface $postService,
+            FormInterface $postForm
         ) {
-            $this->blogService = $blogService;
-            $this->blogForm    = $blogForm;
+            $this->postService = $postService;
+            $this->blogForm    = $postForm;
         }
 
         public function addAction()
@@ -501,23 +501,23 @@ And all of this is really not that much code. Modify your ``WriteController`` to
     // Filename: /module/Blog/src/Blog/Controller/WriteController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class WriteController extends AbstractActionController
     {
-        protected $blogService;
+        protected $postService;
 
-        protected $blogForm;
+        protected $postForm;
 
         public function __construct(
-            BlogServiceInterface $blogService,
-            FormInterface $blogForm
+            PostServiceInterface $postService,
+            FormInterface $postForm
         ) {
-            $this->blogService = $blogService;
-            $this->blogForm    = $blogForm;
+            $this->postService = $postService;
+            $this->blogForm    = $postForm;
         }
 
         public function addAction()
@@ -529,9 +529,9 @@ And all of this is really not that much code. Modify your ``WriteController`` to
 
                 if ($this->blogForm->isValid()) {
                     try {
-                        $this->blogService->saveBlog($this->blogForm->getData());
+                        $this->postService->savePost($this->blogForm->getData());
 
-                        return $this->redirect()->toRoute('blog');
+                        return $this->redirect()->toRoute('post');
                     } catch (\Exception $e) {
                         // Some DB Error happened, log it and let the user know
                     }
@@ -554,104 +554,104 @@ Submitting the form right now will return into the following error
 .. code-block:: text
    :linenos:
 
-    Fatal error: Call to undefined method Blog\Service\BlogService::saveBlog() in
+    Fatal error: Call to undefined method Blog\Service\PostService::savePost() in
     /module/Blog/src/Blog/Controller/WriteController.php on line 33
 
-Let's fix this by extending our ``BlogService``. Be sure to also change the signature of the ``BlogServiceInterface``!
+Let's fix this by extending our ``PostService``. Be sure to also change the signature of the ``PostServiceInterface``!
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 32
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogServiceInterface.php
+    // Filename: /module/Blog/src/Blog/Service/PostServiceInterface.php
     namespace Blog\Service;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
 
-    interface BlogServiceInterface
+    interface PostServiceInterface
     {
         /**
          * Should return a set of all blogs that we can iterate over. Single entries of the array or \Traversable object
-         * should be of type \Blog\Model\Blog
+         * should be of type \Blog\Model\Post
          *
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
-        public function findAllBlogs();
+        public function findAllPosts();
 
         /**
          * Should return a single blog
          *
          * @param  int $id Identifier of the Blog that should be returned
-         * @return BlogInterface
+         * @return PostInterface
          */
-        public function findBlog($id);
+        public function findPost($id);
 
         /**
-         * Should save a given implementation of the BlogInterface and return it. If it is an existing Blog the Blog
-         * should be updated, if it's a new Blog it should be created.
+         * Should save a given implementation of the PostInterface and return it. If it is an existing Blog the Blog
+         * should be updated, if it's a new Post it should be created.
          *
-         * @param  BlogInterface $blog
-         * @return BlogInterface
+         * @param  PostInterface $post
+         * @return PostInterface
          */
-        public function saveBlog(BlogInterface $blog);
+        public function savePost(PostInterface $post);
     }
 
-We changed our interface slightly to typehint against the ``BlogInterface`` rather than against it's implementation. The
-``saveBlog()`` function has been added and needs to be implemented within the ``BlogService`` now.
+We changed our interface slightly to typehint against the ``PostInterface`` rather than against it's implementation. The
+``savePost()`` function has been added and needs to be implemented within the ``PostService`` now.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 42-45
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogService.php
+    // Filename: /module/Blog/src/Blog/Service/PostService.php
     namespace Blog\Service;
 
-    use Blog\Mapper\BlogMapperInterface;
-    use Blog\Model\BlogInterface;
+    use Blog\Mapper\PostMapperInterface;
+    use Blog\Model\PostInterface;
 
-    class BlogService implements BlogServiceInterface
+    class PostService implements PostServiceInterface
     {
         /**
-         * @var \Blog\Mapper\BlogMapperInterface
+         * @var \Blog\Mapper\PostMapperInterface
          */
-        protected $blogMapper;
+        protected $postMapper;
 
         /**
-         * @param BlogMapperInterface $blogMapper
+         * @param PostMapperInterface $postMapper
          */
-        public function __construct(BlogMapperInterface $blogMapper)
+        public function __construct(PostMapperInterface $postMapper)
         {
-            $this->blogMapper = $blogMapper;
+            $this->postMapper = $postMapper;
         }
 
         /**
          * @inheritDoc
          */
-        public function findAllBlogs()
+        public function findAllPosts()
         {
-            return $this->blogMapper->findAll();
+            return $this->postMapper->findAll();
         }
 
         /**
          * @inheritDoc
          */
-        public function findBlog($id)
+        public function findPost($id)
         {
-            return $this->blogMapper->find($id);
+            return $this->postMapper->find($id);
         }
 
         /**
          * @inheritDoc
          */
-        public function saveBlog(BlogInterface $blog)
+        public function savePost(PostInterface $post)
         {
-            return $this->blogMapper->save($blog);
+            return $this->postMapper->save($post);
         }
     }
 
-And now that we're making an assumption against our ``blogMapper`` we need to extend the ``BlogMapperInterface`` and its
+And now that we're making an assumption against our ``blogMapper`` we need to extend the ``PostMapperInterface`` and its
 implementation, too. Start by extending the interface:
 
 .. code-block:: php
@@ -659,33 +659,33 @@ implementation, too. Start by extending the interface:
    :emphasize-lines: 28
 
     <?php
-    // Filename: /module/Blog/src/Blog/Mapper/BlogMapperInterface.php
+    // Filename: /module/Blog/src/Blog/Mapper/PostMapperInterface.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
 
-    interface BlogMapperInterface
+    interface PostMapperInterface
     {
         /**
          * @param int|string $id
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id);
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll();
 
         /**
-         * @param BlogInterface $blogObject
+         * @param PostInterface $postObject
          *
-         * @param BlogInterface $blogObject
-         * @return BlogInterface
+         * @param PostInterface $postObject
+         * @return PostInterface
          * @throws \Exception
          */
-        public function save(BlogInterface $blogObject);
+        public function save(PostInterface $postObject);
     }
 
 And now the implementation of the save function.
@@ -698,7 +698,7 @@ And now the implementation of the save function.
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
@@ -707,7 +707,7 @@ And now the implementation of the save function.
     use Zend\Db\Sql\Update;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -716,58 +716,58 @@ And now the implementation of the save function.
 
         protected $hydrator;
 
-        protected $blogPrototype;
+        protected $postPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param BlogInterface    $blogPrototype
+         * @param PostInterface    $postPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            BlogInterface $blogPrototype
+            PostInterface $postPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->blogPrototype = $blogPrototype;
+            $this->postPrototype = $postPrototype;
         }
 
         /**
          * @param int|string $id
          *
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id)
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
             $select->where(array('id = ?' => $id));
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-                return $this->hydrator->hydrate($result->current(), $this->blogPrototype);
+                return $this->hydrator->hydrate($result->current(), $this->postPrototype);
             }
 
             throw new \InvalidArgumentException("Blog with given ID:{$id} not found.");
         }
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->postPrototype);
 
                 return $resultSet->initialize($result);
             }
@@ -776,25 +776,25 @@ And now the implementation of the save function.
         }
 
          /**
-          * @param BlogInterface $blogObject
+          * @param PostInterface $postObject
           *
-          * @return BlogInterface
+          * @return PostInterface
           * @throws \Exception
           */
-         public function save(BlogInterface $blogObject)
+         public function save(PostInterface $postObject)
          {
-             $blogData = $this->hydrator->extract($blogObject);
-             unset($blogData['id']); // Neither Insert nor Update needs the ID in the array
+             $postData = $this->hydrator->extract($postObject);
+             unset($postData['id']); // Neither Insert nor Update needs the ID in the array
 
-             if ($blogObject->getId()) {
+             if ($postObject->getId()) {
                  // ID present, it's an Update
-                 $action = new Update('blog');
-                 $action->set($blogData);
-                 $action->where(array('id = ?' => $blogObject->getId()));
+                 $action = new Update('post');
+                 $action->set($postData);
+                 $action->where(array('id = ?' => $postObject->getId()));
              } else {
                  // ID NOT present, it's an Insert
-                 $action = new Insert('blog');
-                 $action->values($blogData);
+                 $action = new Insert('post');
+                 $action->values($postData);
              }
 
              $sql    = new Sql($this->dbAdapter);
@@ -804,10 +804,10 @@ And now the implementation of the save function.
              if ($result instanceof ResultInterface) {
                  if ($newId = $result->getGeneratedValue()) {
                      // When a value has been generated, set it on the object
-                     $blogObject->setId($newId);
+                     $postObject->setId($newId);
                  }
 
-                 return $blogObject;
+                 return $postObject;
              }
 
              throw new \Exception("Database error");
@@ -831,13 +831,13 @@ Let's submit our form again and see what we get.
 .. code-block:: text
    :linenos:
 
-    Catchable fatal error: Argument 1 passed to Blog\Service\BlogService::saveBlog()
-    must implement interface Blog\Model\BlogInterface, array given,
+    Catchable fatal error: Argument 1 passed to Blog\Service\PostService::savePost()
+    must implement interface Blog\Model\PostInterface, array given,
     called in /module/Blog/src/Blog/Controller/InsertController.php on line 33
-    and defined in /module/Blog/src/Blog/Service/BlogService.php on line 49
+    and defined in /module/Blog/src/Blog/Service/PostService.php on line 49
 
-Forms, per default, give you data in an array format. But our ``BlogService`` expects the format to be an implementation
-of the ``BlogInterface``. This means we need to find a way to have this array data become object data. If you recall the
+Forms, per default, give you data in an array format. But our ``PostService`` expects the format to be an implementation
+of the ``PostInterface``. This means we need to find a way to have this array data become object data. If you recall the
 previous chapter, this is done through the use of hydrators.
 
 
@@ -855,23 +855,23 @@ way we can easily notice all changes that the hydrator does. Modify your ``Write
     // Filename: /module/Blog/src/Blog/Controller/WriteController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class WriteController extends AbstractActionController
     {
-        protected $blogService;
+        protected $postService;
 
-        protected $blogForm;
+        protected $postForm;
 
         public function __construct(
-            BlogServiceInterface $blogService,
-            FormInterface $blogForm
+            PostServiceInterface $postService,
+            FormInterface $postForm
         ) {
-            $this->blogService = $blogService;
-            $this->blogForm    = $blogForm;
+            $this->postService = $postService;
+            $this->blogForm    = $postForm;
         }
 
         public function addAction()
@@ -884,9 +884,9 @@ way we can easily notice all changes that the hydrator does. Modify your ``Write
                 if ($this->blogForm->isValid()) {
                     try {
                         \Zend\Debug\Debug::dump($this->blogForm->getData());die();
-                        $this->blogService->saveBlog($this->blogForm->getData());
+                        $this->postService->savePost($this->blogForm->getData());
 
-                        return $this->redirect()->toRoute('blog');
+                        return $this->redirect()->toRoute('post');
                     } catch (\Exception $e) {
                         // Some DB Error happened, log it and let the user know
                     }
@@ -905,7 +905,7 @@ With this set up go ahead and submit the form once again. You should now see a d
    :linenos:
 
     array(2) {
-      ["submit"] => string(16) "Insert new Blog"
+      ["submit"] => string(16) "Insert new Post"
       ["blog-fieldset"] => array(3) {
         ["id"] => string(0) ""
         ["text"] => string(3) "foo"
@@ -924,7 +924,7 @@ the hydrator and the object prototype like this:
     // Filename: /module/Blog/src/Blog/Form/BlogFieldset.php
     namespace Blog\Form;
 
-    use Blog\Model\Blog;
+    use Blog\Model\Post;
     use Zend\Form\Fieldset;
     use Zend\Stdlib\Hydrator\ClassMethods;
 
@@ -935,7 +935,7 @@ the hydrator and the object prototype like this:
             parent::__construct($name, $options);
 
             $this->setHydrator(new ClassMethods(false));
-            $this->setObject(new Blog());
+            $this->setObject(new Post());
 
             $this->add(array(
                 'type' => 'hidden',
@@ -1001,7 +1001,7 @@ fieldset and return the object that we desire. Modify your ``BlogForm`` and assi
                 'type' => 'submit',
                 'name' => 'submit',
                 'attributes' => array(
-                    'value' => 'Insert new Blog'
+                    'value' => 'Insert new Post'
                 )
             ));
         }
@@ -1012,14 +1012,14 @@ Now submit your form again. You should see the following output:
 .. code-block:: text
    :linenos:
 
-    object(Blog\Model\Blog)#294 (3) {
+    object(Blog\Model\Post)#294 (3) {
       ["id":protected] => string(0) ""
       ["title":protected] => string(3) "foo"
       ["text":protected] => string(3) "bar"
     }
 
 You can now revert back your ``WriteController`` to it's previous form to have the form-data passed through the
-``BlogService``.
+``PostService``.
 
 .. code-block:: php
    :linenos:
@@ -1029,23 +1029,23 @@ You can now revert back your ``WriteController`` to it's previous form to have t
     // Filename: /module/Blog/src/Blog/Controller/WriteController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class WriteController extends AbstractActionController
     {
-        protected $blogService;
+        protected $postService;
 
-        protected $blogForm;
+        protected $postForm;
 
         public function __construct(
-            BlogServiceInterface $blogService,
-            FormInterface $blogForm
+            PostServiceInterface $postService,
+            FormInterface $postForm
         ) {
-            $this->blogService = $blogService;
-            $this->blogForm    = $blogForm;
+            $this->postService = $postService;
+            $this->blogForm    = $postForm;
         }
 
         public function addAction()
@@ -1057,9 +1057,9 @@ You can now revert back your ``WriteController`` to it's previous form to have t
 
                 if ($this->blogForm->isValid()) {
                     try {
-                        $this->blogService->saveBlog($this->blogForm->getData());
+                        $this->postService->savePost($this->blogForm->getData());
 
-                        return $this->redirect()->toRoute('blog');
+                        return $this->redirect()->toRoute('post');
                     } catch (\Exception $e) {
                         // Some DB Error happened, log it and let the user know
                     }

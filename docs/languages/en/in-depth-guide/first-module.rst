@@ -5,8 +5,8 @@ Introducing our first "Blog" Module
 
 Now that we know about the basics of the Zend Framework 2 Skeleton Application, let's continue and create our very own
 module. We will create a module named "Blog". This module will display a list of database entries that represent a
-single music blog. Each blog will receive three properties: ``id``, ``text`` and ``title``. We will create
-forms to enter new blogs into our database and to edit existing blogs. Furthermore we will do so by using
+single blog post. Each post will receive three properties: ``id``, ``text`` and ``title``. We will create
+forms to enter new posts into our database and to edit existing posts. Furthermore we will do so by using
 best-practices throughout the whole QuickStart.
 
 
@@ -55,7 +55,7 @@ If you refresh your application you should see no change at all (but also no err
 
 At this point it's worth taking a step back to discuss what modules are for. In short, a module is an encapsulated
 set of features for your application. A module might add features to the application that you can see, like our
-Blog module; or it might provide background functionality for other modules in the application to use,  such as
+Blog module; or it might provide background functionality for other modules in the application to use, such as
 interacting with a third party API.
 
 Organizing your code into modules makes it easier for you to reuse functionality in other application, or to use
@@ -139,7 +139,7 @@ to our module:
             // Open configuration for all possible routes
             'routes' => array(
                 // Create a new route called "blog-default"
-                'blog' => array(
+                'post' => array(
                     // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
                     'type' => 'literal',
                     // Configure the route itself

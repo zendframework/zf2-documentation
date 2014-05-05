@@ -24,23 +24,23 @@ form. This is done the following way inside your controller.
     // Filename: /module/Blog/src/Blog/Controller/WriteController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Form\FormInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class WriteController extends AbstractActionController
     {
-        protected $blogService;
+        protected $postService;
 
-        protected $blogForm;
+        protected $postForm;
 
         public function __construct(
-            BlogServiceInterface $blogService,
-            FormInterface $blogForm
+            PostServiceInterface $postService,
+            FormInterface $postForm
         ) {
-            $this->blogService = $blogService;
-            $this->blogForm    = $blogForm;
+            $this->postService = $postService;
+            $this->blogForm    = $postForm;
         }
 
         public function addAction()
@@ -52,9 +52,9 @@ form. This is done the following way inside your controller.
 
                 if ($this->blogForm->isValid()) {
                     try {
-                        $this->blogService->saveBlog($this->blogForm->getData());
+                        $this->postService->savePost($this->blogForm->getData());
 
-                        return $this->redirect()->toRoute('blog');
+                        return $this->redirect()->toRoute('post');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -70,18 +70,18 @@ form. This is done the following way inside your controller.
         public function editAction()
         {
             $request = $this->getRequest();
-            $blog   = $this->blogService->findBlog($this->params('id'));
+            $post   = $this->postService->findPost($this->params('id'));
 
-            $this->blogForm->bind($blog);
+            $this->blogForm->bind($post);
 
             if ($request->isPost()) {
                 $this->blogForm->setData($request->getPost());
 
                 if ($this->blogForm->isValid()) {
                     try {
-                        $this->blogService->saveBlog($blog);
+                        $this->postService->savePost($post);
 
-                        return $this->redirect()->toRoute('blog');
+                        return $this->redirect()->toRoute('post');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -101,7 +101,7 @@ relevant ``Blog``-object from the service identified by the ``id``-parameter of 
 The second line then shows you how you can bind data to the ``Zend\Form``-Component. We're able to use an object here
 because our ``BlogFieldset`` will use the hydrator to display the data coming from the object.
 
-Lastly instead of actually doing ``$form->getData()`` we simply use the previous ``$blog``-variable since it will be
+Lastly instead of actually doing ``$form->getData()`` we simply use the previous ``$post``-variable since it will be
 updated with the latest data from the form thanks to the data-binding. And that's all there is to it. The only things
 we need to add now is the new edit-route and the view for it.
 
@@ -125,7 +125,7 @@ new route:
         'controllers'     => array( /** ControllerManager Config* */ ),
         'router'          => array(
             'routes' => array(
-                'blog' => array(
+                'post' => array(
                     'type' => 'literal',
                     'options' => array(
                         'route'    => '/blog',
@@ -222,7 +222,7 @@ last parameter of the view-helper to ``true``.
 
 If you go to your browser and open up the edit form at ``localhost:8080/blog/edit/1`` you'll see that the form contains
 the data from your selected blog. And when you submit the form you'll notice that the data has been changed
-successfully. However sadly the submit-button still contains the text ``Insert new Blog``. This can be changed inside
+successfully. However sadly the submit-button still contains the text ``Insert new Post``. This can be changed inside
 the view, too.
 
 .. code-block:: php
@@ -271,7 +271,7 @@ controller:
         ),
         'router'          => array(
             'routes' => array(
-                'blog' => array(
+                'post' => array(
                     'type' => 'literal',
                     'options' => array(
                         'route'    => '/blog',
@@ -365,9 +365,9 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
         public function createService(ServiceLocatorInterface $serviceLocator)
         {
             $realServiceLocator = $serviceLocator->getServiceLocator();
-            $blogService       = $realServiceLocator->get('Blog\Service\BlogServiceInterface');
+            $postService       = $realServiceLocator->get('Blog\Service\PostServiceInterface');
 
-            return new DeleteController($blogService);
+            return new DeleteController($postService);
         }
     }
 
@@ -380,28 +380,28 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
     <?php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class DeleteController extends AbstractActionController
     {
         /**
-         * @var \Blog\Service\BlogServiceInterface
+         * @var \Blog\Service\PostServiceInterface
          */
-        protected $blogService;
+        protected $postService;
 
-        public function __construct(BlogServiceInterface $blogService)
+        public function __construct(PostServiceInterface $postService)
         {
-            $this->blogService = $blogService;
+            $this->postService = $postService;
         }
 
         public function deleteAction()
         {
             try {
-                $blog = $this->blogService->findBlog($this->params('id'));
+                $post = $this->postService->findPost($this->params('id'));
             } catch (\InvalidArgumentException $e) {
-                return $this->redirect()->toRoute('blog');
+                return $this->redirect()->toRoute('post');
             }
 
             $request = $this->getRequest();
@@ -410,24 +410,24 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
                 $del = $request->getPost('delete_confirmation', 'no');
 
                 if ($del === 'yes') {
-                    $this->blogService->deleteBlog($blog);
+                    $this->postService->deletePost($post);
                 }
 
-                return $this->redirect()->toRoute('blog');
+                return $this->redirect()->toRoute('post');
             }
 
             return new ViewModel(array(
-                'blog' => $blog
+                'post' => $post
             ));
         }
     }
 
-As you can see this is nothing new. We inject the ``BlogService`` into the controller and inside the action we first
+As you can see this is nothing new. We inject the ``PostService`` into the controller and inside the action we first
 check if the blog exists. If so we check if it's a post request and inside there we check if a certain post parameter
 called ``delete_confirmation`` is present. If the value of that then is ``yes`` we delete the blog through the
-``BlogService``s ``deleteBlog()`` function.
+``PostService``s ``deletePost()`` function.
 
-When you're writing this code you'll notice that you don't get typehints for the ``deleteBlog()`` function because we
+When you're writing this code you'll notice that you don't get typehints for the ``deletePost()`` function because we
 haven't added it to the service / interface yet. Go ahead and add the function to the interface and implement it inside
 the service.
 
@@ -438,46 +438,46 @@ the service.
    :emphasize-lines: 41
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogServiceInterface.php
+    // Filename: /module/Blog/src/Blog/Service/PostServiceInterface.php
     namespace Blog\Service;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
 
-    interface BlogServiceInterface
+    interface PostServiceInterface
     {
         /**
          * Should return a set of all blogs that we can iterate over. Single entries of the array or \Traversable object
-         * should be of type \Blog\Model\Blog
+         * should be of type \Blog\Model\Post
          *
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
-        public function findAllBlogs();
+        public function findAllPosts();
 
         /**
          * Should return a single blog
          *
          * @param  int $id Identifier of the Blog that should be returned
-         * @return BlogInterface
+         * @return PostInterface
          */
-        public function findBlog($id);
+        public function findPost($id);
 
         /**
-         * Should save a given implementation of the BlogInterface and return it. If it is an existing Blog the Blog
-         * should be updated, if it's a new Blog it should be created.
+         * Should save a given implementation of the PostInterface and return it. If it is an existing Blog the Blog
+         * should be updated, if it's a new Post it should be created.
          *
-         * @param  BlogInterface $blog
-         * @return BlogInterface
+         * @param  PostInterface $post
+         * @return PostInterface
          */
-        public function saveBlog(BlogInterface $blog);
+        public function savePost(PostInterface $post);
 
         /**
-         * Should delete a given implementation of the BlogInterface and return true if the deletion has been
+         * Should delete a given implementation of the PostInterface and return true if the deletion has been
          * successful or false if not.
          *
-         * @param  BlogInterface $blog
+         * @param  PostInterface $post
          * @return bool
          */
-        public function deleteBlog(BlogInterface $blog);
+        public function deletePost(PostInterface $post);
     }
 
 **The Service**
@@ -487,103 +487,103 @@ the service.
    :emphasize-lines: 50-53
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogService.php
+    // Filename: /module/Blog/src/Blog/Service/PostService.php
     namespace Blog\Service;
 
-    use Blog\Mapper\BlogMapperInterface;
-    use Blog\Model\BlogInterface;
+    use Blog\Mapper\PostMapperInterface;
+    use Blog\Model\PostInterface;
 
-    class BlogService implements BlogServiceInterface
+    class PostService implements PostServiceInterface
     {
         /**
-         * @var \Blog\Mapper\BlogMapperInterface
+         * @var \Blog\Mapper\PostMapperInterface
          */
-        protected $blogMapper;
+        protected $postMapper;
 
         /**
-         * @param BlogMapperInterface $blogMapper
+         * @param PostMapperInterface $postMapper
          */
-        public function __construct(BlogMapperInterface $blogMapper)
+        public function __construct(PostMapperInterface $postMapper)
         {
-            $this->blogMapper = $blogMapper;
+            $this->postMapper = $postMapper;
         }
 
         /**
          * @inheritDoc
          */
-        public function findAllBlogs()
+        public function findAllPosts()
         {
-            return $this->blogMapper->findAll();
+            return $this->postMapper->findAll();
         }
 
         /**
          * @inheritDoc
          */
-        public function findBlog($id)
+        public function findPost($id)
         {
-            return $this->blogMapper->find($id);
+            return $this->postMapper->find($id);
         }
 
         /**
          * @inheritDoc
          */
-        public function saveBlog(BlogInterface $blog)
+        public function savePost(PostInterface $post)
         {
-            return $this->blogMapper->save($blog);
+            return $this->postMapper->save($post);
         }
 
         /**
          * @inheritDoc
          */
-        public function deleteBlog(BlogInterface $blog)
+        public function deletePost(PostInterface $post)
         {
-            return $this->blogMapper->delete($blog);
+            return $this->postMapper->delete($post);
         }
     }
 
-Now we assume that the ``BlogMapperInterface`` has a ``delete()``-function. We haven't yet implemented this one so go
-ahead and add it to the ``BlogMapperInterface``.
+Now we assume that the ``PostMapperInterface`` has a ``delete()``-function. We haven't yet implemented this one so go
+ahead and add it to the ``PostMapperInterface``.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 36
 
     <?php
-    // Filename: /module/Blog/src/Blog/Mapper/BlogMapperInterface.php
+    // Filename: /module/Blog/src/Blog/Mapper/PostMapperInterface.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
 
-    interface BlogMapperInterface
+    interface PostMapperInterface
     {
         /**
          * @param int|string $id
-         * @return BlogInterface
+         * @return PostInterface
          * @throws \InvalidArgumentException
          */
         public function find($id);
 
         /**
-         * @return array|BlogInterface[]
+         * @return array|PostInterface[]
          */
         public function findAll();
 
         /**
-         * @param BlogInterface $blogObject
+         * @param PostInterface $postObject
          *
-         * @param BlogInterface $blogObject
-         * @return BlogInterface
+         * @param PostInterface $postObject
+         * @return PostInterface
          * @throws \Exception
          */
-        public function save(BlogInterface $blogObject);
+        public function save(PostInterface $postObject);
 
         /**
-         * @param BlogInterface $blogObject
+         * @param PostInterface $postObject
          *
          * @return bool
          * @throws \Exception
          */
-        public function delete(BlogInterface $blogObject);
+        public function delete(PostInterface $postObject);
     }
 
 Now that we have declared the function inside the interface it's time to implement it inside our ``ZendDbSqlMapper``:
@@ -596,7 +596,7 @@ Now that we have declared the function inside the interface it's time to impleme
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
     namespace Blog\Mapper;
 
-    use Blog\Model\BlogInterface;
+    use Blog\Model\PostInterface;
     use Zend\Db\Adapter\AdapterInterface;
     use Zend\Db\Adapter\Driver\ResultInterface;
     use Zend\Db\ResultSet\HydratingResultSet;
@@ -606,7 +606,7 @@ Now that we have declared the function inside the interface it's time to impleme
     use Zend\Db\Sql\Update;
     use Zend\Stdlib\Hydrator\HydratorInterface;
 
-    class ZendDbSqlMapper implements BlogMapperInterface
+    class ZendDbSqlMapper implements PostMapperInterface
     {
         /**
          * @var \Zend\Db\Adapter\AdapterInterface
@@ -615,21 +615,21 @@ Now that we have declared the function inside the interface it's time to impleme
 
         protected $hydrator;
 
-        protected $blogPrototype;
+        protected $postPrototype;
 
         /**
          * @param AdapterInterface  $dbAdapter
          * @param HydratorInterface $hydrator
-         * @param BlogInterface    $blogPrototype
+         * @param PostInterface    $postPrototype
          */
         public function __construct(
             AdapterInterface $dbAdapter,
             HydratorInterface $hydrator,
-            BlogInterface $blogPrototype
+            PostInterface $postPrototype
         ) {
             $this->dbAdapter      = $dbAdapter;
             $this->hydrator       = $hydrator;
-            $this->blogPrototype = $blogPrototype;
+            $this->postPrototype  = $postPrototype;
         }
 
         /**
@@ -638,14 +638,14 @@ Now that we have declared the function inside the interface it's time to impleme
         public function find($id)
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
             $select->where(array('id = ?' => $id));
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-                return $this->hydrator->hydrate($result->current(), $this->blogPrototype);
+                return $this->hydrator->hydrate($result->current(), $this->postPrototype);
             }
 
             throw new \InvalidArgumentException("Blog with given ID:{$id} not found.");
@@ -657,13 +657,13 @@ Now that we have declared the function inside the interface it's time to impleme
         public function findAll()
         {
             $sql    = new Sql($this->dbAdapter);
-            $select = $sql->select('blog');
+            $select = $sql->select('posts');
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
 
             if ($result instanceof ResultInterface && $result->isQueryResult()) {
-                $resultSet = new HydratingResultSet($this->hydrator, $this->blogPrototype);
+                $resultSet = new HydratingResultSet($this->hydrator, $this->postPrototype);
 
                 return $resultSet->initialize($result);
             }
@@ -674,20 +674,20 @@ Now that we have declared the function inside the interface it's time to impleme
         /**
          * @inheritDoc
          */
-        public function save(BlogInterface $blogObject)
+        public function save(PostInterface $postObject)
         {
-            $blogData = $this->hydrator->extract($blogObject);
-            unset($blogData['id']); // Neither Insert nor Update needs the ID in the array
+            $postData = $this->hydrator->extract($postObject);
+            unset($postData['id']); // Neither Insert nor Update needs the ID in the array
 
-            if ($blogObject->getId()) {
+            if ($postObject->getId()) {
                 // ID present, it's an Update
-                $action = new Update('blog');
-                $action->set($blogData);
-                $action->where(array('id = ?' => $blogObject->getId()));
+                $action = new Update('post');
+                $action->set($postData);
+                $action->where(array('id = ?' => $postObject->getId()));
             } else {
                 // ID NOT present, it's an Insert
-                $action = new Insert('blog');
-                $action->values($blogData);
+                $action = new Insert('post');
+                $action->values($postData);
             }
 
             $sql    = new Sql($this->dbAdapter);
@@ -697,10 +697,10 @@ Now that we have declared the function inside the interface it's time to impleme
             if ($result instanceof ResultInterface) {
                 if ($newId = $result->getGeneratedValue()) {
                     // When a value has been generated, set it on the object
-                    $blogObject->setId($newId);
+                    $postObject->setId($newId);
                 }
 
-                return $blogObject;
+                return $postObject;
             }
 
             throw new \Exception("Database error");
@@ -709,10 +709,10 @@ Now that we have declared the function inside the interface it's time to impleme
         /**
          * @inheritDoc
          */
-        public function delete(BlogInterface $blogObject)
+        public function delete(PostInterface $postObject)
         {
-            $action = new Delete('blog');
-            $action->where(array('id = ?' => $blogObject->getId()));
+            $action = new Delete('post');
+            $action->where(array('id = ?' => $postObject->getId()));
 
             $sql    = new Sql($this->dbAdapter);
             $stmt   = $sql->prepareStatementForSqlObject($action);

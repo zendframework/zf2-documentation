@@ -8,61 +8,65 @@ introduce you into the concept of Services and with this the introduction to ``Z
 What is a Service?
 ==================
 
-//@todo someone who can define Service in a few sentences in easy to understand words
+A Service is an object that executes complex application logic. It's the part of the application that wires all
+difficult stuff together and gives you easy to understand results.
 
 For what we're trying to accomplish with our ``Blog``-Module this means that we want to have a Service that will give
 us the data that we want. The Service will get it's data from some source and when writing the Service we don't really
 care about what the source actually is. The Service will be written against an ``Interface`` that we define and that
 future Data-Providers have to implement.
 
-Writing the BlogService
-========================
+Writing the PostService
+=======================
 
 When writing a Service it is a common best-practice to define an ``Interface`` first. ``Interfaces`` are a good way to
 ensure that other programmers can easily build extensions for our Services using their own implementations. In other
 words, they can write Services that have the same function names but internally do completely different things but have
-a similar result.
+the same specified result.
 
-In our case we want to create an ``BlogService`` so first we are going to define an ``BlogServiceInterface``. The task
-of our Service is to provide us with data of our Blogs. For now we are going to focus on the read-only side of things.
-We will define a function that will give us all Blogs and we will define a function that will give us a single Blog.
+In our case we want to create a ``PostService``. This means first we are going to define a ``PostServiceInterface``.
+The task of our Service is to provide us with data of our blog posts. For now we are going to focus on the read-only
+side of things. We will define a function that will give us all posts and we will define a function that will give us a
+single post.
 
-Let's start by creating the Interface at ``/module/Blog/src/Blog/Service/BlogServiceInterface.php``
+Let's start by creating the Interface at ``/module/Blog/src/Blog/Service/PostServiceInterface.php``
 
 .. code-block:: php
    :linenos:
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogServiceInterface.php
+    // Filename: /module/Post/src/Post/Service/PostServiceInterface.php
     namespace Blog\Service;
 
-    interface BlogServiceInterface
+    use Blog\Model\PostInterface;
+
+    interface PostServiceInterface
     {
         /**
-         * Should return a set of all blogs that we can iterate over. Single entries of the array or \Traversable object
-         * should be of type \Blog\Model\Blog
+         * Should return a set of all blog posts that we can iterate over. Single entries of the array are supposed to be
+         * implementing \Blog\Model\PostInterface
          *
-         * @return array|\Traversable
+         * @return array|PostInterface[]
          */
-        public function findAllBlogs();
+        public function findAllPosts();
 
         /**
-         * Should return a single blog
+         * Should return a single blog post
          *
-         * @param  int $id Identifier of the Blog that should be returned
-         * @return \Blog\Model\Blog
+         * @param  int $id Identifier of the Post that should be returned
+         * @return PostInterface
          */
-        public function findBlog($id);
+        public function findPost($id);
     }
 
-As you can see we define two functions. The first being ``findAllBlogs()`` that is supposed to return all Blogs and the
-second one being ``findBlog($id)`` that is supposed to return the Blog matching the given identifier ``$id``. What's new
+As you can see we define two functions. The first being ``findAllPosts()`` that is supposed to return all posts and the
+second one being ``findPost($id)`` that is supposed to return the post matching the given identifier ``$id``. What's new
 in here is the fact that we actually define a return value that's not existing yet. We make the assumption that the
-return value all in all are of type ``Blog\Model\Blog``. We will define this class at a later point and for now we can
-just create the ``BlogService`` first.
+return value all in all are of type ``Blog\Model\PostInterface``. We will define this class at a later point and for
+now we simply create the ``PostService`` first.
 
-Create the class ``BlogService`` at ``/module/Blog/src/Blog/Service/BlogService.php``, be sure to implement the
-``BlogServiceInterface`` and it's required functions (we will fill in these functions later). You then should have a
+Create the class ``PostService`` at ``/module/Blog/src/Blog/Service/PostService.php``, be sure to implement the
+``PostServiceInterface`` and it's required functions (we will fill in these functions later). You then should have a
 class that looks like the following:
 
 .. code-block:: php
@@ -70,60 +74,60 @@ class that looks like the following:
    :emphasize-lines: 5,10,18
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogService.php
+    // Filename: /module/Blog/src/Blog/Service/PostService.php
     namespace Blog\Service;
 
-    class BlogService implements BlogServiceInterface
+    class PostService implements PostServiceInterface
     {
         /**
          * @inheritDoc
          */
-        public function findAllBlogs()
+        public function findAllPosts()
         {
-            // TODO: Implement findAllBlogs() method.
+            // TODO: Implement findAllPosts() method.
         }
 
         /**
          * @inheritDoc
          */
-        public function findBlog($id)
+        public function findPost($id)
         {
-            // TODO: Implement findBlog() method.
+            // TODO: Implement findPost() method.
         }
     }
 
 Writing the required Model Files
 ================================
 
-Since our ``BlogService`` will return Models, we should create them, too. Be sure to write an ``Interface`` for the Model,
-too! Let's create ``/module/Blog/src/Blog/Model/BlogInterface.php`` and ``/module/Blog/src/Blog/Model/Blog.php``.
-First we'll create the ``Interface``:
+Since our ``PostService`` will return Models, we should create them, too. Be sure to write an ``Interface`` for the
+Model first! Let's create ``/module/Blog/src/Blog/Model/PostInterface.php`` and ``/module/Blog/src/Blog/Model/Post.php``.
+First the ``PostInterface``:
 
 .. code-block:: php
    :linenos:
 
     <?php
-    // Filename: /module/Blog/src/Blog/Model/BlogInterface.php
+    // Filename: /module/Blog/src/Blog/Model/PostInterface.php
     namespace Blog\Model;
 
-    interface BlogInterface
+    interface PostInterface
     {
         /**
-         * Will return the ID of the Blog
+         * Will return the ID of the blog post
          *
          * @return int
          */
         public function getId();
 
         /**
-         * Will return the TITLE of the Blog
+         * Will return the TITLE of the blog post
          *
          * @return string
          */
         public function getTitle();
 
         /**
-         * Will return the ARTIST of the Blog
+         * Will return the TEXT of the blog post
          *
          * @return string
          */
@@ -131,10 +135,10 @@ First we'll create the ``Interface``:
     }
 
 Notice that we only created getter-functions here. This is because right now we don't bother how the data gets inside
-the Blog-class. All we care for is that we're able to access the properties through these getter-functions.
+the ``Post``-class. All we care for is that we're able to access the properties through these getter-functions.
 
 And now we'll create the appropriate Model file associated with the interface. Make sure to set the required class
-properties and fill the getter functions defined by our ``BlogInterface`` with some useful content. Even if our interface
+properties and fill the getter functions defined by our ``PostInterface`` with some useful content. Even if our interface
 doesn't care about setter functions we will write them as we will fill our class with data through these. You then
 should have a class that looks like the following:
 
@@ -143,10 +147,10 @@ should have a class that looks like the following:
    :emphasize-lines: 5
 
     <?php
-    // Filename: /module/Blog/src/Blog/Model/Blog.php
+    // Filename: /module/Post/src/Post/Model/Post.php
     namespace Blog\Model;
 
-    class Blog implements BlogInterface
+    class Post implements PostInterface
     {
         /**
          * @var int
@@ -172,7 +176,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * @param int $id
          */
         public function setId($id)
         {
@@ -188,7 +192,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * @param string $title
          */
         public function setTitle($title)
         {
@@ -204,7 +208,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * @param string $text
          */
         public function setText($text)
         {
@@ -212,12 +216,12 @@ should have a class that looks like the following:
         }
     }
 
-Bringing Life into our BlogService
-===================================
+Bringing Life into our PostService
+==================================
 
-Now that we have our Model files in place we can actually bring life into our ``BlogService`` class. To keep the Service-
-Layer easy to understand for now we will only return some static content from our ``BlogService`` class directly. Create
-a property inside the ``BlogService`` called ``$data`` and make this an array of our Model type. Edit ``BlogService`` like
+Now that we have our Model files in place we can actually bring life into our ``PostService`` class. To keep the Service-
+Layer easy to understand for now we will only return some static content from our ``PostService`` class directly. Create
+a property inside the ``PostService`` called ``$data`` and make this an array of our Model type. Edit ``PostService`` like
 this:
 
 .. code-block:: php
@@ -225,123 +229,123 @@ this:
    :emphasize-lines: 7-33
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogService.php
+    // Filename: /module/Blog/src/Blog/Service/PostService.php
     namespace Blog\Service;
 
-    class BlogService implements BlogServiceInterface
+    class PostService implements PostServiceInterface
     {
         protected $data = array(
             array(
-                'id'     => 1,
-                'title'  => 'In  My  Dreams',
-                'text' => 'The  Military  Wives'
+                'id'    => 1,
+                'title' => 'Hello World #1',
+                'text'  => 'This is our first blog post!'
             ),
             array(
                 'id'     => 2,
-                'title'  => '21',
-                'text' => 'Adele'
+                'title' => 'Hello World #2',
+                'text'  => 'This is our second blog post!'
             ),
             array(
                 'id'     => 3,
-                'title'  => 'Wrecking Ball (Deluxe)',
-                'text' => 'Bruce  Springsteen'
+                'title' => 'Hello World #3',
+                'text'  => 'This is our third blog post!'
             ),
             array(
                 'id'     => 4,
-                'title'  => 'Born  To  Die',
-                'text' => 'Lana  Del  Rey'
+                'title' => 'Hello World #4',
+                'text'  => 'This is our fourth blog post!'
             ),
             array(
                 'id'     => 5,
-                'title'  => 'Making  Mirrors',
-                'text' => 'Gotye'
+                'title' => 'Hello World #5',
+                'text'  => 'This is our fifth blog post!'
             )
         );
 
         /**
          * @inheritDoc
          */
-        public function findAllBlogs()
+        public function findAllPosts()
         {
-            // TODO: Implement findAllBlogs() method.
+            // TODO: Implement findAllPosts() method.
         }
 
         /**
          * @inheritDoc
          */
-        public function findBlog($id)
+        public function findPost($id)
         {
-            // TODO: Implement findBlog() method.
+            // TODO: Implement findPost() method.
         }
     }
 
-After we now have some data, let's modify our ``findXY()`` functions to return the appropriate model files:
+After we now have some data, let's modify our ``find*()`` functions to return the appropriate model files:
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 42-48, 56-63
 
     <?php
-    // Filename: /module/Blog/src/Blog/Service/BlogService.php
+    // Filename: /module/Blog/src/Blog/Service/PostService.php
     namespace Blog\Service;
 
-    use Blog\Model\Blog;
+    use Blog\Model\Post;
 
-    class BlogService implements BlogServiceInterface
+    class PostService implements PostServiceInterface
     {
         protected $data = array(
             array(
-                'id'     => 1,
-                'title'  => 'In  My  Dreams',
-                'text' => 'The  Military  Wives'
+                'id'    => 1,
+                'title' => 'Hello World #1',
+                'text'  => 'This is our first blog post!'
             ),
             array(
                 'id'     => 2,
-                'title'  => '21',
-                'text' => 'Adele'
+                'title' => 'Hello World #2',
+                'text'  => 'This is our second blog post!'
             ),
             array(
                 'id'     => 3,
-                'title'  => 'Wrecking Ball (Deluxe)',
-                'text' => 'Bruce  Springsteen'
+                'title' => 'Hello World #3',
+                'text'  => 'This is our third blog post!'
             ),
             array(
                 'id'     => 4,
-                'title'  => 'Born  To  Die',
-                'text' => 'Lana  Del  Rey'
+                'title' => 'Hello World #4',
+                'text'  => 'This is our fourth blog post!'
             ),
             array(
-                'id'     => 6,
-                'title'  => 'Making  Mirrors',
-                'text' => 'Gotye'
+                'id'     => 5,
+                'title' => 'Hello World #5',
+                'text'  => 'This is our fifth blog post!'
             )
         );
 
         /**
          * @inheritDoc
          */
-        public function findAllBlogs()
+        public function findAllPosts()
         {
-            $allBlogs = array();
+            $allPosts = array();
 
-            foreach ($this->data as $index => $blog) {
-                $allBlogs[] = $this->findBlog($index);
+            foreach ($this->data as $index => $post) {
+                $allPosts[] = $this->findPost($index);
             }
 
-            return $allBlogs;
+            return $allPosts;
         }
 
         /**
          * @inheritDoc
          */
-        public function findBlog($id)
+        public function findPost($id)
         {
-            $blogData = $this->data[$id];
+            $postData = $this->data[$id];
 
-            $model = new Blog();
-            $model->setId($blogData['id']);
-            $model->setTitle($blogData['title']);
-            $model->setText($blogData['text']);
+            $model = new Post();
+            $model->setId($postData['id']);
+            $model->setTitle($postData['title']);
+            $model->setText($postData['text']);
 
             return $model;
         }
@@ -349,19 +353,20 @@ After we now have some data, let's modify our ``findXY()`` functions to return t
 
 As you can see, both our functions now have appropriate return values. Please note that from a technical point of view
 the current implementation is far from perfect. We will improve this Service a lot in the future but for now we have
-a working Service that is able to give us some data in a way that we have defined by our ``BlogServiceInterface``.
+a working Service that is able to give us some data in a way that is defined by our ``PostServiceInterface``.
 
 
 Bringing the Service into the Controller
 ========================================
 
-Now that we have our ``BlogService`` written, we want to get access to this Service in our Controllers. For this task
+Now that we have our ``PostService`` written, we want to get access to this Service in our Controllers. For this task
 we will step foot into a new topic called "Dependency Injection" short "DI".
 
-// @todo Need someone to write a good 2-3 Sentences summary of what DI is in very easy to understand words
+When we're talking about dependency injection we're talking about a way to get dependencies into our classes. The most
+common form "Constructor Injection" is used for all dependencies that are required by a class at all times.
 
-In our case we want to have our Blog-Modules ``ListController`` somehow interact with our ``BlogService``. This means
-that the class ``BlogService`` is a dependency of the class ``ListController``. Without the ``BlogService`` our
+In our case we want to have our Blog-Modules ``ListController`` somehow interact with our ``PostService``. This means
+that the class ``PostService`` is a dependency of the class ``ListController``. Without the ``PostService`` our
 ``ListController`` will not be able to function properly. To make sure that our ``ListController`` will always get the
 appropriate dependency, we will first define the dependency inside the ``ListControllers`` constructor function
 ``__construct()``. Go on and modify the ``ListController`` like this:
@@ -374,36 +379,36 @@ appropriate dependency, we will first define the dependency inside the ``ListCon
     // Filename: /module/Blog/src/Blog/Controller/ListController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Blog\Service\BlogServiceInterface
+         * @var \Blog\Service\PostServiceInterface
          */
-        protected $blogService;
+        protected $postService;
 
-        public function __construct(BlogServiceInterface $blogService)
+        public function __construct(PostServiceInterface $postService)
         {
-            $this->blogService = $blogService;
+            $this->postService = $postService;
         }
     }
 
 As you can see our ``__construct()`` function now has a required argument. We will not be able to call this class anymore
-without passing it an instance of a class that matches our defined ``BlogServiceInterface``. If you were to go back to
-your browser and reload your project with the url ``domain.loc/blog``, you'd see the following error message:
+without passing it an instance of a class that matches our defined ``PostServiceInterface``. If you were to go back to
+your browser and reload your project with the url ``localhost:8080/blog``, you'd see the following error message:
 
 .. code-block:: text
    :linenos:
 
     ( ! ) Catchable fatal error: Argument 1 passed to Blog\Controller\ListController::__construct()
-          must be an instance of Blog\Service\BlogServiceInterface, none given,
+          must be an instance of Blog\Service\PostServiceInterface, none given,
           called in {libraryPath}\Zend\ServiceManager\AbstractPluginManager.php on line {lineNumber}
           and defined in \module\Blog\src\Blog\Controller\ListController.php on line 15
 
 And this error message is expected. It tells you exactly that our ``ListController`` expects to be passed an implementation
-of the ``BlogServiceInterface``. So how do we make sure that our ``ListController`` will receive such an implementation?
+of the ``PostServiceInterface``. So how do we make sure that our ``ListController`` will receive such an implementation?
 To solve this, we need to tell the application how to create instances of the ``Blog\Controller\ListController``. If you
 remember back to when we created the controller, we added an entry to the ``invokables`` array in the module config:
 
@@ -426,7 +431,7 @@ remember back to when we created the controller, we added an entry to the ``invo
 An ``invokable`` is a class that can be constructed without any arguments. Since our ``Blog\Controller\ListController``
 now has a required argument, we need to change this. The ``ControllerManager``, who is in charge of instantiating the
 controllers for us, also support using ``factories``. A ``factory`` is a class that creates instances of another class.
-We'll create one for our ``ListController``. Let's modify our configuration like this:
+We'll now create one for our ``ListController``. Let's modify our configuration like this:
 
 
 .. code-block:: php
@@ -503,9 +508,9 @@ always inject this using Dependency Injection as we have learned above. Let's im
         public function createService(ServiceLocatorInterface $serviceLocator)
         {
             $realServiceLocator = $serviceLocator->getServiceLocator();
-            $blogService       = $realServiceLocator->get('Blog\Service\BlogServiceInterface');
+            $postService        = $realServiceLocator->get('Blog\Service\PostServiceInterface');
 
-            return new ListController($blogService);
+            return new ListController($postService);
         }
     }
 
@@ -514,11 +519,11 @@ called from the ``ControllerManager`` it will actually inject **itself** as the 
 ``ServiceManager`` to get to our Service-Classes. This is why we call the function ``getServiceLocator()` who will give us
 the real ``ServiceManager``.
 
-After we have the ``$realServiceLocator`` set up we try to get a Service called ``Blog\Service\BlogServiceInterface``.
-This name that we're accessing is supposed to return a Service that matches the ``BlogServiceInterface``. This Service
+After we have the ``$realServiceLocator`` set up we try to get a Service called ``Blog\Service\PostServiceInterface``.
+This name that we're accessing is supposed to return a Service that matches the ``PostServiceInterface``. This Service
 is then passed along to the ``ListController`` which will directly be returned.
 
-Note though that we have yet to register a Service called ``Blog\Service\BlogServiceInterface``. There's no magic
+Note though that we have yet to register a Service called ``Blog\Service\PostServiceInterface``. There's no magic
 happening that does this for us just because we give the Service the name of an Interface. Refresh your browser and you
 will see this error message:
 
@@ -535,10 +540,10 @@ will see this error message:
     {libraryPath}\Zend\ServiceManager\ServiceManager.php:{lineNumber}
 
     Message:
-    Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for Blog\Service\BlogServiceInterface
+    Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for Blog\Service\PostServiceInterface
 
 Exactly what we expected. Somewhere in our application - currently our factory class - a service called
-``Blog\Service\BlogServiceInterface`` is requested but the ServiceManager doesn't know about this Service yet.
+``Blog\Service\PostServiceInterface`` is requested but the ``ServiceManager`` doesn't know about this Service yet.
 Therefore it isn't able to create an instance for the requested name.
 
 
@@ -558,7 +563,7 @@ inside our ``controllers`` array. Check out the new configuration file:
     return array(
         'service_manager' => array(
             'invokables' => array(
-                'Blog\Service\BlogServiceInterface' => 'Blog\Service\BlogService'
+                'Blog\Service\PostServiceInterface' => 'Blog\Service\PostService'
             )
         ),
         'view_manager' => array( /** View Manager Config */ ),
@@ -566,16 +571,16 @@ inside our ``controllers`` array. Check out the new configuration file:
         'router'       => array( /** Router Config */ )
     );
 
-As you can see we now have added a new Service that listens to the name ``Blog\Service\BlogServiceInterface`` and
-points to our own implementation which is ``Blog\Service\BlogService``. Since our Service has no dependencies we are
+As you can see we now have added a new Service that listens to the name ``Blog\Service\PostServiceInterface`` and
+points to our own implementation which is ``Blog\Service\PostService``. Since our Service has no dependencies we are
 able to add this Service under the ``invokables`` array. Try refreshing your browser. You should see no more error
 messages but rather exactly the page that we have created in the previous chapter of the Tutorial.
 
 Using the Service at our Controller
 ===================================
 
-Let's now use the ``BlogService`` within our ``ListController``. For this we will need to overwrite the default
-``indexAction()`` and return the values of our ``BlogService`` into the view. Modify the ``ListController`` like this:
+Let's now use the ``PostService`` within our ``ListController``. For this we will need to overwrite the default
+``indexAction()`` and return the values of our ``PostService`` into the view. Modify the ``ListController`` like this:
 
 .. code-block:: php
    :linenos:
@@ -585,82 +590,93 @@ Let's now use the ``BlogService`` within our ``ListController``. For this we wil
     // Filename: /module/Blog/src/Blog/Controller/ListController.php
     namespace Blog\Controller;
 
-    use Blog\Service\BlogServiceInterface;
+    use Blog\Service\PostServiceInterface;
     use Zend\Mvc\Controller\AbstractActionController;
     use Zend\View\Model\ViewModel;
 
     class ListController extends AbstractActionController
     {
         /**
-         * @var \Blog\Service\BlogServiceInterface
+         * @var \Blog\Service\PostServiceInterface
          */
-        protected $blogService;
+        protected $postService;
 
-        public function __construct(BlogServiceInterface $blogService)
+        public function __construct(PostServiceInterface $postService)
         {
-            $this->blogService = $blogService;
+            $this->postService = $postService;
         }
 
         public function indexAction()
         {
             return new ViewModel(array(
-                'blogs' => $this->blogService->findAllBlogs()
+                'posts' => $this->postService->findAllPosts()
             ));
         }
     }
 
 First please note the our controller imported another class. We need to import ``Zend\View\Model\ViewModel``, which
 usually is what your Controllers will return. When returning an instance of a ``ViewModel`` you're able to always
-assign so called View-Variables. In this case we have assigned a variable called ``$blogs`` with the value of whatever
-the function ``findAllBlogs()`` of our ``BlogService`` returns. In our case it is an array of `Blog\Model\Blog` classes.
+assign so called View-Variables. In this case we have assigned a variable called ``$posts`` with the value of whatever
+the function ``findAllPosts()`` of our ``PostService`` returns. In our case it is an array of ``Blog\Model\Post`` classes.
 Refreshing the browser won't change anything yet because we obviously need to modify our view-file to be able to display
 the data we want to.
+
+.. note::
+
+    You do not actually need to return an instance of ``ViewModel``. When you return a normal php ``array`` it will
+    internally be converted into a ``ViewModel``. So in short:
+
+    ``return new ViewModel(array('foo' => 'bar'));``
+
+    equals
+
+    ``return array('foo' => 'bar');``
 
 
 Accessing View Variables
 ========================
 
-When pushing variables to the view they are accessible through two ways. Either directly like ``$this->blogs`` or
-implicitly like ``$blogs``. Both are the same however calling ``$blogs`` implicitly will result in a little round-trip
+When pushing variables to the view they are accessible through two ways. Either directly like ``$this->posts`` or
+implicitly like ``$posts``. Both are the same however calling ``$posts`` implicitly will result in a little round-trip
 through the ``__call()`` function which theoretically is a little slower. You won't ever notice this though.
 
-Let's modify our view to display a table of all Blogs we that our ``BlogService`` returns.
+Let's modify our view to display a table of all blog posts that our ``PostService`` returns.
 
 .. code-block:: php
    :linenos:
    :emphasize-lines: 13, 15-17, 19
 
     <!-- Filename: /module/Blog/view/blog/list/index.phtml -->
-    <h1>Blogs</h1>
+    <h1>Posts</h1>
 
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Text</th>
                 <th>Title</th>
+                <th>Text</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($this->blogs as $a) : ?>
+            <?php foreach($this->posts as $a) : ?>
             <tr>
                 <td><?php echo $a->getId();?></td>
-                <td><?php echo $a->getText();?></td>
                 <td><?php echo $a->getTitle();?></td>
+                <td><?php echo $a->getText();?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 
-In here we simply define a little HTML-Table and then run a ``foreach`` over array ``$this->blogs``. Since every single
-entry of our array is of type ``Blog\Model\Blog`` we can use the respective getter functions to receive the data we
-want to get.
+In here we simply define a little HTML-Table and then run a ``foreach`` over the array ``$this->posts``. Since every
+single entry of our array is of type ``Blog\Model\Post`` we can use the respective getter functions to receive the data
+we want to get.
 
 Summary
 =======
 
-And with this the current chapter is finished. We now have learned how to interact with the ServiceManager and we also
-know what dependency injection is all about. We are now able to pass variables from our services into the view through
-a controller and we know how to iterate over arrays inside a view-script.
+And with this the current chapter is finished. We now have learned how to interact with the ``ServiceManager`` and we
+also know what dependency injection is all about. We are now able to pass variables from our services into the view
+through a controller and we know how to iterate over arrays inside a view-script.
 
 In the next chapter we will take a first look at the things we should do when we want to get data from a database.
