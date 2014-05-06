@@ -35,7 +35,7 @@ Let's start by creating the Interface at ``/module/Blog/src/Blog/Service/PostSer
    :linenos:
 
     <?php
-    // Filename: /module/Post/src/Post/Service/PostServiceInterface.php
+    // Filename: /module/Blog/src/Blog/Service/PostServiceInterface.php
     namespace Blog\Service;
 
     use Blog\Model\PostInterface;
@@ -147,7 +147,7 @@ should have a class that looks like the following:
    :emphasize-lines: 5
 
     <?php
-    // Filename: /module/Post/src/Post/Model/Post.php
+    // Filename: /module/Blog/src/Blog/Model/Post.php
     namespace Blog\Model;
 
     class Post implements PostInterface

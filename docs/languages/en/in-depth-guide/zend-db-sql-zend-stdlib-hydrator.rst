@@ -17,21 +17,22 @@ Before we can start using a database we should prepare one. In this example we'l
    :linenos:
 
     CREATE TABLE posts (
-        id int(11) NOT NULL auto_increment,
-        title varchar(100) NOT NULL,
-        text varchar(100) NOT NULL,
-        PRIMARY KEY (id)
+      id int(11) NOT NULL auto_increment,
+      title varchar(100) NOT NULL,
+      text varchar(100) NOT NULL,
+      PRIMARY KEY (id)
     );
-    INSERT INTO blog (title, text)
-        VALUES  ('Blog #1',  'Welcome to my first Blogpost');
-    INSERT INTO blog (title, text)
-        VALUES  ('Blog #2',  'Welcome to my second Blogpost');
-    INSERT INTO blog (title, text)
-        VALUES  ('Blog #3',  'Welcome to my third Blogpost');
-    INSERT INTO blog (title, text)
-        VALUES  ('Blog #4',  'Welcome to my fourth Blogpost');
-    INSERT INTO blog (title, text)
-        VALUES  ('Blog #5',  'Welcome to my fifth Blogpost');
+
+    INSERT INTO posts (title, text)
+      VALUES  ('Blog #1',  'Welcome to my first blog post');
+    INSERT INTO posts (title, text)
+      VALUES  ('Blog #2',  'Welcome to my second blog post');
+    INSERT INTO posts (title, text)
+      VALUES  ('Blog #3',  'Welcome to my third blog post');
+    INSERT INTO posts (title, text)
+      VALUES  ('Blog #4',  'Welcome to my fourth blog post');
+    INSERT INTO posts (title, text)
+      VALUES  ('Blog #5',  'Welcome to my fifth blog post');
 
 
 Quick Facts Zend\\Db\\Sql
@@ -96,7 +97,7 @@ will look like the following:
         'service_manager' => array(
             'factories' => array(
                 'Blog\Service\PostServiceInterface' => 'Blog\Service\Factory\PostServiceFactory',
-                'Zend\Db\Adapter\Adapter'             => 'Zend\Db\Adapter\AdapterServiceFactory'
+                'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
         'view_manager'    => array( /** ViewManager Config */ ),
