@@ -735,8 +735,8 @@ created so far. With all of this set up now we're good to go ahead and write our
         '<?php echo $this->escapeHtml($this->blog->getText()); ?>'?
     </p>
     <form action="<?php echo $this->url('blog/delete', array(), true) ?>" method="post">
-        <input type="submit" name="delete_confirmation" value="yes" />
-        <input type="submit" name="delete_confirmation" value="no" />
+        <input type="submit" name="delete_confirmation" value="yes">
+        <input type="submit" name="delete_confirmation" value="no">
     </form>
 
 Summary
