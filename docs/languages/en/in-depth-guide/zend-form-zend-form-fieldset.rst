@@ -454,7 +454,6 @@ And then we need to modify our view to have the form rendered.
     <h1>WriteController::addAction()</h1>
     <?php
     $form = $this->form;
-    $form->setAttribute('method', 'POST');
     $form->setAttribute('action', $this->url());
     $form->prepare();
 
@@ -464,9 +463,16 @@ And then we need to modify our view to have the form rendered.
 
     echo $this->form()->closeTag();
 
-We do a couple of different things in here. Firstly, we tell the form that it is supposed to use the ``POST`` method
-rather than ``GET``. Then we tell the form that it should send it's data to the current URL and then we tell the form to
-``prepare()`` itself which triggers a couple of internal things.
+Firstly, we tell the form that it should send it's data to the current URL and then we tell the form to ``prepare()``
+itself which triggers a couple of internal things.
+
+.. note::
+
+    HTML-Forms can be sent using ``POST`` and ``GET``. ZF2s default is ``POST``, therefore you don't have to be
+    explicit in setting this options. If you want to change it to ``GET`` though, all you have to do is to set the
+    specific attribute prior to the ``prepare()`` call.
+
+    ``$form->setAttribute('method', 'GET');``
 
 Next we're using a couple of ``ViewHelpers`` which take care of rendering the form for us. There's many different ways to
 render a form within Zend Framework but using ``formCollection()`` is probably the fastest one.

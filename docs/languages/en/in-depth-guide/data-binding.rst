@@ -191,7 +191,6 @@ Next in line is the creation of the new template ``blog/write/edit``:
     <h1>WriteController::editAction()</h1>
     <?php
     $form = $this->form;
-    $form->setAttribute('method', 'POST');
     $form->setAttribute('action', $this->url('blog/edit', array(), true));
     $form->prepare();
 
@@ -234,7 +233,6 @@ the view, too.
     <h1>WriteController::editAction()</h1>
     <?php
     $form = $this->form;
-    $form->setAttribute('method', 'POST');
     $form->setAttribute('action', $this->url('blog/edit', array(), true));
     $form->prepare();
 
