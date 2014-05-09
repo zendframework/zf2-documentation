@@ -627,7 +627,7 @@ file, which, by default, is ignored by git.
 
 Open ``config/autoload/local.php`` and replace the empty array with:
 
-**config/autoload/global.php:**
+**config/autoload/local.php:**
 
 .. code-block:: php
    :linenos:
