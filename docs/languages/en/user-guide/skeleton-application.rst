@@ -11,8 +11,7 @@ to create a new project from scratch with Zend Framework:
 .. code-block:: bash
    :linenos:
 
-    php composer.phar create-project --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
-    php composer.phar update
+    php composer.phar create-project -s dev zendframework/skeleton-application path/to/install
 
 .. note::
 
@@ -36,7 +35,6 @@ to create a new project from scratch with Zend Framework:
 
         php composer.phar self-update
         php composer.phar install
-        php composer.phar update
 
     from the ``zf2-tutorial`` folder. This takes a while. You should see an output like:
 
@@ -66,7 +64,6 @@ to create a new project from scratch with Zend Framework:
        :linenos:
 
         php composer.phar install
-        php composer.phar update
 
     run instead:
 
@@ -74,7 +71,6 @@ to create a new project from scratch with Zend Framework:
        :linenos:
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
-        COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar update
         
 .. note::
 
@@ -101,7 +97,7 @@ to create a new project from scratch with Zend Framework:
       .. code-block:: bash
          :linenos:
          
-         composer create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+         composer create-project -s dev zendframework/skeleton-application path/to/install
    
 
 We can now move on to the web server setup.
