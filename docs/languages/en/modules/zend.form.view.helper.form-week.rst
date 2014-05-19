@@ -25,5 +25,40 @@ Basic usage:
    // Within your view...
 
    echo $this->formWeek($element);
-   // <input type="week" name="my-week" value="">
 
+Output:
+
+.. code-block:: html
+   :linenos:
+
+   <input type="week" name="my-week" value="">
+
+.. _zend.form.view.helper.form-week.usage.min-max-step-attributes:
+
+Usage of `min`, `max` and `step` attributes:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Form\Element;
+
+   $element = new Element\Week('my-week');
+   $element->setAttributes(
+       array(
+           'min'  => '2012-W01',
+           'max'  => '2020-W01',
+           'step' => '2', // weeks; default step interval is 1 week
+       )
+   );
+   $element->setValue('2014-W10');
+
+   // Within your view...
+
+   echo $this->formWeek($element);
+
+Output:
+
+.. code-block:: html
+   :linenos:
+
+   <input type="week" name="my-week" min="2012-W01" max="2020-W01" step="2" value="2014-W10">
