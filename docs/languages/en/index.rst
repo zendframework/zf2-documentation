@@ -15,7 +15,7 @@
    ref/installation
    user-guide/overview
    user-guide/skeleton-application
-   user-guide/the-application
+   user-guide/modules
    user-guide/routing-and-controllers
    user-guide/database-and-models
    user-guide/styling-and-translations
