@@ -106,7 +106,7 @@ array you can set multiple attributes at once.
 .. _zend.filter.set.striptags.allowadvanceattributes:
 
 Allowing Advanced Defined Tags with Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can pass the allowed tags with their attributes in a single array to the constructor.
 
