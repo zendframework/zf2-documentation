@@ -127,6 +127,10 @@ The *API* is as follows:
        public static function fromReflection(
            Zend\Code\Reflection\ClassReflection $reflectionClass
        )
+       public function addConstants(Array $properties)
+       public function addConstant($property)
+       public function getConstants()
+       public function getConstant($propertyName)       
        public function setDocblock(Zend\Code\Generator\DocBlockGenerator $docblock)
        public function getDocblock()
        public function setName($name)
@@ -137,12 +141,12 @@ The *API* is as follows:
        public function getExtendedClass()
        public function setImplementedInterfaces(Array $implementedInterfaces)
        public function getImplementedInterfaces()
-       public function setProperties(Array $properties)
-       public function setProperty($property)
+       public function addProperties(Array $properties)
+       public function addProperty($property)
        public function getProperties()
        public function getProperty($propertyName)
-       public function setMethods(Array $methods)
-       public function setMethod($method)
+       public function addMethods(Array $methods)
+       public function addMethod($method)
        public function getMethods()
        public function getMethod($methodName)
        public function hasMethod($methodName)
@@ -150,9 +154,9 @@ The *API* is as follows:
        public function generate()
    }
 
-The ``setProperty()`` method accepts an array of information that may be used to generate a
+The ``addProperty()`` method accepts an array of information that may be used to generate a
 ``Zend\Code\Generator\PropertyGenerator`` instance -- or simply an instance of ``Zend\Code\Generator\PropertyGenerator``.
-Likewise, ``setMethod()`` accepts either an array of information for generating a ``Zend\Code\Generator\MethodGenerator``
+Likewise, ``addMethod()`` accepts either an array of information for generating a ``Zend\Code\Generator\MethodGenerator``
 instance or a concrete instance of that class.
 
 Note that ``setDocBlock()`` expects an instance of ``Zend\Code\Generator\DocBlockGenerator``.
