@@ -102,3 +102,31 @@ It is also possible to strip all but allowed attributes from a tag.
 The above will return 'A text with a <img src='picture.com'>picture</img>' as result. It strips all
 tags but img. Additionally from the img tag all attributes but src will be stripped. By providing an
 array you can set multiple attributes at once.
+
+.. _zend.filter.set.striptags.allowadvanceattributes:
+
+Allowing Advanced Defined Tags with Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can pass the allowed tags with their attributes in a single array to the constructor.
+
+.. code-block:: php
+   :linenos:
+
+   $allowedElements = array(
+       'img' => array(
+           'src',
+           'width'
+       ),
+       'a' => array(
+           'href'
+       )
+   );
+   $filter = new Zend\Filter\StripTags($allowedElements);
+
+   $input  = "A text with <br/> a <img src='picture.com' width='100'>picture</img> click " .
+             "<a href='http://picture.com/zend' id='hereId'>here</a>!";
+   print $filter->filter($input);
+
+The above will return 'A text with a <img src='picture.com' width='100'>picture</img> click 
+<a href='http://picture.com/zend'>here</a>!' as result.
