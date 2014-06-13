@@ -1,23 +1,12 @@
 .. _learning.autoloading.intro:
 
-Introduction
+简介
 ============
+自动加载机制，解决了手工加载需要的 *PHP* 代码的麻烦。 
+通过 `the PHP autoload manual`_，一旦一个autoloader已经被定义，当你使用一个未定义的类或者接口时，它会被自动的加载。使用自动加载，你不用担心一个类放在你项目的 **哪里** 。有了完善的autoloaders，你就不用担心一个类文件相对于当前类所在文件的相对位置；你只用简单的使用它们，autoloader会去进行查找。
 
-Autoloading is a mechanism that eliminates the need to manually require dependencies within your *PHP* code. Per
-`the PHP autoload manual`_, once an autoloader has been defined, it "is automatically called in case you are trying
-to use a class or an interface which hasn't been defined yet."
+此外，自动加载，因为它延迟到最后一刻才加载，确保只匹配一次，所以能显著地提升性能 -- 尤其是项目部署前你愿意花点功夫剔除 ``require_once()`` 的时候。
 
-Using autoloading, you do not need to worry about **where** a class exists in your project. With well-defined
-autoloaders, you do not need to worry about where a class file is relative to the current class file; you simply
-use the class, and the autoloader will perform the file lookup.
-
-Additionally, autoloading, because it defers loading to the last possible moment and ensures that a match only has
-to occur once, can be a huge performance boost -- particularly if you take the time to strip out ``require_once()``
-calls before you move to deployment.
-
-Zend Framework encourages the use of autoloading, and provides several tools to provide autoloading of both library
-code as well as application code. This tutorial covers these tools, as well as how to use them effectively.
-
-
+Zend Framework鼓励使用自动加载，并且提供了几种工具来支持类代码和应用代码的自动加载。这个教程涵盖这些工具，并且会教你更好地使用它们。
 
 .. _`the PHP autoload manual`: http://php.net/autoload
