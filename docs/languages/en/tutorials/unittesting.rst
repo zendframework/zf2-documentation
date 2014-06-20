@@ -434,13 +434,14 @@ with some POST data. Testing this is surprisingly easy:
         $serviceManager->setService('Album\Model\AlbumTable', $albumTableMock);
 
         $postData = array(
+            'id' => '',
             'title'  => 'Led Zeppelin III',
             'artist' => 'Led Zeppelin',
         );
         $this->dispatch('/album/add', 'POST', $postData);
         $this->assertResponseStatusCode(302);
 
-        $this->assertRedirectTo('/album');
+        $this->assertRedirectTo('/album/');
     }
 
 Here we test that when we make a POST request against the ``/album/add`` URL, the
