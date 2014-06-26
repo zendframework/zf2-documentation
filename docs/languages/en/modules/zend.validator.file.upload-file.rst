@@ -27,7 +27,7 @@ Usage Examples
    $files   = $request->getFiles();
    // i.e. $files['my-upload']['error'] == 0
 
-   $validator = \Zend\Validator\File\UploadFile();
+   $validator = new \Zend\Validator\File\UploadFile();
    if ($validator->isValid($files['my-upload'])) {
        // file is valid
    }
