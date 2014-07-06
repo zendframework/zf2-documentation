@@ -61,7 +61,7 @@ Let's start by creating the Interface at ``/module/Blog/src/Blog/Service/PostSer
 
 As you can see we define two functions. The first being ``findAllPosts()`` that is supposed to return all posts and the
 second one being ``findPost($id)`` that is supposed to return the post matching the given identifier ``$id``. What's new
-in here is the fact that we actually define a return value that's not existing yet. We make the assumption that the
+in here is the fact that we actually define a return value that doesn't existing yet. We make the assumption that the
 return value all in all are of type ``Blog\Model\PostInterface``. We will define this class at a later point and for
 now we simply create the ``PostService`` first.
 
@@ -220,7 +220,7 @@ Bringing Life into our PostService
 ==================================
 
 Now that we have our Model files in place we can actually bring life into our ``PostService`` class. To keep the Service-
-Layer easy to understand for now we will only return some static content from our ``PostService`` class directly. Create
+Layer easy to understand for now we will only return some hard-coded content from our ``PostService`` class directly. Create
 a property inside the ``PostService`` called ``$data`` and make this an array of our Model type. Edit ``PostService`` like
 this:
 
@@ -429,8 +429,8 @@ remember back to when we created the controller, we added an entry to the ``invo
     );
 
 An ``invokable`` is a class that can be constructed without any arguments. Since our ``Blog\Controller\ListController``
-now has a required argument, we need to change this. The ``ControllerManager``, who is in charge of instantiating the
-controllers for us, also support using ``factories``. A ``factory`` is a class that creates instances of another class.
+now has a required argument, we need to change this. The ``ControllerManager``, which is responsible for instantiating
+controllers, also support using ``factories``. A ``factory`` is a class that creates instances of another class.
 We'll now create one for our ``ListController``. Let's modify our configuration like this:
 
 
@@ -647,26 +647,16 @@ Let's modify our view to display a table of all blog posts that our ``PostServic
    :emphasize-lines: 13, 15-17, 19
 
     <!-- Filename: /module/Blog/view/blog/list/index.phtml -->
-    <h1>Posts</h1>
+    <h1>Blog</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Text</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($this->posts as $a) : ?>
-            <tr>
-                <td><?php echo $a->getId();?></td>
-                <td><?php echo $a->getTitle();?></td>
-                <td><?php echo $a->getText();?></td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <?php foreach ($this->posts as $post): ?>
+    <article>
+        <h1 id="post<?= $post->getId() ?>"><?= $post->getTitle() ?></h1>
+        <p>
+            <?= $post->getText() ?>
+        </p>
+    </article>
+    <?php endforeach ?>
 
 In here we simply define a little HTML-Table and then run a ``foreach`` over the array ``$this->posts``. Since every
 single entry of our array is of type ``Blog\Model\Post`` we can use the respective getter functions to receive the data

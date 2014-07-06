@@ -214,8 +214,8 @@ Service-functions:
     }
 
 Looking at this code you'll see that we use the ``postMapper`` to get access to the data we want. How this is happening
-isn't the ``PostService``s business anymore. But the ``PostService`` does know what data it will receive and that's the
-only important thing.
+isn't the business of the ``PostService`` anymore. But the ``PostService`` does know what data it will receive and
+that's the only important thing.
 
 
 The PostService has a dependency

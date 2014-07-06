@@ -5,7 +5,7 @@ Introducing our first "Blog" Module
 
 Now that we know about the basics of the Zend Framework 2 Skeleton Application, let's continue and create our very own
 module. We will create a module named "Blog". This module will display a list of database entries that represent a
-single blog post. Each post will receive three properties: ``id``, ``text`` and ``title``. We will create
+single blog post. Each post will have three properties: ``id``, ``text`` and ``title``. We will create
 forms to enter new posts into our database and to edit existing posts. Furthermore we will do so by using
 best-practices throughout the whole QuickStart.
 
@@ -32,7 +32,7 @@ file ``/module/Blog/Module.php``
 
 We now have a module that can be detected by ZF2s :ref:`ModuleManager <zend.module-manager-intro>`.
 Let's add this module to our application. Although our module doesn't do anything yet, just having the ``Module.php``
-class allows it to be loaded by ZF2s :ref:`ModuleManager <zend.module-manager-intro>`
+class allows it to be loaded by ZF2s :ref:`ModuleManager <zend.module-manager-intro>`.
 To do this, add an entry for ``Blog`` to the modules array inside the main application config file at
 ``/config/application.config.php``:
 
@@ -123,9 +123,8 @@ array.
         }
     }
 
-Try reloading your application once and you'll see that everything remains as it is and no error occurs. This is so
-because we haven't actually added any configuration to our module yet. Let's finally get started and add the new route
-to our module:
+Reload your application and you'll see that everything remains as it was. Next we add the new route to our
+configuration file:
 
 .. code-block:: php
    :linenos:
@@ -138,7 +137,7 @@ to our module:
         'router' => array(
             // Open configuration for all possible routes
             'routes' => array(
-                // Create a new route called "blog-default"
+                // Define a new route called "post"
                 'post' => array(
                     // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
                     'type' => 'literal',
@@ -325,9 +324,9 @@ It's now time for another refresh of the site. You should now see a new error me
     Message:
     Zend\View\Renderer\PhpRenderer::render: Unable to render template "blog/list/index"; resolver could not resolve to a file
 
-Now the application tells you that a view template-file can not be rendered. Given our current progress this is more
-than natural, because we have yet to actually write this view-file ourselves. The standard path would be
-``/module/Blog/view/blog/list/index.phtml``. Create this file and add some dummy content to it:
+Now the application tells you that a view template-file can not be rendered, which is to be expected as we've not
+created it yet. The application is expecting it to be at ``/module/Blog/view/blog/list/index.phtml``. Create this
+file and add some dummy content to it:
 
 .. code-block:: html
    :linenos:
@@ -336,7 +335,7 @@ than natural, because we have yet to actually write this view-file ourselves. Th
     <h1>Blog\ListController::indexAction()</h1>
 
 Before we continue let us quickly take a look at where we placed this file. Note that view files are found within the
-``/view`` subdirectory, not ``/src`` as they are no PHP class files, but template files for rendering HMTL. The
+``/view`` subdirectory, not ``/src`` as they are not PHP class files, but template files for rendering HTML. The
 following path however deserves some explanation but it's very simple. First we have the lowercased namespace. Followed
 by the lowercased controller name without the appendix 'controller' and lastly comes the name of the action that we are
 accessing, again without the appendix 'action'. All in all it looks like this: ``/view/{namespace}/{controller}/{action}.phtml``.

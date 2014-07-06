@@ -147,7 +147,7 @@ Different routing concepts
 When thinking about the whole application it becomes clear that there are a lot of routes to be matched. When
 writing these routes you have two options to decide from. One option to spent less time writing routes but in turn
 are a little bit slow in matching. And another option to write very explicit routes that match a little bit faster
-but require more work to define them. Let's take a loot at both of them.
+but require more work to define them. Let's take a look at both of them.
 
 Generic routes
 --------------

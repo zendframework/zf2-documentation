@@ -19,7 +19,7 @@ Before we can start using a database we should prepare one. In this example we'l
     CREATE TABLE posts (
       id int(11) NOT NULL auto_increment,
       title varchar(100) NOT NULL,
-      text varchar(100) NOT NULL,
+      text TEXT NOT NULL,
       PRIMARY KEY (id)
     );
 
@@ -73,6 +73,25 @@ As you can see we've added the ``db``-key and inside we create the parameters re
     One important thing to note is that in general you **do not** want to have your credentials inside the normal
     configuration file but rather in a local configuration file like ``/config/autoload/db.local.php``, that will
     **not** be pushed to servers using zend-skeletons ``.gitignore`` file. Keep this in mind when you share your codes!
+
+    Taking this example you would have this file:
+
+    .. code-block:: php
+    :lineos:
+
+    <?php
+    // Filename: /config/autoload/db.local.php
+    return array(
+            'db' => array(
+                'driver'         => 'Pdo',
+                'username'       => 'SECRET_USERNAME',  //edit this
+                'password'       => 'SECRET_PASSWORD',  //edit this
+                'dsn'            => 'mysql:dbname=blog;host=localhost',
+                'driver_options' => array(
+                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+            )
+        ),
+    );
 
 The next thing we need to do is by making use of the ``AdapterServiceFactory``. This is a ``ServiceManager`` entry that
 will look like the following:

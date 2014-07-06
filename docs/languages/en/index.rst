@@ -340,8 +340,10 @@
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
 
-|In-Depth Tutorial|
--------------------
+|InDepthTutorial|
+-----------------
+
+|InDepthTutorialIntroduction|
 
     * :doc:`in-depth-guide/first-module`
     * :doc:`in-depth-guide/services-and-servicemanager`
