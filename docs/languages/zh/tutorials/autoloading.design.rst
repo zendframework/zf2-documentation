@@ -23,14 +23,9 @@ Zend Framework支持autoloading，主要是通过 ``Zend\Loader\Autoloader`` ，
 
 - **支持命名空间匹配**。如果命名空间前缀没有注册，会立即返回 ``FALSE`` 。这样就可以更有弹性的匹配，也可以回滚到其他autoloaders。
 
-- **Allow the autoloader to act as a fallback autoloader**. In the case where a team may be widely distributed, or
-  using an undetermined set of namespace prefixes, the autoloader should still be configurable such that it will
-  attempt to match any namespace prefix. It will be noted, however, that this practice is not recommended, as it
-  can lead to unnecessary lookups.
+- **允许autoloader作为fallback autoloader**。在团队广泛分布的情况下，或使用一组未确定的命名空间前缀，autoloader应该仍然是可配置的，它将尝试匹配任何命名空间前缀。但是注意，这种做法并不推荐，因为它可能会导致不必要的查找。
 
-- **Allow toggling error suppression**. We feel -- and the greater *PHP* community does as well -- that error
-  suppression is a bad idea. It's expensive, and it masks very real application problems. So, by default, it should
-  be off. However, if a developer **insists** that it be on, we allow toggling it on.
+- **允许切换错误抑制**。我和伟大的 *PHP* 社区都认为错误抑制是个不好的主意。这样做的代价是很高的，这确实会给应用带来问题。所以，默认状态下，应该关闭它。但是，如果一个开发者 **坚持** 打开它，我们也允许这么做。
 
 - **Allow specifying custom callbacks for autoloading**. Some developers don't want to use
   ``Zend\Loader\Loader::loadClass()`` for autoloading, but still want to make use of Zend Framework's mechanisms.
