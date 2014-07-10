@@ -81,6 +81,7 @@
    modules/zend.console.getopt.configuration
    modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
+   modules/zend.crypt.file
    modules/zend.crypt.key.derivation
    modules/zend.crypt.password
    modules/zend.crypt.public-key
@@ -474,6 +475,7 @@ Zend\\Crypt
 
         * :doc:`modules/zend.crypt.introduction`
         * :doc:`modules/zend.crypt.block-cipher`
+        * :doc:`modules/zend.crypt.file` 
         * :doc:`modules/zend.crypt.key.derivation`
         * :doc:`modules/zend.crypt.password`
         * :doc:`modules/zend.crypt.public-key`
