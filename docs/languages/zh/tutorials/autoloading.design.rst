@@ -27,14 +27,9 @@ Zend Framework支持autoloading，主要是通过 ``Zend\Loader\Autoloader`` ，
 
 - **允许切换错误抑制**。我和伟大的 *PHP* 社区都认为错误抑制是个不好的主意。这样做的代价是很高的，这确实会给应用带来问题。所以，默认状态下，应该关闭它。但是，如果一个开发者 **坚持** 打开它，我们也允许这么做。
 
-- **Allow specifying custom callbacks for autoloading**. Some developers don't want to use
-  ``Zend\Loader\Loader::loadClass()`` for autoloading, but still want to make use of Zend Framework's mechanisms.
-  ``Zend\Loader\Autoloader`` allows specifying an alternate callback for autoloading.
+- **允许自动加载指定的自定义回调**。一些开发者不想用 ``Zend\Loader\Loader::loadClass()`` 自动加载，但是仍然想用 Zend Framework的机制。  ``Zend\Loader\Autoloader`` 允许自动加载指定的自定义回调。
 
-- **Allow manipulation of the SPL autoload callback chain**. The purpose of this is to allow specifying additional
-  autoloaders -- for instance, resource loaders for classes that don't have a 1:1 mapping to the filesystem -- to
-  be registered before or after the primary Zend Framework autoloader.
-
+- **允许SPL自动加载回调链的操作**。这样做的目的是允许指定其他自动加载机 -- 例如，没有1:1映射到文件系统的资源加载类，可以在Zend Framework自动加载之前或之后进行注册。
 
 
 .. _`PEAR`: http://pear.php.net/
