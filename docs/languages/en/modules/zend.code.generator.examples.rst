@@ -85,10 +85,12 @@ Building on the previous example, we now add properties to our generated class.
    ));
    $foo->setName('Foo')
        ->setDocblock($docblock)
-       ->setProperties(array(
+       ->addProperties(array(
             array('_bar', 'baz',          PropertyGenerator::FLAG_PROTECTED),
-            array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC),
-            array('bat',  'foobarbazbat', PropertyGenerator::FLAG_CONSTANT),
+            array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC)
+      ))
+      ->addConstants(array(
+            array('bat',  'foobarbazbat')
        ));
    echo $foo->generate();
 
@@ -153,8 +155,10 @@ attached as either arrays or concrete ``Zend\Code\Generator\MethodGenerator`` in
        ->setDocblock($docblock)
        ->addProperties(array(
            array('_bar', 'baz',          PropertyGenerator::FLAG_PROTECTED),
-           array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC),
-           array('bat',  'foobarbazbat', PropertyGenerator::FLAG_CONSTANT),
+           array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC)
+       ))
+       ->addConstants(array(
+           array('bat',  'foobarbazbat', PropertyGenerator::FLAG_CONSTANT)
        ))
        ->addMethods(array(
            // Method passed as array
@@ -355,9 +359,8 @@ reflection on it. The static method ``fromReflectedFileName()`` allows you to do
 .. code-block:: php
    :linenos:
 
-   $generator = Zend\Code\Generator\FileGenerator::fromReflectedFileName($path);
-   $body = $generator->getBody();
-   $body .= "\n\$foo->bar();";
+   $generator = Zend\Code\Generator\FileGenerator::fromReflectedFileName($path);   
+   $generator->setBody("\$foo->bar();");
    file_put_contents($path, $generator->generate());
 
 .. _zend.code.generator.examples.reflection.class:
