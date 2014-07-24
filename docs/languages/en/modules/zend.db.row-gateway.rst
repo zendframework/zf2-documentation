@@ -43,7 +43,7 @@ The following use case demonstrates Zend\\Db\\RowGateway\\RowGateway usage in it
 
    // row gateway
    $rowGateway = new RowGateway('id', 'my_table', $adapter);
-   $rowGateway->populate($rowData);
+   $rowGateway->populate($rowData, true);
 
    $rowGateway->first_name = 'New Name';
    $rowGateway->save();
