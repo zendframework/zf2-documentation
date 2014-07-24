@@ -239,13 +239,13 @@ Examples
        public function onGetItemPre(Event $event)
        {
            $params = $event->getParams();
-           echo sprintf("Method 'getItem' with key '%s' started\n", params['key']);
+           echo sprintf("Method 'getItem' with key '%s' started\n", $params['key']);
        }
        
        public function onGetItemPost(Event $event)
        {
            $params = $event->getParams();
-           echo sprintf("Method 'getItem' with key '%s' finished\n", params['key']);
+           echo sprintf("Method 'getItem' with key '%s' finished\n", $params['key']);
        }
    }
    
