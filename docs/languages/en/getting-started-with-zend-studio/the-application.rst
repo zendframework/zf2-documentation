@@ -264,7 +264,7 @@ entire router section of the array to be:
                         'action'        => 'index',
                     ),
                     'constraints' => array(
-                        'action' => 'add|edit|delete',
+                        'action' => '(add|edit|delete)',
                         'id'     => '[0-9]+',
                     ),
                 ),
