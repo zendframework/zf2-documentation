@@ -67,7 +67,7 @@ then echo the helper to output it.
             array('id' => 'my_stylesheet')
         );
 
-   // rendering the links
+   // rendering the links from the layout:
    echo $this->headLink();
    ?>
 
