@@ -3,6 +3,10 @@
 Database Table Authentication
 =============================
 
+.. note::
+
+   ``Zend\Authentication\Adapter\DbTable`` has been deprecated, as its responsibilities have been splitted off into ``Zend\Authentication\Adapter\DbTable\CallbackCheck`` and ``Zend\Authentication\Adapter\DbTable\CredentialTreatmentAdapter``. Use ``Zend\Authentication\Adapter\DbTable\CredentialTreatmentAdapter`` instead of ``Zend\Authentication\Adapter\DbTable``.
+
 .. _zend.authentication.adapter.dbtable.introduction:
 
 Introduction
