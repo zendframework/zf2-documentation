@@ -531,7 +531,7 @@ instantiates the object when the Service Manager needs it. We start by
 implementing getServiceConfig() and write a closure that creates a
 ``TaskMapper`` instance. Add this method to the ``Module`` class:
 
-** module/Checklist/Module.php:**
+**module/Checklist/Module.php:**
 
 .. code-block:: php
    :linenos:
