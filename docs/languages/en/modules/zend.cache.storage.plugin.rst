@@ -67,7 +67,7 @@ The ClearExpiredByFactor Plugin
 
 .. note::
 
-    ** The ClearExpiredInterface is required **
+    **The ClearExpiredInterface is required**
 
     The storage have to implement the ``Zend\Cache\Storage\ClearExpiredInterface``
     to work with this plugin.
@@ -135,7 +135,7 @@ The OptimizeByFactor Plugin
 
 .. note::
 
-    ** The OptimizableInterface is required **
+    **The OptimizableInterface is required**
 
     The storage have to implement the ``Zend\Cache\Storage\OptimizableInterface``
     to work with this plugin.
