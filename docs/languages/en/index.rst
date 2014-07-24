@@ -110,7 +110,6 @@
    modules/zend.escaper.escaping-css
    modules/zend.escaper.escaping-url
    modules/zend.event-manager.event-manager
-   modules/zend.exception
    modules/zend.feed.introduction
    modules/zend.feed.importing
    modules/zend.feed.find-feeds
@@ -541,13 +540,6 @@ Zend\\EventManager
 
         * :doc:`modules/zend.event-manager.event-manager`
 
-
-.. _zend.exception:
-
-Zend\\Exception
-^^^^^^^^^^^^^^^
-
-        * :doc:`modules/zend.exception`
 
 .. _zend.feed:
 
