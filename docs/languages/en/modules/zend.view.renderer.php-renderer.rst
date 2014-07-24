@@ -37,6 +37,12 @@ renderer can consume. The ones we will usually use with the ``PhpRenderer`` are:
   a view script. By default, it appends the suffix ".phtml" to the requested template name, and then loops through
   the script directories; if it finds a file matching the requested template, it returns the full file path.
 
+- ``Zend\View\Resolver\RelativeFallbackResolver``, which allows using short template name into partial rendering. It is used as
+  wrapper for each of two aforesaid resolvers. For example, this allows usage of partial template paths
+  such as ``my/module/script/path/my-view/some/partial.phtml``, while rendering template ``my/module/script/path/my-view``
+  by short name ``some/partial``.
+
+
 - ``Zend\View\Resolver\AggregateResolver``, which allows attaching a FIFO queue of resolvers to consult.
 
 We suggest using the ``AggregateResolver``, as it allows you to create a multi-tiered strategy for resolving
@@ -68,7 +74,9 @@ Programmatically, you would then do something like this:
    ));
 
    $resolver->attach($map)    // this will be consulted first
-            ->attach($stack);
+            ->attach($stack)
+            ->attach(new Resolver\RelativeFallbackResolver($map)  // this allows using short template name
+            ->attach(new Resolver\RelativeFallbackResolver($stack);
 
 You can also specify a specific priority value when registering resolvers, with high, positive integers getting
 higher priority, and low, negative integers getting low priority, when resolving.
