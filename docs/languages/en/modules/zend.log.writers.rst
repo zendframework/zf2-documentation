@@ -147,6 +147,47 @@ To install the FirePHPCore Library you can use composer. Add the repository and 
       }
    }
 
+.. _zend.log.writers.chromephp
+
+Writing to ChromePHP
+--------------------
+
+``Zend\Log\Writer\ChromePHP`` sends log data to the `ChromePHP`_ Chrome extension`.
+
+To use the ChromePHP writer, you will also need to include the `ChromePHP Library`_ library in your application include path.
+The easiest way to do this is to include the library in your composer.json file.
+
+.. code-block:: json
+  :linenos
+
+  {
+      [ .. ]
+
+      "require" : {
+          [ ... ]
+          "ccampbell/chromephp": "4.1.0"
+      }
+  }
+
+.. _zend.log.writers.mail
+
+Writing to Mail
+---------------
+
+.. _zend.log.writers.mongodb
+
+Writing to MongoDB
+------------------
+
+.. _zend.log.writers.syslog
+
+Writing to Syslog
+-----------------
+
+.. _zend.log.writers.zendmonitor
+
+Writing to Zend Monitor
+-----------------------
 
 .. _zend.log.writers.null:
 
@@ -224,3 +265,5 @@ integer number (greater or equal to 1) passed as second parameter in the ``addWr
 .. _`PHP stream`: http://www.php.net/stream
 .. _`Filesystem URLs`: http://www.php.net/manual/en/wrappers.php#wrappers.file
 .. _`FirePHP`: http://www.firephp.org/
+.. _`ChromePHP`: https://chrome.google.com/webstore/detail/chrome-logger/noaneddfkdjfnfdakjjmocngnfkfehhd
+.. _`ChromePHP Library`: http://craig.is/writing/chrome-logger
