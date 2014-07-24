@@ -48,7 +48,7 @@ and it has two **optional** parameters called ``action`` and ``id``.
 First, let's use the view helper to create the output for the URL ``/news`` without any of the
 optional parameters being used:
 
-.. code-block:: html
+.. code-block:: html+php
    :linenos:
 
    <a href="<?php echo $this->url('news'); ?>">News Index</a>
@@ -56,7 +56,7 @@ optional parameters being used:
 This will render the output:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
    
    <a href="/news">News Index</a>
    
@@ -64,8 +64,8 @@ Now let's assume we want to get a link to display the detail page of a single ne
 task, the optional parameters ``action`` and ``id`` need to have values assigned. This is how you do
 it:
 
-.. code-block:: html
-   :lineos:
+.. code-block:: html+php
+   :linenos:
    
    <a href="<?php echo $this->url('news', array('action' => 'details', 'id' =>42)); ?>">
        Details of News #42
@@ -74,7 +74,7 @@ it:
 This will render the output:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
    
    <a href="/news/details/42">News Index</a>
    
@@ -115,8 +115,9 @@ We will use the same route configuration as defined above:
 To generate query string arguments from the view helper, you need to assign them as the third
 argument using the ``query`` key like this:
 
-.. code-block:: html
-   :lineos:
+.. code-block:: html+php
+   :linenos:
+
    <?php
    $url = $this->url(
        'news',
@@ -133,7 +134,7 @@ argument using the ``query`` key like this:
 The above code sample would output:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
    
    <a href="/news/archive?page=13">News Archive Page #13</a>
    
@@ -146,8 +147,9 @@ Another possible entry within the ``$options`` array is the assignment of URL fr
 used to link to in-page anchors), denoted with  using the ``fragment`` key. Let's assume we want to
 enter a link for users to directly jump to the comment section of a details page:
 
-.. code-block:: html
-   :lineos:
+.. code-block:: html+php
+   :linenos:
+
    <?php
    $url = $this->url(
        'news',
@@ -162,14 +164,15 @@ enter a link for users to directly jump to the comment section of a details page
 The above code sample would output:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
    
    <a href="/news/details/42#comments">Comment Section of News #42</a>
    
 You can use ``fragment`` and ``query`` options at the same time!
 
-.. code-block:: html
-   :lineos:
+.. code-block:: html+php
+   :linenos:
+
    <?php
    $url = $this->url(
        'news',
@@ -187,12 +190,12 @@ You can use ``fragment`` and ``query`` options at the same time!
 The above code sample would output:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
    
    <a href="/news/details/42?commentPage=3#comments">Comment Section of News #42</a>
 
    
-.. _zend.view.helpers.initial.url.reusingmatchedparameters:
+.. _zend.view.helpers.initial.url.reusing-matched-parameters:
 
 Reusing Matched Parameters
 --------------------------
@@ -205,8 +208,8 @@ As an example, we will imagine being on a detail page for our "news" route. We w
 to the ``èdit`` and ``delete`` actions without having to assign the ID again. This is how you would
 do it:
 
-.. code-block:: html
-   :lineos:
+.. code-block:: html+php
+   :linenos:
    
    // Currently url /news/details/777
    
@@ -217,19 +220,22 @@ Notice the ``true`` argument in the fourth position. This tells the view helper 
 ``id`` (``777``) when creating the new URL:
 
 .. code-block:: html
-   :lineos:
+   :linenos:
    
    <a href="/news/edit/777">Edit Me</a>
    <a href="/news/delete/777">Edit Me</a>
-   
-**Shorthand**
+
+.. _zend.view.helpers.initial.url.reusing-matched-parameters.shorthand:
+
+Shorthand
+^^^^^^^^^
 
 Due to the fact that reusing parameters is a use case that can happen when no route options are set,
 the third argument for the URL view helper will be checked against its type; when a boolean is
 passed, the helper uses it to set the value of the ``$reuseMatchedParams`` flag:
 
 .. code-block:: php
-   :lineos:
+   :linenos:
    
    $this->url('news', array('action' => 'archive'), null, true);
    // is equal to
