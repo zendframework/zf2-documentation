@@ -11,8 +11,7 @@ to create a new project from scratch with Zend Framework:
 .. code-block:: bash
    :linenos:
 
-    php composer.phar create-project --stability="dev" repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
-    php composer.phar update
+    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
 
 .. note::
 
@@ -101,7 +100,7 @@ to create a new project from scratch with Zend Framework:
       .. code-block:: bash
          :linenos:
          
-         composer create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+         composer create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install 
    
 
 We can now move on to the web server setup.
