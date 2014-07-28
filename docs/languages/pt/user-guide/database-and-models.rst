@@ -382,7 +382,7 @@ sejam extraídas para o escopo do nosso arquivo de view, portanto nos não preci
 preocupar com prefixar elas com ``$this->`` como fazíamos com Zend Framework 1; mas você
 pode usá-lo se assim desejar.
 
-Nos então criamos uma tabela para exibir o titulo e artista de cada um dos álbuns e 
+Nos então criamos uma tabela para exibir o título e artista de cada um dos álbuns e 
 exibimos também links que possibilitam editar e excluir essas entradas. Um loop
 ``foreach:`` padrão é usado para percorrer a lista de álbuns, e nos usamos a forma
 alternativa através do uso de dois-pontos e ``endforeach;`` já que essa forma é mais
