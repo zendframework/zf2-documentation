@@ -39,13 +39,13 @@ A Aplicação Tutorial
 --------------------
 
 A aplicação que você está prestes a desenvolver é uma simples biblioteca para exibir quais
-álbuns de música você possui. A página principal ira exibir uma lista de sua coleção e permitir
+álbuns de música você possui. A página principal irá exibir uma lista de sua coleção e permitir
 que você adicione, edite e delete álbuns. Para isso nós vamos precisar de quatro páginas:
 
 +--------------------+------------------------------------------------------------+
 | Página             | Descrição                                                  |
 +====================+============================================================+
-| Lista de Álbuns    | Essa página ira exibir a lista de álbuns e possuir links   |
+| Lista de Álbuns    | Essa página irá exibir a lista de álbuns e possuir links   |
 |                    | para edição e exclusão deles. Também conterá um link para  |
 |                    | a inclusão de um novo álbum.                               |
 +--------------------+------------------------------------------------------------+
