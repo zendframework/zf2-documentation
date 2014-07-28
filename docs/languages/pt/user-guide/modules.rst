@@ -158,7 +158,7 @@ disponíveis no módulo. Nos iremos precisar apenas de um controller, ``AlbumCon
 que iremos referenciar como ``Album\Controller\Album``. A chave do controller deve ser
 única por todos os módulos, por isso nos a prefixamos com o nome do módulo.
 
-Na seção ``view_manager``, nos incluímos nosso diretório de views na configuração
+Na seção ``view_manager``, nós incluímos nosso diretório de views na configuração
 ``TemplatePathStack``. Isso permitirá que os arquivos de view para o módulo ``Album``
 sejam encontrados dentro do nosso diretório ``view/``.
 
