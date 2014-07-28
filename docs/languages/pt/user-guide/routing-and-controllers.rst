@@ -15,11 +15,11 @@ exclusão de álbuns. Para isso as seguintes páginas serão necessárias:
 |               | os links para editá-los e deletá-los. Também irá            |
 |               | disponibilizar um link para a criação de novos álbuns.      |
 +---------------+-------------------------------------------------------------+
-| Incluir álbum | Essa página ira conter um formulário para inclusão de álbum.|
+| Incluir álbum | Essa página irá conter um formulário para inclusão de álbum.|
 +---------------+-------------------------------------------------------------+
-| Editar álbum  | Essa página ira conter um formulário para edição de álbum.  |
+| Editar álbum  | Essa página irá conter um formulário para edição de álbum.  |
 +---------------+-------------------------------------------------------------+
-| Excluir álbum | Essa página irá confirmar que nos queremos excluir um álbum |
+| Excluir álbum | Essa página irá confirmar que nós queremos excluir um álbum |
 |               | e então realizar a exclusão.                                |
 +---------------+-------------------------------------------------------------+
 
@@ -168,7 +168,7 @@ Vamos seguir em frente e criar nossa classe controller ``AlbumController.php`` e
     Nos já informamos o modulo sobre nosso controller na seção 
     ‘controller’ do arquivo ``module/Album/config/module.config.php``.
 
-Nos acabamos de configura as quatro ações que nos queremos usar. Elas não funcionam
+Nós acabamos de configurar as quatro ações que nós queremos usar. Elas não funcionam
 até que nos configuremos as views. As URLs para cada ação são:
 
 +--------------------------------------------+----------------------------------------------------+
@@ -183,7 +183,7 @@ até que nos configuremos as views. As URLs para cada ação são:
 | http://zf2-tutorial.localhost/album/delete | ``Album\Controller\AlbumController::deleteAction`` |
 +--------------------------------------------+----------------------------------------------------+
 
-Nos agora temos um roteamento funcionando e as ações configuradas para cada página da
+Nós agora temos um roteamento funcionando e as ações configuradas para cada página da
 nossa aplicação.
 
 É hora de construirmos as camadas de View e Model.
