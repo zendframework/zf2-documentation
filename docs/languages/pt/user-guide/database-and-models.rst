@@ -277,7 +277,7 @@ Voltando ao Controller
 ----------------------
 
 Agora que o ``ServiceManager`` consegue criar uma instancia de ``AlbumTable`` para nos, nos
-podemos adicionar um método ao controle para requisitá-lo. Inclua ``getAlbumTable()`` à classe
+podemos adicionar um método ao controller para requisitá-lo. Inclua ``getAlbumTable()`` à classe
 ``AlbumController``:
 
 .. code-block:: php
