@@ -303,7 +303,7 @@ No topo da classe.
 Nos agora podemos chamar ``getAlbumTable()`` a partir de nosso controller sempre que precisarmos
 de interação com nosso model.
 
-Caso o service locator tenha sido configurado corretamente em ``Module.php``, nos devemos obter
+Caso o service locator tenha sido configurado corretamente em ``Module.php``, nós devemos obter
 uma instância de ``Album\Model\AlbumTable`` quando chamarmos ``getAlbumTable()``.
 
 Listando os Álbuns
