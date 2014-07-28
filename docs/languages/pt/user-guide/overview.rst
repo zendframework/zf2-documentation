@@ -4,7 +4,7 @@ Iniciando com Zend Framework 2
 ==============================
 
 Esse tutorial pretende fornecer uma introdução ao desenvolvimento com Zend Framework 2 
-atraves da criação de uma simples aplicação guiada por banco de dados usando o padrão
+através da criação de uma simples aplicação guiada por banco de dados usando o padrão
 Model-View-Controller. Ao final desse tutorial você terá uma aplicação funcional com 
 Zend Framework 2 e poderá analisar o código para saber mais sobre como tudo funciona de 
 forma conjunta.
@@ -39,22 +39,22 @@ A Aplicação Tutorial
 --------------------
 
 A aplicação que você está prestes a desenvolver é uma simples biblioteca para exibir quais
-albuns de música você possui. A página principal ira exibir uma lista de sua coleção e permitir
-que você adicione, edite e delete albuns. Para isso nós vamos precisar de quatro páginas:
+álbuns de música você possui. A página principal ira exibir uma lista de sua coleção e permitir
+que você adicione, edite e delete álbuns. Para isso nós vamos precisar de quatro páginas:
 
 +--------------------+------------------------------------------------------------+
-| Pagina             | Descrição                                                  |
+| Página             | Descrição                                                  |
 +====================+============================================================+
-| Lista de Albuns    | Ess página ira exibir a lista de albuns e possuir links    |
-|                    | para edição e exclusão deles. também conterá um link para  |
-|                    | a inclusão de um novo album.                               |
+| Lista de Álbuns    | Essa página ira exibir a lista de álbuns e possuir links   |
+|                    | para edição e exclusão deles. Também conterá um link para  |
+|                    | a inclusão de um novo álbum.                               |
 +--------------------+------------------------------------------------------------+
-| Inclusão de Albuns | Conterá um formulário para inclusão de um novo album.      |
+| Inclusão de Álbum  | Conterá um formulário para inclusão de um novo álbum.      |
 +--------------------+------------------------------------------------------------+
-| Edição de Albuns   | Conterá um formulário para edição de um album.             |
+| Edição de Álbum    | Conterá um formulário para edição de um álbum.             |
 +--------------------+------------------------------------------------------------+
-| Exclusão de Albuns | Essa página irá confirmar se você realmente deseja         |
-|                    | excluir um album e então realizará a exclusão.             |
+| Exclusão de Álbum  | Essa página irá confirmar se você realmente deseja         |
+|                    | excluir um álbum e então realizará a exclusão.             |
 +--------------------+------------------------------------------------------------+
 
 Nós também iremos precisar armazenar os dados em um banco de dados. Iremos precisar apenas de uma
@@ -63,7 +63,7 @@ tabela para isso com as seguintes colunas:
 +------------+--------------+-------+----------------------------------+
 | Coluna     | Tipo         | Null? | Notas                            |
 +============+==============+=======+==================================+
-| id         | integer      | Não   | Chave primaria, auto incremental |
+| id         | integer      | Não   | Chave primária, auto incremental |
 +------------+--------------+-------+----------------------------------+
 | artist     | varchar(100) | Não   |                                  |
 +------------+--------------+-------+----------------------------------+

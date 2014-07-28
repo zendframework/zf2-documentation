@@ -5,21 +5,21 @@ Roteamento e Controladores
 ==========================
 
 Nos vamos construir um inventário bastante simples para exibir nossa coleção de
-albuns. A página incial irá listar a coleção e permitir a inclusão, edição e
-exclusão de albuns. Para isso as seguintes páginas serão necessárias:
+álbuns. A página inicial irá listar a coleção e permitir a inclusão, edição e
+exclusão de álbuns. Para isso as seguintes páginas serão necessárias:
 
 +---------------+-------------------------------------------------------------+
 | Página        | Descrição                                                   |
 +===============+=============================================================+
-| Inicial       | Essa página irá exibir a lista de albuns e disponibilizar   |
-|               | os links para edita-los e deleta-los. Também irá            |
-|               | disponibilizar um link para a criação de novos albuns.      |
+| Inicial       | Essa página irá exibir a lista de álbuns e disponibilizar   |
+|               | os links para editá-los e deletá-los. Também irá            |
+|               | disponibilizar um link para a criação de novos álbuns.      |
 +---------------+-------------------------------------------------------------+
-| Inlcuir album | Essa página ira conter um formulário para inclusão de album.|
+| Incluir álbum | Essa página ira conter um formulário para inclusão de álbum.|
 +---------------+-------------------------------------------------------------+
-| Editar album  | Essa página ira conter um formulário para edição de album.  |
+| Editar álbum  | Essa página ira conter um formulário para edição de álbum.  |
 +---------------+-------------------------------------------------------------+
-| Excluir album | Essa página irá confirmar que nos queremos excluir um album |
+| Excluir álbum | Essa página irá confirmar que nos queremos excluir um álbum |
 |               | e então realizar a exclusão.                                |
 +---------------+-------------------------------------------------------------+
 
@@ -29,7 +29,7 @@ como uma *action* e ações são agrupadas em *controllers* dentro de *modules*.
 Dessa forma você irá geralmente agrupar ações em um controller, por exemplo, um
 controller de notícias deve ter as ações ``atual``, ``arquivada`` e ``visualizar``.
 
-Como nos termos quatro páginas e todas elas são relativas aos albuns, nos iremos
+Como nos temos quatro páginas e todas elas são relativas aos álbuns, nos iremos
 agrupá-las em um mesmo controller ``AlbumController`` dentro do nosso módulo
 ``Album`` como quatro ações. As quatro ações serão:
 
@@ -38,16 +38,16 @@ agrupá-las em um mesmo controller ``AlbumController`` dentro do nosso módulo
 +===============+=====================+============+
 | Inicial       | ``AlbumController`` | ``index``  |
 +---------------+---------------------+------------+
-| Incluir album | ``AlbumController`` | ``add``    |
+| Incluir álbum | ``AlbumController`` | ``add``    |
 +---------------+---------------------+------------+
-| Editar album  | ``AlbumController`` | ``edit``   |
+| Editar álbum  | ``AlbumController`` | ``edit``   |
 +---------------+---------------------+------------+
-| Excluir album | ``AlbumController`` | ``delete`` |
+| Excluir álbum | ``AlbumController`` | ``delete`` |
 +---------------+---------------------+------------+
 
-O mapeamento da URL para uma acão em particular é feito usando rotas que são
+O mapeamento da URL para uma ação em particular é feito usando rotas que são
 definidas no arquivo ``module.config.php`` do módulo. Nos iremos adicionar uma
-rota para as ações dos albuns. Esse é o arquivo de configuração do módulo
+rota para as ações dos álbuns. Esse é o arquivo de configuração do módulo
 atualizado com o novo código em destaque.
 
 .. code-block:: php
@@ -88,12 +88,12 @@ atualizado com o novo código em destaque.
         ),
     );
 
-O nome da rota é ‘album’ e seu tipo é ‘segment’. Uma rota de Seguimento nos permite
-especificar variáveis na rota que serão mapeadas para parametros na rota correspondente.
+O nome da rota é ‘album’ e seu tipo é ‘segment’. Uma rota de seguimento nos permite
+especificar variáveis na rota que serão mapeadas para parâmetros na rota correspondente.
 Nesse caso, a rota é **``/album[/:action][/:id]``** que irá corresponder a qualquer URL
 que comece com ``/album``. O resto do seguimento será uma ação opcional e finalmente
 o último seguimento será mapeado para um id opcional. Os colchetes indicam que um
-seguimento é opcional. a seção ``constraints`` permite que nós certifiquemos que um
+seguimento é opcional. A seção ``constraints`` permite que nós certifiquemos que um
 seguimento é como esperado, por isso limitamos as ações a começar com uma letra e ter
 caracteres alfanuméricos, underscores ou hifens em seguida. Nos também limitamos o id
 à números.
@@ -103,13 +103,13 @@ Essa rota nos permite mapear as seguintes URLs:
 +---------------------+------------------------------+------------+
 | URL                 | Página                       | Ação       |
 +=====================+==============================+============+
-| ``/album``          | Inicial (lista de albuns)    | ``index``  |
+| ``/album``          | Inicial (lista de álbuns)    | ``index``  |
 +---------------------+------------------------------+------------+
-| ``/album/add``      | Incluir novo album           | ``add``    |
+| ``/album/add``      | Incluir novo álbum           | ``add``    |
 +---------------------+------------------------------+------------+
-| ``/album/edit/2``   | Editar album com id 2        | ``edit``   |
+| ``/album/edit/2``   | Editar álbum com id 2        | ``edit``   |
 +---------------------+------------------------------+------------+
-| ``/album/delete/4`` | Excluir album com id 4       | ``delete`` |
+| ``/album/delete/4`` | Excluir álbum com id 4       | ``delete`` |
 +---------------------+------------------------------+------------+
 
 Criando o Controlador
@@ -126,7 +126,7 @@ Cada ação é um método público dentro da classe controller nomeado como
 .. note::
 
     Isso acontece por convenção. O Zend Framework 2 não possui muitas restrições
-    para os controller além do fato de eles terem que implementar a inteface
+    para os controller além do fato de eles terem que implementar a interface
     ``Zend\Stdlib\Dispatchable``. O framework disponibiliza duas classes abstratas
     que fazem isso para nos: ``Zend\Mvc\Controller\AbstractActionController``
     e ``Zend\Mvc\Controller\AbstractRestfulController``. Nos iremos usar o padrão
@@ -168,11 +168,11 @@ Vamos seguir em frente e criar nossa classe controller ``AlbumController.php`` e
     Nos já informamos o modulo sobre nosso controller na seção 
     ‘controller’ do arquivo ``module/Album/config/module.config.php``.
 
-Nos acavamos de configurara as quatro ações que nos queremos usar. Elas não funionam
+Nos acabamos de configura as quatro ações que nos queremos usar. Elas não funcionam
 até que nos configuremos as views. As URLs para cada ação são:
 
 +--------------------------------------------+----------------------------------------------------+
-| URL                                        | Metodo chamado                                     |
+| URL                                        | Método chamado                                     |
 +============================================+====================================================+
 | http://zf2-tutorial.localhost/album        | ``Album\Controller\AlbumController::indexAction``  |
 +--------------------------------------------+----------------------------------------------------+
@@ -183,10 +183,10 @@ até que nos configuremos as views. As URLs para cada ação são:
 | http://zf2-tutorial.localhost/album/delete | ``Album\Controller\AlbumController::deleteAction`` |
 +--------------------------------------------+----------------------------------------------------+
 
-Nos agora temos um roteamoento funionando e as ações coniguradas para cada página da
+Nos agora temos um roteamento funcionando e as ações configuradas para cada página da
 nossa aplicação.
 
-É hora de contruirmos as camadas de View e Model.
+É hora de construirmos as camadas de View e Model.
 
 Inicializando os arquivos de view
 ---------------------------------
@@ -195,7 +195,7 @@ Para integrar as views na nossa aplicação tudo que precisamos fazer é criar a
 arquivos de views. Esses arquivos serão executados pelo ``DefaultViewStrategy`` que
 irá passar qualquer variável ou ``view models`` que forem retornados pelos métodos
 de ação do controller. Esses arquivos de views serão armazenados no diretório ``views``
-do nosso módulo dentro de um subsiretório com o nome do controller. Crie agora esses
+do nosso módulo, dentro de um subdiretório com o nome do controller. Crie agora esses
 quatro arquivos vazios:
 
 * ``module/Album/view/album/album/index.phtml``
@@ -203,4 +203,4 @@ quatro arquivos vazios:
 * ``module/Album/view/album/album/edit.phtml``
 * ``module/Album/view/album/album/delete.phtml``
 
-Nos agora poderemos comerçar a preenche-los, começando com o banco de dados e os models.
+Nos agora poderemos começar a preenchê-los, começando com o banco de dados e os models.
