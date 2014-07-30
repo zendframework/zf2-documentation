@@ -12,6 +12,7 @@ to create a new project from scratch with Zend Framework:
    :linenos:
 
     php composer.phar create-project --stability="dev" repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
+    cd path/to/install
     php composer.phar update
 
 .. note::
