@@ -18,7 +18,7 @@ and the ability to investigate application problems, including profiling
 performance and memory issues with code-tracing abilities. Zend Server also
 ships with Zend Framework 2, which is convenient.
 
-Zend Studio is an a PHP-focused IDE based on Eclipse that comes in two flavours:
+Zend Studio is a PHP-focused IDE based on Eclipse that comes in two flavours:
 the free Eclipse PDT and Zend Studio, a paid-for product that provides enhanced
 features and support options. Usefully, Eclipse PDT provides Zend Framework 2
 support out of the box along with Zend Server integration. You don't get the
