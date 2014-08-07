@@ -62,8 +62,7 @@ Create a file called ``AlbumForm.php`` in ``module/Album/src/Album/Form``:
     }
 
 Within the constructor of ``AlbumForm`` we do several things.  First, we set the name 
-of the form as we call the parent’s constructor.  We then set the form's method, in this case, ``post``.  
-Finally, we create four form elements: the id, title, artist, and submit button. For each item we set 
+of the form as we call the parent’s constructor.  we create four form elements: the id, title, artist, and submit button. For each item we set 
 various attributes and options, including the label to be displayed.
 
 We also need to set up validation for this form. In Zend Framework 2 this is
@@ -588,7 +587,7 @@ value when doing the deletion.
 Ensuring that the home page displays the list of albums
 -------------------------------------------------------
 
-One final point. At the moment, the home page, http://zf2-tutorial.localhost/
+One final point. At the moment, the home page, ``http://zf2-tutorial.localhost/``
 doesn’t display the list of albums.
 
 This is due to a route set up in the ``Application`` module’s

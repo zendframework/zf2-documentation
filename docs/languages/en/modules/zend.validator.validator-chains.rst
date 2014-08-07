@@ -3,6 +3,11 @@
 Validator Chains
 ================
 
+.. _zend.validator.validator_chains.overview:
+
+Overview
+--------
+
 Often multiple validations should be applied to some value in a particular order. The following code demonstrates a
 way to solve the example from the :ref:`introduction <zend.validator.introduction>`, where a username must be
 between 6 and 12 alphanumeric characters:
@@ -15,7 +20,7 @@ between 6 and 12 alphanumeric characters:
    $validatorChain->attach(
                        new Zend\Validator\StringLength(array('min' => 6,
                                                             'max' => 12)))
-                  ->attach(new Zend\Validator\Alnum());
+                  ->attach(new Zend\I18n\Validator\Alnum());
 
    // Validate the username
    if ($validatorChain->isValid($username)) {
@@ -47,7 +52,7 @@ string length validation fails:
                        new Zend\Validator\StringLength(array('min' => 6,
                                                             'max' => 12)),
                        true)
-                  ->attach(new Zend\Validator\Alnum());
+                  ->attach(new Zend\I18n\Validator\Alnum());
 
 Any object that implements ``Zend\Validator\ValidatorInterface`` may be used in a validator chain.
 

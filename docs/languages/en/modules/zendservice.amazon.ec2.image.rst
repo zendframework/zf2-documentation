@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2.images:
 
-ZendService\Amazon\Ec2: Amazon Machine Images (AMI)
-====================================================
+ZendService\\Amazon\\Ec2: Amazon Machine Images (AMI)
+=====================================================
 
 Amazon Machine Images (AMIs) are preconfigured with an ever-growing list of operating systems.
 
@@ -12,7 +12,8 @@ AMI Information Utilities
 
 .. _zendservice.amazon.ec2.images.register:
 
-.. rubric:: Register an AMI with EC2
+Register an AMI with EC2
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 *register* Each *AMI* is associated with an unique ID which is provided by the Amazon EC2 service through the
 RegisterImage operation. During registration, Amazon EC2 retrieves the specified image manifest from Amazon S3 and
@@ -28,7 +29,8 @@ verifies that the image is owned by the user registering the image.
 
 .. _zendservice.amazon.ec2.images.deregister:
 
-.. rubric:: Deregister an AMI with EC2
+Deregister an AMI with EC2
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *deregister*, Deregisters an *AMI*. Once deregistered, instances of the *AMI* can no longer be launched.
 
@@ -42,7 +44,8 @@ verifies that the image is owned by the user registering the image.
 
 .. _zendservice.amazon.ec2.images.describe:
 
-.. rubric:: Describe an AMI
+Describe an AMI
+^^^^^^^^^^^^^^^
 
 *describe* Returns information about *AMI*\ s, AKIs, and ARIs available to the user. Information returned includes
 image type, product codes, architecture, and kernel and *RAM* disk IDs. Images available to the user include public
@@ -102,7 +105,8 @@ AMI Attribute Utilities
 
 .. _zendservice.amazon.ec2.images.attribute.modify:
 
-.. rubric:: Modify Image Attributes
+Modify Image Attributes
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Modifies an attribute of an *AMI*
 
@@ -147,7 +151,8 @@ Modifies an attribute of an *AMI*
 
 .. _zendservice.amazon.ec2.images.attribute.reset:
 
-.. rubric:: Reset an AMI Attribute
+Reset an AMI Attribute
+^^^^^^^^^^^^^^^^^^^^^^
 
 *resetAttribute* will reset the attribute of an *AMI* to its default value. **The productCodes attribute cannot be
 reset.**
@@ -160,7 +165,8 @@ reset.**
 
 .. _zendservice.amazon.ec2.images.attribute.describe:
 
-.. rubric:: Describe AMI Attribute
+Describe AMI Attribute
+^^^^^^^^^^^^^^^^^^^^^^
 
 *describeAttribute* returns information about an attribute of an *AMI*. Only one attribute can be specified per
 call. Currently only launchPermission and productCodes are supported.

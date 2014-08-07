@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.ldap.api.reference.zend-ldap-ldif-encoder:
 
 Zend\\Ldap\\Ldif\\Encoder

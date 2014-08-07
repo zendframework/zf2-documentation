@@ -103,7 +103,7 @@ Let's create our console route and point it to ``Application\Controller\IndexCon
                             'route'    => 'user resetpassword [--verbose|-v] <userEmail>',
                             'defaults' => array(
                                 'controller' => 'Application\Controller\Index',
-                                'action'     => 'password'
+                                'action'     => 'resetpassword'
                             )
                         )
                     )
@@ -154,7 +154,7 @@ We will now add ``resetpassword`` action to ``Application\Controller\IndexContro
 
             // Get user email from console and check if the user used --verbose or -v flag
             $userEmail   = $request->getParam('userEmail');
-            $verbose     = $request->getParam('verbose');
+            $verbose     = $request->getParam('verbose') || $request->getParam('v');
 
             // reset new password
             $newPassword = Rand::getString(16);

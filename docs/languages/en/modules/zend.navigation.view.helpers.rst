@@ -87,7 +87,8 @@ container when calling ``$helper->getContainer()``.
 
 .. _zend.navigation.view.helpers.proxy.example:
 
-.. rubric:: Proxying calls to the navigation container
+Proxying calls to the navigation container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Navigation view helpers use the magic method ``__call()`` to proxy method calls to the navigation container that is
 registered in the view helper.
@@ -111,7 +112,7 @@ The navigation helpers support translation of page labels and titles. You can se
 
 If you want to disable translation, use ``$helper->setUseTranslator(false)``.
 
-The :ref:`proxy helper <zend.navigation.view.helpers.navigation>` will inject its own translator to the
+The :ref:`proxy helper <zend.navigation.view.helper.navigation>` will inject its own translator to the
 helper it proxies to if the proxied helper doesn't already have a translator.
 
 .. note::
@@ -133,7 +134,7 @@ for the page to be included when rendering.
 
 If a page is not accepted by *ACL*, any descendant page will also be excluded from rendering.
 
-The :ref:`proxy helper <zend.navigation.view.helpers.navigation>` will inject its own *ACL* and role to the
+The :ref:`proxy helper <zend.navigation.view.helper.navigation>` will inject its own *ACL* and role to the
 helper it proxies to if the proxied helper doesn't already have any.
 
 The examples below all show how *ACL* affects rendering.

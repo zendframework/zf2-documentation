@@ -1,7 +1,7 @@
-.. _zendservice.amazon.ec2.zones:
+.. _zendservice.amazon.ec2.regions-and-availability-zones:
 
-ZendService\Amazon\Ec2: Regions and Availability Zones
-=======================================================
+ZendService\\Amazon\\Ec2: Regions and Availability Zones
+========================================================
 
 Amazon EC2 provides the ability to place instances in different regions and Availability Zones. Regions are
 dispersed in separate geographic areas or countries. Availability Zones are located within regions and are
@@ -9,7 +9,7 @@ engineered to be insulated from failures in other Availability Zones and provide
 connectivity to other Availability Zones in the same region. By launching instances in separate Availability Zones,
 you can protect your applications from the failure of a single Availability Zone.
 
-.. _zendservice.amazon.ec2.zones.regions:
+.. _zendservice.amazon.ec2.regions-and-availability-zones.regions:
 
 Amazon EC2 Regions
 ------------------
@@ -21,9 +21,10 @@ to meet legal requirements.
 Each Amazon EC2 region is designed to be completely isolated from the other Amazon EC2 regions. This achieves the
 greatest possible failure independence and stability, and it makes the locality of each EC2 resource unambiguous.
 
-.. _zendservice.amazon.ec2.zones.regions.example:
+.. _zendservice.amazon.ec2.regions-and-availability-zones.regions.example:
 
-.. rubric:: Viewing the available regions
+Viewing the available regions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *describe* is used to find out which regions your account has access to.
 
@@ -40,7 +41,7 @@ regionName and regionUrl.
        print $region['regionName'] . ' -- ' . $region['regionUrl'] . '<br />';
    }
 
-.. _zendservice.amazon.ec2.zones.availability:
+.. _zendservice.amazon.ec2.regions-and-availability-zones.availability:
 
 Amazon EC2 Availability Zones
 -----------------------------
@@ -52,9 +53,10 @@ you based on system health and available capacity. Even if you have other instan
 specifying an Availability Zone if your new instances do not need to be close to, or separated from, your existing
 instances.
 
-.. _zendservice.amazon.ec2.zones.availability.example:
+.. _zendservice.amazon.ec2.regions-and-availability-zones.availability.example:
 
-.. rubric:: Viewing the available zones
+Viewing the available zones
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *describe* is used to find out which what the status is of each availability zone.
 

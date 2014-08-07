@@ -1,7 +1,7 @@
-.. _zendservice.amazon.ec2.windows.instance:
+.. _zendservice.amazon.ec2.windows-instance:
 
-ZendService\Amazon\Ec2: Windows Instances
-==========================================
+ZendService\\Amazon\\Ec2: Windows Instances
+===========================================
 
 Using Amazon EC2 instances running Windows is similar to using instances running Linux and UNIX. The following are
 the major differences between instances that use Linux or UNIX and Windows:
@@ -50,14 +50,15 @@ configuration service. The Amazon EC2 configuration service performs the followi
 - Sends the last three system and application errors from the event log to the console. This helps developers to
   identify problems that caused an instance to crash or network connectivity to be lost.
 
-.. _zendservice.amazon.ec2.windows.instance.operations:
+.. _zendservice.amazon.ec2.windows-instance.operations:
 
 Windows Instances Usage
 -----------------------
 
-.. _zendservice.amazon.ec2.windows.instance.operations.bundle:
+.. _zendservice.amazon.ec2.windows-instance.operations.bundle:
 
-.. rubric:: Bundles an Amazon EC2 instance running Windows
+Bundles an Amazon EC2 instance running Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``bundle()`` has three require parameters and one optional
 
@@ -80,9 +81,10 @@ progress s3Bucket and s3Prefix.
                                                         'aws_secret_key');
    $return = $ec2_instance->bundle('instanceId', 's3Bucket', 's3Prefix');
 
-.. _zendservice.amazon.ec2.windows.instance.operations.describe:
+.. _zendservice.amazon.ec2.windows-instance.operations.describe:
 
-.. rubric:: Describes current bundling tasks
+Describes current bundling tasks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``describeBundle()`` Describes current bundling tasks
 
@@ -96,9 +98,10 @@ updateTime, progress s3Bucket and s3Prefix.
                                                         'aws_secret_key');
    $return = $ec2_instance->describeBundle('bundleId');
 
-.. _zendservice.amazon.ec2.windows.instance.operations.cancel:
+.. _zendservice.amazon.ec2.windows-instance.operations.cancel:
 
-.. rubric:: Cancels an Amazon EC2 bundling operation
+Cancels an Amazon EC2 bundling operation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``cancelBundle()`` Cancels an Amazon EC2 bundling operation
 

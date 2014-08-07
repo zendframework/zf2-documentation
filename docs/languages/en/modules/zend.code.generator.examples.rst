@@ -1,11 +1,12 @@
 .. _zend.code.generator.examples:
 
-Zend\Code\Generator Examples
-============================
+Zend\\Code\\Generator Examples
+==============================
 
 .. _zend.code.generator.examples.class:
 
-.. rubric:: Generating PHP classes
+Generating PHP classes
+----------------------
 
 The following example generates an empty class with a class-level DocBlock.
 
@@ -55,7 +56,8 @@ The above code will result in the following:
 
 .. _zend.code.generator.examples.class-properties:
 
-.. rubric:: Generating PHP classes with class properties
+Generating PHP classes with class properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Building on the previous example, we now add properties to our generated class.
 
@@ -83,10 +85,12 @@ Building on the previous example, we now add properties to our generated class.
    ));
    $foo->setName('Foo')
        ->setDocblock($docblock)
-       ->setProperties(array(
+       ->addProperties(array(
             array('_bar', 'baz',          PropertyGenerator::FLAG_PROTECTED),
-            array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC),
-            array('bat',  'foobarbazbat', PropertyGenerator::FLAG_CONSTANT),
+            array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC)
+      ))
+      ->addConstants(array(
+            array('bat',  'foobarbazbat')
        ));
    echo $foo->generate();
 
@@ -117,7 +121,8 @@ The above results in the following class definition:
 
 .. _zend.code.generator.examples.class-methods:
 
-.. rubric:: Generating PHP classes with class methods
+Generating PHP classes with class methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Code\Generator\ClassGenerator`` allows you to attach methods with optional content to your classes. Methods may be
 attached as either arrays or concrete ``Zend\Code\Generator\MethodGenerator`` instances.
@@ -150,8 +155,10 @@ attached as either arrays or concrete ``Zend\Code\Generator\MethodGenerator`` in
        ->setDocblock($docblock)
        ->addProperties(array(
            array('_bar', 'baz',          PropertyGenerator::FLAG_PROTECTED),
-           array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC),
-           array('bat',  'foobarbazbat', PropertyGenerator::FLAG_CONSTANT),
+           array('baz',  'bat',          PropertyGenerator::FLAG_PUBLIC)
+       ))
+       ->addConstants(array(
+           array('bat',  'foobarbazbat', PropertyGenerator::FLAG_CONSTANT)
        ))
        ->addMethods(array(
            // Method passed as array
@@ -241,7 +248,8 @@ The above generates the following output:
 
 .. _zend.code.generator.examples.file:
 
-.. rubric:: Generating PHP files
+Generating PHP files
+--------------------
 
 ``Zend\Code\Generator\FileGenerator`` can be used to generate the contents of a *PHP* file. You can include classes as
 well as arbitrary content body. When attaching classes, you should attach either concrete
@@ -335,9 +343,15 @@ The above will generate the following file:
 
    define('APPLICATION_ENV', 'testing');
 
-.. _zend.code.generator.examples.reflection-file:
+.. _zend.code.generator.examples.reflection:
 
-.. rubric:: Seeding PHP file code generation via reflection
+Add code to existing PHP files and classes
+------------------------------------------
+
+.. _zend.code.generator.examples.reflection.file:
+
+Seeding PHP file code generation via reflection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can add *PHP* code to an existing *PHP* file using the code generator. To do so, you need to first do
 reflection on it. The static method ``fromReflectedFileName()`` allows you to do this.
@@ -345,14 +359,14 @@ reflection on it. The static method ``fromReflectedFileName()`` allows you to do
 .. code-block:: php
    :linenos:
 
-   $generator = Zend\Code\Generator\FileGenerator::fromReflectedFileName($path);
-   $body = $generator->getBody();
-   $body .= "\n\$foo->bar();";
+   $generator = Zend\Code\Generator\FileGenerator::fromReflectedFileName($path);   
+   $generator->setBody("\$foo->bar();");
    file_put_contents($path, $generator->generate());
 
-.. _zend.code.generator.examples.reflection-class:
+.. _zend.code.generator.examples.reflection.class:
 
-.. rubric:: Seeding PHP class generation via reflection
+Seeding PHP class generation via reflection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may add code to an existing class. To do so, first use the static ``fromReflection()`` method to map the class
 into a generator object. From there, you may add additional properties or methods, and then regenerate the class.

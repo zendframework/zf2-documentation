@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.progress-bar.adapter.js-pull:
 
 JsPull Adapter

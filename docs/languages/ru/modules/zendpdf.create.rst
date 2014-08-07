@@ -11,8 +11,8 @@
 объект *ZendPdf*.
 
 Класс *ZendPdf* также предоставляет два статических метода для
-загрузки существующих документов PDF. Это методы *ZendPdf\Pdf::load()* и
-*ZendPdf\Pdf::parse()*. Оба метода возвращают объект *ZendPdf* в качестве
+загрузки существующих документов PDF. Это методы *ZendPdf\PdfDocument::load()* и
+*ZendPdf\PdfDocument::parse()*. Оба метода возвращают объект *ZendPdf* в качестве
 результата или генерируют исключение в случае ошибки.
 
 .. rubric:: Создание нового или загрузка существующего документа PDF
@@ -23,13 +23,13 @@
    <?php
    ...
    // Создание нового документа PDF
-   $pdf1 = new ZendPdf\Pdf();
+   $pdf1 = new ZendPdf\PdfDocument();
 
    // Загрузка документа PDF из файла
-   $pdf2 = ZendPdf\Pdf::load($fileName);
+   $pdf2 = ZendPdf\PdfDocument::load($fileName);
 
    // Загрузка документа PDF из строки
-   $pdf3 = ZendPdf\Pdf::parse($pdfString);
+   $pdf3 = ZendPdf\PdfDocument::parse($pdfString);
    ...
    ?>
 Формат файла PDF поддерживает постепенное обновление
@@ -37,8 +37,8 @@
 обновляется, создается новая версия документа.
 
 Версия может быть указана в качестве второго параметра для
-методов *ZendPdf\Pdf::load()* и *ZendPdf\Pdf::parse()* или получается методом
-*ZendPdf\Pdf::rollback()*. [#]_ call.
+методов *ZendPdf\PdfDocument::load()* и *ZendPdf\PdfDocument::parse()* или получается методом
+*ZendPdf\PdfDocument::rollback()*. [#]_ call.
 
 .. rubric:: Извлечение определенной версии документа PDF
 
@@ -48,18 +48,18 @@
    <?php
    ...
    // Загрузка предыдущей версии документа PDF
-   $pdf1 = ZendPdf\Pdf::load($fileName, 1);
+   $pdf1 = ZendPdf\PdfDocument::load($fileName, 1);
 
    // Загрузка предыдущей версии документа PDF
-   $pdf2 = ZendPdf\Pdf::parse($pdfString, 1);
+   $pdf2 = ZendPdf\PdfDocument::parse($pdfString, 1);
 
    // Загрузка первой версии документа
-   $pdf3 = ZendPdf\Pdf::load($fileName);
+   $pdf3 = ZendPdf\PdfDocument::load($fileName);
    $revisions = $pdf3->revisions();
    $pdf3->rollback($revisions - 1);
    ...
    ?>
 
 
-.. [#] Метод *ZendPdf\Pdf::rollback()* должен вызываться до того, как будут
+.. [#] Метод *ZendPdf\PdfDocument::rollback()* должен вызываться до того, как будут
        производиться любые изменения[накладываемые на документ].

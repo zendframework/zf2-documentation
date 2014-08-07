@@ -62,8 +62,6 @@ name associations, and then using it to retrieve the class name associated with 
 Configuration Options
 ---------------------
 
-.. rubric:: PluginClassLoader Options
-
 **$map**
    The constructor may take a single option, an array or ``Traversable`` object of key/value pairs corresponding to
    a plugin name and class name, respectively.
@@ -208,7 +206,8 @@ Examples
 
 .. _zend.loader.plugin-class-loader.examples.static-maps:
 
-.. rubric:: Using Static Maps
+Using Static Maps
+^^^^^^^^^^^^^^^^^
 
 It's often convenient to provide global overrides or additions to the maps in a ``PluginClassLoader`` instance.
 This can be done using the ``addStaticMap()`` method:
@@ -234,7 +233,8 @@ Any later instances created will now have this map defined, allowing you to load
 
 .. _zend.loader.plugin-class-loader.examples.extended-loader:
 
-.. rubric:: Creating a pre-loaded map
+Creating a pre-loaded map
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In many cases, you know exactly which plugins you may be drawing upon on a regular basis, and which classes they
 will refer to. In this case, simply extend the ``PluginClassLoader`` and define the map within the extending class.
@@ -295,7 +295,8 @@ To inject the static map, use the extending class' name to call the static ``add
 
 .. _zend.loader.plugin-class-loader.examples.using-as-plugin-map:
 
-.. rubric:: Extending a plugin map using another plugin map
+Extending a plugin map using another plugin map
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In some cases, a general map class may already exist; as an example, most components in Zend Framework that utilize
 a plugin broker have an associated ``PluginClassLoader`` extension defining the plugins available for that

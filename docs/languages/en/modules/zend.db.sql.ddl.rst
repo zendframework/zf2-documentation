@@ -1,7 +1,7 @@
 .. _zend.db.sql.ddl:
 
 Zend\\Db\\Sql\\Ddl
-======================
+==================
 
 ``Zend\Db\Sql\Ddl`` is a sub-component of ``Zend\Db\Sql`` that allows consumers
 to create statement objects that will produce DDL (Data Definition Language) SQL
@@ -18,7 +18,7 @@ The following platforms have platform specializations for DDL:
 .. _zend.db.sql.ddl.creating-tables:
 
 Creating Tables
-===============
+---------------
 
 Like ``Zend\Db\Sql`` objects, each statement type is represented by a class.
 For example, ``CREATE TABLE`` is modeled by a ``CreateTable`` object; this is
@@ -71,7 +71,7 @@ Beyond adding columns to a table, constraints can also be added:
 .. _zend.db.sql.ddl.altering-tables:
 
 Altering Tables
-===============
+---------------
 
 Similarly to ``CreateTable``, you may also instantiate ``AlterTable``:
 
@@ -110,7 +110,7 @@ You may also drop existing columns or constraints:
 .. _zend.db.sql.ddl.dropping-tables:
 
 Dropping Tables
-===============
+---------------
 
 To drop a table, create a ``DropTable`` statement object:
 
@@ -122,7 +122,7 @@ To drop a table, create a ``DropTable`` statement object:
 .. _zend.db.sql.ddl.execution:
 
 Executing DDL Statements
-========================
+------------------------
 
 After a DDL statement object has been created and configured, at some point you
 will want to execute the statement. To do this, you will need two other objects:
@@ -156,7 +156,7 @@ platforms cannot be prepared, only executed.
 .. _zend.db.sql.ddl.supported-data-types:
 
 Currently Supported Data Types
-==============================
+------------------------------
 
 These types exist in the ``Zend\Db\Sql\Ddl\Column`` namespace.  Data types must
 implement ``Zend\Db\Sql\Ddl\Column\ColumnInterface``.
@@ -195,7 +195,7 @@ Each of the above types can be utilized in any place that accepts a
 .. _zend.db.sql.ddl.supported-constraints:
 
 Currently Supported Constraint Types
-====================================
+------------------------------------
 
 These types exist in the ``Zend\Db\Sql\Ddl\Constraint`` namespace. Data types must
 implement ``Zend\Db\Sql\Ddl\Constraint\ConstraintInterface``.

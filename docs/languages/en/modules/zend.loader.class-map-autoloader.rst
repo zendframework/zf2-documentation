@@ -59,8 +59,6 @@ Configuration Options
 
 The ``ClassMapAutoloader`` defines the following options.
 
-.. rubric:: ClassMapAutoloader Options
-
 **$options**
    The ``ClassMapAutoloader`` expects an array of options, where each option is either a filename referencing a
    class map, or an associative array of class name/filename pairs.
@@ -172,7 +170,8 @@ Examples
 
 .. _zend.loader.class-map-autoloader.examples.configuration:
 
-.. rubric:: Using configuration to seed ClassMapAutoloader
+Using configuration to seed ClassMapAutoloader
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Often, you will want to configure your ``ClassMapAutoloader``. These values may come from a configuration file, a
 cache (such as ShMem or memcached), or a simple PHP array. The following is an example of a PHP array that could be

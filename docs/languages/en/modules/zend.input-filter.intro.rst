@@ -1,7 +1,7 @@
 .. _zend.input-filter.intro:
 
-Introduction to Zend\\InputFilter
-=================================
+Introduction
+============
 
 The ``Zend\InputFilter`` component can be used to filter and validate generic sets of input data. For instance, you
 could use it to filter ``$_GET`` or ``$_POST`` values, CLI arguments, etc.
@@ -168,3 +168,7 @@ appropriate object. You may create either ``Input`` or ``InputFilter`` objects i
    ));
 
 
+Also see
+
+- :ref:`Zend\\Filter<zend.filter.introduction>`
+- :ref:`Zend\\Validator<zend.validator.introduction>`

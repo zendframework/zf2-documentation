@@ -11,7 +11,7 @@ to create a new project from scratch with Zend Framework:
 .. code-block:: bash
    :linenos:
 
-    php composer.phar create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+    php composer.phar create-project --stability="dev" repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
     php composer.phar update
 
 .. note::
@@ -75,6 +75,34 @@ to create a new project from scratch with Zend Framework:
 
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar install
         COMPOSER_PROCESS_TIMEOUT=5000 php composer.phar update
+        
+.. note::
+
+   For windows users with wamp:
+   
+   1. Install composer for windows
+      Check composer is properly installed by running 
+      
+      .. code-block:: bash
+         :linenos:
+         
+         composer
+         
+   2. Install git for windows. Also need to add git path in windows environment variable
+      Check git is properly installed by running
+      
+      .. code-block:: bash
+         :linenos:
+         
+         git
+         
+   3. Now install zf2 using command
+      
+      .. code-block:: bash
+         :linenos:
+         
+         composer create-project --repository-url="https://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+   
 
 We can now move on to the web server setup.
 
@@ -82,7 +110,7 @@ Using the Apache Web Server
 ---------------------------
 
 You now need to create an Apache virtual host for the application and edit your
-hosts file so that http://zf2-tutorial.localhost will serve ``index.php`` from the
+hosts file so that ``http://zf2-tutorial.localhost`` will serve ``index.php`` from the
 ``zf2-tutorial/public`` directory.
 
 Setting up the virtual host is usually done within ``httpd.conf`` or
@@ -114,9 +142,9 @@ define a virtual host along these lines:
 Make sure that you update your ``/etc/hosts`` or
 ``c:\windows\system32\drivers\etc\hosts`` file so that ``zf2-tutorial.localhost``
 is mapped to ``127.0.0.1``. The website can then be accessed using
-http://zf2-tutorial.localhost.
+``http://zf2-tutorial.localhost``.
 
-.. code-block:: txt
+.. code-block:: none
    :linenos:
 
     127.0.0.1               zf2-tutorial.localhost localhost
@@ -129,7 +157,7 @@ If you've done it correctly, it should look something like this:
     :width: 940 px
 
 To test that your ``.htaccess`` file is working, navigate to
-http://zf2-tutorial.localhost/1234 and you should see this:
+``http://zf2-tutorial.localhost/1234`` and you should see this:
 
 .. image:: ../images/user-guide.skeleton-application.404.png
     :width: 940 px
@@ -141,7 +169,7 @@ before continuing.  If you're are using IIS with the URL Rewrite Module, import 
    :linenos:
 
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^.*$ index.php [NC,L]
+    RewriteRule ^ index.php [NC,L]
 
 You now have a working skeleton application and we can start adding the specifics
 for our application.
@@ -175,7 +203,7 @@ Error reporting
 
 Optionally, *when using Apache*, you can use the ``APPLICATION_ENV`` setting in 
 your ``VirtualHost`` to let PHP output all its errors to the browser. This can be 
-useful when during development of your application.
+useful during the development of your application.
 
 Edit ``index.php`` from the ``zf2-tutorial/public/`` directory and change it to
 the following:
@@ -199,6 +227,11 @@ the following:
      */
     chdir(dirname(__DIR__));
     
+    // Decline static file requests back to the PHP built-in webserver
+    if (php_sapi_name() === 'cli-server' && is_file(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))) {
+        return false;
+    }
+
     // Setup autoloading
     require 'init_autoloader.php';
     

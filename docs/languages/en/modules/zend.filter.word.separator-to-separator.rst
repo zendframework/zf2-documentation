@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.separatortoseparator:
 
 SeparatorToSeparator
@@ -7,7 +9,8 @@ This filter modifies a given string such that 'words with separators' are conver
 
 .. _zend.filter.set.separatortoseparator.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\SeparatorToSeparator``:
 
@@ -17,7 +20,8 @@ The following options are supported for ``Zend\Filter\Word\SeparatorToSeparator`
 
 .. _zend.filter.set.separatortoseparator.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -30,7 +34,10 @@ A basic example of usage is below:
 
 The above example returns 'this+is+my+content'.
 
-.. rubric:: Default Behaviour
+.. _zend.filter.set.separatortoseparator.default-behavior:
+
+Default Behaviour
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

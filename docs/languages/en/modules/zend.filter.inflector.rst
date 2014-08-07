@@ -14,7 +14,8 @@ policies, or other reasons, you also need to lower case this, and you want to se
 
 .. _zend.filter.inflector.camel_case_example:
 
-.. rubric:: Transforming MixedCase and camelCaseText to another format
+Transforming MixedCase and camelCaseText to another format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -50,7 +51,7 @@ rule provided will be used to inflect the text. Classes are typically specified 
 filter name stripped of any common prefix.
 
 As an example, you can use any ``Zend\Filter`` concrete implementations; however, instead of referring to them as
-'``Zend\Filter\Alpha``' or '``Zend\Filter\StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
+'``Zend\I18n\Filter\Alpha``' or '``Zend\Filter\StringToLower``', you'd specify only '``Alpha``' or '``StringToLower``'.
 
 .. _zend.filter.inflector.custom-filters:
 
@@ -311,8 +312,8 @@ manipulating and retrieving rules, and controlling if and when exceptions are th
 
 .. _zend.filter.inflector.config:
 
-Using a Traversable or an array with Zend\\Filter\\Inflector
-------------------------------------------------------------
+Using a Traversable or an array
+-------------------------------
 
 You can use a ``Traversable`` or an array to set rules and other object state in your inflectors,
 either by passing a ``Traversable`` object or an array to the constructor or ``setOptions()``. The
@@ -335,7 +336,8 @@ following settings may be specified:
 
 .. _zend.filter.inflector.config.example:
 
-.. rubric:: Using a Traversable or an array with ``Zend\Filter\Inflector``
+Example
+^^^^^^^
 
 .. code-block:: php
    :linenos:

@@ -139,7 +139,7 @@ images, etc. (otherwise new resource copy will be created for each cloned page):
    $page1->drawText('Some text...', $x, $y);
    $page2->drawText('Another text...', $x, $y);
    ...
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    $pdf->pages[] = $page1;
    $pdf->pages[] = $page2;
 

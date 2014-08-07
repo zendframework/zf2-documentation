@@ -17,7 +17,8 @@ Quick Start
 
 .. _zend.mail.smtp-options.quick-start.basic-smtp-usage:
 
-.. rubric:: Basic SMTP Transport Usage
+Basic SMTP Transport Usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -36,7 +37,8 @@ Quick Start
 
 .. _zend.mail.smtp-options.quick-start.plain-smtp-usage:
 
-.. rubric:: SMTP Transport Usage with PLAIN AUTH
+SMTP Transport Usage with PLAIN AUTH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -59,7 +61,8 @@ Quick Start
 
 .. _zend.mail.smtp-options.quick-start.login-smtp-usage:
 
-.. rubric:: SMTP Transport Usage with LOGIN AUTH
+SMTP Transport Usage with LOGIN AUTH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -82,7 +85,8 @@ Quick Start
 
 .. _zend.mail.smtp-options.quick-start.crammd5-smtp-usage:
 
-.. rubric:: SMTP Transport Usage with CRAM-MD5 AUTH
+SMTP Transport Usage with CRAM-MD5 AUTH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -105,7 +109,8 @@ Quick Start
 
 .. _zend.mail.smtp-options.quick-start.plain-smtp-with-ssl-usage:
 
-.. rubric:: SMTP Transport Usage with PLAIN AUTH over TLS
+SMTP Transport Usage with PLAIN AUTH over TLS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -133,8 +138,6 @@ Quick Start
 
 Configuration Options
 ---------------------
-
-.. rubric:: Configuration Options
 
 .. _zend.mail.smtp-options.options.name:
 

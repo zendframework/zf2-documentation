@@ -1,7 +1,7 @@
 .. _zend.form.quick-start:
 
-Form Quick Start
-================
+Quick Start
+===========
 
 Forms are relatively easy to create. At the bare minimum, each element or fieldset requires a name; typically,
 you'll also provide some attributes to hint to the view layer how it might render the item. The form itself will
@@ -323,6 +323,9 @@ defining a form for re-use in your application.
 
        public function __construct(CaptchaAdapter $captcha)
        {
+       
+           parent::__construct();
+           
            $this->captcha = $captcha;
 
            // add() can take either an Element/Fieldset instance,

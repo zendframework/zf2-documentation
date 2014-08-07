@@ -1,7 +1,7 @@
 .. _zendservice.amazon.s3:
 
-ZendService\Amazon\S3
-======================
+ZendService\\Amazon\\S3
+=======================
 
 .. _zendservice.amazon.s3.introduction:
 
@@ -68,7 +68,8 @@ The following example demonstrates creating a bucket, storing and retrieving the
 
 .. _zendservice.amazon.s3.storing-your-first.example:
 
-.. rubric:: ZendService\Amazon\S3 Usage Example
+ZendService\\Amazon\\S3 Usage Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -299,7 +300,8 @@ wrapper. For this, you need to register the client object as the stream wrapper:
 
 .. _zendservice.amazon.s3.streams.example:
 
-.. rubric:: ZendService\Amazon\S3 Streams Example
+ZendService\\Amazon\\S3 Streams Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

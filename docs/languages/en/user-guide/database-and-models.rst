@@ -161,7 +161,7 @@ updates a row that already exists and ``deleteAlbum()`` removes the row
 completely. The code for each of these methods is, hopefully, self-explanatory.
 
 Using ServiceManager to configure the table gateway and inject into the AlbumTable
------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
 In order to always use the same instance of our ``AlbumTable``, we will use the
 ``ServiceManager`` to define how to create one. This is most easily done in the
@@ -213,7 +213,7 @@ this method to the bottom of the ``Module.php`` file in ``module/Album``.
     }
 
 This method returns an array of ``factories`` that are all merged together by
-the ``ModuleManager`` before passing to the ``ServiceManager``. The factory
+the ``ModuleManager`` before passing them to the ``ServiceManager``. The factory
 for ``Album\Model\AlbumTable`` uses the ``ServiceManager`` to create an
 ``AlbumTableGateway`` to pass to the ``AlbumTable``. We also tell the
 ``ServiceManager`` that an ``AlbumTableGateway`` is created by getting a
@@ -396,7 +396,7 @@ links.
     We always use the ``escapeHtml()`` view helper to help protect
     ourselves from Cross Site Scripting (XSS) vulnerabilities (see http://en.wikipedia.org/wiki/Cross-site_scripting).
 
-If you open http://zf2-tutorial.localhost/album you should see this:
+If you open ``http://zf2-tutorial.localhost/album`` you should see this:
 
 .. image:: ../images/user-guide.database-and-models.album-list.png
     :width: 940 px

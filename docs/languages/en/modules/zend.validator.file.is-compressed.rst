@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.validator.file.is-compressed:
 
 IsCompressed
@@ -17,7 +19,8 @@ for options and public methods.
 
 .. _zend.validator.file.is-compressed.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zendoauth.introduction.getting-started:
 
 Getting Started

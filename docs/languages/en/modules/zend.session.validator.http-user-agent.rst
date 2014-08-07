@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.session.validator.http-user-agent:
 
 Http User Agent

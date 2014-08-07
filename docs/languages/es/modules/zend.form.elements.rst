@@ -156,10 +156,10 @@ Veamos algunos ejemplos:
    :linenos:
 
    // Instancia específica del filtro
-   $element->addFilter(new Zend\Filter\Alnum());
+   $element->addFilter(new Zend\I18n\Filter\Alnum());
 
    // El correspondiente nombre completo de la clase:
-   $element->addFilter('Zend\Filter\Alnum');
+   $element->addFilter('Zend\I18n\Filter\Alnum');
 
    // Nombre corto del filtro:
    $element->addFilter('Alnum');

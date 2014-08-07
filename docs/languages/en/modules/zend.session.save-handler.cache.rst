@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.session.save-handler.cache:
 
 Cache
@@ -20,10 +22,12 @@ A basic example is one like the following:
    use Zend\Session\SessionManager;
 
    $cache = StorageFactory::factory(array(
-       'name' => 'memcached',
-       'options' => array(
-           'server' => '127.0.0.1',
-       ),
+       'adapter' => array(
+          'name' => 'memcached',
+          'options' => array(
+              'server' => '127.0.0.1',
+          ),
+       )
    ));
    $saveHandler = new Cache($cache);
    $manager = new SessionManager();

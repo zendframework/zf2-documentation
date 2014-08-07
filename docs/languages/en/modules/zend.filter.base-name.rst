@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.basename:
 
 BaseName
@@ -8,13 +10,15 @@ base name of this file.
 
 .. _zend.filter.set.basename.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\BaseName``.
 
 .. _zend.filter.set.basename.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

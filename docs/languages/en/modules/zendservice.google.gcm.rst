@@ -29,7 +29,7 @@ given back from the GCM server on success, failures and any new canonical id's t
 .. _zendservice.google.gcm.quickstart:
 
 Quick Start
-------------
+-----------
 
 In order to send messages; you must have your API key ready and available.  Here we will setup the client and
 prepare ourselves to send out messages.

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.callback:
 
 Callback
@@ -8,17 +10,19 @@ filter when you already have a method which does the job.
 
 .. _zend.filter.set.callback.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Callback``:
 
 - **callback**: This sets the callback which should be used.
 
-- **options**: This property sets the options which are used when the callback is processed.
+- **callback_params**: This property sets the options which are used when the callback is processed.
 
 .. _zend.filter.set.callback.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 The usage of this filter is quite simple. Let's expect we want to create a filter which reverses a string.
 
@@ -56,7 +60,8 @@ To get the actual set callback use ``getCallback()`` and to set another callback
 
 .. _zend.filter.set.callback.parameters:
 
-.. rubric:: Default Parameters Within a Callback
+Default Parameters Within a Callback
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is also possible to define default parameters, which are given to the called method as array when the filter is
 executed. This array will be concatenated with the value which will be filtered.

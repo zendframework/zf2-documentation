@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.separatortodash:
 
 SeparatorToDash
@@ -7,7 +9,8 @@ This filter modifies a given string such that 'words with separators' are conver
 
 .. _zend.filter.set.separatortodash.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Word\SeparatorToDash``:
 
@@ -15,7 +18,8 @@ The following options are supported for ``Zend\Filter\Word\SeparatorToDash``:
 
 .. _zend.filter.set.separatortodash.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 
@@ -29,7 +33,10 @@ A basic example of usage is below:
 
 The above example returns 'this-is-my-content'.
 
-.. rubric:: Default Behavior
+.. _zend.filter.set.separatortodash.default-behavior:
+
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

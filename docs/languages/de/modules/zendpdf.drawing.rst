@@ -512,7 +512,7 @@ eines Dokuments oder einer Seite zu extrahieren:
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($documentPath);
+   $pdf = ZendPdf\PdfDocument::load($documentPath);
    ...
    // Alle Schriften des Dokuments bekommen
    $fontList = $pdf->extractFonts();
@@ -545,7 +545,7 @@ eines Dokuments oder einer Seite zu extrahieren:
    :linenos:
 
    ...
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 
@@ -565,7 +565,7 @@ eines Dokuments oder einer Seite zu extrahieren:
    :linenos:
 
    ...
-   $pdf = ZendPdf\Pdf::load($docPath);
+   $pdf = ZendPdf\PdfDocument::load($docPath);
    ...
    $pdf->pages[] = ($page = $pdf->newPage(ZendPdf\Page::SIZE_A4));
 

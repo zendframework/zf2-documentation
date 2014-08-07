@@ -7,12 +7,12 @@ A *PDF* document may include general information such as the document's title, a
 modification dates.
 
 Historically this information is stored using special Info structure. This structure is available for read and
-writing as an associative array using ``properties`` public property of ``ZendPdf\Pdf`` objects:
+writing as an associative array using ``properties`` public property of ``ZendPdf\PdfDocument`` objects:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($pdfPath);
+   $pdf = ZendPdf\PdfDocument::load($pdfPath);
 
    echo $pdf->properties['Title'] . "\n";
    echo $pdf->properties['Author'] . "\n";
@@ -95,13 +95,13 @@ The following keys are defined by *PDF* v1.4 (Acrobat 5) standard:
 Since *PDF* v 1.6 metadata can be stored in the special *XML* document attached to the *PDF* (XMP -`Extensible
 Metadata Platform`_).
 
-This *XML* document can be retrieved and attached to the PDF with ``ZendPdf\Pdf::getMetadata()`` and
-``ZendPdf\Pdf::setMetadata($metadata)`` methods:
+This *XML* document can be retrieved and attached to the PDF with ``ZendPdf\PdfDocument::getMetadata()`` and
+``ZendPdf\PdfDocument::setMetadata($metadata)`` methods:
 
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($pdfPath);
+   $pdf = ZendPdf\PdfDocument::load($pdfPath);
    $metadata = $pdf->getMetadata();
    $metadataDOM = new DOMDocument();
    $metadataDOM->loadXML($metadata);

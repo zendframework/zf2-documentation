@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.encrypt:
 
 Encrypt and Decrypt
@@ -8,17 +10,18 @@ adapters for the ``Zend\Crypt\BlockCipher`` class and the ``OpenSSL`` extension 
 
 .. _zend.filter.set.encrypt.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filter\Decrypt``:
 
 - **adapter**: This sets the encryption adapter which should be used
 
 - **algorithm**: Only ``BlockCipher``. The algorithm which has to be used by the adapter
- ``Zend\Crypt\Symmetric\Mcrypt``. It should be one of the algorithm ciphers supported by
- ``Zend\Crypt\Symmetric\Mcrypt`` (see the ``getSupportedAlgorithms()`` method). If not set it
- defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>`
- for more details).
+  ``Zend\Crypt\Symmetric\Mcrypt``. It should be one of the algorithm ciphers supported by
+  ``Zend\Crypt\Symmetric\Mcrypt`` (see the ``getSupportedAlgorithms()`` method). If not set it
+  defaults to ``aes``, the Advanced Encryption Standard (see :ref:`Zend\\Crypt\\BlockCipher<zend.crypt.blockcipher>`
+  for more details).
 
 - **compression**: If the encrypted value should be compressed. Default is no compression.
 
@@ -50,7 +53,8 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 
 .. _zend.filter.set.encrypt.adapterusage:
 
-.. rubric:: Adapter Usage
+Adapter Usage
+^^^^^^^^^^^^^
 
 As these two encryption methodologies work completely different, also the usage of the adapters differ. You have to
 select the adapter you want to use when initiating the filter.
@@ -81,7 +85,8 @@ adapter.
 
 .. _zend.filter.set.encrypt.blockcipher:
 
-.. rubric:: Encryption with BlockCipher
+Encryption with BlockCipher
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To encrypt a string using the ``BlockCipher`` you have to specify the encryption key using the ``setKey()`` method
 or passing it during the constructor.
@@ -170,7 +175,8 @@ This script will produce always the same encryption output.
 
 .. _zend.filter.set.encrypt.mcryptdecrypt:
 
-.. rubric:: Decryption with BlockCipher
+Decryption with BlockCipher
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For decrypting content which was previously encrypted with ``BlockCipher`` you need to have the options with which
 the encryption has been called.
@@ -202,7 +208,8 @@ secret, the Vector is only used to improve the randomness of the encryption algo
 
 .. _zend.filter.set.encrypt.openssl:
 
-.. rubric:: Encryption with OpenSSL
+Encryption with OpenSSL
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When you have installed the ``OpenSSL`` extension you can use the ``OpenSSL`` adapter. You can get or set the
 public keys also afterwards with the ``getPublicKey()`` and ``setPublicKey()`` methods. The private key can also be
@@ -279,7 +286,8 @@ So our complete example for encrypting content with ``OpenSSL`` look like this.
 
 .. _zend.filter.set.encrypt.openssl.simplified:
 
-.. rubric:: Simplified usage with Openssl
+Simplified usage with OpenSSL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As seen before, you need to get the envelope key to be able to decrypt the previous encrypted value. This can be
 very annoying when you work with multiple values.
@@ -308,7 +316,8 @@ using ``Zend\Filter\Encrypt``.
 
 .. _zend.filter.set.encrypt.openssl.compressed:
 
-.. rubric:: Compressing Content
+Compressing Content
+^^^^^^^^^^^^^^^^^^^
 
 Based on the original value, the encrypted value can be a very large string. To reduce the value
 ``Zend\Filter\Encrypt`` allows the usage of compression.
@@ -346,7 +355,8 @@ wished options for the compression adapter.
 
 .. _zend.filter.set.encrypt.openssldecrypt:
 
-.. rubric:: Decryption with OpenSSL
+Decryption with OpenSSL
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Decryption with ``OpenSSL`` is as simple as encryption. But you need to have all data from the person who encrypted
 the content. See the following example:

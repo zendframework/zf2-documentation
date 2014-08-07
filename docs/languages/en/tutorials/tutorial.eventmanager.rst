@@ -415,7 +415,7 @@ execution if interesting results are obtained.
 
 .. _short-circuiting-listener-execution:
 
-Short-ciruiting listener execution
+Short-circuiting listener execution
 ----------------------------------
 
 You may want to short-ciruit execution if a particular result is obtained, or if
@@ -485,7 +485,7 @@ short-circuiting occurs, you've logged; or if implementing a cache, you may want
 to return early if a cache hit is found, and execute late when saving to a
 cache.
 
-Each of ``EventManager::attach()`` and ``SharedEentManager::attach()`` accept
+Each of ``EventManager::attach()`` and ``SharedEventManager::attach()`` accept
 one additional argument, a *priority*. By default, if this is omitted, listeners
 get a priority of 1, and are executed in the order in which they are attached.
 However, if you provide a priority value, you can influence order of execution.

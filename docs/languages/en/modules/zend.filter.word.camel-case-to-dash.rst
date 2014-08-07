@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.camelcasetodash:
 
 CamelCaseToDash
@@ -7,13 +9,15 @@ This filter modifies a given string such that 'CamelCaseWords' are converted to 
 
 .. _zend.filter.set.camelcasetodash.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Word\CamelCaseToDash``:
 
 .. _zend.filter.set.camelcasetodash.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

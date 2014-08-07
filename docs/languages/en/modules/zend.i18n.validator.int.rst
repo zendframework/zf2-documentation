@@ -1,15 +1,17 @@
+:orphan:
+
 .. _zend.validator.set.int:
 
 Int
-===
+---
 
 ``Zend\I18n\Validator\Int`` validates if a given value is an integer. Also localized integer values are recognised and
 can be validated.
 
-.. _zend.validator.set.int.options:
+.. _zend.i18n.validator.int.options:
 
-Supported options for Zend\\I18n\\Validator\\Int
-------------------------------------------------
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\I18n\Validator\Int``:
 
@@ -18,7 +20,7 @@ The following options are supported for ``Zend\I18n\Validator\Int``:
 .. _zend.validator.set.int.basic:
 
 Simple integer validation
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The simplest way to validate an integer is by using the system settings. When no option is used, the environment
 locale is used for validation:
@@ -38,7 +40,7 @@ also grouping is recognised.
 .. _zend.validator.set.int.localized:
 
 Localized integer validation
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Often it's useful to be able to validate also localized values. Integer values are often written different in other
 countries. For example using english you can write "1234" or "1,234". Both are integer values but the grouping is

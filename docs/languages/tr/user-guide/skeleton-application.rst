@@ -117,7 +117,7 @@ aşağıdakini ekleyin:
 .. code-block:: apache
 
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^.*$ index.php [NC,L]
+    RewriteRule ^ index.php [NC,L]
 
 Artık çalışan bir iskelet uygulamaya sahipsiniz ve uygulamamız için özellikleri
 eklemeye başlayabiliriz.

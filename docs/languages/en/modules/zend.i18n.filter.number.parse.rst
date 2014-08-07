@@ -1,14 +1,17 @@
+:orphan:
+
 .. _zend.i18n.filter.number-parse:
 
 NumberParse
-------------
+-----------
 
 The ``NumberParse`` filter can be used to parse a number from a string. It acts as a
 wrapper for the ``NumberFormatter`` class within the Internationalization extension (Intl).
 
 .. _zend.i18n.filter.number-parse.options:
 
-.. rubric:: Supported Options for NumberParse Filter
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``NumberParse``:
 
@@ -31,7 +34,8 @@ The following options are supported for ``NumberParse``:
 
 .. _zend.i18n.filter.number-parse.usage:
 
-.. rubric:: NumberParse Filter Usage
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -49,5 +53,5 @@ The following options are supported for ``NumberParse``:
    // Returns 0.00123456789
 
 
-.. _`format style constants`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
-.. _`parsing type`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types
+.. _`format style constants`: http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
+.. _`parsing type`: http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.dir:
 
 Dir
@@ -7,13 +9,15 @@ Given a string containing a path to a file, this function will return the name o
 
 .. _zend.filter.set.dir.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 There are no additional options for ``Zend\Filter\Dir``.
 
 .. _zend.filter.set.dir.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 A basic example of usage is below:
 

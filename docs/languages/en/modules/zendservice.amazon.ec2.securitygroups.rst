@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2.securitygroups:
 
-ZendService\Amazon\Ec2: Security Groups
-========================================
+ZendService\\Amazon\\Ec2: Security Groups
+=========================================
 
 A security group is a named collection of access rules. These access rules specify which ingress (i.e., incoming)
 network traffic should be delivered to your instance. All other ingress traffic will be discarded.
@@ -22,7 +22,8 @@ Security Group Maintenance
 
 .. _zendservice.amazon.ec2.securitygroups.maintenance.create:
 
-.. rubric:: Create a new Security Group
+Create a new Security Group
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *create* a new security group. Every instance is launched in a security group. If no security group is specified
 during launch, the instances are launched in the default security group. Instances within the same security group
@@ -40,7 +41,8 @@ in a different security group.
 
 .. _zendservice.amazon.ec2.securitygroups.maintenance.describe:
 
-.. rubric:: Describe a Security Group
+Describe a Security Group
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *describe* returns information about security groups that you own.
 
@@ -59,7 +61,8 @@ groupDescription and an array containing all the rules for that security group.
 
 .. _zendservice.amazon.ec2.securitygroups.maintenance.delete:
 
-.. rubric:: Delete a Security Group
+Delete a Security Group
+^^^^^^^^^^^^^^^^^^^^^^^
 
 *delete* will remove the security group. If you attempt to delete a security group that contains instances, a fault
 is returned. If you attempt to delete a security group that is referenced by another security group, a fault is
@@ -82,7 +85,8 @@ Authorizing Access
 
 .. _zendservice.amazon.ec2.securitygroups.authorize.ip:
 
-.. rubric:: Authorizing by IP
+Authorizing by IP
+^^^^^^^^^^^^^^^^^
 
 *authorizeIp* Adds permissions to a security group based on an IP address, protocol type and port range.
 
@@ -108,7 +112,8 @@ on the number of instances, a small delay might occur.
 
 .. _zendservice.amazon.ec2.securitygroups.authorize.group:
 
-.. rubric:: Authorize By Group
+Authorize By Group
+^^^^^^^^^^^^^^^^^^
 
 *authorizeGroup* Adds permissions to a security group.
 
@@ -131,7 +136,8 @@ Revoking Access
 
 .. _zendservice.amazon.ec2.securitygroups.revoke.ip:
 
-.. rubric:: Revoke by IP
+Revoke by IP
+^^^^^^^^^^^^
 
 *revokeIp* Revokes permissions to a security group based on an IP address, protocol type and port range. The
 permissions used to revoke must be specified using the same values used to grant the permissions.
@@ -158,7 +164,8 @@ on the number of instances, a small delay might occur.
 
 .. _zendservice.amazon.ec2.securitygroups.revoke.group:
 
-.. rubric:: Revoke By Group
+Revoke By Group
+^^^^^^^^^^^^^^^
 
 *revokeGroup* Adds permissions to a security group. The permissions to revoke must be specified using the same
 values used to grant the permissions.

@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2.ebs:
 
-ZendService\Amazon\Ec2: Elastic Block Storage (EBS)
-====================================================
+ZendService\\Amazon\\Ec2: Elastic Block Storage (EBS)
+=====================================================
 
 Amazon Elastic Block Store (Amazon EBS) is a new type of storage designed specifically for Amazon EC2 instances.
 Amazon EBS allows you to create volumes that can be mounted as devices by Amazon EC2 instances. Amazon EBS volumes

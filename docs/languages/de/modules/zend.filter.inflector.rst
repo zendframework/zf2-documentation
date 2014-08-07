@@ -54,7 +54,7 @@ beugen. Klasse werden typischerweise spezifiziert indem ein Kurzname verwendet w
 wobei jeglicher üblicher Präfix entfernt wurde.
 
 Als Beispiel kann jede konkrete ``Zend_Filter`` Implementierung verwendet werden; trotzdem, statt auf diese als
-'``Zend\Filter\Alpha``' oder '``Zend\Filter\StringToLower``' zu verweisen kann einfach '``Alpha``' oder
+'``Zend\I18n\Filter\Alpha``' oder '``Zend\Filter\StringToLower``' zu verweisen kann einfach '``Alpha``' oder
 '``StringToLower``' spezifiziert werden.
 
 .. _zend.filter.inflector.paths:

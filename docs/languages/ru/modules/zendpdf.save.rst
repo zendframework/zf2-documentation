@@ -5,13 +5,13 @@
 ====================================
 
 Есть два метода, с помощью которых производится сохранение
-изменений в документе PDF. Это методы *ZendPdf\Pdf::save()* и *ZendPdf\Pdf::render()*.
+изменений в документе PDF. Это методы *ZendPdf\PdfDocument::save()* и *ZendPdf\PdfDocument::render()*.
 
-Метод *ZendPdf\Pdf::save($filename, $updateOnly = false)* сохраняет документ в файл.
+Метод *ZendPdf\PdfDocument::save($filename, $updateOnly = false)* сохраняет документ в файл.
 Если ``$updateOnly`` равен ``TRUE``, то к файлу PDF будет только добавлен
 новый сегмент, иначе файл будет перезаписан.
 
-*ZendPdf\Pdf::render($filename, $updateOnly = false)* возвращает документ PDF в виде
+*ZendPdf\PdfDocument::render($filename, $updateOnly = false)* возвращает документ PDF в виде
 строки. Если ``$updateOnly`` равен ``TRUE``, то будет возвращен только
 новый сегмент файла PDF.
 
@@ -23,7 +23,7 @@
    <?php
    ...
    // Загрузка документа PDF
-   $pdf = ZendPdf\Pdf::load($fileName);
+   $pdf = ZendPdf\PdfDocument::load($fileName);
    ...
    // Обновление документа
    $pdf->save($fileName, true);

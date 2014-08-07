@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.validator.file.upload-file:
 
 UploadFile
@@ -13,7 +15,8 @@ and will return descriptive messages for any upload errors.
 
 .. _zend.validator.file.upload-file.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -24,7 +27,7 @@ and will return descriptive messages for any upload errors.
    $files   = $request->getFiles();
    // i.e. $files['my-upload']['error'] == 0
 
-   $validator = \Zend\Validator\File\UploadFile();
+   $validator = new \Zend\Validator\File\UploadFile();
    if ($validator->isValid($files['my-upload'])) {
        // file is valid
    }

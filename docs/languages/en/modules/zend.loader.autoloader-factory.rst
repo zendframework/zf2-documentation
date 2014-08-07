@@ -68,8 +68,6 @@ method to register it with the SPL autoloader.
 Configuration Options
 ---------------------
 
-.. rubric:: AutoloaderFactory Options
-
 **$options**
    The ``AutoloaderFactory`` expects an associative array or ``Traversable`` object. Keys should be valid
    autoloader class names, and the values should be the options that should be passed to the class constructor.

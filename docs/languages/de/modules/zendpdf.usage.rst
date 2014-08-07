@@ -23,12 +23,12 @@ Dort gibt es auch die Datei ``test.pdf``, die für diese Demo zu Testzwecken ver
    }
 
    try {
-       $pdf = ZendPdf\Pdf::load($argv[1]);
+       $pdf = ZendPdf\PdfDocument::load($argv[1]);
    } catch (ZendPdf\Exception $e) {
        if ($e->getMessage() == 'Datei \'' . $argv[1] .
                                '\' konnte nicht zum Lesen geöffnet werden.') {
            // Erstelle neues PDF, wenn Datei nicht existiert
-           $pdf = new ZendPdf\Pdf();
+           $pdf = new ZendPdf\PdfDocument();
 
            if (!isset($argv[2])) {
                // Erzwinge komplettes neu schreiben der Datei (statt nur updaten)

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.i18n.view.helper.number-format:
 
 NumberFormat Helper
@@ -8,7 +10,8 @@ strings. It acts as a wrapper for the ``NumberFormatter`` class within the Inter
 
 .. _zend.i18n.view.helper.number-format.usage:
 
-**Basic Usage**
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -55,7 +58,8 @@ strings. It acts as a wrapper for the ``NumberFormatter`` class within the Inter
 
 .. _zend.i18n.view.helper.number-format.setter-usage:
 
-**Public Methods**
+Public Methods
+^^^^^^^^^^^^^^
 
 The ``$formatStyle``, ``$formatType``, and ``$locale`` options can be set prior to formatting and will be applied
 each time the helper is used.
@@ -74,5 +78,5 @@ each time the helper is used.
 
 
 
-.. _`format style constants`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
-.. _`formatting type`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types
+.. _`format style constants`: http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
+.. _`formatting type`: http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types

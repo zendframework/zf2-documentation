@@ -3,14 +3,19 @@
 Writing Validators
 ==================
 
+.. _zend.validator.writing_validators.overview:
+
+Overview
+--------
+
 ``Zend\Validator`` supplies a set of commonly needed validators, but inevitably, developers will wish to write 
 custom validators for their particular needs. The task of writing a custom validator is described in this section.
 
 ``Zend\Validator\ValidatorInterface`` defines two methods, ``isValid()`` and ``getMessages()``, that may be
 implemented by user classes in order to create custom validation objects. An object that implements
 ``Zend\Validator\AbstractValidator`` interface may be added to a validator chain with
-``Zend\Validator\ValidatorChain::addValidator()``. Such objects may also be used with :ref:`Zend\\Filter\\Input
-<zend.filter.input>`.
+``Zend\Validator\ValidatorChain::addValidator()``. Such objects may also be used with
+:ref:`Zend\\InputFilter <zend.input-filter.intro>`.
 
 As you may already have inferred from the above description of ``Zend\Validator\ValidatorInterface``, validation
 classes provided with Zend Framework return a boolean value for whether or not a value validates successfully. They
@@ -32,7 +37,8 @@ a thing may be required for validation success or failure to be determined.
 
 .. _zend.validator.writing_validators.example.simple:
 
-.. rubric:: Creating a Simple Validation Class
+Creating a Simple Validation Class
+----------------------------------
 
 The following example demonstrates how a very simple custom validator might be written. In this case the validation
 rules are simply that the input value must be a floating point value.
@@ -69,7 +75,8 @@ name of the failure message template.
 
 .. _zend.validator.writing_validators.example.conditions.dependent:
 
-.. rubric:: Writing a Validation Class having Dependent Conditions
+Writing a Validation Class having Dependent Conditions
+------------------------------------------------------
 
 The following example demonstrates a more complex set of validation rules, where it is required that the input
 value be numeric and within the range of minimum and maximum boundary values. An input value would fail validation
@@ -142,7 +149,8 @@ validation object may return multiple reasons why a particular validation attemp
 
 .. _zend.validator.writing_validators.example.conditions.independent:
 
-.. rubric:: Validation with Independent Conditions, Multiple Reasons for Failure
+Validation with Independent Conditions, Multiple Reasons for Failure
+--------------------------------------------------------------------
 
 Consider writing a validation class for password strength enforcement - when a user is required to choose a
 password that meets certain criteria for helping secure user accounts. Let us assume that the password security

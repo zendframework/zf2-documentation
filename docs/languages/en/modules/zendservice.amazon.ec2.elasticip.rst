@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2.elasticip:
 
-ZendService\Amazon\Ec2: Elastic IP Addresses
-=============================================
+ZendService\\Amazon\\Ec2: Elastic IP Addresses
+==============================================
 
 By default, all Amazon EC2 instances are assigned two IP addresses at launch: a private (RFC 1918) address and a
 public address that is mapped to the private IP address through Network Address Translation (NAT).
@@ -19,7 +19,8 @@ account.
 
 .. _zendservice.amazon.ec2.elasticip.allocate:
 
-.. rubric:: Allocating a new Elastic IP
+Allocating a new Elastic IP
+---------------------------
 
 *allocate* will assign your account a new Elastic IP Address.
 
@@ -36,7 +37,8 @@ account.
 
 .. _zendservice.amazon.ec2.elasticip.describe:
 
-.. rubric:: Describing Allocated Elastic IP Addresses
+Describing Allocated Elastic IP Addresses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *describe* has an optional parameter to describe all of your allocated Elastic IP addresses or just some of your
 allocated addresses.
@@ -59,7 +61,8 @@ the instanceId if it is associated.
 
 .. _zendservice.amazon.ec2.elasticip.release:
 
-.. rubric:: Releasing Elastic IP
+Releasing Elastic IP
+^^^^^^^^^^^^^^^^^^^^
 
 *release* will release an Elastic IP to Amazon.
 
@@ -73,7 +76,8 @@ Returns a boolean ``TRUE`` or ``FALSE``.
 
 .. _zendservice.amazon.ec2.elasticip.associate:
 
-.. rubric:: Associates an Elastic IP to an Instance
+Associates an Elastic IP to an Instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *associate* will assign an Elastic IP to an already running instance.
 
@@ -87,7 +91,8 @@ Returns a boolean ``TRUE`` or ``FALSE``.
 
 .. _zendservice.amazon.ec2.elasticip.disassociate:
 
-.. rubric:: Disassociate an Elastic IP from an instance
+Disassociate an Elastic IP from an instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *disassociate* will disassociate an Elastic IP from an instance. If you terminate an Instance it will automatically
 disassociate the Elastic IP address for you.

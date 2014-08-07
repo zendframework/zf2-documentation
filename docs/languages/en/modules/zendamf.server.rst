@@ -1,7 +1,7 @@
 .. _zendamf.server:
 
 ZendAmf\Server
-===============
+==============
 
 ``ZendAmf\Server`` provides an *RPC*-style server for handling requests made from the Adobe Flash Player using the
 *AMF* protocol. Like all Zend Framework server classes, it follows the SoapServer *API*, providing an easy to

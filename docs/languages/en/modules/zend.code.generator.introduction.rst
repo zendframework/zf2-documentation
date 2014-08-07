@@ -42,13 +42,13 @@ its ``generate()`` method.
 
    $class = new Zend\Code\Generator\ClassGenerator();
    $class->setName('World')
-         ->setMethod($method);
+         ->addMethodFromGenerator($method);
 
    $file = new Zend\Code\Generator\FileGenerator();
    $file->setClass($class);
 
    // Render the generated file
-   echo $file;
+   echo $file->generate();
 
    // or write it to a file:
    file_put_contents('World.php', $file->generate());
@@ -87,7 +87,7 @@ then do the following:
    $method = new Zend\Code\Generator\MethodGenerator();
    $method->setName('mrMcFeeley')
           ->setBody('echo \'Hello, Mr. McFeeley!\';');
-   $class->setMethod($method);
+   $class->addMethodFromGenerator($method);
 
    $file = new Zend\Code\Generator\FileGenerator();
    $file->setClass($class);

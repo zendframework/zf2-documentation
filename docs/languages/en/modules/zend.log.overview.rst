@@ -1,7 +1,12 @@
+.. _zend.log:
+
+Zend\\Log
+=========
+
 .. _zend.log.overview:
 
-Overview of Zend\\Log
-=====================
+Overview
+--------
 
 ``Zend\Log\Logger`` is a component for general purpose logging. It supports multiple log backends, formatting
 messages sent to the log, and filtering messages from being logged. These functions are divided into the following

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.pregreplace:
 
 PregReplace
@@ -7,7 +9,8 @@ PregReplace
 
 .. _zend.filter.set.pregreplace.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\PregReplace``:
 
@@ -17,7 +20,8 @@ The following options are supported for ``Zend\Filter\PregReplace``:
 
 .. _zend.filter.set.pregreplace.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 To use this filter properly you must give two options:
 

@@ -23,13 +23,13 @@ Il y a aussi un fichier ``test.pdf``, qui peut être utilisé pour réaliser des
    }
 
    try {
-       $pdf = ZendPdf\Pdf::load($argv[1]);
+       $pdf = ZendPdf\PdfDocument::load($argv[1]);
    } catch (ZendPdf\Exception $e) {
        if ($e->getMessage() == 'Ouverture du fichier \''
                              . $argv[1]
                              . '\' impossible en lecture.') {
            // Create new PDF if file doesn't exist
-           $pdf = new ZendPdf\Pdf();
+           $pdf = new ZendPdf\PdfDocument();
            if (!isset($argv[2])) {
                // Force la ré-écriture complète du fichier
                // (plutôt qu'une mise à jour)

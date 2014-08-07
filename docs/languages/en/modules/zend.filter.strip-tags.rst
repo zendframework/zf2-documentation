@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.striptags:
 
 StripTags
@@ -19,19 +21,21 @@ This filter can strip XML and HTML tags from given content.
 
 .. _zend.filter.set.striptags.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\StripTags``:
 
-- **allowAttribs**: This option sets the attributes which are accepted. All other attributes are
-stripped from the given content.
+- **allowAttribs**: This option sets the attributes which are accepted. All other attributes are stripped from the
+  given content.
 
-- **allowTags**: This option sets the tags which are accepted. All other tags will be stripped
-from the given content.
+- **allowTags**: This option sets the tags which are accepted. All other tags will be stripped from the given
+  content.
 
 .. _zend.filter.set.striptags.basic:
 
-.. rubric:: Basic Usage
+Basic Usage
+^^^^^^^^^^^
 
 See the following example for the default behaviour of this filter:
 
@@ -58,7 +62,8 @@ The above will return 'This contains' with the rest being stripped.
 
 .. _zend.filter.set.striptags.allowtags:
 
-.. rubric:: Allowing Defined Tags
+Allowing Defined Tags
+^^^^^^^^^^^^^^^^^^^^^
 
 ``Zend\Filter\StripTags`` allows stripping of all but defined tags. This can be used for example to
 strip all tags but links from a text.
@@ -81,7 +86,8 @@ the link. By providing an array you can set multiple tags at once.
 
 .. _zend.filter.set.striptags.allowattributes:
 
-.. rubric:: Allowing Defined Attributes
+Allowing Defined Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is also possible to strip all but allowed attributes from a tag.
 
@@ -96,3 +102,31 @@ It is also possible to strip all but allowed attributes from a tag.
 The above will return 'A text with a <img src='picture.com'>picture</img>' as result. It strips all
 tags but img. Additionally from the img tag all attributes but src will be stripped. By providing an
 array you can set multiple attributes at once.
+
+.. _zend.filter.set.striptags.allowadvanceattributes:
+
+Allowing Advanced Defined Tags with Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can pass the allowed tags with their attributes in a single array to the constructor.
+
+.. code-block:: php
+   :linenos:
+
+   $allowedElements = array(
+       'img' => array(
+           'src',
+           'width'
+       ),
+       'a' => array(
+           'href'
+       )
+   );
+   $filter = new Zend\Filter\StripTags($allowedElements);
+
+   $input  = "A text with <br/> a <img src='picture.com' width='100'>picture</img> click " .
+             "<a href='http://picture.com/zend' id='hereId'>here</a>!";
+   print $filter->filter($input);
+
+The above will return 'A text with a <img src='picture.com' width='100'>picture</img> click 
+<a href='http://picture.com/zend'>here</a>!' as result.

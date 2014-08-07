@@ -15,7 +15,8 @@ your own transport by implementing the ``Mail\Transport\TransportInterface``.
 
 .. _zend.mail.introduction.example-1:
 
-.. rubric:: Simple email with Zend\Mail
+Simple email with Zend\\Mail
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A simple email consists of one or more recipients, a subject, a body and a sender. To send such a mail using
 ``Zend\Mail\Transport\Sendmail``, do the following:
@@ -68,7 +69,8 @@ a new transport instance and pass your parameters to the constructor.
 
 .. _zend.mail.introduction.sendmail.example-1:
 
-.. rubric:: Passing additional parameters to the ``Zend\Mail\Transport\Sendmail`` transport.
+Passing additional parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to change the Return-Path of the `mail()`_ function.
 

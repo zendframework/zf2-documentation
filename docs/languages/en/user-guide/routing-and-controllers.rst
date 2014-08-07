@@ -160,6 +160,12 @@ Let’s go ahead and create our controller class ``AlbumController.php`` at ``zf
         {
         }
     }
+    
+.. note::
+
+    Make sure to register the new ``Album`` module in the "modules" section of your
+    ``config/application.config.php``. You also have to provide a :ref:`Module Class
+    <zend.module-manager.module-class>` for the Album module to be recognized by the MVC.
 
 .. note::
 
@@ -169,17 +175,17 @@ Let’s go ahead and create our controller class ``AlbumController.php`` at ``zf
 We have now set up the four actions that we want to use. They won’t work yet
 until we set up the views. The URLs for each action are:
 
-+--------------------------------------------+----------------------------------------------------+
-| URL                                        | Method called                                      |
-+============================================+====================================================+
-| http://zf2-tutorial.localhost/album        | ``Album\Controller\AlbumController::indexAction``  |
-+--------------------------------------------+----------------------------------------------------+
-| http://zf2-tutorial.localhost/album/add    | ``Album\Controller\AlbumController::addAction``    |
-+--------------------------------------------+----------------------------------------------------+
-| http://zf2-tutorial.localhost/album/edit   | ``Album\Controller\AlbumController::editAction``   |
-+--------------------------------------------+----------------------------------------------------+
-| http://zf2-tutorial.localhost/album/delete | ``Album\Controller\AlbumController::deleteAction`` |
-+--------------------------------------------+----------------------------------------------------+
++------------------------------------------------+----------------------------------------------------+
+| URL                                            | Method called                                      |
++================================================+====================================================+
+| ``http://zf2-tutorial.localhost/album``        | ``Album\Controller\AlbumController::indexAction``  |
++------------------------------------------------+----------------------------------------------------+
+| ``http://zf2-tutorial.localhost/album/add``    | ``Album\Controller\AlbumController::addAction``    |
++------------------------------------------------+----------------------------------------------------+
+| ``http://zf2-tutorial.localhost/album/edit``   | ``Album\Controller\AlbumController::editAction``   |
++------------------------------------------------+----------------------------------------------------+
+| ``http://zf2-tutorial.localhost/album/delete`` | ``Album\Controller\AlbumController::deleteAction`` |
++------------------------------------------------+----------------------------------------------------+
 
 We now have a working router and the actions are set up for each page of our
 application.

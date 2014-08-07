@@ -29,7 +29,7 @@ three: ``SharedEventManager``, ``EventManager``, and ``ModuleManager``.
 
 After this, the ``Application`` calls for the ``ModuleManager``. At this point, the
 ``ModuleManager`` further configures the ``ServiceManager`` with services and factories provided in
-``Zend\Mvc\Service\ServiceLocator``.  This approach allows us to keep the main application
+``Zend\Mvc\Service\ServiceListenerFactory``.  This approach allows us to keep the main application
 configuration concise, and to give the developer the power to configure different parts of the `MVC`
 system from within the modules, overriding any default configuration in these `MVC` services.
 
@@ -91,7 +91,7 @@ services configured out of the box.
     configuration from the module event. As such, this service contains the entire, merged
     application configuration.
 
-  - ``ControllerLoader``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. This creates an
+  - ``ControllerManager``, mapping to ``Zend\Mvc\Service\ControllerLoaderFactory``. This creates an
     instance of ``Zend\Mvc\Controller\ControllerManager``, passing the service manager instance.
 
     Additionally, it uses the ``DiStrictAbstractServiceFactory`` service -- effectively allowing you
@@ -356,7 +356,7 @@ create the given service.
 
 
 Zend\\Cache\\Service\\StorageCacheAbstractServiceFactory 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This abstract factory is opt-in, but registered by default in the skeleton application. It uses the
 top-level configuration key "caches".
@@ -445,7 +445,7 @@ Form configuration follows the same configuration you would use with a form fact
 difference is that all plugin managers have already been injected for you, allowing you the
 possibility of custom objects or substitutions.
 
-See the :ref:`form factory documentation <zend.form.quick-start.creation-via-factory>` for more
+See the :ref:`form factory documentation <zend.form.quick-start.factory>` for more
 configuration options.
 
 Zend\\Log\\LoggerAbstractServiceFactory
@@ -483,7 +483,7 @@ Plugin Managers
 
 The following plugin managers are configured by default:
 
-- **ControllerLoader**, corresponding to ``Zend\Mvc\Controller\ControllerManager``, and used to
+- **ControllerManager**, corresponding to ``Zend\Mvc\Controller\ControllerManager``, and used to
   manage controller instances.
 
 - **ControllerPluginManager**, corresponding to ``Zend\Mvc\Controller\PluginManager``, and used to

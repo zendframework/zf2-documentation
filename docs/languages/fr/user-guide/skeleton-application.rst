@@ -134,7 +134,7 @@ Rewrite Module, importez les lignes suivantes:
 .. code-block:: apache
 
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^.*$ index.php [NC,L]
+    RewriteRule ^ index.php [NC,L]
 
 Vous avez maintenant une application de base en état de marche et nous pouvons
 commencer à ajouter les spécificités de notre application.

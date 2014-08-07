@@ -35,21 +35,21 @@ In the example below we show a typical usage of the ``Pbkdf2`` adapter.
    use Zend\Math\Rand;
 
    $pass = 'password';
-   $salt = Rand::getBytes(strlen($pass), true);
-   $key  = Pbkdf2::calc('sha256', $pass, $salt, 10000, strlen($pass)*2);
+   $salt = Rand::getBytes(32, true);
+   $key  = Pbkdf2::calc('sha256', $pass, $salt, 10000, 32);
 
    printf ("Original password: %s\n", $pass);
    printf ("Derived key (hex): %s\n", bin2hex($key));
 
-The ``Pbkdf2`` adapter takes the password (``$pass``) and generate a binary key with a size double of
-the password. The syntax is ``calc($hash, $pass, $salt, $iterations, $length)`` where ``$hash`` is the name of
+The ``Pbkdf2`` adapter takes the password (``$pass``) and generate a binary key of 32 bytes.
+The syntax is ``calc($hash, $pass, $salt, $iterations, $length)`` where ``$hash`` is the name of
 the hash function to use, ``$pass`` is the password, ``$salt`` is a pseudo random value, ``$iterations`` is
 the number of iterations of the algorithm and ``$length`` is the size of the key to be generated. 
-We used the ``Rand::getBytes`` function of the ``Zend\Math\Rand`` class to generate a random bytes using
-a strong generators (the ``true`` value means the usage of strong generators).
+We used the ``Rand::getBytes`` function of the ``Zend\Math\Rand`` class to generate a random string of 32 bytes for the salt, using
+a strong generator (the ``true`` value means the usage of a cryptographically strong generator).
 
-The number of iterations is a very important parameter for the security of the algorithm. Big values means more
-security. There is not a fixed value for that because the number of iterations depends on the CPU power.
+The number of iterations is a very important parameter for the security of the algorithm. Bigger values guarantee more security.
+There is not a fixed value for that because the number of iterations depends on the CPU power.
 You should always choose a number of iteration that prevent brute force attacks. For instance, a value of
 1'000'000 iterations, that is equal to 1 sec of elaboration for the PBKDF2 algorithm, is enough secure using
 an Intel Core i5-2500 CPU at 3.3 Ghz.
@@ -64,7 +64,7 @@ This algorithm doesn't use a parameter that specify the number of iterations and
 considered less secure compared with Pbkdf2. 
 We suggest to use the SaltedS2k algorithm only if you really need it.
 
-Below is reported a usage example of the ``SaltedS2k`` adapter.
+Below is reported a usage example of the ``SaltedS2k`` adapter to generate a key of 32 bytes.
 
 .. code-block:: php
    :linenos:
@@ -73,8 +73,8 @@ Below is reported a usage example of the ``SaltedS2k`` adapter.
    use Zend\Math\Rand;
 
    $pass = 'password';
-   $salt = Rand::getBytes(strlen($pass), true);
-   $key  = SaltedS2k::calc('sha256', $pass, $salt, strlen($pass)*2);
+   $salt = Rand::getBytes(32, true);
+   $key  = SaltedS2k::calc('sha256', $pass, $salt, 32);
 
    printf ("Original password: %s\n", $pass);
    printf ("Derived key (hex): %s\n", bin2hex($key));
@@ -101,7 +101,7 @@ to software implementations, including a powerful CPU and large amounts of RAM.
     *Colin Percival* (the author of scrypt algorithm)
 
 
-This algorithm uses 4 parameters to generate a key of 64 bytes:
+This algorithm uses 4 parameters to generate a key of 32 bytes:
 
 * ``salt``, a random string;
 * ``N``, the CPU cost;
@@ -117,8 +117,8 @@ Below is reported a usage example of the ``Scrypt`` adapter.
    use Zend\Math\Rand;
 
    $pass = 'password';
-   $salt = Rand::getBytes(strlen($pass), true);
-   $key  = Scrypt::calc($pass, $salt, 2048, 2, 1, 64);
+   $salt = Rand::getBytes(32, true);
+   $key  = Scrypt::calc($pass, $salt, 2048, 2, 1, 32);
 
    printf ("Original password: %s\n", $pass);
    printf ("Derived key (hex): %s\n", bin2hex($key));

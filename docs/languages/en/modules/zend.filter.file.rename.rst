@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.file.rename:
 
 Rename
@@ -8,7 +10,8 @@ file to a new path.
 
 .. _zend.filter.file.rename.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -36,7 +39,8 @@ options set.
 
 .. _zend.filter.file.rename.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 Move all filtered files to a different directory:
 
@@ -44,7 +48,7 @@ Move all filtered files to a different directory:
    :linenos:
 
    // 'target' option is assumed if param is a string
-   $filter = \Zend\Filter\File\Rename("/tmp/");
+   $filter = new \Zend\Filter\File\Rename("/tmp/");
    echo $filter->filter("./myfile.txt");
    // File has been moved to "/tmp/myfile.txt"
 
@@ -53,7 +57,7 @@ Rename all filtered files to a new name:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\Filter\File\Rename("/tmp/newfile.txt");
+   $filter = new \Zend\Filter\File\Rename("/tmp/newfile.txt");
    echo $filter->filter("./myfile.txt");
    // File has been renamed to "/tmp/newfile.txt"
 
@@ -62,7 +66,7 @@ Move to a new path and randomize file names:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\Filter\File\Rename(array(
+   $filter = new \Zend\Filter\File\Rename(array(
        "target"    => "/tmp/newfile.txt",
        "randomize" => true,
    ));
@@ -74,7 +78,7 @@ Configure different options for several possible source files:
 .. code-block:: php
    :linenos:
 
-   $filter = \Zend\Filter\File\Rename(array(
+   $filter = new \Zend\Filter\File\Rename(array(
        array(
            "source"    => "fileA.txt"
            "target"    => "/dest1/newfileA.txt",
@@ -94,7 +98,8 @@ Configure different options for several possible source files:
 
 .. _zend.filter.file.rename.methods:
 
-.. rubric:: Public Methods
+Public Methods
+^^^^^^^^^^^^^^
 
 The specific public methods for the ``Rename`` filter, besides the common ``filter()`` method, are as follows:
 

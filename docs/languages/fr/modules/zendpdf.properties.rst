@@ -14,7 +14,7 @@ objets ``ZendPdf``:
    .. code-block:: php
       :linenos:
 
-      $pdf = ZendPdf\Pdf::load($pdfPath);
+      $pdf = ZendPdf\PdfDocument::load($pdfPath);
 
       echo $pdf->properties['Title'] . "\n";
       echo $pdf->properties['Author'] . "\n";
@@ -95,13 +95,13 @@ Les clés suivantes sont définies par la norme *PDF* v1.4 (Acrobat 5) :
 Depuis la version v1.6 de la norme *PDF*, les métadonnées peuvent être stockées dans un document *XML* spécial
 attaché au document *PDF* (XMP -`eXtensible Metadata Platform`_).
 
-Ce document XML peut être récupéré et attaché au document PDF avec les méthodes ``ZendPdf\Pdf::getMetadata()``
-et ``ZendPdf\Pdf::setMetadata($metadata)``:
+Ce document XML peut être récupéré et attaché au document PDF avec les méthodes ``ZendPdf\PdfDocument::getMetadata()``
+et ``ZendPdf\PdfDocument::setMetadata($metadata)``:
 
    .. code-block:: php
       :linenos:
 
-      $pdf = ZendPdf\Pdf::load($pdfPath);
+      $pdf = ZendPdf\PdfDocument::load($pdfPath);
       $metadata = $pdf->getMetadata();
       $metadataDOM = new DOMDocument();
       $metadataDOM->loadXML($metadata);

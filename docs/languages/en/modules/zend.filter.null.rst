@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.filter.set.null:
 
 Null
@@ -8,7 +10,8 @@ you work with databases and want to have a ``NULL`` value instead of a boolean o
 
 .. _zend.filter.set.null.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``Zend\Filter\Null``:
 
@@ -16,7 +19,8 @@ The following options are supported for ``Zend\Filter\Null``:
 
 .. _zend.filter.set.null.default:
 
-.. rubric:: Default Behavior
+Default Behavior
+^^^^^^^^^^^^^^^^
 
 Per default this filter works like *PHP*'s ``empty()`` method; in other words, if ``empty()`` returns a boolean
 ``TRUE``, then a ``NULL`` value will be returned.
@@ -36,7 +40,8 @@ Any other value will be returned as is, without any changes.
 
 .. _zend.filter.set.null.types:
 
-.. rubric:: Changing the Default Behavior
+Changing the Default Behavior
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes it's not enough to filter based on ``empty()``. Therefor ``Zend\Filter\Null`` allows you to configure
 which type will be converted and which not.

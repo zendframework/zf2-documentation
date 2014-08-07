@@ -1,7 +1,9 @@
+:orphan:
+
 .. _zend.filter.introduction.staticfilter:
 
 Using the StaticFilter
-======================
+----------------------
 
 If it is inconvenient to load a given filter class and create an instance of the filter, you can use
 ``StaticFilter`` with it's method ``execute()`` as an alternative invocation style. The first argument of this

@@ -321,8 +321,8 @@ use the control in all our modules:
    :linenos:
 
     <?php if ($this->pageCount): ?>
-        <div class="pagination pagination-centered">
-            <ul>
+        <div>
+            <ul class="pagination">
                 <!-- Previous page link -->
                 <?php if (isset($this->previous)): ?>
                     <li>

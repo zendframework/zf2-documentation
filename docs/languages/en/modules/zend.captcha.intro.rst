@@ -8,9 +8,14 @@ challenge-response to ensure that the individual submitting information is a hum
 Typically, a captcha is used with form submissions where authenticated users are not necessary, but you want to
 prevent spam submissions.
 
+.. _zend.captcha.introduction.overview:
+
+Overview
+--------
+
 Captchas can take a variety of forms, including asking logic questions, presenting skewed fonts, and presenting
 multiple images and asking how they relate. The ``Zend\Captcha`` component aims to provide a variety of back ends
-that may be utilized either standalone or in conjunction with the ``Zend\Form`` component.
+that may be utilized either standalone or in conjunction with the :ref:`Zend\\Form component <zend.form.intro>`.
 
 
 

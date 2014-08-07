@@ -56,18 +56,26 @@ then echo the helper to output it.
 .. code-block:: php
    :linenos:
 
-   <?php // setting links in a view script:
-   $this->headLink(array(
-       'rel'  => 'favicon',
-       'href' => '/img/favicon.ico',
-   ), 'PREPEND')
-       ->appendStylesheet('/styles/basic.css')
-       ->prependStylesheet(
-           '/styles/moz.css',
-           'screen',
-           true,
-           array('id' => 'my_stylesheet')
-       );
+   <?php
+   // setting links in a view script:
+   $this->headLink(array('rel' => 'icon', 'href' => '/img/favicon.ico'), 'PREPEND')
+        ->appendStylesheet('/styles/basic.css')
+        ->prependStylesheet(
+            '/styles/moz.css',
+            'screen',
+            true,
+            array('id' => 'my_stylesheet')
+        );
+
+   // rendering the links from the layout:
+   echo $this->headLink();
    ?>
-   <?php // rendering the links: ?>
-   <?php echo $this->headLink() ?>
+
+Output:
+
+.. code-block:: html
+   :linenos:
+
+   <link href="/styles/moz.css" media="screen" rel="stylesheet" type="text/css" id="my_stylesheet">
+   <link href="/img/favicon.ico" rel="icon">
+   <link href="/styles/basic.css" media="screen" rel="stylesheet" type="text/css">

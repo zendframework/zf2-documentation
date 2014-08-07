@@ -21,6 +21,12 @@
    user-guide/styling-and-translations
    user-guide/forms-and-actions
    user-guide/conclusion
+   getting-started-with-zend-studio/overview
+   getting-started-with-zend-studio/skeleton-application
+   getting-started-with-zend-studio/the-application
+   getting-started-with-zend-studio/tasks
+   getting-started-with-zend-studio/diagnostics
+   getting-started-with-zend-studio/conclusion
    modules/zendtool.introduction
    tutorials/quickstart.di
    tutorials/unittesting
@@ -54,6 +60,9 @@
    modules/zend.captcha.intro
    modules/zend.captcha.operation
    modules/zend.captcha.adapters
+   modules/zend.code.generator.introduction
+   modules/zend.code.generator.reference
+   modules/zend.code.generator.examples
    modules/zend.config.introduction
    modules/zend.config.theory-of-operation
    modules/zend.config.reader
@@ -66,6 +75,10 @@
    modules/zend.console.controllers
    modules/zend.console.adapter
    modules/zend.console.prompts
+   modules/zend.console.getopt.introduction
+   modules/zend.console.getopt.rules
+   modules/zend.console.getopt.fetching
+   modules/zend.console.getopt.configuration
    modules/zend.crypt.introduction
    modules/zend.crypt.block-cipher
    modules/zend.crypt.key.derivation
@@ -78,6 +91,7 @@
    modules/zend.db.table-gateway
    modules/zend.db.row-gateway
    modules/zend.db.metadata
+   modules/zend.debug
    modules/zend.di.introduction
    modules/zend.di.quick-start
    modules/zend.di.definitions
@@ -112,6 +126,7 @@
    modules/zend.filter.file
    modules/zend.filter.filter-chains
    modules/zend.filter.inflector
+   modules/zend.filter.static-filter
    modules/zend.filter.writing-filters
    modules/zend.form.intro
    modules/zend.form.quick-start
@@ -165,6 +180,9 @@
    modules/zend.mail.smtp.options
    modules/zend.mail.file.options
    modules/zend.math.introduction
+   modules/zend.memory.overview
+   modules/zend.memory.memory-manager
+   modules/zend.memory.memory-objects
    modules/zend.mime
    modules/zend.mime.message
    modules/zend.mime.part
@@ -249,6 +267,7 @@
    modules/zend.view.helpers.cycle
    modules/zend.view.helpers.doctype
    modules/zend.view.helpers.flash-messenger
+   modules/zend.view.helpers.gravatar
    modules/zend.view.helpers.head-link
    modules/zend.view.helpers.head-meta
    modules/zend.view.helpers.head-script
@@ -268,6 +287,18 @@
    modules/zend.xmlrpc.server
    modules/zendservice.akismet
    modules/zendservice.amazon
+   modules/zendservice.amazon.s3
+   modules/zendservice.amazon.sqs
+   modules/zendservice.amazon.ec2
+   modules/zendservice.amazon.ec2.cloud-watch
+   modules/zendservice.amazon.ec2.ebs
+   modules/zendservice.amazon.ec2.elasticip
+   modules/zendservice.amazon.ec2.instance
+   modules/zendservice.amazon.ec2.keypair
+   modules/zendservice.amazon.ec2.regions-and-avalibility-zones
+   modules/zendservice.amazon.ec2.reserved-instance
+   modules/zendservice.amazon.ec2.securitygroups
+   modules/zendservice.amazon.ec2.windows-instance
    modules/zendservice.apple.apns
    modules/zendservice.audioscrobbler
    modules/zendservice.delicious
@@ -275,8 +306,9 @@
    modules/zendservice.flickr
    modules/zendservice.google.gcm
    modules/zendservice.livedocx
-   modules/zendservice.nirvanix
    modules/zendservice.rackspace
+   modules/zendservice.rackspace.servers
+   modules/zendservice.rackspace.files
    modules/zendservice.re-captcha
    modules/zendservice.slide-share
    modules/zendservice.strike-iron.overview
@@ -306,6 +338,18 @@
     * :doc:`user-guide/styling-and-translations`
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
+
+|GettingStartedWithZendStudio|
+------------------------------
+
+|GettingStartedWithZendStudioIntroduction|
+
+    * :doc:`getting-started-with-zend-studio/overview`
+    * :doc:`getting-started-with-zend-studio/skeleton-application`
+    * :doc:`getting-started-with-zend-studio/the-application`
+    * :doc:`getting-started-with-zend-studio/tasks`
+    * :doc:`getting-started-with-zend-studio/diagnostics`
+    * :doc:`getting-started-with-zend-studio/conclusion`
 
 |ZFTool|
 --------
@@ -379,6 +423,15 @@ Zend\\Captcha
         * :doc:`modules/zend.captcha.operation`
         * :doc:`modules/zend.captcha.adapters`
 
+.. _zend.code.generator:
+
+Zend\\Code\\Generator
+^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.code.generator.introduction`
+        * :doc:`modules/zend.code.generator.reference`
+        * :doc:`modules/zend.code.generator.examples`
+
 .. _zend.config:
 
 Zend\\Config
@@ -403,6 +456,15 @@ Zend\\Console
         * :doc:`modules/zend.console.adapter`
         * :doc:`modules/zend.console.prompts`
 
+.. _zend.console.getopt:
+
+Zend\\Console\\Getopt
+^^^^^^^^^^^^^^^^^^^^^
+
+        * :doc:`modules/zend.console.getopt.introduction`
+        * :doc:`modules/zend.console.getopt.rules`
+        * :doc:`modules/zend.console.getopt.fetching`
+        * :doc:`modules/zend.console.getopt.configuration`
 
 .. _zend.crypt:
 
@@ -427,6 +489,13 @@ Zend\\Db
         * :doc:`modules/zend.db.table-gateway`
         * :doc:`modules/zend.db.row-gateway`
         * :doc:`modules/zend.db.metadata`
+
+.. _zend.debug:
+
+Zend\\Debug
+^^^^^^^^^^^
+
+        * :doc:`modules/zend.debug`
 
 .. _zend.di:
 
@@ -469,6 +538,7 @@ Zend\\EventManager
 
         * :doc:`modules/zend.event-manager.event-manager`
 
+
 .. _zend.feed:
 
 Zend\\Feed
@@ -488,7 +558,7 @@ Zend\\Feed
 .. _zend.file:
 
 Zend\\File
-^^^^^^^^^^^^
+^^^^^^^^^^
 
         * :doc:`modules/zend.file.class-file-locator`
 
@@ -503,6 +573,7 @@ Zend\\Filter
         * :doc:`modules/zend.filter.file`
         * :doc:`modules/zend.filter.filter-chains`
         * :doc:`modules/zend.filter.inflector`
+        * :doc:`modules/zend.filter.static-filter`
         * :doc:`modules/zend.filter.writing-filters`
 
 .. _zend.form:
@@ -616,6 +687,15 @@ Zend\\Math
 ^^^^^^^^^^
 
         * :doc:`modules/zend.math.introduction`
+
+.. _zend.memory:
+
+Zend\\Memory
+^^^^^^^^^^^^
+
+        * :doc:`modules/zend.memory.overview`
+        * :doc:`modules/zend.memory.memory-manager`
+        * :doc:`modules/zend.memory.memory-objects`
 
 Zend\\Mime
 ^^^^^^^^^^
@@ -823,6 +903,7 @@ Zend\\View
         * :doc:`modules/zend.view.helpers.cycle`
         * :doc:`modules/zend.view.helpers.doctype`
         * :doc:`modules/zend.view.helpers.flash-messenger`
+        * :doc:`modules/zend.view.helpers.gravatar`
         * :doc:`modules/zend.view.helpers.head-link`
         * :doc:`modules/zend.view.helpers.head-meta`
         * :doc:`modules/zend.view.helpers.head-script`
@@ -861,6 +942,18 @@ ZendService\\Amazon
 ^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.amazon`
+        * :doc:`modules/zendservice.amazon.s3`
+        * :doc:`modules/zendservice.amazon.sqs`
+        * :doc:`modules/zendservice.amazon.ec2`
+        * :doc:`modules/zendservice.amazon.ec2.cloud-watch`
+        * :doc:`modules/zendservice.amazon.ec2.ebs`
+        * :doc:`modules/zendservice.amazon.ec2.elasticip`
+        * :doc:`modules/zendservice.amazon.ec2.instance`
+        * :doc:`modules/zendservice.amazon.ec2.keypairs`
+        * :doc:`modules/zendservice.amazon.ec2.regions-and-avalibility-zones`
+        * :doc:`modules/zendservice.amazon.ec2.reserved-instance`
+        * :doc:`modules/zendservice.amazon.ec2.securitygroups`
+        * :doc:`modules/zendservice.amazon.ec2.windows-instance`
 
 ZendService\\Apple\Apns
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -872,13 +965,13 @@ ZendService\\Audioscrobbler
 
         * :doc:`modules/zendservice.audioscrobbler`
 
-ZendService\\Del.icio.us
-^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\Delicious
+^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.delicious`
 
-ZendService\\Developer Garden
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\DeveloperGarden
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.developer-garden`
 
@@ -888,7 +981,7 @@ ZendService\\Flickr
         * :doc:`modules/zendservice.flickr`
 
 ZendService\\Google\\Gcm
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.google.gcm`
 
@@ -897,15 +990,12 @@ ZendService\\LiveDocx
 
         * :doc:`modules/zendservice.livedocx`
 
-ZendService\\Nirvanix
-^^^^^^^^^^^^^^^^^^^^^
-
-        * :doc:`modules/zendservice.nirvanix`
-
 ZendService\\Rackspace
 ^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.rackspace`
+        * :doc:`modules/zendservice.rackspace.servers`
+        * :doc:`modules/zendservice.rackspace.files`
 
 ZendService\\ReCaptcha
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -934,8 +1024,8 @@ ZendService\\Twitter
 
         * :doc:`modules/zendservice.twitter`
 
-ZendService\\Windows Azure
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZendService\\WindowsAzure
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zendservice.windows-azure`
 
@@ -951,4 +1041,3 @@ Copyright
 
 * :doc:`index`
 * :ref:`search`
-

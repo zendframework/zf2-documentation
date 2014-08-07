@@ -26,7 +26,8 @@ followed by a colon character (**:**) indicates a flag that requires a parameter
 
 .. _zend.console.getopt.rules.short.example:
 
-.. rubric:: Using the Short Syntax
+Using the Short Syntax
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -65,7 +66,8 @@ The value of each element in the associative array is a help string to describe 
 
 .. _zend.console.getopt.rules.long.example:
 
-.. rubric:: Using the Long Syntax
+Using the Long Syntax
+^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

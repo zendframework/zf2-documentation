@@ -264,22 +264,22 @@ Jedes Zielobjekt (inklusive benannter Ziele) kann aufgelöst werden indem die Me
 ``resolveDestination($destination)`` verwendet wird. Sie gibt ein passendes ``ZendPdf\Page`` Objekt zurück wenn
 das Zielobjekt gefunden wurde, andernfalls ``NULL``.
 
-Die Methode ``ZendPdf\Pdf::resolveDestination()`` nimmt auch einen optionalen booleschen Parameter
+Die Methode ``ZendPdf\PdfDocument::resolveDestination()`` nimmt auch einen optionalen booleschen Parameter
 ``$refreshPageCollectionHashes``, der standardmäßig ``TRUE`` ist. Er zwingt das ``ZendPdf`` Objekt die Hashes
 der internen Kollektion der Seiten neu zu laden da die Liste der Seiten des Dokuments vom Benutzer aktualisiert
-sein könnte indem die Eigenschaft ``ZendPdf\Pdf::$pages`` verwendet wird (:ref:`Arbeiten mit Seiten
+sein könnte indem die Eigenschaft ``ZendPdf\PdfDocument::$pages`` verwendet wird (:ref:`Arbeiten mit Seiten
 <zendpdf.pages>`). Das kann aus Gründen der Performance ausgeschaltet werden, wenn bekannt ist das die Liste der
 Seiten des Dokuments seit der letzten Anfragemethode nicht geändert wurde.
 
 Die komplette Liste der benannten Ziele kann empfangen werden indem die Methode
-``ZendPdf\Pdf::getNamedDestinations()`` verwendet wird. Sie gibt ein Array von ``ZendPdf\Target`` Objekten zurück,
+``ZendPdf\PdfDocument::getNamedDestinations()`` verwendet wird. Sie gibt ein Array von ``ZendPdf\Target`` Objekten zurück,
 welche entweder explizite Ziele oder eine GoTo Aktion sind (:ref:`Aktionen
 <zendpdf.pages.interactive-features.actions>`).
 
-Die Methode ``ZendPdf\Pdf::getNamedDestination(string $name)`` gibt spezifizierte benannte Ziele zurück (ein
+Die Methode ``ZendPdf\PdfDocument::getNamedDestination(string $name)`` gibt spezifizierte benannte Ziele zurück (ein
 explizites Ziel oder eine GoTo Aktion).
 
-Das Verzeichnis der benannten Ziele des *PDF* Dokuments kann mit der Methode ``ZendPdf\Pdf::setNamedDestination(string
+Das Verzeichnis der benannten Ziele des *PDF* Dokuments kann mit der Methode ``ZendPdf\PdfDocument::setNamedDestination(string
 $name, $destination)`` aktualisiert werden, wobei ``$destination`` entweder ein explizites Ziel ist (jedes Ziel
 ausser ``ZendPdf\Destination\Named``) oder eine GoTo Aktion.
 
@@ -297,7 +297,7 @@ Wenn ``NULL`` statt ``$destination`` spezifiziert ist, werden die spezifizierten
 .. code-block:: php
    :linenos:
 
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    $page1 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    $page2 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    $page3 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
@@ -417,7 +417,7 @@ durchlaufen werden können:
 .. code-block:: php
    :linenos:
 
-   $pdf = new ZendPdf\Pdf();
+   $pdf = new ZendPdf\PdfDocument();
    $page1 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    $page2 = $pdf->newPage(ZendPdf\Page::SIZE_A4);
    // Seite erstellt, aber nicht in der Seitenliste hinzugefügt
@@ -460,7 +460,7 @@ Dokument Öffnen Aktion
 Eine spezielle Öffnen Aktion kann durch ein Ziel spezifiziert werden das angezeigt werden soll, oder eine Aktion
 die ausgeführt werden soll wenn das Dokument geöffnet wird.
 
-Die ``ZendPdf\Target ZendPdf\Pdf::getOpenAction()`` Methode gibt die aktuelle Dokument Öffnen Aktion zurück (oder
+Die ``ZendPdf\Target ZendPdf\PdfDocument::getOpenAction()`` Methode gibt die aktuelle Dokument Öffnen Aktion zurück (oder
 ``NULL`` wenn die Öffnen Aktion nicht gesetzt ist).
 
 Die ``setOpenAction(ZendPdf\Target $openAction = null)`` Methode setzt eine Dokument Öffnen Aktion oder löscht
@@ -488,7 +488,7 @@ Die Klasse ``ZendPdf`` bietet eine öffentliche Eigenschaft ``$outlines`` welche
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($path);
+   $pdf = ZendPdf\PdfDocument::load($path);
 
    // Entfernt ein Outline Element
    unset($pdf->outlines[0]->childOutlines[1]);
@@ -550,7 +550,7 @@ iterieren kann indem RecursiveIteratorIterator verwendet wird:
 .. code-block:: php
    :linenos:
 
-   $pdf = ZendPdf\Pdf::load($path);
+   $pdf = ZendPdf\PdfDocument::load($path);
 
    foreach ($pdf->outlines as $documentRootOutlineEntry) {
        $iterator = new RecursiveIteratorIterator(

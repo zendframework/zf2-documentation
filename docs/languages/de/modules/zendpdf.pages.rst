@@ -15,11 +15,11 @@ Die Seiten in einem *PDF* Dokument werden durch ``ZendPdf\Page`` Instanzen in ``
 verwendet wird.
 
 Neue Seiten können durch die Instanzierung neuer ``ZendPdf\Page`` Objekte erstellt werden, entweder direkt oder
-durch den Aufruf der ``ZendPdf\Pdf::newPage()`` Methode, die ein ``ZendPdf\Page`` Objekt zurückgibt.
-``ZendPdf\Pdf::newPage()`` erstellt eine Seite die bereits an ein Dokument angehängt ist. Ungebundene Seiten können
+durch den Aufruf der ``ZendPdf\PdfDocument::newPage()`` Methode, die ein ``ZendPdf\Page`` Objekt zurückgibt.
+``ZendPdf\PdfDocument::newPage()`` erstellt eine Seite die bereits an ein Dokument angehängt ist. Ungebundene Seiten können
 nicht mit verschiedenen *PDF* Dokumenten verwendet werden, sind aber etwas schneller. [#]_
 
-Die ``ZendPdf\Pdf::newPage()`` Methode und der ``ZendPdf\Page`` Konstruktor benötigen die gleichen Parameter welche
+Die ``ZendPdf\PdfDocument::newPage()`` Methode und der ``ZendPdf\Page`` Konstruktor benötigen die gleichen Parameter welche
 die Größe der Seite spezifizieren. Sie können entweder die Seitengröße ($x, $y) in Punkten (1/72 Zoll) nehmen
 oder eine vordefinierte Konstante, die den Seitentyp repräsentiert:
 

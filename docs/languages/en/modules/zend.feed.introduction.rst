@@ -26,8 +26,8 @@ the feed data to a simple *PHP* array, which could then be used for printing the
 
 .. _zend.feed.introduction.example.rss:
 
-Reading RSS Feed Data with Zend\\Feed\\Reader
----------------------------------------------
+Reading RSS Feed Data
+---------------------
 
 .. code-block:: php
    :linenos:

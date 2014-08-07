@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.form.element.select:
 
 Select
@@ -31,15 +33,15 @@ This element automatically adds a ``"type"`` attribute of value ``"select"``.
 
    	$form = new Form('language');
    	$form->add($select);
-   
+
 Using the array notation:
 
 .. code-block:: php
    :linenos:
-   
+
     use Zend\Form\Form;
-    
-   	$form = new Form('my-form');   	
+
+   	$form = new Form('my-form');
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Select',
    		'name' => 'language',
@@ -53,15 +55,15 @@ Using the array notation:
    			),
    		)
    	));
-   
+
 You can add an empty option (option with no value) using the ``"empty_option"`` option:
 
 .. code-block:: php
    :linenos:
-   
+
     use Zend\Form\Form;
-    
-   	$form = new Form('my-form');   	
+
+   	$form = new Form('my-form');
    	$form->add(array(
    		'type' => 'Zend\Form\Element\Select',
    		'name' => 'language',
@@ -76,7 +78,7 @@ You can add an empty option (option with no value) using the ``"empty_option"`` 
    			),
    		)
    	));
-   
+
 Option groups are also supported. You just need to add an 'options' key to the value options.
 
 .. code-block:: php
@@ -116,7 +118,10 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
 .. function:: setOptions(array $options)
    :noindex:
 
-   Set options for an element of type Checkbox. Accepted options, in addition to the inherited :ref:`options of Zend\\Form\\Element\\Checkbox <zend.form.element.checkbox.methods.set-options>` , are: ``"value_options"`` and ``"empty_option"``, which call ``setValueOptions`` and ``setEmptyOption``, respectively.
+   Set options for an element. Accepted options, in addition to the inherited
+   :ref:`options of Zend\\Form\\Element <zend.form.element.methods.set-options>`, are: ``"value_options"``,
+   ``"empty_option"`` and ``"disable_inarray_validator"``, which call ``setValueOptions``, ``setEmptyOption`` and
+   ``setDisableInArrayValidator``, respectively.
    
 .. function:: setValueOptions(array $options)
    :noindex:
@@ -129,7 +134,12 @@ The following methods are in addition to the inherited :ref:`methods of Zend\\Fo
    Return the value options.
 
    :rtype: array
-   
+
+.. function:: unsetValueOption($key)
+   :noindex:
+
+   Unset the value option from the select element.
+
 .. function:: setEmptyOption($emptyOption)
    :noindex:
 

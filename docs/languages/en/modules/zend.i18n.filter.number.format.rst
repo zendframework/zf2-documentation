@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.i18n.filter.number-format:
 
 NumberFormat
@@ -9,7 +11,8 @@ extension (Intl).
 
 .. _zend.i18n.filter.number-format.options:
 
-.. rubric:: Supported Options for NumberFormat Filter
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following options are supported for ``NumberFormat``:
 
@@ -32,7 +35,8 @@ The following options are supported for ``NumberFormat``:
 
 .. _zend.i18n.filter.number-format.usage:
 
-.. rubric:: NumberFormat Filter Usage
+Basic Usage
+^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -51,5 +55,5 @@ The following options are supported for ``NumberFormat``:
 
 
 
-.. _`format style constants`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
-.. _`formatting type`: http://us.php.net/manual/en/class.numberformatter.php#intl.numberformatter-constants.types
+.. _`format style constants`: http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.unumberformatstyle
+.. _`formatting type`: http://www.php.net/manual/class.numberformatter.php#intl.numberformatter-constants.types

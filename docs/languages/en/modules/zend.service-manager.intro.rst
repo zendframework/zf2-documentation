@@ -151,6 +151,7 @@ In addition to the above described methods, the ``ServiceManager`` provides addi
          }
      }
 
+     $serviceManager->addInitializer('MyInitializer');
      $serviceManager->setInvokableClass('my-service', 'stdClass');
 
      var_dump($serviceManager->get('my-service')->initialized); // initialized!

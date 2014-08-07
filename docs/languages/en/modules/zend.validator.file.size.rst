@@ -1,3 +1,5 @@
+:orphan:
+
 .. _zend.validator.file.size:
 
 Size
@@ -7,7 +9,8 @@ Size
 
 .. _zend.validator.file.size.options:
 
-.. rubric:: Supported Options
+Supported Options
+^^^^^^^^^^^^^^^^^
 
 The following set of options are supported:
 
@@ -23,7 +26,8 @@ The following set of options are supported:
 
 .. _zend.validator.file.size.usage:
 
-.. rubric:: Usage Examples
+Usage Examples
+^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:

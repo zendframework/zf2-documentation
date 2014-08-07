@@ -35,6 +35,12 @@ Module Manager Events
    Once a module resolver listener has resolved the module name to an object, the module manager then triggers this
    event, passing the newly created object to all listeners.
 
+**configMerge**
+   After all modules have been loaded, the ``configMerge`` event is triggered.  By default,
+   ``Zend\ModuleManager\Listener\ConfigLister`` listens on this event at priority 1000, and merges
+   all configuration. You may attach additional listeners to this event in order to manipulate the
+   merged configuration. See :ref:`the tutorial on manipulating merged configuration <tutorials.config.advanced.manipulating-merged-configuration>` for more information.
+
 **loadModules.post**
    This event is triggered by the module manager to allow any listeners to perform work after every module has
    finished loading. For example, the default configuration listener,
@@ -153,7 +159,11 @@ By default, Zend Framework provides several useful module manager listeners.
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
    | ``Zend\View\HelperPluginManager``              | ``view_helpers``       | ``ViewHelperProviderInterface``       | ``getViewHelperConfig``       |
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-
+   | ``Zend\Log\ProcessorPluginManager``            | ``log_processors``     | ``LogProcessorProviderInterface``     | ``getLogProcessorConfig``     |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   | ``Zend\Log\WriterPluginManager``               | ``log_writers``        | ``LogWriterProviderInterface``        | ``getLogWriterConfig``        |
+   +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
+   
    Configuration follows the examples in the :ref:`ServiceManager configuration
    section <zend.service-manager.quick-start.config>`. As a brief recap, the
    following configuration keys and values are allowed:

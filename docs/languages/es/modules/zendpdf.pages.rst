@@ -14,11 +14,11 @@ Las páginas en un documento *PDF* están representadas como instancias ``ZendPd
 Las páginas *PDF* o bien son cargadas desde una *PDF* ya existente o creadas usando la *API* ``ZendPdf``.
 
 Se pueden crear nuevas páginas instanciando directamente al objeto ``ZendPdf\Page`` o llamando al método
-``ZendPdf\Pdf::newPage()``, que devuelve un objeto ``ZendPdf\Page``. ``ZendPdf\Pdf::newPage()`` crea una página que ya
+``ZendPdf\PdfDocument::newPage()``, que devuelve un objeto ``ZendPdf\Page``. ``ZendPdf\PdfDocument::newPage()`` crea una página que ya
 está agregada a un documento. Las páginas no agregadas no pueden ser utilizadas con múltiples documentos *PDF*,
 pero son algo más eficientes. [#]_
 
-El método ``ZendPdf\Pdf::newPage()`` y el constructor ``ZendPdf\Page`` toman los mismos parámetros que especifican
+El método ``ZendPdf\PdfDocument::newPage()`` y el constructor ``ZendPdf\Page`` toman los mismos parámetros que especifican
 el tamaño de la página. Pueden tomar el tamaño de la página ($x, $y) en puntos (1/72 pulgadas) o una constante
 predefinida representando un tipo de página:
 

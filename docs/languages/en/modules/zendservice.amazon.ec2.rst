@@ -1,7 +1,7 @@
 .. _zendservice.amazon.ec2:
 
-ZendService\Amazon\Ec2
-=======================
+ZendService\\Amazon\\Ec2
+========================
 
 .. _zendservice.amazon.ec2.introduction:
 
@@ -30,7 +30,8 @@ then create any new object you don't need to pass in any keys to the constructor
 
 .. _zendservice.amazon.ec2.staticmethods.setkeys:
 
-.. rubric:: setKeys() Example
+setKeys() Example
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
@@ -43,7 +44,8 @@ will throw an exception stating that.
 
 .. _zendservice.amazon.ec2.staticmethods.setregion:
 
-.. rubric:: setRegion() Example
+setRegion() Example
+^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
    :linenos:
