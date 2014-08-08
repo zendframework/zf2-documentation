@@ -11,7 +11,7 @@ para criar um novo projeto inicial com Zend Framework da seguinte forma:
 
 .. code-block:: bash
 
-    php composer.phar create-project --repository-url="http://packages.zendframework.com" -s dev zendframework/skeleton-application path/to/install
+    php composer.phar create-project -s dev zendframework/skeleton-application path/to/install
 
 .. note::
 
