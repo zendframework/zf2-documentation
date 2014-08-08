@@ -101,7 +101,7 @@ Available implementations
 
 - **Zend\\Stdlib\\Hydrator\\Strategy\\ClosureStrategy**
 
-  This is the strategy, that allows you pass in a ``hydrate`` callback to be called in the event of
+  This is the strategy, that allows you to pass in a ``hydrate`` callback to be called in the event of
   hydration, and an ``extract`` callback to be called in the event of extraction.
 
 - **Zend\\Stdlib\\Hydrator\\Strategy\\DefaultStrategy**
