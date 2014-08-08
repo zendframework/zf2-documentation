@@ -107,7 +107,7 @@ event.
    // reading: bar called on Foo, using params {"baz" : "baz", "bat" : "bat"}"
 
 Note that the second argument to ``attach()`` is any valid callback; an anonymous function is shown in the example
-in order to keep the example self-contained. However, you could also utilize a valid function name, a functor, a
+in order to keep the example self-contained. However, you could also utilize a valid function name, a function, a
 string referencing a static method, or an array callback with a named static method or instance method. Again, any
 PHP callback is valid.
 
