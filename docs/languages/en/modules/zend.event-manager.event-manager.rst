@@ -59,9 +59,16 @@ Typically, you will compose an ``EventManager`` instance in a class.
 The above allows users to access the ``EventManager`` instance, or reset it with a new instance; if one does not
 exist, it will be lazily instantiated on-demand.
 
-An ``EventManager`` is really only interesting if it triggers some events. Basic triggering takes three arguments:
-the event name, which is usually the current function/method name; the "context", which is usually the current
-object instance; and the arguments, which are usually the arguments provided to the current function/method.
+The instance property `events` is a convention within Zend Framework 2 to refer to the EventManager instance.
+
+An ``EventManager`` is really only interesting if it triggers some events. 
+
+Basic triggering takes three arguments:
+- The event ``name``, which is usually the current function/method name; 
+- The ``target``, which is usually the current object instance; 
+- The ``arguments``, which are usually the arguments provided to the current function/method.
+
+An optional fourth argument; a ``callback`` may also be supplied.
 
 .. code-block:: php
    :linenos:
@@ -77,10 +84,11 @@ object instance; and the arguments, which are usually the arguments provided to 
        }
    }
 
-In turn, triggering events is only interesting if something is listening for the event. Listeners attach to the
-``EventManager``, specifying a named event and the callback to notify. The callback receives an ``Event`` object,
-which has accessors for retrieving the event name, context, and parameters. Let's add a listener, and trigger the
-event.
+In turn, triggering events is only interesting if something is listening for the event. 
+
+Listeners attach to the ``EventManager``, specifying a named event and the callback to notify. 
+The callback receives an ``Event`` object, which has accessors for retrieving the event name, target, and parameters. 
+Let's add a listener, and trigger the event.
 
 .. code-block:: php
    :linenos:
@@ -107,20 +115,30 @@ event.
    // reading: bar called on Foo, using params {"baz" : "baz", "bat" : "bat"}"
 
 Note that the second argument to ``attach()`` is any valid callback; an anonymous function is shown in the example
-in order to keep the example self-contained. However, you could also utilize a valid function name, a functor, a
-string referencing a static method, or an array callback with a named static method or instance method. Again, any
-PHP callback is valid.
+in order to keep the example self-contained.
+
+However, you could also utilize a valid function name, a functor, a string referencing
+a static method, or an array callback with a named static method or instance method.
+Again, any PHP callback is valid.
 
 Sometimes you may want to specify listeners without yet having an object instance of the class composing an
-``EventManager``. Zend Framework enables this through the concept of a ``SharedEventCollection``. Simply put, you
-can inject individual ``EventManager`` instances with a well-known ``SharedEventCollection``, and the
-``EventManager`` instance will query it for additional listeners. Listeners attach to a ``SharedEventCollection``
-in roughly the same way they do to normal event managers; the call to ``attach`` is identical to the ``EventManager``,
-but expects an additional parameter at the beginning: a named instance. Remember the example of composing an
-``EventManager``, how we passed it ``__CLASS__``? That value, or any strings you provide in an array to the
-constructor, may be used to identify an instance when using a ``SharedEventCollection``. As an example, assuming we
-have a ``SharedEventManager`` instance that we know has been injected in our ``EventManager`` instances (for
-instance, via dependency injection), we could change the above example to attach via the shared collection:
+``EventManager``. 
+Zend Framework enables this through the concept of a ``SharedEventManager``.
+
+Simply put, you can inject individual ``EventManager`` instances with a well-known ``SharedEventManager``, and the
+``EventManager`` instance will query it for additional listeners. 
+
+Listeners attach to a ``SharedEventManager`` in roughly the same way they do to normal
+event managers; the call to ``attach`` is identical to the ``EventManager``, but
+expects an additional parameter at the beginning: a named instance.
+
+Remember the example of composing an ``EventManager``, how we passed it ``__CLASS__``?
+That value, or any strings you provide in an array to the
+constructor, may be used to identify an instance when using a ``SharedEventManager``.
+
+As an example, assuming we have a ``SharedEventManager`` instance that we know has been
+injected in our ``EventManager`` instances (for instance, via dependency injection),
+we could change the above example to attach via the shared collection:
 
 .. code-block:: php
    :linenos:
@@ -263,10 +281,10 @@ Available Methods
 .. _zend.event-manager.event-manager.methods.constructor:
 
 **__construct**
-   ``__construct(null|string|int $identifier)``
+   ``__construct(null|string|int|array|Traversable $identifiers)``
 
-   Constructs a new ``EventManager`` instance, using the given identifier, if provided, for purposes of shared
-   collections.
+   Constructs a new ``EventManager`` instance, using the given identifiers, if provided, for purposes of use
+   with a ``SharedEventManager`` instance.
 
 .. _zend.event-manager.event-manager.methods.set-event-class:
 
@@ -275,20 +293,49 @@ Available Methods
 
    Provide the name of an alternate ``Event`` class to use when creating events to pass to triggered listeners.
 
-.. _zend.event-manager.event-manager.methods.set-shared-collections:
+.. _zend.event-manager.event-manager.methods.set-shared-manager:
 
-**setSharedCollections**
-   ``setSharedCollections(SharedEventCollection $collections = null)``
+**setSharedManager**
+  ``setSharedManager(SharedEventManagerInterface $sharedEventManager)``
 
-   An instance of a ``SharedEventCollection`` instance to use when triggering events.
+  Accepts an instance of ``SharedEventManagerInterface`` and sets the sharedManager property.
 
-.. _zend.event-manager.event-manager.methods.get-shared-collections:
+.. _zend.event-manager.event-manager.methods.unset-shared-manager:
 
-**getSharedCollections**
-   ``getSharedCollections()``
+**unsetSharedManager**
+  ``unsetSharedManager()``
 
-   Returns the currently attached ``SharedEventCollection`` instance. Returns either a ``null`` if no collection is
-   attached, or a ``SharedEventCollection`` instance otherwise.
+  Removes the SharedEventManager currently attached to the EventManager instance.
+
+.. _zend.event-manager.event-manager.methods.get-shared-manager:
+
+**getSharedManager**
+  ``getSharedManager()``
+
+  Returns the static SharedEventManager is one has been assigned or will return false.
+
+.. _zend.event-manager.event-manager.methods.get-identifiers:
+
+**getIdentifiers**
+  ``getIdentifiers()``
+
+  Returns the ``identifiers`` that have been set for this EventManager instance
+
+.. _zend.event-manager.event-manager.methods.set-identifiers:
+
+**setIdentifiers**
+  ``setIdentifiers(string|int|array|Traversable $identifiers)``
+
+  Sets the identifiers for this EventManager instance. This method will clear any
+  existing ``identifiers`` that have been previously added to the instance.
+
+.. _zend.event-manager.event-manager.methods.add-identifiers:
+
+**addIdentifiers**
+  ``addIdentifiers(string|int|array|Traversable $identifiers)``
+
+  Add ``identifiers`` to the EventManager instance. This method will merge the ``identifiers`` with
+  any that have previously been added to the instance.
 
 .. _zend.event-manager.event-manager.methods.trigger:
 
