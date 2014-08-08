@@ -65,10 +65,10 @@ An ``EventManager`` is really only interesting if it triggers some events.
 
 Basic triggering takes three arguments:
 - The event ``name``, which is usually the current function/method name; 
-- The ``context``, which is usually the current object instance; 
+- The ``target``, which is usually the current object instance; 
 - The ``arguments``, which are usually the arguments provided to the current function/method.
 
-An optional forth argument; a ``callback`` may also be supplied.
+An optional fourth argument; a ``callback`` may also be supplied.
 
 .. code-block:: php
    :linenos:
@@ -87,7 +87,7 @@ An optional forth argument; a ``callback`` may also be supplied.
 In turn, triggering events is only interesting if something is listening for the event. 
 
 Listeners attach to the ``EventManager``, specifying a named event and the callback to notify. 
-The callback receives an ``Event`` object, which has accessors for retrieving the event name, context, and parameters. 
+The callback receives an ``Event`` object, which has accessors for retrieving the event name, target, and parameters. 
 Let's add a listener, and trigger the event.
 
 .. code-block:: php
@@ -115,22 +115,30 @@ Let's add a listener, and trigger the event.
    // reading: bar called on Foo, using params {"baz" : "baz", "bat" : "bat"}"
 
 Note that the second argument to ``attach()`` is any valid callback; an anonymous function is shown in the example
-in order to keep the example self-contained. 
-However, you could also utilize a valid function name, a functor, a string referencing a static method, or an array callback with a named static method or instance method. 
+in order to keep the example self-contained.
+
+However, you could also utilize a valid function name, a functor, a string referencing
+a static method, or an array callback with a named static method or instance method.
 Again, any PHP callback is valid.
 
 Sometimes you may want to specify listeners without yet having an object instance of the class composing an
 ``EventManager``. 
-Zend Framework enables this through the concept of a ``SharedEventCollection``. 
-Simply put, you can inject individual ``EventManager`` instances with a well-known ``SharedEventCollection``, and the
+Zend Framework enables this through the concept of a ``SharedEventManager``.
+
+Simply put, you can inject individual ``EventManager`` instances with a well-known ``SharedEventManager``, and the
 ``EventManager`` instance will query it for additional listeners. 
 
-Listeners attach to a ``SharedEventCollection`` in roughly the same way they do to normal event managers; the call to ``attach`` is identical to the ``EventManager``,
-but expects an additional parameter at the beginning: a named instance. 
-Remember the example of composing an ``EventManager``, how we passed it ``__CLASS__``? That value, or any strings you provide in an array to the
-constructor, may be used to identify an instance when using a ``SharedEventCollection``. 
-As an example, assuming we have a ``SharedEventManager`` instance that we know has been injected in our ``EventManager`` instances (for
-instance, via dependency injection), we could change the above example to attach via the shared collection:
+Listeners attach to a ``SharedEventManager`` in roughly the same way they do to normal
+event managers; the call to ``attach`` is identical to the ``EventManager``, but
+expects an additional parameter at the beginning: a named instance.
+
+Remember the example of composing an ``EventManager``, how we passed it ``__CLASS__``?
+That value, or any strings you provide in an array to the
+constructor, may be used to identify an instance when using a ``SharedEventManager``.
+
+As an example, assuming we have a ``SharedEventManager`` instance that we know has been
+injected in our ``EventManager`` instances (for instance, via dependency injection),
+we could change the above example to attach via the shared collection:
 
 .. code-block:: php
    :linenos:
@@ -247,6 +255,23 @@ Note that if you specify a priority, that priority will be used for all events s
 
 The above is specifying that for the contexts "foo" and "bar", the specified listener should be notified for any
 event they trigger.
+
+.. _zend.event-manager.event-manager.options:
+
+Configuration Options
+---------------------
+
+.. rubric:: EventManager Options
+
+**identifier**
+   A string or array of strings to which the given ``EventManager`` instance can answer when accessed via a
+   ``SharedEventManager``.
+
+**event_class**
+   The name of an alternate ``Event`` class to use for representing events passed to listeners.
+
+**shared_collections**
+   An instance of a ``SharedEventCollection`` instance to use when triggering events.
 
 .. _zend.event-manager.event-manager.methods:
 
