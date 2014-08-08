@@ -27,8 +27,8 @@ Installation using `Composer`_
     2. Go to your application's directory
     3. Run `php composer.phar require zendframework/zftool:dev-master`
     
-zf.php (Zend Tool) will be installed into the `vendor/bin` folder so you may want to add that directory to your PATH variable so you are
-able to invoke zf.php from the command line without pre-pending the full path.
+`zf.php` (Zend Tool) will be installed in the `vendor/bin` folder.
+You may run it with `php vendor/bin/zf.php`.
 
 Manual installation
 -------------------
