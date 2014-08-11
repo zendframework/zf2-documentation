@@ -278,7 +278,7 @@ Render the sitemap using a maximum depth of 1.
       2. Create a custom rendering strategy that will return an instance of your custom renderer;
       3. Attach the custom strategy in the ``ViewEvent``;
 
-   See the :ref:`example from **headStile** documentation <zend.view.helpers.initial.headstyle.encoding.example>`
+   See the :ref:`example from HeadStyle documentation <zend.view.helpers.initial.headstyle.encoding.example>`
    to see how you can achieve this.
 
 .. _`Sitemaps XML format`: http://www.sitemaps.org/protocol.php
