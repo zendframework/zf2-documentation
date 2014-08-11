@@ -55,6 +55,7 @@ actions. This is the updated module config file with the new code highlighted.
     return array(
         'controllers' => array(
             'invokables' => array(
+                // The following line is new and should be added to your file
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
