@@ -538,10 +538,12 @@ configuration for an input filter.
                    'validators' => array(
                        array(
                            'name' => 'Zend\Validator\StringLength', 
-                           'options' => array('min' => 3, 'max' => 50),
-                           'break_chain_on_failure' => true //false by default
-                       )
-                   )
+                           'options' => array(
+                               'min' => 3,
+                               'max' => 256
+                           ),
+                       ),
+                   ),
                ),
                'email' => array(
                    'required' => true,
