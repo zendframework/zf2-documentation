@@ -1,9 +1,7 @@
-:orphan:
+.. _zend.validator.between:
 
-.. _zend.validator.set.between:
-
-Between
-=======
+Between Validator
+=================
 
 ``Zend\Validator\Between`` allows you to validate if a given value is between two other values.
 
@@ -14,7 +12,7 @@ Between
    It should be noted that ``Zend\Validator\Between`` supports only the validation of numbers. Strings or dates can
    not be validated with this validator.
 
-.. _zend.validator.set.between.options:
+.. _zend.validator.between.options:
 
 Supported options for Zend\\Validator\\Between
 ----------------------------------------------
@@ -28,7 +26,7 @@ The following options are supported for ``Zend\Validator\Between``:
 
 - **min**: Sets the minimum border for the validation.
 
-.. _zend.validator.set.between.basic:
+.. _zend.validator.between.basic:
 
 Default behaviour for Zend\\Validator\\Between
 ----------------------------------------------
@@ -48,7 +46,7 @@ In the above example the result is ``TRUE`` due to the reason that per default t
 values. This means in our case that any value from '0' to '10' is allowed. And values like '-1' and '11' will
 return ``FALSE``.
 
-.. _zend.validator.set.between.inclusively:
+.. _zend.validator.between.inclusively:
 
 Validation exclusive the border values
 --------------------------------------

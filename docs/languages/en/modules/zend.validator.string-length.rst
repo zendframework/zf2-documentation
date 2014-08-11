@@ -1,9 +1,7 @@
-:orphan:
+.. _zend.validator.stringlength:
 
-.. _zend.validator.set.stringlength:
-
-StringLength
-============
+StringLength Validator
+======================
 
 This validator allows you to validate if a given string is between a defined length.
 
@@ -14,7 +12,7 @@ This validator allows you to validate if a given string is between a defined len
    It should be noted that ``Zend\Validator\StringLength`` supports only the validation of strings. Integers,
    floats, dates or objects can not be validated with this validator.
 
-.. _zend.validator.set.stringlength.options:
+.. _zend.validator.stringlength.options:
 
 Supported options for Zend\\Validator\\StringLength
 ---------------------------------------------------
@@ -27,7 +25,7 @@ The following options are supported for ``Zend\Validator\StringLength``:
 
 - **max**: Sets the maximum allowed length for a string.
 
-.. _zend.validator.set.stringlength.basic:
+.. _zend.validator.stringlength.basic:
 
 Default behaviour for Zend\\Validator\\StringLength
 ---------------------------------------------------
@@ -37,7 +35,7 @@ Per default this validator checks if a value is between ``min`` and ``max``. But
 
 So per default, without giving any options, this validator only checks if the input is a string.
 
-.. _zend.validator.set.stringlength.maximum:
+.. _zend.validator.stringlength.maximum:
 
 Limiting the maximum allowed length of a string
 -----------------------------------------------
@@ -65,7 +63,7 @@ retrieve the actual maximum border.
    $validator->isValid("Test"); // returns true
    $validator->isValid("Testing"); // returns false
 
-.. _zend.validator.set.stringlength.minimum:
+.. _zend.validator.stringlength.minimum:
 
 Limiting the minimal required length of a string
 ------------------------------------------------
@@ -93,7 +91,7 @@ retrieve the actual minimum border.
    $validator->isValid("Test"); // returns false
    $validator->isValid("Testing"); // returns true
 
-.. _zend.validator.set.stringlength.both:
+.. _zend.validator.stringlength.both:
 
 Limiting a string on both sides
 -------------------------------
@@ -119,7 +117,7 @@ the following example:
    When you try to set a lower maximum value as the actual minimum value, or a higher minimum value as the actual
    maximum value, then an exception will be raised.
 
-.. _zend.validator.set.stringlength.encoding:
+.. _zend.validator.stringlength.encoding:
 
 Encoding of values
 ------------------

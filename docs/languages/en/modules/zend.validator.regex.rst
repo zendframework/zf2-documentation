@@ -1,13 +1,11 @@
-:orphan:
+.. _zend.validator.regex:
 
-.. _zend.validator.set.regex:
-
-Regex
-=====
+Regex Validator
+===============
 
 This validator allows you to validate if a given string conforms a defined regular expression.
 
-.. _zend.validator.set.regex.options:
+.. _zend.validator.regex.options:
 
 Supported options for Zend\\Validator\\Regex
 --------------------------------------------
@@ -16,7 +14,7 @@ The following options are supported for ``Zend\Validator\Regex``:
 
 - **pattern**: Sets the regular expression pattern for this validator.
 
-.. _zend.validator.set.regex.basic:
+.. _zend.validator.regex.basic:
 
 Validation with Zend\\Validator\\Regex
 --------------------------------------
@@ -36,7 +34,7 @@ validator. The usage of regular expression is quite common and simple. Let's loo
 As you can see, the pattern has to be given using the same syntax as for ``preg_match()``. For details about
 regular expressions take a look into `PHP's manual about PCRE pattern syntax`_.
 
-.. _zend.validator.set.regex.handling:
+.. _zend.validator.regex.handling:
 
 Pattern handling
 ----------------

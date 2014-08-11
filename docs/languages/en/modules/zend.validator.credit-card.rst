@@ -1,9 +1,7 @@
-:orphan:
+.. _zend.validator.creditcard:
 
-.. _zend.validator.set.creditcard:
-
-CreditCard
-==========
+CreditCard Validator
+====================
 
 ``Zend\Validator\CreditCard`` allows you to validate if a given value could be a credit card number.
 
@@ -55,7 +53,7 @@ The following issuing institutes are accepted:
 
    **Switch** has been rebranded to **Visa** and is therefore also treated as invalid.
 
-.. _zend.validator.set.creditcard.options:
+.. _zend.validator.creditcard.options:
 
 Supported options for Zend\\Validator\\CreditCard
 -------------------------------------------------
@@ -66,7 +64,7 @@ The following options are supported for ``Zend\Validator\CreditCard``:
 
 - **type**: The type of credit card which will be validated. See the below list of institutes for details.
 
-.. _zend.validator.set.creditcard.basic:
+.. _zend.validator.creditcard.basic:
 
 Basic usage
 -----------
@@ -86,7 +84,7 @@ known institutes will be accepted. See the following example:
 
 The above example would validate against all known credit card institutes.
 
-.. _zend.validator.set.creditcard.institute:
+.. _zend.validator.creditcard.institute:
 
 Accepting defined credit cards
 ------------------------------
@@ -127,7 +125,7 @@ this case you have to provide the institutes with the ``type`` array key as simu
        'type' => array(Zend\Validator\CreditCard::AMERICAN_EXPRESS)
    ));
 
-.. _zend.validator.set.creditcard.institute.table:
+.. _zend.validator.creditcard.institute.table:
 
 .. table:: Constants for credit card institutes
 
@@ -181,7 +179,7 @@ You can also set or add institutes afterward instantiation by using the methods 
 
    In this case the usage of ``addType()`` is useless because all institutes are already added.
 
-.. _zend.validator.set.creditcard.servicecheck:
+.. _zend.validator.creditcard.servicecheck:
 
 Validation by using foreign APIs
 --------------------------------
@@ -199,7 +197,7 @@ prevents the *API* from being called for invalid numbers, which increases the pe
 
 ``setService()`` sets a new service, and ``getService()`` returns the set service. As a configuration option, you
 can give the array key '``service``' at initiation. For details about possible options take a look into
-:ref:`Callback <zend.validator.set.callback>`.
+:ref:`Callback <zend.validator.callback>`.
 
 .. code-block:: php
    :linenos:

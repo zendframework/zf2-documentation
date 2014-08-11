@@ -83,7 +83,7 @@ be a decimal between 0.0 and 1.0. This validator accepts both numeric values and
    $validator->isValid(0xFF); // false
    $validator->isValid('foo'); // false
 
-.. _zend.validator.set.sitemap.options:
+.. _zend.validator.sitemap.options:
 
 Supported options for Zend\\Validator\\Sitemap_*
 ------------------------------------------------

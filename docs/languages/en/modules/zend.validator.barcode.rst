@@ -1,9 +1,7 @@
-:orphan:
+.. _zend.validator.barcode:
 
-.. _zend.validator.set.barcode:
-
-Barcode
-=======
+Barcode Validator
+=================
 
 ``Zend\Validator\Barcode`` allows you to check if a given value can be represented as barcode.
 
@@ -164,7 +162,7 @@ implementations very easily. The following barcode standards are supported:
   When the barcode is 8 chars long it includes a checksum which is calculated with modulo 10. It is commonly used
   with small products where a UPCA barcode would not fit.
 
-.. _zend.validator.set.barcode.options:
+.. _zend.validator.barcode.options:
 
 Supported options for Zend\\Validator\\Barcode
 ----------------------------------------------
@@ -179,7 +177,7 @@ The following options are supported for ``Zend\Validator\Barcode``:
 
 - **options**: Defines optional options for a self written adapters.
 
-.. _zend.validator.set.barcode.basic:
+.. _zend.validator.barcode.basic:
 
 Basic usage
 -----------
@@ -197,7 +195,7 @@ barcode:
        // input is invalid
    }
 
-.. _zend.validator.set.barcode.checksum:
+.. _zend.validator.barcode.checksum:
 
 Optional checksum
 -----------------
@@ -227,7 +225,7 @@ checksum validation. By using the ``checksum`` option you can define if the chec
    should note that you can also turn off the checksum validation for those barcode types which must contain a
    checksum value. Barcodes which would not be valid could then be returned as valid even if they are not.
 
-.. _zend.validator.set.barcode.custom:
+.. _zend.validator.barcode.custom:
 
 Writing custom adapters
 -----------------------
