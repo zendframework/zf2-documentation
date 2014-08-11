@@ -99,6 +99,11 @@ Available implementations
   This is the strategy, that provides the functionality for ``Zend\Stdlib\Hydrator\ArraySerializable``.
   You can use it with custom implementations for ``Zend\Serializer\Adapter\AdapterInterface`` if you want to.
 
+- **Zend\\Stdlib\\Hydrator\\Strategy\\ClosureStrategy**
+
+  This is the strategy, that allows you to pass in a ``hydrate`` callback to be called in the event of
+  hydration, and an ``extract`` callback to be called in the event of extraction.
+
 - **Zend\\Stdlib\\Hydrator\\Strategy\\DefaultStrategy**
 
   This is a kind of dummy-implementation, that simply proxies everything through, without doing anything on the
