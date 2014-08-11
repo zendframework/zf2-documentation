@@ -785,6 +785,7 @@ you can pass an optional parameter to the ``FormRow`` view helper :
 
 .. code-block:: php
    :linenos:
+   :emphasize-lines: 4
 
    <div class="form_element">
    <?php
