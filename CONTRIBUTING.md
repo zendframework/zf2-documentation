@@ -4,7 +4,7 @@ To contribute to the Zend Framework 2 documentation you can send us a
 [pull request](https://help.github.com/articles/using-pull-requests) using GitHub, that's it!
 
 If you are not familiar with github you can read the
-[Zend Framework Git Guide](http://framework.zend.com/wiki/display/ZFDEV2/Zend+Framework+Git+Guide)
+[Zend Framework Git Guide](https://github.com/zendframework/zf2/blob/master/README-GIT.md)
 using the repository `git://github.com/zendframework/zf2-documentation.git` instead of
 `git://github.com/zendframework/zf2.git`.
 
