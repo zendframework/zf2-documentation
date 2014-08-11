@@ -8,36 +8,31 @@ Memory Manager
 Creating a Memory Manager
 -------------------------
 
-You can create new a memory manager (``Zend\Memory\Manager`` object) using the ``Zend\Memory\Memory::factory($backendName
-[, $backendOptions])`` method.
-
-The first argument ``$backendName`` is a string that names one of the backend implementations supported by
-``Zend\Cache``.
-
-The second argument ``$backendOptions`` is an optional backend options array.
+You can create new a memory manager (``Zend\Memory\MemoryManager`` object) using its constructor: ``Zend\Memory\MemoryManager::__construct(Zend\Cache\Storage\StorageInterface $cache = null)``.
 
 .. code-block:: php
    :linenos:
 
-   $backendOptions = array(
-       'cache_dir' => './tmp/' // Directory where to put the swapped memory blocks
-   );
+   $cache = Zend\Cache\StorageFactory::factory(array(
+       'adapter' => array(
+           'name' => 'Filesystem',
+           'options' => array(
+               'cache_dir' => './tmp/', // Directory where to put the swapped memory blocks
+           ),
+       ),
+   ));
 
-   $memoryManager = Zend\Memory\Memory::factory('File', $backendOptions);
+   $memoryManager = new Zend\Memory\MemoryManager($cache);
 
-``Zend\Memory`` uses :ref:`Zend\Cache backends <zend.cache.backends>` as storage providers.
-
-You may use the special name 'None' as a backend name, in addition to standard ``Zend\Cache`` backends.
+``Zend\Memory\MemoryManager`` uses :ref:`Zend\Cache storage adapters <zend.cache.storage.adapter>` to cache memory blocks; if no cache instance is provided the system temporary directory is used.
 
 .. code-block:: php
    :linenos:
 
-   $memoryManager = Zend\Memory\Memory::factory('None');
+   $memoryManager = new Zend\Memory\MemoryManager();
 
-If you use 'None' as the backend name, then the memory manager never swaps memory blocks. This is useful if you
-know that memory is not limited or the overall size of objects never reaches the memory limit.
-
-The 'None' backend doesn't need any option specified.
+This is useful if you know that memory is not limited or the overall size of objects never reaches
+the memory limit.
 
 .. _zend.memory.memory-manager.objects-management:
 
@@ -52,7 +47,7 @@ manager behavior.
 Creating Movable Objects
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create movable objects (objects, which may be swapped) using the ``Zend\Memory\Manager::create([$data])`` method:
+Create movable objects (objects, which may be swapped) using the ``Zend\Memory\MemoryManager::create([$data])`` method:
 
 .. code-block:: php
    :linenos:
@@ -67,7 +62,7 @@ the value is an empty string.
 Creating Locked Objects
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Create locked objects (objects, which are not swapped) using the ``Zend\Memory\Manager::createLocked([$data])``
+Create locked objects (objects, which are not swapped) using the ``Zend\Memory\MemoryManager::createLocked([$data])``
 method:
 
 .. code-block:: php
@@ -160,5 +155,4 @@ You can retrieve or set the minimum size using the ``getMinSize()`` and ``setMin
    $memoryManager->setMinSize($newSize);        // Set MinSize limit in bytes
 
 The default minimum size value is 16KB (16384 bytes).
-
 
