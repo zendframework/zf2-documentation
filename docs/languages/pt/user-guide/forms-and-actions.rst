@@ -1,22 +1,22 @@
 .. EN-Revision: 96c6ad3
 .. _user-guide-forms-and-actions:
 
-Fomularios e Ações
+Fomulários e Ações
 ==================
 
-Adicionando novos Albuns
+Adicionando novos Álbuns
 ------------------------
 
-Nos agora podemos programar as funcionlidades de adição de novos albuns.
+Nos agora podemos programar as funcionalidades de adição de novos álbuns.
 Existem dois itens nessa parte:
 
 * Mostrar um formulário para que o usuário possa fornecer as informações
-* Processar os dados do formulário e salva-los no banco de dados
+* Processar os dados do formulário e salvá-los no banco de dados
 
-Nos iremos usar ``Zend\Form`` para isso. O Componente ``Zend\Form`` gerencia os
-formulario e a validação dos dados do formulário Atraves da adição de um 
+Nós iremos usar ``Zend\Form`` para isso. O Componente ``Zend\Form`` gerencia o
+formulário e a validação dos dados do formulário através da adição de um 
 ``Zend\InputFilter`` a nossa entidade ``Album``. Mas iremos começar criando
-uma nova classe ``Album\Form\AlbumForm`` que extenda ``Zend\Form\Form``
+uma nova classe ``Album\Form\AlbumForm`` que estenda ``Zend\Form\Form``
 para definir nosso formulário. Crie um arquivo chamado ``AlbumForm.php`` em
 ``module/Album/src/Album/Form``:
 
@@ -64,9 +64,9 @@ para definir nosso formulário. Crie um arquivo chamado ``AlbumForm.php`` em
     }
 
 Dentro do construtor de ``AlbumForm`` nos fazemos varias coisas. Primeiro nos configuramos o nome do 
-formulário atraves de uma chamada ao contrutor da classe pai. Nos então configuramos o método do formulário,
-nesse caso ``post``. Finalmente nos criamos quatro elemntos: id, title, artist, e o botão submit. Para cada
-um deles nos configuramos vários atributose opções incluindo o label que será exibido.
+formulário através de uma chamada ao construtor da classe pai. Nós então configuramos o método do formulário,
+nesse caso ``post``. Finalmente nós criamos quatro elementos: id, title, artist, e o botão submit. Para cada
+um deles nós configuramos vários atributos e opções incluindo o label que será exibido.
 
 Nos também precisamos configurar as validações desse formulário. No Zend Framework 2 isso é feito usando
 filtros de entrada que podem tanto funcionar de forma independente quanto ser definidos em qualquer classe
@@ -166,15 +166,15 @@ os filtros de entrada na classe Album, que está armazenada no arquivo ``Album.p
 
 A ``InputFilterAwareInterface`` define dois métodos: ``setInputFilter()`` e
 ``getInputFilter()``. Nos só precisamos implementar ``getInputFilter()`` então
-nos simplesmente disparamos uma execção em ``setInputFilter()``.
+nos simplesmente disparamos uma exceção em ``setInputFilter()``.
 
 No método ``getInputFilter()``, nos instanciamos um ``InputFilter`` e depois
 adicionamos os campos que no precisamos. Nos adicionamos um campo para cada
-propriedade que quisermos filtrar e/ou validade. Para op campo ``id`` nos
-adicionamos um filtro ``Int`` já queos só queremos inteiros. Para os elementos
+propriedade que quisermos filtrar e/ou validar. Para o campo ``id`` nós
+adicionamos um filtro ``Int`` já que só queremos inteiros. Para os elementos
 textuais nos iremos adicionar dois filtros, ``StripTags`` e ``StringTrim``,
 para remover código HTML não desejado e caracteres de espaço desnecessários.
-Nos também os configuramos para sere obrigatórios e adicionamos um validador
+Nós também os configuramos para serem obrigatórios e adicionamos um validador
 ``StringLength`` para garantir que o usuário não tenha mais caracteres do que
 podemos armazenar no nosso banco de dados.
 
@@ -225,10 +225,10 @@ Depois de adicionar ``AlbumForm`` na lista de objetos a serem usados, nos implem
     $form = new AlbumForm();
     $form->get('submit')->setValue('Add');
 
-Nós instanciamos ``AlbumForm`` e então configuramos o lavel do botão de envio como “Add”
+Nós instanciamos ``AlbumForm`` e então configuramos o label do botão de envio como “Add”
 (N.T. "Adicionar" do inglês "Add"). Nos fazemos isso aqui já que queremos reutilizar
-o mesmo formulário para a edição do album onde iremos utilizar um label diferente
-a different label.
+o mesmo formulário para a edição do álbum onde iremos utilizar um label diferente
+a diferente label.
 
 .. code-block:: php
 
@@ -241,9 +241,9 @@ a different label.
 
 Se o método ``isPost()`` do objeto ``Request`` retornar true (N.T. "Verdadeiro"), isso
 significa que o formulário foi submetido e por isso nos queremos que o configurar o filtro
-de valores do  formulário partindo de uma instancia de album. Nos então passamos os valores
-enviados para o formulário e verificamos se esses valores são validos ustilizando o método
-``isValid()`` do objeto do formulario.
+de valores do  formulário partindo de uma instância de álbum. Nós então passamos os valores
+enviados para o formulário e verificamos se esses valores são válidos utilizando o método
+``isValid()`` do objeto do formulário.
 
 .. code-block:: php
 
@@ -251,14 +251,14 @@ enviados para o formulário e verificamos se esses valores são validos ustiliza
     $this->getAlbumTable()->saveAlbum($album);
 
 Se os dados forem validos, nos pegamos os dados já filtrados do formulário e armazenamos no
-model usando o método``saveAlbum()``.
+model usando o método ``saveAlbum()``.
 
 .. code-block:: php
 
     // Redireciona para a lista de albuns
     return $this->redirect()->toRoute('album');
 
-Depois de salvar a nova linha de album, nos redirecionamos de volta para a lista de albuns
+Depois de salvar a nova linha de álbum, nós redirecionamos de volta para a lista de álbuns
 usando o plugin ``Redirect`` do controller.
 
 .. code-block:: php
@@ -267,10 +267,10 @@ usando o plugin ``Redirect`` do controller.
 
 Finalmente nos retornamos a variável que desejamos para a view. Nesse caso somente o objeto
 do formulário. Note que o Zend Framework 2 também permite que retornemos um array contendo
-as variáveis que serão atribuidas a view e ele irá criar um ``ViewModel`` por tras dos panos
-para você. isso reduz um pouco o código necessário.
+as variáveis que serão atribuídas a view e ele irá criar um ``ViewModel`` por trás dos panos
+para você. Isso reduz um pouco o código necessário.
 
-Nos agora precisamos renderizar o formulario no nosso arquivo add.phtml:
+Nos agora precisamos renderizar o formulário no nosso arquivo add.phtml:
 
 .. code-block:: php
 
@@ -293,9 +293,9 @@ Nos agora precisamos renderizar o formulario no nosso arquivo add.phtml:
     echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();
 
-Novamente nos exibimos um titulo como anteriormente e depois nos renderizamos o formulario.
+Novamente nos exibimos um titulo como anteriormente e depois nos renderizamos o formulário.
 O Zend Framework possui alguns métodos auxiliares ("helpers") para tornar isso um pouco mais
-fácil. os objeto ``form()`` inclue métodos auxiliaresm como  ``openTag()`` e ``closeTag()``
+fácil. os objeto ``form()`` inclui métodos auxiliares como  ``openTag()`` e ``closeTag()``
 que são usados para abrir e fechar o formulário. Depois para cada elemento nos podemos utilizar
 o método auxiliar ``formRow()``, mas para dois elementos específicos iremos usar ``formHidden()``
 e ``formSubmit()``.
@@ -303,30 +303,29 @@ e ``formSubmit()``.
 .. image:: ../images/user-guide.forms-and-actions.add-album-form.png
     :width: 940 px
 
-Alternativamente o processo de renderização do formulário pode ser simplificado usando o
-método  auxiliar , the process of rendering the form can be simplified by using the empacotado
-``formCollection``.  nesse caso o exemplo anterior poderia ser interiamente substituido pela
-seguinte instrução de renderização do formulário completo:
+Alternativamente o processo de renderização do formulário pode ser simplificado usando o 
+método auxiliar ``formCollection``. Por exemplo, no script anterior, poderia substituir todas 
+as declarações echo de renderização do formulário por:
 
 .. code-block:: php
 
     echo $this->formCollection($form);
 
-Nota: Você ainda precisa chamar os métodos ``openTag`` e ``closeTag`` do formulário.  VocÊ subsititui
+Nota: Você ainda precisa chamar os métodos ``openTag`` e ``closeTag`` do formulário.  Você substitui
 as outras instruções pela chamada ao método ``formCollection`` acima.
 
-Isso irá iteragir pela estrutura do formulário chamando os labels elementos e métodos auxiliares apropriados
-para cada elemento. mas você ainda ira precisar envolver formCollection($form) com as tags de abertura e
+Isso irá interagir pela estrutura do formulário chamando os elementos labels e métodos auxiliares apropriados
+para cada elemento. Mas você ainda irá precisar envolver ``formCollection($form)`` com as tags de abertura e
 fechamento do formulário. Isso ajuda a reduzir a complexidade do seu arquivo de view em situações onde o
 código HTML padrão do formulário é aceitável.
 
-Você agora deve poder usar o link “Add new album” (N.T. Adicionar novo album) na página incial da aplicação
-para adicionar um novo album à coleção.
+Você agora deve poder usar o link “Add new album” (N.T. Adicionar novo álbum) na página inicial da aplicação
+para adicionar um novo álbum à coleção.
 
-Editando um Album
+Editando um Álbum
 -----------------
 
-Editar um album é praticamente identico a adicionar um novo, portanto o código também é muito similar.
+Editar um álbum é praticamente idêntico a adicionar um novo, portanto o código também é muito similar.
 Dessa vez iremos implementar a ``editAction()`` do ``AlbumController``:
 
 .. code-block:: php
@@ -345,7 +344,7 @@ Dessa vez iremos implementar a ``editAction()`` do ``AlbumController``:
             }
 
             // Requisita um ALbum com id específico. Uma exceção é disparada caso
-            // ele não seja encontrado, nesse caso redirecione para a págin incial.
+            // ele não seja encontrado, nesse caso redirecione para a página inicial.
             try {
                 $album = $this->getAlbumTable()->getAlbum($id);
             }
@@ -379,9 +378,9 @@ Dessa vez iremos implementar a ``editAction()`` do ``AlbumController``:
         }
     //...
 
-Esse código deve parecer confortavelmente familiar. Vamos paenas olar as diferenças em relação a
-inclusão de um novo album. Primeiramente, nos procuramos pelo ``id`` contido na rota correspondente
-e usamos isso para carregar o albu para ser editado:
+Esse código deve parecer confortavelmente familiar. Vamos apenas olhar as diferenças em relação a
+inclusão de um novo álbum. Primeiramente, nós procuramos pelo ``id`` contido na rota correspondente
+e usamos isso para carregar o álbum para ser editado:
 
 .. code-block:: php
 
@@ -393,7 +392,7 @@ e usamos isso para carregar o albu para ser editado:
     }
 
     // Requisita um ALbum com id específico. Uma exceção é disparada caso
-    // ele não seja encontrado, nesse caso redirecione para a págin incial.
+    // ele não seja encontrado, nesse caso redirecione para a página inicial.
     try {
         $album = $this->getAlbumTable()->getAlbum($id);
     }
@@ -404,13 +403,13 @@ e usamos isso para carregar o albu para ser editado:
     }
 
 ``params`` é um plugin do controlador que contem métodos convenientes para requisitar
-parametros da rota correspondente. Nos usamos isso para requisitar o ``id`` a partir da
+parâmetros da rota correspondente. Nós usamos isso para requisitar o ``id`` a partir da
 rota criada no arquivo ``module.config.php`` do módulo. Se o ``id`` for igual a zero,
-nos redirecionamos para a ação de inclusão de albuns, caso contrario, nos continuamos a 
-solicitar a entidade do album do nosso banco de dados.
+nós redirecionamos para a ação de inclusão de álbuns, caso contrário, nós continuamos a 
+solicitar a entidade do álbum do nosso banco de dados.
 
-Nos temos que verificar para ter certeza que um album com esse ``id`` específico pode ser encontrado.
-Se não for possível encontra-lo, caso não seja possível o método de acesso de dados irá disparar uma
+Nós temos que verificar para ter certeza que um álbum com esse ``id`` específico pode ser encontrado.
+Se não for possível encontrá-lo, caso não seja possível o método de acesso de dados irá disparar uma
 exceção. Nós pegamos essa exceção e redirecionamos o usuário para a página inicial.
 
 .. code-block:: php
@@ -419,7 +418,7 @@ exceção. Nós pegamos essa exceção e redirecionamos o usuário para a págin
     $form->bind($album);
     $form->get('submit')->setAttribute('value', 'Edit');
 
-O método ``bind()`` do formulario vincula o model com o formulário. Isso é usado de duas
+O método ``bind()`` do formulário vincula o model com o formulário. Isso é usado de duas
 formas:
 
 * Quando exibimos o formulário o valor inicial de cado elemento é extraído do model.
@@ -427,9 +426,9 @@ formas:
   novamente no model.
 
 Essas operações são feitas usando um objeto hydrator. Existem vário hydrator, mas o padrão é o
- ``Zend\Stdlib\Hydrator\ArraySerializable`` que espera encontrar dois métodos no model:
- ``getArrayCopy()`` e ``exchangeArray()``. Nos já escrevemos o método ``exchangeArray()`` na nossa
- entidade ``Album``, então só precisamos implementar ``getArrayCopy()``:
+``Zend\Stdlib\Hydrator\ArraySerializable`` que espera encontrar dois métodos no model:
+``getArrayCopy()`` e ``exchangeArray()``. Nós já escrevemos o método ``exchangeArray()`` na nossa
+entidade ``Album``, então só precisamos implementar ``getArrayCopy()``:
 
 .. code-block:: php
     :emphasize-lines: 10-14
@@ -454,7 +453,7 @@ Como resultado do uso de ``bind()`` com seu hydrator, nos não precisamos popula
 de volta no ``$album`` já que isso já foi feito, então nos podemos somente chamar o método ``saveAlbum()``
 para armazenar as alterações no banco de dados.
 
-O arquivo de view, ``edit.phtml``, irá se parecer bastante com aquele usado para adicionar um novo album:
+O arquivo de view, ``edit.phtml``, irá se parecer bastante com aquele usado para adicionar um novo álbum:
 
 .. code-block:: php
 
@@ -484,26 +483,26 @@ O arquivo de view, ``edit.phtml``, irá se parecer bastante com aquele usado par
     echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();
 
-As únicas mudanças são o uso do titulo ‘Edit Album’ e a mudança da ação do album para a
+As únicas mudanças são o uso do título ‘Edit Album’ e a mudança da ação do álbum para a
 ``editAction`` do nosso controller.
 
-Nos agora devemos poder editar nossos albuns.
+Nós agora devemos poder editar nossos álbuns.
 
-Deletando um Album
+Deletando um Álbum
 ------------------
 
 Para completar nossa aplicação nós precisamos adicionar a exclusão. Nós temos um link
-para deletar próximo a cada um dos albuns na lista e o procedimento mais comum seria
-deletar o album quando esse link fosse clicado. Isso seria errado, lembre-se das
+para deletar próximo a cada um dos álbuns na lista e o procedimento mais comum seria
+deletar o álbum quando esse link fosse clicado. Isso seria errado, lembre-se das
 especificações do protocolo HTTP quando eles dizem que não se deve realizar ações
-irreversivas usando p método GET e que devemos usar POST no lugar.
+irreversíveis usando o método GET e que devemos usar POST no lugar.
 
 Nos devemos mostrar um formulário de confirmação quando o usuário clicar em delete,
 se então ele clicar em “yes” (N.T. "Sim" em inglês), nos realizamos a exclusão.
-Como o formulário é bastante simples nos iremos codifica-lo diretamente na nossa view
- (``Zend\Form`` é, adinal de contas, opcional!).
+Como o formulário é bastante simples nós iremos codificá-lo diretamente na nossa view
+(``Zend\Form`` é, afinal, opcional!).
 
-Mas vamos começão implementando nossa ação em ``AlbumController::deleteAction()``:
+Mas vamos começar implementando nossa ação em ``AlbumController::deleteAction()``:
 
 .. code-block:: php
 
@@ -539,9 +538,9 @@ Mas vamos começão implementando nossa ação em ``AlbumController::deleteActio
 
 Como anteriormente nos pegamos o ``id`` a partir da rota correspondente e verificamos
 se a requisição partiu de um método POST com ``isPost()`` para determinar se devemos
-mostrar uma página de confirmação ou se já devemos deletar o album. Nos usamos o objeto
-da tabela para deletar uma linha usadno o método ``deleteAlbum()`` e então redirecionamos
-o usuário de volta para a lista de albuns. Caso a requisição não seja do tipo POST, nos 
+mostrar uma página de confirmação ou se já devemos deletar o álbum. Nós usamos o objeto
+da tabela para deletar uma linha usando o método ``deleteAlbum()`` e então redirecionamos
+o usuário de volta para a lista de álbuns. Caso a requisição não seja do tipo POST, nós 
 então buscamos a linha correspondente na tabela e enviamos para a view juntamente com
 seu ``id``.
 
@@ -575,19 +574,19 @@ O arquivo de view é um formulário simples:
     </div>
     </form>
 
-Nesse arquivo nós exibimos uma mensagem de confirmaçãopara o usuário junamente com um formulário
+Nesse arquivo nós exibimos uma mensagem de confirmação para o usuário juntamente com um formulário
 com os botões "Yes" e "No" (N.T. "Sim" e "Não" em inglês). Na ação nós iremos checar especificamente
 pela opção "Yes" quando realizarmos a exclusão.
 
-Garantindo que a página inicial exiba a lista de albuns
+Garantindo que a página inicial exiba a lista de álbuns
 -------------------------------------------------------
 
-Um ultimo ponto. No momento a página incial, http://zf2-tutorial.localhost/
-não exibe a lista de albuns.
+Um ultimo ponto. No momento a página inicial, http://zf2-tutorial.localhost/
+não exibe a lista de álbuns.
 
 Isso acontece por causa da rota configurada no arquivo ``module.config.php``
 do módulo ``Application``. Para alterar isso abra
-``module/Application/config/module.config.php`` e enconte a rota "home":
+``module/Application/config/module.config.php`` e encontre a rota "home":
 
 .. code-block:: php
 

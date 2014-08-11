@@ -54,7 +54,7 @@ para criar um novo projeto inicial com Zend Framework da seguinte forma:
           The process timed out. 
 
     Então sua conexão foi muito lenta para realizar o download do pacote completo a tempo
-    e o composer atingiu seu tempo limite. Para evitar isso, ao invês de executar:
+    e o composer atingiu seu tempo limite. Para evitar isso, ao invés de executar:
 
     .. code-block:: bash
 
@@ -77,7 +77,7 @@ do diretório ``zf2-tutorial/public``.
 
 A configuração do Virtual Host é geralmente feita no arquivo ``httpd.conf`` ou
 no arquivo ``extra/httpd-vhosts.conf``.  Se você estiver usando ``httpd-vhosts.conf``, certifique-se
-que esse arquivo esteja incluido no arquivo principal ``httpd.conf``.  Em algumas distribuiçõe Linux 
+que esse arquivo esteja incluido no arquivo principal ``httpd.conf``. Em algumas distribuições Linux 
 (ex: Ubuntu) os arquivos de configuração do Apache são armazenados em  ``/etc/apache2`` 
 e são criados arquivos separados para cada Virtual Host dentro do diretório ``/etc/apache2/sites-enabled``. 
 Nesse caso, você deve inserir o bloco de código abaixo em um arquivo nomeado 
@@ -121,7 +121,7 @@ http://zf2-tutorial.localhost/1234 e você deverá ver a seguinte página:
 .. image:: ../images/user-guide.skeleton-application.404.png
     :width: 940 px
 
-Se ao invês disso você estiver vendo uma página de erro 404 padrão do Apache, você deverá corrigir o arquivo ``.htaccess``
+Se ao invés disso você estiver vendo uma página de erro 404 padrão do Apache, você deverá corrigir o arquivo ``.htaccess``
 antes de continuar.  Se estiver usando IIS com o módulo URL Rewrite utilize o seguinte código:
 
 .. code-block:: apache

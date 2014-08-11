@@ -9,15 +9,15 @@ O Banco de Dados
 
 Agora que nos temos o módulo ``Album`` configurado com controllers, ações e
 views, está na hora de olhar para a seção de models de nossa aplicação.
-Lembre-se que os models são a parte que lida com o proposito pricipal de
+Lembre-se que os models são a parte que lida com o proposito principal de
 uma aplicação (também chamado de "regras de negócio") e, em nosso caso, lida
 com o banco de dados. Nos iremos usar a classe ``Zend\Db\TableGateway\TableGateway``
 do Zend Framework que serve para procurar, inserir, atualizar e deletar linhas 
-dobanco de dados.
+do banco de dados.
 
-Também vamos usar MySQL, atraves do driver PDO do PHP, portanto crie um banco de dados
+Também vamos usar MySQL, através do driver PDO do PHP, portanto crie um banco de dados
 com o nome de ``zf2tutorial``, e rode as seguintes instruções SQL para criar a tabela
-de albuns com alguns dados nela.
+de álbuns com alguns dados nela.
 
 .. code-block:: sql
 
@@ -48,16 +48,16 @@ Os Arquivos de Models
 ---------------------
 
 O Zend Framework não possui um componente ``Zend\Model`` por que os models são nossas
-regras de negócios e depende de você decidir como quer que elas funcionem, Existem
+regras de negócios e depende de você decidir como quer que elas funcionem. Existem
 muitos componentes que você pode usar para isso dependendo de suas necessidades. 
-Um dos métodos e ter uma classe model representando cada uma das entidades de sua
+Um dos métodos é ter uma classe model representando cada uma das entidades de sua
 aplicação e então usar objetos mapeadores que carregam e salvam essas entidades no
-banco de dados. Outro abordagem pode ser utilizar um Object-relational mapping (ORM),
+banco de dados. Outra abordagem pode ser utilizar um Object-relational mapping (ORM),
 como Doctrine ou Propel.
 
-Para esse tutorial nos vamos criar um model basnte simples atraves da criação de uma classe
+Para esse tutorial nos vamos criar um model bastante simples através da criação de uma classe
 ``AlbumTable`` que usa a classe ``Zend\Db\TableGateway\TableGateway`` na qual cada um dos
-albuns será um Objeto ``Album`` (conhecido com *entity*). Essa é a implementação do modelo
+álbuns será um Objeto ``Album`` (conhecido com *entity*). Essa é a implementação do modelo
 padrão Table Data Gateway que permite interação com os dados contidos na tabela do banco de
 dados. Esteja ciente de que esse modelo Table Data Gateway pode se tornar limitado em 
 sistemas maiores. Também existe uma tentação por colocar o acesso ao banco de dados
@@ -85,7 +85,7 @@ Vamos começar criando um arquivo chamado ``Album.php`` em ``module/Album/src/Al
         }
     }
 
-Nosso objeto de entidade ``Album`` é uma classe PHP cimples. Para que ela funcione com a classe 
+Nosso objeto de entidade ``Album`` é uma classe PHP simples. Para que ela funcione com a classe 
 ``TableGateway`` do ``Zend\Db``, nos precisamos implementar o método``exchangeArray()``.
 Esse método simplesmente copia os dados passados em um array para as propriedades de nossa
 entidade. Nós iremos implementar filtros para usar com os formulários posteriormente.
@@ -154,25 +154,25 @@ com o seguinte código:
 
 Existe muita coisa acontecendo aqui. Primeiramente, nos configuramos uma propriedade
 protegida ``$tableGateway`` para a instancia de ``TableGateway`` que será passada no
-construtor. Nos iremos usar isso para realizar operações na tabela de nosso albuns no
+construtor. Nos iremos usar isso para realizar operações na tabela de nosso álbum no
 banco de dados.
 
-Nos então criamos alguns métodos ajudantes que nossa aplicação irá utilizar para interagir com
-o table gateway.  ``fetchAll()`` retorna todas as linhas de albuns do banco de dados como um 
+Nos então criamos alguns métodos auxiliares que nossa aplicação irá utilizar para interagir com
+o table gateway.  ``fetchAll()`` retorna todas as linhas de álbuns do banco de dados como um 
 ``ResultSet``, ``getAlbum()`` retorna uma única linha como um objeto ``Album``, ``saveAlbum()``
 tanto cria uma nova linha no banco de dados quanto atualiza uma linha existente e ``deleteAlbum()`` 
-remove completamente uma linha. O código de cada um desses métodos e, esperadamente, auto-explicativo.
+remove completamente uma linha. O código de cada um desses métodos e, esperadamente, autoexplicativo.
 
 Usando o ServiceManager para configurar o Table Gateway e injetar no AlbumTable
 -------------------------------------------------------------------------------
 
-Com o objetivo de sempre termos a mesma instancia do nosso ``AlbumTable``, no siremos
-usar o ``ServiceManager`` para definir como criar um. Isso é geralemnte feito na classe 
+Com o objetivo de sempre termos a mesma instancia do nosso ``AlbumTable``, nos iremos
+usar o ``ServiceManager`` para definir como criar um. Isso é geralmente feito na classe 
 Module onde nos criamos o método chamado ``getServiceConfig()`` que é automaticamente
 chamado pelo ``ModuleManager`` e aplicado ao ``ServiceManager``. Nos então estaremos
-aptos a solicita-lo no nosso controller quando precisarmos dele.
+aptos a solicitá-lo no nosso controller quando precisarmos dele.
 
-Para configurar o ``ServiceManager``, nos podemos ou disponibilizar o nome da classe
+Para configurar o ``ServiceManager``, nos podemos disponibilizar o nome da classe
 para ser instanciado ou uma factory (closure ou callback) que instancia o objeto quando
 o ``ServiceManager`` precisar dele. Nos vamos começar implementando o ``getServiceConfig()``
 para prover a factory que criará o ``AlbumTable``. Adicione esse método ao final do arquivo
@@ -192,7 +192,7 @@ para prover a factory que criará o ``AlbumTable``. Adicione esse método ao fin
 
     class Module
     {
-        // métodps getAutoloaderConfig() e getConfig() aqui
+        // métodos getAutoloaderConfig() e getConfig() aqui
 
         // Inclua esse método:
         public function getServiceConfig()
@@ -223,17 +223,17 @@ ao ``ServiceManager``que um ``AlbumTableGateway`` é criado solicitando um
 ``Zend\Db\Adapter\Adapter`` (também do ``ServiceManager``) e usando ele para criar
 o objeto ``TableGateway``. Ao ``TableGateway`` é dito para usar um objeto
 ``Album`` sempre que ele criar uma nova linha de resultado. A classe TableGateway
-use o padrão de prototipagem para criar o conjunto de resultado e as entidades.
-Isso significa que ao inves de instanciar um novo objet quando solicitado o sistema
-clona um objeto previamente solicitado. veja
+use o padrão de prototipagem para criar o conjunto de resultados e as entidades.
+Isso significa que ao invés de instanciar um novo objeto quando solicitado o sistema
+clona um objeto previamente solicitado. Veja
 `PHP Constructor Best Practices and the Prototype Pattern <http://ralphschindler.com/2012/03/09/php-constructor-best-practices-and-the-prototype-pattern>`_
 Para mais detalhes (N.T.: em inglês).
 
 Finalmente nos precisamos configurar o ``ServiceManager`` para que ele saiba como conseguir
 a classe ``Zend\Db\Adapter\Adapter``. Isso é feito usando uma factory chamada
-``Zend\Db\Adapter\AdapterServiceFactory`` a qual podemos configurar atraves do sistema de 
-arquivos de configuração. O ``ModuleManager`` do Zend Framework 2 junta todas as configrações
-de cado um dos arquivos ``module.config.php`` dos módulos juntamente com os arquivos definidos
+``Zend\Db\Adapter\AdapterServiceFactory`` a qual podemos configurar através do sistema de 
+arquivos de configuração. O ``ModuleManager`` do Zend Framework 2 junta todas as configurações
+de cada um dos arquivos ``module.config.php`` dos módulos juntamente com os arquivos definidos
 em ``config/autoload`` (os arquivos ``*.global.php`` e depois ``*.local.php``). Nos vamos
 adicionar nossa configuração de banco de dados no arquivo ``global.php`` que você deve enviar para
 seu sistema de controle de versão. Você pode usar ``local.php`` (fora do VCS) para armazenar
@@ -260,7 +260,7 @@ as credenciais do seu banco de dados caso queira. Modifique o arquivo ``config/a
         ),
     );
 
-Voê deve então inserir as credenciais de acesso ao seu banco de dados em ``config/autoload/local.php`` 
+Você deve então inserir as credenciais de acesso ao seu banco de dados em ``config/autoload/local.php`` 
 para que elas não estejam no seu repositório público (já que ``local.php`` é ignorado):
 
 .. code-block:: php
@@ -277,7 +277,7 @@ Voltando ao Controller
 ----------------------
 
 Agora que o ``ServiceManager`` consegue criar uma instancia de ``AlbumTable`` para nos, nos
-podemos adcionar um método ao controler para requisita-lo. Inclua ``getAlbumTable()`` à classe
+podemos adicionar um método ao controller para requisitá-lo. Inclua ``getAlbumTable()`` à classe
 ``AlbumController``:
 
 .. code-block:: php
@@ -292,7 +292,7 @@ podemos adcionar um método ao controler para requisita-lo. Inclua ``getAlbumTab
             return $this->albumTable;
         }
 
-Você tamém deve adicionar:
+Você também deve adicionar:
 
 .. code-block:: php
 
@@ -300,16 +300,16 @@ Você tamém deve adicionar:
 
 No topo da classe.
 
-Nos aora podemos chamar ``getAlbumTable()`` a partir de nosso controller sempre que precisarmos
+Nos agora podemos chamar ``getAlbumTable()`` a partir de nosso controller sempre que precisarmos
 de interação com nosso model.
 
-Caso o service locator tenha sido configurado conrretamente em ``Module.php``, nos devemos obter
-uma instancia de ``Album\Model\AlbumTable`` quando chamarmos ``getAlbumTable()``.
+Caso o service locator tenha sido configurado corretamente em ``Module.php``, nós devemos obter
+uma instância de ``Album\Model\AlbumTable`` quando chamarmos ``getAlbumTable()``.
 
-Listando os Albuns
+Listando os Álbuns
 ------------------
 
-Para listar os albuns nos precisamos solicita-los do model e passa-los para a view.
+Para listar os álbuns nos precisamos solicitá-los do model e passá-los para a view.
 Para fazer isso nos preenchemos a ``indexAction()`` do ``AlbumController``. 
 Atualize a ``indexAction()`` do ``AlbumController`` como a seguir:
 
@@ -326,10 +326,10 @@ Atualize a ``indexAction()`` do ``AlbumController`` como a seguir:
     // ...
 
 Com o Zend Framework 2 para passar variáveis para a view nos retornamos uma
-instancia de ``ViewModel`` que tem como primeiro parametro do construtor um
+instância de ``ViewModel`` que tem como primeiro parâmetro do construtor um
 array contendo os dados que nos precisamos. Esses são automaticamente passados
 para o arquivo de view. O objeto ``ViewModel`` também permite que você altere o
-arquivo de view que será usando, ma spor padrão é usado ``{nome do controller}/
+arquivo de view que será usando, mas por padrão é usado ``{nome do controller}/
 {nome da ação}``. Nos agora podemos preencher o arquivo ``index.phtml``:
 
 .. code-block:: php
@@ -368,31 +368,31 @@ arquivo de view que será usando, ma spor padrão é usado ``{nome do controller
 A primeira coisa que fizemos foi configurar o titulo da nossa página (usado no layout)
 e também passar esse titulo para a seção ``<head>`` usando o view helper ``headTitle()``
 que irá ser exibido no barra de título do navegador. Nos então criamos um link para
-adcionar um novo album.
+adicionar um novo álbum.
 
 O Helper de view ``url()`` é fornecido pelo Zend Framework 2 e usado para criar os links
 que nos precisamos. O primeiro parâmetro de ``url()`` é o nome da rota que queremos usar
-para a construção da url, e o segundo parametro é um array com todas as variáveis que irão
+para a construção da url, e o segundo parâmetro é um array com todas as variáveis que irão
 substituir os coringas dessa rota. Nesse caso nos usamos a nossa rota ‘album’ que está
 configurada para aceitar duas variáveis coringa: ``action`` e ``id``.
 
 Nos então iremos percorrer os ``$albums`` que forma passados pela ação do controller.
 O sistema de views do Zend Framweork 2 garante automaticamente que essas variáveis
-sejam extraidas paa o escopo do nosso arquivo de view, portanto nos não precisamos nos
-preocupar com prefixar elas com ``$this->`` como faziamos com Zend Framework 1; mas você
-usa-lo se assim desejar.
+sejam extraídas para o escopo do nosso arquivo de view, portanto nos não precisamos nos
+preocupar com prefixar elas com ``$this->`` como fazíamos com Zend Framework 1; mas você
+pode usá-lo se assim desejar.
 
-Nos então criamos uma tabela para exibir o titulo e artista de cada um dos albuns e 
+Nos então criamos uma tabela para exibir o título e artista de cada um dos álbuns e 
 exibimos também links que possibilitam editar e excluir essas entradas. Um loop
-``foreach:`` padrão é usado para percorrer a lista de albuns, e nos usamos a forma
-alternativa atraves do uso de dois-pontos e ``endforeach;`` já que essa forma é mais
+``foreach:`` padrão é usado para percorrer a lista de álbuns, e nos usamos a forma
+alternativa através do uso de dois-pontos e ``endforeach;`` já que essa forma é mais
 fácil de ser percebida do que tentar posicionar os colchetes. Novamente o helper de
 view ``url()`` é usado para criar os links de edição e exclusão.
 
 .. note::
 
     Nos sempre usamos o helper ``escapeHtml()`` para ajudar na nossa proteção 
-    contra vunerabilidades de Cross Site Scripting (XSS)
+    contra vulnerabilidades de Cross Site Scripting (XSS)
     (veja http://en.wikipedia.org/wiki/Cross-site_scripting).
 
 Se você abrir http://zf2-tutorial.localhost/album você deve ver isso:

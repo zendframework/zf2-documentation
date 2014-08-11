@@ -4,8 +4,8 @@
 Estilizando e Traduzindo
 ========================
 
-Nos usamos inicialmente o estilo da Aplicação Skeleton, e não existe nenhum problema quanto
-a isso, porem nos queremos mudar o título e remoer a mensagem de licenciamento. 
+Nós usamos inicialmente o estilo da Aplicação Skeleton, e não existe nenhum problema quanto
+a isso, porem nos queremos mudar o título e remover a mensagem de licenciamento. 
 
 A Aplicação Skeleton está configurada para utilizar as funcionalidades de tradução de ``Zend\I18n``
 para todos os textos. Para isso são usados arquivos ``.po`` armazenados em ``Application/language``,

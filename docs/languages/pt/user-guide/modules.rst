@@ -4,16 +4,16 @@
 Módulos
 =======
 
-O Zend Framework 2 usa um sistema modular atraves do qual você pode organizaro código 
+O Zend Framework 2 usa um sistema modular através do qual você pode organizar o código 
 principal específico da sua aplicação em cada módulo. O Módulo ``Application`` distribuido
 com o ``Sekeleton`` é usado para a inicialização, gerenciamento de erros e configurações de
-roteamento para toda a aplicação. Tmabém é geralmente usado pata prover Controllers no nível
-da aplicação, como por exemplo a página incial dessa aplicação, mas nos não iremos usar esse
-padrão no tutorial já que queremos que nossa lista de albuns seja nossa página incial, e ela
+roteamento para toda a aplicação. Também é geralmente usado para prover Controllers no nível
+da aplicação, como por exemplo a página inicial dessa aplicação, mas nos não iremos usar esse
+padrão no tutorial já que queremos que nossa lista de álbuns seja nossa página inicial, e ela
 estará contida no nosso módulo. 
 
 Nos iremos colocar todo o nosso código dentro do módulo ``Album`` que conterá nossos controllers,
-modelos, formulários e views, juntamento com sua configuração Mas também iremos alterar o módulo
+modelos, formulários e views, juntamente com sua configuração. Mas também iremos alterar o módulo
 ``Application`` quando necessário.
 
 Vamos começar com a estrutura de diretórios necessária.
@@ -39,19 +39,19 @@ subdiretórios que irão conter os arquivos do módulo:
                     /album
                         /album
 
-Como você pode ver o módulo ``Album`` tem diretórios independentes para os direferentes
+Como você pode ver o módulo ``Album`` tem diretórios independentes para os diferentes
 tipos de arquivos que teremos. Os arquivos PHP que contém as classes do Namespace ``Album``
 ficam no diretório ``src/Album``, dessa forma podemos utilizar tantos Namespaces no nosso
-módulo quanto precisarmos. O diretório de views também tem uma sub-pasta chamada ``album``
+módulo quanto precisarmos. O diretório de views também tem uma subpasta chamada ``album``
 para os arquivos de view desse módulo.
 
 Para carregar e configurar os módulos o Zend Framework 2 possui um ``ModuleManager``
 (Gerenciador de Módulos). Ele irá procurar pelo arquivo ``Module.php`` na raiz do diretório do
-seu módulo (``module/Album``) e espera encontrar um calsse chamada ``Album\Module`` dentro dele.
+seu módulo (``module/Album``) e espera encontrar uma classe chamada ``Album\Module`` dentro dele.
 Ou seja, as classes de cada módulo irão conter um namespace com o mesmo nome do módulo,
 que também será o nome do diretório do módulo.
 
-Portanto crie o arquivo ``Module.php`` no Módulo ``Album``:
+Portanto crie o arquivo ``Module.php`` no módulo ``Album``:
 Crie um arquivo chamado ``Module.php`` no diretório ``zf2-tutorial/module/Album`` com o
 seguinte código:
 
@@ -102,7 +102,7 @@ regras do padrão PSR-0 <https://github.com/php-fig/fig-standards/blob/master/ac
 
 Como estamos em ambiente de desenvolvimento nos não precisamos incluir as classes pelo mapa de
 classes por isso nos iremos retornar apenas um array vazio paa o ``StandardAutoloader``. Crie
-um arquivo chamado ``autoload_classmap.php`` no diretório ``zf2-tutorial/module/Album``com o 
+um arquivo chamado ``autoload_classmap.php`` no diretório ``zf2-tutorial/module/Album`` com o 
 código:
 
 .. code-block:: php
@@ -110,13 +110,13 @@ código:
     <?php
     return array();
 
-Como o array está vazio sempre que o ``autoloader`` procrar por uma classe no namespace ``Album``
-ele irá retornar pata o ``StandardAutoloader`` para nós.
+Como o array está vazio sempre que o ``autoloader`` procura por uma classe no namespace ``Album``
+ele irá retorna para o ``StandardAutoloader`` para nós.
 
 .. note::
 
     Se você estiver usando Composer, você pode simplesmente criar um método
-    ``getAutoloaderConfig() { }`` vazio e adcionar o seguinte código ao composer.json:
+    ``getAutoloaderConfig() { }`` vazio e adicionar o seguinte código ao composer.json:
 
     .. code-block:: javascript
 
@@ -152,20 +152,20 @@ Crie um arquivo chamado ``module.config.php`` no diretório ``zf2-tutorial/modul
     );
 
 A informação de configuração é passada para os componentes relevantes pelo
-``ServiceManager``.  Nos iremos precisar de duas seções iniciais: ``controllers`` and
+``ServiceManager``.  Nos iremos precisar de duas seções iniciais: ``controllers`` e
 ``view_manager``. A seção ``controllers`` prove uma lista de todos os controllers
 disponíveis no módulo. Nos iremos precisar apenas de um controller, ``AlbumController``,
 que iremos referenciar como ``Album\Controller\Album``. A chave do controller deve ser
 única por todos os módulos, por isso nos a prefixamos com o nome do módulo.
 
-Na seção ``view_manager``, nos inlcuimos nosso diretório de views na configuração
+Na seção ``view_manager``, nós incluímos nosso diretório de views na configuração
 ``TemplatePathStack``. Isso permitirá que os arquivos de view para o módulo ``Album``
-sejam econtrados dentro do nosso diretório ``view/``.
+sejam encontrados dentro do nosso diretório ``view/``.
 
 Informando a Aplicação sobre o Novo Módulo
 ------------------------------------------
 
-Nós agora precisamos infromar ao ``ModuleManager`` que nosso novo módulo existe.
+Nós agora precisamos informar ao ``ModuleManager`` que nosso novo módulo existe.
 Isso é feito no arquivo ``config/application.config.php`` da aplicação que está presente
 na Aplicação ``Sekeleton``. Altere esse arquivo para incluir na seção ``modules`` o módulo 
 ``Album`` juntamente como os demais, dessa forma o arquivo ficará parecido com o seguinte:
