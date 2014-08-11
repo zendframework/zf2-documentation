@@ -13,7 +13,11 @@ would land on a homepage first, and be able to view albums by using a standard n
 have a site that is more realistic than just the albums feature, lets make the standard skeleton welcome page 
 our homepage, with the `/album` route still showing our album module. In order to make this change, we need to
 undo some work we did earlier. Currently, navigating to the root of your app (/) routes you to the 
-``AlbumController``'s default action. Let's undo this route change so we have two discrete entry points to the 
+``AlbumController``'s default action. 
+
+First go to the application.config.php and comment out the cache settings!
+
+Let's undo this route change so we have two discrete entry points to the 
 app, a home page, and an albums area.
 
 **module/Application/config/module.config.php:**
