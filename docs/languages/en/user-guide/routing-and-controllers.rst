@@ -50,12 +50,11 @@ actions. This is the updated module config file with the new code highlighted.
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 9-27
+   :emphasize-lines: 4,9-27
 
     return array(
         'controllers' => array(
             'invokables' => array(
-                // The following line is new and should be added to your file
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
