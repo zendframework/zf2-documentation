@@ -37,7 +37,7 @@ its ``generate()`` method.
                        'public',                 // visibility
                        'echo \'Hello world!\';'  // body
                    ),
-               ),
+               )
            ),
        ),
    ));
