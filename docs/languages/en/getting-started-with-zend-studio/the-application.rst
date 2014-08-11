@@ -302,8 +302,8 @@ controller is that it must implement the ``Zend\Stdlib\Dispatchable`` interface.
 The framework provides two abstract classes that do this for us:
 ``Zend\Mvc\Controller\ActionController`` and
 ``Zend\Mvc\Controller\RestfulController``. We'll be using the
-``ActionController``, but if you're intending to write a RESTful web service,
-``RestfulController`` may be useful.
+``AbstractActionController``, but if you're intending to write a RESTful web service,
+``AbstractRestfulController`` may be useful.
 
 Zend Studio's module creation wizard has already created ``TaskController`` for
 us with two action methods in it: ``indexAction()`` and ``fooAction()``. Remove
