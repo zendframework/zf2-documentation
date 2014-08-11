@@ -36,10 +36,10 @@ its ``generate()`` method.
                        array(),                  // parameters
                        'public',                 // visibility
                        'echo \'Hello world!\';'  // body
-                   )
-               )
+                   ),
+               ),
            ),
-       )
+       ),
    ));
 
    // Render the generated file
