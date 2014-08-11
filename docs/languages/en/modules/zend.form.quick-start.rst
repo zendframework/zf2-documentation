@@ -535,6 +535,15 @@ configuration for an input filter.
                    'filters'  => array(
                        array('name' => 'Zend\Filter\StringTrim'),
                    ),
+                   'validators' => array(
+                       array(
+                           'name' => 'Zend\Validator\StringLength', 
+                           'options' => array(
+                               'min' => 3,
+                               'max' => 256
+                           ),
+                       ),
+                   ),
                ),
                'email' => array(
                    'required' => true,
