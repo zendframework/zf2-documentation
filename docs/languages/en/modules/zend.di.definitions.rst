@@ -125,7 +125,7 @@ an application, the following code will suffice:
            new Definition\ArrayDefinition(include __DIR__ . '/path/to/data/di/My_OtherClasses-definition.php'),
            $runtime = new Definition\RuntimeDefinition(),
        ));
-       $di = new Di($definitionList, null, new Configuration($this->config->di));
+       $di = new Di($definitionList, null, new Config($this->config->di));
        $di->instanceManager()->addTypePreference('Zend\Di\LocatorInterface', $di);
        $app->setLocator($di);
    }
