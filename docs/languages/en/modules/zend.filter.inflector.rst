@@ -94,7 +94,7 @@ argument to the constructor:
    :linenos:
 
    // Via constructor:
-   $inflector = new \Zend\Filter\Inflector('#foo/#bar.#sfx', array(), null, '#');
+   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', array(), null, '#');
 
    // Via accessor:
    $inflector->setTargetReplacementIdentifier('#');
