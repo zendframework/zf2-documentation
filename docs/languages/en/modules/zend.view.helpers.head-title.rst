@@ -86,5 +86,14 @@ When you're finally ready to render the title in your layout script, simply echo
 .. code-block:: php
    :linenos:
 
-   <!-- renders <action> - <controller> - <module> - Zend Framework -->
+   <!-- renders: <title><action> - <controller> - <module> - Zend Framework</title> -->
    <?php echo $this->headTitle() ?>
+
+In case you want the title without the ``<title>`` and ``</title>`` tags you can use the ``renderTitle()``
+method:
+
+.. code-block:: php
+   :linenos:
+
+   <!-- renders: <action> - <controller> - <module> - Zend Framework -->
+   <?php echo $this->headTitle()->renderTitle() ?>
