@@ -23,7 +23,7 @@ Transforming MixedCase and camelCaseText to another format
    $inflector = new Zend\Filter\Inflector('pages/:page.:suffix');
    $inflector->setRules(array(
        ':page'  => array('Word\CamelCaseToDash', 'StringToLower'),
-       'suffix' => 'html',
+       ':suffix' => 'html',
    ));
 
    $string   = 'camelCasedWords';
