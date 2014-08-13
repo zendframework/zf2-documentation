@@ -24,6 +24,9 @@ Basic Usage
    echo $this->currencyFormat(1234.56, 'EUR', null, 'de_DE');
    // This returns: "1.234,56 €"
 
+   echo $this->currencyFormat(1234.56, 'USD', true, 'en_US');
+   // This returns: "$1,234.56"
+
    echo $this->currencyFormat(1234.56, 'USD', false, 'en_US');
    // This returns: "$1,235"
 
