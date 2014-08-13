@@ -29,8 +29,8 @@ Quick Start
    // custom header to request JSON data be returned (Accept: application/json)
    $response = ClientStatic::get(
        'http://example.org',
-       array( 'foo' => 'bar' ),
-       array( 'Accept' => 'application/json')
+       array('foo' => 'bar'),
+       array('Accept' => 'application/json')
    );
 
    // We can also do a POST request using the same format.  Here we POST
@@ -40,36 +40,28 @@ Quick Start
        'password' => 'bar',
    ));
 
-
-Configuration Options
----------------------
-
-It is not possible to set configuration options on the ``Zend\Http\Client`` instance
-encapsulated by ``Zend\Http\ClientStatic``. To perform a HTTP request which requires
-non-default configurations, please use ``Zend\Http\Client`` directly.
-
-.. _zend.http.client-static.methods:
-
 Available Methods
 -----------------
 
 .. _zend.http.client-static.methods.get:
 
 **get**
-   ``get(string $url, array $query = array(), array $headers = array(), mixed $body = null)``
+   ``get(string $url, array $query = array(), array $headers = array(), mixed $body = null, $clientOptions = null)``
 
    Perform an HTTP ``GET`` request using the provided URL, query string variables, headers
-   and request body.
+   and request body. The fifth parameter can be used to pass configuration options to the
+   HTTP Client instance.
 
    Returns Zend\\Http\\Response
 
 .. _zend.http.client-static.methods.post:
 
 **post**
-   ``post(string $url, array $params, array $headers = array(), mixed $body = null)``
+   ``post(string $url, array $params, array $headers = array(), mixed $body = null, $clientOptions = null)``
 
    Perform an HTTP ``POST`` request using the provided URL, parameters, headers
-   and request body.
+   and request body. The fifth parameter can be used to pass configuration options to the
+   HTTP Client instance.
 
    Returns Zend\\Http\\Response
 
