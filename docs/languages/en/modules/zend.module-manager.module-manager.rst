@@ -206,14 +206,16 @@ By default, Zend Framework provides several useful module manager listeners.
 
        public function getViewHelperConfig()
        {
-           return array('factories' => array(
-               'foo' => function ($helpers) {
-                   $services = $helpers->getServiceLocator();
-                   $someService = $services->get('SomeService');
-                   $helper = new Helper\Foo($someService);
-                   return $helper;
-               },
-           ));
+           return array(
+               'factories' => array(
+                  'foo' => function ($helpers) {
+                      $services = $helpers->getServiceLocator();
+                      $someService = $services->get('SomeService');
+                      $helper = new Helper\Foo($someService);
+                      return $helper;
+                  },
+               )
+           );
        }
 
    This is a powerful technique, as it allows your various plugins to remain
