@@ -110,7 +110,8 @@ cookie before sending further requests.
 .. code-block:: php
    :linenos:
 
-   $cookies = new Zend\Http\Cookies();
+   $headers = $client->getRequest()->getHeaders();
+   $cookies = new Zend\Http\Cookies($headers);
 
    // First request: log in and start a session
    $client->setUri('http://example.com/login.php');
@@ -120,7 +121,7 @@ cookie before sending further requests.
 
    // Now we can send our next request
    $client->setUri('http://example.com/read_member_news.php');
-   $client->addCookies($cookies->getMatchingCookies($client->getUri());
+   $client->addCookie($cookies->getMatchingCookies($client->getUri());
    $client->request('GET');
 
 For more information about the ``Zend\Http\Cookies`` class, see :ref:`this section
