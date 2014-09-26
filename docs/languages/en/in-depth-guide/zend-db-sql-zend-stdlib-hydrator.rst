@@ -77,21 +77,21 @@ As you can see we've added the ``db``-key and inside we create the parameters re
     Taking this example you would have this file:
 
     .. code-block:: php
-    :lineos:
+        :linenos:
 
-    <?php
-    // Filename: /config/autoload/db.local.php
-    return array(
-            'db' => array(
-                'driver'         => 'Pdo',
-                'username'       => 'SECRET_USERNAME',  //edit this
-                'password'       => 'SECRET_PASSWORD',  //edit this
-                'dsn'            => 'mysql:dbname=blog;host=localhost',
-                'driver_options' => array(
-                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            )
-        ),
-    );
+        <?php
+        // Filename: /config/autoload/db.local.php
+        return array(
+                'db' => array(
+                    'driver'         => 'Pdo',
+                    'username'       => 'SECRET_USERNAME',  //edit this
+                    'password'       => 'SECRET_PASSWORD',  //edit this
+                    'dsn'            => 'mysql:dbname=blog;host=localhost',
+                    'driver_options' => array(
+                        \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+                )
+            ),
+        );
 
 The next thing we need to do is by making use of the ``AdapterServiceFactory``. This is a ``ServiceManager`` entry that
 will look like the following:
