@@ -13,7 +13,7 @@ Before we can start using a database we should prepare one. In this example we'l
 ``blog`` which is accessible on the ``localhost``. The database will have one table called ``posts`` with three columns
 ``id``, ``title`` and ``text`` with the ``id`` being the primary key. For demo purpose, please use this database-dump.
 
-.. code-block:: text
+.. code-block:: sql
    :linenos:
 
     CREATE TABLE posts (
