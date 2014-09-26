@@ -24,13 +24,13 @@ The main role of the multiple layers that we have introduced ( **Controller** ->
 **Backend** ) are to get a strict separation of concerns for all of our objects. There are many resources who can
 explain in detail the big advantages of each layer so please go ahead and read up on them.
 
-For a very simple application though you're most likely to strip away the **Mapper**-layer. In practice all the code
+For a very simple application, though, you're most likely to strip away the **Mapper**-layer. In practice all the code
 from the mapper layer often resides inside the services directly. And this works for most of the applications but as
 soon as you plan to support multiple backends (i.e. open source software) or you want to be prepared for changing
 backends, you should always consider including this layer.
 
 
-Having many objects, won't there be many code-duplication?
+Having many objects, won't there be much code-duplication?
 ----------------------------------------------------------
 
 Short answer: yes.
@@ -71,7 +71,7 @@ Why are there so many controllers?
 Looking back at code-examples from a couple of years back you'll notice that there was a lot of code inside each
 controller. This has become a bad-practice that's known as Fat Controllers or Bloated Controllers.
 
-The major difference about each controller we have created is that there are different dependencies. For example the
+The major difference about each controller we have created is that there are different dependencies. For example, the
 ``WriteController`` required the ``PostForm`` as well as the ``PostService`` while the ``DeleteController`` only required the
 ``PostService``. In this example it wouldn't make sense to write the ``deleteAction()`` into the ``WriteController`` because
 we then would needlessly create an instance of the ``PostForm`` which is not required. In large scale applications this

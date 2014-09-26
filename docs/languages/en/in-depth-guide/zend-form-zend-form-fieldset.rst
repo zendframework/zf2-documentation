@@ -17,16 +17,16 @@ The first component that you have to know about is ``Zend\Form\Fieldset``. A ``F
 reusable set of elements. You will use the ``Fieldset`` to create the frontend-input for your backend-models. It is
 considered good practice to have one ``Fieldset`` for every ``Model`` of your application.
 
-The ``Fieldset``-component however is no ``Form``, meaning you will not be able to use a ``Fieldset`` without attaching it
+The ``Fieldset``-component, however, is no ``Form``, meaning you will not be able to use a ``Fieldset`` without attaching it
 to the ``Form``-component. The advantage here is that you have one set of elements that you can re-use for as many
 ``Forms`` as you like without having to re-declare all the inputs for the ``Model`` that's represented by the ``Fieldset``.
 
 Zend\\Form\\Form
 ----------------
 
-The main component you'll need and that most probably you've heard about already is ``Zend\Form\Form``. The ``Form``-
-component is the main container for all elements of your web ``<form>``. You are able to add single elements or a set of
-elements in the form of a ``Fieldset``, too.
+The main component you'll need and that most probably you've heard about already is ``Zend\Form\Form``. The
+``Form``-component is the main container for all elements of your web ``<form>``. You are able to add single
+elements or a set of elements in the form of a ``Fieldset``, too.
 
 
 Creating your first Fieldset
@@ -127,7 +127,7 @@ and nothing more. Let's now make use of the Form.
 Adding a new Post
 =================
 
-Now that we have the ``PostForm`` written we want to use it. But there's a couple more tasks that you need to do.
+Now that we have the ``PostForm`` written we want to use it. But there are a couple more tasks that you need to do.
 The tasks that are standing right in front of you are:
 
 - create a new controller ``WriteController``
@@ -194,8 +194,8 @@ required dependencies within the constructor.
         }
     }
 
-In this code-example there's a couple of things to be aware of. First, the ``WriteController`` doesn't exist yet, but we
-will create this in the next step so we're just assuming that it will exist later on. Second we access the
+In this code-example there are a couple of things to be aware of. First, the ``WriteController`` doesn't exist yet, but we
+will create this in the next step so we're just assuming that it will exist later on. Second, we access the
 ``FormElementManager`` to get access to our ``PostForm``. All forms should be accessed through the ``FormElementManager``.
 Even though we haven't registered the ``PostForm`` in our config files yet the ``FormElementManager`` automatically knows
 about forms that act as ``invokables``. As long as you have no dependencies you don't need to register them explicitly.
@@ -309,7 +309,7 @@ If this is not the case, be sure to follow the tutorial correctly and carefully 
 getting this error, let's find out what it means and fix it!
 
 
-The above error message is very common and it's solution isn't that intuitive. It appears that there is an error within
+The above error message is very common and its solution isn't that intuitive. It appears that there is an error within
 the ``Zend/Form/Fieldset.php`` but that's not the case. The error message let's you know that something didn't go right
 while you were creating your form. In fact, while creating both the ``PostForm`` as well as the ``PostFieldset`` we
 have forgotten something very, very important.
@@ -463,7 +463,7 @@ And then we need to modify our view to have the form rendered.
 
     echo $this->form()->closeTag();
 
-Firstly, we tell the form that it should send it's data to the current URL and then we tell the form to ``prepare()``
+Firstly, we tell the form that it should send its data to the current URL and then we tell the form to ``prepare()``
 itself which triggers a couple of internal things.
 
 .. note::
@@ -474,17 +474,17 @@ itself which triggers a couple of internal things.
 
     ``$form->setAttribute('method', 'GET');``
 
-Next we're using a couple of ``ViewHelpers`` which take care of rendering the form for us. There's many different ways to
-render a form within Zend Framework but using ``formCollection()`` is probably the fastest one.
+Next we're using a couple of ``ViewHelpers`` which take care of rendering the form for us. There are many different ways
+to render a form within Zend Framework but using ``formCollection()`` is probably the fastest one.
 
-Refreshing the browser you will now see your form properly displayed. However if we're submitting the form all we see
+Refreshing the browser you will now see your form properly displayed. However, if we're submitting the form all we see
 is our form being displayed again. And this is due to the simple fact that we didn't add any logic to the controller
 yet.
 
 .. note::
 
     Keep in mind that this tutorial focuses solely on the OOP aspect of things. Rendering the form like this, without
-    any stylesheets added doesn't really reflect most designers idea of a beautiful form. You'll find out more about
+    any stylesheets added doesn't really reflect most designers' idea of a beautiful form. You'll find out more about
     the rendering of forms in the chapter of :ref:`Zend\\Form\\View\\Helper <zend.form.view.helpers>`.
 
 
@@ -833,7 +833,7 @@ And now the implementation of the save function.
 
 The ``save()`` function handles two cases. The ``insert`` and ``update`` routine. Firstly we extract the ``Post``-Object
 since we need array data to work with ``Insert`` and ``Update``. Then we remove the ``id`` from the array since this
-field is not wanted. When we do an update of a row, we don't update the ``id`` property itself and therefore she isn't
+field is not wanted. When we do an update of a row, we don't update the ``id`` property itself and therefore it isn't
 needed. On the insert routine we don't need an ``id`` either so we can simply strip it away.
 
 After the ``id`` field has been removed we check what action is supposed to be called. If the ``Post``-Object has an ``id``
@@ -943,7 +943,7 @@ With this set up go ahead and submit the form once again. You should now see a d
       }
     }
 
-Now telling your fieldset to hydrate it's data into an ``Post``-object is very simple. All you need to do is to assign
+Now telling your fieldset to hydrate its data into an ``Post``-object is very simple. All you need to do is to assign
 the hydrator and the object prototype like this:
 
 .. code-block:: php
@@ -991,7 +991,7 @@ the hydrator and the object prototype like this:
     }
 
 As you can see we're doing two things. We tell the fieldset to be using the ``ClassMethods`` hydrator and then we tell the
-fieldset that the default object to be returned is our ``Blog``-Model. However when you're re-submitting the form now
+fieldset that the default object to be returned is our ``Blog``-Model. However, when you're re-submitting the form now
 you'll notice that nothing has changed. We're still only getting array data returned and no object.
 
 This is due to the fact that the form itself doesn't know that it has to return an object. When the form doesn't know
@@ -1048,7 +1048,7 @@ Now submit your form again. You should see the following output:
       ["text":protected] => string(3) "bar"
     }
 
-You can now revert back your ``WriteController`` to it's previous form to have the form-data passed through the
+You can now revert back your ``WriteController`` to its previous form to have the form-data passed through the
 ``PostService``.
 
 .. code-block:: php

@@ -342,7 +342,7 @@ all blogs from the database table.
         }
     }
 
-The above code should look fairly straight forward to you. Sadly though a refresh of the application reveals another
+The above code should look fairly straight forward to you. Sadly, though, a refresh of the application reveals another
 error message.
 
 .. code-block:: text

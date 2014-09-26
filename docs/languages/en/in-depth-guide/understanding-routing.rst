@@ -1,7 +1,7 @@
 Understanding the Router
 ========================
 
-Right now we have a pretty solid set up for our module. However we're not really doing all too much yet, to be
+Right now we have a pretty solid set up for our module. However, we're not really doing all too much yet, to be
 precise, all we do is display all ``Blog`` entries on one page. In this chapter you will learn everything you need
 to know about the ``Router`` to create other routes to be able to display only a single blog, to add new blogs
 to your application and to edit and delete existing blogs.
@@ -96,7 +96,7 @@ look like this:
         )
     )
 
-This configuration defines a route for an URL like ``domain.com/news/archive/2014``. As you can see we our route now
+This configuration defines a route for a URL like ``domain.com/news/archive/2014``. As you can see we our route now
 contains the part ``:year``. This is called a route-parameter. Route parameters for ``Segment``-Routes are defined by a
 in front of a string. The string then is the ``name`` of the parameter.
 
@@ -145,9 +145,9 @@ Different routing concepts
 ==========================
 
 When thinking about the whole application it becomes clear that there are a lot of routes to be matched. When
-writing these routes you have two options to decide from. One option to spent less time writing routes but in turn
-are a little bit slow in matching. And another option to write very explicit routes that match a little bit faster
-but require more work to define them. Let's take a look at both of them.
+writing these routes you have two options. One option is to spend less time writing routes that in turn
+are a little slow in matching. Another option is to write very explicit routes that match a little faster
+but require more work to define. Let's take a look at both of them.
 
 Generic routes
 --------------
@@ -156,9 +156,9 @@ A generic route is one that matches many URLs. You may remember this concept fro
 you didn't even bother about routes because we had one "god route" that was used for everything. You define the
 controller, the action, and all parameters within just one single route.
 
-The big advantage of this approach is the immense time you save when developing your application. The downside
-however is that matching such a route can take a little bit longer due to the fact that so many variables need to
-be checked. However, as long as you not overdo it, this is a viable concept. For this reason the
+The big advantage of this approach is the immense time you save when developing your application. The downside,
+however, is that matching such a route can take a little bit longer due to the fact that so many variables need to
+be checked. However, as long as you don't overdo it, this is a viable concept. For this reason the
 ZendSkeletonApplication uses a very generic route, too. Let's take a look at a generic route:
 
 .. code-block:: php
@@ -186,7 +186,7 @@ ZendSkeletonApplication uses a very generic route, too. Let's take a look at a g
     )
 
 Let's take a closer look as to what has been defined in this configuration. The ``route`` part now contains two
-optional parameters ``controller`` and ``action``. The ``action`` parameter is optional only when the ``controller``
+optional parameters, ``controller`` and ``action``. The ``action`` parameter is optional only when the ``controller``
 parameter is present.
 
 Within the ``defaults``-section it looks a little bit different, too. The ``__NAMESPACE__`` will be used to concatenate
@@ -263,7 +263,7 @@ in the following configuration:
         )
     )
 
-As you can see with this little example, all routes have an explicit name and there's lot's of repetition going on.
+As you can see with this little example, all routes have an explicit name and there's lots of repetition going on.
 We have to redefine the default ``controller`` to be used every single time and we don't really have any structure
 within the configuration. Let's take a look at how we could bring more structure into a configuration like this.
 
@@ -271,7 +271,7 @@ within the configuration. Let's take a look at how we could bring more structure
 
 Another option to define explicit routes is to be using ``child_routes``. Child routes inherit all ``options`` from
 their respective parents. Meaning: when the ``controller`` doesn't change, you do not need to redefine it. Let's take
-a look at a ``child_route`` configuration using the same example as above:
+a look at a child routes configuration using the same example as above:
 
 .. code-block:: php
    :linenos:
@@ -288,7 +288,7 @@ a look at a ``child_route`` configuration using the same example as above:
                         'action'     => 'showAll',
                     ),
                 ),
-                // Defines that "/news" can be matched on its own without a child_route being matched
+                // Defines that "/news" can be matched on its own without a child route being matched
                 'may_terminate' => true,
                 'child_routes' => array(
                     'archive' => array(
@@ -321,7 +321,7 @@ a look at a ``child_route`` configuration using the same example as above:
     )
 
 This routing configuration requires a little more explanation. First of all we have a new configuration entry which
-is called ``may_terminate``. This property defines that the parent route can be matched alone, without child_routes
+is called ``may_terminate``. This property defines that the parent route can be matched alone, without child routes
 needing to be matched, too. In other words all of the following routes are valid:
 
 - /news
@@ -329,7 +329,7 @@ needing to be matched, too. In other words all of the following routes are valid
 - /news/archive/2014
 - /news/42
 
-If however you were to set ``may_terminate => false``, then the parent route would only be used for global defaults
+If, however, you were to set ``may_terminate => false``, then the parent route would only be used for global defaults
 that all ``child_routes`` were to inherit. In other words: only ``child_routes`` can be matched, so the only valid
 routes would be:
 
@@ -340,7 +340,7 @@ routes would be:
 The parent route would not be able to be matched on its own.
 
 Next to that we have a new entry called ``child_routes``. In here we define new routes that will be appended to the
-parent route. There's no real difference in configuration from routes you define as a child_route to routes that
+parent route. There's no real difference in configuration from routes you define as a child route to routes that
 are on the top level of the configuration. The only thing that may fall away is the re-definition of shared
 default values.
 
@@ -358,7 +358,7 @@ A practical example for our Blog Module
 
 Now that we know how to configure new routes, let's first create a route to display only a single ``Blog`` from our
 Database. We want to be able to identify blog posts by their internal ID. Given that ID is a variable parameter we need
-a route of type ``Segment``. Furthermore we want to put this route as a ``child_route`` to the route of name ``blog``.
+a route of type ``Segment``. Furthermore we want to put this route as a child route to the route of name ``blog``.
 
 .. code-block:: php
    :linenos:
@@ -526,7 +526,7 @@ now modify our ``ListController`` so that an ``Blog`` will be passed.
         }
     }
 
-If you refresh your application now you'll see the details for our ``Post`` to be displayed. However there is one
+If you refresh your application now you'll see the details for our ``Post`` to be displayed. However, there is one
 little Problem with what we have done. While we do have our Service set up to throw an ``\InvalidArgumentException``
 whenever no ``Post`` matching a given ``id`` is found, we don't make use of this just yet. Go to your browser and
 open the URL ``http://localhost:8080/blog/99``. You will see the following error message:
