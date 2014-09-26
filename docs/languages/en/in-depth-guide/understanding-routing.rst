@@ -466,7 +466,7 @@ then refresh the page.
     }
 
 Now you'll see the all familiar message that a template was unable to be rendered. Let's create this template now
-and assume that we will get one ``Post`-Object` passed to the template to see the details of our blog. Create a new
+and assume that we will get one ``Post``-Object passed to the template to see the details of our blog. Create a new
 view file under ``/view/blog/list/detail.phtml``:
 
 .. code-block:: html

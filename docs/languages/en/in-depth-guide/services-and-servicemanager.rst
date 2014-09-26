@@ -480,7 +480,7 @@ where our error lies. And of course, we have yet to write the factory, so let's 
 Writing a Factory Class
 =======================
 
-Factory classes within Zend Framework 2 always need to implement the `Zend\ServiceManager\FactoryInterface``.
+Factory classes within Zend Framework 2 always need to implement the ``Zend\ServiceManager\FactoryInterface``.
 Implementing this class let's the ServiceManager know that the function ``createService()`` is supposed to be called. And
 ``createService()`` actually expects to be passed an instance of the `ServiceLocatorInterface` so the `ServiceManager` will
 always inject this using Dependency Injection as we have learned above. Let's implement our factory class:
