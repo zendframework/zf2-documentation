@@ -485,7 +485,7 @@ yet.
 
     Keep in mind that this tutorial focuses solely on the OOP aspect of things. Rendering the form like this, without
     any stylesheets added doesn't really reflect most designers idea of a beautiful form. You'll find out more about
-    the rendering of forms in the chapter of :ref:`Zend\Form\View\Helper <zend.form.view.helpers>`.
+    the rendering of forms in the chapter of :ref:`Zend\\Form\\View\\Helper <zend.form.view.helpers>`.
 
 
 Controller Logic for basically all Forms

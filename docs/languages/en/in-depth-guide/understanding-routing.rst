@@ -200,8 +200,8 @@ lowercase and after that first letter there can be an (almost) infinite amount o
 dashes.
 
 **The big downside** to this approach not only is that matching this route is a little slower, it is that there
-is no error-checking going on. For example, when you were to call an URL like ``domain.com/weird/doesntExist`` then
-the ``controller`` would be "Application\Controller\weird" and the ``action`` would be "doesntExistAction". As you can
+is no error-checking going on. For example, when you were to call a URL like ``domain.com/weird/doesntExist`` then
+the ``controller`` would be "Application\\Controller\\weird" and the ``action`` would be "doesntExistAction". As you can
 guess by the names let's assume neither ``controller`` nor ``action`` does exist. The route will still match but an
 ``Exception`` will be thrown because the ``Router`` will be unable to find the requested resources and we'll receive
 a ``404``-Response.
