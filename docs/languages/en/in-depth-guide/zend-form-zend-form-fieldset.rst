@@ -638,7 +638,7 @@ As you can see the ``savePost()`` function has been added and needs to be implem
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -646,7 +646,7 @@ As you can see the ``savePost()`` function has been added and needs to be implem
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -654,7 +654,7 @@ As you can see the ``savePost()`` function has been added and needs to be implem
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function savePost(PostInterface $post)
         {

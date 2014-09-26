@@ -508,7 +508,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -516,7 +516,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -524,7 +524,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function savePost(PostInterface $post)
         {
@@ -532,7 +532,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function deletePost(PostInterface $post)
         {
@@ -632,7 +632,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function find($id)
         {
@@ -651,7 +651,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAll()
         {
@@ -671,7 +671,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function save(PostInterface $postObject)
         {
@@ -706,7 +706,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function delete(PostInterface $postObject)
         {

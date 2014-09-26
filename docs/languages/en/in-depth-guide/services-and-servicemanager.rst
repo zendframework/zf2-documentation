@@ -80,7 +80,7 @@ class that looks like the following:
     class PostService implements PostServiceInterface
     {
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -88,7 +88,7 @@ class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -168,7 +168,7 @@ should have a class that looks like the following:
         protected $text;
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function getId()
         {
@@ -184,7 +184,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function getTitle()
         {
@@ -200,7 +200,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function getText()
         {
@@ -263,7 +263,7 @@ this:
         );
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -271,7 +271,7 @@ this:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -322,7 +322,7 @@ After we now have some data, let's modify our ``find*()`` functions to return th
         );
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -336,7 +336,7 @@ After we now have some data, let's modify our ``find*()`` functions to return th
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
