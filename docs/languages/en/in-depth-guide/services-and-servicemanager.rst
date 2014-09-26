@@ -61,12 +61,12 @@ Let's start by creating the Interface at ``/module/Blog/src/Blog/Service/PostSer
 
 As you can see we define two functions. The first being ``findAllPosts()`` that is supposed to return all posts and the
 second one being ``findPost($id)`` that is supposed to return the post matching the given identifier ``$id``. What's new
-in here is the fact that we actually define a return value that doesn't existing yet. We make the assumption that the
+in here is the fact that we actually define a return value that doesn't exist yet. We make the assumption that the
 return value all in all are of type ``Blog\Model\PostInterface``. We will define this class at a later point and for
 now we simply create the ``PostService`` first.
 
 Create the class ``PostService`` at ``/module/Blog/src/Blog/Service/PostService.php``, be sure to implement the
-``PostServiceInterface`` and it's required functions (we will fill in these functions later). You then should have a
+``PostServiceInterface`` and its required functions (we will fill in these functions later). You then should have a
 class that looks like the following:
 
 .. code-block:: php
@@ -80,7 +80,7 @@ class that looks like the following:
     class PostService implements PostServiceInterface
     {
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -88,7 +88,7 @@ class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -168,7 +168,7 @@ should have a class that looks like the following:
         protected $text;
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function getId()
         {
@@ -184,7 +184,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function getTitle()
         {
@@ -200,7 +200,7 @@ should have a class that looks like the following:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function getText()
         {
@@ -219,8 +219,8 @@ should have a class that looks like the following:
 Bringing Life into our PostService
 ==================================
 
-Now that we have our Model files in place we can actually bring life into our ``PostService`` class. To keep the Service-
-Layer easy to understand for now we will only return some hard-coded content from our ``PostService`` class directly. Create
+Now that we have our Model files in place we can actually bring life into our ``PostService`` class. To keep the
+Service-Layer easy to understand for now we will only return some hard-coded content from our ``PostService`` class directly. Create
 a property inside the ``PostService`` called ``$data`` and make this an array of our Model type. Edit ``PostService`` like
 this:
 
@@ -263,7 +263,7 @@ this:
         );
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -271,7 +271,7 @@ this:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -322,7 +322,7 @@ After we now have some data, let's modify our ``find*()`` functions to return th
         );
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -336,7 +336,7 @@ After we now have some data, let's modify our ``find*()`` functions to return th
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -360,10 +360,10 @@ Bringing the Service into the Controller
 ========================================
 
 Now that we have our ``PostService`` written, we want to get access to this Service in our Controllers. For this task
-we will step foot into a new topic called "Dependency Injection" short "DI".
+we will step foot into a new topic called "Dependency Injection", short "DI".
 
 When we're talking about dependency injection we're talking about a way to get dependencies into our classes. The most
-common form "Constructor Injection" is used for all dependencies that are required by a class at all times.
+common form, "Constructor Injection", is used for all dependencies that are required by a class at all times.
 
 In our case we want to have our Blog-Modules ``ListController`` somehow interact with our ``PostService``. This means
 that the class ``PostService`` is a dependency of the class ``ListController``. Without the ``PostService`` our
@@ -472,7 +472,7 @@ you'll see a different error message:
 
 This message should be quite easy to understand. The ``Zend\Mvc\Controller\ControllerManager``
 is accessing ``Blog\Controller\List``, which internally is saved as ``blogcontrollerlist``. While it does so it notices
-that a factory class is supposed to be called for this controller name. However it doesn't find this factory class so
+that a factory class is supposed to be called for this controller name. However, it doesn't find this factory class so
 to the Manager it is an invalid factory. Using easy words: the Manager doesn't find the Factory class so that's probably
 where our error lies. And of course, we have yet to write the factory, so let's go ahead and do this.
 
@@ -480,8 +480,8 @@ where our error lies. And of course, we have yet to write the factory, so let's 
 Writing a Factory Class
 =======================
 
-Factory classes within Zend Framework 2 always need to implement the `Zend\ServiceManager\FactoryInterface``.
-Implementing this class let's the ServiceManager know that the function ``createService()`` is supposed to be called. And
+Factory classes within Zend Framework 2 always need to implement the ``Zend\ServiceManager\FactoryInterface``.
+Implementing this class lets the ServiceManager know that the function ``createService()`` is supposed to be called. And
 ``createService()`` actually expects to be passed an instance of the `ServiceLocatorInterface` so the `ServiceManager` will
 always inject this using Dependency Injection as we have learned above. Let's implement our factory class:
 
@@ -515,7 +515,7 @@ always inject this using Dependency Injection as we have learned above. Let's im
     }
 
 Now this looks complicated! Let's start to look at the ``$realServiceLocator``. When using a Factory-Class that will be
-called from the ``ControllerManager`` it will actually inject **itself** as the ``$serviceLocator``. However we need the real
+called from the ``ControllerManager`` it will actually inject **itself** as the ``$serviceLocator``. However, we need the real
 ``ServiceManager`` to get to our Service-Classes. This is why we call the function ``getServiceLocator()` who will give us
 the real ``ServiceManager``.
 
@@ -637,8 +637,8 @@ Accessing View Variables
 ========================
 
 When pushing variables to the view they are accessible through two ways. Either directly like ``$this->posts`` or
-implicitly like ``$posts``. Both are the same however calling ``$posts`` implicitly will result in a little round-trip
-through the ``__call()`` function which theoretically is a little slower. You won't ever notice this though.
+implicitly like ``$posts``. Both are the same, however, calling ``$posts`` implicitly will result in a little round-trip
+through the ``__call()`` function.
 
 Let's modify our view to display a table of all blog posts that our ``PostService`` returns.
 

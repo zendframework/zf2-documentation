@@ -424,7 +424,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
 As you can see this is nothing new. We inject the ``PostService`` into the controller and inside the action we first
 check if the blog exists. If so we check if it's a post request and inside there we check if a certain post parameter
 called ``delete_confirmation`` is present. If the value of that then is ``yes`` we delete the blog through the
-``PostService``s ``deletePost()`` function.
+``PostService``'s ``deletePost()`` function.
 
 When you're writing this code you'll notice that you don't get typehints for the ``deletePost()`` function because we
 haven't added it to the service / interface yet. Go ahead and add the function to the interface and implement it inside
@@ -508,7 +508,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -516,7 +516,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -524,7 +524,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function savePost(PostInterface $post)
         {
@@ -532,7 +532,7 @@ the service.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function deletePost(PostInterface $post)
         {
@@ -632,7 +632,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function find($id)
         {
@@ -651,7 +651,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAll()
         {
@@ -671,7 +671,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function save(PostInterface $postObject)
         {
@@ -706,7 +706,7 @@ Now that we have declared the function inside the interface it's time to impleme
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function delete(PostInterface $postObject)
         {

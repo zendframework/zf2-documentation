@@ -96,14 +96,14 @@ refactoring process let's empty our class and delete all current content. Then i
     class PostService implements PostServiceInterface
     {
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -141,14 +141,14 @@ into.
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {
@@ -197,7 +197,7 @@ Service-functions:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findAllPosts()
         {
@@ -205,7 +205,7 @@ Service-functions:
         }
 
         /**
-         * @inheritDoc
+         * {@inheritDoc}
          */
         public function findPost($id)
         {

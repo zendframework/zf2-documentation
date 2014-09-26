@@ -13,7 +13,7 @@ Before we can start using a database we should prepare one. In this example we'l
 ``blog`` which is accessible on the ``localhost``. The database will have one table called ``posts`` with three columns
 ``id``, ``title`` and ``text`` with the ``id`` being the primary key. For demo purpose, please use this database-dump.
 
-.. code-block:: text
+.. code-block:: sql
    :linenos:
 
     CREATE TABLE posts (
@@ -77,21 +77,21 @@ As you can see we've added the ``db``-key and inside we create the parameters re
     Taking this example you would have this file:
 
     .. code-block:: php
-    :lineos:
+        :linenos:
 
-    <?php
-    // Filename: /config/autoload/db.local.php
-    return array(
-            'db' => array(
-                'driver'         => 'Pdo',
-                'username'       => 'SECRET_USERNAME',  //edit this
-                'password'       => 'SECRET_PASSWORD',  //edit this
-                'dsn'            => 'mysql:dbname=blog;host=localhost',
-                'driver_options' => array(
-                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            )
-        ),
-    );
+        <?php
+        // Filename: /config/autoload/db.local.php
+        return array(
+                'db' => array(
+                    'driver'         => 'Pdo',
+                    'username'       => 'SECRET_USERNAME',  //edit this
+                    'password'       => 'SECRET_PASSWORD',  //edit this
+                    'dsn'            => 'mysql:dbname=blog;host=localhost',
+                    'driver_options' => array(
+                        \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+                )
+            ),
+        );
 
 The next thing we need to do is by making use of the ``AdapterServiceFactory``. This is a ``ServiceManager`` entry that
 will look like the following:
@@ -342,7 +342,7 @@ all blogs from the database table.
         }
     }
 
-The above code should look fairly straight forward to you. Sadly though a refresh of the application reveals another
+The above code should look fairly straight forward to you. Sadly, though, a refresh of the application reveals another
 error message.
 
 .. code-block:: text
