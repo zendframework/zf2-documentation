@@ -2,7 +2,7 @@
 
 .. _zend.filter.set.stripnewlines:
 
-StripNewLines
+StripNewlines
 -------------
 
 This filter modifies a given string and removes all new line characters within that string.
@@ -12,7 +12,7 @@ This filter modifies a given string and removes all new line characters within t
 Supported Options
 ^^^^^^^^^^^^^^^^^
 
-There are no additional options for ``Zend\Filter\StripNewLines``:
+There are no additional options for ``Zend\Filter\StripNewlines``:
 
 .. _zend.filter.set.stripnewlines.basic:
 
@@ -24,7 +24,7 @@ A basic example of usage is below:
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\StripNewLines();
+   $filter = new Zend\Filter\StripNewlines();
 
    print $filter->filter(' This is (my)``\n\r``content: ');
 
