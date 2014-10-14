@@ -279,8 +279,8 @@ filter rules, according to the following notation:
    // Could also use setRules() with this notation:
    $inflector->addRules(array(
        // filter rules:
-       ':controller' => array('CamelCaseToUnderscore','StringToLower'),
-       ':action'     => array('CamelCaseToUnderscore','StringToLower'),
+       ':controller' => array('Word\CamelCaseToUnderscore','StringToLower'),
+       ':action'     => array('Word\CamelCaseToUnderscore','StringToLower'),
 
        // Static rule:
        'suffix'      => 'phtml'

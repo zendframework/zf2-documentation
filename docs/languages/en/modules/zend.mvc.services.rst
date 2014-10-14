@@ -754,6 +754,11 @@ local configuration file overrides the global configuration.
            // Default suffix to use when resolving template scripts, if none, 'phtml' is used
            'default_template_suffix' => $templateSuffix, // e.g. 'php'
 
+           // Controller namespace to template map
+           // or whitelisting for controller FQCN to template mapping
+           'controller_map' => array(
+           ),
+
            // Layout template name
            'layout' => $layoutTemplateName, // e.g. 'layout/layout'
 
