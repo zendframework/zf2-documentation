@@ -251,6 +251,37 @@ That's it. Save the file.
 
 .. _zend.mvc.quick-start.create-a-route:
 
+View scripts for module names with subnamespaces
+------------------------------------------------
+
+As per PSR-0, module should be named following this rule: ``\<Vendor Name>\(<Namespace>\)*``
+Default controller class to template mapping does not work very well with those: it will remove subnamespace.
+
+To address that issue new mapping was introduced since 2.3.0. To maintain backwards compatibility that
+mapping is not enabled by default. To enable it, you need to add your module namespace to whitelist in your module config:
+
+.. code-block:: php
+   :linenos:
+
+   'view_manager' => array(
+       // Controller namespace to template map
+       // or whitelisting for controller FQCN to template mapping
+       'controller_map' => array(
+           '<Module\Name>' => true,
+       ),
+   ),
+
+Now, create the directory ``view/<module>/<name>/hello``. Inside that directory, create a file named ``world.phtml``.
+Inside that, paste in the following:
+
+.. code-block:: php
+   :linenos:
+
+   <h1>Greetings!</h1>
+
+   <p>You said "<?php echo $this->escapeHtml($message) ?>".</p>
+
+
 Create a Route
 --------------
 

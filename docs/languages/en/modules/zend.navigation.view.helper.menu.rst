@@ -578,3 +578,21 @@ Output:
        <a title="About us" href="/company/about">Company</a>
        <a href="/community">Community</a>
    </div>
+
+.. _zend.navigation.view.helper.menu.partial.using-acl:
+
+Using ACL in partial view script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to use ACL within your partial view script, then you will have to check the access to a page manually.
+
+In *module/MyModule/view/my-module/partials/menu.phtml*:
+
+.. code-block:: php
+   :linenos:
+
+   foreach ($this->container as $page) {
+       if ($this->navigation()->accept($page)) {
+           echo $this->navigation()->menu()->htmlify($page) . PHP_EOL;
+       }
+   }

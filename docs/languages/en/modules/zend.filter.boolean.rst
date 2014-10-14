@@ -18,7 +18,7 @@ The following options are supported for ``Zend\Filter\Boolean``:
 - **casting**: When this option is set to ``TRUE`` then any given input will be casted to boolean. This option
   defaults to ``TRUE``.
 
-- **locale**: This option sets the locale which will be used to detect localized input.
+- **translations**: This option sets the translations which will be used to detect localized input.
 
 - **type**: The ``type`` option sets the boolean type which should be used. Read the following for details.
 
@@ -82,18 +82,18 @@ them, you can give an array, you can use constants, or you can give a textual st
    :linenos:
 
    // converts 0 to false
-   $filter = new Zend\Filter\Boolean(Zend\Filter\Boolean::INTEGER);
+   $filter = new Zend\Filter\Boolean(Zend\Filter\Boolean::TYPE_INTEGER);
 
    // converts 0 and '0' to false
    $filter = new Zend\Filter\Boolean(
-       Zend\Filter\Boolean::INTEGER + Zend\Filter\Boolean::ZERO
+       Zend\Filter\Boolean::TYPE_INTEGER + Zend\Filter\Boolean::TYPE_ZERO_STRING
    );
 
    // converts 0 and '0' to false
    $filter = new Zend\Filter\Boolean(array(
        'type' => array(
-           Zend\Filter\Boolean::INTEGER,
-           Zend\Filter\Boolean::ZERO,
+           Zend\Filter\Boolean::TYPE_INTEGER,
+           Zend\Filter\Boolean::TYPE_ZERO_STRING,
        ),
    ));
 
@@ -117,23 +117,27 @@ As mentioned previously, ``Zend\Filter\Boolean`` can also recognise localized "y
 that you can ask your customer in a form for "yes" or "no" within his native language and ``Zend\Filter\Boolean``
 will convert the response to the appropriate boolean value.
 
-To set the desired locale, you can either use the ``locale`` option, or the method ``setLocale()``.
+To set the translation and the corresponding value, you can use the ``translations`` option or the method
+``setTranslations``.
 
 .. code-block:: php
    :linenos:
 
    $filter = new Zend\Filter\Boolean(array(
-       'type'   => Zend\Filter\Boolean::ALL,
-       'locale' => 'de',
+       'type'         => Zend\Filter\Boolean::TYPE_LOCALIZED,
+       'translations' => array(
+           'ja'   => true,
+           'nein' => false,
+           'yes'  => true,
+           'no'   => false,
+       ),
    ));
 
    // returns false
-   echo $filter->filter('nein');
-
-   $filter->setLocale('en');
+   $result = $filter->filter('nein');
 
    // returns true
-   $filter->filter('yes');
+   $result = $filter->filter('yes');
 
 .. _zend.filter.set.boolean.casting:
 
@@ -150,27 +154,27 @@ In this case ``Zend\Filter\Boolean`` will work as described in the following tab
 
 .. table:: Usage without casting
 
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Type                               |True                                |False                              |
-   +===================================+====================================+===================================+
-   |Zend\\Filter\\Boolean::BOOLEAN     |TRUE                                |FALSE                              |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::INTEGER     |0                                   |1                                  |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::FLOAT       |0.0                                 |1.0                                |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::STRING      |""                                  |                                   |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::ZERO        |"0"                                 |"1"                                |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::EMPTY_ARRAY |array()                             |                                   |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::NULL        |NULL                                |                                   |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::FALSE_STRING|"false" (case independently)        |"true" (case independently)        |
-   +-----------------------------------+------------------------------------+-----------------------------------+
-   |Zend\\Filter\\Boolean::YES         |localized "yes" (case independently)|localized "no" (case independently)|
-   +-----------------------------------+------------------------------------+-----------------------------------+
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Type                                    |True                                |False                              |
+   +========================================+====================================+===================================+
+   |Zend\\Filter\\Boolean::TYPE_BOOLEAN     |TRUE                                |FALSE                              |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_EMPTY_ARRAY |array()                             |                                   |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_FALSE_STRING|"false" (case independently)        |"true" (case independently)        |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_FLOAT       |0.0                                 |1.0                                |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_INTEGER     |0                                   |1                                  |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_LOCALIZED   |localized "yes" (case independently)|localized "no" (case independently)|
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_NULL        |NULL                                |                                   |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_STRING      |""                                  |                                   |
+   +----------------------------------------+------------------------------------+-----------------------------------+
+   |Zend\\Filter\\Boolean::TYPE_ZERO_STRING |"0"                                 |"1"                                |
+   +----------------------------------------+------------------------------------+-----------------------------------+
 
 The following example shows the behaviour when changing the ``casting`` option:
 
@@ -178,17 +182,17 @@ The following example shows the behaviour when changing the ``casting`` option:
    :linenos:
 
    $filter = new Zend\Filter\Boolean(array(
-       'type'    => Zend\Filter\Boolean::ALL,
+       'type'    => Zend\Filter\Boolean::TYPE_ALL,
        'casting' => false,
    ));
 
    // returns false
-   echo $filter->filter(0);
+   $result = $filter->filter(0);
 
    // returns true
-   echo $filter->filter(1);
+   $result = $filter->filter(1);
 
    // returns the value
-   echo $filter->filter(2);
+   $result = $filter->filter(2);
 
 
