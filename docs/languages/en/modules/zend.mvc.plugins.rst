@@ -630,6 +630,14 @@ The ``Redirect`` plugin does this work for you. It offers three methods:
 
    :rtype: ``Zend\Http\Response``
 
+.. function:: toReferer(string $defaultUrl = null)
+   :noindex:
+
+   Redirects to the referring URL if it is present in the request headers. If is not present, 
+   redirect to the provided ``$defaultUrl``. If none of the previous two URLs are present, redirect to the base route.
+
+   :rtype: ``Zend\Http\Response``
+
 In each case, the ``Response`` object is returned. If you return this immediately, you can effectively
 short-circuit execution of the request.
 
