@@ -11,6 +11,11 @@
    you various techniques and features of the framework in order to build an
    application.
 
+.. |InDepthTutorial| replace:: In-depth tutorial for beginners
+
+.. |InDepthTutorialIntroduction| replace:: In this tutorial we will create a Blog-Application from scratch. We will go
+   through all the details you need to learn to create your own ZF2 Application.
+
 .. |GettingStartedWithZendStudio| replace:: Getting Started With Zend Studio 10 & Zend Server 6
 
 .. |GettingStartedWithZendStudioIntroduction| replace:: The user guide is provided to take you through
