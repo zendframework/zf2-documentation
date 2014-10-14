@@ -55,19 +55,15 @@ modification is required. Cookies can be added using either the `addCookie()` or
     // Easy and simple: by providing a cookie name and cookie value
     $client->addCookie('flavor', 'chocolate chips');
 
-    // By directly providing a raw cookie string (name=value)
-    // Note that the value must be already URL encoded
-    $client->addCookie('flavor=chocolate%20chips');
-
     // By providing a Zend\Http\Header\SetCookie object
-    $cookie = Zend\Http\Header\SetCookie::fromString('flavor=chocolate%20chips');
+    $cookie = Zend\Http\Header\SetCookie::fromString('Set-Cookie: flavor=chocolate%20chips');
     $client->addCookie($cookie);
 
     // Multiple cookies can be set at once by providing an
     // array of Zend\Http\Header\SetCookie objects
     $cookies = array(
-        Zend\Http\Header\SetCookie::fromString('flavorOne=chocolate%20chips'),
-        Zend\Http\Header\SetCookie::fromString('flavorTwo=vanilla'),
+        Zend\Http\Header\SetCookie::fromString('Set-Cookie: flavorOne=chocolate%20chips'),
+        Zend\Http\Header\SetCookie::fromString('Set-Cookie: flavorTwo=vanilla'),
     );
     $client->addCookie($cookies);
 
@@ -82,17 +78,10 @@ adding the new cookies:
 .. code-block:: php
    :linenos:
 
-    // setCookies accepts an array of cookie values, which
-    // can be in either of the following formats:
+    // setCookies accepts an array of cookie values as $name => $value
     $client->setCookies(array(
-
-        // A raw cookie string (name=value)
-        // Note that the value must be already URL encoded
-        'flavor=chocolate%20chips',
-
-        // A Zend\Http\Header\SetCookie object
-        Zend\Http\Header\SetCookie::fromString('flavor=chocolate%20chips'),
-
+        'flavor' => 'chocolate chips',
+        'amount' => 10,
     ));
 
 
@@ -110,18 +99,21 @@ cookie before sending further requests.
 .. code-block:: php
    :linenos:
 
-   $cookies = new Zend\Http\Cookies();
+   $headers = $client->getRequest()->getHeaders();
+   $cookies = new Zend\Http\Cookies($headers);
 
    // First request: log in and start a session
    $client->setUri('http://example.com/login.php');
    $client->setParameterPost(array('user' => 'h4x0r', 'password' => 'l33t'));
-   $response = $client->request('POST');
+   $client->setMethod('POST');
+
+   $response = $client->getResponse();
    $cookies->addCookiesFromResponse($response, $client->getUri());
 
    // Now we can send our next request
    $client->setUri('http://example.com/read_member_news.php');
-   $client->addCookies($cookies->getMatchingCookies($client->getUri());
-   $client->request('GET');
+   $client->setCookies($cookies->getMatchingCookies($client->getUri()));
+   $client->setMethod('GET');
 
 For more information about the ``Zend\Http\Cookies`` class, see :ref:`this section
 <zend.http.client.cookies>`.
@@ -185,9 +177,9 @@ will be erased.
     // Setting multiple headers.  Will remove all existing
     // headers and add new ones to the Request header container
     $client->setHeaders(array(
-     Zend\Http\Header\Host::fromString('Host: www.example.com'),
-     'Accept-encoding' => 'gzip,deflate',
-     'X-Powered-By: Zend Framework'
+        Zend\Http\Header\Host::fromString('Host: www.example.com'),
+        'Accept-Encoding' => 'gzip,deflate',
+        'X-Powered-By: Zend Framework',
     ));
 
 
