@@ -147,7 +147,7 @@ last send.
 
    $client = new Client();
    $client->open(Client::SANDBOX_URI, '/path/to/push-certificate.pem', 'optionalPassPhrase');
-   $reponses = $client->feedback();
+   $responses = $client->feedback();
    $client->close();
 
    foreach ($responses as $response) {

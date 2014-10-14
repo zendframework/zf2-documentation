@@ -29,7 +29,7 @@ To add a single file to the translator, use the ``addTranslationFile()`` method:
    $translator = new Translator();
    $translator->addTranslationFile($type, $filename, $textDomain, $locale);
 
-The type given there is a name of one of the format loaders listed in the next section. Filename points to the 
+The type given there is a name of one of the format loaders listed in the next section. Filename points to the
 file containing the translations, and the text domain specifies a category name for the translations.
 If the text domain is omitted, it will default to the "default" value. The locale specifies which language the
 translated strings are from and is only required for formats which contain translations for a single locale.
@@ -49,7 +49,7 @@ translations to the file system, without touching your code. Patterns are added 
    use Zend\I18n\Translator\Translator;
 
    $translator = new Translator();
-   $translator->addTranslationFilePattern($type, $pattern, $textDomain);
+   $translator->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
 
 The parameters for adding patterns is pretty similar to adding individual files, except that you don't specify a locale
 and give the file location as a sprintf pattern. The locale is passed to the sprintf call, so you can either use %s

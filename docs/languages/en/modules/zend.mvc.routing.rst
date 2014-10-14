@@ -383,7 +383,7 @@ You may use any route type as a child route of a ``Part`` route.
             'query'    => 'Zend\Mvc\Router\Http\Query',
             'method'   => 'Zend\Mvc\Router\Http\Method',
         );
-        $foreach ($plugins as $name => $class) {
+        foreach ($plugins as $name => $class) {
             $routePlugins->setInvokableClass($name, $class);
         }
 
@@ -486,7 +486,17 @@ As a complex example:
 Zend\\Mvc\\Router\\Http\\Query (Deprecated)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This route part is deprecated since you can now add query parameters without a query route.
+.. warning::
+
+   **Potential security issue**
+
+   A misuse of this route part can lead to a potential security issue.
+
+.. note::
+
+   **Deprecated**
+
+   This route part is deprecated since you can now add query parameters without a query route.
 
 The ``Query`` route part allows you to specify and capture query string parameters for a given route.
 
@@ -543,6 +553,25 @@ Our example "page" route has only one defined parameter of "name" ("/page[/:name
 parameters of "format" and "limit" will then be appended as a query string.
 
 The output from our example should then be "/page/my-test-page?format=rss&limit=10"
+
+.. _zend.mvc.routing.http-route-types.wildcard:
+
+Zend\\Mvc\\Router\\Http\\Wildcard (Deprecated)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning::
+
+   **Potential security issue**
+
+   A misuse of this route type can lead to a potential security issue.
+
+.. note::
+
+   **Deprecated**
+
+   This route type is deprecated. Use the ``Segment`` route type.
+
+The ``Wildcard`` route type matches all segments of a URI path, like in version 1 of Zend Framework.
 
 .. _zend.mvc.routing.http-route-types.examples:
 
