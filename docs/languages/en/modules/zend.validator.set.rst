@@ -11,7 +11,6 @@ Zend Framework comes with a standard set of validation classes, which are ready 
 .. include:: zend.validator.between.rst
 .. include:: zend.validator.callback.rst
 .. include:: zend.validator.credit-card.rst
-.. _zend.validator.set.ccnum:
 
 Ccnum
 -----
