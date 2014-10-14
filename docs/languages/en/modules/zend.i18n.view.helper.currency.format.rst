@@ -24,16 +24,16 @@ Basic Usage
    echo $this->currencyFormat(1234.56, 'EUR', null, 'de_DE');
    // This returns: "1.234,56 €"
 
-   echo $this->currencyFormat(1234.56, null, true);
+   echo $this->currencyFormat(1234.56, 'USD', true, 'en_US');
    // This returns: "$1,234.56"
 
-   echo $this->currencyFormat(1234.56, null, false);
+   echo $this->currencyFormat(1234.56, 'USD', false, 'en_US');
    // This returns: "$1,235"
 
-   echo $helper(12345678.90, 'EUR', true, 'de_DE', '#0.# kg');
+   echo $this->currencyFormat(12345678.90, 'EUR', true, 'de_DE', '#0.# kg');
    // This returns: "12345678,90 kg"
 
-   echo $helper(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
+   echo $this->currencyFormat(12345678.90, 'EUR', false, 'de_DE', '#0.# kg');
    // This returns: "12345679 kg"
 
 .. function:: currencyFormat(float $number [, string $currencyCode = null [, bool $showDecimals = null [, string $locale = null [, string $pattern = null ]]]])
@@ -107,7 +107,7 @@ helper is used:
 
    $this->plugin('currencyformat')->setShouldShowDecimals(false);
 
-   echo $this->currencyFormat(1234.56);
+   echo $this->currencyFormat(1234.56, 'USD', null, 'en_US');
    // This returns: "$1,235"
 
 .. function:: setShouldShowDecimals(bool $showDecimals)

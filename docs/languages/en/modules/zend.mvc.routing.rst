@@ -383,7 +383,7 @@ You may use any route type as a child route of a ``Part`` route.
             'query'    => 'Zend\Mvc\Router\Http\Query',
             'method'   => 'Zend\Mvc\Router\Http\Method',
         );
-        $foreach ($plugins as $name => $class) {
+        foreach ($plugins as $name => $class) {
             $routePlugins->setInvokableClass($name, $class);
         }
 
