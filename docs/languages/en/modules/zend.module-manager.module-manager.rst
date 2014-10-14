@@ -12,15 +12,17 @@ initialization tasks, and configuration are all performed by attached event list
 Module Manager Events
 ---------------------
 
+The Module Manager events are defined in ``Zend\ModuleManager\ModuleEvent``.
+
 .. rubric:: Events triggered by ``Zend\ModuleManager\ModuleManager``
 
-**loadModules**
+**loadModules (ModuleEvent::EVENT_LOAD_MODULES)**
    This event is primarily used internally to help encapsulate the work of loading modules in event listeners, and
    allow the loadModules.post event to be more user-friendly. Internal listeners will attach to this event with a
    negative priority instead of loadModules.post so that users can safely assume things like config merging have
    been done once loadModules.post is triggered, without having to worry about priorities at all.
 
-**loadModule.resolve**
+**loadModule.resolve (ModuleEvent::EVENT_LOAD_MODULE_RESOLVE)**
    Triggered for each module that is to be loaded. The listener(s) to this event are responsible for taking a
    module name and resolving it to an instance of some class. The default module resolver shipped with ZF2 simply
    looks for the class ``{modulename}\Module``, instantiating and returning it if it exists.
@@ -31,17 +33,17 @@ Module Manager Events
    their priority until one returns an object. This allows you to attach additional listeners which have
    alternative methods of resolving modules from a given module name.
 
-**loadModule**
+**loadModule (ModuleEvent::EVENT_LOAD_MODULE)**
    Once a module resolver listener has resolved the module name to an object, the module manager then triggers this
    event, passing the newly created object to all listeners.
 
-**configMerge**
-   After all modules have been loaded, the ``configMerge`` event is triggered.  By default,
+**mergeConfig (ModuleEvent::EVENT_MERGE_CONFIG)**
+   After all modules have been loaded, the ``mergeConfig`` event is triggered.  By default,
    ``Zend\ModuleManager\Listener\ConfigLister`` listens on this event at priority 1000, and merges
    all configuration. You may attach additional listeners to this event in order to manipulate the
    merged configuration. See :ref:`the tutorial on manipulating merged configuration <tutorials.config.advanced.manipulating-merged-configuration>` for more information.
 
-**loadModules.post**
+**loadModules.post (ModuleEvent::EVENT_LOAD_MODULES_POST)**
    This event is triggered by the module manager to allow any listeners to perform work after every module has
    finished loading. For example, the default configuration listener,
    ``Zend\ModuleManager\Listener\ConfigListener`` (covered later), attaches to this event to merge additional
@@ -71,7 +73,7 @@ By default, Zend Framework provides several useful module manager listeners.
 **Zend\\ModuleManager\\Listener\\ModuleDependencyCheckerListener**
    This listener checks each module to verify if all the modules it depends on were loaded.
    When a module class implements ``Zend\ModuleManager\Feature\DependencyIndicatorInterface`` or simply
-   has a defined ``getDependencyModules()`` method, the listener will call ``getDependencyModules()``. Each of
+   has a defined ``getModuleDependencies()`` method, the listener will call ``getModuleDependencies()``. Each of
    the values returned by the method is checked against the loaded modules list: if one of the values is not in
    that list, a ``Zend\ModuleManager\Exception\MissingDependencyModuleException`` is be thrown.
 
@@ -84,8 +86,8 @@ By default, Zend Framework provides several useful module manager listeners.
    ``init()`` method, this listener will call ``init()`` and pass the current instance of
    ``Zend\ModuleManager\ModuleManager`` as the sole parameter.
 
-   Like the ``OnBootstrapListener``, the ``init()`` method is called for **every** module implementing this feature, 
-   on **every** page request and should **only** be used for performing **lightweight** tasks such as registering 
+   Like the ``OnBootstrapListener``, the ``init()`` method is called for **every** module implementing this feature,
+   on **every** page request and should **only** be used for performing **lightweight** tasks such as registering
    event listeners.
 
 **Zend\\ModuleManager\\Listener\\LocatorRegistrationListener**
@@ -163,7 +165,7 @@ By default, Zend Framework provides several useful module manager listeners.
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
    | ``Zend\Log\WriterPluginManager``               | ``log_writers``        | ``LogWriterProviderInterface``        | ``getLogWriterConfig``        |
    +------------------------------------------------+------------------------+---------------------------------------+-------------------------------+
-   
+
    Configuration follows the examples in the :ref:`ServiceManager configuration
    section <zend.service-manager.quick-start.config>`. As a brief recap, the
    following configuration keys and values are allowed:
@@ -208,9 +210,10 @@ By default, Zend Framework provides several useful module manager listeners.
        {
            return array('factories' => array(
                'foo' => function ($helpers) {
-                   $services = $helpers->getServiceLocator();
+                   $services    = $helpers->getServiceLocator();
                    $someService = $services->get('SomeService');
-                   $helper = new Helper\Foo($someService);
+                   $helper      = new Helper\Foo($someService);
+
                    return $helper;
                },
            ));

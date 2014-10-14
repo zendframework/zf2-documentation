@@ -56,8 +56,6 @@ Our custom phone element could look something like this:
     namespace Application\Form\Element;
 
     use Zend\Form\Element;
-
-    use Zend\Form\Element;
     use Zend\InputFilter\InputProviderInterface;
     use Zend\Validator\Regex as RegexValidator;
 
