@@ -50,6 +50,31 @@ Using the array notation:
    ));
    
 
+When creating a checkbox element, setting an attribute of checked will result in the checkbox always being checked 
+regardless of any data object which might subsequently be bound to the form. The correct way to set the default value 
+of a checkbox is to set the value attribute as for any other element. To have a checkbox checked by default make the
+value equal to the checked_value eg:
+
+.. code-block:: php
+   :linenos:
+   
+   use Zend\Form\Form;
+    
+   $form = new Form('my-form');       
+   $form->add(array(
+       'type' => 'Zend\Form\Element\Checkbox',
+       'name' => 'checkbox',
+       'options' => array(
+           'label' => 'A checkbox',
+           'use_hidden_element' => true,
+           'checked_value' => 'yes',
+           'unchecked_value' => 'no'
+       ),
+       'attributes' => array(
+            'value' => 'yes'
+       )
+   ));
+
 .. _zend.form.element.checkbox.methods:
 
 .. rubric:: Public Methods
