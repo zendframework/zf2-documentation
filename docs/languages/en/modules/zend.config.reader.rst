@@ -74,7 +74,7 @@ We can use the ``Zend\Config\Reader\Ini`` to read this INI file:
    $reader = new Zend\Config\Reader\Ini();
    $data   = $reader->fromFile('/path/to/config.ini');
 
-   echo $data['webhost']  // prints "www.example.com"
+   echo $data['webhost'];  // prints "www.example.com"
    echo $data['database']['params']['dbname'];  // prints "dbproduction"
 
 The ``Zend\Config\Reader\Ini`` supports a feature to include the content of a INI file in a specific section of
@@ -135,7 +135,7 @@ The following example illustrates a basic use of ``Zend\Config\Reader\Xml`` for 
 .. code-block:: xml
    :linenos:
 
-   <?xml version="1.0" encoding="utf-8"?>?>
+   <?xml version="1.0" encoding="utf-8"?>
    <config>
        <webhost>www.example.com</webhost>
        <database>
@@ -157,8 +157,8 @@ We can use the ``Zend\Config\Reader\Xml`` to read this XML file:
    $reader = new Zend\Config\Reader\Xml();
    $data   = $reader->fromFile('/path/to/config.xml');
 
-   echo $data['webhost']  // prints "www.example.com"
-   echo $data['database']['params']['dbname'];  // prints "dbproduction"
+   echo $data['webhost'];  // prints "www.example.com"
+   echo $data['database']['params']['dbname']['value'];  // prints "dbproduction"
 
 ``Zend\Config\Reader\Xml`` utilizes the `XMLReader`_ *PHP* class. Please review this documentation to be aware of
 its specific behaviors, which propagate to ``Zend\Config\Reader\Xml``.
@@ -232,7 +232,7 @@ We can use the ``Zend\Config\Reader\Json`` to read this JSON file:
    $reader = new Zend\Config\Reader\Json();
    $data   = $reader->fromFile('/path/to/config.json');
 
-   echo $data['webhost']  // prints "www.example.com"
+   echo $data['webhost'];  // prints "www.example.com"
    echo $data['database']['params']['dbname'];  // prints "dbproduction"
 
 ``Zend\Config\Reader\Json`` utilizes the :ref:`Zend\\Json\\Json <zend.json.introduction>` class.
@@ -298,7 +298,7 @@ We can use the ``Zend\Config\Reader\Yaml`` to read this YAML file:
    $reader = new Zend\Config\Reader\Yaml();
    $data   = $reader->fromFile('/path/to/config.yaml');
 
-   echo $data['webhost']  // prints "www.example.com"
+   echo $data['webhost'];  // prints "www.example.com"
    echo $data['database']['params']['dbname'];  // prints "dbproduction"
 
 If you want to use an external YAML reader you have to pass the callback function in the constructor of the class.
@@ -313,7 +313,7 @@ For instance, if you want to use the `Spyc`_ library:
    $reader = new Zend\Config\Reader\Yaml(array('Spyc','YAMLLoadString'));
    $data   = $reader->fromFile('/path/to/config.yaml');
 
-   echo $data['webhost']  // prints "www.example.com"
+   echo $data['webhost'];  // prints "www.example.com"
    echo $data['database']['params']['dbname'];  // prints "dbproduction"
 
 You can also instantiate the ``Zend\Config\Reader\Yaml`` without any parameter and specify the YAML reader in a
