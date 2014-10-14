@@ -27,6 +27,8 @@ Using Zend\\Mime\\Part
    $attachment->type = 'image/jpg';
    $attachment->filename = 'image-file-name.jpg';
    $attachment->disposition = Mime\Mime::DISPOSITION_ATTACHMENT;
+   // Setting the encoding is recommended for binary data
+   $attachment->encoding = Mime\Mime::ENCODING_BASE64; 
    
    // then add them to a MIME message
    $mimeMessage = new Mime\Message();

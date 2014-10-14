@@ -78,7 +78,7 @@ Starting up
 ~~~~~~~~~~~
 
 To set up the application for running, a number of things happen. Firstly an
-instance of ``Zend\ServiceManger`` is created as the master locator for all
+instance of ``Zend\ServiceManager`` is created as the master locator for all
 class instances used by the application. The Module Manager is then used to load
 all the application's modules. It does this by reading its configuration file,
 ``application.config.php``, which is solely for use by the Module Manager and

@@ -20,6 +20,25 @@ Above, MovieFinder is a dependency of MovieLister, and MovieFinder was injected 
 familiar with the concept of DI, here are a couple of great reads: `Matthew Weier O'Phinney's Analogy`_, `Ralph
 Schindler's Learning DI`_, or `Fabien Potencier's Series`_ on DI.
 
+.. note::
+
+   ``Zend\Di`` is an example of an Inversion of Control (IoC) container. IoC containers are widely
+   used to create object instances that have all dependencies resolved and injected. Dependency
+   Injection containers are one form of IoC -- but not the only form.
+
+   Zend Framework 2 ships with another form of IoC as well, :ref:`Zend\ServiceManager <zend.service-manager.intro>`.
+   Unlike ``Zend\Di``, The ServiceManager is code-driven, meaning that you typically tell it what
+   class to instantiate, or provide a factory for the given class. This approach offers several
+   benefits:
+
+   - Easier to debug (error stacks take you into your factories, not the dependency injection
+     container).
+   - Easier to setup (write code to instantiate objects, instead of configuration).
+   - Faster (``Zend\Di`` has known performance issues due to the approaches used).
+
+   Unless you have specific needs for a dependency injection container versus more general Inversion
+   of Control, we recommend using ``Zend\ServiceManager`` for the above reasons.
+
 .. _zend.di.intro.dic:
 
 Dependency Injection Containers

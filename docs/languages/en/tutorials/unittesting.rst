@@ -62,6 +62,7 @@ Bootstrapping your tests
 Next, create a file called ``phpunit.xml`` under ``zf2-tutorial/module/Album/test``:
 
 .. code-block:: xml
+    :linenos:
 
     <?xml version="1.0" encoding="UTF-8"?>
 
@@ -230,6 +231,7 @@ First, create ``AlbumControllerTest.php`` under
 the following contents:
 
 .. code-block:: php
+    :linenos:
 
     <?php
 
@@ -259,6 +261,7 @@ method.
 Now, add the following function to the ``AlbumControllerTest`` class:
 
 .. code-block:: php
+    :linenos:
 
     public function testIndexActionCanBeAccessed()
     {
@@ -314,6 +317,7 @@ test case, we set the protected ``$traceError`` member to ``true``. Add the foll
 just above the ``setUp`` method in our ``AlbumControllerTest`` class:
 
 .. code-block:: php
+    :linenos:
 
     protected $traceError = true;
 
@@ -418,6 +422,7 @@ One of the most common actions happening in controllers is submitting a form
 with some POST data. Testing this is surprisingly easy:
 
 .. code-block:: php
+    :linenos:
 
     public function testAddActionRedirectsAfterValidPost()
     {
@@ -468,6 +473,7 @@ as shown for the ``addAction``.
 When testing the editAction you will also need to mock out the ``getAlbum`` method:
     
 .. code-block:: php
+    :linenos:
 
     $albumTableMock->expects($this->once())
         ->method('getAlbum')
@@ -645,6 +651,7 @@ Create a file ``AlbumTableTest.php`` in ``module/Album/test/AlbumTest/Model``
 with the following contents:
 
 .. code-block:: php
+    :linenos:
 
     <?php
     namespace AlbumTest\Model;
@@ -688,6 +695,7 @@ this same ``ResultSet`` object will be returned to the calling method. This test
 fine, so now we can add the rest of the test methods:
 
 .. code-block:: php
+    :linenos:
 
     public function testCanRetrieveAnAlbumByItsId()
     {

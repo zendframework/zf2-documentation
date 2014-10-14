@@ -69,7 +69,7 @@ So to translate all validation messages to German for example, all you have to d
    $translator = new Zend\Mvc\I18n\Translator();
    $translator->addTranslationFile(
        'phpArray',
-       'resources/languages/en.php',
+       'resources/languages/en/Zend_Validate.php', //or Zend_Captcha
        'default',
        'en_US'
    );
