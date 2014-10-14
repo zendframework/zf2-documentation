@@ -23,17 +23,32 @@ its ``generate()`` method.
    // Passing configuration to the constructor:
    $file = new Zend\Code\Generator\FileGenerator(array(
        'classes' => array(
-           new Zend\Code\Generator\ClassGenerator(array(
-               'name'    => 'World',
-               'methods' => array(
-                   new Zend\Code\Generator\MethodGenerator(array(
-                       'name' => 'hello',
-                       'body' => 'echo \'Hello world!\';',
-                   )),
-               ),
-           )),
-       )
+           new Zend\Code\Generator\ClassGenerator(
+               'World',  // name
+               null,     // namespace
+               null,     // flags
+               null,     // extends
+               array(),  // interfaces
+               array(),  // properties
+               array(
+                   new Zend\Code\Generator\MethodGenerator(
+                       'hello',                  // name
+                       array(),                  // parameters
+                       'public',                 // visibility
+                       'echo \'Hello world!\';'  // body
+                   ),
+               )
+           ),
+       ),
    ));
+
+   // Render the generated file
+   echo $file->generate();
+
+   // or write it to a file:
+   file_put_contents('World.php', $file->generate());
+
+   // OR
 
    // Configuring after instantiation
    $method = new Zend\Code\Generator\MethodGenerator();
@@ -42,13 +57,13 @@ its ``generate()`` method.
 
    $class = new Zend\Code\Generator\ClassGenerator();
    $class->setName('World')
-         ->setMethod($method);
+         ->addMethodFromGenerator($method);
 
    $file = new Zend\Code\Generator\FileGenerator();
    $file->setClass($class);
 
    // Render the generated file
-   echo $file;
+   echo $file->generate();
 
    // or write it to a file:
    file_put_contents('World.php', $file->generate());
@@ -87,13 +102,13 @@ then do the following:
    $method = new Zend\Code\Generator\MethodGenerator();
    $method->setName('mrMcFeeley')
           ->setBody('echo \'Hello, Mr. McFeeley!\';');
-   $class->setMethod($method);
+   $class->addMethodFromGenerator($method);
 
    $file = new Zend\Code\Generator\FileGenerator();
    $file->setClass($class);
 
    // Render the generated file
-   echo $file;
+   echo $file->generate();
 
    // Or, better yet, write it back to the original file:
    file_put_contents('World.php', $file->generate());

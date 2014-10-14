@@ -50,7 +50,7 @@ actions. This is the updated module config file with the new code highlighted.
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 9-27
+   :emphasize-lines: 4,9-27
 
     return array(
         'controllers' => array(

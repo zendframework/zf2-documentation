@@ -109,7 +109,6 @@
    modules/zend.escaper.escaping-css
    modules/zend.escaper.escaping-url
    modules/zend.event-manager.event-manager
-   modules/zend.exception
    modules/zend.feed.introduction
    modules/zend.feed.importing
    modules/zend.feed.find-feeds
@@ -340,6 +339,20 @@
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
 
+|InDepthTutorial|
+-----------------
+
+|InDepthTutorialIntroduction|
+
+    * :doc:`in-depth-guide/first-module`
+    * :doc:`in-depth-guide/services-and-servicemanager`
+    * :doc:`in-depth-guide/preparing-db-backend`
+    * :doc:`in-depth-guide/zend-db-sql-zend-stdlib-hydrator`
+    * :doc:`in-depth-guide/understanding-routing`
+    * :doc:`in-depth-guide/zend-form-zend-form-fieldset`
+    * :doc:`in-depth-guide/data-binding`
+    * :doc:`in-depth-guide/review`
+
 |GettingStartedWithZendStudio|
 ------------------------------
 
@@ -539,13 +552,6 @@ Zend\\EventManager
 
         * :doc:`modules/zend.event-manager.event-manager`
 
-
-.. _zend.exception:
-
-Zend\\Exception
-^^^^^^^^^^^^^^^
-
-        * :doc:`modules/zend.exception`
 
 .. _zend.feed:
 

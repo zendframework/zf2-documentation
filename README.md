@@ -18,7 +18,7 @@ You can read the last stable documentation in
 
 ## BUILDING DOCUMENTATION
 
-Building the documentation requires [Sphinx](http://sphinx-doc.org/).
+Building the documentation requires [Sphinx](http://sphinx-doc.org/). Further requirements are _Pygments_, _docutils_ and _markupsafe_, installable with `pip install`.
 
 Descend into the `docs/` directory, and run `make` with one of the following
 targets:

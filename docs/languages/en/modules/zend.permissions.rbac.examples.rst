@@ -125,7 +125,7 @@ Checking permission using ``isGranted()`` with a class implementing ``Zend\Permi
             if (!$this->article) {
                 return false;
             }
-            return $this->userId == $article->getUserId();
+            return $this->userId == $this->article->getUserId();
         }
     }
 

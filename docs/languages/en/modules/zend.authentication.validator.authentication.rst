@@ -33,12 +33,12 @@ Basic Usage
    use Zend\Authentication\AuthenticationService;
    use Zend\Authentication\Validator\Authentication as AuthenticationValidator;
 
-   $service = new AuthenticationService();
-   $adapter = new My\Authentication\Adapter();
-   $validator = new AuthenticationValidator(
+   $service   = new AuthenticationService();
+   $adapter   = new My\Authentication\Adapter();
+   $validator = new AuthenticationValidator(array(
        'service' => $service,
        'adapter' => $adapter,
-   );
+   ));
 
    $validator->setCredential('myCredentialContext');
    $validator->isValid('myIdentity', array(

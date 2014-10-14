@@ -223,7 +223,7 @@ added to the chain. Thus first the ``Session`` Storage is used. Now either:
 
 - The ``Session`` Storage is non-empty and the ``Chain`` will use its contents.
 
-- The ``Sesssion`` Storage is empty. Next the ``OAuth`` Storage is accessed.
+- The ``Session`` Storage is empty. Next the ``OAuth`` Storage is accessed.
 
   -  If this one is also empty the Chain will act as empty.
 

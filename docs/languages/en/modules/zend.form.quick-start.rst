@@ -535,6 +535,15 @@ configuration for an input filter.
                    'filters'  => array(
                        array('name' => 'Zend\Filter\StringTrim'),
                    ),
+                   'validators' => array(
+                       array(
+                           'name' => 'Zend\Validator\StringLength', 
+                           'options' => array(
+                               'min' => 3,
+                               'max' => 256
+                           ),
+                       ),
+                   ),
                ),
                'email' => array(
                    'required' => true,
@@ -785,11 +794,12 @@ you can pass an optional parameter to the ``FormRow`` view helper :
 
 .. code-block:: php
    :linenos:
+   :emphasize-lines: 4
 
    <div class="form_element">
    <?php
        $name = $form->get('name');
-       echo $this->formRow($name, **'append'**);
+       echo $this->formRow($name, 'append');
    ?></div>
 
 Taking advantage of HTML5 input attributes
