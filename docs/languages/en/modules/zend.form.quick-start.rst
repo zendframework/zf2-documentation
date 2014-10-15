@@ -399,7 +399,8 @@ if any.
 .. code-block:: php
    :linenos:
 
-   $form = new Contact\ContactForm();
+   // assuming $captcha is an instance of some Zend\Captcha\AdapterInterface
+   $form = new Contact\ContactForm($captcha);
 
    // If the form doesn't define an input filter by default, inject one.
    $form->setInputFilter(new Contact\ContactFilter());
