@@ -19,16 +19,16 @@ to *PHP*'s associative array. Some suggest that a class identifier should be pas
 class should be created and populated with the key/value pairs of the *JSON* object; others feel this could pose a
 substantial security risk.
 
-By default, ``Zend\Json\Json`` will decode *JSON* objects as associative arrays. However, if you desire an object
-returned, you can specify this:
+By default, ``Zend\Json\Json`` will decode *JSON* objects as ``stdClass`` objects. However, if you desire an
+associative array returned, you can specify this:
 
 .. code-block:: php
    :linenos:
 
-   // Decode JSON objects as PHP objects
-   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_OBJECT);
+   // Decode JSON objects as PHP array
+   $phpNative = Zend\Json\Json::decode($encodedValue, Zend\Json\Json::TYPE_ARRAY);
 
-Any objects thus decoded are returned as ``stdClass`` objects with properties corresponding to the key/value pairs
+Any objects thus decoded are returned as associative arrays with keys and values corresponding to the key/value pairs
 in the *JSON* notation.
 
 The recommendation of Zend Framework is that the individual developer should decide how to decode *JSON* objects.
