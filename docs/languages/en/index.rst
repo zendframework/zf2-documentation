@@ -21,6 +21,14 @@
    user-guide/styling-and-translations
    user-guide/forms-and-actions
    user-guide/conclusion
+   in-depth-guide/first-module
+   in-depth-guide/services-and-servicemanager
+   in-depth-guide/preparing-db-backend
+   in-depth-guide/zend-db-sql-zend-stdlib-hydrator
+   in-depth-guide/understanding-routing
+   in-depth-guide/zend-form-zend-form-fieldset
+   in-depth-guide/data-binding
+   in-depth-guide/review
    getting-started-with-zend-studio/overview
    getting-started-with-zend-studio/skeleton-application
    getting-started-with-zend-studio/the-application
