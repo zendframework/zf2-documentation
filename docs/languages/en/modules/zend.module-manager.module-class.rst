@@ -20,9 +20,14 @@ The directory structure of a module named "MyModule" might start out looking som
 
 
 ::
-
-   MyModule/
-       Module.php
+   config/
+   data/
+   module/
+      MyModule/
+         Module.php
+   public/
+   ...
+   
 
 Within ``Module.php``, you define your ``MyModule\Module`` class:
 
