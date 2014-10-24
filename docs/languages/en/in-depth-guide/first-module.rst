@@ -110,7 +110,7 @@ array.
    :emphasize-lines: 11
 
     <?php
-    // Filename: /module/Blog/src/Blog/Module.php
+    // Filename: /module/Blog/Module.php
     namespace Blog;
 
     use Zend\ModuleManager\Feature\ConfigProviderInterface;
