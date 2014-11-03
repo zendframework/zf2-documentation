@@ -2,7 +2,7 @@
 
 Introduction to the MVC Layer
 =============================
-
+s
 ``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2,
 focusing on performance and flexibility.
 
@@ -279,8 +279,7 @@ shipped with the MVC.
    // bootstrap and run application
    $application = $serviceManager->get('Application');
    $application->bootstrap();
-   $response = $application->run();
-   $response->send();
+   $application->run();
 
 You can make this even simpler by using the ``init()`` method of the ``Application``. This is a static method for
 quick and easy initialization of the Application.
