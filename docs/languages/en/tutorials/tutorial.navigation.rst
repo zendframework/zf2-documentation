@@ -53,7 +53,9 @@ application, and not just to our album pages:
 .. code-block:: php
    :linenos:
 
-   'service_manager' => array(
+   use Zend\ServiceManager\ServiceManager;
+
+   ServiceManager::CONFIGURATION => array(
        'factories' => array(
            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', // <-- add this
        ),

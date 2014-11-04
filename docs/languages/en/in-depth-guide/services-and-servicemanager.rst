@@ -418,14 +418,18 @@ remember back to when we created the controller, we added an entry to the ``invo
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'view_manager' => array( /** ViewManager Config */ ),
-        'controllers'  => array(
+        ViewManager::CONFIGURATION => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIGURATION  => array(
             'invokables' => array(
                 'Blog\Controller\List' => 'Blog\Controller\ListController'
             )
         ),
-        'router' => array( /** Router Config */ )
+        TreeRouteStack::CONFIGURATION => array( /** Router Config */ )
     );
 
 An ``invokable`` is a class that can be constructed without any arguments. Since our ``Blog\Controller\ListController``
@@ -440,14 +444,18 @@ We'll now create one for our ``ListController``. Let's modify our configuration 
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'view_manager' => array( /** ViewManager Config */ ),
-        'controllers'  => array(
+        ViewManager::CONFIGURATION => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIGURATION  => array(
             'factories' => array(
                 'Blog\Controller\List' => 'Blog\Factory\ListControllerFactory'
             )
         ),
-        'router' => array( /** Router Config */ )
+        TreeRouteStack::CONFIGURATION => array( /** Router Config */ )
     );
 
 As you can see we no longer have the key ``invokables``, instead we now have the key ``factories``. Furthermore the value
@@ -560,15 +568,20 @@ inside our ``controllers`` array. Check out the new configuration file:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'service_manager' => array(
+        ServiceManager::CONFIGURATION => array(
             'invokables' => array(
                 'Blog\Service\PostServiceInterface' => 'Blog\Service\PostService'
             )
         ),
-        'view_manager' => array( /** View Manager Config */ ),
-        'controllers'  => array( /** Controller Config */ ),
-        'router'       => array( /** Router Config */ )
+        ViewManager::CONFIGURATION       => array( /** View Manager Config */ ),
+        ControllerManager::CONFIGURATION => array( /** Controller Config */ ),
+        TreeRouteStack::CONFIGURATION    => array( /** Router Config */ )
     );
 
 As you can see we now have added a new Service that listens to the name ``Blog\Service\PostServiceInterface`` and

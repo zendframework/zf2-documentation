@@ -129,13 +129,16 @@ Créer le fichier suivant de configuration pour le module  ``Album`` :
 .. code-block:: php
 
     // module/Album/config/module.config.php:
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIGURATION => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
-        'view_manager' => array(
+        ViewManager::CONFIGURATION => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

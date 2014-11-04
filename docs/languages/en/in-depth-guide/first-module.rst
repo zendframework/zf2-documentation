@@ -132,9 +132,11 @@ configuration file:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+
     return array(
         // This lines opens the configuration for the RouteManager
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             // Open configuration for all possible routes
             'routes' => array(
                 // Define a new route called "post"
@@ -180,13 +182,16 @@ to add this key to the ``controllers`` configuration key inside your ``/module/B
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIGURATION => array(
             'invokables' => array(
                 'Blog\Controller\List' => 'Blog\Controller\ListController'
             )
         ),
-        'router' => array( /** Route Configuration */ )
+        TreeRouteStack::CONFIGURATION => array( /** Route Configuration */ )
     );
 
 This configuration defines ``Blog\Controller\List`` as an alias for the ``ListController`` under the namespace
@@ -350,14 +355,18 @@ need to let the application know where to look for view files. We do this within
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'view_manager' => array(
+        ViewManager::CONFIGURATION => array(
             'template_path_stack' => array(
                 __DIR__ . '/../view',
             ),
         ),
-        'controllers' => array( /** Controller Configuration */),
-        'router'      => array( /** Route Configuration */ )
+        ControllerManager::CONFIGURATION => array( /** Controller Configuration */),
+        TreeRouteStack::CONFIGURATION    => array( /** Route Configuration */ )
     );
 
 The above configuration tells the application that the folder ``/module/Blog/view`` has view files in it that match the

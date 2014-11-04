@@ -54,15 +54,19 @@ atualizado com o novo código em destaque.
     :emphasize-lines: 9-27
 
     <?php
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIGURATION => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
 
         // A seção a seguir é nova e deve ser adicionada ao arquivo
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -81,7 +85,7 @@ atualizado com o novo código em destaque.
             ),
         ),
 
-        'view_manager' => array(
+        ViewManager::CONFIGURATION => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

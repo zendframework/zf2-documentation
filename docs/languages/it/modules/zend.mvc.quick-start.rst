@@ -95,8 +95,10 @@ Modificheremo anche il nostro ``config/module.config.php`` come segue:
 .. code-block:: php
    :linenos:
 
+   use Zend\Mvc\View\Http\ViewManager;
+
    return array(
-       'view_manager' => array(
+       ViewManager::CONFIGURATION => array(
            'template_path_stack' => array(
                '<module-name>' => __DIR__ . '/../view'
            ),

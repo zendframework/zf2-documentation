@@ -51,16 +51,19 @@ actions. This is the updated module config file with the new code highlighted.
 .. code-block:: php
    :linenos:
    :emphasize-lines: 4,9-27
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIGURATION => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
 
         // The following section is new and should be added to your file
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -79,7 +82,7 @@ actions. This is the updated module config file with the new code highlighted.
             ),
         ),
 
-        'view_manager' => array(
+        ViewManager::CONFIGURATION => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

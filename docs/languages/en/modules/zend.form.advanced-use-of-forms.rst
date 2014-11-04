@@ -192,8 +192,10 @@ Or, you can do the same in your ``module.config.php`` file:
 .. code-block:: php
     :linenos:
 
+    use Zend\Form\FormElementManager;
+
     return array(
-        'form_elements' => array(
+        FormElementManager::CONFIGURATION => array(
             'invokables' => array(
                 'phone' => 'Application\Form\Element\Phone'
             )

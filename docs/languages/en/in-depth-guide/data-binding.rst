@@ -119,12 +119,18 @@ new route:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db'              => array( /** Db Config */ ),
-        'service_manager' => array( /** ServiceManager Config */ ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array( /** ControllerManager Config* */ ),
-        'router'          => array(
+        Adapter::CONFIGURATION           => array( /** Db Config */ ),
+        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIGURATION => array( /** ControllerManager Config* */ ),
+        TreeRouteStack::CONFIGURATION    => array(
             'routes' => array(
                 'blog' => array(
                     'type' => 'literal',
@@ -257,18 +263,24 @@ controller:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db'              => array( /** Db Config */ ),
-        'service_manager' => array( /** ServiceManager Config */ ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array(
+        Adapter::CONFIGURATION           => array( /** Db Config */ ),
+        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIGURATION => array(
             'factories' => array(
                 'Blog\Controller\List'   => 'Blog\Factory\ListControllerFactory',
                 'Blog\Controller\Write'  => 'Blog\Factory\WriteControllerFactory',
                 'Blog\Controller\Delete' => 'Blog\Factory\DeleteControllerFactory'
             )
         ),
-        'router'          => array(
+        TreeRouteStack::CONFIGURATION          => array(
             'routes' => array(
                 'post' => array(
                     'type' => 'literal',

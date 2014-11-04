@@ -70,16 +70,18 @@ following location inside config file:
 
 .. code-block:: php
     :linenos:
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\Router\Console\SimpleRouteStack;
 
     array(
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             'routes' => array(
                 // HTTP routes are defined here
             )
         ),
 
         'console' => array(
-            'router' => array(
+            SimpleRouteStack::CONFIGURATION => array(
                 'routes' => array(
                     // Console routes go here
                 )
@@ -92,11 +94,13 @@ Let's create our console route and point it to ``Application\Controller\IndexCon
 .. code-block:: php
     :linenos:
 
+    use Zend\Mvc\Router\Console\SimpleRouteStack;
+
     // we could define routes for Application\Controller\IndexController in Application module config file
     // which is usually located at modules/application/config/module.config.php
     array(
         'console' => array(
-            'router' => array(
+            SimpleRouteStack::CONFIGURATION => array(
                 'routes' => array(
                     'user-reset-password' => array(
                         'options' => array(

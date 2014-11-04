@@ -37,15 +37,18 @@ In this example we'll use the following simple route:
     :emphasize-lines: 12-20
 
     // FILE: modules/Application/config/module.config.php
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\Router\Console\SimpleRouteStack;
+
     array(
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             'routes' => array(
                 // HTTP routes are here
             )
         ),
 
         'console' => array(
-            'router' => array(
+            SimpleRouteStack::CONFIGURATION => array(
                 'routes' => array(
                     'list-users' => array(
                         'options' => array(

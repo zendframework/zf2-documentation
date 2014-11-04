@@ -44,8 +44,10 @@ You can provide this service to the ``ServiceManager`` in a configuration file:
     :linenos:
 
     // In a configuration file...
+    use Zend\ServiceManager\ServiceManager;
+
     return array(
-        'service_manager' => array(
+        ServiceManager::CONFIGURATION => array(
             'aliases' => array(
                 'Zend\Authentication\AuthenticationService' => 'my_auth_service',
             ),

@@ -32,8 +32,9 @@ literal route looks like this:
 .. code-block:: php
    :linenos:
    :emphasize-lines: 3, 4, 6, 8, 9
+    use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    'router' => array(
+    TreeRouteStack::CONFIGURATION => array(
         'routes' => array(
             'about' => array(
                 'type' => 'literal',
@@ -77,8 +78,9 @@ look like this:
 .. code-block:: php
    :linenos:
    :emphasize-lines: 4, 6, 11-13
+    use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    'router' => array(
+    TreeRouteStack::CONFIGURATION => array(
         'routes' => array(
             'archives' => array(
                 'type' => 'segment',
@@ -116,8 +118,9 @@ example route to have the ``year`` parameter optional and use the current year a
 .. code-block:: php
    :linenos:
    :emphasize-lines: 10
+    use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    'router' => array(
+    TreeRouteStack::CONFIGURATION => array(
         'routes' => array(
             'archives' => array(
                 'type' => 'segment',
@@ -164,8 +167,9 @@ ZendSkeletonApplication uses a very generic route, too. Let's take a look at a g
 .. code-block:: php
    :linenos:
    :emphasize-lines: 4, 6, 8-10, 13, 14
+    use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    'router' => array(
+    TreeRouteStack::CONFIGURATION => array(
         'routes' => array(
             'default' => array(
                 'type' => 'segment',
@@ -221,8 +225,9 @@ in the following configuration:
 .. code-block:: php
    :linenos:
    :emphasize-lines:
+    use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    'router' => array(
+    TreeRouteStack::CONFIGURATION => array(
         'routes' => array(
             'news' => array(
                 'type' => 'literal',
@@ -276,8 +281,9 @@ a look at a child routes configuration using the same example as above:
 .. code-block:: php
    :linenos:
    :emphasize-lines: 13, 14
+    use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    'router' => array(
+    TreeRouteStack::CONFIGURATION => array(
         'routes' => array(
             'news' => array(
                 'type' => 'literal',
@@ -366,12 +372,18 @@ a route of type ``Segment``. Furthermore we want to put this route as a child ro
 
     <?php
     // FileName: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db'              => array( /** DB Config */ ),
-        'service_manager' => array( /* ServiceManager Config */ ),
-        'view_manager'    => array( /* ViewManager Config */ ),
-        'controllers'     => array( /* ControllerManager Config */ ),
-        'router' => array(
+        Adapter::CONFIGURATION           => array( /** DB Config */ ),
+        ServiceManager::CONFIGURATION    => array( /* ServiceManager Config */ ),
+        ViewManager::CONFIGURATION       => array( /* ViewManager Config */ ),
+        ControllerManager::CONFIGURATION => array( /* ControllerManager Config */ ),
+        TreeRouteStack::CONFIGURATION    => array(
             'routes' => array(
                 'blog' => array(
                     'type' => 'literal',

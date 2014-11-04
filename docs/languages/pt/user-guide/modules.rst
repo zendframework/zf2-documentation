@@ -138,13 +138,16 @@ Crie um arquivo chamado ``module.config.php`` no diretório ``zf2-tutorial/modul
 .. code-block:: php
 
     <?php
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIGURATION => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
-        'view_manager' => array(
+        ViewManager::CONFIGURATION => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

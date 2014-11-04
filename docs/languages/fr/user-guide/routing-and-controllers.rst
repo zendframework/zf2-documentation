@@ -58,15 +58,19 @@ mis à jour avec le code qui est commenté.
 .. code-block:: php
 
     // module/Album/config/module.config.php:
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIGURATION => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
 
         // Code à ajouter à votre fichier.
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -85,7 +89,7 @@ mis à jour avec le code qui est commenté.
             ),
         ),
 
-        'view_manager' => array(
+        ViewManager::CONFIGURATION => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

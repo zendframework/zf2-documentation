@@ -118,8 +118,10 @@ The setup above can also be represented via configuration in an MVC application'
 .. code-block:: php
    :linenos:
 
-   return array(
-       'service_manager' => array(
+   use Zend\ServiceManager\ServiceManager;
+
+    return array(
+       ServiceManager::CONFIGURATION => array(
            'invokables' => array(
                'buzzer' => 'MyApp\Buzzer',
            ),

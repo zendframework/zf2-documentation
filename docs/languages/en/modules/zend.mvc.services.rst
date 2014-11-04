@@ -393,8 +393,10 @@ This abstract factory is opt-in. It uses the top-level configuration key "db", w
 .. code-block:: php
     :linenos:
 
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db' => array('adapters' => array(
+        Adapter::CONFIGURATION => array('adapters' => array(
             'Db\ReadOnly' => array(
                 'driver'   => 'Pdo_Sqlite',
                 'database' => 'data/db/users.db',
@@ -605,7 +607,9 @@ directives go to the ``config/application.config.php`` file.
    :linenos:
 
    <?php
-   return array(
+    use Zend\ServiceManager\ServiceManager;
+
+    return array(
        // This should be an array of module namespaces used in the application.
        'modules' => array(
        ),
@@ -662,7 +666,7 @@ directives go to the ``config/application.config.php`` file.
 
        // Initial configuration with which to seed the ServiceManager.
        // Should be compatible with Zend\ServiceManager\Config.
-       'service_manager' => array(
+       ServiceManager::CONFIGURATION => array(
        ),
    );
 
@@ -694,10 +698,16 @@ local configuration file overrides the global configuration.
    :linenos:
 
    <?php
+   use Zend\Mvc\Controller\ControllerManager;
+   use Zend\Mvc\Controller\PluginManager;
+   use Zend\View\HelperPluginManager;
+   use Zend\Mvc\Router\Http\TreeRouteStack;
+   use Zend\Mvc\View\Http\ViewManager;
+
    return array(
        // The following are used to configure controller loader
        // Should be compatible with Zend\ServiceManager\Config.
-       'controllers' => array(
+       ControllerManager::CONFIGURATION => array(
            // Map of controller "name" to class
            // This should be used if you do not need to inject any dependencies
            // in your controller
@@ -712,12 +722,12 @@ local configuration file overrides the global configuration.
 
        // The following are used to configure controller plugin loader
        // Should be compatible with Zend\ServiceManager\Config.
-       'controller_plugins' => array(
+       PluginManager::CONFIGURATION => array(
        ),
 
        // The following are used to configure view helper manager
        // Should be compatible with Zend\ServiceManager\Config.
-       'view_helpers' => array(
+       HelperPluginManager::CONFIGURATION => array(
        ),
 
        // The following is used to configure a Zend\Di\Di instance.
@@ -729,13 +739,13 @@ local configuration file overrides the global configuration.
        // Can contain any router configuration, but typically will always define
        // the routes for the application. See the router documentation for details
        // on route configuration.
-       'router' => array(
+       TreeRouteStack::CONFIGURATION => array(
            'routes' => array(
            ),
        ),
 
        // ViewManager configuration
-       'view_manager' => array(
+       ViewManager::CONFIGURATION => array(
            // Base URL path to the application
            'base_path' => $stringBasePath,
 

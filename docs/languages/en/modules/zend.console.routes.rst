@@ -29,15 +29,18 @@ All Console Routes are automatically read from the following configuration locat
     :emphasize-lines: 9-15
 
     // This can sit inside of modules/Application/config/module.config.php or any other module's config.
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\Router\Console\SimpleRouteStack;
+
     array(
-        'router' => array(
+        TreeRouteStack::CONFIGURATION => array(
             'routes' => array(
                 // HTTP routes are here
             )
         ),
 
         'console' => array(
-            'router' => array(
+            SimpleRouteStack::CONFIGURATION => array(
                 'routes' => array(
                     // Console routes go here
                 )

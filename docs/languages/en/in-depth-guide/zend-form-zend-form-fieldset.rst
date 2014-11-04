@@ -152,17 +152,23 @@ controller-factory within the configuration:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db'              => array( /** DB Config */ ),
-        'service_manager' => array( /** ServiceManager Config */),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array(
+        Adapter::CONFIGURATION           => array( /** DB Config */ ),
+        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */),
+        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIGURATION => array(
             'factories' => array(
                 'Blog\Controller\List'  => 'Blog\Factory\ListControllerFactory',
                 'Blog\Controller\Write' => 'Blog\Factory\WriteControllerFactory'
             )
         ),
-        'router'          => array( /** Router Config */ )
+        TreeRouteStack::CONFIGURATION          => array( /** Router Config */ )
     );
 
 Nest step would be to write the ``WriteControllerFactory``. Have the factory return the ``WriteController`` and add the
@@ -241,12 +247,18 @@ Right on to creating the new route:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db'              => array( /** Db Config */ ),
-        'service_manager' => array( /** ServiceManager Config */ ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array( /** Controller Config */ ),
-        'router'          => array(
+        Adapter::CONFIGURATION           => array( /** Db Config */ ),
+        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIGURATION => array( /** Controller Config */ ),
+        TreeRouteStack::CONFIGURATION    => array(
             'routes' => array(
                 'blog' => array(
                     'type' => 'literal',

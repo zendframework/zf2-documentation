@@ -12,6 +12,8 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
 
     <?php
     // your configuration file, e.g., config/autoload/global.php
+    use Zend\ServiceManager\ServiceManager;
+
     return array(
         // ...
 
@@ -37,7 +39,7 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
                 ),
             ),
         ),
-        'service_manager' => array(
+        ServiceManager::CONFIGURATION => array(
             'factories' => array(
                 'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
             ),
