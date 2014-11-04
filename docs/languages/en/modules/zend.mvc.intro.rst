@@ -2,7 +2,6 @@
 
 Introduction to the MVC Layer
 =============================
-s
 ``Zend\Mvc`` is a brand new MVC implementation designed from the ground up for Zend Framework 2,
 focusing on performance and flexibility.
 
