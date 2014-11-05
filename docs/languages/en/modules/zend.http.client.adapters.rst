@@ -463,7 +463,7 @@ test this feature.
 
    try {
        // This call will result in a Zend\Http\Client\Adapter\Exception\RuntimeException
-       $client->request();
+       $client->send();
    } catch (Zend\Http\Client\Adapter\Exception\RuntimeException $e) {
        // ...
    }

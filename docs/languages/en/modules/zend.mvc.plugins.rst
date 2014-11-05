@@ -302,7 +302,7 @@ The plugin exposes a single method, ``dispatch()``, which takes two arguments:
 - ``$name``, the name of the controller to invoke. This may be either the fully qualified class name, or an alias
   defined and recognized by the ``ServiceManager`` instance attached to the invoking controller.
 
-- ``$params`` is an optional array of parameters with which to see a ``RouteMatch`` object for purposes of this
+- ``$params`` is an optional array of parameters with which to seed a ``RouteMatch`` object for purposes of this
   specific request. Meaning the parameters will be matched by their key to the routing identifiers in the config
   (otherwise non-matching keys are ignored)
 
@@ -627,14 +627,6 @@ The ``Redirect`` plugin does this work for you. It offers three methods:
    :noindex:
 
    Refresh to current route
-
-   :rtype: ``Zend\Http\Response``
-
-.. function:: toReferer(string $defaultUrl = null)
-   :noindex:
-
-   Redirects to the referring URL if it is present in the request headers. If is not present, 
-   redirect to the provided ``$defaultUrl``. If none of the previous two URLs are present, redirect to the base route.
 
    :rtype: ``Zend\Http\Response``
 
