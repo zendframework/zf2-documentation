@@ -59,8 +59,8 @@ Configuration Options
 Available Methods
 -----------------
 
-``Zend\Mail\Transport\FileOptions`` extends ``Zend\Stdlib\Options``, and inherits all functionality from that
-class; this includes ``ArrayAccess`` and property overloading. Additionally, the following explicit setters and
+``Zend\Mail\Transport\FileOptions`` extends ``Zend\Stdlib\AbstractOptions``, and inherits all functionality from that
+class; this includes property overloading. Additionally, the following explicit setters and
 getters are provided.
 
 .. _zend.mail.file-options.methods.set-path:

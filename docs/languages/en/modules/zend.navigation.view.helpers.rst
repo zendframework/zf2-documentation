@@ -35,7 +35,7 @@ All built-in helpers extend ``Zend\View\Helper\Navigation\AbstractHelper``, whic
   default, and ``hasContainer()`` checks if the helper has container registered.
 
 - ``getTranslator()`` and ``setTranslator()`` gets and sets the translator used for translating labels and titles.
-  ``getUseTranslator()`` and ``setUseTranslator()`` controls whether the translator should be enabled. The method
+  ``isTranslatorEnabled()`` and ``setTranslatorEnabled()`` controls whether the translator should be enabled. The method
   ``hasTranslator()`` checks if the helper has a translator registered.
 
 - ``getAcl()``, ``setAcl()``, ``getRole()`` and ``setRole()``, gets and sets *ACL*
@@ -110,7 +110,7 @@ Translation of labels and titles
 The navigation helpers support translation of page labels and titles. You can set a translator of type
 ``Zend\I18n\Translator`` in the helper using ``$helper->setTranslator($translator)``.
 
-If you want to disable translation, use ``$helper->setUseTranslator(false)``.
+If you want to disable translation, use ``$helper->setTranslatorEnabled(false)``.
 
 The :ref:`proxy helper <zend.navigation.view.helper.navigation>` will inject its own translator to the
 helper it proxies to if the proxied helper doesn't already have a translator.

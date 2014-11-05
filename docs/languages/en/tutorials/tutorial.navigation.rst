@@ -234,7 +234,7 @@ tell the breadcrumb helper to use the partial we have just written:
        echo $this->navigation('navigation') // <-- Update this!!
                  ->breadcrumbs()
                  ->setMinDepth(0)
-                 ->setPartial(array('partial/breadcrumb.phtml', 'Album'));
+                 ->setPartial('partial/breadcrumb.phtml');
        ?>
        <?php echo $this->content; ?>
    </div>

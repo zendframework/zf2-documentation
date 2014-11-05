@@ -87,14 +87,14 @@ The inflector target is a string with some placeholders for variables. Placehold
 a colon (':') by default, followed by a variable name: ':script', ':path', etc. The ``filter()`` method looks for
 the identifier followed by the variable name being replaced.
 
-You can change the identifier using the ``setTargetReplacementIdentifier()`` method, or passing it as the third
+You can change the identifier using the ``setTargetReplacementIdentifier()`` method, or passing it as the fourth
 argument to the constructor:
 
 .. code-block:: php
    :linenos:
 
    // Via constructor:
-   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', null, '#');
+   $inflector = new Zend\Filter\Inflector('#foo/#bar.#sfx', array(), null, '#');
 
    // Via accessor:
    $inflector->setTargetReplacementIdentifier('#');
@@ -279,8 +279,8 @@ filter rules, according to the following notation:
    // Could also use setRules() with this notation:
    $inflector->addRules(array(
        // filter rules:
-       ':controller' => array('CamelCaseToUnderscore','StringToLower'),
-       ':action'     => array('CamelCaseToUnderscore','StringToLower'),
+       ':controller' => array('Word\CamelCaseToUnderscore','StringToLower'),
+       ':action'     => array('Word\CamelCaseToUnderscore','StringToLower'),
 
        // Static rule:
        'suffix'      => 'phtml'

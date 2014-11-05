@@ -21,6 +21,14 @@
    user-guide/styling-and-translations
    user-guide/forms-and-actions
    user-guide/conclusion
+   in-depth-guide/first-module
+   in-depth-guide/services-and-servicemanager
+   in-depth-guide/preparing-db-backend
+   in-depth-guide/zend-db-sql-zend-stdlib-hydrator
+   in-depth-guide/understanding-routing
+   in-depth-guide/zend-form-zend-form-fieldset
+   in-depth-guide/data-binding
+   in-depth-guide/review
    getting-started-with-zend-studio/overview
    getting-started-with-zend-studio/skeleton-application
    getting-started-with-zend-studio/the-application
@@ -363,6 +371,20 @@
     * :doc:`user-guide/styling-and-translations`
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
+
+|InDepthTutorial|
+-----------------
+
+|InDepthTutorialIntroduction|
+
+    * :doc:`in-depth-guide/first-module`
+    * :doc:`in-depth-guide/services-and-servicemanager`
+    * :doc:`in-depth-guide/preparing-db-backend`
+    * :doc:`in-depth-guide/zend-db-sql-zend-stdlib-hydrator`
+    * :doc:`in-depth-guide/understanding-routing`
+    * :doc:`in-depth-guide/zend-form-zend-form-fieldset`
+    * :doc:`in-depth-guide/data-binding`
+    * :doc:`in-depth-guide/review`
 
 |GettingStartedWithZendStudio|
 ------------------------------

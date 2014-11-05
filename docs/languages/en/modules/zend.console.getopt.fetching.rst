@@ -18,7 +18,7 @@ Handling Getopt Exceptions
 --------------------------
 
 If the user gave any invalid options on the command-line, the parsing function throws a
-``Zend\Console\Getopt\Exception``. You should catch this exception in your application code. You can use the
+``Zend\Console\Exception\RuntimeException``. You should catch this exception in your application code. You can use the
 ``parse()`` method to force the object to parse the arguments. This is useful because you can invoke ``parse()`` in
 a **try** block. If it passes, you can be sure that the parsing won't throw an exception again. The exception
 thrown has a custom method ``getUsageMessage()``, which returns as a string the formatted set of usage messages for
@@ -35,7 +35,7 @@ Catching Getopt Exceptions
    try {
        $opts = new Zend\Console\Getopt('abp:');
        $opts->parse();
-   } catch (Zend\Console\Getopt\Exception $e) {
+   } catch (Zend\Console\Exception\RuntimeException $e) {
        echo $e->getUsageMessage();
        exit;
    }
