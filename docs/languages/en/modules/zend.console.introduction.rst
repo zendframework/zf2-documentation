@@ -74,14 +74,14 @@ following location inside config file:
     use Zend\Mvc\Router\Console\SimpleRouteStack;
 
     array(
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 // HTTP routes are defined here
             )
         ),
 
         'console' => array(
-            SimpleRouteStack::CONFIGURATION => array(
+            SimpleRouteStack::CONFIG => array(
                 'routes' => array(
                     // Console routes go here
                 )
@@ -100,7 +100,7 @@ Let's create our console route and point it to ``Application\Controller\IndexCon
     // which is usually located at modules/application/config/module.config.php
     array(
         'console' => array(
-            SimpleRouteStack::CONFIGURATION => array(
+            SimpleRouteStack::CONFIG => array(
                 'routes' => array(
                     'user-reset-password' => array(
                         'options' => array(

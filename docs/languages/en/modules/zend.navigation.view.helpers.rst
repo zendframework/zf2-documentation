@@ -340,7 +340,7 @@ In addition to the container above, the following setup is assumed:
 
    return array(
        /* ... */
-       TreeRouteStack::CONFIGURATION array(
+       TreeRouteStack::CONFIG array(
            'routes' => array(
                'archive' => array(
                    'type'    => 'Segment',

@@ -59,14 +59,14 @@ atualizado com o novo código em destaque.
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ControllerManager::CONFIGURATION => array(
+        ControllerManager::CONFIG => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
 
         // A seção a seguir é nova e deve ser adicionada ao arquivo
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -85,7 +85,7 @@ atualizado com o novo código em destaque.
             ),
         ),
 
-        ViewManager::CONFIGURATION => array(
+        ViewManager::CONFIG => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

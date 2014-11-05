@@ -126,11 +126,11 @@ new route:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array( /** Db Config */ ),
-        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array( /** ControllerManager Config* */ ),
-        TreeRouteStack::CONFIGURATION    => array(
+        Adapter::CONFIG           => array( /** Db Config */ ),
+        ServiceManager::CONFIG    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array( /** ControllerManager Config* */ ),
+        TreeRouteStack::CONFIG    => array(
             'routes' => array(
                 'blog' => array(
                     'type' => 'literal',
@@ -270,17 +270,17 @@ controller:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array( /** Db Config */ ),
-        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array(
+        Adapter::CONFIG           => array( /** Db Config */ ),
+        ServiceManager::CONFIG    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array(
             'factories' => array(
                 'Blog\Controller\List'   => 'Blog\Factory\ListControllerFactory',
                 'Blog\Controller\Write'  => 'Blog\Factory\WriteControllerFactory',
                 'Blog\Controller\Delete' => 'Blog\Factory\DeleteControllerFactory'
             )
         ),
-        TreeRouteStack::CONFIGURATION          => array(
+        TreeRouteStack::CONFIG          => array(
             'routes' => array(
                 'post' => array(
                     'type' => 'literal',

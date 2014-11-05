@@ -327,14 +327,14 @@ pas dans le module Album) avec le code suivant:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION => array(
+        Adapter::CONFIG => array(
             'driver'         => 'Pdo',
             'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
             'driver_options' => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ),
         ),
-        ServiceManager::CONFIGURATION => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
@@ -352,7 +352,7 @@ ignoré):
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION => array(
+        Adapter::CONFIG => array(
             'username' => 'VOTRE NOM UTILISATEUR',
             'password' => 'VOTRE MOT DE PASSE',
         ),

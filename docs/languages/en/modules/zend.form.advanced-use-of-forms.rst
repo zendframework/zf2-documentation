@@ -195,7 +195,7 @@ Or, you can do the same in your ``module.config.php`` file:
     use Zend\Form\FormElementManager;
 
     return array(
-        FormElementManager::CONFIGURATION => array(
+        FormElementManager::CONFIG => array(
             'invokables' => array(
                 'phone' => 'Application\Form\Element\Phone'
             )

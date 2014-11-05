@@ -39,7 +39,7 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
                 ),
             ),
         ),
-        ServiceManager::CONFIGURATION => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
             ),

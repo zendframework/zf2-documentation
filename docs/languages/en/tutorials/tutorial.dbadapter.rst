@@ -31,11 +31,11 @@ look something like this:
    use Zend\Db\Adapter\Adapter;
 
    return array(
-      Adapter::CONFIGURATION => array(
+      Adapter::CONFIG => array(
          'driver'         => 'Pdo',
          'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
       ),
-      ServiceManager::CONFIGURATION => array(
+      ServiceManager::CONFIG => array(
          'factories' => array(
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
          ),
@@ -74,11 +74,11 @@ In order to utilize this adapter in non-ServiceLocatorAware classes, you can use
    use Zend\Db\Adapter\Adapter;
 
    return array(
-      Adapter::CONFIGURATION => array(
+      Adapter::CONFIG => array(
          'driver'         => 'Pdo',
          'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
       ),
-      ServiceManager::CONFIGURATION => array(
+      ServiceManager::CONFIG => array(
          'factories' => array(
             'Zend\Db\Adapter\Adapter' => function ($serviceManager) {
                $adapterFactory = new Zend\Db\Adapter\AdapterServiceFactory();

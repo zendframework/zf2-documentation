@@ -238,14 +238,14 @@ this by creating a factory the same way we have done for the ``ListController``.
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ServiceManager::CONFIGURATION => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Blog\Service\PostServiceInterface' => 'Blog\Factory\PostServiceFactory'
             )
         ),
-        ViewManager::CONFIGURATION        => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION  => array( /** ControllerManager Config */ ),
-        TreeRouteStack::CONFIGURATION     => array( /** Router Config */ )
+        ViewManager::CONFIG        => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG  => array( /** ControllerManager Config */ ),
+        TreeRouteStack::CONFIG     => array( /** Router Config */ )
     );
 
 Going by the above configuration we now need to create the class ``Blog\Factory\PostServiceFactory`` so let's go ahead

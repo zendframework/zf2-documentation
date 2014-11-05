@@ -33,14 +33,14 @@ All Console Routes are automatically read from the following configuration locat
     use Zend\Mvc\Router\Console\SimpleRouteStack;
 
     array(
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 // HTTP routes are here
             )
         ),
 
         'console' => array(
-            SimpleRouteStack::CONFIGURATION => array(
+            SimpleRouteStack::CONFIG => array(
                 'routes' => array(
                     // Console routes go here
                 )

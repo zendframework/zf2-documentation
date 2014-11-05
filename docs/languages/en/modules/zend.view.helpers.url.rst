@@ -28,7 +28,7 @@ and it has two **optional** parameters called ``action`` and ``id``.
    use Zend\Mvc\Router\Http\TreeRouteStack;
 
    // In a configuration array (e.g. returned by some module's module.config.php)
-   TreeRouteStack::CONFIGURATION => array(
+   TreeRouteStack::CONFIG => array(
        'routes' => array(
            'news' => array(
                'type'    => 'segment',
@@ -96,7 +96,7 @@ We will use the same route configuration as defined above:
    use Zend\Mvc\Router\Http\TreeRouteStack;
 
    // In a configuration array (e.g. returned by some module's module.config.php)
-   TreeRouteStack::CONFIGURATION => array(
+   TreeRouteStack::CONFIG => array(
        'routes' => array(
            'news' => array(
                'type'    => 'segment',

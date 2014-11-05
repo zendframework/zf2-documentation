@@ -423,13 +423,13 @@ remember back to when we created the controller, we added an entry to the ``invo
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ViewManager::CONFIGURATION => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION  => array(
+        ViewManager::CONFIG => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG  => array(
             'invokables' => array(
                 'Blog\Controller\List' => 'Blog\Controller\ListController'
             )
         ),
-        TreeRouteStack::CONFIGURATION => array( /** Router Config */ )
+        TreeRouteStack::CONFIG => array( /** Router Config */ )
     );
 
 An ``invokable`` is a class that can be constructed without any arguments. Since our ``Blog\Controller\ListController``
@@ -449,13 +449,13 @@ We'll now create one for our ``ListController``. Let's modify our configuration 
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ViewManager::CONFIGURATION => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION  => array(
+        ViewManager::CONFIG => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG  => array(
             'factories' => array(
                 'Blog\Controller\List' => 'Blog\Factory\ListControllerFactory'
             )
         ),
-        TreeRouteStack::CONFIGURATION => array( /** Router Config */ )
+        TreeRouteStack::CONFIG => array( /** Router Config */ )
     );
 
 As you can see we no longer have the key ``invokables``, instead we now have the key ``factories``. Furthermore the value
@@ -574,14 +574,14 @@ inside our ``controllers`` array. Check out the new configuration file:
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ServiceManager::CONFIGURATION => array(
+        ServiceManager::CONFIG => array(
             'invokables' => array(
                 'Blog\Service\PostServiceInterface' => 'Blog\Service\PostService'
             )
         ),
-        ViewManager::CONFIGURATION       => array( /** View Manager Config */ ),
-        ControllerManager::CONFIGURATION => array( /** Controller Config */ ),
-        TreeRouteStack::CONFIGURATION    => array( /** Router Config */ )
+        ViewManager::CONFIG       => array( /** View Manager Config */ ),
+        ControllerManager::CONFIG => array( /** Controller Config */ ),
+        TreeRouteStack::CONFIG    => array( /** Router Config */ )
     );
 
 As you can see we now have added a new Service that listens to the name ``Blog\Service\PostServiceInterface`` and

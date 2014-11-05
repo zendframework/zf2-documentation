@@ -159,16 +159,16 @@ controller-factory within the configuration:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array( /** DB Config */ ),
-        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array(
+        Adapter::CONFIG           => array( /** DB Config */ ),
+        ServiceManager::CONFIG    => array( /** ServiceManager Config */),
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array(
             'factories' => array(
                 'Blog\Controller\List'  => 'Blog\Factory\ListControllerFactory',
                 'Blog\Controller\Write' => 'Blog\Factory\WriteControllerFactory'
             )
         ),
-        TreeRouteStack::CONFIGURATION          => array( /** Router Config */ )
+        TreeRouteStack::CONFIG          => array( /** Router Config */ )
     );
 
 Nest step would be to write the ``WriteControllerFactory``. Have the factory return the ``WriteController`` and add the
@@ -254,11 +254,11 @@ Right on to creating the new route:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array( /** Db Config */ ),
-        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array( /** Controller Config */ ),
-        TreeRouteStack::CONFIGURATION    => array(
+        Adapter::CONFIG           => array( /** Db Config */ ),
+        ServiceManager::CONFIG    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array( /** Controller Config */ ),
+        TreeRouteStack::CONFIG    => array(
             'routes' => array(
                 'blog' => array(
                     'type' => 'literal',

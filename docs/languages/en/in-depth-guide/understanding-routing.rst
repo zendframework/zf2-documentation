@@ -34,7 +34,7 @@ literal route looks like this:
    :emphasize-lines: 3, 4, 6, 8, 9
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    TreeRouteStack::CONFIGURATION => array(
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'about' => array(
                 'type' => 'literal',
@@ -80,7 +80,7 @@ look like this:
    :emphasize-lines: 4, 6, 11-13
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    TreeRouteStack::CONFIGURATION => array(
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'archives' => array(
                 'type' => 'segment',
@@ -120,7 +120,7 @@ example route to have the ``year`` parameter optional and use the current year a
    :emphasize-lines: 10
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    TreeRouteStack::CONFIGURATION => array(
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'archives' => array(
                 'type' => 'segment',
@@ -169,7 +169,7 @@ ZendSkeletonApplication uses a very generic route, too. Let's take a look at a g
    :emphasize-lines: 4, 6, 8-10, 13, 14
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    TreeRouteStack::CONFIGURATION => array(
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'default' => array(
                 'type' => 'segment',
@@ -227,7 +227,7 @@ in the following configuration:
    :emphasize-lines:
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    TreeRouteStack::CONFIGURATION => array(
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'news' => array(
                 'type' => 'literal',
@@ -283,7 +283,7 @@ a look at a child routes configuration using the same example as above:
    :emphasize-lines: 13, 14
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
-    TreeRouteStack::CONFIGURATION => array(
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'news' => array(
                 'type' => 'literal',
@@ -379,11 +379,11 @@ a route of type ``Segment``. Furthermore we want to put this route as a child ro
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array( /** DB Config */ ),
-        ServiceManager::CONFIGURATION    => array( /* ServiceManager Config */ ),
-        ViewManager::CONFIGURATION       => array( /* ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array( /* ControllerManager Config */ ),
-        TreeRouteStack::CONFIGURATION    => array(
+        Adapter::CONFIG           => array( /** DB Config */ ),
+        ServiceManager::CONFIG    => array( /* ServiceManager Config */ ),
+        ViewManager::CONFIG       => array( /* ViewManager Config */ ),
+        ControllerManager::CONFIG => array( /* ControllerManager Config */ ),
+        TreeRouteStack::CONFIG    => array(
             'routes' => array(
                 'blog' => array(
                     'type' => 'literal',

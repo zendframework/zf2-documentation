@@ -102,7 +102,7 @@ As such, you have a variety of ways to override service manager configuration se
    use Zend\ServiceManager\ServiceManager;
 
     return array(
-       ServiceManager::CONFIGURATION => array(
+       ServiceManager::CONFIG => array(
            'abstract_factories' => array(
                // Valid values include names of classes implementing
                // AbstractFactoryInterface, instances of classes implementing

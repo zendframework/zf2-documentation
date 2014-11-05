@@ -136,7 +136,7 @@ configuration file:
 
     return array(
         // This lines opens the configuration for the RouteManager
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             // Open configuration for all possible routes
             'routes' => array(
                 // Define a new route called "post"
@@ -186,12 +186,12 @@ to add this key to the ``controllers`` configuration key inside your ``/module/B
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
     return array(
-        ControllerManager::CONFIGURATION => array(
+        ControllerManager::CONFIG => array(
             'invokables' => array(
                 'Blog\Controller\List' => 'Blog\Controller\ListController'
             )
         ),
-        TreeRouteStack::CONFIGURATION => array( /** Route Configuration */ )
+        TreeRouteStack::CONFIG => array( /** Route Configuration */ )
     );
 
 This configuration defines ``Blog\Controller\List`` as an alias for the ``ListController`` under the namespace
@@ -360,13 +360,13 @@ need to let the application know where to look for view files. We do this within
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ViewManager::CONFIGURATION => array(
+        ViewManager::CONFIG => array(
             'template_path_stack' => array(
                 __DIR__ . '/../view',
             ),
         ),
-        ControllerManager::CONFIGURATION => array( /** Controller Configuration */),
-        TreeRouteStack::CONFIGURATION    => array( /** Route Configuration */ )
+        ControllerManager::CONFIG => array( /** Controller Configuration */),
+        TreeRouteStack::CONFIG    => array( /** Route Configuration */ )
     );
 
 The above configuration tells the application that the folder ``/module/Blog/view`` has view files in it that match the

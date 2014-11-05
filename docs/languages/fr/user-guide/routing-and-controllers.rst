@@ -63,14 +63,14 @@ mis à jour avec le code qui est commenté.
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ControllerManager::CONFIGURATION => array(
+        ControllerManager::CONFIG => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
 
         // Code à ajouter à votre fichier.
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -89,7 +89,7 @@ mis à jour avec le code qui est commenté.
             ),
         ),
 
-        ViewManager::CONFIGURATION => array(
+        ViewManager::CONFIG => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

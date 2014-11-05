@@ -396,7 +396,7 @@ This abstract factory is opt-in. It uses the top-level configuration key "db", w
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION => array('adapters' => array(
+        Adapter::CONFIG => array('adapters' => array(
             'Db\ReadOnly' => array(
                 'driver'   => 'Pdo_Sqlite',
                 'database' => 'data/db/users.db',
@@ -666,7 +666,7 @@ directives go to the ``config/application.config.php`` file.
 
        // Initial configuration with which to seed the ServiceManager.
        // Should be compatible with Zend\ServiceManager\Config.
-       ServiceManager::CONFIGURATION => array(
+       ServiceManager::CONFIG => array(
        ),
    );
 
@@ -707,7 +707,7 @@ local configuration file overrides the global configuration.
    return array(
        // The following are used to configure controller loader
        // Should be compatible with Zend\ServiceManager\Config.
-       ControllerManager::CONFIGURATION => array(
+       ControllerManager::CONFIG => array(
            // Map of controller "name" to class
            // This should be used if you do not need to inject any dependencies
            // in your controller
@@ -722,12 +722,12 @@ local configuration file overrides the global configuration.
 
        // The following are used to configure controller plugin loader
        // Should be compatible with Zend\ServiceManager\Config.
-       PluginManager::CONFIGURATION => array(
+       PluginManager::CONFIG => array(
        ),
 
        // The following are used to configure view helper manager
        // Should be compatible with Zend\ServiceManager\Config.
-       HelperPluginManager::CONFIGURATION => array(
+       HelperPluginManager::CONFIG => array(
        ),
 
        // The following is used to configure a Zend\Di\Di instance.
@@ -739,13 +739,13 @@ local configuration file overrides the global configuration.
        // Can contain any router configuration, but typically will always define
        // the routes for the application. See the router documentation for details
        // on route configuration.
-       TreeRouteStack::CONFIGURATION => array(
+       TreeRouteStack::CONFIG => array(
            'routes' => array(
            ),
        ),
 
        // ViewManager configuration
-       ViewManager::CONFIGURATION => array(
+       ViewManager::CONFIG => array(
            // Base URL path to the application
            'base_path' => $stringBasePath,
 

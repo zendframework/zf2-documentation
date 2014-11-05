@@ -588,7 +588,7 @@ how to set up routes in config files.
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
     return array(
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 // Literal route named "home"
                 'home' => array(
@@ -623,7 +623,7 @@ how to set up routes in config files.
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
     return array(
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 // Literal route named "home"
                 'home' => array(
@@ -694,7 +694,7 @@ from the above example:
     use Zend\Mvc\Router\Http\TreeRouteStack;
 
     return array(
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 'modules.zendframework.com' => array(
                     'type' => 'Zend\Mvc\Router\Http\Hostname',

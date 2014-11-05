@@ -57,14 +57,14 @@ acciones de album. Este es el archivo de configuración actualizado, con el nuev
     use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        ControllerManager::CONFIGURATION => array(
+        ControllerManager::CONFIG => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
         
         // La siguiente sección es nueva y debería ser añadida a tu fichero
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -83,7 +83,7 @@ acciones de album. Este es el archivo de configuración actualizado, con el nuev
             ),
         ),
 
-        ViewManager::CONFIGURATION => array(
+        ViewManager::CONFIG => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

@@ -121,7 +121,7 @@ The setup above can also be represented via configuration in an MVC application'
    use Zend\ServiceManager\ServiceManager;
 
     return array(
-       ServiceManager::CONFIGURATION => array(
+       ServiceManager::CONFIG => array(
            'invokables' => array(
                'buzzer' => 'MyApp\Buzzer',
            ),

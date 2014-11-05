@@ -237,14 +237,14 @@ que deberá asignar a su sistema de control de versiones. Puede utilizar ``local
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION => array(
+        Adapter::CONFIG => array(
             'driver'         => 'Pdo',
             'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
             'driver_options' => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ),
         ),
-        ServiceManager::CONFIGURATION => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Zend\Db\Adapter\Adapter' 
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
@@ -261,7 +261,7 @@ ya que no están en el repositorio git (``local.php`` es ignorado):
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION => array(
+        Adapter::CONFIG => array(
             'username' => 'YOUR USERNAME HERE',
             'password' => 'YOUR PASSWORD HERE',
         ),

@@ -57,7 +57,7 @@ top-level key called ``db``:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array(
+        Adapter::CONFIG           => array(
             'driver'         => 'Pdo',
             'username'       => 'SECRET_USERNAME',  //edit this
             'password'       => 'SECRET_PASSWORD',  //edit this
@@ -66,10 +66,10 @@ top-level key called ``db``:
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             )
         ),
-        ServiceManager::CONFIGURATION    => array( /** ServiceManager Config */ ),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array( /** ControllerManager Config */ ),
-        TreeRouteStack::CONFIGURATION    => array( /** Router Config */ )
+        ServiceManager::CONFIG    => array( /** ServiceManager Config */ ),
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array( /** ControllerManager Config */ ),
+        TreeRouteStack::CONFIG    => array( /** Router Config */ )
     );
 
 As you can see we've added the ``db``-key and inside we create the parameters required to create a driver instance.
@@ -90,7 +90,7 @@ As you can see we've added the ``db``-key and inside we create the parameters re
         use Zend\Db\Adapter\Adapter;
 
         return array(
-                Adapter::CONFIGURATION => array(
+                Adapter::CONFIG => array(
                     'driver'         => 'Pdo',
                     'username'       => 'SECRET_USERNAME',  //edit this
                     'password'       => 'SECRET_PASSWORD',  //edit this
@@ -118,7 +118,7 @@ will look like the following:
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array(
+        Adapter::CONFIG           => array(
             'driver'         => 'Pdo',
             'username'       => 'SECRET_USERNAME',  //edit this
             'password'       => 'SECRET_PASSWORD',  //edit this
@@ -127,15 +127,15 @@ will look like the following:
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             )
         ),
-        ServiceManager::CONFIGURATION    => array(
+        ServiceManager::CONFIG    => array(
             'factories' => array(
                 'Blog\Service\PostServiceInterface' => 'Blog\Service\Factory\PostServiceFactory',
                 'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array( /** ControllerManager Config */ ),
-        TreeRouteStack::CONFIGURATION    => array( /** Router Config */ )
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array( /** ControllerManager Config */ ),
+        TreeRouteStack::CONFIG    => array( /** Router Config */ )
     );
 
 Note the new Service that we called ``Zend\Db\Adapter\Adapter``. Calling this Service will now always give back a
@@ -287,17 +287,17 @@ get a mapper implementation. Modify the configuration so that this key will call
     use Zend\Db\Adapter\Adapter;
 
     return array(
-        Adapter::CONFIGURATION           => array( /** Db Config */ ),
-        ServiceManager::CONFIGURATION    => array(
+        Adapter::CONFIG           => array( /** Db Config */ ),
+        ServiceManager::CONFIG    => array(
             'factories' => array(
                 'Blog\Mapper\PostMapperInterface'   => 'Blog\Factory\ZendDbSqlMapperFactory',
                 'Blog\Service\PostServiceInterface' => 'Blog\Service\Factory\PostServiceFactory',
                 'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
-        ViewManager::CONFIGURATION       => array( /** ViewManager Config */ ),
-        ControllerManager::CONFIGURATION => array( /** ControllerManager Config */ ),
-        TreeRouteStack::CONFIGURATION    => array( /** Router Config */ )
+        ViewManager::CONFIG       => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG => array( /** ControllerManager Config */ ),
+        TreeRouteStack::CONFIG    => array( /** Router Config */ )
     );
 
 With the adapter in place you're now able to refresh the blog index at ``localhost:8080/blog`` and you'll notice that

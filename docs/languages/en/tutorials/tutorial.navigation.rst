@@ -55,7 +55,7 @@ application, and not just to our album pages:
 
    use Zend\ServiceManager\ServiceManager;
 
-   ServiceManager::CONFIGURATION => array(
+   ServiceManager::CONFIG => array(
        'factories' => array(
            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', // <-- add this
        ),

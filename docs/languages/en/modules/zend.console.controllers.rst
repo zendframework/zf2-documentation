@@ -41,14 +41,14 @@ In this example we'll use the following simple route:
     use Zend\Mvc\Router\Console\SimpleRouteStack;
 
     array(
-        TreeRouteStack::CONFIGURATION => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 // HTTP routes are here
             )
         ),
 
         'console' => array(
-            SimpleRouteStack::CONFIGURATION => array(
+            SimpleRouteStack::CONFIG => array(
                 'routes' => array(
                     'list-users' => array(
                         'options' => array(
