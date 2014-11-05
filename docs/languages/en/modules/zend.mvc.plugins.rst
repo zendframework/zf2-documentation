@@ -302,7 +302,7 @@ The plugin exposes a single method, ``dispatch()``, which takes two arguments:
 - ``$name``, the name of the controller to invoke. This may be either the fully qualified class name, or an alias
   defined and recognized by the ``ServiceManager`` instance attached to the invoking controller.
 
-- ``$params`` is an optional array of parameters with which to see a ``RouteMatch`` object for purposes of this
+- ``$params`` is an optional array of parameters with which to seed a ``RouteMatch`` object for purposes of this
   specific request. Meaning the parameters will be matched by their key to the routing identifiers in the config
   (otherwise non-matching keys are ignored)
 
