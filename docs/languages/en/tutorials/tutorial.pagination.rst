@@ -400,7 +400,7 @@ the ground work needed to display the control:
         // the scrolling style
         'sliding',
         // the partial to use to render the control
-        array('partial/paginator.phtml', 'Album'),
+        'partial/paginator.phtml',
         // the route to link to when a user clicks a control link
         array(
             'route' => 'album'

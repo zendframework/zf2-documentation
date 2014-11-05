@@ -2,13 +2,13 @@
 
 .. _zend.validator.db:
 
-Db\\RecordExists and Db\\NoRecordExists
-=======================================
+Db\\RecordExists and Db\\NoRecordExists Validators
+==================================================
 
 ``Zend\Validator\Db\RecordExists`` and ``Zend\Validator\Db\NoRecordExists`` provide a means to test whether a
 record exists in a given table of a database, with a given value.
 
-.. _zend.validator.set.db.options:
+.. _zend.validator.db.options:
 
 Supported options for Zend\\Validator\\Db\\*
 --------------------------------------------

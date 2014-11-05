@@ -1,9 +1,7 @@
-:orphan:
+.. _zend.validator.lessthan:
 
-.. _zend.validator.set.lessthan:
-
-LessThan
-========
+LessThan Validator
+==================
 
 ``Zend\Validator\LessThan`` allows you to validate if a given value is less than a maximum border value.
 
@@ -14,7 +12,7 @@ LessThan
    It should be noted that ``Zend\Validator\LessThan`` supports only the validation of numbers. Strings or dates
    can not be validated with this validator.
 
-.. _zend.validator.set.lessthan.options:
+.. _zend.validator.lessthan.options:
 
 Supported options for Zend\\Validator\\LessThan
 -----------------------------------------------
@@ -26,7 +24,7 @@ The following options are supported for ``Zend\Validator\LessThan``:
 
 - **max**: Sets the maximum allowed value.
 
-.. _zend.validator.set.lessthan.basic:
+.. _zend.validator.lessthan.basic:
 
 Basic usage
 -----------
@@ -43,7 +41,7 @@ To validate if a given value is less than a defined border simply use the follow
 
 The above example returns ``TRUE`` for all values which are lower than 10.
 
-.. _zend.validator.set.lessthan.inclusively:
+.. _zend.validator.lessthan.inclusively:
 
 Validation inclusive the border value
 -------------------------------------

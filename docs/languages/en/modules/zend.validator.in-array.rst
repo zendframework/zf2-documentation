@@ -1,13 +1,11 @@
-:orphan:
+.. _zend.validator.in_array:
 
-.. _zend.validator.set.in_array:
-
-InArray
-=======
+InArray Validator
+=================
 
 ``Zend\Validator\InArray`` allows you to validate if a given value is contained within an array. It is also able to validate multidimensional arrays.
 
-.. _zend.validator.set.in_array.options:
+.. _zend.validator.in_array.options:
 
 Supported options for Zend\\Validator\\InArray
 ----------------------------------------------
@@ -37,7 +35,7 @@ The following options are supported for ``Zend\Validator\InArray``:
 
 Defines if the validation should be done strict. This option defaults to ``FALSE``.
 
-.. _zend.validator.set.in_array.basic:
+.. _zend.validator.in_array.basic:
 
 Simple array validation
 -----------------------
@@ -75,7 +73,7 @@ Alternatively, you can define the array to validate against after object constru
        // no value found
    }
 
-.. _zend.validator.set.in_array.strict:
+.. _zend.validator.in_array.strict:
 
 Array validation modes
 ----------------------
@@ -120,7 +118,7 @@ It's possible to set the strict mode at initialisation and afterwards with the `
 
    Note that the **strict** setting is per default ``FALSE``.
 
-.. _zend.validator.set.in_array.recursive:
+.. _zend.validator.in_array.recursive:
 
 Recursive array validation
 --------------------------

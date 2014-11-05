@@ -1,20 +1,18 @@
-:orphan:
+.. _zend.validator.digits:
 
-.. _zend.validator.set.digits:
-
-Digits
-======
+Digits Validator
+================
 
 ``Zend\Validator\Digits`` validates if a given value contains only digits.
 
-.. _zend.validator.set.digits.options:
+.. _zend.validator.digits.options:
 
 Supported options for Zend\\Validator\\Digits
 ---------------------------------------------
 
 There are no additional options for ``Zend\Validator\Digits``:
 
-.. _zend.validator.set.digits.basic:
+.. _zend.validator.digits.basic:
 
 Validating digits
 -----------------

@@ -1,15 +1,13 @@
-:orphan:
+.. _zend.validator.hostname:
 
-.. _zend.validator.set.hostname:
-
-Hostname
-========
+Hostname Validator
+==================
 
 ``Zend\Validator\Hostname`` allows you to validate a hostname against a set of known specifications. It is possible
 to check for three different types of hostnames: a *DNS* Hostname (i.e. ``domain.com``), IP address (i.e. 1.2.3.4),
 and Local hostnames (i.e. localhost). By default only *DNS* hostnames are matched.
 
-.. _zend.validator.set.hostname.options:
+.. _zend.validator.hostname.options:
 
 Supported options for Zend\\Validator\\Hostname
 -----------------------------------------------
@@ -17,7 +15,7 @@ Supported options for Zend\\Validator\\Hostname
 The following options are supported for ``Zend\Validator\Hostname``:
 
 - **allow**: Defines the sort of hostname which is allowed to be used. See :ref:`Hostname types
-  <zend.validator.set.hostname.types>` for details.
+  <zend.validator.hostname.types>` for details.
 
 - **idn**: Defines if *IDN* domains are allowed or not. This option defaults to ``TRUE``.
 
@@ -25,7 +23,7 @@ The following options are supported for ``Zend\Validator\Hostname``:
 
 - **tld**: Defines if *TLD*\ s are validated. This option defaults to ``TRUE``.
 
-.. _zend.validator.set.hostname.basic:
+.. _zend.validator.hostname.basic:
 
 Basic usage
 -----------
@@ -47,7 +45,7 @@ A basic example of usage is below:
 
 This will match the hostname ``$hostname`` and on failure populate ``getMessages()`` with useful error messages.
 
-.. _zend.validator.set.hostname.types:
+.. _zend.validator.hostname.types:
 
 Validating different types of hostnames
 ---------------------------------------
@@ -93,7 +91,7 @@ as so:
    $validator = new Zend\Validator\Hostname(Zend\Validator\Hostname::ALLOW_DNS |
                                            Zend\Validator\Hostname::ALLOW_IP);
 
-.. _zend.validator.set.hostname.idn:
+.. _zend.validator.hostname.idn:
 
 Validating International Domains Names
 --------------------------------------
@@ -137,7 +135,7 @@ validation if it has any international characters in it. Where a ccTLD file does
 
    Please note that *IDN*\ s are only validated if you allow *DNS* hostnames to be validated.
 
-.. _zend.validator.set.hostname.tld:
+.. _zend.validator.hostname.tld:
 
 Validating Top Level Domains
 ----------------------------

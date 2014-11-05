@@ -1,13 +1,11 @@
-:orphan:
+.. _zend.validator.callback:
 
-.. _zend.validator.set.callback:
-
-Callback
-========
+Callback Validator
+==================
 
 ``Zend\Validator\Callback`` allows you to provide a callback with which to validate a given value.
 
-.. _zend.validator.set.callback.options:
+.. _zend.validator.callback.options:
 
 Supported options for Zend\\Validator\\Callback
 -----------------------------------------------
@@ -18,7 +16,7 @@ The following options are supported for ``Zend\Validator\Callback``:
 
 - **options**: Sets the additional options which will be given to the callback.
 
-.. _zend.validator.set.callback.basic:
+.. _zend.validator.callback.basic:
 
 Basic usage
 -----------
@@ -47,7 +45,7 @@ To use it within ``Zend\Validator\Callback`` you just have to call it this way:
        // input is invalid
    }
 
-.. _zend.validator.set.callback.closure:
+.. _zend.validator.callback.closure:
 
 Usage with closures
 -------------------
@@ -69,7 +67,7 @@ closures another form of callback, and, as such, may be used with ``Zend\Validat
        // input is invalid
    }
 
-.. _zend.validator.set.callback.class:
+.. _zend.validator.callback.class:
 
 Usage with class-based callbacks
 --------------------------------
@@ -146,7 +144,7 @@ simply providing an instance of the class as the callback will also work:
        // input is invalid
    }
 
-.. _zend.validator.set.callback.options2:
+.. _zend.validator.callback.options2:
 
 Adding options
 --------------

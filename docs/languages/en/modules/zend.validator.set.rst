@@ -5,40 +5,47 @@ Standard Validation Classes
 
 Zend Framework comes with a standard set of validation classes, which are ready for you to use.
 
-.. include:: zend.i18n.validator.alnum.rst
-.. include:: zend.i18n.validator.alpha.rst
-.. include:: zend.validator.barcode.rst
-.. include:: zend.validator.between.rst
-.. include:: zend.validator.callback.rst
-.. include:: zend.validator.credit-card.rst
+.. _zend.validator.included-validators:
+
+Included Validators
+-------------------
+
+- :ref:`Alnum <zend.validator.alnum>`
+- :ref:`Alpha <zend.validator.alpha>`
+- :ref:`Barcode <zend.validator.barcode>`
+- :ref:`Between <zend.validator.between>`
+- :ref:`Callback <zend.validator.callback>`
+- :ref:`CreditCard <zend.validator.creditcard>`
+- :ref:`Date <zend.validator.date>`
+- :ref:`Db\\RecordExists and Db\\NoRecordExists <zend.validator.db>`
+- :ref:`Digits <zend.validator.digits>`
+- :ref:`EmailAddress <zend.validator.email_address>`
+- :ref:`GreaterThan <zend.validator.greaterthan>`
+- :ref:`Hex <zend.validator.hex>`
+- :ref:`Hostname <zend.validator.hostname>`
+- :ref:`Iban <zend.validator.iban>`
+- :ref:`Identical <zend.validator.identical>`
+- :ref:`InArray <zend.validator.in_array>`
+- :ref:`Ip <zend.validator.ip>`
+- :ref:`Isbn <zend.validator.isbn>`
+- :ref:`LessThan <zend.validator.lessthan>`
+- :ref:`NotEmpty <zend.validator.notempty>`
+- :ref:`PostCode <zend.validator.post_code>`
+- :ref:`Regex <zend.validator.regex>`
+- :ref:`Sitemap <zend.validator.sitemap>`
+- :ref:`Step <zend.validator.step>`
+- :ref:`StringLength <zend.validator.stringlength>`
+
+.. _zend.validator.set.deprecated-validators:
+
+Deprecated Validators
+---------------------
+
+.. _zend.validator.set.ccnum:
+
 
 Ccnum
------
+^^^^^
 
-.. note::
-
-   The ``Ccnum`` validator has been deprecated in favor of the ``CreditCard`` validator. For security reasons you
-   should use CreditCard instead of Ccnum.
-
-.. include:: zend.validator.date.rst
-.. include:: zend.validator.db.rst
-.. include:: zend.validator.digits.rst
-.. include:: zend.validator.email-address.rst
-.. include:: zend.validator.file.rst
-.. include:: zend.i18n.validator.float.rst
-.. include:: zend.validator.greater-than.rst
-.. include:: zend.validator.hex.rst
-.. include:: zend.validator.hostname.rst
-.. include:: zend.validator.iban.rst
-.. include:: zend.validator.identical.rst
-.. include:: zend.validator.in-array.rst
-.. include:: zend.validator.ip.rst
-.. include:: zend.validator.isbn.rst
-.. include:: zend.validator.less-than.rst
-.. include:: zend.validator.not-empty.rst
-.. include:: zend.validator.post-code.rst
-.. include:: zend.validator.regex.rst
-.. include:: zend.validator.sitemap.rst
-.. include:: zend.validator.step.rst
-.. include:: zend.validator.string-length.rst
-
+The ``Ccnum`` validator has been deprecated in favor of the ``CreditCard`` validator. For security reasons you
+should use CreditCard instead of Ccnum.

@@ -1,13 +1,11 @@
-:orphan:
+.. _zend.validator.identical:
 
-.. _zend.validator.set.identical:
-
-Identical
-=========
+Identical Validator
+===================
 
 ``Zend\Validator\Identical`` allows you to validate if a given value is identical with a set token.
 
-.. _zend.validator.set.identical.options:
+.. _zend.validator.identical.options:
 
 Supported options for Zend\\Validator\\Identical
 ------------------------------------------------
@@ -21,7 +19,7 @@ The following options are supported for ``Zend\Validator\Identical``:
 - **literal**: If set to ``TRUE``, the validation will skip the lookup for elements in the form context, and
   validate the token just the way it was provided. The default value is ``FALSE``.
 
-.. _zend.validator.set.identical.basic:
+.. _zend.validator.identical.basic:
 
 Basic usage
 -----------
@@ -43,7 +41,7 @@ is 'origin'.
 You can set the wished token also afterwards by using the method ``setToken()`` and ``getToken()`` to get the
 actual set token.
 
-.. _zend.validator.set.identical.types:
+.. _zend.validator.identical.types:
 
 Identical objects
 -----------------
@@ -69,7 +67,7 @@ Boolean, Integer, Float, Array or even Objects. As already noted Token and Value
    is not identical with the integer **3**. When you want such a non strict validation you must set the ``strict``
    option to ``false``.
 
-.. _zend.validator.set.identical.formelements:
+.. _zend.validator.identical.formelements:
 
 Form elements
 -------------
@@ -101,7 +99,7 @@ By using the elements name from the first element as ``token`` for the second el
 the second element is equal with the first element. In the case your user does not enter two identical values, you
 will get a validation error.
 
-.. _zend.validator.set.identical.formelements.fieldset:
+.. _zend.validator.identical.formelements.fieldset:
 
 Validating a Value From a Fieldset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -193,7 +191,7 @@ following example.
    end up with unexpected results.
 
 
-.. _zend.validator.set.identical.strict:
+.. _zend.validator.identical.strict:
 
 Strict validation
 -----------------
@@ -217,7 +215,7 @@ integer with string value as long as the content is identical but not the type.
 
 For convenience you can also use ``setStrict()`` and ``getStrict()``.
 
-.. _zend.validator.set.identical.configuration:
+.. _zend.validator.identical.configuration:
 
 Configuration
 -------------
