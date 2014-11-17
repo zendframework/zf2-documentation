@@ -167,6 +167,197 @@ appropriate object. You may create either ``Input`` or ``InputFilter`` objects i
        ),
    ));
 
+The ``merge()`` method may be used on an ``InputFilterInterface`` in order to add two or more filters to each other, effectively
+allowing you to create chains of filters. This is especially useful in object hierarchies whereby we may define a generic
+set of validation rules on the base object and build these up to more specific rules along the way.
+
+In the example below an ``InputFilter`` is built up for the name property as well as for the email property allowing them to
+be re-used elsewhere. When the ``isValid()`` method is called on the object, all of the merged filters are run against
+the calling object in order to validate the internal properties based on our compound set of filters.
+
+.. code-block:: php
+   :linenos:
+
+        use Zend\InputFilter\InputFilterInterface;
+        use Zend\InputFilter\Factory as InputFactory;
+        use Zend\InputFilter\InputFilter;
+        use Zend\InputFilter\InputFilterAwareInterface;
+        use Zend\InputFilter\InputFilterInterface;
+
+       /**
+        * Filter to ensure a name property is set and > 8 characters
+        */
+        class NameInputFilter extends InputFilter
+        {
+            /** @var InputFactory */
+            protected $inputFactory;
+
+            public function __construct()
+            {
+                $this->inputFactory = new InputFactory();
+                $this->setValidators();
+            }
+
+            /**
+             * Loads the validators
+             */
+            protected function setValidators()
+            {
+                $this->setNameValidator();
+            }
+
+            /**
+             * Creates a validator to check the name property
+             */
+            protected function setNameValidator()
+            {
+                $this->add(
+                    $this->inputFactory->createInput(
+                        array(
+                            'name'       => 'name',
+                            'required'   => true,
+                            'validators' => array(
+                                array(
+                                    'name' => 'not_empty',
+                                ),
+                                array(
+                                    'name' => 'string_length',
+                                    'options' => array(
+                                        'min' => 8
+                                    )
+                                ),
+                            )
+                        )
+                    )
+                );
+            }
+        }
+
+        /**
+         * Filter to ensure an email property is set and > 8 characters and is valid
+         */
+        class EmailInputFilter extends InputFilter
+        {
+            /** @var InputFactory */
+            protected $inputFactory;
+
+            public function __construct()
+            {
+                $this->inputFactory = new InputFactory();
+                $this->setValidators();
+            }
+
+            /**
+             * Loads the validators
+             */
+            protected function setValidators()
+            {
+                $this->setEmailValidator();
+            }
+
+            /**
+             * Creates a validator to check the name property
+             */
+            protected function setEmailValidator()
+            {
+                $this->add(
+                    $this->inputFactory->createInput(
+                        array(
+                            'name'       => 'email',
+                            'required'   => true,
+                            'validators' => array(
+                                array(
+                                    'name' => 'not_empty',
+                                ),
+                                array(
+                                    'name'    => 'string_length',
+                                    'options' => array(
+                                    'min'     => 8
+                                ),
+                                array(
+                                    'name'    => 'email_address',
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }
+
+        class SimplePerson implements InputFilterAwareInterface
+        {
+            /** @var string */
+            protected $name;
+
+            /** @var string */
+            protected $email;
+
+            /** @var InputFilter */
+            protected $inputFilter;
+
+            /**
+             * @return string
+             */
+            public function getName()
+            {
+                return $this->name;
+            }
+
+            /**
+             * @param string $name
+             */
+            public function setName($name)
+            {
+                $this->name = $name;
+            }
+
+            /**
+             * @return string
+             */
+            public function getEmail()
+            {
+                return $this->email;
+            }
+
+            /**
+             * @param string $email
+             */
+            public function setEmail($email)
+            {
+                $this->email = $email;
+            }
+
+             /**
+              * Retrieve input filter
+              *
+              * @return InputFilterInterface
+              */
+            public function getInputFilter()
+            {
+                if (!$this->inputFilter) {
+                    // Create a new input filter
+                    $this->inputFilter = new InputFilter();
+                    // Merge our inputFilter in for the email property
+                    $this->inputFilter->merge(new EmailInputFilter());
+                    // Merge our inputFilter in for the name property
+                    $this->inputFilter->merge(new NameInputFilter());
+                }
+                return $this->inputFilter;
+            }
+
+            /**
+             * Set input filter
+             *
+             * @param  InputFilterInterface $inputFilter
+             * @return InputFilterAwareInterface
+             */
+            public function setInputFilter(InputFilterInterface $inputFilter)
+            {
+                $this->inputFilter = $inputFilter;
+
+                return $this;
+            }
+        }
 
 Also see
 
