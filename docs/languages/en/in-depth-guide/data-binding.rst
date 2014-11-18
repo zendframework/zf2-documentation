@@ -1,5 +1,5 @@
-Editting and Deleting Data
-==========================
+Editing and Deleting Data
+=========================
 
 In the previous chapter we've come to learn how we can use the ``Zend\Form``- and ``Zend\Db``-components to create the
 functionality of creating new data-sets. This chapter will focus on finalizing the CRUD functionality by introducing
