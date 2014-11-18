@@ -150,8 +150,8 @@ most use cases:
 
 .. _installation.iis:
 
-Microsoft Internet Information Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Microsoft Internet Information Services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As of version 7.0, *IIS* ships with a standard rewrite engine. You may use the following configuration to
 create the appropriate rewrite rules.
