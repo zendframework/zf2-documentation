@@ -57,3 +57,44 @@ string length validation fails:
 Any object that implements ``Zend\Validator\ValidatorInterface`` may be used in a validator chain.
 
 
+.. _zend.validator.validator-chains.order:
+
+Setting Validator Chain Order
+-----------------------------
+
+For each validator added to the ``ValidatorChain``, you can set a priority to define the chain order. The default value is
+``1``. The more the priority is high, the earlier it is checked.
+
+In the following example, the username is first checked to ensure that its length is between 7 and 9 characters, and then it is checked to
+ensure that its length is between 3 and 5 characters.
+
+.. code-block:: php
+   :linenos:
+
+   $username = 'ABCDFE';
+
+   // Create a validator chain and add validators to it
+    $validatorChain = new Zend\Validator\ValidatorChain();
+    $validatorChain->attach(
+        new Zend\Validator\StringLength(array('min' => 3, 'max' => 5)),
+        true,
+        1
+    );
+    $validatorChain->attach(
+        new Zend\Validator\StringLength(array('min' => 7, 'max' => 9)),
+        true, // Break on failure
+        2
+    );
+
+   // Validate the username
+   if ($validatorChain->isValid($username)) {
+       // username passed validation
+       echo "Success";
+   } else {
+       // username failed validation; print reasons
+       foreach ($validatorChain->getMessages() as $message) {
+           echo "$message\n";
+       }
+   }
+
+   // This first example will display: The input is less than 7 characters long
