@@ -3,7 +3,7 @@
 File Upload Input
 =================
 
-The ``Zend\FileInput`` class is a special ``Input`` type for uploaded files found in the ``$_FILES`` array.
+The ``Zend\InputFilter\FileInput`` class is a special ``Input`` type for uploaded files found in the ``$_FILES`` array.
 
 While ``FileInput`` uses the same interface as ``Input``, it differs in a few ways:
 
