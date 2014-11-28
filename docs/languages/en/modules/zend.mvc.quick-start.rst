@@ -110,9 +110,10 @@ We'll also edit our ``config/module.config.php`` file to read as follows:
 
 .. code-block:: php
    :linenos:
+   use Zend\Mvc\View\Http\ViewManager;
 
    return array(
-       'view_manager' => array(
+       ViewManager::CONFIG => array(
            'template_path_stack' => array(
                '<module-name>' => __DIR__ . '/../view'
            ),
@@ -262,8 +263,9 @@ mapping is not enabled by default. To enable it, you need to add your module nam
 
 .. code-block:: php
    :linenos:
+   use Zend\Mvc\View\Http\ViewManager;
 
-   'view_manager' => array(
+   ViewManager::CONFIG => array(
        // Controller namespace to template map
        // or whitelisting for controller FQCN to template mapping
        'controller_map' => array(
@@ -337,8 +339,10 @@ Additionally, we need to tell the application we have a controller:
       :linenos:
 
       // module.config.php
+      use Zend\Mvc\Controller\ControllerManager;
+
       return array(
-          'controllers' => array(
+          ControllerManager::CONFIG => array(
               'invokables' => array(
                   '<module-namespace>\Controller\Index' => '<module-namespace>\Controller\IndexController',
                   // Do similar for each other controller in your module
@@ -359,9 +363,11 @@ reads as follows:
 
 .. code-block:: php
    :linenos:
+   use Zend\Mvc\Controller\ControllerManager;
+   use Zend\Mvc\Router\Http\TreeRouteStack;
 
    return array(
-       'router' => array(
+       TreeRouteStack::CONFIG => array(
            'routes' => array(
                '<module name>-hello-world' => array(
                    'type'    => 'Literal',
@@ -375,7 +381,7 @@ reads as follows:
                ),
            ),
        ),
-       'controllers' => array(
+       ControllerManager::CONFIG => array(
            'invokables' => array(
                '<module namespace>\Controller\Hello' => '<module namespace>\Controller\HelloController',
            ),

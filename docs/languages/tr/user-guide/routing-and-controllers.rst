@@ -56,15 +56,19 @@ Vurgulanmış satırlar eklenmesi gereken satırlardır:
     :emphasize-lines: 9-27
 
     // module/Album/config/module.config.php:
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIG => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
 
         // The following section is new and should be added to your file
-        'router' => array(
+        TreeRouteStack::CONFIG => array(
             'routes' => array(
                 'album' => array(
                     'type'    => 'segment',
@@ -83,7 +87,7 @@ Vurgulanmış satırlar eklenmesi gereken satırlardır:
             ),
         ),
 
-        'view_manager' => array(
+        ViewManager::CONFIG => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

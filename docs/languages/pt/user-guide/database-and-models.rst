@@ -244,15 +244,18 @@ as credenciais do seu banco de dados caso queira. Modifique o arquivo ``config/a
 .. code-block:: php
 
     <?php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db' => array(
+        Adapter::CONFIG => array(
             'driver'         => 'Pdo',
             'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
             'driver_options' => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ),
         ),
-        'service_manager' => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
@@ -266,8 +269,10 @@ para que elas não estejam no seu repositório público (já que ``local.php`` �
 .. code-block:: php
 
     <?php
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db' => array(
+        Adapter::CONFIG => array(
             'username' => 'YOUR USERNAME HERE',
             'password' => 'YOUR PASSWORD HERE',
         ),

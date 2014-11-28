@@ -25,9 +25,10 @@ and it has two **optional** parameters called ``action`` and ``id``.
 
 .. code-block:: php
    :linenos:
+   use Zend\Mvc\Router\Http\TreeRouteStack;
 
    // In a configuration array (e.g. returned by some module's module.config.php)
-   'router' => array(
+   TreeRouteStack::CONFIG => array(
        'routes' => array(
            'news' => array(
                'type'    => 'segment',
@@ -92,9 +93,10 @@ We will use the same route configuration as defined above:
 
 .. code-block:: php
    :linenos:
+   use Zend\Mvc\Router\Http\TreeRouteStack;
 
    // In a configuration array (e.g. returned by some module's module.config.php)
-   'router' => array(
+   TreeRouteStack::CONFIG => array(
        'routes' => array(
            'news' => array(
                'type'    => 'segment',

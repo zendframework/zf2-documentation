@@ -232,15 +232,20 @@ this by creating a factory the same way we have done for the ``ListController``.
 
     <?php
     // Filename: /module/Blog/config/module.config.php
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+    use Zend\Mvc\View\Http\ViewManager;
+
     return array(
-        'service_manager' => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Blog\Service\PostServiceInterface' => 'Blog\Factory\PostServiceFactory'
             )
         ),
-        'view_manager' => array( /** ViewManager Config */ ),
-        'controllers'  => array( /** ControllerManager Config */ ),
-        'router'       => array( /** Router Config */ )
+        ViewManager::CONFIG        => array( /** ViewManager Config */ ),
+        ControllerManager::CONFIG  => array( /** ControllerManager Config */ ),
+        TreeRouteStack::CONFIG     => array( /** Router Config */ )
     );
 
 Going by the above configuration we now need to create the class ``Blog\Factory\PostServiceFactory`` so let's go ahead

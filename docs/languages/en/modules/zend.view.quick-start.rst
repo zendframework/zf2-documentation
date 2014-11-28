@@ -61,9 +61,10 @@ module from the framework's `ZendSkeletonApplication`_, or to one of your autolo
 
 .. code-block:: php
    :linenos:
+   use Zend\Mvc\View\Http\ViewManager;
 
    return array(
-       'view_manager' => array(
+       ViewManager::CONFIG => array(
            // The TemplateMapResolver allows you to directly map template names
            // to specific templates. The following map would provide locations
            // for a home page template ("application/index/index"), as well as for

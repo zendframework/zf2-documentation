@@ -317,15 +317,18 @@ versiyon kontrol sisteminize commit etmelisiniz. İsterseniz ``local.php`` dosya
 .. code-block:: php
 
     // config/autoload/global.php:
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db' => array(
+        Adapter::CONFIG => array(
             'driver'         => 'Pdo',
             'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
             'driver_options' => array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ),
         ),
-        'service_manager' => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
@@ -340,8 +343,10 @@ dosyaları görmezden gelinir):
 .. code-block:: php
 
     // config/autoload/local.php:
+    use Zend\Db\Adapter\Adapter;
+
     return array(
-        'db' => array(
+        Adapter::CONFIG => array(
             'username' => 'KULLANICI ADINIZ',
             'password' => 'ŞİFRENİZ',
         ),

@@ -135,14 +135,16 @@ Create a file called ``module.config.php`` under ``zf2-tutorial/module/Album/con
 
 .. code-block:: php
    :linenos:
+    use Zend\Mvc\Controller\ControllerManager;
+    use Zend\Mvc\View\Http\ViewManager;
 
     return array(
-        'controllers' => array(
+        ControllerManager::CONFIG => array(
             'invokables' => array(
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
             ),
         ),
-        'view_manager' => array(
+        ViewManager::CONFIG => array(
             'template_path_stack' => array(
                 'album' => __DIR__ . '/../view',
             ),

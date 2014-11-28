@@ -208,7 +208,9 @@ route is defined like this:
 .. code-block:: php
    :linenos:
 
-    'router' => array(
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'checklist' => array(
                 'type'    => 'Literal',
@@ -252,7 +254,9 @@ entire router section of the array to be:
 
 .. code-block:: php
 
-    'router' => array(
+    use Zend\Mvc\Router\Http\TreeRouteStack;
+
+    TreeRouteStack::CONFIG => array(
         'routes' => array(
             'task' => array(
                 'type'    => 'Segment',
@@ -589,15 +593,17 @@ Open ``config/autoload/global.php`` and replace the empty array with:
 
 .. code-block:: php
    :linenos:
+    use Zend\ServiceManager\ServiceManager;
+    use Zend\Db\Adapter\Adapter;
 
     return array(
-        'service_manager' => array(
+        ServiceManager::CONFIG => array(
             'factories' => array(
                 'Zend\Db\Adapter\Adapter' =>
                     'Zend\Db\Adapter\AdapterServiceFactory',
             ),
         ),
-        'db' => array(
+        Adapter::CONFIG => array(
             'driver' => 'Pdo',
             'dsn' => 'mysql:dbname=mytasklist;hostname=localhost',
             'driver_options' => array(
@@ -631,9 +637,10 @@ Open ``config/autoload/local.php`` and replace the empty array with:
 
 .. code-block:: php
    :linenos:
+    use Zend\Db\Adapter\Adapter;
 
     return array(
-        'db' => array(
+        Adapter::CONFIG => array(
             'username' => 'YOUR_USERNAME',
             'password' => 'YOUR_PASSWORD',
         ),

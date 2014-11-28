@@ -27,13 +27,15 @@ look something like this:
    :linenos:
 
    // config/autoload/global.php
+   use Zend\ServiceManager\ServiceManager;
+   use Zend\Db\Adapter\Adapter;
 
    return array(
-      'db' => array(
+      Adapter::CONFIG => array(
          'driver'         => 'Pdo',
          'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
       ),
-      'service_manager' => array(
+      ServiceManager::CONFIG => array(
          'factories' => array(
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
          ),
@@ -68,13 +70,15 @@ In order to utilize this adapter in non-ServiceLocatorAware classes, you can use
    :linenos:
 
    // config/autoload/global.php
+   use Zend\ServiceManager\ServiceManager;
+   use Zend\Db\Adapter\Adapter;
 
    return array(
-      'db' => array(
+      Adapter::CONFIG => array(
          'driver'         => 'Pdo',
          'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
       ),
-      'service_manager' => array(
+      ServiceManager::CONFIG => array(
          'factories' => array(
             'Zend\Db\Adapter\Adapter' => function ($serviceManager) {
                $adapterFactory = new Zend\Db\Adapter\AdapterServiceFactory();

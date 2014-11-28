@@ -336,10 +336,11 @@ In addition to the container above, the following setup is assumed:
 
    <?php
    // module/MyModule/config/module.config.php
+   use Zend\Mvc\Router\Http\TreeRouteStack;
 
    return array(
        /* ... */
-       'router' array(
+       TreeRouteStack::CONFIG array(
            'routes' => array(
                'archive' => array(
                    'type'    => 'Segment',
