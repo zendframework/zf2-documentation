@@ -25,6 +25,25 @@ As the Zend Framework 2 API uses `PHPUnit <http://phpunit.de/>`_, so
 will this tutorial. This tutorial assumes that you already have PHPUnit
 installed. The version of PHPUnit used should be 3.7.*
 
+.. _setting-up-phpunit-to-use-composer-s-autoload-php:
+
+Setting up phpunit to use composer's autoload.php
+------------------------------
+
+If you used composer to generate an autoload.php file for you,
+as seen in http://framework.zend.com/manual/2.3/en/user-guide/modules.html#autoloading-files => note,
+then you need to use a phpunit binary installed by composer.
+Add to composer.json:
+
+    .. code-block:: javascript
+       :linenos:
+
+        "require-dev": {
+            "phpunit/phpunit": "*"
+        },
+
+Then run ``php composer.phar update`` to update the composer autoloading files.
+
 .. _setting-up-the-tests-directory:
 
 Setting up the tests directory
