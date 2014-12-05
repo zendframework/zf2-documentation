@@ -441,11 +441,12 @@ with some POST data. Testing this is surprisingly easy:
         $postData = array(
             'title'  => 'Led Zeppelin III',
             'artist' => 'Led Zeppelin',
+            'id'     => '',
         );
         $this->dispatch('/album/add', 'POST', $postData);
         $this->assertResponseStatusCode(302);
 
-        $this->assertRedirectTo('/album');
+        $this->assertRedirectTo('/album/');
     }
 
 Here we test that when we make a POST request against the ``/album/add`` URL, the
