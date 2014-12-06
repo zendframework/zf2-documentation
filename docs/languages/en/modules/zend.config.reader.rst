@@ -369,7 +369,7 @@ We can use the ``Zend\Config\Reader\JavaProperties`` to read this JavaProperties
 .. code-block:: php
    :linenos:
 
-   $reader = new Zend\Config\Reader\Xml();
+   $reader = new Zend\Config\Reader\JavaProperties();
    $data   = $reader->fromFile('/path/to/config.properties');
 
    echo $data['single.line'];  // prints "test"
