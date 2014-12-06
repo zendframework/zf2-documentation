@@ -15,6 +15,8 @@ and ``fromString()``. The concrete implementations of this interface are:
 
 - ``Zend\Config\Reader\Yaml``
 
+- ``Zend\Config\Reader\JavaProperties``
+
 The ``fromFile()`` and ``fromString()`` return a PHP array contains the data of the configuration file.
 
 .. note::
@@ -342,7 +344,36 @@ We can include this configuration in another YAML file, for instance:
    webhost:  www.example.com
    @include: database.yaml
 
+.. _zend.config.reader.javaproperties:
 
+Zend\\Config\\Reader\\JavaProperties
+-------------------------
+
+``Zend\Config\Reader\JavaProperties`` enables developers to read configuration data in a familiar *JavaProperties* format and read them
+in the application by using an array syntax.
+
+The following example illustrates a basic use of ``Zend\Config\Reader\JavaProperties`` for loading configuration data from an
+*JavaProperties* file. Suppose we have the following *JavaProperties* configuration file:
+
+.. code-block:: properties
+   :linenos:
+
+    #comment
+    !comment
+    single.line:test
+    multiple:line \
+    test
+
+We can use the ``Zend\Config\Reader\JavaProperties`` to read this JavaProperties file:
+
+.. code-block:: php
+   :linenos:
+
+   $reader = new Zend\Config\Reader\Xml();
+   $data   = $reader->fromFile('/path/to/config.properties');
+
+   echo $data['single.line'];  // prints "test"
+   echo $data['multiple'];  // prints "line test"
 
 .. _`parse_ini_file()`: http://php.net/parse_ini_file
 .. _`XMLReader`: http://php.net/xmlreader
