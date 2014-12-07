@@ -360,9 +360,12 @@ The following example illustrates a basic use of ``Zend\Config\Reader\JavaProper
 
     #comment
     !comment
-    single.line:test
-    multiple:line \
-    test
+    webhost:www.example.com
+    database.adapter:pdo_mysql
+    database.params.host:db.example.com
+    database.params.username:dbuser
+    database.params.password:secret
+    database.params.dbname:dbproduction
 
 We can use the ``Zend\Config\Reader\JavaProperties`` to read this JavaProperties file:
 
@@ -372,8 +375,8 @@ We can use the ``Zend\Config\Reader\JavaProperties`` to read this JavaProperties
    $reader = new Zend\Config\Reader\JavaProperties();
    $data   = $reader->fromFile('/path/to/config.properties');
 
-   echo $data['single.line'];  // prints "test"
-   echo $data['multiple'];  // prints "line test"
+   echo $data['webhost'];  // prints "www.example.com"
+   echo $data['database.params.dbname'];  // prints "dbproduction"
 
 .. _`parse_ini_file()`: http://php.net/parse_ini_file
 .. _`XMLReader`: http://php.net/xmlreader
