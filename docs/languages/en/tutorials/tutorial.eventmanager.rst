@@ -385,7 +385,7 @@ Why bother? For a couple of reasons:
 * Aggregates make detaching listeners easier. When you call ``attach()``
   normally, you receive a ``Zend\Stdlib\CallbackHandler`` instance; the only way
   to ``detach()`` a listener is to pass that instance back -- which means if you
-  want to detach later, you need to keep that instance somewhare. Aggregates
+  want to detach later, you need to keep that instance somewhere. Aggregates
   typically do this for you -- as you can see in the example above.
 
 .. _introspecting-results:
