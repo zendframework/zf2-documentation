@@ -15,6 +15,8 @@ and ``fromString()``. The concrete implementations of this interface are:
 
 - ``Zend\Config\Reader\Yaml``
 
+- ``Zend\Config\Reader\JavaProperties``
+
 The ``fromFile()`` and ``fromString()`` return a PHP array contains the data of the configuration file.
 
 .. note::
@@ -342,7 +344,39 @@ We can include this configuration in another YAML file, for instance:
    webhost:  www.example.com
    @include: database.yaml
 
+.. _zend.config.reader.javaproperties:
 
+Zend\\Config\\Reader\\JavaProperties
+-------------------------
+
+``Zend\Config\Reader\JavaProperties`` enables developers to read configuration data in a familiar *JavaProperties* format and read them
+in the application by using an array syntax.
+
+The following example illustrates a basic use of ``Zend\Config\Reader\JavaProperties`` for loading configuration data from an
+*JavaProperties* file. Suppose we have the following *JavaProperties* configuration file:
+
+.. code-block:: properties
+   :linenos:
+
+    #comment
+    !comment
+    webhost:www.example.com
+    database.adapter:pdo_mysql
+    database.params.host:db.example.com
+    database.params.username:dbuser
+    database.params.password:secret
+    database.params.dbname:dbproduction
+
+We can use the ``Zend\Config\Reader\JavaProperties`` to read this JavaProperties file:
+
+.. code-block:: php
+   :linenos:
+
+   $reader = new Zend\Config\Reader\JavaProperties();
+   $data   = $reader->fromFile('/path/to/config.properties');
+
+   echo $data['webhost'];  // prints "www.example.com"
+   echo $data['database.params.dbname'];  // prints "dbproduction"
 
 .. _`parse_ini_file()`: http://php.net/parse_ini_file
 .. _`XMLReader`: http://php.net/xmlreader
