@@ -44,7 +44,7 @@ with PHP's SPL autoloader registry.
 
    **Vocabulary: Namespaces vs. Vendor Prefixes**
 
-   In terms of autloading, a "namespace" corresponds to PHP's own definition of namespaces in PHP versions 5.3 and
+   In terms of autoloading, a "namespace" corresponds to PHP's own definition of namespaces in PHP versions 5.3 and
    above.
 
    A "vendor prefix" refers to the practice, popularized in PHP versions prior to 5.3, of providing a
