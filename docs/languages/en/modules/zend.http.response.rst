@@ -69,7 +69,8 @@ completely empty object to start with, by simply instantiating the ``Zend\Http\R
        Hello World
    </body>
    </html>
-   EOS);
+   EOS
+   );
 
 .. _zend.http.response.options:
 
