@@ -14,7 +14,7 @@ You can read the development online documentation in
 [http://zf2.readthedocs.org](http://zf2.readthedocs.org/en/latest/index.html).
 
 You can read the last stable documentation in 
-[http://packages.zendframework.com/docs/latest/manual/en/](http://packages.zendframework.com/docs/latest/manual/en/).
+[http://packages.zendframework.com/docs/latest/manual/](http://packages.zendframework.com/docs/latest/manual/).
 
 ## BUILDING DOCUMENTATION
 
