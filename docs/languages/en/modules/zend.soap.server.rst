@@ -225,8 +225,8 @@ blocked using ``setReturnResponse()`` with ``TRUE`` or ``FALSE`` as a parameter 
 returned by ``handle()`` method in this case. Returned response can be a string or a SoapFault exception object.
 
 .. caution::
-   Check always the returned response type for avoid return SoapFault object as string, which will return to
-   the customer a string with the exception stacktrace.
+   Always check the returned response type to avoid returning SoapFault object as a string, which will be returned to
+   the customer as a string with the exception stacktrace.
 
 .. code-block:: php
    :linenos:
