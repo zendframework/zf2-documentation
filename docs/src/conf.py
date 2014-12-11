@@ -86,8 +86,6 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-rst_epilog = "\n.. include:: /%s/snippets.rst\n\n.. include:: /%s/translated-snippets.rst\n\n"%(os.path.abspath('.'),os.path.abspath('.'),)
-
 # -- Options for HTML output ---------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
