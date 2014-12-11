@@ -5,8 +5,8 @@
    TO TRANSLATORS: You don't need to copy this file to your translation, use
    translated-snippets.rst to translate titles if you want
 
-|ProgrammersReferenceGuideofZendFramework2|
-===========================================
+Programmer's Reference Guide of Zend Framework 2
+================================================
 
 .. toctree::
    :hidden:
@@ -353,16 +353,18 @@
    modules/zendservice.windows-azure
    ref/copyrights
 
-|IntroductiontoZendFramework|
------------------------------
+Introduction to Zend Framework 2
+--------------------------------
 
     * :doc:`ref/overview`
     * :doc:`ref/installation`
 
-|UserGuide|
------------
+User Guide
+----------
 
-|UserGuideIntroduction|
+The user guide is provided to take you through a non-trivial example, showing
+you various techniques and features of the framework in order to build an
+application.
 
     * :doc:`user-guide/overview`
     * :doc:`user-guide/skeleton-application`
@@ -373,10 +375,11 @@
     * :doc:`user-guide/forms-and-actions`
     * :doc:`user-guide/conclusion`
 
-|InDepthTutorial|
------------------
+In-depth tutorial for beginners
+-------------------------------
 
-|InDepthTutorialIntroduction|
+In this tutorial we will create a Blog-Application from scratch. We will go
+through all the details you need to learn to create your own ZF2 Application.
 
     * :doc:`in-depth-guide/first-module`
     * :doc:`in-depth-guide/services-and-servicemanager`
@@ -387,10 +390,11 @@
     * :doc:`in-depth-guide/data-binding`
     * :doc:`in-depth-guide/review`
 
-|GettingStartedWithZendStudio|
-------------------------------
+Getting Started With Zend Studio 10 & Zend Server 6
+---------------------------------------------------
 
-|GettingStartedWithZendStudioIntroduction|
+The user guide is provided to take you through building a Zend Framework 2
+application using Zend Studio and Zend Server.
 
     * :doc:`getting-started-with-zend-studio/overview`
     * :doc:`getting-started-with-zend-studio/skeleton-application`
@@ -399,13 +403,13 @@
     * :doc:`getting-started-with-zend-studio/diagnostics`
     * :doc:`getting-started-with-zend-studio/conclusion`
 
-|ZFTool|
---------
+Zend Framework Tool (ZFTool)
+----------------------------
 
     * :doc:`modules/zendtool.introduction`
 
-|LearningZendFramework|
------------------------
+Learning Zend Framework 2
+-------------------------
 
     * :doc:`tutorials/quickstart.di`
     * :doc:`tutorials/unittesting`
@@ -415,15 +419,15 @@
     * :doc:`tutorials/tutorial.pagination`
     * :doc:`tutorials/tutorial.dbadapter`
 
-|Migration|
------------
+Migration
+---------
 
     * :doc:`migration/overview`
     * :doc:`migration/namespacing-old-classes`
     * :doc:`migration/zf1_zf2_parallel`
 
-|ZendFrameworkReference|
-------------------------
+Zend Framework 2 Reference
+--------------------------
 
 .. _zend.authentication:
 
@@ -978,8 +982,8 @@ Zend\\XmlRpc
 
 .. _zendservice:
 
-|ZendServiceReference|
-----------------------
+Services for Zend Framework 2 Reference
+---------------------------------------
 
 ZendService\\Akismet
 ^^^^^^^^^^^^^^^^^^^^
@@ -1084,7 +1088,7 @@ Copyright
 
     * :doc:`ref/copyrights`
 
-|IndicesAndTables|
+Indices and tables
 ==================
 
 * :doc:`index`
