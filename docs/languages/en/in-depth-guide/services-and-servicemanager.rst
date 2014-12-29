@@ -614,7 +614,7 @@ Let's now use the ``PostService`` within our ``ListController``. For this we wil
         }
     }
 
-First please note the our controller imported another class. We need to import ``Zend\View\Model\ViewModel``, which
+First please note that our controller imported another class. We need to import ``Zend\View\Model\ViewModel``, which
 usually is what your Controllers will return. When returning an instance of a ``ViewModel`` you're able to always
 assign so called View-Variables. In this case we have assigned a variable called ``$posts`` with the value of whatever
 the function ``findAllPosts()`` of our ``PostService`` returns. In our case it is an array of ``Blog\Model\Post`` classes.
