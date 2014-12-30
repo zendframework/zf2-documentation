@@ -543,7 +543,7 @@ And all of this is really not that much code. Modify your ``WriteController`` to
                     try {
                         $this->postService->savePost($this->postForm->getData());
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         // Some DB Error happened, log it and let the user know
                     }
@@ -916,7 +916,7 @@ way we can easily notice all changes that the hydrator does. Modify your ``Write
                         \Zend\Debug\Debug::dump($this->postForm->getData());die();
                         $this->postService->savePost($this->postForm->getData());
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         // Some DB Error happened, log it and let the user know
                     }
@@ -1089,7 +1089,7 @@ You can now revert back your ``WriteController`` to its previous form to have th
                     try {
                         $this->postService->savePost($this->postForm->getData());
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         // Some DB Error happened, log it and let the user know
                     }
