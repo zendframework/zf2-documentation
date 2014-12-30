@@ -590,7 +590,7 @@ Now that we have declared the function inside the interface it's time to impleme
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 118-128
+   :emphasize-lines: 9, 118-128
 
     <?php
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
