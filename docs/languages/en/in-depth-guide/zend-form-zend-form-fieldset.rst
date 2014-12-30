@@ -573,7 +573,7 @@ Let's fix this by extending our ``PostService``. Be sure to also change the sign
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 32
+   :emphasize-lines: 5, 32
 
     <?php
     // Filename: /module/Blog/src/Blog/Service/PostServiceInterface.php
@@ -620,7 +620,7 @@ As you can see the ``savePost()`` function has been added and needs to be implem
     namespace Blog\Service;
 
     use Blog\Mapper\PostMapperInterface;
-    use Blog\Model\PostInterface;
+    
 
     class PostService implements PostServiceInterface
     {
