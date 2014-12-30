@@ -44,7 +44,6 @@ Create the file ``/module/Blog/src/Blog/Form/PostFieldset.php`` and add the foll
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines:
 
    <?php
    // Filename: /module/Blog/src/Blog/Form/PostFieldset.php
