@@ -54,7 +54,7 @@ form. This is done the following way inside your controller.
                     try {
                         $this->postService->savePost($this->postForm->getData());
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -81,7 +81,7 @@ form. This is done the following way inside your controller.
                     try {
                         $this->postService->savePost($post);
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -400,7 +400,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
             try {
                 $post = $this->postService->findPost($this->params('id'));
             } catch (\InvalidArgumentException $e) {
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('blog');
             }
 
             $request = $this->getRequest();
@@ -412,7 +412,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
                     $this->postService->deletePost($post);
                 }
 
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('blog');
             }
 
             return new ViewModel(array(
