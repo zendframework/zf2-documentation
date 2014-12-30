@@ -345,7 +345,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
    :linenos:
 
     <?php
-    // Filename: /module/Blog/src/Blog/Factory/ListControllerFactory.php
+    // Filename: /module/Blog/src/Blog/Factory/DeleteControllerFactory.php
     namespace Blog\Factory;
 
     use Blog\Controller\DeleteController;
