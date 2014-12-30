@@ -54,7 +54,7 @@ form. This is done the following way inside your controller.
                     try {
                         $this->postService->savePost($this->postForm->getData());
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -81,7 +81,7 @@ form. This is done the following way inside your controller.
                     try {
                         $this->postService->savePost($post);
 
-                        return $this->redirect()->toRoute('post');
+                        return $this->redirect()->toRoute('blog');
                     } catch (\Exception $e) {
                         die($e->getMessage());
                         // Some DB Error happened, log it and let the user know
@@ -185,7 +185,7 @@ Next in line is the creation of the new template ``blog/write/edit``:
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 6
+   :emphasize-lines:
 
     <!-- Filename: /module/Blog/view/blog/write/edit.phtml -->
     <h1>WriteController::editAction()</h1>
@@ -227,7 +227,7 @@ the view, too.
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 9
+   :emphasize-lines: 8
 
     <!-- Filename: /module/Blog/view/blog/write/add.phtml -->
     <h1>WriteController::editAction()</h1>
@@ -345,7 +345,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
    :linenos:
 
     <?php
-    // Filename: /module/Blog/src/Blog/Factory/ListControllerFactory.php
+    // Filename: /module/Blog/src/Blog/Factory/DeleteControllerFactory.php
     namespace Blog\Factory;
 
     use Blog\Controller\DeleteController;
@@ -374,9 +374,10 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 31-35
+   :emphasize-lines: 32-36
 
     <?php
+    // Filename: /module/Blog/src/Blog/Controller/DeleteController.php
     namespace Blog\Controller;
 
     use Blog\Service\PostServiceInterface;
@@ -400,7 +401,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
             try {
                 $post = $this->postService->findPost($this->params('id'));
             } catch (\InvalidArgumentException $e) {
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('blog');
             }
 
             $request = $this->getRequest();
@@ -412,7 +413,7 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
                     $this->postService->deletePost($post);
                 }
 
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('blog');
             }
 
             return new ViewModel(array(
@@ -589,7 +590,7 @@ Now that we have declared the function inside the interface it's time to impleme
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 118-128
+   :emphasize-lines: 9, 118-128
 
     <?php
     // Filename: /module/Blog/src/Blog/Mapper/ZendDbSqlMapper.php
@@ -710,7 +711,7 @@ Now that we have declared the function inside the interface it's time to impleme
          */
         public function delete(PostInterface $postObject)
         {
-            $action = new Delete('post');
+            $action = new Delete('posts');
             $action->where(array('id = ?' => $postObject->getId()));
 
             $sql    = new Sql($this->dbAdapter);
@@ -731,8 +732,8 @@ created so far. With all of this set up now we're good to go ahead and write our
     <h1>DeleteController::deleteAction()</h1>
     <p>
         Are you sure that you want to delete
-        '<?php echo $this->escapeHtml($this->blog->getTitle()); ?>' by
-        '<?php echo $this->escapeHtml($this->blog->getText()); ?>'?
+        '<?php echo $this->escapeHtml($this->post->getTitle()); ?>' by
+        '<?php echo $this->escapeHtml($this->post->getText()); ?>'?
     </p>
     <form action="<?php echo $this->url('blog/delete', array(), true) ?>" method="post">
         <input type="submit" name="delete_confirmation" value="yes">
