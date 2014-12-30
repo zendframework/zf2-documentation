@@ -4,7 +4,7 @@ Making use of Forms and Fieldsets
 So far all we did was read data from the database. In a real-life-application this won't get us very far as very often
 the least we need to do is to support full ``Create``, ``Read``, ``Update`` and ``Delete`` operations (CRUD). Most
 often the process of getting data into our database is that a user enters the data into a web ``<form>`` and the
-application then uses the user input saves it into our backend.
+application then uses the user input and saves it into our backend.
 
 We want to be able to do exactly this and Zend Framework provides us with all the tools we need to achieve our goal.
 Before we jump into coding, we need to understand the two core components for this task first. So let's take a look at
@@ -46,38 +46,38 @@ Create the file ``/module/Blog/src/Blog/Form/PostFieldset.php`` and add the foll
    :linenos:
    :emphasize-lines:
 
-    <?php
-    // Filename: /module/Blog/src/Blog/Form/PostFieldset.php
-    namespace Blog\Form;
+   <?php
+   // Filename: /module/Blog/src/Blog/Form/PostFieldset.php
+   namespace Blog\Form;
 
-    use Zend\Form\Fieldset;
+   use Zend\Form\Fieldset;
 
-    class PostFieldset extends Fieldset
-    {
-        public function __construct()
-        {
-            $this->add(array(
-                'type' => 'hidden',
-                'name' => 'id'
-            ));
+   class PostFieldset extends Fieldset
+   {
+      public function __construct()
+      {
+         $this->add(array(
+            'type' => 'hidden',
+            'name' => 'id'
+         ));
 
-            $this->add(array(
-                'type' => 'text',
-                'name' => 'text',
-                'options' => array(
-                    'label' => 'The Text'
-                )
-            ));
+         $this->add(array(
+            'type' => 'text',
+            'name' => 'text',
+            'options' => array(
+              'label' => 'The Text'
+            )
+         ));
 
-            $this->add(array(
-                'type' => 'text',
-                'name' => 'title',
-                'options' => array(
-                    'label' => 'Blog Title'
-                )
-            ));
-        }
-    }
+         $this->add(array(
+            'type' => 'text',
+            'name' => 'title',
+            'options' => array(
+               'label' => 'Blog Title'
+            )
+         ));
+      }
+   }
 
 As you can see this class is pretty handy. All we do is to have our class extend ``Zend\Form\Fieldset`` and then we
 write a ``__construct()`` method and add all the elements we need to the fieldset. This ``Fieldset`` can now be used by
@@ -165,7 +165,7 @@ controller-factory within the configuration:
         'router'          => array( /** Router Config */ )
     );
 
-Nest step would be to write the ``WriteControllerFactory``. Have the factory return the ``WriteController`` and add the
+Next step would be to write the ``WriteControllerFactory``. Have the factory return the ``WriteController`` and add the
 required dependencies within the constructor.
 
 .. code-block:: php
