@@ -185,7 +185,7 @@ Next in line is the creation of the new template ``blog/write/edit``:
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 6
+   :emphasize-lines:
 
     <!-- Filename: /module/Blog/view/blog/write/edit.phtml -->
     <h1>WriteController::editAction()</h1>
