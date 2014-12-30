@@ -711,7 +711,7 @@ Now that we have declared the function inside the interface it's time to impleme
          */
         public function delete(PostInterface $postObject)
         {
-            $action = new Delete('post');
+            $action = new Delete('posts');
             $action->where(array('id = ?' => $postObject->getId()));
 
             $sql    = new Sql($this->dbAdapter);
