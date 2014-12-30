@@ -227,7 +227,7 @@ the view, too.
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 9
+   :emphasize-lines: 8
 
     <!-- Filename: /module/Blog/view/blog/write/add.phtml -->
     <h1>WriteController::editAction()</h1>
