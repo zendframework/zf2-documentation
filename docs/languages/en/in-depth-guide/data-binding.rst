@@ -732,8 +732,8 @@ created so far. With all of this set up now we're good to go ahead and write our
     <h1>DeleteController::deleteAction()</h1>
     <p>
         Are you sure that you want to delete
-        '<?php echo $this->escapeHtml($this->blog->getTitle()); ?>' by
-        '<?php echo $this->escapeHtml($this->blog->getText()); ?>'?
+        '<?php echo $this->escapeHtml($this->post->getTitle()); ?>' by
+        '<?php echo $this->escapeHtml($this->post->getText()); ?>'?
     </p>
     <form action="<?php echo $this->url('blog/delete', array(), true) ?>" method="post">
         <input type="submit" name="delete_confirmation" value="yes">
