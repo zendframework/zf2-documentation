@@ -374,9 +374,10 @@ make use of the ``Zend\Form`` component. Let's go ahead and create our controlle
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 31-35
+   :emphasize-lines: 32-36
 
     <?php
+    // Filename: /module/Blog/src/Blog/Controller/DeleteController.php
     namespace Blog\Controller;
 
     use Blog\Service\PostServiceInterface;
