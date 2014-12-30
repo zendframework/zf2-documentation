@@ -557,7 +557,7 @@ And all of this is really not that much code. Modify your ``WriteController`` to
     }
 
 This example code should be pretty straight forward. First we save the current request into a local variable. Then we
-check if the current request ist a POST-Request and if so, we store the requests POST-data into the form. If the form
+check if the current request is a POST-Request and if so, we store the requests POST-data into the form. If the form
 turns out to be valid we try to save the form data through our service and then redirect the user to the route ``blog``.
 If any error occurred at any point we simply display the form again.
 
