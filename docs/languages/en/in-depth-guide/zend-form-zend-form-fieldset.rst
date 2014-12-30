@@ -613,7 +613,7 @@ As you can see the ``savePost()`` function has been added and needs to be implem
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 42-45
+   :emphasize-lines: 6, 42-45
 
     <?php
     // Filename: /module/Blog/src/Blog/Service/PostService.php
