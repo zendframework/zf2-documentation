@@ -469,7 +469,7 @@ itself which triggers a couple of internal things.
 .. note::
 
     HTML-Forms can be sent using ``POST`` and ``GET``. ZF2s default is ``POST``, therefore you don't have to be
-    explicit in setting this options. If you want to change it to ``GET`` though, all you have to do is to set the
+    explicit in setting this option. If you want to change it to ``GET`` though, all you have to do is set the
     specific attribute prior to the ``prepare()`` call.
 
     ``$form->setAttribute('method', 'GET');``
