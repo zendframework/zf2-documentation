@@ -108,7 +108,7 @@ times faster than fetching an entire result set and using ``count()``, especiall
 
 The database adapter will try and build the most efficient query that will execute on pretty much any modern
 database. However, depending on your database or even your own schema setup, there might be more efficient ways to
-get a rowcount. For this scenario, you can extend the provided DbSelect adapter and implement a custom ``getRowCount``
+get a rowcount. For this scenario, you can extend the provided DbSelect adapter and implement a custom ``count``
 method.  For example, if you keep track of the count of blog posts in a separate table, you could achieve a faster count query with the
 following setup:
 
