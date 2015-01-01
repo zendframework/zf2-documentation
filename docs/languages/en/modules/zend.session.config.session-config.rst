@@ -50,3 +50,42 @@ A basic example is one like the following:
    ));
    $manager = new SessionManager($config);
 
+Service Manager Factory 
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _zend.session.config.session-config.service-manager-factory:
+
+``Zend\Session`` ships with a :doc:`Service Manager <zend.service-manager.intro>` factory which reads configuration data
+from the application configuration and injects a corresponding instance of ``Zend\Session\Config\SessionConfig`` into
+the session manager automatically.
+
+To use this factory, you first need to register it with the Service Manager by adding the appropriate factory definition:
+
+.. code-block:: php
+   :linenos:
+
+   'service_manager' => array(
+       'factories' => array(
+           'Zend\Session\Config\ConfigInterface' => 'Zend\Session\Service\SessionConfigFactory',
+       ),
+   ),
+
+Then place your application's session configuration in the root-level configuration key ``session_config``:
+
+.. code-block:: php
+   :linenos:
+
+   'session_config' => array(
+       'phpSaveHandler' => 'redis',
+       'savePath' => 'tcp://127.0.0.1:6379?weight=1&timeout=1',
+   ),
+
+Any of the configuration options defined in :ref:`zend.session.config.session-config.options` can be used there, as well as the following factory-specific
+configuration options: 
+
++------------------------+------------+-------------------------------------------------------------------------------------------+
+|Option                  |Data Type   |Description                                                                                |
++========================+============+===========================================================================================+
+|config_class            |``string``  |Name of the class to use as the configuration container                                    |
+|                        |            |(Defaults to ``Zend\Session\Config\SessionConfig``
++------------------------+------------+-------------------------------------------------------------------------------------------+
