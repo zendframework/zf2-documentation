@@ -22,7 +22,7 @@ Using Zend\\Mime\\Part
    $text->type = Mime\Mime::TYPE_TEXT;
    $text->charset = 'utf-8';
    
-   $fileContents = fopen($somefilePath, 'r');
+   $fileContent = fopen($somefilePath, 'r');
    $attachment = new Mime\Part($fileContent);
    $attachment->type = 'image/jpg';
    $attachment->filename = 'image-file-name.jpg';
