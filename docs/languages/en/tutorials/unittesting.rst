@@ -28,7 +28,7 @@ installed. The version of PHPUnit used should be 3.7.*
 .. _setting-up-phpunit-to-use-composer-s-autoload-php:
 
 Setting up phpunit to use composer's autoload.php
-------------------------------
+-------------------------------------------------
 
 If you used composer to generate an autoload.php file for you,
 as seen in http://framework.zend.com/manual/2.3/en/user-guide/modules.html#autoloading-files => note,
