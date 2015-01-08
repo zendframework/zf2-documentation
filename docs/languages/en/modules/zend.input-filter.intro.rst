@@ -178,59 +178,14 @@ the calling object in order to validate the internal properties based on our com
 .. code-block:: php
    :linenos:
 
-        use Zend\InputFilter\InputFilterInterface;
-        use Zend\InputFilter\Factory as InputFactory;
         use Zend\InputFilter\InputFilter;
-        use Zend\InputFilter\InputFilterAwareInterface;
-        use Zend\InputFilter\InputFilterInterface;
 
        /**
         * Filter to ensure a name property is set and > 8 characters
         */
         class NameInputFilter extends InputFilter
         {
-            /** @var InputFactory */
-            protected $inputFactory;
-
-            public function __construct()
-            {
-                $this->inputFactory = new InputFactory();
-                $this->setValidators();
-            }
-
-            /**
-             * Loads the validators
-             */
-            protected function setValidators()
-            {
-                $this->setNameValidator();
-            }
-
-            /**
-             * Creates a validator to check the name property
-             */
-            protected function setNameValidator()
-            {
-                $this->add(
-                    $this->inputFactory->createInput(
-                        array(
-                            'name'       => 'name',
-                            'required'   => true,
-                            'validators' => array(
-                                array(
-                                    'name' => 'not_empty',
-                                ),
-                                array(
-                                    'name' => 'string_length',
-                                    'options' => array(
-                                        'min' => 8
-                                    )
-                                ),
-                            )
-                        )
-                    )
-                );
-            }
+           /** Filter body goes here **/
         }
 
         /**
@@ -238,99 +193,20 @@ the calling object in order to validate the internal properties based on our com
          */
         class EmailInputFilter extends InputFilter
         {
-            /** @var InputFactory */
-            protected $inputFactory;
-
-            public function __construct()
-            {
-                $this->inputFactory = new InputFactory();
-                $this->setValidators();
-            }
-
-            /**
-             * Loads the validators
-             */
-            protected function setValidators()
-            {
-                $this->setEmailValidator();
-            }
-
-            /**
-             * Creates a validator to check the name property
-             */
-            protected function setEmailValidator()
-            {
-                $this->add(
-                    $this->inputFactory->createInput(
-                        array(
-                            'name'       => 'email',
-                            'required'   => true,
-                            'validators' => array(
-                                array(
-                                    'name' => 'not_empty',
-                                ),
-                                array(
-                                    'name'    => 'string_length',
-                                    'options' => array(
-                                    'min'     => 8
-                                ),
-                                array(
-                                    'name'    => 'email_address',
-                                )
-                            )
-                        )
-                    )
-                );
-            }
+            /** Filter body goes here **/
         }
 
-        class SimplePerson implements InputFilterAwareInterface
+        class SimplePerson
         {
-            /** @var string */
-            protected $name;
-
-            /** @var string */
-            protected $email;
+            /** Member variables ommitted for berevity **/
 
             /** @var InputFilter */
             protected $inputFilter;
 
-            /**
-             * @return string
-             */
-            public function getName()
-            {
-                return $this->name;
-            }
-
-            /**
-             * @param string $name
-             */
-            public function setName($name)
-            {
-                $this->name = $name;
-            }
-
-            /**
-             * @return string
-             */
-            public function getEmail()
-            {
-                return $this->email;
-            }
-
-            /**
-             * @param string $email
-             */
-            public function setEmail($email)
-            {
-                $this->email = $email;
-            }
-
              /**
               * Retrieve input filter
               *
-              * @return InputFilterInterface
+              * @return InputFilter
               */
             public function getInputFilter()
             {
@@ -349,7 +225,7 @@ the calling object in order to validate the internal properties based on our com
              * Set input filter
              *
              * @param  InputFilterInterface $inputFilter
-             * @return InputFilterAwareInterface
+             * @return SimplePerson
              */
             public function setInputFilter(InputFilterInterface $inputFilter)
             {
