@@ -3,7 +3,7 @@
 Namespacing Old Classes
 =======================
 
-ZF2's minimal version is PHP 5.3.  The most notable feature of PHP 5.3 is
+ZF2's minimal version is PHP 5.4.  The most notable feature of PHP 5.3 is
 the addition of namespaces, which ZF2 fully embraces.  Moreover, new projects
 built on ZF2 also fully embrace PHP namespaces.  The addition of namespaces
 to PHP has greatly improved the readability of long class names and 
