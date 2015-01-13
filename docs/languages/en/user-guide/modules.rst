@@ -17,6 +17,8 @@ the Application module as required.
 
 Let’s start with the directories required.
 
+.. _user-guide.modules.setting-up-the-album-module:
+
 Setting up the Album module
 ---------------------------
 
@@ -87,6 +89,8 @@ Create a file called ``Module.php`` under ``zf2-tutorial/module/Album``:
 The ``ModuleManager`` will call ``getAutoloaderConfig()`` and ``getConfig()``
 automatically for us.
 
+.. _user-guide.modules.setting-up-the-album-module.autoloading-files:
+
 Autoloading files
 ^^^^^^^^^^^^^^^^^
 
@@ -124,6 +128,8 @@ As this is an empty array, whenever the autoloader looks for a class within the
     If you go this way, then you need to run ``php composer.phar update`` to update 
     the composer autoloading files.
 
+.. _user-guide.modules.configuration:
+
 Configuration
 -------------
 
@@ -159,6 +165,8 @@ be unique across all modules, so we prefix it with our module name.
 Within the ``view_manager`` section, we add our view directory to the
 ``TemplatePathStack`` configuration. This will allow it to find the view scripts for
 the ``Album`` module that are stored in our ``view/`` directory.
+
+.. _user-guide.modules.informing-the-application-about-our-new-module:
 
 Informing the application about our new module
 ----------------------------------------------
