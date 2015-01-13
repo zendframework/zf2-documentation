@@ -130,10 +130,10 @@ layouts:
         ->setMessageSeparatorString('</li><li>')
         ->setMessageCloseString('</li></ul></div>');
 
-    echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
-    echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
-    echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
-    echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+    echo $flash->render('error',   array('alert', 'alert-dismissible', 'alert-danger'));
+    echo $flash->render('info',    array('alert', 'alert-dismissible', 'alert-info'));
+    echo $flash->render('default', array('alert', 'alert-dismissible', 'alert-warning'));
+    echo $flash->render('success', array('alert', 'alert-dismissible', 'alert-success'));
 
 The output of the above example would create dismissable ``FlashMessages`` with the following
 ``HTML`` markup. The example only covers one type of ``FlashMessenger`` output; if you would have
