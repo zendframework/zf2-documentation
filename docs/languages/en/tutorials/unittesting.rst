@@ -1,4 +1,4 @@
-.. _tutorials.unittesting.rst:
+.. _tutorials.unittesting:
 
 Unit Testing a Zend Framework 2 application
 ===========================================
@@ -25,26 +25,24 @@ As the Zend Framework 2 API uses `PHPUnit <http://phpunit.de/>`_, so
 will this tutorial. This tutorial assumes that you already have PHPUnit
 installed. The version of PHPUnit used should be 3.7.*
 
-.. _setting-up-phpunit-to-use-composer-s-autoload-php:
+.. _tutorials.unittesting.setting-up-phpunit-to-use-composer-s-autoload-php:
 
 Setting up phpunit to use composer's autoload.php
 -------------------------------------------------
 
-If you used composer to generate an autoload.php file for you,
-as seen in http://framework.zend.com/manual/2.3/en/user-guide/modules.html#autoloading-files => note,
-then you need to use a phpunit binary installed by composer.
-Add to composer.json:
+If you used composer to generate an ``autoload.php`` file for you,
+as seen in the note on :ref:`using composer to autoload module files <user-guide.modules.setting-up-the-album-module.autoloading-files>`,
+then you need to use a phpunit binary installed by composer. You can add
+this as a development dependency using composer itself:
 
-    .. code-block:: javascript
-       :linenos:
+.. code-block:: bash
 
-        "require-dev": {
-            "phpunit/phpunit": "*"
-        },
+    $ php composer.phar require --dev phpunit/phpunit
 
-Then run ``php composer.phar update`` to update the composer autoloading files.
+The above command will update your ``composer.json`` file and perform an update
+for you, which will also setup autoloading rules.
 
-.. _setting-up-the-tests-directory:
+.. _tutorials.unittesting.setting-up-the-tests-directory:
 
 Setting up the tests directory
 ------------------------------
@@ -73,7 +71,7 @@ The structure of the ``test`` directory matches exactly with that of the
 module's source files, and it will allow you to keep your tests
 well-organized and easy to find.
 
-.. _bootstrapping-your-tests:
+.. _tutorials.unittesting.bootstrapping-your-tests:
 
 Bootstrapping your tests
 ------------------------
@@ -236,7 +234,7 @@ Even though no tests were executed, we at least know that the autoloader found t
 ZF2 files, otherwise it would throw a ``RuntimeException``, defined on line 69 of
 our bootstrap file.
 
-.. _your-first-controller-test:
+.. _tutorials.unittesting.your-first-controller-test:
 
 Your first controller test
 --------------------------
@@ -301,7 +299,7 @@ and that we ended up in the desired module and controller.
     routing configuration for the Album module. In our example this should be defined on line
     19 of the ``module.config.php`` file in the Album module.
 
-.. _a-failing-test-case:
+.. _tutorials.unittesting.a-failing-test-case:
 
 A failing test case
 -------------------
@@ -353,7 +351,7 @@ something like:
 From this error message it is clear that not all our dependencies are available in the
 service manager. Let us take a look how can we fix this.
 
-.. _configuring-the-service-manager-for-the-tests:
+.. _tutorials.unittesting.configuring-the-service-manager-for-the-tests:
 
 Configuring the service manager for the tests
 ---------------------------------------------
@@ -432,7 +430,7 @@ tests now pass:
 
     OK (1 test, 6 assertions)
 
-.. _testing-actions-with-post:
+.. _tutorials.unittesting.testing-actions-with-post:
 
 Testing actions with POST
 -------------------------
@@ -500,7 +498,7 @@ When testing the editAction you will also need to mock out the ``getAlbum`` meth
         ->will($this->returnValue(new \Album\Model\Album()));
 
 
-.. _testing-model-entities:
+.. _tutorials.unittesting.testing-model-entities:
 
 Testing model entities
 ----------------------
@@ -653,7 +651,7 @@ indeed correct:
 
     OK (7 tests, 25 assertions)
 
-.. _testing-model-tables:
+.. _tutorials.unittesting.testing-model-tables:
 
 Testing model tables
 --------------------
