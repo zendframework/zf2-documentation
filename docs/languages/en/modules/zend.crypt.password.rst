@@ -30,7 +30,7 @@ Bcrypt uses a *cost* parameter that specify the number of cycles to use in the a
 this number the algorithm will spend more time to generate the hash output. The *cost* parameter is
 represented by an integer value between 4 to 31. The default *cost* value of the ``Zend\Crypt\Password\Bcrypt``
 component is 10, that means about 0.07 second using a CPU Intel i5 at 3.3Ghz (the *cost* parameter is a
-relative value according to the speed of the CPU used). We changed the default value of the cost parameter from 14 to 10, starting from Zend Framework 2.3.0, due to high computational time to prevent potential denial-of-service attacks (you can read this article `Aggressive password stretching`_ for more information). 
+relative value according to the speed of the CPU used). We changed the default value of the cost parameter from 14 to 10, starting from Zend Framework 2.3.0, due to high computational time to prevent potential denial-of-service attacks (you can read this article `Aggressive password stretching`_ for more information).
 
 If you want to change the *cost* parameter of the bcrypt algorithm you can use the ``setCost()`` method.
 Please note, if you change the cost parameter, the resulting hash will be different.
@@ -50,10 +50,20 @@ The example below shows how to use the bcrypt algorithm to store a user's passwo
    $securePass = $bcrypt->create('user password');
 
 The output of the ``create()`` method is the hash of the password. This value can then be stored in a
-repository like a database (the output is a string of 60 bytes). 
+repository like a database (the output is a string of 60 bytes).
+
+.. note::
+
+   **Bcrypt truncates user's password > 72 characters**
+
+   The input string of the bcrypt algorithm is limited to 72 characters. If you use a string with a
+   length more than this limit, bcrypt will consider only the first 72 characters. If you need to use
+   string longer, you can use the ``Zend\Crypt\Password\BcryptSha`` component that performs a SHA256 to
+   the input before to use the bcrypt algorithm.
+
 
 To verify if a given password is valid against a bcrypt value you can use the ``verify()``
-method. An example is reported below: 
+method. An example is reported below:
 
 .. code-block:: php
    :linenos:
@@ -158,4 +168,3 @@ for the digest format.
 .. _`Aggressive password stretching`: http://timoh6.github.io/2013/11/26/Aggressive-password-stretching.html
 .. _`here's the security report`: http://php.net/security/crypt_blowfish.php
 .. _`Apache`: http://httpd.apache.org/docs/2.2/misc/password_encryptions.html
-
