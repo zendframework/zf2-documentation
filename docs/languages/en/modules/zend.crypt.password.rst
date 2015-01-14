@@ -58,7 +58,7 @@ repository like a database (the output is a string of 60 bytes).
 
    The input string of the bcrypt algorithm is limited to 72 characters. If you use a string with a
    length more than this limit, bcrypt will consider only the first 72 characters. If you need to use
-   string longer, you can use the Zend\Crypt\Password\BcryptSha component that performs a SHA256 to
+   string longer, you can use the ``Zend\Crypt\Password\BcryptSha`` component that performs a SHA256 to
    the input before to use the bcrypt algorithm.
 
 
