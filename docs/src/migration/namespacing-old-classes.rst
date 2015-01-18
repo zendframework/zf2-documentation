@@ -3,14 +3,13 @@
 Namespacing Old Classes
 =======================
 
-ZF2's minimal version is PHP 5.4.  The most notable feature of PHP 5.3 is
-the addition of namespaces, which ZF2 fully embraces.  Moreover, new projects
-built on ZF2 also fully embrace PHP namespaces.  The addition of namespaces
-to PHP has greatly improved the readability of long class names and 
-has helped better organize code into modules and components.  This transition
-has also given birth to some naming best practices that help developers organize
-their code bases consisting of classes, components, and modules in a consistent
-and clean fashion.
+One of the major changes in ZF2 has been the introduction of namespaces. 
+A namespace is a feature that has been introduced in PHP 5.3 and is extensively
+used within ZF2. The addition of namespaces to PHP has greatly improved the
+readability of long class names and has helped better organize code into modules 
+and components.  This transition has also given birth to some naming best 
+practices that help developers organize their code bases consisting of classes, 
+components, and modules in a consistent and clean fashion.
 
 Converting an older code base that follows the original PEAR/ZF underscore
 separated class naming convention into a properly namespaced codebase is one
