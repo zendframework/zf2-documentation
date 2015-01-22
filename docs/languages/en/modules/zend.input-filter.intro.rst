@@ -167,6 +167,73 @@ appropriate object. You may create either ``Input`` or ``InputFilter`` objects i
        ),
    ));
 
+The ``merge()`` method may be used on an ``InputFilterInterface`` in order to add two or more filters to each other, effectively
+allowing you to create chains of filters. This is especially useful in object hierarchies whereby we may define a generic
+set of validation rules on the base object and build these up to more specific rules along the way.
+
+In the example below an ``InputFilter`` is built up for the name property as well as for the email property allowing them to
+be re-used elsewhere. When the ``isValid()`` method is called on the object, all of the merged filters are run against
+the calling object in order to validate the internal properties based on our compound set of filters.
+
+.. code-block:: php
+   :linenos:
+
+        use Zend\InputFilter\InputFilter;
+
+       /**
+        * Filter to ensure a name property is set and > 8 characters
+        */
+        class NameInputFilter extends InputFilter
+        {
+           /** Filter body goes here **/
+        }
+
+        /**
+         * Filter to ensure an email property is set and > 8 characters and is valid
+         */
+        class EmailInputFilter extends InputFilter
+        {
+            /** Filter body goes here **/
+        }
+
+        class SimplePerson
+        {
+            /** Member variables ommitted for berevity **/
+
+            /** @var InputFilter */
+            protected $inputFilter;
+
+             /**
+              * Retrieve input filter
+              *
+              * @return InputFilter
+              */
+            public function getInputFilter()
+            {
+                if (!$this->inputFilter) {
+                    // Create a new input filter
+                    $this->inputFilter = new InputFilter();
+                    // Merge our inputFilter in for the email property
+                    $this->inputFilter->merge(new EmailInputFilter());
+                    // Merge our inputFilter in for the name property
+                    $this->inputFilter->merge(new NameInputFilter());
+                }
+                return $this->inputFilter;
+            }
+
+            /**
+             * Set input filter
+             *
+             * @param  InputFilterInterface $inputFilter
+             * @return SimplePerson
+             */
+            public function setInputFilter(InputFilterInterface $inputFilter)
+            {
+                $this->inputFilter = $inputFilter;
+
+                return $this;
+            }
+        }
 
 Also see
 
