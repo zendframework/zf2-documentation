@@ -376,13 +376,6 @@ Zend\\Http\\Header\\AbstractDate Methods
 
    Returns self
 
-**date**
-   ``date()``
-
-   Return date for this header as an instance of ``\DateTime``
-
-   Returns ``\DateTime``
-
 **compareTo**
    ``compareTo(string|DateTime $date)``
 
@@ -391,6 +384,27 @@ Zend\\Http\\Header\\AbstractDate Methods
    See `strcmp <http://www.php.net/manual/en/function.strcmp.php>`_.
 
    Returns int
+
+**date**
+   ``date()``
+
+   Return date for this header as an instance of ``\DateTime``
+
+   Returns ``\DateTime``
+
+**fromTimestamp**
+   ``fromTimestamp(int $time)``
+
+   Create date-based header from Unix timestamp
+
+   Returns self
+
+**fromTimeString**
+   ``fromTimeString(string $time)``
+
+   Create date-based header from strtotime()-compatible string
+
+   Returns self
 
 .. _zend.http.header.abstractlocation.methods:
 
