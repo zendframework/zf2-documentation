@@ -300,10 +300,10 @@ services configured out of the box.
 
   - ``Zend\Db\Adapter\AdapterAbstractServiceFactory`` (opt-in).
 
-  - ``Zend\Form\FormAbstractServiceFactory`` is registered by default. 
+  - ``Zend\Form\FormAbstractServiceFactory`` is registered by default.
 
   - ``Zend\Log\LoggerAbstractServiceFactory`` (opt-in; registered by default in the skeleton
-    application). 
+    application).
 
 - **Aliases**
 
@@ -355,7 +355,7 @@ key/value pairs where the key is the service name, and the value is the configur
 create the given service.
 
 
-Zend\\Cache\\Service\\StorageCacheAbstractServiceFactory 
+Zend\\Cache\\Service\\StorageCacheAbstractServiceFactory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This abstract factory is opt-in, but registered by default in the skeleton application. It uses the
@@ -540,6 +540,10 @@ values as noted below. The following services are created and managed by the ``V
 
   - If the ``base_path`` key is present, it is used to inject the ``BasePath`` view helper; otherwise, the
     ``Request`` service is retrieved, and the value of its ``getBasePath()`` method is used.
+
+  - If the ``base_path_console`` key is present, it is used to inject the ``BasePath`` view helper for
+    console requests; otherwise, the ``Request`` service is retrieved, and the value of its ``getBasePath()``
+    method is used. This can be useful for sending urls in emails via a cronjob.
 
   - If the ``doctype`` key is present, it will be used to set the value of the ``Doctype`` view helper.
 
