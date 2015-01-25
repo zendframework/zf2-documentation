@@ -49,7 +49,7 @@ the module class.
        {
            // Register a render event
            $app = $e->getParam('application');
-           $app->getEventManager()->attach('render', array($this, 'setLayoutTitle'));
+           $app->getEventManager()->attach('render', [$this, 'setLayoutTitle']);
        }
 
        /**

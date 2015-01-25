@@ -369,25 +369,25 @@ into a generator object. From there, you may add additional properties or method
    $generator = Zend\CodeGenerator\Php\Class::fromReflection(
        new Zend\Reflection\Class($class)
    );
-   $generator->setMethod(array(
+   $generator->setMethod([
        'name'       => 'setBaz',
-       'parameters' => array(
-           array('name' => 'baz'),
-       ),
+       'parameters' => [
+           ['name' => 'baz'],
+       ],
        'body'       => '$this->_baz = $baz;' . "\n" . 'return $this;',
-       'docblock'   => new Zend\CodeGenerator\Php\Docblock(array(
+       'docblock'   => new Zend\CodeGenerator\Php\Docblock([
            'shortDescription' => 'Set the baz property',
-           'tags'             => array(
-               new Zend\CodeGenerator\Php\Docblock\Tag\Param(array(
+           'tags'             => [
+               new Zend\CodeGenerator\Php\Docblock\Tag\Param([
                    'paramName' => 'baz',
                    'datatype'  => 'string'
-               )),
-               new Zend\CodeGenerator\Php\Docblock\Tag\Return(array(
+               ]),
+               new Zend\CodeGenerator\Php\Docblock\Tag\Return([
                    'datatype'  => 'string',
-               )),
-           ),
-       )),
-   ));
+               ]),
+           ],
+       ]),
+   ]);
    $code = $generator->generate();
 
 .. _zend.codegenerator.examples.reflection-method:

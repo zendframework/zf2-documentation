@@ -100,9 +100,9 @@ Nous appelerons le script de vue "``user/_sidebar.phtml``", et nous le rempliron
    <?php $this->placeholder('sidebar')->captureStart() ?>
    <h4>User Administration</h4>
    <ul>
-       <li><a href="<?php $this->url(array('action' => 'list')) ?>">
+       <li><a href="<?php $this->url(['action' => 'list']) ?>">
            List</a></li>
-       <li><a href="<?php $this->url(array('action' => 'create')) ?>">
+       <li><a href="<?php $this->url(['action' => 'create']) ?>">
            Create</a></a></li>
    </ul>
    <?php $this->placeholder('sidebar')->captureEnd() ?>

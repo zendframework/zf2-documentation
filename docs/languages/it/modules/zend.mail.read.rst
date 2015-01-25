@@ -38,9 +38,9 @@ Semplice esempio usando Pop3
    :linenos:
 
    <?php
-   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'localhost',
+   $mail = new Zend\Mail\Storage\Pop3(['host'     => 'localhost',
                                             'user'     => 'test',
-                                            'password' => 'test'));
+                                            'password' => 'test']);
 
    echo $mail->countMessages() . " messaggi trovati\n";
    foreach ($mail as $message) {
@@ -62,7 +62,7 @@ Se si desidera leggere da un file Mbox è sufficiente fornire il nome del file a
    :linenos:
 
    <?php
-   $mail = new Zend\Mail\Storage\Mbox(array('filename' => '/home/test/mail/inbox'));
+   $mail = new Zend\Mail\Storage\Mbox(['filename' => '/home/test/mail/inbox']);
 
 Maildir è molto simile ma necessita il nome di una cartella:
 
@@ -70,7 +70,7 @@ Maildir è molto simile ma necessita il nome di una cartella:
    :linenos:
 
    <?php
-   $mail = new Zend\Mail\Storage\Maildir(array('dirname' => '/home/test/mail/'));
+   $mail = new Zend\Mail\Storage\Maildir(['dirname' => '/home/test/mail/']);
 
 Entrambi i costruttori generano un'eccezione *Zend\Mail\Exception* se l'archivio non può essere letto.
 
@@ -88,20 +88,20 @@ Imap. Entrambi necessitano almeno di un host ed un utente per connettersi ed aut
 
    <?php
    // connessione con Pop3
-   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'example.com'
+   $mail = new Zend\Mail\Storage\Pop3(['host'     => 'example.com'
                                             'user'     => 'test',
-                                            'password' => 'test'));
+                                            'password' => 'test']);
 
    // connessione con Imap
-   $mail = new Zend\Mail\Storage\Imap(array('host'     => 'example.com'
+   $mail = new Zend\Mail\Storage\Imap(['host'     => 'example.com'
                                             'user'     => 'test',
-                                            'password' => 'test'));
+                                            'password' => 'test']);
 
    // esempio di una porta non standard
-   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'example.com',
+   $mail = new Zend\Mail\Storage\Pop3(['host'     => 'example.com',
                                             'port'     => 1120
                                             'user'     => 'test',
-                                            'password' => 'test'));
+                                            'password' => 'test']);
 
 Per entrambi i protocolli sono supportate le connessioni SSL e TSL. Se si utilizza SSL, la porta predefinita cambia
 come specificato in RFC.
@@ -114,16 +114,16 @@ come specificato in RFC.
 
    // utilizzo di SSL su una porta differente
    // (i valori predefiniti sono 995 per Pop3 e 993 per Imap)
-   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'example.com'
+   $mail = new Zend\Mail\Storage\Pop3(['host'     => 'example.com'
                                             'user'     => 'test',
                                             'password' => 'test',
-                                            'ssl'      => 'SSL'));
+                                            'ssl'      => 'SSL']);
 
    // use TLS
-   $mail = new Zend\Mail\Storage\Pop3(array('host'     => 'example.com'
+   $mail = new Zend\Mail\Storage\Pop3(['host'     => 'example.com'
                                             'user'     => 'test',
                                             'password' => 'test',
-                                            'ssl'      => 'TLS'));
+                                            'ssl'      => 'TLS']);
 
 Entrambi i costruttori possono restituire un'eccezione *Zend\Mail\Exception* o *Zend\Mail\Protocol\Exception*, a
 seconda del tipo di errore.
@@ -407,24 +407,24 @@ salvataggio:
 
    <?php
    // mbox con cartelle
-   $mail = new Zend\Mail\Storage\Folder\Mbox(array('dirname' => '/home/test/mail/'));
+   $mail = new Zend\Mail\Storage\Folder\Mbox(['dirname' => '/home/test/mail/']);
 
    // mbox con una cartella predefinita non chiamata INBOX,
    // funziona anche con Zend\Mail\Storage\Folder\Maildir e Zend\Mail\Storage\Imap
-   $mail = new Zend\Mail\Storage\Folder\Mbox(array('dirname' => '/home/test/mail/',
-                                                   'folder'  => 'Archive'));
+   $mail = new Zend\Mail\Storage\Folder\Mbox(['dirname' => '/home/test/mail/',
+                                                   'folder'  => 'Archive']);
 
    // maildir con cartelle
-   $mail = new Zend\Mail\Storage\Folder\Maildir(array('dirname' => '/home/test/mail/'));
+   $mail = new Zend\Mail\Storage\Folder\Maildir(['dirname' => '/home/test/mail/']);
 
    // maildir con due punti come delimitatore, come suggerito in Maildir++
-   $mail = new Zend\Mail\Storage\Folder\Maildir(array('dirname' => '/home/test/mail/'
-                                                      'delim'   => ':'));
+   $mail = new Zend\Mail\Storage\Folder\Maildir(['dirname' => '/home/test/mail/'
+                                                      'delim'   => ':']);
 
    // imap è lo stesso con o senza cartelle
-   $mail = new Zend\Mail\Storage\Imap(array('host'     => 'example.com'
+   $mail = new Zend\Mail\Storage\Imap(['host'     => 'example.com'
                                             'user'     => 'test',
-                                            'password' => 'test'));
+                                            'password' => 'test']);
 
 Con il metodo getFolders($root = null) si ottiene la gerarchia delle cartelle a partire dalla cartella root o da
 quella specificata. Restituisce un'istanza di *Zend\Mail\Storage\Folder*, che implementa *RecursiveIterator* e

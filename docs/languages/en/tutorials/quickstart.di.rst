@@ -372,7 +372,7 @@ to disk, you would write the information into a definition directly, by way of `
    $class->setExtendedClass('\Zend\Di\Definition\ArrayDefinition');
    $class->addMethod(
        '__construct',
-       array(),
+       [],
        \Zend\Code\Generator\MethodGenerator::FLAG_PUBLIC,
        'parent::__construct(' . var_export($definition->toArray(), true) . ');'
    );
@@ -424,15 +424,15 @@ multiple places:
    $im = $di->getInstanceManager();
 
    // this could come from Zend\Config\Config::toArray
-   $propertiesFromConfig = array(
-       'ThirdParty\Dbal\DbAdapter' => array(
+   $propertiesFromConfig = [
+       'ThirdParty\Dbal\DbAdapter' => [
            'username' => 'someUsername',
            'password' => 'somePassword'
-       ),
-       'Zend\Controller\Helper\ContentType' => array(
+       ],
+       'Zend\Controller\Helper\ContentType' => [
            'default' => 'xhtml5'
-       ),
-   );
+       ],
+   ];
    $im->setProperties($propertiesFromConfig);
 
 .. _learning.di.generating-service-locators:
@@ -483,7 +483,7 @@ The above code will write to ``../Application/Context.php``, and that file will 
    class Context extends ServiceLocator
    {
 
-       public function get($name, array $params = array())
+       public function get($name, array $params = [])
        {
            switch ($name) {
                case 'composed':

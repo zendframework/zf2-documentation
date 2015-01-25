@@ -42,14 +42,14 @@ To do this, add an entry for ``Blog`` to the modules array inside the main appli
 
     <?php
     // Filename: /config/application.config.php
-    return array(
-        'modules' => array(
+    return [
+        'modules' => [
             'Application',
             'Blog'
-        ),
+        ],
 
         // ...
-    );
+    ];
 
 If you refresh your application you should see no change at all (but also no errors).
 
@@ -87,7 +87,7 @@ This function should return either an ``array`` or a ``Traversable`` object. Con
     {
         public function getConfig()
         {
-            return array();
+            return [];
         }
     }
 
@@ -100,7 +100,7 @@ our array configuration in a separate file. Go ahead and create this file at ``/
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array();
+    return [];
 
 Now we will rewrite the ``getConfig()`` function to include this newly created file instead of directly returning the
 array.
@@ -180,14 +180,14 @@ to add this key to the ``controllers`` configuration key inside your ``/module/B
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'controllers' => array(
-            'invokables' => array(
+    return [
+        'controllers' => [
+            'invokables' => [
                 'Blog\Controller\List' => 'Blog\Controller\ListController'
-            )
-        ),
-        'router' => array( /** Route Configuration */ )
-    );
+            ]
+        ],
+        'router' => [ /** Route Configuration */ ]
+    ];
 
 This configuration defines ``Blog\Controller\List`` as an alias for the ``ListController`` under the namespace
 ``Blog\Controller``. Reloading the page should then give you:
@@ -225,14 +225,14 @@ although the presence of the function is enough, actually implementing the inter
          */
         public function getAutoloaderConfig()
         {
-            return array(
-                'Zend\Loader\StandardAutoloader' => array(
-                    'namespaces' => array(
+            return [
+                'Zend\Loader\StandardAutoloader' => [
+                    'namespaces' => [
                         // Autoload all classes from namespace 'Blog' from '/module/Blog/src/Blog'
                         __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    )
-                )
-            );
+                    ]
+                ]
+            ];
         }
 
         /**
@@ -350,15 +350,15 @@ need to let the application know where to look for view files. We do this within
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'view_manager' => array(
-            'template_path_stack' => array(
+    return [
+        'view_manager' => [
+            'template_path_stack' => [
                 __DIR__ . '/../view',
-            ),
-        ),
-        'controllers' => array( /** Controller Configuration */),
-        'router'      => array( /** Route Configuration */ )
-    );
+            ],
+        ],
+        'controllers' => [ /** Controller Configuration */],
+        'router'      => [ /** Route Configuration */ ]
+    ];
 
 The above configuration tells the application that the folder ``/module/Blog/view`` has view files in it that match the
 above described default scheme. It is important to note that with this you can not only ship view files for your module

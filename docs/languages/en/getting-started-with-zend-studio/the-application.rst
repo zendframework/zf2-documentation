@@ -469,7 +469,7 @@ folder and choose New -> PHP File and create a PHP file called
         public function fetchAll()
         {
             $select = $this->sql->select();
-            $select->order(array('completed ASC', 'created ASC'));
+            $select->order(['completed ASC', 'created ASC']);
 
             $statement = $this->sql->prepareStatementForSqlObject($select);
             $results = $statement->execute();
@@ -590,21 +590,21 @@ Open ``config/autoload/global.php`` and replace the empty array with:
 .. code-block:: php
    :linenos:
 
-    return array(
-        'service_manager' => array(
-            'factories' => array(
+    return [
+        'service_manager' => [
+            'factories' => [
                 'Zend\Db\Adapter\Adapter' =>
                     'Zend\Db\Adapter\AdapterServiceFactory',
-            ),
-        ),
-        'db' => array(
+            ],
+        ],
+        'db' => [
             'driver' => 'Pdo',
             'dsn' => 'mysql:dbname=mytasklist;hostname=localhost',
-            'driver_options' => array(
+            'driver_options' => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Firstly, we provide additional Service Manager configuration in the
 service_manager section, This array works exactly the same as the one in

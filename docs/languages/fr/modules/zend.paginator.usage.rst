@@ -310,7 +310,7 @@ Pagination de recherche :
       <div class="paginationControl">
       <!-- Previous page link -->
       <?php if (isset($this->previous)): ?>
-        <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+        <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
           < Previous
         </a> |
       <?php else: ?>
@@ -320,7 +320,7 @@ Pagination de recherche :
       <!-- Numbered page links -->
       <?php foreach ($this->pagesInRange as $page): ?>
         <?php if ($page != $this->current): ?>
-          <a href="<?php echo $this->url(array('page' => $page)); ?>">
+          <a href="<?php echo $this->url(['page' => $page]); ?>">
               <?php echo $page; ?>
           </a> |
         <?php else: ?>
@@ -330,7 +330,7 @@ Pagination de recherche :
 
       <!-- Next page link -->
       <?php if (isset($this->next)): ?>
-        <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+        <a href="<?php echo $this->url(['page' => $this->next]); ?>">
           Next >
         </a>
       <?php else: ?>
@@ -357,7 +357,7 @@ Pagination d'objets :
 
       <!-- First page link -->
       <?php if (isset($this->previous)): ?>
-        <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+        <a href="<?php echo $this->url(['page' => $this->first]); ?>">
           First
         </a> |
       <?php else: ?>
@@ -366,7 +366,7 @@ Pagination d'objets :
 
       <!-- Previous page link -->
       <?php if (isset($this->previous)): ?>
-        <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+        <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
           < Previous
         </a> |
       <?php else: ?>
@@ -375,7 +375,7 @@ Pagination d'objets :
 
       <!-- Next page link -->
       <?php if (isset($this->next)): ?>
-        <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+        <a href="<?php echo $this->url(['page' => $this->next]); ?>">
           Next >
         </a> |
       <?php else: ?>
@@ -384,7 +384,7 @@ Pagination d'objets :
 
       <!-- Last page link -->
       <?php if (isset($this->next)): ?>
-        <a href="<?php echo $this->url(array('page' => $this->last)); ?>">Last</a>
+        <a href="<?php echo $this->url(['page' => $this->last]); ?>">Last</a>
       <?php else: ?>
         <span class="disabled">Last</span>
       <?php endif; ?>
@@ -403,7 +403,7 @@ Pagination Dropdown :
       <select id="paginationControl" size="1">
       <?php foreach ($this->pagesInRange as $page): ?>
         <?php $selected = ($page == $this->current) ? ' selected="selected"' : ''; ?>
-        <option value="<?php echo $this->url(array('page' => $page)); ?>"
+        <option value="<?php echo $this->url(['page' => $page]); ?>"
                 <?php echo $selected ?>>
           <?php echo $page; ?>
         </option>

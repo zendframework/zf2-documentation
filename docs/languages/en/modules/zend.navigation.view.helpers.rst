@@ -337,30 +337,30 @@ In addition to the container above, the following setup is assumed:
    <?php
    // module/MyModule/config/module.config.php
 
-   return array(
+   return [
        /* ... */
-       'router' array(
-           'routes' => array(
-               'archive' => array(
+       'router' [
+           'routes' => [
+               'archive' => [
                    'type'    => 'Segment',
-                   'options' => array(
+                   'options' => [
                        'route'    => '/archive/:year',
-                       'defaults' => array(
+                       'defaults' => [
                            'module'     => 'company',
                            'controller' => 'news',
                            'action'     => 'archive',
                            'year'       => (int) date('Y') - 1,
-                       ),
-                       'constraints' => array(
+                       ],
+                       'constraints' => [
                            'year' => '\d+',
-                       ),
-                   ),
-               ),
+                       ],
+                   ],
+               ],
                /* You can have other routes here... */
-           ),
-       ),
+           ],
+       ],
        /* ... */
-   );
+   ];
 
 .. code-block:: php
    :linenos:
@@ -380,8 +380,8 @@ In addition to the container above, the following setup is assumed:
        /* ... */
        public function getViewHelperConfig()
        {
-           return array(
-               'factories' => array(
+           return [
+               'factories' => [
                    // This will overwrite the native navigation helper
                    'navigation' => function(HelperPluginManager $pm) {
                        // Setup ACL:
@@ -403,8 +403,8 @@ In addition to the container above, the following setup is assumed:
                        // Return the new navigation helper instance
                        return $navigation;
                    }
-               )
-           );
+               ]
+           ];
        }
        /* ... */
    }

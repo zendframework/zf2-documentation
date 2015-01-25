@@ -54,39 +54,39 @@ atualizado com o novo código em destaque.
     :emphasize-lines: 9-27
 
     <?php
-    return array(
-        'controllers' => array(
-            'invokables' => array(
+    return [
+        'controllers' => [
+            'invokables' => [
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
-            ),
-        ),
+            ],
+        ],
 
         // A seção a seguir é nova e deve ser adicionada ao arquivo
-        'router' => array(
-            'routes' => array(
-                'album' => array(
+        'router' => [
+            'routes' => [
+                'album' => [
                     'type'    => 'segment',
-                    'options' => array(
+                    'options' => [
                         'route'    => '/album[/][:action][/:id]',
-                        'constraints' => array(
+                        'constraints' => [
                             'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             'id'     => '[0-9]+',
-                        ),
-                        'defaults' => array(
+                        ],
+                        'defaults' => [
                             'controller' => 'Album\Controller\Album',
                             'action'     => 'index',
-                        ),
-                    ),
-                ),
-            ),
-        ),
+                        ],
+                    ],
+                ],
+            ],
+        ],
 
-        'view_manager' => array(
-            'template_path_stack' => array(
+        'view_manager' => [
+            'template_path_stack' => [
                 'album' => __DIR__ . '/../view',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 O nome da rota é ‘album’ e seu tipo é ‘segment’. Uma rota de Seguimento nos permite
 especificar variáveis na rota que serão mapeadas para parametros na rota correspondente.

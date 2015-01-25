@@ -412,7 +412,7 @@ name}``’dir. Artık ``index.phtml`` view scriptini doldurabiliriz:
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <p>
-        <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Yeni albüm ekle</a>
+        <a href="<?php echo $this->url('album', ['action'=>'add']);?>">Yeni albüm ekle</a>
     </p>
 
     <table class="table">
@@ -427,9 +427,9 @@ name}``’dir. Artık ``index.phtml`` view scriptini doldurabiliriz:
         <td><?php echo $this->escapeHtml($album->artist);?></td>
         <td>
             <a href="<?php echo $this->url('album',
-                array('action'=>'edit', 'id' => $album->id));?>">Düzenle</a>
+                ['action'=>'edit', 'id' => $album->id]);?>">Düzenle</a>
             <a href="<?php echo $this->url('album',
-                array('action'=>'delete', 'id' => $album->id));?>">Sil</a>
+                ['action'=>'delete', 'id' => $album->id]);?>">Sil</a>
         </td>
     </tr>
     <?php endforeach; ?>

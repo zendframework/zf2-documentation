@@ -275,7 +275,7 @@ Such-Seitendarstellung
    <div class="paginationControl">
    <!-- Vorheriger Seitenlink -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Vorher
      </a> |
    <?php else: ?>
@@ -285,7 +285,7 @@ Such-Seitendarstellung
    <!-- Anzahl an Seitenlinks -->
    <?php foreach ($this->pagesInRange as $page): ?>
      <?php if ($page != $this->current): ?>
-       <a href="<?php echo $this->url(array('page' => $page)); ?>">
+       <a href="<?php echo $this->url(['page' => $page]); ?>">
          <?php echo $page; ?>
        </a> |
      <?php else: ?>
@@ -295,7 +295,7 @@ Such-Seitendarstellung
 
    <!-- Nächster Seitenlink -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Nächster >
      </a>
    <?php else: ?>
@@ -320,7 +320,7 @@ Element Seitendarstellung:
 
    <!-- First page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->first]); ?>">
        First
      </a> |
    <?php else: ?>
@@ -329,7 +329,7 @@ Element Seitendarstellung:
 
    <!-- Vorheriger Seitenlink -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Vorheriger
      </a> |
    <?php else: ?>
@@ -338,7 +338,7 @@ Element Seitendarstellung:
 
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Nächster >
      </a> |
    <?php else: ?>
@@ -347,7 +347,7 @@ Element Seitendarstellung:
 
    <!-- Last page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->last]); ?>">
        Last
      </a>
    <?php else: ?>
@@ -367,7 +367,7 @@ Dropdown Seitendarstellung:
    <?php foreach ($this->pagesInRange as $page): ?>
      <?php $selected = ($page == $this->current) ? ' selected="selected"' : ''; ?>
      <option value="<?php
-           echo $this->url(array('page' => $page)); ?>"<?php echo $selected ?>>
+           echo $this->url(['page' => $page]); ?>"<?php echo $selected ?>>
        <?php echo $page; ?>
      </option>
    <?php endforeach; ?>

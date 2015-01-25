@@ -226,14 +226,14 @@ Let's modify our ``Application\Module`` to provide usage info:
 
         public function getConsoleUsage(Console $console)
         {
-            return array(
+            return [
                 // Describe available commands
                 'user resetpassword [--verbose|-v] EMAIL'    => 'Reset password for a user',
 
                 // Describe expected parameters
-                array( 'EMAIL',            'Email of the user for a password reset' ),
-                array( '--verbose|-v',     '(optional) turn on verbose mode'        ),
-            );
+                [ 'EMAIL',            'Email of the user for a password reset' ],
+                [ '--verbose|-v',     '(optional) turn on verbose mode'        ],
+            ];
         }
     }
 

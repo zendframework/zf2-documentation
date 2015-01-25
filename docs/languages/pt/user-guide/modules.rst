@@ -67,16 +67,16 @@ seguinte código:
     {
         public function getAutoloaderConfig()
         {
-            return array(
-                'Zend\Loader\ClassMapAutoloader' => array(
+            return [
+                'Zend\Loader\ClassMapAutoloader' => [
                     __DIR__ . '/autoload_classmap.php',
-                ),
-                'Zend\Loader\StandardAutoloader' => array(
-                    'namespaces' => array(
+                ],
+                'Zend\Loader\StandardAutoloader' => [
+                    'namespaces' => [
                         __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    ),
-                ),
-            );
+                    ],
+                ],
+            ];
         }
 
         public function getConfig()
@@ -108,7 +108,7 @@ código:
 .. code-block:: php
 
     <?php
-    return array();
+    return [];
 
 Como o array está vazio sempre que o ``autoloader`` procrar por uma classe no namespace ``Album``
 ele irá retornar pata o ``StandardAutoloader`` para nós.
@@ -138,18 +138,18 @@ Crie um arquivo chamado ``module.config.php`` no diretório ``zf2-tutorial/modul
 .. code-block:: php
 
     <?php
-    return array(
-        'controllers' => array(
-            'invokables' => array(
+    return [
+        'controllers' => [
+            'invokables' => [
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
-            ),
-        ),
-        'view_manager' => array(
-            'template_path_stack' => array(
+            ],
+        ],
+        'view_manager' => [
+            'template_path_stack' => [
                 'album' => __DIR__ . '/../view',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 A informação de configuração é passada para os componentes relevantes pelo
 ``ServiceManager``.  Nos iremos precisar de duas seções iniciais: ``controllers`` and
@@ -176,21 +176,21 @@ na Aplicação ``Sekeleton``. Altere esse arquivo para incluir na seção ``modu
     :emphasize-lines: 5
 
     <?php
-    return array(
-        'modules' => array(
+    return [
+        'modules' => [
             'Application',
             'Album',                  // <-- Adicione essa linha
-        ),
-        'module_listener_options' => array(
-            'config_glob_paths'    => array(
+        ],
+        'module_listener_options' => [
+            'config_glob_paths'    => [
                 'config/autoload/{,*.}{global,local}.php',
-            ),
-            'module_paths' => array(
+            ],
+            'module_paths' => [
                 './module',
                 './vendor',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Como você pode ver nos adicionamos o módulo ``Album`` na lista de módulos
 depois do módulo ``Application``.

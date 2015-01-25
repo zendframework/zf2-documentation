@@ -83,49 +83,49 @@ Il formato dell'array deve essere conforme alla seguente struttura:
          'language'    => 'lingua nella quale è scritto il feed', // opzionale
          'ttl'         => 'lunghezza in minuti del periodo in cui è possibile salvare in cache il feed', // opzionale, ignorato nel formato Atom
          'rating'      => 'L\'immagine per la votazione del canale', // opzionale, ignorato nel formato Atom
-         'cloud'       => array(
+         'cloud'       => [
                                 'domain'            => 'dominio del cloud, es. rpc.sys.com' // obbligatorio
                                 'port'              => 'porta di connessione' // opzionale, 80 è il valore predefinito
                                 'path'              => 'percorso del cloud, es. /RPC2' // obbligatorio
                                 'registerProcedure' => 'procedura da chiamare, es. myCloud.rssPleaseNotify' // obbligatorio
                                 'protocol'          => 'protocol da usare, es. soap o xml-rpc' // obbligatorio
-                                ), // un servizio cloud per essere informato degli aggiornamenti // opzionale, ignorato nel formato Atom
-         'textInput'   => array(
+                                ], // un servizio cloud per essere informato degli aggiornamenti // opzionale, ignorato nel formato Atom
+         'textInput'   => [
                                 'title'       => 'l\'etichetta del bottone Submit nel campo di testo' // obbligatorio,
                                 'description' => 'spiega il significato del campo di testo' // obbligatorio
                                 'name'        => 'il nome dell'oggetto testuale nel campo di testo' // obbligatorio
                                 'link'        => 'l'indirizzo dello script CGI che processa le richieste' // obbligatorio
-                                ) // un campo per l'inserimento di testo che può essere mostrato con il feed // opzionale, ignorato nel formato Atom
-         'skipHours'   => array(
+                                ] // un campo per l'inserimento di testo che può essere mostrato con il feed // opzionale, ignorato nel formato Atom
+         'skipHours'   => [
                                 'ora nel formato 24 ore', // es. 13 (1pm)
                                 // fino a 24 righe dove il valore è un numero compreso tra 0 e 23
-                                ) // Suggerimento agli aggregatori che indica in quali ore è consigliato saltare l'aggiornamento // opzionale, ignorato nel formato Atom
-         'skipDays '   => array(
+                                ] // Suggerimento agli aggregatori che indica in quali ore è consigliato saltare l'aggiornamento // opzionale, ignorato nel formato Atom
+         'skipDays '   => [
                                 'il giorno da saltare', // es. Monday
                                 // fino a 7 righe dove il valore è Monday, Tuesday, Wednesday, Thursday, Friday, Saturday o Sunday
-                                ) // Suggerimento agli aggregatori che indica in quali giorni è consigliato saltare l'aggiornamento // opzionale, ignorato nel formato Atom
-         'itunes'      => array(
+                                ] // Suggerimento agli aggregatori che indica in quali giorni è consigliato saltare l'aggiornamento // opzionale, ignorato nel formato Atom
+         'itunes'      => [
                                 'author'       => 'Colonna corrispondente all\'artista' // opzionale, impostazione predefinita l'autore principale
-                                'owner'        => array(
+                                'owner'        => [
                                                         'name' => 'nome del proprietario' // opzionale, impostazione predefinita l'autore principale
                                                         'email' => 'email del proprietario' // opzionale, impostazione predefinita l'autore principale
-                                                        ) // Proprietario del podcast // opzionale
+                                                        ] // Proprietario del podcast // opzionale
                                 'image'        => 'immagine album/podcast' // opzionale, impostazione predefinita l'immagine principale
                                 'subtitle'     => 'sintetica descrizione description' // opzionale, impostazione predefinita la descrizione principale
                                 'summary'      => 'completa descrizione' // opzionale, impostazione predefinita la descrizione principale
                                 'block'        => 'Non mostrare l\'episodio (yes|no)' // opzionale
-                                'category'     => array(
-                                                        array('main' => 'categoria principale', // obbligatorio
+                                'category'     => [
+                                                        ['main' => 'categoria principale', // obbligatorio
                                                               'sub'  => 'categoria secondaria' // opzionale
-                                                              ),
+                                                              ],
                                                         // fino a 3 righe
-                                                        ) // 'Colonna categoria e nella navigazione nell'iTunes Music Store' // obbligatorio
+                                                        ] // 'Colonna categoria e nella navigazione nell'iTunes Music Store' // obbligatorio
                                 'explicit'     => 'immagine avviso contenuti espliciti (yes|no|clean)' // opzionale
                                 'keywords'     => 'una lista di categorie (fino a 12) separate da virgola' // opzionale
                                 'new-feed-url' => 'utilizzato per informare iTunes di un nuovo indirizzo del feed' // opzionale
-                                ) // Itunes extension data // opzionale, ignorato nel formato Atom
-         'entries'     => array(
-                                array(
+                                ] // Itunes extension data // opzionale, ignorato nel formato Atom
+         'entries'     => [
+                                [
                                       'title'        => 'titolo dell\'elemento del feed', // obbligatorio
                                       'link'         => 'indirizzo ad un elemento del feed', // obbligatorio
                                       'description'  => 'breve versione dell\'elemento del feed', // solo testo, no html, obbligatorio
@@ -134,34 +134,34 @@ Il formato dell'array deve essere conforme alla seguente struttura:
                                       'lastUpdate'   => 'data di pubblicazione nel formato timestamp', // opzionale
                                       'comments'     => 'pagina dei commenti dell\'elemento del feed', // opzionale
                                       'commentRss'   => 'il feed dei commenti associati all\'elemento', // opzionale
-                                      'source'       => array(
+                                      'source'       => [
                                                               'title' => 'titolo della sorgente originale' // obbligatorio,
                                                               'url' => 'url della sorgente originale' // obbligatorio
-                                                              ) // sorgente originale dell'elemento del feed // opzionale
-                                      'category'     => array(
-                                                              array(
+                                                              ] // sorgente originale dell'elemento del feed // opzionale
+                                      'category'     => [
+                                                              [
                                                                     'term' => 'l\'etichetta della prima categoria' // obbligatorio,
                                                                     'scheme' => 'url che identifica uno schema di categoria' // opzionale
-                                                                    ),
-                                                              array(
+                                                                    ],
+                                                              [
                                                                     // dati per il secondo elemento ed elementi successivi
-                                                                    )
-                                                              ) // elenco delle categorie // opzionale
-                                      'enclosure'    => array(
-                                                              array(
+                                                                    ]
+                                                              ] // elenco delle categorie // opzionale
+                                      'enclosure'    => [
+                                                              [
                                                                     'url' => 'url del contenuto multimediale collegato' // obbligatorio
                                                                     'type' => 'mime type del contenuto multimediale' // opzionale
                                                                     'length' => 'lunghezza in byte del contenuto multimediale collegato' // opzionale
-                                                                    ),
-                                                              array(
+                                                                    ],
+                                                              [
                                                                     // dati per il secondo elemento multimediale ed elementi successivi
-                                                                    )
-                                                              ) // elenco degli elementi multimediali per l'elemento del feed // opzionale
-                                      ),
-                                array(
+                                                                    ]
+                                                              ] // elenco degli elementi multimediali per l'elemento del feed // opzionale
+                                      ],
+                                [
                                       // dati per il secondo elemento del feed ed elementi successivi
-                                      )
-                                )
+                                      ]
+                                ]
           );
 
 Riferimenti:

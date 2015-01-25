@@ -20,7 +20,7 @@ nous l'appellerons "controls.phtml" de notre coté. Le manuel comporte des exemp
    <?php if ($this->pageCount): ?>
    <!-- First page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->first]); ?>">
        First
      </a> |
    <?php else: ?>
@@ -29,7 +29,7 @@ nous l'appellerons "controls.phtml" de notre coté. Le manuel comporte des exemp
 
    <!-- Previous page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Previous
      </a> |
    <?php else: ?>
@@ -38,7 +38,7 @@ nous l'appellerons "controls.phtml" de notre coté. Le manuel comporte des exemp
 
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Next >
      </a> |
    <?php else: ?>
@@ -47,7 +47,7 @@ nous l'appellerons "controls.phtml" de notre coté. Le manuel comporte des exemp
 
    <!-- Last page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->last]); ?>">
        Last
      </a>
    <?php else: ?>

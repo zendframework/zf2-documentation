@@ -182,7 +182,7 @@ c'est de les appeler; elles vont se charger et s'instancier elle-même si besoin
        <p><label>Votre email :
            <?php echo $this->formText('email',
                                       'vous@exemple.fr',
-                                      array('size' => 32)) ?>
+                                      ['size' => 32]) ?>
        </label></p>
        <p><label>Votre pays :
            <?php echo $this->formSelect('country',
@@ -194,7 +194,7 @@ c'est de les appeler; elles vont se charger et s'instancier elle-même si besoin
            <?php echo $this->formCheckbox('opt_in',
                                           'oui',
                                           null,
-                                          array('oui', 'non')) ?>
+                                          ['oui', 'non']) ?>
        </label></p>
    </form>
 
