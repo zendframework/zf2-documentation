@@ -286,7 +286,7 @@ dosyasını oluşturun:
         {
             $this->controller = new AlbumController();
             $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'album'));
+            $this->routeMatch = new RouteMatch(['controller' => 'album']);
             $this->event      = new MvcEvent();
             $this->event->setRouteMatch($this->routeMatch);
             $this->controller->setEvent($this->event);

@@ -645,19 +645,19 @@ the ``template_placeholder`` option key:
 .. code-block:: php
    :linenos:
 
-    $this->add(array(
+    $this->add([
         'type' => 'Zend\Form\Element\Collection',
         'name' => 'categories',
-        'options' => array(
+        'options' => [
             'label' => 'Please choose categories for this product',
             'count' => 2,
             'should_create_template' => true,
             'template_placeholder' => '__placeholder__',
-            'target_element' => array(
+            'target_element' => [
                 'type' => 'Application\Form\CategoryFieldset',
-            ),
-        ),
-    ));
+            ],
+        ],
+    ]);
 
 First, let's add a small button "Add new category" anywhere in the form:
 

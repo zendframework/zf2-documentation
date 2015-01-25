@@ -105,7 +105,7 @@ por lo que proveemos un array vacío para el classmap autoloader. Creamos
 
     <?php
     // module/Album/autoload_classmap.php:
-    return array();
+    return [];
 
 Como este es un array vacío, siempre que el autoloader busque una clase dentro del
 namespace ``Album``, retrocederá hasta el `StandardAutoloader`` por nosotros.

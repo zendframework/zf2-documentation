@@ -102,7 +102,7 @@ dosyaya ekleyin:
         {
             $this->controller = new IndexController();
             $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
+            $this->routeMatch = new RouteMatch(['controller' => 'index']);
             $this->event      = new MvcEvent();
             $this->event->setRouteMatch($this->routeMatch);
             $this->controller->setEvent($this->event);

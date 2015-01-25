@@ -54,16 +54,16 @@ votre script de disposition, dans la section *<head>*, vous pourrez ensuite affi
    :linenos:
 
    <?php // régler les liens dans votre script de vue :
-   $this->headLink(array(
+   $this->headLink([
        'rel'  => 'favicon',
        'href' => '/img/favicon.ico'
-   ), 'PREPEND')
+   ], 'PREPEND')
        ->appendStylesheet('/styles/basic.css')
        ->prependStylesheet(
            '/styles/moz.css',
            'screen',
            true,
-           array('id' => 'my_stylesheet')
+           ['id' => 'my_stylesheet']
        );
    ?>
 

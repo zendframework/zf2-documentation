@@ -99,23 +99,23 @@ As such, you have a variety of ways to override service manager configuration se
 
    <?php
    // a module configuration, "module/SomeModule/config/module.config.php"
-   return array(
-       'service_manager' => array(
-           'abstract_factories' => array(
+   return [
+       'service_manager' => [
+           'abstract_factories' => [
                // Valid values include names of classes implementing
                // AbstractFactoryInterface, instances of classes implementing
                // AbstractFactoryInterface, or any PHP callbacks
                'SomeModule\Service\FallbackFactory',
-           ),
-           'aliases' => array(
+           ],
+           'aliases' => [
                // Aliasing a FQCN to a service name
                'SomeModule\Model\User' => 'User',
                // Aliasing a name to a known service name
                'AdminUser' => 'User',
                // Aliasing to an alias
                'SuperUser' => 'AdminUser',
-           ),
-           'factories' => array(
+           ],
+           'factories' => [
                // Keys are the service names.
                // Valid values include names of classes implementing
                // FactoryInterface, instances of classes implementing
@@ -128,25 +128,25 @@ As such, you have a variety of ways to override service manager configuration se
                    $form->setInputFilter($serviceManager->get('UserInputFilter'));
                    return $form;
                },
-           ),
-           'invokables' => array(
+           ],
+           'invokables' => [
                // Keys are the service names
                // Values are valid class names to instantiate.
                'UserInputFiler' => 'SomeModule\InputFilter\User',
-           ),
-           'services' => array(
+           ],
+           'services' => [
                // Keys are the service names
                // Values are objects
                'Auth' => new SomeModule\Authentication\AuthenticationService(),
-           ),
-           'shared' => array(
+           ],
+           'shared' => [
                // Usually, you'll only indicate services that should **NOT** be
                // shared -- i.e., ones where you want a different instance
                // every time.
                'UserForm' => false,
-           ),
-       ),
-   );
+           ],
+       ],
+   ];
 
 .. note::
 

@@ -107,7 +107,7 @@ le contenu suivant :
 
     <?php
     // module/Album/autoload_classmap.php:
-    return array();
+    return [];
 
 Comme il s'agit d'un tableau vide, quand l'autoloader cherchera une classe dans 
 l'espace de nom ``Album``, il sera redirigé vers le ``StandardAutoloader`` pour nous.
@@ -129,18 +129,18 @@ Créer le fichier suivant de configuration pour le module  ``Album`` :
 .. code-block:: php
 
     // module/Album/config/module.config.php:
-    return array(
-        'controllers' => array(
-            'invokables' => array(
+    return [
+        'controllers' => [
+            'invokables' => [
                 'Album\Controller\Album' => 'Album\Controller\AlbumController',
-            ),
-        ),
-        'view_manager' => array(
-            'template_path_stack' => array(
+            ],
+        ],
+        'view_manager' => [
+            'template_path_stack' => [
                 'album' => __DIR__ . '/../view',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 La configuration est passée aux composants respectifs par le
 ``ServiceManager``. Nous avons besoin de deux sections distinctes : 
@@ -167,21 +167,21 @@ comme ci-dessous :
 .. code-block:: php
 
     // config/application.config.php:
-    return array(
-        'modules' => array(
+    return [
+        'modules' => [
             'Application',
             'Album',                  // <-- Ajouter cette ligne
-        ),
-        'module_listener_options' => array( 
-            'config_glob_paths'    => array(
+        ],
+        'module_listener_options' => [ 
+            'config_glob_paths'    => [
                 'config/autoload/{,*.}{global,local}.php',
-            ),
-            'module_paths' => array(
+            ],
+            'module_paths' => [
                 './module',
                 './vendor',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Comme vous pouvez le voir, nous avons ajouté notre module ``Album`` dans la liste
 des modules, après le module ``Application``

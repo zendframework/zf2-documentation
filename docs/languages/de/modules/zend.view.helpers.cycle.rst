@@ -17,8 +17,8 @@ Um Elemente hinzuzufügen die man durchlaufen will müssen diese im Constructor 
    :linenos:
 
    <?php foreach ($this->books as $book):?>
-     <tr style="background-color:<?php echo $this->cycle(array("#F0F0F0",
-                                                               "#FFFFFF"))
+     <tr style="background-color:<?php echo $this->cycle(["#F0F0F0",
+                                                               "#FFFFFF"])
                                                  ->next()?>">
      <td><?php echo $this->escape($book['author']) ?></td>
    </tr>
@@ -52,10 +52,10 @@ setzen. ``$this->cycle(array("#F0F0F0","#FFFFFF"),'cycle2')``. Man kann auch die
    :linenos:
 
    <?php foreach ($this->books as $book):?>
-     <tr style="background-color:<?php echo $this->cycle(array("#F0F0F0",
-                                                               "#FFFFFF"))
+     <tr style="background-color:<?php echo $this->cycle(["#F0F0F0",
+                                                               "#FFFFFF"])
                                                  ->next()?>">
-     <td><?php echo $this->cycle(array(1,2,3),'number')->next()?></td>
+     <td><?php echo $this->cycle([1,2,3],'number')->next()?></td>
      <td><?php echo $this->escape($book['author'])?></td>
    </tr>
    <?php endforeach;?>

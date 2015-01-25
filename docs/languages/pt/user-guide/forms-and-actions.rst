@@ -34,32 +34,32 @@ para definir nosso formulário. Crie um arquivo chamado ``AlbumForm.php`` em
             // Nos iremos ignorar o nome passado
             parent::__construct('album');
             $this->setAttribute('method', 'post');
-            $this->add(array(
+            $this->add([
                 'name' => 'id',
                 'type' => 'Hidden',
-            ));
-            $this->add(array(
+            ]);
+            $this->add([
                 'name' => 'title',
                 'type' => 'Text',
-                'options' => array(
+                'options' => [
                     'label' => 'Title',
-                ),
-            ));
-            $this->add(array(
+                ],
+            ]);
+            $this->add([
                 'name' => 'artist',
                 'type' => 'Text',
-                'options' => array(
+                'options' => [
                     'label' => 'Artist',
-                ),
-            ));
-            $this->add(array(
+                ],
+            ]);
+            $this->add([
                 'name' => 'submit',
                 'type' => 'Submit',
-                'attributes' => array(
+                'attributes' => [
                     'value' => 'Go',
                     'id' => 'submitbutton',
-                ),
-            ));
+                ],
+            ]);
         }
     }
 
@@ -111,51 +111,51 @@ os filtros de entrada na classe Album, que está armazenada no arquivo ``Album.p
                 $inputFilter = new InputFilter();
                 $factory     = new InputFactory();
 
-                $inputFilter->add($factory->createInput(array(
+                $inputFilter->add($factory->createInput([
                     'name'     => 'id',
                     'required' => true,
-                    'filters'  => array(
-                        array('name' => 'Int'),
-                    ),
-                )));
+                    'filters'  => [
+                        ['name' => 'Int'],
+                    ],
+                ]));
 
-                $inputFilter->add($factory->createInput(array(
+                $inputFilter->add($factory->createInput([
                     'name'     => 'artist',
                     'required' => true,
-                    'filters'  => array(
-                        array('name' => 'StripTags'),
-                        array('name' => 'StringTrim'),
-                    ),
-                    'validators' => array(
-                        array(
+                    'filters'  => [
+                        ['name' => 'StripTags'],
+                        ['name' => 'StringTrim'],
+                    ],
+                    'validators' => [
+                        [
                             'name'    => 'StringLength',
-                            'options' => array(
+                            'options' => [
                                 'encoding' => 'UTF-8',
                                 'min'      => 1,
                                 'max'      => 100,
-                            ),
-                        ),
-                    ),
-                )));
+                            ],
+                        ],
+                    ],
+                ]));
 
-                $inputFilter->add($factory->createInput(array(
+                $inputFilter->add($factory->createInput([
                     'name'     => 'title',
                     'required' => true,
-                    'filters'  => array(
-                        array('name' => 'StripTags'),
-                        array('name' => 'StringTrim'),
-                    ),
-                    'validators' => array(
-                        array(
+                    'filters'  => [
+                        ['name' => 'StripTags'],
+                        ['name' => 'StringTrim'],
+                    ],
+                    'validators' => [
+                        [
                             'name'    => 'StringLength',
-                            'options' => array(
+                            'options' => [
                                 'encoding' => 'UTF-8',
                                 'min'      => 1,
                                 'max'      => 100,
-                            ),
-                        ),
-                    ),
-                )));
+                            ],
+                        ],
+                    ],
+                ]));
 
                 $this->inputFilter = $inputFilter;
             }
@@ -213,7 +213,7 @@ Isso é feito na ``addAction()`` do ``AlbumController``:
                     return $this->redirect()->toRoute('album');
                 }
             }
-            return array('form' => $form);
+            return ['form' => $form];
         }
     //...
 
@@ -263,7 +263,7 @@ usando o plugin ``Redirect`` do controller.
 
 .. code-block:: php
 
-    return array('form' => $form);
+    return ['form' => $form];
 
 Finalmente nos retornamos a variável que desejamos para a view. Nesse caso somente o objeto
 do formulário. Note que o Zend Framework 2 também permite que retornemos um array contendo
@@ -283,7 +283,7 @@ Nos agora precisamos renderizar o formulario no nosso arquivo add.phtml:
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <?php
     $form = $this->form;
-    $form->setAttribute('action', $this->url('album', array('action' => 'add')));
+    $form->setAttribute('action', $this->url('album', ['action' => 'add']));
     $form->prepare();
 
     echo $this->form()->openTag($form);
@@ -339,9 +339,9 @@ Dessa vez iremos implementar a ``editAction()`` do ``AlbumController``:
         {
             $id = (int) $this->params()->fromRoute('id', 0);
             if (!$id) {
-                return $this->redirect()->toRoute('album', array(
+                return $this->redirect()->toRoute('album', [
                     'action' => 'add'
-                ));
+                ]);
             }
 
             // Requisita um ALbum com id específico. Uma exceção é disparada caso
@@ -350,9 +350,9 @@ Dessa vez iremos implementar a ``editAction()`` do ``AlbumController``:
                 $album = $this->getAlbumTable()->getAlbum($id);
             }
             catch (\Exception $ex) {
-                return $this->redirect()->toRoute('album', array(
+                return $this->redirect()->toRoute('album', [
                     'action' => 'index'
-                ));
+                ]);
             }
 
             $form  = new AlbumForm();
@@ -372,10 +372,10 @@ Dessa vez iremos implementar a ``editAction()`` do ``AlbumController``:
                 }
             }
 
-            return array(
+            return [
                 'id' => $id,
                 'form' => $form,
-            );
+            ];
         }
     //...
 
@@ -387,9 +387,9 @@ e usamos isso para carregar o albu para ser editado:
 
     $id = (int) $this->params()->fromRoute('id', 0);
     if (!$id) {
-        return $this->redirect()->toRoute('album', array(
+        return $this->redirect()->toRoute('album', [
             'action' => 'add'
-        ));
+        ]);
     }
 
     // Requisita um ALbum com id específico. Uma exceção é disparada caso
@@ -398,9 +398,9 @@ e usamos isso para carregar o albu para ser editado:
         $album = $this->getAlbumTable()->getAlbum($id);
     }
     catch (\Exception $ex) {
-        return $this->redirect()->toRoute('album', array(
+        return $this->redirect()->toRoute('album', [
             'action' => 'index'
-        ));
+        ]);
     }
 
 ``params`` é um plugin do controlador que contem métodos convenientes para requisitar
@@ -470,10 +470,10 @@ O arquivo de view, ``edit.phtml``, irá se parecer bastante com aquele usado par
     $form = $this->form;
     $form->setAttribute('action', $this->url(
         'album',
-        array(
+        [
             'action' => 'edit',
             'id'     => $this->id,
-        )
+        ]
     ));
     $form->prepare();
 
@@ -530,10 +530,10 @@ Mas vamos começão implementando nossa ação em ``AlbumController::deleteActio
                 return $this->redirect()->toRoute('album');
             }
 
-            return array(
+            return [
                 'id'    => $id,
                 'album' => $this->getAlbumTable()->getAlbum($id)
-            );
+            ];
         }
     //...
 
@@ -562,10 +562,10 @@ O arquivo de view é um formulário simples:
         '<?php echo $this->escapeHtml($album->artist); ?>'?
     </p>
     <?php
-    $url = $this->url('album', array(
+    $url = $this->url('album', [
         'action' => 'delete',
         'id'     => $this->id,
-    ));
+    ]);
     ?>
     <form action="<?php echo $url; ?>" method="post">
     <div>

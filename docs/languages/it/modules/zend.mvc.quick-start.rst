@@ -88,20 +88,20 @@ Prima di tutto lasciamo che ``autoload_classmap.php`` ritorni un array vuoto:
 
    <?php
    // autoload_classmap.php
-   return array();
+   return [];
 
 Modificheremo anche il nostro ``config/module.config.php`` come segue:
 
 .. code-block:: php
    :linenos:
 
-   return array(
-       'view_manager' => array(
-           'template_path_stack' => array(
+   return [
+       'view_manager' => [
+           'template_path_stack' => [
                '<module-name>' => __DIR__ . '/../view'
-           ),
-       ),
-   );
+           ],
+       ],
+   ];
 
 Al posto di "module-name" metti con solo caratteri minuscoli, separati dal trattino, il nome del tuo modulo --
 esempio "ZendUser" diventerebbe "zend-user".
@@ -119,16 +119,16 @@ Dopo di che modifica il file ``Module.php`` come segue:
    {
        public function getAutoloaderConfig()
        {
-           return array(
-               'Zend\Loader\ClassMapAutoloader' => array(
+           return [
+               'Zend\Loader\ClassMapAutoloader' => [
                    __DIR__ . '/autoload_classmap.php',
-               ),
-               'Zend\Loader\StandardAutoloader' => array(
-                   'namespaces' => array(
+               ],
+               'Zend\Loader\StandardAutoloader' => [
+                   'namespaces' => [
                        __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                   ),
-               ),
-           );
+                   ],
+               ],
+           ];
        }
 
        public function getConfig()
@@ -187,7 +187,7 @@ contenuto:
        {
            $request = $this->getRequest();
            $message = $request->query()->get('message', 'foo');
-           return new ViewModel(array('message' => $message));
+           return new ViewModel(['message' => $message]);
        }
    }
 

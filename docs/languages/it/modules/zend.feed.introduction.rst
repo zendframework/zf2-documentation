@@ -44,20 +44,20 @@ semplice array PHP, che può essere utilizzato per stampare i dati, salvarli in 
    }
 
    // Inizializza l'array contenente i dati del canale
-   $channel = array(
+   $channel = [
        'title'       => $slashdotRss->title(),
        'link'        => $slashdotRss->link(),
        'description' => $slashdotRss->description(),
-       'items'       => array()
-       );
+       'items'       => []
+       ];
 
    // Scorri ogni elemento del canale e salva i dati rilevanti
    foreach ($slashdotRss as $item) {
-       $channel['items'][] = array(
+       $channel['items'][] = [
            'title'       => $item->title(),
            'link'        => $item->link(),
            'description' => $item->description()
-           );
+           ];
    }
 
 

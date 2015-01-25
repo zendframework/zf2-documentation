@@ -118,7 +118,7 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
 
         public static function init()
         {
-            $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+            $zf2ModulePaths = [dirname(dirname(__DIR__))];
             if (($path = static::findParentPath('vendor'))) {
                 $zf2ModulePaths[] = $path;
             }
@@ -129,14 +129,14 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             static::initAutoloader();
 
             // use ModuleManager to load this module and it's dependencies
-            $config = array(
-                'module_listener_options' => array(
+            $config = [
+                'module_listener_options' => [
                     'module_paths' => $zf2ModulePaths,
-                ),
-                'modules' => array(
+                ],
+                'modules' => [
                     'Album'
-                )
-            );
+                ]
+            ];
 
             $serviceManager = new ServiceManager(new ServiceManagerConfig());
             $serviceManager->setService('ApplicationConfig', $config);
@@ -182,14 +182,14 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             }
 
             include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
-            AutoloaderFactory::factory(array(
-                'Zend\Loader\StandardAutoloader' => array(
+            AutoloaderFactory::factory([
+                'Zend\Loader\StandardAutoloader' => [
                     'autoregister_zf' => true,
-                    'namespaces' => array(
+                    'namespaces' => [
                         __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                    ),
-                ),
-            ));
+                    ],
+                ],
+            ]);
         }
 
         protected static function findParentPath($path)
@@ -455,11 +455,11 @@ with some POST data. Testing this is surprisingly easy:
         $serviceManager->setAllowOverride(true);
         $serviceManager->setService('Album\Model\AlbumTable', $albumTableMock);
 
-        $postData = array(
+        $postData = [
             'title'  => 'Led Zeppelin III',
             'artist' => 'Led Zeppelin',
             'id'     => '',
-        );
+        ];
         $this->dispatch('/album/add', 'POST', $postData);
         $this->assertResponseStatusCode(302);
 
@@ -545,9 +545,9 @@ with the following contents:
         public function testExchangeArraySetsPropertiesCorrectly()
         {
             $album = new Album();
-            $data  = array('artist' => 'some artist',
+            $data  = ['artist' => 'some artist',
                            'id'     => 123,
-                           'title'  => 'some title');
+                           'title'  => 'some title'];
 
             $album->exchangeArray($data);
 
@@ -572,10 +572,10 @@ with the following contents:
         {
             $album = new Album();
 
-            $album->exchangeArray(array('artist' => 'some artist',
+            $album->exchangeArray(['artist' => 'some artist',
                                         'id'     => 123,
-                                        'title'  => 'some title'));
-            $album->exchangeArray(array());
+                                        'title'  => 'some title']);
+            $album->exchangeArray([]);
 
             $this->assertNull(
                 $album->artist, '"artist" should have defaulted to null'
@@ -591,9 +591,9 @@ with the following contents:
         public function testGetArrayCopyReturnsAnArrayWithPropertyValues()
         {
             $album = new Album();
-            $data  = array('artist' => 'some artist',
+            $data  = ['artist' => 'some artist',
                            'id'     => 123,
-                           'title'  => 'some title');
+                           'title'  => 'some title'];
 
             $album->exchangeArray($data);
             $copyArray = $album->getArrayCopy();
@@ -718,24 +718,24 @@ fine, so now we can add the rest of the test methods:
     public function testCanRetrieveAnAlbumByItsId()
     {
         $album = new Album();
-        $album->exchangeArray(array('id'     => 123,
+        $album->exchangeArray(['id'     => 123,
                                     'artist' => 'The Military Wives',
-                                    'title'  => 'In My Dreams'));
+                                    'title'  => 'In My Dreams']);
 
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array($album));
+        $resultSet->initialize([$album]);
 
         $mockTableGateway = $this->getMock(
             'Zend\Db\TableGateway\TableGateway',
-            array('select'),
-            array(),
+            ['select'],
+            [],
             '',
             false
         );
         $mockTableGateway->expects($this->once())
                          ->method('select')
-                         ->with(array('id' => 123))
+                         ->with(['id' => 123])
                          ->will($this->returnValue($resultSet));
 
         $albumTable = new AlbumTable($mockTableGateway);
@@ -747,14 +747,14 @@ fine, so now we can add the rest of the test methods:
     {
         $mockTableGateway = $this->getMock(
             'Zend\Db\TableGateway\TableGateway',
-            array('delete'),
-            array(),
+            ['delete'],
+            [],
             '',
             false
         );
         $mockTableGateway->expects($this->once())
                          ->method('delete')
-                         ->with(array('id' => 123));
+                         ->with(['id' => 123]);
 
         $albumTable = new AlbumTable($mockTableGateway);
         $albumTable->deleteAlbum(123);
@@ -762,17 +762,17 @@ fine, so now we can add the rest of the test methods:
 
     public function testSaveAlbumWillInsertNewAlbumsIfTheyDontAlreadyHaveAnId()
     {
-        $albumData = array(
+        $albumData = [
             'artist' => 'The Military Wives',
             'title'  => 'In My Dreams'
-        );
+        ];
         $album     = new Album();
         $album->exchangeArray($albumData);
 
         $mockTableGateway = $this->getMock(
             'Zend\Db\TableGateway\TableGateway',
-            array('insert'),
-            array(),
+            ['insert'],
+            [],
             '',
             false
         );
@@ -786,37 +786,37 @@ fine, so now we can add the rest of the test methods:
 
     public function testSaveAlbumWillUpdateExistingAlbumsIfTheyAlreadyHaveAnId()
     {
-        $albumData = array(
+        $albumData = [
             'id'     => 123,
             'artist' => 'The Military Wives',
             'title'  => 'In My Dreams',
-        );
+        ];
         $album     = new Album();
         $album->exchangeArray($albumData);
 
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array($album));
+        $resultSet->initialize([$album]);
 
         $mockTableGateway = $this->getMock(
             'Zend\Db\TableGateway\TableGateway',
-            array('select', 'update'),
-            array(),
+            ['select', 'update'],
+            [],
             '',
             false
         );
         $mockTableGateway->expects($this->once())
                          ->method('select')
-                         ->with(array('id' => 123))
+                         ->with(['id' => 123])
                          ->will($this->returnValue($resultSet));
         $mockTableGateway->expects($this->once())
                          ->method('update')
                          ->with(
-                            array(
+                            [
                                 'artist' => 'The Military Wives',
                                 'title'  => 'In My Dreams'
-                            ),
-                            array('id' => 123)
+                            ],
+                            ['id' => 123]
                          );
 
         $albumTable = new AlbumTable($mockTableGateway);
@@ -827,18 +827,18 @@ fine, so now we can add the rest of the test methods:
     {
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array());
+        $resultSet->initialize([]);
 
         $mockTableGateway = $this->getMock(
             'Zend\Db\TableGateway\TableGateway',
-            array('select'),
-            array(),
+            ['select'],
+            [],
             '',
             false
         );
         $mockTableGateway->expects($this->once())
                          ->method('select')
-                         ->with(array('id' => 123))
+                         ->with(['id' => 123])
                          ->will($this->returnValue($resultSet));
 
         $albumTable = new AlbumTable($mockTableGateway);

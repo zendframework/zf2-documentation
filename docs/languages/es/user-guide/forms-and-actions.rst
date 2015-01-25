@@ -271,7 +271,7 @@ We now need to render the form in the add.phtml view script:
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <?php
     $form = $this->form;
-    $form->setAttribute('action', $this->url('album', array('action' => 'add')));
+    $form->setAttribute('action', $this->url('album', ['action' => 'add']));
     $form->prepare();
 
     echo $this->form()->openTag($form);
@@ -310,9 +310,9 @@ This time we use ``editAction()`` in the ``AlbumController``:
         {
             $id = (int) $this->params()->fromRoute('id', 0);
             if (!$id) {
-                return $this->redirect()->toRoute('album', array(
+                return $this->redirect()->toRoute('album', [
                     'action' => 'add'
-                ));
+                ]);
             }
             $album = $this->getAlbumTable()->getAlbum($id);
 
@@ -333,10 +333,10 @@ This time we use ``editAction()`` in the ``AlbumController``:
                 }
             }
 
-            return array(
+            return [
                 'id' => $id,
                 'form' => $form,
-            );
+            ];
         }
     //...
 
@@ -348,9 +348,9 @@ and use it to load the album to be edited:
 
     $id = (int) $this->params()->fromRoute('id', 0);
     if (!$id) {
-        return $this->redirect()->toRoute('album', array(
+        return $this->redirect()->toRoute('album', [
             'action' => 'add'
-        ));
+        ]);
     }
     $album = $this->getAlbumTable()->getAlbum($id);
 
@@ -419,10 +419,10 @@ album:
     $form = $this->form;
     $form->setAttribute('action', $this->url(
         'album', 
-        array(
+        [
             'action' => 'edit',
             'id'     => $this->id,
-        )
+        ]
     ));
     $form->prepare();
 
@@ -478,10 +478,10 @@ Let’s start with the action code in ``AlbumController::deleteAction()``:
                 return $this->redirect()->toRoute('album');
             }
 
-            return array(
+            return [
                 'id'    => $id,
                 'album' => $this->getAlbumTable()->getAlbum($id)
-            );
+            ];
         }
     //...
 
@@ -509,10 +509,10 @@ The view script is a simple form:
         '<?php echo $this->escapeHtml($album->artist); ?>'?
     </p>
     <?php 
-    $url = $this->url('album', array(
+    $url = $this->url('album', [
         'action' => 'delete', 
         'id'     => $this->id,
-    )); 
+    ]); 
     ?>
     <form action="<?php echo $url; ?>" method="post">
     <div>

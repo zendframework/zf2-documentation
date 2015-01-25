@@ -287,7 +287,7 @@ Bu, birkaç satır yazmaktan kurtarır.
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <?php
     $form = $this->form;
-    $form->setAttribute('action', $this->url('album', array('action' => 'add')));
+    $form->setAttribute('action', $this->url('album', ['action' => 'add']));
     $form->prepare();
 
     echo $this->form()->openTag($form);
@@ -340,9 +340,9 @@ Bu defa ``AlbumController``’ın ``editAction()``’unu kullanıyoruz:
         {
             $id = (int) $this->params()->fromRoute('id', 0);
             if (!$id) {
-                return $this->redirect()->toRoute('album', array(
+                return $this->redirect()->toRoute('album', [
                     'action' => 'add'
-                ));
+                ]);
             }
             $album = $this->getAlbumTable()->getAlbum($id);
 
@@ -363,10 +363,10 @@ Bu defa ``AlbumController``’ın ``editAction()``’unu kullanıyoruz:
                 }
             }
 
-            return array(
+            return [
                 'id' => $id,
                 'form' => $form,
-            );
+            ];
         }
     //...
 
@@ -378,9 +378,9 @@ albümü bulmak için alıyoruz.
 
     $id = (int) $this->params()->fromRoute('id', 0);
     if (!$id) {
-        return $this->redirect()->toRoute('album', array(
+        return $this->redirect()->toRoute('album', [
             'action' => 'add'
-        ));
+        ]);
     }
     $album = $this->getAlbumTable()->getAlbum($id);
 
@@ -449,10 +449,10 @@ kullanarak değişiklikleri veritabanımıza geri alabiliriz.
     $form = $this->form;
     $form->setAttribute('action', $this->url(
         'album',
-        array(
+        [
             'action' => 'edit',
             'id'     => $this->id,
-        )
+        ]
     ));
     $form->prepare();
 
@@ -508,10 +508,10 @@ direkt olarak view dosyamıza kodlayacağız (sonuçta ``Zend\Form`` opsiyonel!)
                 return $this->redirect()->toRoute('album');
             }
 
-            return array(
+            return [
                 'id'    => $id,
                 'album' => $this->getAlbumTable()->getAlbum($id)
-            );
+            ];
         }
     //...
 
@@ -541,10 +541,10 @@ View scripti basit bir form içeriyor:
         albümünü silmek istediğinizden emi misiniz?
     </p>
     <?php
-    $url = $this->url('album', array(
+    $url = $this->url('album', [
         'action' => 'delete',
         'id'     => $this->id,
-    ));
+    ]);
     ?>
     <form action="<?php echo $url; ?>" method="post">
     <div>

@@ -64,12 +64,12 @@ Bağdaştırıcı yapıcısı bağlantıyı tanımlamak için parametreler dizis
    :linenos:
 
    <?php
-   $db = new Zend\Db\Adapter\Pdo\Mysql(array(
+   $db = new Zend\Db\Adapter\Pdo\Mysql([
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
        'dbname'   => 'test'
-   ));
+   ]);
 
 .. _zend.db.adapter.connecting.factory:
 
@@ -94,12 +94,12 @@ yapıcısına verilen parametreler dizisi gibidir.
 
    <?php
    // Zend\Db\Adapter\Pdo\Mysql sınıfını otomatik yükle ve instance'ını oluştur.
-   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', [
        'host'     => '127.0.0.1',
        'username' => 'webuser',
        'password' => 'xxxxxxxx',
        'dbname'   => 'test'
-   ));
+   ]);
 
 Zend\Db\Adapter\Abstract sınıfını genişleten bir sınıf oluşturup , sınıf adını "Zend\Db\Adapter" paket
 öneki ile isimlendirmediyseniz bağdaştırınızı yüklemek için bağdaştırıcı sınıfının kılavuzluk
@@ -115,13 +115,13 @@ kullanabilirsiniz.
 
    <?php
    // Otomatik olarak MyProject_Db_Adapter_Pdo_Mysql sınıfını yükle ve instance'ını oluştur.
-   $db = Zend\Db\Db::factory('Pdo_Mysql', array(
+   $db = Zend\Db\Db::factory('Pdo_Mysql', [
                        'host'             => '127.0.0.1',
                        'username'         => 'webuser',
                        'password'         => 'xxxxxxxx',
                        'dbname'           => 'test',
                        'adapterNamespace' => 'MyProject_Db_Adapter'
-               ));
+               ]);
 
 .. _zend.db.adapter.connecting.factory-config:
 
@@ -207,17 +207,17 @@ yarayan *ATTR_CASE* özniteliğine karşılık gelmektedir. Bu seçeneğin aldı
    :linenos:
 
    <?php
-   $options = array(
+   $options = [
        Zend\Db\Db::CASE_FOLDING => Zend\Db\Db::CASE_UPPER
-   );
+   ];
 
-   $params = array(
+   $params = [
        'host'           => '127.0.0.1',
        'username'       => 'webuser',
        'password'       => 'xxxxxxxx',
        'dbname'         => 'test',
        'options'        => $options
-   );
+   ];
 
    $db = Zend\Db\Db::factory('Db2', $params);
 
@@ -236,17 +236,17 @@ kendiniz yapmalısınız.
    :linenos:
 
    <?php
-   $options = array(
+   $options = [
        Zend\Db\Db::AUTO_QUOTE_IDENTIFIERS => false
-   );
+   ];
 
-   $params = array(
+   $params = [
        'host'           => '127.0.0.1',
        'username'       => 'webuser',
        'password'       => 'xxxxxxxx',
        'dbname'         => 'test',
        'options'        => $options
-   );
+   ];
 
    $db = Zend\Db\Db::factory('Pdo_Mysql', $params);
 
@@ -600,11 +600,11 @@ adı, ve ikinci argüman ise sütun isimlerini veri değerlerine eşleyen birle�
    :linenos:
 
    <?php
-   $data = array(
+   $data = [
        'created_on'      => '2007-03-22',
        'bug_description' => 'Something wrong',
        'bug_status'      => 'NEW'
-   );
+   ];
 
    $db->insert('bugs', $data);
 
@@ -629,11 +629,11 @@ veri dizisindeki değeri Zend\Db\Expre tipinde nesne olarak verin.
    :linenos:
 
    <?php
-   $data = array(
+   $data = [
        'created_on'      => new Zend\Db\Expr('CURDATE()'),
        'bug_description' => 'Something wrong',
        'bug_status'      => 'NEW'
-   );
+   ];
 
    $db->insert('bugs', $data);
 

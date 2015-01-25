@@ -120,9 +120,9 @@ Pour cela, nous créons un fichier ``AlbumTest.php`` dans le dossier
         public function testExchangeArraySetsPropertiesCorrectly()
         {
             $album = new Album();
-            $data  = array('artist' => 'some artist',
+            $data  = ['artist' => 'some artist',
                            'id'     => 123,
-                           'title'  => 'some title');
+                           'title'  => 'some title'];
 
             $album->exchangeArray($data);
 
@@ -135,10 +135,10 @@ Pour cela, nous créons un fichier ``AlbumTest.php`` dans le dossier
         {
             $album = new Album();
 
-            $album->exchangeArray(array('artist' => 'some artist',
+            $album->exchangeArray(['artist' => 'some artist',
                                         'id'     => 123,
-                                        'title'  => 'some title'));
-            $album->exchangeArray(array());
+                                        'title'  => 'some title']);
+            $album->exchangeArray([]);
 
             $this->assertNull($album->artist, '"artist" should have defaulted to null');
             $this->assertNull($album->id, '"id" should have defaulted to null');
@@ -323,21 +323,21 @@ pas dans le module Album) avec le code suivant:
 .. code-block:: php
 
     <?php
-    return array(
-        'db' => array(
+    return [
+        'db' => [
             'driver'         => 'Pdo',
             'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
-            'driver_options' => array(
+            'driver_options' => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            ),
-        ),
-        'service_manager' => array(
-            'factories' => array(
+            ],
+        ],
+        'service_manager' => [
+            'factories' => [
                 'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Vous devriez garder les infos de connexion dans ``config/autoload/local.php``
 pour qu'elles ne soient pas intégrées au dépôt git (car ``local.php`` est
@@ -409,18 +409,18 @@ dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
     public function testCanRetrieveAnAlbumByItsId()
     {
         $album = new Album();
-        $album->exchangeArray(array('id'     => 123,
+        $album->exchangeArray(['id'     => 123,
                                     'artist' => 'The Military Wives',
-                                    'title'  => 'In My Dreams'));
+                                    'title'  => 'In My Dreams']);
 
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array($album));
+        $resultSet->initialize([$album]);
 
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', ['select'], [], '', false);
         $mockTableGateway->expects($this->once())
                          ->method('select')
-                         ->with(array('id' => 123))
+                         ->with(['id' => 123])
                          ->will($this->returnValue($resultSet));
 
         $albumTable = new AlbumTable($mockTableGateway);
@@ -430,10 +430,10 @@ dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
 
     public function testCanDeleteAnAlbumByItsId()
     {
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('delete'), array(), '', false);
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', ['delete'], [], '', false);
         $mockTableGateway->expects($this->once())
                          ->method('delete')
-                         ->with(array('id' => 123));
+                         ->with(['id' => 123]);
 
         $albumTable = new AlbumTable($mockTableGateway);
         $albumTable->deleteAlbum(123);
@@ -441,11 +441,11 @@ dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
 
     public function testSaveAlbumWillInsertNewAlbumsIfTheyDontAlreadyHaveAnId()
     {
-        $albumData = array('artist' => 'The Military Wives', 'title' => 'In My Dreams');
+        $albumData = ['artist' => 'The Military Wives', 'title' => 'In My Dreams'];
         $album     = new Album();
         $album->exchangeArray($albumData);
 
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('insert'), array(), '', false);
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', ['insert'], [], '', false);
         $mockTableGateway->expects($this->once())
                          ->method('insert')
                          ->with($albumData);
@@ -456,24 +456,24 @@ dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
 
     public function testSaveAlbumWillUpdateExistingAlbumsIfTheyAlreadyHaveAnId()
     {
-        $albumData = array('id' => 123, 'artist' => 'The Military Wives', 'title' => 'In My Dreams');
+        $albumData = ['id' => 123, 'artist' => 'The Military Wives', 'title' => 'In My Dreams'];
         $album     = new Album();
         $album->exchangeArray($albumData);
 
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array($album));
+        $resultSet->initialize([$album]);
 
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
-                                           array('select', 'update'), array(), '', false);
+                                           ['select', 'update'], [], '', false);
         $mockTableGateway->expects($this->once())
                          ->method('select')
-                         ->with(array('id' => 123))
+                         ->with(['id' => 123])
                          ->will($this->returnValue($resultSet));
         $mockTableGateway->expects($this->once())
                          ->method('update')
-                         ->with(array('artist' => 'The Military Wives', 'title' => 'In My Dreams'),
-                                array('id' => 123));
+                         ->with(['artist' => 'The Military Wives', 'title' => 'In My Dreams'],
+                                ['id' => 123]);
 
         $albumTable = new AlbumTable($mockTableGateway);
         $albumTable->saveAlbum($album);
@@ -483,12 +483,12 @@ dérouler correctement, et nous pouvons ajouter le reste des méthodes de test :
     {
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Album());
-        $resultSet->initialize(array());
+        $resultSet->initialize([]);
 
-        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
+        $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', ['select'], [], '', false);
         $mockTableGateway->expects($this->once())
                          ->method('select')
-                         ->with(array('id' => 123))
+                         ->with(['id' => 123])
                          ->will($this->returnValue($resultSet));
 
         $albumTable = new AlbumTable($mockTableGateway);
@@ -573,9 +573,9 @@ comme ceci:
     // ...
         public function indexAction()
         {
-            return new ViewModel(array(
+            return new ViewModel([
                 'albums' => $this->getAlbumTable()->fetchAll(),
-            ));
+            ]);
         }
     // ...
 
@@ -597,7 +597,7 @@ maintenant alimenter le script de vue ``index.phtml``:
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <p>
-        <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+        <a href="<?php echo $this->url('album', ['action'=>'add']);?>">Add new album</a>
     </p>
 
     <table class="table">
@@ -612,9 +612,9 @@ maintenant alimenter le script de vue ``index.phtml``:
         <td><?php echo $this->escapeHtml($album->artist);?></td>
         <td>
             <a href="<?php echo $this->url('album',
-                array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
+                ['action'=>'edit', 'id' => $album->id]);?>">Edit</a>
             <a href="<?php echo $this->url('album',
-                array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
+                ['action'=>'delete', 'id' => $album->id]);?>">Delete</a>
         </td>
     </tr>
     <?php endforeach; ?>

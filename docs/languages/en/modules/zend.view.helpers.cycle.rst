@@ -22,7 +22,7 @@ To add elements to cycle just specify them in constructor:
 
    <table>
        <?php foreach ($this->books as $book): ?>
-           <tr style="background-color: <?php echo $this->cycle(array('#F0F0F0', '#FFF'))
+           <tr style="background-color: <?php echo $this->cycle(['#F0F0F0', '#FFF'])
                                                         ->next() ?>">
                <td><?php echo $this->escapeHtml($book['author']) ?></td>
            </tr>
@@ -48,7 +48,7 @@ Or use ``assign(array $data)`` method and moving in backwards order:
 .. code-block:: php
    :linenos:
 
-   <?php $this->cycle()->assign(array('#F0F0F0', '#FFF')) ?>
+   <?php $this->cycle()->assign(['#F0F0F0', '#FFF']) ?>
 
    <table>
        <?php foreach ($this->books as $book): ?>
@@ -85,9 +85,9 @@ parameter in cycle method: ``$this->cycle(array('#F0F0F0', '#FFF'), 'cycle2')``
 
    <table>
        <?php foreach ($this->books as $book): ?>
-           <tr style="background-color: <?php echo $this->cycle(array('#F0F0F0', '#FFF'))
+           <tr style="background-color: <?php echo $this->cycle(['#F0F0F0', '#FFF'])
                                                         ->next() ?>">
-               <td><?php echo $this->cycle(array(1, 2, 3), 'number')->next() ?></td>
+               <td><?php echo $this->cycle([1, 2, 3], 'number')->next() ?></td>
                <td><?php echo $this->escapeHtml($book['author']) ?></td>
            </tr>
        <?php endforeach ?>
@@ -99,8 +99,8 @@ You can also use ``assign($data, $name)`` and ``setName($name)`` methods:
    :linenos:
 
    <?php
-   $this->cycle()->assign(array('#F0F0F0', '#FFF'), 'colors');
-   $this->cycle()->assign(array(1, 2, 3), 'numbers');
+   $this->cycle()->assign(['#F0F0F0', '#FFF'], 'colors');
+   $this->cycle()->assign([1, 2, 3], 'numbers');
    ?>
    <table>
        <?php foreach ($this->books as $book): ?>
