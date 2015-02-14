@@ -96,8 +96,8 @@ look like this:
         )
     )
 
-This configuration defines a route for a URL like ``domain.com/news/archive/2014``. As you can see we our route now
-contains the part ``:year``. This is called a route-parameter. Route parameters for ``Segment``-Routes are defined by a
+This configuration defines a route for a URL like ``domain.com/news/archive/2014``. As you can see our route now
+contains the part ``:year``. This is called a route-parameter. Route parameters for ``Segment``-Routes are defined by a colon
 in front of a string. The string then is the ``name`` of the parameter.
 
 Under ``constraints`` you see that we have another array. This array contains regular expression rules for each
@@ -115,7 +115,7 @@ example route to have the ``year`` parameter optional and use the current year a
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 10
+   :emphasize-lines: 6,10
 
     'router' => array(
         'routes' => array(
