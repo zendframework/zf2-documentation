@@ -98,7 +98,7 @@ look like this:
 
 This configuration defines a route for a URL like ``domain.com/news/archive/2014``. As you can see our route now
 contains the part ``:year``. This is called a route-parameter. Route parameters for ``Segment``-Routes are defined by a
-semi-colon in front of a string. The string then is the ``name`` of the parameter.
+full-colon in front of a string. The string then is the ``name`` of the parameter.
 
 Under ``constraints`` you see that we have another array. This array contains regular expression rules for each
 parameter of your route. In our example case the regex uses two parts, the first one being ``\d`` which means "a
