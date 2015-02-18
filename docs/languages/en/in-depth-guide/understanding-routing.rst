@@ -115,7 +115,7 @@ example route to have the ``year`` parameter optional and use the current year a
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 10
+   :emphasize-lines: 6,10
 
     'router' => array(
         'routes' => array(
