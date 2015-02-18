@@ -658,7 +658,7 @@ Let's modify our view to display a table of all blog posts that our ``PostServic
     </article>
     <?php endforeach ?>
 
-In here we simply define a little HTML-Table and then run a ``foreach`` over the array ``$this->posts``. Since every
+In here we simply run a ``foreach`` over the array ``$this->posts``. Since every
 single entry of our array is of type ``Blog\Model\Post`` we can use the respective getter functions to receive the data
 we want to get.
 
