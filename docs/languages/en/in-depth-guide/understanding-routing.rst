@@ -406,7 +406,7 @@ With this we have set up a new route that we use to display a single blog entry.
 called ``id`` that needs to be a positive digit excluding 0. Database entries usually start with a 0 when it comes
 to primary ID keys and therefore our regular expression ``constraints`` for the ``id`` fields looks a little more
 complicated. Basically we tell the router that the parameter ``id`` has to start with an integer between 1 and 9,
-that's the ``[1-9]`` part, and after that any digits can follow, but doesn't have to (that's the ``\d*`` part).
+that's the ``[1-9]`` part, and after that zero or more digits can follow (that's the ``\d*`` part).
 
 The route will call the same ``controller`` like the parent route but it will call the ``detailAction()`` instead. Go
 to your browser and request the URL ``http://localhost:8080/blog/2``. You'll see the following error message:
