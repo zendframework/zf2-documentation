@@ -56,8 +56,9 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
     </body>
     <!-- ... -->
 
-Navigation Abstract Service Factory
------------------------------------
+Using multiple navigation's
+---------------------------
+
 If you want to use more than one navigation you can register the abstract factory
 ``\Zend\Navigation\Service\NavigationAbstractServiceFactory`` in the :ref:`service manager <zend.service-manager.quick-start>`.
 
@@ -73,24 +74,50 @@ the navigation container automatically. This factory can also be used for ``defa
             // ...
 
             'navigation' => array(
+
+                // navigation with name default
+                'default' => array(
+                    array(
+                        'label' => 'Home',
+                        'route' => 'home',
+                    ),
+                    array(
+                        'label' => 'Page #1',
+                        'route' => 'page-1',
+                        'pages' => array(
+                            array(
+                                'label' => 'Child #1',
+                                'route' => 'page-1-child',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'label' => 'Page #2',
+                        'route' => 'page-2',
+                    ),
+                ),
+
+                // navigation with name special
                 'special' => array(
                     array(
                         'label' => 'Special',
                         'route' => 'special',
                     ),
                     array(
-                        'label' => 'Special Page #1',
-                        'route' => 'page-1',
-                        'pages' => array(
-                            array(
-                                'label' => 'Special Child #1',
-                                'route' => 'page-1-child',
-                            ),
-                        ),
+                        'label' => 'Special Page #2',
+                        'route' => 'special-2',
+                    ),
+                ),
+
+                // navigation with name sitemap
+                'sitemap' => array(
+                    array(
+                        'label' => 'Sitemap',
+                        'route' => 'sitemap',
                     ),
                     array(
-                        'label' => 'Special Page #2',
-                        'route' => 'page-2',
+                        'label' => 'Sitemap Page #2',
+                        'route' => 'sitemap-2',
                     ),
                 ),
             ),
@@ -102,8 +129,13 @@ the navigation container automatically. This factory can also be used for ``defa
             // ...
         );
 
-There is one important point if you use the ``NavigationAbstractServiceFactory``. The name of the service in your
-view must start with ``Zend\Navigation\`` followed by the name of the configuration key.
+
+.. note::
+
+    There is one important point if you use the ``NavigationAbstractServiceFactory``. The name of the service in your
+    view must start with ``Zend\Navigation\`` followed by the name of the configuration key.
+
+The following example shows how to render the navigation ``default``, ``special`` and ``sitemap``.
 
 .. code-block:: html
    :linenos:
@@ -112,6 +144,10 @@ view must start with ``Zend\Navigation\`` followed by the name of the configurat
         <!-- ... -->
 
         <body>
+            <?php echo $this->navigation('Zend\Navigation\Default')->menu(); ?>
+
             <?php echo $this->navigation('Zend\Navigation\Special')->menu(); ?>
+
+            <?php echo $this->navigation('Zend\Navigation\Sitemap')->menu(); ?>
         </body>
         <!-- ... -->
