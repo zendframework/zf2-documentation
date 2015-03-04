@@ -934,6 +934,7 @@ Zend\\Validator
         * :doc:`modules/zend.validator.db`
         * :doc:`modules/zend.validator.digits`
         * :doc:`modules/zend.validator.email-address`
+        * :doc:`modules/zend.validator.file`
         * :doc:`modules/zend.validator.greater-than`
         * :doc:`modules/zend.validator.hex`
         * :doc:`modules/zend.validator.hostname`
