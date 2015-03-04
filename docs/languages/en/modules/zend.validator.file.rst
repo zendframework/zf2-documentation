@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.validator.file:
 
 File Validation Classes
