@@ -8,6 +8,7 @@ Zend Framework comes with a standard set of filters, which are ready for you to 
 .. include:: zend.i18n.filter.alnum.rst
 .. include:: zend.i18n.filter.alpha.rst
 .. include:: zend.filter.base-name.rst
+.. include:: zend.filter.blacklist.rst
 .. include:: zend.filter.boolean.rst
 .. include:: zend.filter.callback.rst
 .. include:: zend.filter.compress.rst
@@ -26,5 +27,6 @@ Zend Framework comes with a standard set of filters, which are ready for you to 
 .. include:: zend.filter.strip-new-lines.rst
 .. include:: zend.filter.strip-tags.rst
 .. include:: zend.filter.uri-normalize.rst
+.. include:: zend.filter.whitelist.rst
 
 
