@@ -181,7 +181,7 @@ Authentifizierungs Anfragen von dieser Seite werden automatisch gehandhabt ohne 
                $server->denySite($server->getSiteRoot($_GET));
            }
            ZendOpenId\OpenId::redirect($_GET['openid_return_to'],
-                                 array('openid.mode'=>'cancel'));
+                                 ['openid.mode'=>'cancel']);
        }
    }
    ?>
@@ -289,10 +289,10 @@ eintragen. Die Implementierung dieses GUI würde den Rahmen dieses Handbuches sp
    if (!$server->hasUser(TEST_ID)) {
        $server->register(TEST_ID, TEST_PASSWORD);
        $server->login(TEST_ID, TEST_PASSWORD);
-       $sreg = new ZendOpenId\Extension\Sreg(array(
+       $sreg = new ZendOpenId\Extension\Sreg([
            'nickname' =>'test',
            'email' => 'test@test.com'
-       ));
+       ]);
        $root = ZendOpenId\OpenId::absoluteURL(".");
        ZendOpenId\OpenId::normalizeUrl($root);
        $server->allowSite($root, $sreg);

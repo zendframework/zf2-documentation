@@ -64,7 +64,7 @@ Handling roles with children.
 
     // 2 - Same as one, only via rbac container.
     $rbac->addRole('boo', 'baz'); // baz is a parent of boo
-    $rbac->addRole('baz', array('out', 'of', 'roles')); // create several parents of baz
+    $rbac->addRole('baz', ['out', 'of', 'roles']); // create several parents of baz
 
 .. _zend.permissions.rbac.examples.permissions:
 

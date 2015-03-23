@@ -282,11 +282,11 @@
    //*/
 
    // Сотрудник наследует привилегии просмотра у Гостя, но также нуждается в дополнительных привилегиях
-   $acl->allow('staff', null, array('edit', 'submit', 'revise'));
+   $acl->allow('staff', null, ['edit', 'submit', 'revise']);
 
    // Редактор наследует привилегии просмотра, редактирования, отправки и исправлений у Посетителя
    // но также нуждается в дополнительных привилегиях
-   $acl->allow('editor', null, array('publish', 'archive', 'delete'));
+   $acl->allow('editor', null, ['publish', 'archive', 'delete']);
 
    // Администратор не наследует ничего, но обладает всеми привилегиями
    $acl->allow('administrator');

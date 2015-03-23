@@ -16,9 +16,9 @@ sono PLAIN, LOGIN e CRAM-MD5, che necessitano dei valori di 'username' e 'passwo
    :linenos:
 
    <?php
-   $config = array('auth' => 'login',
+   $config = ['auth' => 'login',
                    'username' => 'myusername',
-                   'password' => 'password');
+                   'password' => 'password'];
 
    $transport = new Zend\Mail\Transport\Smtp('mail.server.com', $config);
 

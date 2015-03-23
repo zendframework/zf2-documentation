@@ -385,21 +385,21 @@ into a generator object. From there, you may add additional properties or method
    );
    $generator->addMethod(
        'setBaz',
-       array('baz'),
+       ['baz'],
        MethodGenerator::FLAG_PUBLIC,
        '$this->_baz = $baz;' . "\n" . 'return $this;',
-       DocBlockGenerator::fromArray(array(
+       DocBlockGenerator::fromArray([
            'shortDescription' => 'Set the baz property',
            'longDescription'  => null,
-           'tags'             => array(
-               new Tag\ParamTag(array(
+           'tags'             => [
+               new Tag\ParamTag([
                    'paramName' => 'baz',
                    'datatype'  => 'string'
-               )),
-               new Tag\ReturnTag(array(
+               ]),
+               new Tag\ReturnTag([
                    'datatype'  => 'string',
-               )),
-           ),
-       ))
+               ]),
+           ],
+       ])
    );
    $code = $generator->generate();

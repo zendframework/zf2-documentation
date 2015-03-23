@@ -30,7 +30,7 @@ Reihenfolge ausführen will, um eine Liste von Kommentaren für die aktuelle Anf
            <?php echo $this->action('list',
                                     'comment',
                                     null,
-                                    array('count' => 10)); ?>
+                                    ['count' => 10]); ?>
        </div>
    </div>
 

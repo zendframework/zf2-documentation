@@ -69,12 +69,12 @@ Now that we have defined the rule, we can use it in our views:
    <?php 
       // If the rule defined in Module.php is the English one:
       
-      echo $this->plural(array('car', 'cars'), 0); // prints "cars"
-      echo $this->plural(array('car', 'cars'), 1); // prints "car"
+      echo $this->plural(['car', 'cars'], 0); // prints "cars"
+      echo $this->plural(['car', 'cars'], 1); // prints "car"
       
       // If the rule defined in Module.php is the French one:
-      echo $this->plural(array('voiture', 'voitures'), 0); // prints "voiture"
-      echo $this->plural(array('voiture', 'voitures'), 1); // prints "voiture"
-      echo $this->plural(array('voiture', 'voitures'), 2); // prints "voitures"
+      echo $this->plural(['voiture', 'voitures'], 0); // prints "voiture"
+      echo $this->plural(['voiture', 'voitures'], 1); // prints "voiture"
+      echo $this->plural(['voiture', 'voitures'], 2); // prints "voitures"
    ?>
    

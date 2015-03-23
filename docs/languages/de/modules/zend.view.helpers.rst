@@ -188,13 +188,13 @@ Helfer nur aufzurufen brauchst; sie werden automatisch geladen und instanziiert,
    ?>
    <form action="action.php" method="post">
        <p><label>Deine Email:
-   <?php echo $this->formText('email', 'you@example.com', array('size' => 32)) ?>
+   <?php echo $this->formText('email', 'you@example.com', ['size' => 32]) ?>
        </label></p>
        <p><label>Dein Land:
    <?php echo $this->formSelect('country', 'us', null, $this->countries) ?>
        </label></p>
        <p><label>Möchtest Du hinzugefügt werden?
-   <?php echo $this->formCheckbox('opt_in', 'yes', null, array('yes', 'no')) ?>
+   <?php echo $this->formCheckbox('opt_in', 'yes', null, ['yes', 'no']) ?>
        </label></p>
    </form>
 

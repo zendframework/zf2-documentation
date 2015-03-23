@@ -42,8 +42,8 @@ with this new code:
     $this->headTitle($title);
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
-    <p><a href="<?php echo $this->url('task', array(
-            'action'=>'add'));?>">Add new item</a></p>
+    <p><a href="<?php echo $this->url('task', [
+            'action'=>'add']);?>">Add new item</a></p>
 
 
     <table class="table">
@@ -57,14 +57,14 @@ with this new code:
     <tr>
         <td>
             <a href="<?php echo $this->url('task',
-                array('action'=>'edit', 'id' => $task->getId()));?>">
+                ['action'=>'edit', 'id' => $task->getId()]);?>">
                 <?php echo $this->escapeHtml($task->getTitle()); ?></a>
         </td>
         <td><?php echo $this->escapeHtml($task->getCreated()); ?></td>
         <td><?php echo $task->getCompleted() ? 'Yes' : 'No'; ?></td>
         <td>
             <a href="<?php echo $this->url('task',
-                array('action'=>'delete', 'id' => $task->getId()));?>">Delete</a>
+                ['action'=>'delete', 'id' => $task->getId()]);?>">Delete</a>
         </td>
     </tr>
     <?php endforeach; ?>
@@ -217,7 +217,7 @@ with these contents:
 
     class TaskForm extends Form
     {
-        public function __construct($name = null, $options = array())
+        public function __construct($name = null, $options = [])
         {
             parent::__construct('task');
 
@@ -225,40 +225,40 @@ with these contents:
             $this->setInputFilter(new TaskFilter());
             $this->setHydrator(new ClassMethods());
             
-            $this->add(array(
+            $this->add([
                 'name' => 'id',
                 'type' => 'hidden',
-            ));
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'name' => 'title',
                 'type' => 'text',
-                'options' => array(
+                'options' => [
                     'label' => 'Title',
-                ),
-                'attributes' => array(
+                ],
+                'attributes' => [
                     'id' => 'title',
                     'maxlength' => 100,
-                )
-            ));
+                ]
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'name' => 'completed',
                 'type' => 'checkbox',
-                'options' => array(
+                'options' => [
                     'label' => 'Completed?',
-                    'label_attributes' => array('class'=>'checkbox'),
-                ),
-            ));
+                    'label_attributes' => ['class'=>'checkbox'],
+                ],
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'name' => 'submit',
-                'attributes' => array(
+                'attributes' => [
                     'type'  => 'submit',
                     'value' => 'Go',
                     'class' => 'btn btn-primary',
-                ),
-            ));
+                ],
+            ]);
         }
     }
 
@@ -292,36 +292,36 @@ Create a new PHP file called ``TaskFilter.php`` in the
     {
         public function __construct()
         {
-            $this->add(array(
+            $this->add([
                 'name' => 'id',
                 'required' => true,
-                'filters' => array(
-                    array('name' => 'Int'),
-                ),
-            ));
+                'filters' => [
+                    ['name' => 'Int'],
+                ],
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'name' => 'title',
                 'required' => true,
-                'filters' => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
-                'validators' => array(
-                    array(
+                'filters' => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
                         'name' => 'StringLength',
-                        'options' => array(
+                        'options' => [
                             'encoding' => 'UTF-8',
                             'max' => 100
-                        ),
-                    ),
-                ),
-            ));
+                        ],
+                    ],
+                ],
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'name' => 'completed',
                 'required' => false,
-            ));
+            ]);
         }
     }
 
@@ -492,7 +492,7 @@ folder and add this code:
 
     <?php
     $form = $this->form;
-    $form->setAttribute('action', $this->url('task', array('action' => 'add')));
+    $form->setAttribute('action', $this->url('task', ['action' => 'add']));
     $form->get('submit')->setAttribute('value', 'Add');
     $form->prepare();
 
@@ -542,7 +542,7 @@ This time we use ``editAction()`` in the ``TaskController``. Open
     {
         $id = (int)$this->params('id');
         if (!$id) {
-            return $this->redirect()->toRoute('task', array('action'=>'add'));
+            return $this->redirect()->toRoute('task', ['action'=>'add']);
         }
         $task = $this->getTaskMapper()->getTask($id);
     
@@ -559,10 +559,10 @@ This time we use ``editAction()`` in the ``TaskController``. Open
             }
         }
     
-        return array(
+        return [
             'id' => $id,
             'form' => $form,
-        );
+        ];
     }
 
 This code should look familiar. Let's look at the only difference from adding a
@@ -600,7 +600,7 @@ this method:
     public function getTask($id)
     {
         $select = $this->sql->select();
-        $select->where(array('id' => $id));
+        $select->where(['id' => $id]);
 
         $statement = $this->sql->prepareStatementForSqlObject($select);
         $result = $statement->execute()->current();
@@ -751,7 +751,7 @@ in the ``module/Checklist/view/checklist/task`` folder with this content:
       '<?php echo $this->escapeHtml($task->getTitle()); ?>' task?
     </p>
     <?php
-    $url = $this->url('task', array('action' => 'delete', 'id'=>$id)); ?>
+    $url = $this->url('task', ['action' => 'delete', 'id'=>$id]); ?>
     <form action="<?php echo $url; ?>" method="post">
     <div>
       <input type="submit" name="del" value="Yes" />

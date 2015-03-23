@@ -625,10 +625,10 @@ inclure ceci:
    <!-- application/views/scripts/guestbook/index.phtml -->
 
    <p><a href="<?php echo $this->url(
-       array(
+       [
            'controller' => 'guestbook',
            'action'     => 'sign'
-       ),
+       ],
        'default',
        true) ?>">Sign Our Guestbook</a></p>
 

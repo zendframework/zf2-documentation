@@ -53,9 +53,9 @@ Die Verwendung des *JSON* Helfers ist sehr geradlienig:
    .. code-block:: php
       :linenos:
 
-      <?php echo $this->json($this->data, array(
+      <?php echo $this->json($this->data, [
           'enableJsonExprFinder' => true,
           'keepLayouts'          => true,
-      )) ?>
+      ]) ?>
 
 

@@ -326,8 +326,8 @@ name}``. Ahora podemos completar el script de vista ``index.phtml``:
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-    <p><a href="<?php echo $this->url('album', array( 
-            'action'=>'add'));?>">Add new album</a></p>
+    <p><a href="<?php echo $this->url('album', [ 
+            'action'=>'add']);?>">Add new album</a></p>
 
     <table class="table">
     <tr>
@@ -340,9 +340,9 @@ name}``. Ahora podemos completar el script de vista ``index.phtml``:
         <td><?php echo $this->escapeHtml($album->title);?></td>
         <td><?php echo $this->escapeHtml($album->artist);?></td>    <td>
             <a href="<?php echo $this->url('album',
-                array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
+                ['action'=>'edit', 'id' => $album->id]);?>">Edit</a>
             <a href="<?php echo $this->url('album',
-                array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
+                ['action'=>'delete', 'id' => $album->id]);?>">Delete</a>
         </td>
     </tr>
     <?php endforeach; ?>

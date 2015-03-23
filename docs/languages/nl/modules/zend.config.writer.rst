@@ -166,22 +166,22 @@ Het resultaat is een PHP script dat een array teruggeeft:
    :linenos:
 
    <?php
-   return array (
+   return [
      'production' =>
-     array (
+     [
        'webhost' => 'www.example.com',
        'database' =>
-       array (
+       [
          'params' =>
-         array (
+         [
            'host' => 'localhost',
            'username' => 'production',
            'password' => 'secret',
            'dbname' => 'dbproduction',
-         ),
-       ),
-     ),
-   );
+         ],
+       ],
+     ],
+   ];
 
 Het PHP script kan nu met de ``toFile()`` methode worden weggeschreven naar een bestand.
 
@@ -203,12 +203,12 @@ Het volgende voorbeeld illustreert het gebruik van ``Zend\Config\Writer\Json`` o
    :linenos:
 
    // Create the config object
-   $config = new Zend\Config\Config(array(), true);
-   $config->production = array();
+   $config = new Zend\Config\Config([], true);
+   $config->production = [];
 
    $config->production->webhost = 'www.example.com';
-   $config->production->database = array();
-   $config->production->database->params = array();
+   $config->production->database = [];
+   $config->production->database->params = [];
    $config->production->database->params->host = 'localhost';
    $config->production->database->params->username = 'production';
    $config->production->database->params->password = 'secret';
@@ -256,12 +256,12 @@ Het volgende voorbeeld illustreert het gebruik van ``Zend\Config\Writer\Yaml`` e
    :linenos:
 
    // Create the config object
-   $config = new Zend\Config\Config(array(), true);
-   $config->production = array();
+   $config = new Zend\Config\Config([], true);
+   $config->production = [];
 
    $config->production->webhost = 'www.example.com';
-   $config->production->database = array();
-   $config->production->database->params = array();
+   $config->production->database = [];
+   $config->production->database->params = [];
    $config->production->database->params->host = 'localhost';
    $config->production->database->params->username = 'production';
    $config->production->database->params->password = 'secret';
@@ -294,7 +294,7 @@ constructor. Stel dat je de `Spyc`_ library wenst te gebruiken:
    // include the Spyc library
    require_once ('path/to/spyc.php');
 
-   $writer = new Zend\Config\Writer\Yaml(array('Spyc','YAMLDump'));
+   $writer = new Zend\Config\Writer\Yaml(['Spyc','YAMLDump']);
    echo $writer->toString($config);
 
 

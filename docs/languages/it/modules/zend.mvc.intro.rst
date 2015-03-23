@@ -250,17 +250,17 @@ Ricordi il ``application.config.php`` di prima? Stiamo per andare a realizzare q
 
    <?php
    // config/application.config.php
-   return array(
-       'modules' => array(
+   return [
+       'modules' => [
            /* ... */
-       ),
-       'module_listener_options' => array(
-           'module_paths' => array(
+       ],
+       'module_listener_options' => [
+           'module_paths' => [
                './module',
                './vendor',
-           ),
-       ),
-   );
+           ],
+       ],
+   ];
 
 Come aggiungiamo moduli al sistema, aggiungiamo anche elementi all'array ``modules``.
 

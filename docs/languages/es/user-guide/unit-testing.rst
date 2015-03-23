@@ -88,7 +88,7 @@ Este es el Bootstrap escrito por Evan Coury, sólo los namespaces necesitan ser 
                 $testConfig = include __DIR__ . '/TestConfig.php.dist';
             }
 
-            $zf2ModulePaths = array();
+            $zf2ModulePaths = [];
 
             if (isset($testConfig['module_listener_options']['module_paths'])) {
                 $modulePaths = $testConfig['module_listener_options']['module_paths'];
@@ -105,11 +105,11 @@ Este es el Bootstrap escrito por Evan Coury, sólo los namespaces necesitan ser 
             static::initAutoloader();
 
             // usa el ModuleManager para cargar este modulo y sus dependencias
-            $baseConfig = array(
-                'module_listener_options' => array(
+            $baseConfig = [
+                'module_listener_options' => [
                     'module_paths' => explode(PATH_SEPARATOR, $zf2ModulePaths),
-                ),
-            );
+                ],
+            ];
 
             $config = ArrayUtils::merge($baseConfig, $testConfig);
 
@@ -148,14 +148,14 @@ Este es el Bootstrap escrito por Evan Coury, sólo los namespaces necesitan ser 
 
             }
 
-            AutoloaderFactory::factory(array(
-                'Zend\Loader\StandardAutoloader' => array(
+            AutoloaderFactory::factory([
+                'Zend\Loader\StandardAutoloader' => [
                     'autoregister_zf' => true,
-                    'namespaces' => array(
+                    'namespaces' => [
                         __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                    ),
-                ),
-            ));
+                    ],
+                ],
+            ]);
         }
 
         protected static function findParentPath($path)
@@ -178,20 +178,20 @@ Y crea un archivo llamado ``TestConfig.php.dist``
 .. code-block:: php
 
     <?php
-    return array(
-        'modules' => array(
+    return [
+        'modules' => [
             'Application',
-        ),
-        'module_listener_options' => array(
-            'config_glob_paths'    => array(
+        ],
+        'module_listener_options' => [
+            'config_glob_paths'    => [
                 '../../../config/autoload/{,*.}{global,local}.php',
-            ),
-            'module_paths' => array(
+            ],
+            'module_paths' => [
                 'module',
                 'vendor',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Básicamente es lo mismo que config/application.config.php, pero nosotros definimos sólo los módulos que se requieren en esta prueba.
 
@@ -230,10 +230,10 @@ con el siguiente contenido.
             $serviceManager = Bootstrap::getServiceManager();
             $this->controller = new IndexController();
             $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
+            $this->routeMatch = new RouteMatch(['controller' => 'index']);
             $this->event      = new MvcEvent();
             $config = $serviceManager->get('Config');
-            $routerConfig = isset($config['router']) ? $config['router'] : array();
+            $routerConfig = isset($config['router']) ? $config['router'] : [];
             $router = HttpRouter::factory($routerConfig);
 
             $this->event->setRouter($router);

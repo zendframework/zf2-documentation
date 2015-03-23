@@ -49,7 +49,7 @@
    $style->setFillColor(new ZendPdf\Color\RGB(0, 0, 0.9));
    $style->setLineColor(new ZendPdf\Color\GrayScale(0.2));
    $style->setLineWidth(3);
-   $style->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
+   $style->setLineDashingPattern([3, 2, 3, 4], 1.6);
    $style->setFont(new ZendPdf\Font\Standard(ZendPdf\Const::FONT_HELVETICA_BOLD), 32);
 
    // Создание нового объекта изображения
@@ -96,7 +96,7 @@
    // Рисование прямоугольника
    $page2->setFillColor(new ZendPdf\Color\GrayScale(0.8));
    $page2->setLineColor(new ZendPdf\Color\GrayScale(0.2));
-   $page2->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
+   $page2->setLineDashingPattern([3, 2, 3, 4], 1.6);
    $page2->drawRectangle(60, 400, 400, 350);
 
    // Рисование круга
@@ -121,8 +121,8 @@
 
    // Рисование и заполнение многоугольника
    $page2->setFillColor(new ZendPdf\Color\RGB(1, 0, 1));
-   $x = array();
-   $y = array();
+   $x = [];
+   $y = [];
    for ($count = 0; $count < 8; $count++) {
        $x[] = 140 + 25*cos(3*M_PI_4*$count);
        $y[] = 375 + 25*sin(3*M_PI_4*$count);

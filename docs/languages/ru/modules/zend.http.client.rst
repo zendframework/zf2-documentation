@@ -29,16 +29,16 @@ HTTP-запросов. Zend\Http\Client поддерживает как боль
       :linenos:
 
       <?php
-          $client = new Zend\Http\Client('http://example.org', array(
+          $client = new Zend\Http\Client('http://example.org', [
               'maxredirects' => 0,
-              'timeout'      => 30));
+              'timeout'      => 30]);
 
           // Этот код делает то же самое:
           $client = new Zend\Http\Client();
           $client->setUri('http://example.org');
-          $client->setConfig(array(
+          $client->setConfig([
               'maxredirects' => 0,
-              'timeout'      => 30));
+              'timeout'      => 30]);
 
       ?>
 
@@ -143,11 +143,11 @@ CONNECT, определенные в протоколе HTTP. [#]_. Для уд�
           $client->setUri('http://example.com/index.php?knight=lancelot');
 
           // Добавление нескольких параметров в одном вызове
-          $client->setParameterGet(array(
+          $client->setParameterGet([
               'first_name'  => 'Bender',
               'middle_name' => 'Bending'
               'made_in'     => 'Mexico',
-          ));
+          ]);
       ?>
 
 
@@ -168,11 +168,11 @@ CONNECT, определенные в протоколе HTTP. [#]_. Для уд�
 
           // Установка нескольких параметров POST,
           // один из них - с несколькими значениями
-          $client->setParameterPost(array(
+          $client->setParameterPost([
               'language'  => 'es',
               'country'   => 'ar',
-              'selection' => array(45, 32, 80)
-          ));
+              'selection' => [45, 32, 80]
+          ]);
       ?>
 Заметьте, что отправляя запрос POST, вы можете установить как
 параметры POST, так и параметры GET. С другой стороны, хотя
