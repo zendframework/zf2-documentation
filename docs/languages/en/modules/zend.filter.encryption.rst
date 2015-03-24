@@ -41,12 +41,11 @@ The following options are supported for ``Zend\Filter\Encrypt`` and ``Zend\Filte
 - **package**: Only ``OpenSSL``. If the envelope key should be packed with the encrypted value. Default is
   ``FALSE``.
 
-- **private**: Only ``OpenSSL``. Your private key which will be used for encrypting the content. Also the private
-  key can be either a filename with path of the key file, or just the content of the key file itself.
+- **private**: Only ``OpenSSL``. Your private key which will be used for encrypting the content. You can
+  either provide the path and filename of the key file, or just the content of the key file itself.
 
 - **public**: Only ``OpenSSL``. The public key of the user whom you want to provide the encrypted content. You can
-  give multiple public keys by using an array. You can either provide the path and filename of the key file, or
-  just the content of the key file itself.
+  either provide the path and filename of the key file, or just the content of the key file itself.
 
 - **vector**: Only ``BlockCipher``. The initialization vector which shall be used. If not set it will be a random
   vector.
@@ -212,7 +211,7 @@ Encryption with OpenSSL
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 When you have installed the ``OpenSSL`` extension you can use the ``OpenSSL`` adapter. You can get or set the
-public keys also afterwards with the ``getPublicKey()`` and ``setPublicKey()`` methods. The private key can also be
+public key also afterwards with the ``getPublicKey()`` and ``setPublicKey()`` methods. The private key can also be
 get and set with the related ``getPrivateKey()`` and ``setPrivateKey()`` methods.
 
 .. code-block:: php
@@ -225,16 +224,12 @@ get and set with the related ``getPrivateKey()`` and ``setPrivateKey()`` methods
    ));
 
    // of course you can also give the public keys at initiation
-   $filter->setPublicKey(array(
-      '/public/key/path/first.pem',
-      '/public/key/path/second.pem'
-   ));
+   $filter->setPublicKey('/public/key/path/public.pem');
 
 .. note::
 
    Note that the ``OpenSSL`` adapter will not work when you do not provide valid keys.
 
-When you want to encode also the keys, then you have to provide a passphrase with the ``setPassphrase()`` method.
 When you want to decode content which was encoded with a passphrase you will not only need the public key, but also
 the passphrase to decode the encrypted key.
 
@@ -244,15 +239,10 @@ the passphrase to decode the encrypted key.
    // Use openssl and provide a private key
    $filter = new Zend\Filter\Encrypt(array(
       'adapter' => 'openssl',
-      'private' => '/path/to/mykey/private.pem'
+      'passphrase' => 'enter here the passphrase for the private key',
+      'private' => '/path/to/mykey/private.pem',
+      'public' => '/public/key/path/public.pem'
    ));
-
-   // of course you can also give the public keys at initiation
-   $filter->setPublicKey(array(
-      '/public/key/path/first.pem',
-      '/public/key/path/second.pem'
-   ));
-   $filter->setPassphrase('mypassphrase');
 
 At last, when you use OpenSSL you need to give the receiver the encrypted content, the passphrase when have
 provided one, and the envelope keys for decryption.
@@ -268,15 +258,10 @@ So our complete example for encrypting content with ``OpenSSL`` look like this.
    // Use openssl and provide a private key
    $filter = new Zend\Filter\Encrypt(array(
       'adapter' => 'openssl',
-      'private' => '/path/to/mykey/private.pem'
+      'passphrase' => 'enter here the passphrase for the private key',
+      'private' => '/path/to/mykey/private.pem',
+      'public' => '/public/key/path/public.pem'
    ));
-
-   // of course you can also give the public keys at initiation
-   $filter->setPublicKey(array(
-      '/public/key/path/first.pem',
-      '/public/key/path/second.pem'
-   ));
-   $filter->setPassphrase('mypassphrase');
 
    $encrypted = $filter->filter('text_to_be_encoded');
    $envelope  = $filter->getEnvelopeKey();
@@ -371,17 +356,14 @@ the content. See the following example:
    ));
 
    // of course you can also give the envelope keys at initiation
-   $filter->setEnvelopeKey(array(
-      '/key/from/encoder/first.pem',
-      '/key/from/encoder/second.pem'
-   ));
+   $filter->setEnvelopeKey('/key/from/encoder/envelope_key.pem');
 
 .. note::
 
    Note that the ``OpenSSL`` adapter will not work when you do not provide valid keys.
 
-Optionally it could be necessary to provide the passphrase for decrypting the keys themself by using the
-``setPassphrase()`` method.
+Optionally it could be necessary to provide the passphrase for decrypting the keys themself passing the
+``passphrase`` option.
 
 .. code-block:: php
    :linenos:
@@ -389,15 +371,12 @@ Optionally it could be necessary to provide the passphrase for decrypting the ke
    // Use openssl and provide a private key
    $filter = new Zend\Filter\Decrypt(array(
       'adapter' => 'openssl',
+      'passphrase' => 'enter here the passphrase for the private key',
       'private' => '/path/to/mykey/private.pem'
    ));
 
    // of course you can also give the envelope keys at initiation
-   $filter->setEnvelopeKey(array(
-      '/key/from/encoder/first.pem',
-      '/key/from/encoder/second.pem'
-   ));
-   $filter->setPassphrase('mypassphrase');
+   $filter->setEnvelopeKey('/key/from/encoder/envelope_key.pem');
 
 At last, decode the content. Our complete example for decrypting the previously encrypted content looks like this.
 
@@ -407,15 +386,12 @@ At last, decode the content. Our complete example for decrypting the previously 
    // Use openssl and provide a private key
    $filter = new Zend\Filter\Decrypt(array(
       'adapter' => 'openssl',
+      'passphrase' => 'enter here the passphrase for the private key',
       'private' => '/path/to/mykey/private.pem'
    ));
 
    // of course you can also give the envelope keys at initiation
-   $filter->setEnvelopeKey(array(
-      '/key/from/encoder/first.pem',
-      '/key/from/encoder/second.pem'
-   ));
-   $filter->setPassphrase('mypassphrase');
+   $filter->setEnvelopeKey('/key/from/encoder/envelope_key.pem');
 
    $decrypted = $filter->filter('encoded_text_normally_unreadable');
    print $decrypted;
