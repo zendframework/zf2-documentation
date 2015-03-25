@@ -923,7 +923,12 @@ Annotations allow us to solve this problem. You can define the following behavio
 
 - *Input*: specify the input class to use for this given element. A string value is expected.
 
+- *Instance*: specify an object class instance to bind to the form or fieldset.
+
 - *Name*: specify the name of the current element, fieldset, or form. A string value is expected.
+
+- *Object*: specify an object class instance to bind to the form or fieldset.
+  (Note: this is deprecated in 2.4.0; use *Instance* instead.)
 
 - *Options*: options to pass to the fieldset or form that are used to inform behavior -- things that are not
   attributes; e.g. labels, CAPTCHA adapters, etc. The annotation expects an associative array: ``@Options({"label":

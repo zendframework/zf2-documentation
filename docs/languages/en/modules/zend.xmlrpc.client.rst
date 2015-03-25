@@ -184,7 +184,7 @@ subclasses directly, or use the static factory method ``Zend\XmlRpc\AbstractValu
    +----------------+--------------------------------------------------+-------------------------------+
    |boolean         |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_BOOLEAN  |Zend\\XmlRpc\\Value\\Boolean   |
    +----------------+--------------------------------------------------+-------------------------------+
-   |string          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_STRING   |Zend\\XmlRpc\\Value\\String    |
+   |string          |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_STRING   |Zend\\XmlRpc\\Value\\Text      |
    +----------------+--------------------------------------------------+-------------------------------+
    |nil             |Zend\\XmlRpc\\AbstractValue::XMLRPC_TYPE_NIL      |Zend\\XmlRpc\\Value\\Nil       |
    +----------------+--------------------------------------------------+-------------------------------+
