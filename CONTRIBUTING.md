@@ -16,16 +16,6 @@ We only ask you to use a couple of conventions:
  - To fix or update a document we use the `fix/<doc>` branch name convention,
    where `<doc>` is the name of the document that you want to fix or update;
 
-If you want to work on a document in a language different from English, please
-include the name of the language in the branch name.
-
-For instance, if you want to propose a new document in Italian you have to use the
-following naming convention: `feature/it/<doc>`, where `it` is Italian.
-The same convention is applied on the fix or update: `fix/it/<doc>`.
-
-You can find the supported languages in the `docs/languages` subdirectory.
-
-
 ## DOCUMENT FORMAT
 
 The Zend Framework 2 documentation is written using the
@@ -65,39 +55,4 @@ To render the documentation in HTML format:
 
 The HTML documentation will be generated in `docs/_build/html`.
 
-By default, the `make html` command renders the documentation in English.
-To render in a different language you have to specify the LANG in the command line.
-
-For instance, to render the documentation in Italian (`it`), execute the following command:
-
-    make html LANG=it
-
-You can find the supported languages in the `docs/languages` subdirectory.
-
 After you've made changes to .rst files, you can run `make html` again to update HTML for changed pages.
-
-## TRANSLATION
-
-If you want to begin a new translation, you need to create a new subdirectory in the 'docs/languages' directory.
-The name of the directory must be the [ISO 639-1 code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-for your language.
-
-The compilation process takes all English files in the directory 'docs/languages/en' and overwrites them with those
-in your language directory if it exists with the same filename in the same tree. If you want to translate a file,
-copy the English file to your directory and start the translation. When the translation is completed, you have
-to add a revcheck tag like '.. EN-Revision: 1a526e4' at the top of the file. '1a526e4' are the 7 first characters
-of the English commit on which your translation is based. This helps the maintainer of the translation to know if
-there exist one or multiple modifications of the English file that need to be added to the translation.
-
-All revcheck tags have been initialized to 'none'. This indicates to all maintainers of translations that it needs
-at least one review of the file after the automatic migration from ZF1 (Docbook to reST). We will provide in a
-next future a visual tool for translators to be able to detect non-translated files or outdated files (based on
-the revcheck tag).
-
-In this philosophy, you can translate an image if you want. But there are 2 specific files at the
-root of the English directory that you must not translate:
- - 'index.rst'
- - 'snippets.rst'
-
-All sentences in these files that need a translation are handled by the reST substitution syntax. You can find them
-in the 'translated-snippets.rst' file.
