@@ -157,6 +157,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.i18n.filters
    modules/zend.i18n.validators
    modules/zend.input-filter.intro
+   modules/zend.input-filter.specs
    modules/zend.input-filter.file-input
    modules/zend.json.introduction
    modules/zend.json.basics
@@ -672,6 +673,7 @@ Zend\\InputFilter
 ^^^^^^^^^^^^^^^^^
 
         * :doc:`modules/zend.input-filter.intro`
+        * :doc:`modules/zend.input-filter.specs`
         * :doc:`modules/zend.input-filter.file-input`
 
 .. _zend.json:
