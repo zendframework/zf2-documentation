@@ -59,4 +59,4 @@ available to address it.
 .. _`HTML5 form rendering`: http://www.w3.org/TR/html5/forms.html#forms
 .. _`Zend Technologies`: http://www.zend.com
 .. _`mailing lists`: http://framework.zend.com/archives
-.. _`IRC channels`: http://www.zftalk.com
+.. _`IRC channels`: http://framework.zend.com/irc/
