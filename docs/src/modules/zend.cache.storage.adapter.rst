@@ -841,7 +841,7 @@ The MongoDB Adapter
 
    The ``Zend\Cache\Storage\Adapter\MongoDB`` adapter stores cache items into
    MongoDB, using either the PHP extension mongo_ OR a MongoDB polyfill library,
-   such as Mongofill<https://github.com/mongofill/mongofill>.
+   such as Mongofill_.
 
    This adapter implements the following interfaces:
 
@@ -888,17 +888,17 @@ The MongoDB Adapter
    +====================+===========+==============+=============================================================================================+
    |lib_option          |``array``  |              |Associative array of options where the array key is the option name. Accepted keys are:      |
    |                    |           |              | - server:            The mongodb server connect string                                      |
-   |                    |           |              |                      see<http://php.net/manual/en/mongoclient.construct.php>                |
+   |                    |           |              |                      (see the MongoClient_ docs);                                           |
    |                    |           |              |                      default 'mongodb://localhost:27017'                                    |
    |                    |           |              | - database:          Name of database to use (Mongo will create this if it doesn't exist)   |
    |                    |           |              |                      default 'zend'                                                         |
    |                    |           |              | - collection:        Name of collection to use (Mongo will create this if it doesn't exist) |
    |                    |           |              |                      default 'cache'                                                        |
    |                    |           |              | - connectionOptions: Associative array of options to pass to the Mongo client               |
-   |                    |           |              |                      see<http://php.net/manual/en/mongoclient.construct.php>                |
+   |                    |           |              |                      (see the MongoClient_ docs);                                           |
    |                    |           |              |                      default ``['fsync' => false, 'journal' => true]``                      |
    |                    |           |              | - driverOptions:     Associative array of driver options to pass to the Mongo client        |
-   |                    |           |              |                      see<http://php.net/manual/en/mongoclient.construct.php>                |
+   |                    |           |              |                      (see the MongoClient_ docs);                                           |
    |                    |           |              |                      default ``[]``                                                         |
    +--------------------+-----------+--------------+---------------------------------------------------------------------------------------------+
    |namespace_separator |``string`` |":"           |A separator for the namespace and prefix                                                     |
@@ -1199,6 +1199,9 @@ Examples
 .. _memcached: http://pecl.php.net/package/memcached
 .. _redis: https://github.com/nicolasff/phpredis
 .. _Libmemcached: http://libmemcached.org/
+.. _mongo: http://php.net/mongo
+.. _Mongofill: https://github.com/mongofill/mongofill
+.. _MongoClient: http://php.net/MongoClient
 .. _WinCache: http://pecl.php.net/package/WinCache
 .. _XCache: http://xcache.lighttpd.net/
 .. _Zend Server Data Caching API: http://www.zend.com/en/products/server/
