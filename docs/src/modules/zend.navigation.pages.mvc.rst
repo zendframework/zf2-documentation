@@ -41,6 +41,8 @@ determine if the page is active.
    +-------------+---------------------------------------+-------+--------------------------------------------------------+
    |router       |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs                              |
    +-------------+---------------------------------------+-------+--------------------------------------------------------+
+   |query        |Array                                  |array()|User query params to use when generating href to page   |
+   +-------------+---------------------------------------+-------+--------------------------------------------------------+
 
 .. note::
 
@@ -85,6 +87,14 @@ calling *$page->getHref()*.
        'action'     => 'edit',
        'controller' => 'album',
        'params'     => array('id' => 1337),
+   ));
+   
+    // getHref() returns /album/1337?format=json
+   $page = new Zend\Navigation\Page\Mvc(array(
+       'action'     => 'edit',
+       'controller' => 'album',
+       'params'     => array('id' => 1337),
+       'query'      => array('format' => 'json'),
    ));
 
 .. _zend.navigation.pages.mvc.example.isActive:
