@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.validator.db:
 
 Db\\RecordExists and Db\\NoRecordExists Validators
