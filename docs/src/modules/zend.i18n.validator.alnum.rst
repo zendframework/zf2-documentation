@@ -1,4 +1,4 @@
-.. _zend.validator.alnum:
+.. _zend.i18n.validator.alnum:
 
 Alnum Validator
 ===============
@@ -6,7 +6,7 @@ Alnum Validator
 ``Zend\I18n\Validator\Alnum`` allows you to validate if a given value contains only alphabetical characters and digits.
 There is no length limitation for the input you want to validate.
 
-.. _zend.validator.alnum.options:
+.. _zend.i18n.validator.alnum.options:
 
 Supported Options
 ^^^^^^^^^^^^^^^^^
@@ -15,7 +15,7 @@ The following options are supported for ``Zend\I18n\Validator\Alnum``:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to ``FALSE``
 
-.. _zend.validator.alnum.basic:
+.. _zend.i18n.validator.alnum.basic:
 
 Basic usage
 ^^^^^^^^^^^
@@ -32,7 +32,7 @@ A basic example is the following one:
        // false
    }
 
-.. _zend.validator.alnum.whitespace:
+.. _zend.i18n.validator.alnum.whitespace:
 
 Using whitespaces
 ^^^^^^^^^^^^^^^^^
@@ -54,7 +54,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
        // false
    }
 
-.. _zend.validator.alnum.languages:
+.. _zend.i18n.validator.alnum.languages:
 
 Using different languages
 ^^^^^^^^^^^^^^^^^^^^^^^^^

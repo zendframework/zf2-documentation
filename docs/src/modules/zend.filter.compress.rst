@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.filter.set.compress:
 
 Compress and Decompress

@@ -1,6 +1,4 @@
-:orphan:
-
-.. _zend.validator.set.int:
+.. _zend.i18n.validator.set.int:
 
 IsInt
 -----
@@ -17,7 +15,7 @@ The following options are supported for ``Zend\I18n\Validator\IsInt``:
 
 - **locale**: Sets the locale which will be used to validate localized integers.
 
-.. _zend.validator.set.int.basic:
+.. _zend.i18n.validator.set.int.basic:
 
 Simple integer validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -37,7 +35,7 @@ locale is used for validation:
 In the above example we expected that our environment is set to "en" as locale. As you can see in the third example
 also grouping is recognised.
 
-.. _zend.validator.set.int.localized:
+.. _zend.i18n.validator.set.int.localized:
 
 Localized integer validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
