@@ -20,6 +20,7 @@ Included Validators
 - :ref:`Db\\RecordExists and Db\\NoRecordExists <zend.validator.db>`
 - :ref:`Digits <zend.validator.digits>`
 - :ref:`EmailAddress <zend.validator.email_address>`
+- :ref:`File Validation Classes <zend.validator.file>`
 - :ref:`GreaterThan <zend.validator.greaterthan>`
 - :ref:`Hex <zend.validator.hex>`
 - :ref:`Hostname <zend.validator.hostname>`
