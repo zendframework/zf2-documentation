@@ -1,3 +1,5 @@
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator:
+
 Introducing Zend\\Db\\Sql and Zend\\Stdlib\\Hydrator
 ====================================================
 
@@ -5,9 +7,10 @@ In the last chapter we have introduced the mapping layer and created the ``PostM
 create an implementation of this interface so that we can make use of our ``PostService`` again. As an introductionary
 example we will be using the ``Zend\Db\Sql`` classes. So let's jump right into it.
 
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator.preparing-database:
 
 Preparing the Database
-======================
+----------------------
 
 Before we can start using a database we should prepare one. In this example we'll be using a MySQL-Database called
 ``blog`` which is accessible on the ``localhost``. The database will have one table called ``posts`` with three columns
@@ -34,9 +37,10 @@ Before we can start using a database we should prepare one. In this example we'l
     INSERT INTO posts (title, text)
       VALUES  ('Blog #5',  'Welcome to my fifth blog post');
 
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator.quick-facts:
 
 Quick Facts Zend\\Db\\Sql
-=========================
+-------------------------
 
 To create queries against a database using ``Zend\Db\Sql`` you need to have a database connection available. This
 connection is served through any class implementing the ``Zend\Db\Adapter\AdapterInterface``. The most handy way to
@@ -139,9 +143,10 @@ delete queries. The basic workflow of these components is:
 
 Knowing this we can now write the implementation for the ``PostMapperInterface``.
 
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator.writing-mapper-implementation:
 
 Writing the mapper implementation
-=================================
+---------------------------------
 
 Our mapper implementation will reside inside the same namespace as its interface. Go ahead and create a class called
 ``ZendDbSqlMapper`` and implement the ``PostMapperInterface``.
@@ -604,9 +609,10 @@ able to access the data stored within. In case we get something else returned th
 
 Refreshing the page you will now see all your blog posts listed on the page. Great!
 
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator.refactoring-hidden-dependencies:
 
 Refactoring hidden dependencies
-===============================
+-------------------------------
 
 There's one little thing that we have done that's not a best-practice. We use both a Hydrator and an Object inside our
 
@@ -727,9 +733,10 @@ parameters.
 With this in place you can refresh the application again and you'll see your blog posts listed once again. Our Mapper
 has now a really good architecture and no more hidden dependencies.
 
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator.finishing-mapper:
 
 Finishing the mapper
-====================
+--------------------
 
 Before we jump into the next chapter let's quickly finish the mapper by writing an implementation for the ``find()``
 method.
@@ -832,9 +839,10 @@ statement then will be hydrated using the injected hydrator into the prototype t
 This time, when we do not find a row we will throw an ``\InvalidArgumentException`` so that the application will easily
 be able to handle the scenario.
 
+.. _in-depth-guide.zend-db-sql-zend-stdlib-hydrator.conclusion:
 
 Conclusion
-==========
+----------
 
 Finishing this chapter you now know how to query for data using the ``Zend\Db\Sql`` classes. You have also learned about
 the ``Zend\Stdlib\Hydrator``-Component which is one of the new key components of ZF2. Furthermore you have once again

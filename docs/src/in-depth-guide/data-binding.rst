@@ -1,3 +1,5 @@
+.. _in-depth-guide.data-binding:
+
 Editing and Deleting Data
 =========================
 
@@ -5,9 +7,10 @@ In the previous chapter we've come to learn how we can use the ``Zend\Form``- an
 functionality of creating new data-sets. This chapter will focus on finalizing the CRUD functionality by introducing
 the concepts for editting and deleting data. We start by editting the data.
 
+.. _in-depth-guide.data-binding.binding-objects-to-forms:
 
 Binding Objects to Forms
-========================
+------------------------
 
 The one fundamental difference between an insert- and an edit-form is the fact that inside an edit-form there is
 already data preset. This means we need to find a way to get data from our database into the form. Luckily ``Zend\Form``
@@ -106,9 +109,10 @@ Lastly instead of actually doing ``$form->getData()`` we simply use the previous
 updated with the latest data from the form thanks to the data-binding. And that's all there is to it. The only things
 we need to add now is the new edit-route and the view for it.
 
+.. _in-depth-guide.data-binding.adding-edit-route:
 
 Adding the edit-route
-=====================
+---------------------
 
 The edit route is a normal segment route just like the route ``blog/detail``. Configure your route config to include the
 new route:
@@ -178,8 +182,10 @@ new route:
         )
     );
 
+.. _in-depth-guide.data-binding.creating-edit-template:
+
 Creating the edit-template
-==========================
+--------------------------
 
 Next in line is the creation of the new template ``blog/write/edit``:
 
@@ -244,9 +250,10 @@ the view, too.
 
     echo $this->form()->closeTag();
 
+.. _in-depth-guide.data-binding.implementing-delete-functionality:
 
 Implementing the delete functionality
-=====================================
+-------------------------------------
 
 Last but not least it's time to delete some data. We start this process by creating a new route and adding a new
 controller:
@@ -740,8 +747,10 @@ created so far. With all of this set up now we're good to go ahead and write our
         <input type="submit" name="delete_confirmation" value="no">
     </form>
 
+.. _in-depth-guide.data-binding.summary:
+
 Summary
-=======
+-------
 
 In this chapter we've learned how data binding within the ``Zend\Form``-component works and through it we have finished
 our update-routine. Then we have learned how we can use HTML-Forms and checking it's data without relying on

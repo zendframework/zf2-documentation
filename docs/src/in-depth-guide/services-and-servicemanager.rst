@@ -1,3 +1,5 @@
+.. _in-depth-guide.service-and-servicemanager:
+
 Introducing Services and the ServiceManager
 ===========================================
 
@@ -5,8 +7,10 @@ In the previous chapter we've learned how to create a simple "Hello World" Appli
 good start and easy to understand but the application itself doesn't really do anything. In this chapter we will
 introduce you into the concept of Services and with this the introduction to ``Zend\ServiceManager\ServiceManager``.
 
+.. _in-depth-guide.service-and-servicemanager.what-is-a-service:
+
 What is a Service?
-==================
+------------------
 
 A Service is an object that executes complex application logic. It's the part of the application that wires all
 difficult stuff together and gives you easy to understand results.
@@ -16,8 +20,10 @@ us the data that we want. The Service will get it's data from some source and wh
 care about what the source actually is. The Service will be written against an ``Interface`` that we define and that
 future Data-Providers have to implement.
 
+.. _in-depth-guide.service-and-servicemanager.writing-postservice:
+
 Writing the PostService
-=======================
+-----------------------
 
 When writing a Service it is a common best-practice to define an ``Interface`` first. ``Interfaces`` are a good way to
 ensure that other programmers can easily build extensions for our Services using their own implementations. In other
@@ -96,8 +102,10 @@ class that looks like the following:
         }
     }
 
+.. _in-depth-guide.service-and-servicemanager.writing-model-files:
+
 Writing the required Model Files
-================================
+--------------------------------
 
 Since our ``PostService`` will return Models, we should create them, too. Be sure to write an ``Interface`` for the
 Model first! Let's create ``/module/Blog/src/Blog/Model/PostInterface.php`` and ``/module/Blog/src/Blog/Model/Post.php``.
@@ -216,8 +224,10 @@ should have a class that looks like the following:
         }
     }
 
+.. _in-depth-guide.service-and-servicemanager.bringing-life-into-postservice:
+
 Bringing Life into our PostService
-==================================
+----------------------------------
 
 Now that we have our Model files in place we can actually bring life into our ``PostService`` class. To keep the
 Service-Layer easy to understand for now we will only return some hard-coded content from our ``PostService`` class directly. Create
@@ -355,9 +365,10 @@ As you can see, both our functions now have appropriate return values. Please no
 the current implementation is far from perfect. We will improve this Service a lot in the future but for now we have
 a working Service that is able to give us some data in a way that is defined by our ``PostServiceInterface``.
 
+.. _in-depth-guide.service-and-servicemanager.bringing-service-into-controller:
 
 Bringing the Service into the Controller
-========================================
+----------------------------------------
 
 Now that we have our ``PostService`` written, we want to get access to this Service in our Controllers. For this task
 we will step foot into a new topic called "Dependency Injection", short "DI".
@@ -476,9 +487,10 @@ that a factory class is supposed to be called for this controller name. However,
 to the Manager it is an invalid factory. Using easy words: the Manager doesn't find the Factory class so that's probably
 where our error lies. And of course, we have yet to write the factory, so let's go ahead and do this.
 
+.. _in-depth-guide.service-and-servicemanager.writing-factory-class:
 
 Writing a Factory Class
-=======================
+-----------------------
 
 Factory classes within Zend Framework 2 always need to implement the ``Zend\ServiceManager\FactoryInterface``.
 Implementing this class lets the ServiceManager know that the function ``createService()`` is supposed to be called. And
@@ -546,9 +558,10 @@ Exactly what we expected. Somewhere in our application - currently our factory c
 ``Blog\Service\PostServiceInterface`` is requested but the ``ServiceManager`` doesn't know about this Service yet.
 Therefore it isn't able to create an instance for the requested name.
 
+.. _in-depth-guide.service-and-servicemanager.registering-services:
 
 Registering Services
-====================
+--------------------
 
 Registering a Service is as simple as registering a Controller. All we need to do is modify our ``module.config.php`` and
 add a new key called ``service_manager`` that then has ``invokables`` and ``factories``, too, the same way like we have it
@@ -576,8 +589,10 @@ points to our own implementation which is ``Blog\Service\PostService``. Since ou
 able to add this Service under the ``invokables`` array. Try refreshing your browser. You should see no more error
 messages but rather exactly the page that we have created in the previous chapter of the Tutorial.
 
+.. _in-depth-guide.service-and-servicemanager.using-service-at-controller:
+
 Using the Service at our Controller
-===================================
+-----------------------------------
 
 Let's now use the ``PostService`` within our ``ListController``. For this we will need to overwrite the default
 ``indexAction()`` and return the values of our ``PostService`` into the view. Modify the ``ListController`` like this:
@@ -633,8 +648,10 @@ the data we want to.
     ``return array('foo' => 'bar');``
 
 
+.. _in-depth-guide.service-and-servicemanager.accessing-view-variables:
+
 Accessing View Variables
-========================
+------------------------
 
 When pushing variables to the view they are accessible through two ways. Either directly like ``$this->posts`` or
 implicitly like ``$posts``. Both are the same, however, calling ``$posts`` implicitly will result in a little round-trip
@@ -662,8 +679,10 @@ In here we simply run a ``foreach`` over the array ``$this->posts``. Since every
 single entry of our array is of type ``Blog\Model\Post`` we can use the respective getter functions to receive the data
 we want to get.
 
+.. _in-depth-guide.service-and-servicemanager.summary:
+
 Summary
-=======
+-------
 
 And with this the current chapter is finished. We now have learned how to interact with the ``ServiceManager`` and we
 also know what dependency injection is all about. We are now able to pass variables from our services into the view

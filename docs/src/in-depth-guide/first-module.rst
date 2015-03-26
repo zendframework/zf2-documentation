@@ -9,9 +9,10 @@ single blog post. Each post will have three properties: ``id``, ``text`` and ``t
 forms to enter new posts into our database and to edit existing posts. Furthermore we will do so by using
 best-practices throughout the whole QuickStart.
 
+.. _in-depth-guide.first-module.writing-a-new-module:
 
 Writing a new Module
-====================
+--------------------
 
 Let's start by creating a new folder under the ``/module`` directory called ``Blog``.
 
@@ -61,8 +62,10 @@ interacting with a third party API.
 Organizing your code into modules makes it easier for you to reuse functionality in other application, or to use
 modules written by the community.
 
+.. _in-depth-guide.first-module.configuring-the-module:
+
 Configuring the Module
-======================
+----------------------
 
 The next thing we're going to do is add a route to our application so that our module can be accessed through the
 URL ``localhost:8080/blog``. We do this by adding router configuration to our module, but first we need to let the

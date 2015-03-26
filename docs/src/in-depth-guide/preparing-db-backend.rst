@@ -1,3 +1,5 @@
+.. _in-depth-guide.preparing-db-backend:
+
 Preparing for different Database-Backends
 =========================================
 
@@ -11,9 +13,10 @@ you would probably jump right to the solution that fits you the most at the time
 create another layer in front of the actual database access that abstracts the database interaction. We call this the
 **Mapper-Layer**.
 
+.. _in-depth-guide.preparing-db-backend.database-abstraction:
 
 What is database abstraction?
-=============================
+-----------------------------
 
 The term "database abstraction" may sound quite confusing but this is actually a very simple thing. Consider a SQL and
 a NoSQL database. Both have methods for CRUD (Create, Read, Update, Delete) operations. For example to query the
@@ -29,9 +32,10 @@ approach and that's precisely where database abstraction or the Mapper-Layer com
 Basically what we do is to create a new Interface. This interface then defines **how** our database interaction should
 function but the actual implementation is left out. But let's stop the theory and go over to code this thing.
 
+.. _in-depth-guide.preparing-db-backend.creating-postmapperinterface:
 
 Creating the PostMapperInterface
-================================
+--------------------------------
 
 Let's first think a bit about what possible database interactions we can think of. We need to be able to:
 
@@ -77,9 +81,10 @@ called ``findAll()`` that returns an array of objects implementing the ``PostInt
 ``save()`` or ``delete()`` functionality will not be added to the interface yet since we'll only be looking at the
 read-only side of things for now. They will be added at a later point though!
 
+.. _in-depth-guide.preparing-db-backend.refactoring-postservice:
 
 Refactoring the PostService
-===========================
+---------------------------
 
 Now that we have defined how our mapper should act we can make use of it inside our ``PostService``. To start off the
 refactoring process let's empty our class and delete all current content. Then implement the functions defined by the
@@ -217,9 +222,10 @@ Looking at this code you'll see that we use the ``postMapper`` to get access to 
 isn't the business of the ``PostService`` anymore. But the ``PostService`` does know what data it will receive and
 that's the only important thing.
 
+.. _in-depth-guide.preparing-db-backend.postservice-dependency:
 
 The PostService has a dependency
-================================
+--------------------------------
 
 Now that we have introduced the ``PostMapperInterface`` as a dependency for the ``PostService`` we are no longer able to
 define this service as an ``invokable`` because it has a dependency. So we need to create a factory for the service. Do
@@ -286,8 +292,10 @@ saying that the requested service cannot be found.
     Message:
     Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for Blog\Mapper\PostMapperInterface
 
+.. _in-depth-guide.preparing-db-backend.conclusion:
+
 Conclusion
-==========
+----------
 
 We finalize this chapter with the fact that we successfully managed to keep the database-logic outside of our service.
 Now we are able to implement different database solution depending on our need and change them easily when the time
