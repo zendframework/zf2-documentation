@@ -6,38 +6,22 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
-LANG          = en
 
 CALIBRE      ?= ebook-convert
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) tmp/$(LANG)
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) tmp/
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
 pre-build:
-	@rm -rf tmp/$(LANG)
-	@mkdir -p tmp/$(LANG)
-	@cp -Rp languages/en/* tmp/$(LANG)/
-ifneq ($(LANG),en)
-	@for f in $$(cd languages/$(LANG) && find . -type f \( ! -iname ".*" \) | sort); do \
-		if [ -f languages/en/$$f ]; then \
-			if [ $$(stat -c %s languages/$(LANG)/$$f) = $$(stat -c %s languages/en/$$f) ]; then \
-				echo "The file '$$f' seems to be exactly the same as English one, perhaps it could be deleted"; \
-			fi; \
-			cp languages/$(LANG)/$$f tmp/$(LANG)/$$f; \
-		else \
-			echo "The file '$$f' is not anymore in English directory, check if it's renamed or deleted"; \
-		fi; \
-	done
-endif
-	@cp languages/en/conf.py tmp/$(LANG)/conf.py
-	@sed -i.bak 's/#language = None/language = "$(LANG)"/' tmp/$(LANG)/conf.py
-	@rm -f tmp/$(LANG)/conf.py.bak
+	@rm -rf tmp/
+	@mkdir -p tmp/
+	@cp -Rp src/* tmp/
 
 # Process latex to strip non-ascii characters and perform other necessary
 # changes
@@ -186,14 +170,3 @@ doctest: pre-build
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
-add-missing-revchecktag:
-ifneq ($(LANG),en)
-	@for f in $$(cd languages/$(LANG) && find . -type f \( ! -iname ".*" \)); do \
-		if [ -f languages/en/$$f ]; then \
-			rev=$$(head -n 3 languages/$(LANG)/$$f | grep -i EN-Revision | cut -f2 -d ':' | tr -d ' '); \
-			if [ "$$rev" = "" ]; then \
-				echo ".. EN-Revision: none"|cat - languages/$(LANG)/$$f > /tmp/zftmpfile && mv /tmp/zftmpfile languages/$(LANG)/$$f; \
-			fi; \
-		fi; \
-	done
-endif
