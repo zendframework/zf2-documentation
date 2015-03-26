@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.filter.set.uri-normalize:
 
 UriNormalize

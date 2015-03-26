@@ -263,8 +263,8 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.uri
    modules/zend.validator
    modules/zend.validator.set
-   modules/zend.validator.alnum
-   modules/zend.validator.alpha
+   modules/zend.i18n.validator.alnum
+   modules/zend.i18n.validator.alpha
    modules/zend.validator.barcode
    modules/zend.validator.between
    modules/zend.validator.callback
@@ -282,6 +282,8 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.validator.in_array
    modules/zend.validator.ip
    modules/zend.validator.isbn
+   modules/zend.i18n.validator.float
+   modules/zend.i18n.validator.int
    modules/zend.validator.lessthan
    modules/zend.validator.notempty
    modules/zend.validator.post_code
@@ -951,6 +953,8 @@ Zend\\Validator
         * :doc:`modules/zend.validator.in-array`
         * :doc:`modules/zend.validator.ip`
         * :doc:`modules/zend.validator.isbn`
+        * :doc:`modules/zend.i18n.validator.float`
+        * :doc:`modules/zend.i18n.validator.int`
         * :doc:`modules/zend.validator.less-than`
         * :doc:`modules/zend.validator.not-empty`
         * :doc:`modules/zend.validator.post-code`

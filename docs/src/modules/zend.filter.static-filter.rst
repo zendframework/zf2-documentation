@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.filter.introduction.staticfilter:
 
 Using the StaticFilter

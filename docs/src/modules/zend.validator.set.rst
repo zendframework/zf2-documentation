@@ -10,8 +10,8 @@ Zend Framework comes with a standard set of validation classes, which are ready 
 Included Validators
 -------------------
 
-- :ref:`Alnum <zend.validator.alnum>`
-- :ref:`Alpha <zend.validator.alpha>`
+- :ref:`Alnum <zend.i18n.validator.alnum>`
+- :ref:`Alpha <zend.i18n.validator.alpha>`
 - :ref:`Barcode <zend.validator.barcode>`
 - :ref:`Between <zend.validator.between>`
 - :ref:`Callback <zend.validator.callback>`
@@ -29,6 +29,8 @@ Included Validators
 - :ref:`InArray <zend.validator.in_array>`
 - :ref:`Ip <zend.validator.ip>`
 - :ref:`Isbn <zend.validator.isbn>`
+- :ref:`IsFloat <zend.i18n.validator.float`
+- :ref:`IsInt <zend.i18n.validator.int`
 - :ref:`LessThan <zend.validator.lessthan>`
 - :ref:`NotEmpty <zend.validator.notempty>`
 - :ref:`PostCode <zend.validator.post_code>`

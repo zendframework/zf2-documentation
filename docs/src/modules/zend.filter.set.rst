@@ -18,6 +18,7 @@ Zend Framework comes with a standard set of filters, which are ready for you to 
 .. include:: zend.filter.int.rst
 .. include:: zend.filter.null.rst
 .. include:: zend.i18n.filter.number.format.rst
+.. include:: zend.i18n.filter.number.parse.rst
 .. include:: zend.filter.preg-replace.rst
 .. include:: zend.filter.real-path.rst
 .. include:: zend.filter.string-to-lower.rst

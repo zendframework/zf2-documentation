@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.filter.set.separatortocamelcase:
 
 SeparatorToCamelCase

@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.i18n.filter.alpha:
 
 Alpha

@@ -1,5 +1,3 @@
-:orphan:
-
 .. _zend.filter.set.separatortoseparator:
 
 SeparatorToSeparator

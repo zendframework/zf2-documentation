@@ -1,4 +1,4 @@
-.. _zend.validator.alpha:
+.. _zend.i18n.validator.alpha:
 
 Alpha Validator
 ===============
@@ -7,7 +7,7 @@ Alpha Validator
 length limitation for the input you want to validate. This validator is related to the ``Zend\I18n\Validator\Alnum``
 validator with the exception that it does not accept digits.
 
-.. _zend.validator.alpha.options:
+.. _zend.i18n.validator.alpha.options:
 
 Supported options for Zend\\I18n\\Validator\\Alpha
 --------------------------------------------------
@@ -16,7 +16,7 @@ The following options are supported for ``Zend\I18n\Validator\Alpha``:
 
 - **allowWhiteSpace**: If whitespace characters are allowed. This option defaults to ``FALSE``
 
-.. _zend.validator.alpha.basic:
+.. _zend.i18n.validator.alpha.basic:
 
 Basic usage
 -----------
@@ -33,7 +33,7 @@ A basic example is the following one:
        // false
    }
 
-.. _zend.validator.alpha.whitespace:
+.. _zend.i18n.validator.alpha.whitespace:
 
 Using whitespaces
 -----------------
@@ -55,7 +55,7 @@ an instance of the validator, or afterwards by using ``setAllowWhiteSpace()``. T
        // false
    }
 
-.. _zend.validator.alpha.languages:
+.. _zend.i18n.validator.alpha.languages:
 
 Using different languages
 -------------------------
