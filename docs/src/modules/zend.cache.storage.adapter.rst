@@ -834,6 +834,76 @@ The Memory Adapter
 
    All stored items will be lost after terminating the script.
 
+.. _zend.cache.storage.adapter.mongodb:
+
+The MongoDB Adapter
+-------------------
+
+   The ``Zend\Cache\Storage\Adapter\MongoDB`` adapter stores cache items into
+   MongoDB, using either the PHP extension mongo_ OR a MongoDB polyfill library,
+   such as Mongofill_.
+
+   This adapter implements the following interfaces:
+
+   - ``Zend\Cache\Storage\FlushableInterface``
+
+.. _zend.cache.storage.adapter.mongodb.capabilities:
+
+.. table:: Capabilities
+
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |Capability          |Value                                                                                                        |
+   +====================+=============================================================================================================+
+   |supportedDatatypes  |``null``, ``boolean``, ``integer``, ``double``, ``string``, ``array``                                        |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |supportedMetadata   |_id                                                                                                          |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |minTtl              |0                                                                                                            |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |maxTtl              |0                                                                                                            |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |staticTtl           |``true``                                                                                                     |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |ttlPrecision        |1                                                                                                            |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |useRequestTime      |``false``                                                                                                    |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |expiredRead         |``false``                                                                                                    |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |maxKeyLength        |255                                                                                                          |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |namespaceIsPrefix   |``true``                                                                                                     |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+   |namespaceSeparator  |<Option value of namespace_separator>                                                                        |
+   +--------------------+-------------------------------------------------------------------------------------------------------------+
+
+-------------------------------
+
+.. _zend.cache.storage.adapter.mongodb.options:
+
+.. table:: Adapter specific options
+
+   +--------------------+-----------+--------------+---------------------------------------------------------------------------------------------+
+   |Name                |Data Type  |Default Value |Description                                                                                  |
+   +====================+===========+==============+=============================================================================================+
+   |lib_option          |``array``  |              |Associative array of options where the array key is the option name. Accepted keys are:      |
+   |                    |           |              | - server:            The mongodb server connect string                                      |
+   |                    |           |              |                      (see the MongoClient_ docs);                                           |
+   |                    |           |              |                      default 'mongodb://localhost:27017'                                    |
+   |                    |           |              | - database:          Name of database to use (Mongo will create this if it doesn't exist)   |
+   |                    |           |              |                      default 'zend'                                                         |
+   |                    |           |              | - collection:        Name of collection to use (Mongo will create this if it doesn't exist) |
+   |                    |           |              |                      default 'cache'                                                        |
+   |                    |           |              | - connectionOptions: Associative array of options to pass to the Mongo client               |
+   |                    |           |              |                      (see the MongoClient_ docs);                                           |
+   |                    |           |              |                      default ``['fsync' => false, 'journal' => true]``                      |
+   |                    |           |              | - driverOptions:     Associative array of driver options to pass to the Mongo client        |
+   |                    |           |              |                      (see the MongoClient_ docs);                                           |
+   |                    |           |              |                      default ``[]``                                                         |
+   +--------------------+-----------+--------------+---------------------------------------------------------------------------------------------+
+   |namespace_separator |``string`` |":"           |A separator for the namespace and prefix                                                     |
+   +--------------------+-----------+--------------+---------------------------------------------------------------------------------------------+
+
 .. _zend.cache.storage.adapter.wincache:
 
 The WinCache Adapter
@@ -1129,6 +1199,9 @@ Examples
 .. _memcached: http://pecl.php.net/package/memcached
 .. _redis: https://github.com/nicolasff/phpredis
 .. _Libmemcached: http://libmemcached.org/
+.. _mongo: http://php.net/mongo
+.. _Mongofill: https://github.com/mongofill/mongofill
+.. _MongoClient: http://php.net/MongoClient
 .. _WinCache: http://pecl.php.net/package/WinCache
 .. _XCache: http://xcache.lighttpd.net/
 .. _Zend Server Data Caching API: http://www.zend.com/en/products/server/
