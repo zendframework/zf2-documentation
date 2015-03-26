@@ -194,18 +194,29 @@ Writing to Zend Monitor
 Stubbing Out the Writer
 -----------------------
 
-The ``Zend\Log\Writer\Null`` is a stub that does not write log data to anything. It is useful for disabling logging
+The ``Zend\Log\Writer\Noop`` is a stub that does not write log data to anything. It is useful for disabling logging
 or stubbing out logging during tests:
 
 .. code-block:: php
    :linenos:
 
-   $writer = new Zend\Log\Writer\Null;
+   $writer = new Zend\Log\Writer\Noop;
    $logger = new Zend\Log\Logger();
    $logger->addWriter($writer);
 
    // goes nowhere
    $logger->info('Informational message');
+
+Migration from 2.0-2.3 to 2.4+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Version 2.4 adds support for PHP 7. In PHP 7, ``null`` is a reserved keyword,
+which required renaming the ``Null`` log writer. If you were using the ``Null`` writer
+directly previously, you will now receive an ``E_USER_DEPRECATED`` notice on
+instantiation. Please update your code to refer to the ``Noop`` class instead.
+
+Users pulling their ``Null`` writer instance from the writer plugin manager
+receive a ``Noop`` instance instead starting in 2.4.0.
 
 .. _zend.log.writers.mock:
 

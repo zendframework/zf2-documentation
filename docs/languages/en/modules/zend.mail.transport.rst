@@ -106,6 +106,45 @@ File Transport Usage
    $transport->setOptions($options);
    $transport->send($message);
 
+.. _zend.mail.transport.quick-start.inmemory-usage:
+
+InMemory Transport Usage
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\Mail\Message;
+   use Zend\Mail\Transport\InMemory as InMemoryTransport;
+
+   $message = new Message();
+   $message->addTo('matthew@zend.com')
+           ->addFrom('ralph.schindler@zend.com')
+           ->setSubject('Greetings and Salutations!')
+           ->setBody("Sorry, I'm going to be late today!");
+
+   // Setup InMemory transport
+   $transport = new InMemoryTransport();
+   $transport->send($message);
+
+   // Verify the message:
+   $received = $transport->getLastMessage();
+
+The InMemory transport is primarily of interest when in development or when
+testing.
+
+Migration from 2.0-2.3 to 2.4+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Version 2.4 adds support for PHP 7. In PHP 7, ``null`` is a reserved keyword,
+which required renaming the ``Null`` transport. If you were using the ``Null`` transport
+directly previously, you will now receive an ``E_USER_DEPRECATED`` notice on
+instantiation. Please update your code to refer to the ``InMemory`` class instead.
+
+Users pulling their ``Null`` transport instance from the transport factory
+(``Zend\Mail\Transport\Factory``) receive an ``InMemory`` instance instead
+starting in 2.4.0.
+
 .. _zend.mail.transport.options:
 
 Configuration Options

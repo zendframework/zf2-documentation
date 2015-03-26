@@ -2,8 +2,8 @@
 
 .. _zend.filter.set.null:
 
-Null
-----
+ToNull
+------
 
 This filter will change the given input to be ``NULL`` if it meets specific criteria. This is often necessary when
 you work with databases and want to have a ``NULL`` value instead of a boolean or any other type.
@@ -13,7 +13,7 @@ you work with databases and want to have a ``NULL`` value instead of a boolean o
 Supported Options
 ^^^^^^^^^^^^^^^^^
 
-The following options are supported for ``Zend\Filter\Null``:
+The following options are supported for ``Zend\Filter\ToNull``:
 
 - **type**: The variable type which should be supported.
 
@@ -28,12 +28,12 @@ Per default this filter works like *PHP*'s ``empty()`` method; in other words, i
 .. code-block:: php
    :linenos:
 
-   $filter = new Zend\Filter\Null();
+   $filter = new Zend\Filter\ToNull();
    $value  = '';
    $result = $filter->filter($value);
    // returns null instead of the empty string
 
-This means that without providing any configuration, ``Zend\Filter\Null`` will accept all input types and return
+This means that without providing any configuration, ``Zend\Filter\ToNull`` will accept all input types and return
 ``NULL`` in the same cases as ``empty()``.
 
 Any other value will be returned as is, without any changes.
@@ -43,7 +43,7 @@ Any other value will be returned as is, without any changes.
 Changing the Default Behavior
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sometimes it's not enough to filter based on ``empty()``. Therefor ``Zend\Filter\Null`` allows you to configure
+Sometimes it's not enough to filter based on ``empty()``. Therefor ``Zend\Filter\ToNull`` allows you to configure
 which type will be converted and which not.
 
 The following types can be handled:
@@ -69,21 +69,21 @@ them, you can give an array, you can use constants, or you can give a textual st
    :linenos:
 
    // converts false to null
-   $filter = new Zend\Filter\Null(Zend\Filter\Null::BOOLEAN);
+   $filter = new Zend\Filter\ToNull(Zend\Filter\ToNull::BOOLEAN);
 
    // converts false and 0 to null
-   $filter = new Zend\Filter\Null(
-       Zend\Filter\Null::BOOLEAN + Zend\Filter\Null::INTEGER
+   $filter = new Zend\Filter\ToNull(
+       Zend\Filter\ToNull::BOOLEAN + Zend\Filter\ToNull::INTEGER
    );
 
    // converts false and 0 to null
-   $filter = new Zend\Filter\Null( array(
-       Zend\Filter\Null::BOOLEAN,
-       Zend\Filter\Null::INTEGER
+   $filter = new Zend\Filter\ToNull( array(
+       Zend\Filter\ToNull::BOOLEAN,
+       Zend\Filter\ToNull::INTEGER
    ));
 
    // converts false and 0 to null
-   $filter = new Zend\Filter\Null(array(
+   $filter = new Zend\Filter\ToNull(array(
        'boolean',
        'integer',
    ));
@@ -91,4 +91,13 @@ them, you can give an array, you can use constants, or you can give a textual st
 You can also give a Traversable or an array to set the wished types. To set types afterwards use
 ``setType()``.
 
+Migration from 2.0-2.3 to 2.4+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Version 2.4 adds support for PHP 7. In PHP 7, ``null`` is a reserved keyword,
+which required renaming the ``Null`` filter. If you were using the ``Null`` filter
+directly previously, you will now receive an ``E_USER_DEPRECATED`` notice on
+instantiation. Please update your code to refer to the ``ToNull`` class instead.
+
+Users pulling their ``Null`` filter instance from the filter plugin manager
+receive a ``ToNull`` instance instead starting in 2.4.0.

@@ -25,13 +25,23 @@ default:
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    |Iterator     |Accepts an Iterator instance                                                                                                                                                         |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   |Null         |Does not use Zend\\Paginator to manage data pagination. You can still take advantage of the pagination control feature.                                                              |
+   |NullFill     |Does not use Zend\\Paginator to manage data pagination. You can still take advantage of the pagination control feature.                                                              |
    +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
 
    Instead of selecting every matching row of a given query, the DbSelect adapter retrieves only
    the smallest amount of data necessary for displaying the current page.  Because of this, a second query is dynamically generated to determine the total number of matching rows.
+
+.. note:
+
+   Version 2.4 adds support for PHP 7. In PHP 7, ``null`` is a reserved keyword,
+   which required renaming the ``Null`` adapter. If you were using the ``Null`` adapter
+   directly previously, you will now receive an ``E_USER_DEPRECATED`` notice on
+   instantiation. Please update your code to refer to the ``NullFill`` class instead.
+   
+   Users pulling their ``Null`` adapter instance from the adapter plugin manager
+   receive a ``NullFill`` instance instead starting in 2.4.0.
 
 To create an instance of ``Zend\Paginator``, you must supply an adapter to the constructor:
 
@@ -40,7 +50,7 @@ To create an instance of ``Zend\Paginator``, you must supply an adapter to the c
 
    $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($array));
 
-In the case of the ``Null`` adapter, in lieu of a data collection you must supply an item count to its
+In the case of the ``NullFill`` adapter, in lieu of a data collection you must supply an item count to its
 constructor.
 
 Although the instance is technically usable in this state, in your controller action you'll need to tell the
