@@ -1,3 +1,5 @@
+.. _in-depth-guide.understanding-routing:
+
 Understanding the Router
 ========================
 
@@ -6,15 +8,18 @@ precise, all we do is display all ``Blog`` entries on one page. In this chapter 
 to know about the ``Router`` to create other routes to be able to display only a single blog, to add new blogs
 to your application and to edit and delete existing blogs.
 
+.. _in-depth-guide.understanding-routing.different-route-types:
 
 Different route types
-=====================
+---------------------
 
 Before we go into details on our application, let's take a look at the most important route types that Zend
 Framework offers.
 
+.. _in-depth-guide.understanding-routing.different-route-types.literal:
+
 Zend\\Mvc\\Router\\Http\\Literal
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first common route type is the ``Literal``-Route. As mentioned in a previous chapter a literal route is one that
 matches a specific string. Examples for URLs that are usually literal routes are:
@@ -48,8 +53,10 @@ literal route looks like this:
         )
     )
 
+.. _in-depth-guide.understanding-routing.different-route-types.segment:
+
 Zend\\Mvc\\Router\\Http\\Segment
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The second most commonly used route type is the ``Segment``-Route. A segmented route is used for whenever your url
 is supposed to contain variable parameters. Pretty often those parameters are used to identify certain objects
@@ -140,17 +147,20 @@ Notice that now we have a part in our route that is optional. Not only the param
 that is separating the ``year`` parameter from the URL string ``archive`` is optional, too, and may only be there
 whenever the ``year`` parameter is present.
 
+.. _in-depth-guide.understanding-routing.different-routing-concepts:
 
 Different routing concepts
-==========================
+--------------------------
 
 When thinking about the whole application it becomes clear that there are a lot of routes to be matched. When
 writing these routes you have two options. One option is to spend less time writing routes that in turn
 are a little slow in matching. Another option is to write very explicit routes that match a little faster
 but require more work to define. Let's take a look at both of them.
 
+.. _in-depth-guide.understanding-routing.different-routing-concepts.generic-routes:
+
 Generic routes
---------------
+^^^^^^^^^^^^^^
 
 A generic route is one that matches many URLs. You may remember this concept from Zend Framework 1 where basically
 you didn't even bother about routes because we had one "god route" that was used for everything. You define the
@@ -207,8 +217,10 @@ guess by the names let's assume neither ``controller`` nor ``action`` does exist
 a ``404``-Response.
 
 
+.. _in-depth-guide.understanding-routing.different-routing-concepts.using-child-routes:
+
 Explicit routes using child_routes
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Explicit routing is done by defining all possible routes yourself. For this method you actually have two options
 available, too.
@@ -352,9 +364,10 @@ and the last advantage would be that you can easily see all possible URLs that s
 While ultimately this falls into the category of personal preference bare in mind that debugging of explicit routes
 is significantly easier than debugging generic routes.
 
+.. _in-depth-guide.understanding-routing.partical-example-for-blog-module:
 
 A practical example for our Blog Module
-=======================================
+---------------------------------------
 
 Now that we know how to configure new routes, let's first create a route to display only a single ``Blog`` from our
 Database. We want to be able to identify blog posts by their internal ID. Given that ID is a variable parameter we need

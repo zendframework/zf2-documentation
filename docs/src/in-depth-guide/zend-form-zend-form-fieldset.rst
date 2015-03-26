@@ -1,3 +1,5 @@
+.. _in-depth-guide.zend-form-zend-form-fieldset:
+
 Making use of Forms and Fieldsets
 =================================
 
@@ -6,12 +8,19 @@ the least we need to do is to support full ``Create``, ``Read``, ``Update`` and 
 often the process of getting data into our database is that a user enters the data into a web ``<form>`` and the
 application then uses the user input and saves it into our backend.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.core-components:
+
+Core components
+---------------
+
 We want to be able to do exactly this and Zend Framework provides us with all the tools we need to achieve our goal.
 Before we jump into coding, we need to understand the two core components for this task first. So let's take a look at
 what these components are and what they are used for.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.core-components.fieldset:
+
 Zend\\Form\\Fieldset
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 The first component that you have to know about is ``Zend\Form\Fieldset``. A ``Fieldset`` is a component that contains a
 reusable set of elements. You will use the ``Fieldset`` to create the frontend-input for your backend-models. It is
@@ -21,16 +30,19 @@ The ``Fieldset``-component, however, is no ``Form``, meaning you will not be abl
 to the ``Form``-component. The advantage here is that you have one set of elements that you can re-use for as many
 ``Forms`` as you like without having to re-declare all the inputs for the ``Model`` that's represented by the ``Fieldset``.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.core-components.form:
+
 Zend\\Form\\Form
-----------------
+^^^^^^^^^^^^^^^^
 
 The main component you'll need and that most probably you've heard about already is ``Zend\Form\Form``. The
 ``Form``-component is the main container for all elements of your web ``<form>``. You are able to add single
 elements or a set of elements in the form of a ``Fieldset``, too.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.creating-fieldset:
 
 Creating your first Fieldset
-============================
+----------------------------
 
 Explaining how the ``Zend\Form`` component works is best done by giving you real code to work with. So let's jump right
 into it and create all the forms we need to finish our ``Blog`` module. We start by creating a ``Fieldset`` that contains
@@ -82,9 +94,10 @@ As you can see this class is pretty handy. All we do is to have our class extend
 write a ``__construct()`` method and add all the elements we need to the fieldset. This ``Fieldset`` can now be used by
 as many forms as we want. So let's go ahead and create our first ``Form``.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.creating-postform:
 
 Creating the PostForm
-=====================
+---------------------
 
 Now that we have our ``PostFieldset`` in place, we need to use it inside a ``Form``. We then need to add a Submit-Button
 to the form so that the user will be able to submit the data and we're done. So create the ``PostForm`` within the
@@ -122,9 +135,10 @@ same directory under ``/module/Blog/src/Blog/Form/PostForm`` and add the ``PostF
 And that's our form. Nothing special here, we add our ``PostFieldset`` to the Form, we add a submit button to the form
 and nothing more. Let's now make use of the Form.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.adding-post:
 
 Adding a new Post
-=================
+-----------------
 
 Now that we have the ``PostForm`` written we want to use it. But there are a couple more tasks that you need to do.
 The tasks that are standing right in front of you are:
@@ -135,9 +149,10 @@ The tasks that are standing right in front of you are:
 - create a new route ``blog/add`` that routes to the ``WriteController`` and its ``addAction()``
 - create a new view that displays the form
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.adding-post.creating-writecontroller:
 
 Creating the WriteController
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As you can see from the task-list we need a new controller and this controller is supposed to have two dependencies.
 One dependency being the ``PostService`` that's also being used within our ``ListController`` and the other dependency
@@ -399,9 +414,10 @@ notice that we assign a name to the fieldset. Those options will be passed from 
 
 Reloading your application now will yield you the desired result.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.displaying-form:
 
 Displaying the form
-===================
+-------------------
 
 Now that we have our ``PostForm`` within our ``WriteController`` it's time to pass this form to the view and have
 it rendered using the provided ``ViewHelpers`` from the ``Zend\Form`` component. First change your controller so that the
@@ -486,9 +502,10 @@ yet.
     any stylesheets added doesn't really reflect most designers' idea of a beautiful form. You'll find out more about
     the rendering of forms in the chapter of :ref:`Zend\\Form\\View\\Helper <zend.form.view.helpers>`.
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.controller-logic-for-all-forms:
 
 Controller Logic for basically all Forms
-========================================
+----------------------------------------
 
 Writing a Controller that handles a form workflow is pretty simple and it's basically identical for each and every
 form you have within your application.
@@ -869,9 +886,10 @@ previous chapter, this is done through the use of hydrators.
 
     This works for all conditions. ``=``, ``>``, ``<``, ``>=`` and ``<=``
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.form-and-hydrator-working-together:
 
 Zend\\Form and Zend\\Stdlib\\Hydrator working together
-======================================================
+------------------------------------------------------
 
 Before we go ahead and put the hydrator into the form, let's first do a data-dump of the data coming from the form. That
 way we can easily notice all changes that the hydrator does. Modify your ``WriteController`` to the following:
@@ -1103,9 +1121,10 @@ You can now revert back your ``WriteController`` to its previous form to have th
 
 If you send the form now you'll now be able to add as many new blogs as you want. Great!
 
+.. _in-depth-guide.zend-form-zend-form-fieldset.conclusion:
 
 Conclusion
-==========
+----------
 
 In this chapter you've learned a great deal about the ``Zend\Form`` component. You've learned that ``Zend\Stdlib\Hydrator``
 takes a big part within the ``Zend\Form`` component and by making use of both components you've been able to create an

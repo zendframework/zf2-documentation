@@ -1,14 +1,17 @@
+.. _in-depth-guide.review:
+
 Reviewing the Blog-application
-===============================
+==============================
 
 Throughout the past seven chapters we have created a fully functional CRUD-Application using music-blogs as an example.
 While doing so we've made use of several different design-patterns and best-practices. Now it's time to reiterate and
 take a look at some of the code-samples we've written. This is going to be done in a Q&A fashion.
 
 - `Do we always need all the layers and interfaces?`_
-- `Having many objects, won't there be many code-duplication?`_
+- `Having many objects, won't there be much code-duplication?`_
 - `Why are there so many controllers?`_
 
+.. _in-depth-guide.review.need-all-layers-and-interfaces:
 
 Do we always need all the layers and interfaces?
 ------------------------------------------------
@@ -29,6 +32,7 @@ from the mapper layer often resides inside the services directly. And this works
 soon as you plan to support multiple backends (i.e. open source software) or you want to be prepared for changing
 backends, you should always consider including this layer.
 
+.. _in-depth-guide.review.having-many-objects:
 
 Having many objects, won't there be much code-duplication?
 ----------------------------------------------------------
@@ -64,6 +68,7 @@ You could then write a factory class that could look like this:
         }
     }
 
+.. _in-depth-guide.review.many-controllers:
 
 Why are there so many controllers?
 ----------------------------------
@@ -86,6 +91,7 @@ In applications where the ``InsertForm`` differs from the ``UpdateForm`` you'd a
 for each of them instead of one united ``WriteController`` like we have in our example. These things heavily differ from
 application to application but the general intent always is: **keep your controllers slim / lightweight**!
 
+.. _in-depth-guide.review.more-questions:
 
 Do you have more questions? PR them!
 ------------------------------------
