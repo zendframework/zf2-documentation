@@ -41,9 +41,9 @@ Dieses würde dann vom View Skript aufgerufen indem das folgende verwendet wird:
 .. code-block:: php
    :linenos:
 
-   <?php echo $this->partial('partial.phtml', array(
+   <?php echo $this->partial('partial.phtml', [
        'from' => 'Team Framework',
-       'subject' => 'Teil der View')); ?>
+       'subject' => 'Teil der View']); ?>
 
 Was dann das folgende ausgibt:
 

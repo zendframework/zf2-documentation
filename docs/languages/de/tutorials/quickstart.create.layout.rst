@@ -157,7 +157,7 @@ Jetzt da wir ``Zend_Layout`` initialisiert und den DocType gesetzt haben erstell
        </div>
        <div id="header-navigation" style="float: right">
            <a href="<?php echo $this->url(
-               array('controller'=>'guestbook'),
+               ['controller'=>'guestbook'],
                'default',
                true) ?>">Guestbook</a>
        </div>

@@ -169,22 +169,22 @@ Zend\\Config\\Writer\\PhpArray
    :linenos:
 
    <?php
-   return array (
+   return [
      'production' =>
-     array (
+     [
        'webhost' => 'www.example.com',
        'database' =>
-       array (
+       [
          'params' =>
-         array (
+         [
            'host' => 'localhost',
            'username' => 'production',
            'password' => 'secret',
            'dbname' => 'dbproduction',
-         ),
-       ),
-     ),
-   );
+         ],
+       ],
+     ],
+   ];
 
 Вы можете использовать метод ``toFile()`` для сохранения PHP-скрипта в файл.
 
@@ -207,12 +207,12 @@ JSON-строки объект ``Zend\Config\Config``.
    :linenos:
 
    // создаем конфигурационный объект
-   $config = new Zend\Config\Config(array(), true);
-   $config->production = array();
+   $config = new Zend\Config\Config([], true);
+   $config->production = [];
 
    $config->production->webhost = 'www.example.com';
-   $config->production->database = array();
-   $config->production->database->params = array();
+   $config->production->database = [];
+   $config->production->database->params = [];
    $config->production->database->params->host = 'localhost';
    $config->production->database->params->username = 'production';
    $config->production->database->params->password = 'secret';
@@ -261,12 +261,12 @@ YAML объект ``Zend\Config\Config``. Для использования пи
    :linenos:
 
    // Создаем конфигурационный объект
-   $config = new Zend\Config\Config(array(), true);
-   $config->production = array();
+   $config = new Zend\Config\Config([], true);
+   $config->production = [];
 
    $config->production->webhost = 'www.example.com';
-   $config->production->database = array();
-   $config->production->database->params = array();
+   $config->production->database = [];
+   $config->production->database->params = [];
    $config->production->database->params->host = 'localhost';
    $config->production->database->params->username = 'production';
    $config->production->database->params->password = 'secret';
@@ -299,7 +299,7 @@ YAML объект ``Zend\Config\Config``. Для использования пи
    // подключаем библиотеку Spyc
    require_once ('path/to/spyc.php');
 
-   $writer = new Zend\Config\Writer\Yaml(array('Spyc','YAMLDump'));
+   $writer = new Zend\Config\Writer\Yaml(['Spyc','YAMLDump']);
    echo $writer->toString($config);
 
 

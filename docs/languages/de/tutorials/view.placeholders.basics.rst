@@ -101,9 +101,9 @@ Wir benennen das View Skript "``user/_sidebar.phtml``", und machen es wir folgt 
    <?php $this->placeholder('sidebar')->captureStart() ?>
    <h4>Benutzer Administration</h4>
    <ul>
-       <li><a href="<?php $this->url(array('action' => 'list')) ?>">
+       <li><a href="<?php $this->url(['action' => 'list']) ?>">
            Liste</a></li>
-       <li><a href="<?php $this->url(array('action' => 'create')) ?>">
+       <li><a href="<?php $this->url(['action' => 'create']) ?>">
            Erstellen</a></a></li>
    </ul>
    <?php $this->placeholder('sidebar')->captureEnd() ?>

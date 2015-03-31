@@ -262,9 +262,9 @@ changes to the view script:
         // set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
 
-        return new ViewModel(array(
+        return new ViewModel([
             'paginator' => $paginator
-        ));
+        ]);
     }
     ...
 

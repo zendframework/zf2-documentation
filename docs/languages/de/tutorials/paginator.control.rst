@@ -23,7 +23,7 @@ im View Skript möglich ist. Hier ist ein Beispiel:
    <?php if ($this->pageCount): ?>
    <!-- Link zur ersten Seite -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->first]); ?>">
        Erste
      </a> |
    <?php else: ?>
@@ -32,7 +32,7 @@ im View Skript möglich ist. Hier ist ein Beispiel:
 
    <!-- Link zur vorherigen Seite -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Vorherige
      </a> |
    <?php else: ?>
@@ -41,7 +41,7 @@ im View Skript möglich ist. Hier ist ein Beispiel:
 
    <!-- Link zur nächsten Seite -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Nächste >
      </a> |
    <?php else: ?>
@@ -50,7 +50,7 @@ im View Skript möglich ist. Hier ist ein Beispiel:
 
    <!-- Link zur letzten Seite -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->last]); ?>">
        Letzte
      </a>
    <?php else: ?>

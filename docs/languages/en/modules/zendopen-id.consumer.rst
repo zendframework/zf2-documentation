@@ -591,7 +591,7 @@ dispatch code to perform the second or third step of OpenID authentication.
                    $msg = "Authentication failed";
                }
            }
-           return new Zend\Auth\Result($ret, $id, array($msg));
+           return new Zend\Auth\Result($ret, $id, [$msg]);
        }
    }
 

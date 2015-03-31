@@ -118,7 +118,7 @@ com o seguinte código:
         public function getAlbum($id)
         {
             $id  = (int) $id;
-            $rowset = $this->tableGateway->select(array('id' => $id));
+            $rowset = $this->tableGateway->select(['id' => $id]);
             $row = $rowset->current();
             if (!$row) {
                 throw new \Exception("Could not find row $id");
@@ -128,17 +128,17 @@ com o seguinte código:
 
         public function saveAlbum(Album $album)
         {
-            $data = array(
+            $data = [
                 'artist' => $album->artist,
                 'title'  => $album->title,
-            );
+            ];
 
             $id = (int) $album->id;
             if ($id == 0) {
                 $this->tableGateway->insert($data);
             } else {
                 if ($this->getAlbum($id)) {
-                    $this->tableGateway->update($data, array('id' => $id));
+                    $this->tableGateway->update($data, ['id' => $id]);
                 } else {
                     throw new \Exception('Album id does not exist');
                 }
@@ -147,7 +147,7 @@ com o seguinte código:
 
         public function deleteAlbum($id)
         {
-            $this->tableGateway->delete(array('id' => $id));
+            $this->tableGateway->delete(['id' => $id]);
         }
     }
 
@@ -197,8 +197,8 @@ para prover a factory que criará o ``AlbumTable``. Adicione esse método ao fin
         // Inclua esse método:
         public function getServiceConfig()
         {
-            return array(
-                'factories' => array(
+            return [
+                'factories' => [
                     'Album\Model\AlbumTable' =>  function($sm) {
                         $tableGateway = $sm->get('AlbumTableGateway');
                         $table = new AlbumTable($tableGateway);
@@ -210,8 +210,8 @@ para prover a factory que criará o ``AlbumTable``. Adicione esse método ao fin
                         $resultSetPrototype->setArrayObjectPrototype(new Album());
                         return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
                     },
-                ),
-            );
+                ],
+            ];
         }
     }
 
@@ -244,21 +244,21 @@ as credenciais do seu banco de dados caso queira. Modifique o arquivo ``config/a
 .. code-block:: php
 
     <?php
-    return array(
-        'db' => array(
+    return [
+        'db' => [
             'driver'         => 'Pdo',
             'dsn'            => 'mysql:dbname=zf2tutorial;host=localhost',
-            'driver_options' => array(
+            'driver_options' => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            ),
-        ),
-        'service_manager' => array(
-            'factories' => array(
+            ],
+        ],
+        'service_manager' => [
+            'factories' => [
                 'Zend\Db\Adapter\Adapter'
                         => 'Zend\Db\Adapter\AdapterServiceFactory',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Voê deve então inserir as credenciais de acesso ao seu banco de dados em ``config/autoload/local.php`` 
 para que elas não estejam no seu repositório público (já que ``local.php`` é ignorado):
@@ -266,12 +266,12 @@ para que elas não estejam no seu repositório público (já que ``local.php`` �
 .. code-block:: php
 
     <?php
-    return array(
-        'db' => array(
+    return [
+        'db' => [
             'username' => 'YOUR USERNAME HERE',
             'password' => 'YOUR PASSWORD HERE',
-        ),
-    );
+        ],
+    ];
 
 Voltando ao Controller
 ----------------------
@@ -319,9 +319,9 @@ Atualize a ``indexAction()`` do ``AlbumController`` como a seguir:
     // ...
         public function indexAction()
         {
-            return new ViewModel(array(
+            return new ViewModel([
                 'albums' => $this->getAlbumTable()->fetchAll(),
-            ));
+            ]);
         }
     // ...
 
@@ -342,7 +342,7 @@ arquivo de view que será usando, ma spor padrão é usado ``{nome do controller
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <p>
-        <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+        <a href="<?php echo $this->url('album', ['action'=>'add']);?>">Add new album</a>
     </p>
 
     <table class="table">
@@ -357,9 +357,9 @@ arquivo de view que será usando, ma spor padrão é usado ``{nome do controller
         <td><?php echo $this->escapeHtml($album->artist);?></td>
         <td>
             <a href="<?php echo $this->url('album',
-                array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
+                ['action'=>'edit', 'id' => $album->id]);?>">Edit</a>
             <a href="<?php echo $this->url('album',
-                array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
+                ['action'=>'delete', 'id' => $album->id]);?>">Delete</a>
         </td>
     </tr>
     <?php endforeach; ?>

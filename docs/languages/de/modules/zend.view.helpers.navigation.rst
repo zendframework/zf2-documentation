@@ -925,10 +925,10 @@ Dieses Beispiel zeigt wie ein Menü dargestellt werden kann das nicht im View He
    <?php
    // Nur das 'Community' Menü darstellen
    $community = $this->navigation()->findOneByLabel('Community');
-   $options = array(
+   $options = [
        'indent'  => 16,
        'ulClass' => 'community'
-   );
+   ];
    echo $this->navigation()
              ->menu()
              ->renderMenu($community, $options);

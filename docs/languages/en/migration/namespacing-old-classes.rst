@@ -161,17 +161,17 @@ This will produce a file called ``model-map.php`` with entries like this:
 .. code-block:: php
     :linenos:
 
-    <?php return array (
-        array (
+    <?php return [
+        [
           'root_directory' => '/realpath/to/project/application/models',
           'original_class' => 'Application_Model_Invoice',
           'original_file' => '/realpath/to/project/application/models/Invoice.php',
           'new_namespace' => 'Application\\Model',
           'new_class' => 'Invoice',
           'new_file' => '/realpath/to/project/application/models/Application/Model/Invoice.php',
-        ),
+        ],
         ...
-    );
+    ];
 
 This gives you an opportunity to manually edit the transformations if you so desire.
 While you can modify this file, you also might find it to be easier to go with the default

@@ -162,10 +162,10 @@ directly and specifying a few options.
    <?php
    // render only the 'Community' menu
    $community = $this->navigation()->findOneByLabel('Community');
-   $options = array(
+   $options = [
        'indent'  => 16,
        'ulClass' => 'community'
-   );
+   ];
    echo $this->navigation()
              ->menu()
              ->renderMenu($community, $options);

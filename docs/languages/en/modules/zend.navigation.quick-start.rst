@@ -12,38 +12,38 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
 
     <?php
     // your configuration file, e.g., config/autoload/global.php
-    return array(
+    return [
         // ...
 
-        'navigation' => array(
-            'default' => array(
-                array(
+        'navigation' => [
+            'default' => [
+                [
                     'label' => 'Home',
                     'route' => 'home',
-                ),
-                array(
+                ],
+                [
                     'label' => 'Page #1',
                     'route' => 'page-1',
-                    'pages' => array(
-                        array(
+                    'pages' => [
+                        [
                             'label' => 'Child #1',
                             'route' => 'page-1-child',
-                        ),
-                    ),
-                ),
-                array(
+                        ],
+                    ],
+                ],
+                [
                     'label' => 'Page #2',
                     'route' => 'page-2',
-                ),
-            ),
-        ),
-        'service_manager' => array(
-            'factories' => array(
+                ],
+            ],
+        ],
+        'service_manager' => [
+            'factories' => [
                 'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            ),
-        ),
+            ],
+        ],
         // ...
-    );
+    ];
 
 .. code-block:: html
    :linenos:

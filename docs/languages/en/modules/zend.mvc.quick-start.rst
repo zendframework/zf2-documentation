@@ -104,7 +104,7 @@ First, let's have ``autoload_classmap.php`` return an empty array:
 
    <?php
    // autoload_classmap.php
-   return array();
+   return [];
 
 We'll also edit our ``config/module.config.php`` file to read as follows:
 
@@ -202,7 +202,7 @@ your favorite text editor or IDE, and insert the following contents:
        public function worldAction()
        {
            $message = $this->params()->fromQuery('message', 'foo');
-           return new ViewModel(array('message' => $message));
+           return new ViewModel(['message' => $message]);
        }
    }
 
@@ -302,34 +302,34 @@ Now that we have a controller and a view script, we need to create a route to it
       :linenos:
 
       // module.config.php
-      return array(
-          '<module-name>' => array(
+      return [
+          '<module-name>' => [
               'type'    => 'Literal',
-              'options' => array(
+              'options' => [
                   'route'    => '/<module-name>',
-                  'defaults' => array(
+                  'defaults' => [
                       'controller'    => '<module-namespace>\Controller\Index',
                       'action'        => 'index',
-                  ),
-              ),
+                  ],
+              ],
               'may_terminate' => true,
-              'child_routes' => array(
-                  'default' => array(
+              'child_routes' => [
+                  'default' => [
                       'type'    => 'Segment',
-                      'options' => array(
+                      'options' => [
                           'route'    => '/[:controller[/:action]]',
-                          'constraints' => array(
+                          'constraints' => [
                               'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                               'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                          ),
-                          'defaults' => array(
-                          ),
-                      ),
-                  ),
-              ),
-          ),
+                          ],
+                          'defaults' => [
+                          ],
+                      ],
+                  ],
+              ],
+          ],
           // ... other configuration ...
-      );
+      ];
 
 Additionally, we need to tell the application we have a controller:
 
@@ -337,15 +337,15 @@ Additionally, we need to tell the application we have a controller:
       :linenos:
 
       // module.config.php
-      return array(
-          'controllers' => array(
-              'invokables' => array(
+      return [
+          'controllers' => [
+              'invokables' => [
                   '<module-namespace>\Controller\Index' => '<module-namespace>\Controller\IndexController',
                   // Do similar for each other controller in your module
-              ),
-          ),
+              ],
+          ],
          // ... other configuration ...
-      );
+      ];
 
 .. note::
 
@@ -360,28 +360,28 @@ reads as follows:
 .. code-block:: php
    :linenos:
 
-   return array(
-       'router' => array(
-           'routes' => array(
-               '<module name>-hello-world' => array(
+   return [
+       'router' => [
+           'routes' => [
+               '<module name>-hello-world' => [
                    'type'    => 'Literal',
-                       'options' => array(
+                       'options' => [
                        'route' => '/hello/world',
-                       'defaults' => array(
+                       'defaults' => [
                            'controller' => '<module name>\Controller\Hello',
                            'action'     => 'world',
-                       ),
-                   ),
-               ),
-           ),
-       ),
-       'controllers' => array(
-           'invokables' => array(
+                       ],
+                   ],
+               ],
+           ],
+       ],
+       'controllers' => [
+           'invokables' => [
                '<module namespace>\Controller\Hello' => '<module namespace>\Controller\HelloController',
-           ),
-       ),
+           ],
+       ],
        // ... other configuration ...
-   );
+   ];
 
 .. _zend.mvc.quick-start.tell-the-application-about-our-module:
 
@@ -400,18 +400,18 @@ read as follows:
    :linenos:
 
    <?php
-   return array(
-       'modules' => array(
+   return [
+       'modules' => [
            'Application',
            '<module namespace>',
-       ),
-       'module_listener_options' => array(
-           'module_paths' => array(
+       ],
+       'module_listener_options' => [
+           'module_paths' => [
                './module',
                './vendor',
-           ),
-       ),
-   );
+           ],
+       ],
+   ];
 
 Replace ``<module namespace>`` with the namespace of your module.
 

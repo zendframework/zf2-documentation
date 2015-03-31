@@ -344,7 +344,7 @@ name}``. We can now fill in the ``index.phtml`` view script:
     ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
     <p>
-        <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+        <a href="<?php echo $this->url('album', ['action'=>'add']);?>">Add new album</a>
     </p>
 
     <table class="table">
@@ -359,9 +359,9 @@ name}``. We can now fill in the ``index.phtml`` view script:
         <td><?php echo $this->escapeHtml($album->artist);?></td>
         <td>
             <a href="<?php echo $this->url('album',
-                array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
+                ['action'=>'edit', 'id' => $album->id]);?>">Edit</a>
             <a href="<?php echo $this->url('album',
-                array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
+                ['action'=>'delete', 'id' => $album->id]);?>">Delete</a>
         </td>
     </tr>
     <?php endforeach; ?>

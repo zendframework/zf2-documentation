@@ -310,7 +310,7 @@ Zend Framework предоставляет четыре стиля прокрут
    <div class="paginationControl">
    <!-- Ссылка на предыдущую страницу -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Previous
      </a> |
    <?php else: ?>
@@ -320,7 +320,7 @@ Zend Framework предоставляет четыре стиля прокрут
    <!-- Нумерованные ссылки на страницы -->
    <?php foreach ($this->pagesInRange as $page): ?>
      <?php if ($page != $this->current): ?>
-       <a href="<?php echo $this->url(array('page' => $page)); ?>">
+       <a href="<?php echo $this->url(['page' => $page]); ?>">
            <?php echo $page; ?>
        </a> |
      <?php else: ?>
@@ -330,7 +330,7 @@ Zend Framework предоставляет четыре стиля прокрут
 
    <!-- Ссылка на следующую страницу -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Next >
      </a>
    <?php else: ?>
@@ -355,7 +355,7 @@ Zend Framework предоставляет четыре стиля прокрут
 
    <!-- Ссылка на первую страницу -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->first]); ?>">
        First
      </a> |
    <?php else: ?>
@@ -364,7 +364,7 @@ Zend Framework предоставляет четыре стиля прокрут
 
    <!-- Ссылка на предыдущую страницу -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Previous
      </a> |
    <?php else: ?>
@@ -373,7 +373,7 @@ Zend Framework предоставляет четыре стиля прокрут
 
    <!-- Ссылка на следующую страницу -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Next >
      </a> |
    <?php else: ?>
@@ -382,7 +382,7 @@ Zend Framework предоставляет четыре стиля прокрут
 
    <!-- Ссылка на последнюю страницу -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->last]); ?>">
        Last
      </a>
    <?php else: ?>
@@ -402,7 +402,7 @@ Zend Framework предоставляет четыре стиля прокрут
    <?php foreach ($this->pagesInRange as $page): ?>
      <?php $selected = ($page == $this->current) ? ' selected="selected"' : ''; ?>
      <option value="<?php
-           echo $this->url(array('page' => $page));?>"<?php echo $selected ?>>
+           echo $this->url(['page' => $page]);?>"<?php echo $selected ?>>
        <?php echo $page; ?>
      </option>
    <?php endforeach; ?>
