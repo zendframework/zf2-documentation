@@ -188,42 +188,42 @@ Das folgende Container Setup wird angenommen:
    :linenos:
 
    <?php
-   $container = new Zend\Navigation\Navigation(array(
-       array(
+   $container = new Zend\Navigation\Navigation([
+       [
            'label' => 'Home',
            'uri'   => '#'
-       ),
-       array(
+       ],
+       [
            'label'  => 'Products',
            'uri'    => '#',
            'active' => true,
-           'pages'  => array(
-               array(
+           'pages'  => [
+               [
                    'label' => 'Server',
                    'uri'   => '#'
-               ),
-               array(
+               ],
+               [
                    'label' => 'Studio',
                    'uri'   => '#'
-               )
-           )
-       ),
-       array(
+               ]
+           ]
+       ],
+       [
            'label' => 'Solutions',
            'uri'   => '#'
-       )
-   ));
+       ]
+   ]);
 
 Der folgende Code wird in einem View Script verwendet:
 
 .. code-block:: php
    :linenos:
 
-   <?php echo $this->navigation()->menu()->renderMenu($container, array(
+   <?php echo $this->navigation()->menu()->renderMenu($container, [
        'minDepth'         => 1,
        'onlyActiveBranch' => true,
        'renderParents'    => false
-   )); ?>
+   ]); ?>
 
 Vor dem Release 1.9 würde der obige Codeabschnitt nichts ausgeben.
 

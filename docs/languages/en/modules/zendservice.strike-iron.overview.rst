@@ -159,12 +159,12 @@ The simplest way to examine a result from the service is to use the built-in *PH
    :linenos:
 
    <?php
-   $strikeIron = new ZendService\StrikeIron\StrikeIron(array('username' => 'your-username',
-                                                   'password' => 'your-password'));
+   $strikeIron = new ZendService\StrikeIron\StrikeIron(['username' => 'your-username',
+                                                   'password' => 'your-password']);
 
-   $taxBasic = $strikeIron->getService(array('class' => 'SalesUseTaxBasic'));
+   $taxBasic = $strikeIron->getService(['class' => 'SalesUseTaxBasic']);
 
-   $rateInfo = $taxBasic->getTaxRateCanada(array('province' => 'ontario'));
+   $rateInfo = $taxBasic->getTaxRateCanada(['province' => 'ontario']);
    print_r($rateInfo);
    ?>
 

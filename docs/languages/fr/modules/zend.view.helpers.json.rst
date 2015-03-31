@@ -52,9 +52,9 @@ L'utilisation de l'aide de vue *JSON* est très simple :
    .. code-block:: php
       :linenos:
 
-      <?php echo $this->json($this->data, array(
+      <?php echo $this->json($this->data, [
           'enableJsonExprFinder' => true,
           'keepLayouts'          => true,
-      )) ?>
+      ]) ?>
 
 

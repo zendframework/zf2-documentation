@@ -27,7 +27,7 @@ afin de récupérer une liste de commentaires pour la requête courante :
 
    <div id="sidebar right">
        <div class="item">
-           <?php echo $this->action('list', 'comment', null, array('count' => 10)); ?>
+           <?php echo $this->action('list', 'comment', null, ['count' => 10]); ?>
        </div>
    </div>
 

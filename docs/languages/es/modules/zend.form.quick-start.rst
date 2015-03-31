@@ -213,12 +213,12 @@ sigue:
 .. code-block:: php
    :linenos:
 
-   $element->addDecorators(array(
+   $element->addDecorators([
        'ViewHelper',
        'Errors',
-       array('HtmlTag', array('tag' => 'dd')),
-       array('Label', array('tag' => 'dt')),
-   ));
+       ['HtmlTag', ['tag' => 'dd']],
+       ['Label', ['tag' => 'dt']],
+   ]);
 
 (Donde <HELPERNAME> es el nombre de un view helper que utilizar, y varía según el elemento)
 
@@ -258,7 +258,7 @@ O, cuando crea un elemento, pasándolo como una opción:
 .. code-block:: php
    :linenos:
 
-   $form->addElement('text', 'username', array('order' => 10));
+   $form->addElement('text', 'username', ['order' => 10]);
 
 .. _zend.form.quickstart.validate:
 
@@ -373,21 +373,21 @@ Usaremos el poder de la opciones de configuración de ``Zend_Form`` para crear e
    // Crea un y configura el elemento username
    $username = $form->createElement('text', 'username');
    $username->addValidator('alnum')
-            ->addValidator('regex', false, array('/^[a-z]+/'))
-            ->addValidator('stringLength', false, array(6, 20))
+            ->addValidator('regex', false, ['/^[a-z]+/'])
+            ->addValidator('stringLength', false, [6, 20])
             ->setRequired(true)
             ->addFilter('StringToLower');
 
    // Crea y configura el elemento password:
    $password = $form->createElement('password', 'password');
-   $password->addValidator('StringLength', false, array(6))
+   $password->addValidator('StringLength', false, [6])
             ->setRequired(true);
 
    // Añade los elementos al formulario:
    $form->addElement($username)
         ->addElement($password)
         // uso de addElement() como fábrica para crear el botón 'Login':
-        ->addElement('submit', 'login', array('label' => 'Login'));
+        ->addElement('submit', 'login', ['label' => 'Login']);
 
 A continuación, vamos a crear un controlador para manejar esto:
 

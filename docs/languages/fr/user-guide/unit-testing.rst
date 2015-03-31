@@ -88,7 +88,7 @@ quel, avec juste le besoin de changer l'espace de noms.
                 $testConfig = include __DIR__ . '/TestConfig.php.dist';
             }
 
-            $zf2ModulePaths = array();
+            $zf2ModulePaths = [];
 
             if (isset($testConfig['module_listener_options']['module_paths'])) {
                 $modulePaths = $testConfig['module_listener_options']['module_paths'];
@@ -105,11 +105,11 @@ quel, avec juste le besoin de changer l'espace de noms.
             static::initAutoloader();
 
             // use ModuleManager to load this module and it's dependencies
-            $baseConfig = array(
-                'module_listener_options' => array(
+            $baseConfig = [
+                'module_listener_options' => [
                     'module_paths' => explode(PATH_SEPARATOR, $zf2ModulePaths),
-                ),
-            );
+                ],
+            ];
 
             $config = ArrayUtils::merge($baseConfig, $testConfig);
 
@@ -148,14 +148,14 @@ quel, avec juste le besoin de changer l'espace de noms.
 
             }
 
-            AutoloaderFactory::factory(array(
-                'Zend\Loader\StandardAutoloader' => array(
+            AutoloaderFactory::factory([
+                'Zend\Loader\StandardAutoloader' => [
                     'autoregister_zf' => true,
-                    'namespaces' => array(
+                    'namespaces' => [
                         __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                    ),
-                ),
-            ));
+                    ],
+                ],
+            ]);
         }
 
         protected static function findParentPath($path)
@@ -178,20 +178,20 @@ Et aussi un fichier TestConfig.php.dist
 .. code-block:: php
 
     <?php
-    return array(
-        'modules' => array(
+    return [
+        'modules' => [
             'Application',
-        ),
-        'module_listener_options' => array(
-            'config_glob_paths'    => array(
+        ],
+        'module_listener_options' => [
+            'config_glob_paths'    => [
                 '../../../config/autoload/{,*.}{global,local}.php',
-            ),
-            'module_paths' => array(
+            ],
+            'module_paths' => [
                 'module',
                 'vendor',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 
 Il s'agit pour l'essentiel du même fichier que config/application.config.php,
 mais nous ne définissons que les modules requis pour ce test.
@@ -231,10 +231,10 @@ contenu suivant :
             $serviceManager = Bootstrap::getServiceManager();
             $this->controller = new IndexController();
             $this->request    = new Request();
-            $this->routeMatch = new RouteMatch(array('controller' => 'index'));
+            $this->routeMatch = new RouteMatch(['controller' => 'index']);
             $this->event      = new MvcEvent();
             $config = $serviceManager->get('Config');
-            $routerConfig = isset($config['router']) ? $config['router'] : array();
+            $routerConfig = isset($config['router']) ? $config['router'] : [];
             $router = HttpRouter::factory($routerConfig);
 
             $this->event->setRouter($router);

@@ -99,7 +99,7 @@ Let's add it to our controller.
             // Check mode
             $mode = $request->getParam('mode', 'all'); // defaults to 'all'
 
-            $users = array();
+            $users = [];
             switch ($mode) {
                 case 'disabled':
                     $users = $this->getServiceLocator()->get('users')->fetchDisabledUsers();
@@ -139,7 +139,7 @@ example to output a list of users:
         // Check mode
         $mode = $request->getParam('mode', 'all'); // defaults to 'all'
 
-        $users = array();
+        $users = [];
         switch ($mode) {
             case 'disabled':
                 $users = $this->getServiceLocator()->get('users')->fetchDisabledUsers();
@@ -238,7 +238,7 @@ The example below shows how a single controller method can handle **both Console
         {
             $request = $this->getRequest();
 
-            $users = array();
+            $users = [];
             // ... fetch users from database ...
 
             if ($request instanceof HttpRequest) {

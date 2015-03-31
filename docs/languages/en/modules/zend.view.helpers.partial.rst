@@ -44,9 +44,9 @@ You would then call it from your view script using the following:
 .. code-block:: php
    :linenos:
 
-   <?php echo $this->partial('partial.phtml', array(
+   <?php echo $this->partial('partial.phtml', [
        'from' => 'Team Framework',
-       'subject' => 'view partials')); ?>
+       'subject' => 'view partials']); ?>
 
 Which would then render:
 

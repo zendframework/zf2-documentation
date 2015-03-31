@@ -41,9 +41,9 @@ Vous l'appelleriez alors dans votre script de vue en utilisant ce qui suit :
 .. code-block:: php
    :linenos:
 
-   <?php echo $this->partial('partiel.phtml', array(
+   <?php echo $this->partial('partiel.phtml', [
        'de' => 'Equipe Framework',
-       'sujet' => 'vues partielles')); ?>
+       'sujet' => 'vues partielles']); ?>
 
 Qui vous retournerait :
 

@@ -48,6 +48,6 @@ Usage of the *JSON* helper is very straightforward:
    .. code-block:: php
       :linenos:
 
-      <?php echo $this->json($this->data, array(
+      <?php echo $this->json($this->data, [
           'enableJsonExprFinder' => true,
-      )) ?>
+      ]) ?>

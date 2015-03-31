@@ -39,29 +39,29 @@ in ``config/application.config.php``. The defaults look like this:
     :linenos:
 
     <?php
-    return array(
+    return [
         // This should be an array of module namespaces used in the application.
-        'modules' => array(
+        'modules' => [
             'Application',
-        ),
+        ],
     
         // These are various options for the listeners attached to the ModuleManager
-        'module_listener_options' => array(
+        'module_listener_options' => [
             // This should be an array of paths in which modules reside.
             // If a string key is provided, the listener will consider that a module
             // namespace, the value of that key the specific path to that module's
             // Module class.
-            'module_paths' => array(
+            'module_paths' => [
                 './module',
                 './vendor',
-            ),
+            ],
     
             // An array of paths from which to glob configuration files after
             // modules are loaded. These effectively overide configuration
             // provided by modules themselves. Paths may use GLOB_BRACE notation.
-            'config_glob_paths' => array(
+            'config_glob_paths' => [
                 'config/autoload/{,*.}{global,local}.php',
-            ),
+            ],
     
             // Whether or not to enable a configuration cache.
             // If enabled, the merged configuration will be cached and used in
@@ -86,7 +86,7 @@ in ``config/application.config.php``. The defaults look like this:
             // Enabled by default, prevents usage of modules that depend on other modules
             // that weren't loaded.
             // 'check_dependencies' => true,
-        ),
+        ],
     
         // Used to create an own service manager. May contain one or more child arrays.
         //'service_listener_options' => array(
@@ -101,7 +101,7 @@ in ``config/application.config.php``. The defaults look like this:
        // Initial configuration with which to seed the ServiceManager.
        // Should be compatible with Zend\ServiceManager\Config.
        // 'service_manager' => array(),
-    );
+    ];
 
 The system configuration is for the bits and pieces related to the MVC that run
 before your application is ready. The configuration is usually brief, and quite
@@ -237,9 +237,9 @@ path in the system configuration slightly:
 
 .. code-block:: php
 
-    'config_glob_paths' => array(
+    'config_glob_paths' => [
         sprintf('config/autoload/{,*.}{global,%s,local}.php', $env)
-    ),
+    ],
 
 The above will allow you to define an additional set of application
 configuration files per environment; furthermore, these will be loaded *only* if
@@ -401,7 +401,7 @@ modify the merged configuration from your module, via the ``init()`` method.
 
             // Registering a listener at default priority, 1, which will trigger
             // after the ConfigListener merges config.
-            $events->attach(ModuleEvent::EVENT_MERGE_CONFIG, array($this, 'onMergeConfig'));
+            $events->attach(ModuleEvent::EVENT_MERGE_CONFIG, [$this, 'onMergeConfig']);
         }
 
         public function onMergeConfig(ModuleEvent $e)

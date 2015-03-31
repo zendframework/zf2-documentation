@@ -638,10 +638,10 @@ Und natürlich benötigen wir ein View Skript um damit weiterzumachen.
    <!-- application/views/scripts/guestbook/index.phtml -->
 
    <p><a href="<?php echo $this->url(
-       array(
+       [
            'controller' => 'guestbook',
            'action'     => 'sign'
-       ),
+       ],
        'default',
        true) ?>">Im Guestbook eintragen</a></p>
 

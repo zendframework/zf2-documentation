@@ -62,14 +62,14 @@ Voici donc un exemple qui utilise tous le paramètres :
    <?php echo $this->htmlObject(
        '/path/to/file.ext',
        'mime/type',
-       array(
+       [
            'attr1' => 'aval1',
            'attr2' => 'aval2'
-       ),
-       array(
+       ],
+       [
            'param1' => 'pval1',
            'param2' => 'pval2'
-       ),
+       ],
        'some content'
    ); ?>
 

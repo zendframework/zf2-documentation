@@ -154,8 +154,8 @@ Now we make some configuration in the module class:
 
       public function getServiceConfig()
       {
-         return array(
-            'factories' => array(
+         return [
+            'factories' => [
                // Register our custom renderer in the service manager
                'MyCustomRenderer' => function ($serviceManager) {
                   $myRenderer = new MyRenderer('ISO-8859-1');
@@ -168,15 +168,15 @@ Now we make some configuration in the module class:
                   $strategy = new PhpRendererStrategy($myRenderer);
                   return $strategy;
                }
-            ),
-         );
+            ],
+         ];
       }
 
       public function onBootstrap(MvcEvent $e)
       {
          // Register a render event
          $app = $e->getParam('application');
-         $app->getEventManager()->attach('render', array($this, 'registerMyStrategy'), 100);
+         $app->getEventManager()->attach('render', [$this, 'registerMyStrategy'], 100);
       }
 
        public function registerMyStrategy(MvcEvent $e)

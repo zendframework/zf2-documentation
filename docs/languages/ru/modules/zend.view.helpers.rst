@@ -244,13 +244,13 @@
    ?>
    <form action="action.php" method="post">
        <p><label>Your Email:
-   <?php echo $this->formText('email', 'you@example.com', array('size' => 32)) ?>
+   <?php echo $this->formText('email', 'you@example.com', ['size' => 32]) ?>
        </label></p>
        <p><label>Your Country:
    <?php echo $this->formSelect('country', 'us', null, $this->countries) ?>
        </label></p>
        <p><label>Would you like to opt in?
-   <?php echo $this->formCheckbox('opt_in', 'yes', null, array('yes', 'no')) ?>
+   <?php echo $this->formCheckbox('opt_in', 'yes', null, ['yes', 'no']) ?>
        </label></p>
    </form>
 
