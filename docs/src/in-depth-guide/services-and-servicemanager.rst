@@ -250,26 +250,26 @@ this:
                 'title' => 'Hello World #1',
                 'text'  => 'This is our first blog post!'
             ),
-            array(
+            [
                 'id'     => 2,
                 'title' => 'Hello World #2',
                 'text'  => 'This is our second blog post!'
-            ),
-            array(
+            ],
+            [
                 'id'     => 3,
                 'title' => 'Hello World #3',
                 'text'  => 'This is our third blog post!'
-            ),
-            array(
+            ],
+            [
                 'id'     => 4,
                 'title' => 'Hello World #4',
                 'text'  => 'This is our fourth blog post!'
-            ),
-            array(
+            ],
+            [
                 'id'     => 5,
                 'title' => 'Hello World #5',
                 'text'  => 'This is our fifth blog post!'
-            )
+            ]
         );
 
         /**
@@ -309,26 +309,26 @@ After we now have some data, let's modify our ``find*()`` functions to return th
                 'title' => 'Hello World #1',
                 'text'  => 'This is our first blog post!'
             ),
-            array(
+            [
                 'id'     => 2,
                 'title' => 'Hello World #2',
                 'text'  => 'This is our second blog post!'
-            ),
-            array(
+            ],
+            [
                 'id'     => 3,
                 'title' => 'Hello World #3',
                 'text'  => 'This is our third blog post!'
-            ),
-            array(
+            ],
+            [
                 'id'     => 4,
                 'title' => 'Hello World #4',
                 'text'  => 'This is our fourth blog post!'
-            ),
-            array(
+            ],
+            [
                 'id'     => 5,
                 'title' => 'Hello World #5',
                 'text'  => 'This is our fifth blog post!'
-            )
+            ]
         );
 
         /**
@@ -336,7 +336,7 @@ After we now have some data, let's modify our ``find*()`` functions to return th
          */
         public function findAllPosts()
         {
-            $allPosts = array();
+            $allPosts = [];
 
             foreach ($this->data as $index => $post) {
                 $allPosts[] = $this->findPost($index);

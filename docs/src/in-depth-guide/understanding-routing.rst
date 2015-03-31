@@ -379,41 +379,41 @@ a route of type ``Segment``. Furthermore we want to put this route as a child ro
 
     <?php
     // FileName: /module/Blog/config/module.config.php
-    return array(
-        'db'              => array( /** DB Config */ ),
-        'service_manager' => array( /* ServiceManager Config */ ),
-        'view_manager'    => array( /* ViewManager Config */ ),
-        'controllers'     => array( /* ControllerManager Config */ ),
-        'router' => array(
-            'routes' => array(
-                'blog' => array(
+    return [
+        'db'              => [ /** DB Config */ ],
+        'service_manager' => [ /* ServiceManager Config */ ],
+        'view_manager'    => [ /* ViewManager Config */ ],
+        'controllers'     => [ /* ControllerManager Config */ ],
+        'router' => [
+            'routes' => [
+                'blog' => [
                     'type' => 'literal',
-                    'options' => array(
+                    'options' => [
                         'route'    => '/blog',
-                        'defaults' => array(
+                        'defaults' => [
                             'controller' => 'Blog\Controller\List',
                             'action'     => 'index',
-                        ),
-                    ),
+                        ],
+                    ],
                     'may_terminate' => true,
-                    'child_routes'  => array(
-                        'detail' => array(
+                    'child_routes'  => [
+                        'detail' => [
                             'type' => 'segment',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/:id',
-                                'defaults' => array(
+                                'defaults' => [
                                     'action' => 'detail'
-                                ),
-                                'constraints' => array(
+                                ],
+                                'constraints' => [
                                     'id' => '[1-9]\d*'
-                                )
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    );
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ];
 
 With this we have set up a new route that we use to display a single blog entry. We have assigned a parameter
 called ``id`` that needs to be a positive digit excluding 0. Database entries usually start with a 0 when it comes
@@ -590,9 +590,9 @@ try-catch statement.
 
         public function indexAction()
         {
-            return new ViewModel(array(
+            return new ViewModel([
                 'posts' => $this->postService->findAllPosts()
-            ));
+            ]);
         }
 
         public function detailAction()
@@ -605,9 +605,9 @@ try-catch statement.
                 return $this->redirect()->toRoute('blog');
             }
 
-            return new ViewModel(array(
+            return new ViewModel([
                 'post' => $post
-            ));
+            ]);
         }
     }
 

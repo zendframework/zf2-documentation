@@ -54,21 +54,21 @@ top-level key called ``db``:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'db' => array(
+    return [
+        'db' => [
             'driver'         => 'Pdo',
             'username'       => 'SECRET_USERNAME',  //edit this
             'password'       => 'SECRET_PASSWORD',  //edit this
             'dsn'            => 'mysql:dbname=blog;host=localhost',
-            'driver_options' => array(
+            'driver_options' => [
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            )
-        ),
-        'service_manager' => array( /** ServiceManager Config */ ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array( /** ControllerManager Config */ ),
-        'router'          => array( /** Router Config */ )
-    );
+            ]
+        ],
+        'service_manager' => [ /** ServiceManager Config */ ],
+        'view_manager'    => [ /** ViewManager Config */ ],
+        'controllers'     => [ /** ControllerManager Config */ ],
+        'router'          => [ /** Router Config */ ]
+    ];
 
 As you can see we've added the ``db``-key and inside we create the parameters required to create a driver instance.
 
@@ -107,26 +107,26 @@ will look like the following:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'db' => array(
+    return [
+        'db' => [
             'driver'         => 'Pdo',
             'username'       => 'SECRET_USERNAME',  //edit this
             'password'       => 'SECRET_PASSWORD',  //edit this
             'dsn'            => 'mysql:dbname=blog;host=localhost',
-            'driver_options' => array(
+            'driver_options' => [
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-            )
-        ),
-        'service_manager' => array(
-            'factories' => array(
+            ],
+        ],
+        'service_manager' => [
+            'factories' => [
                 'Blog\Service\PostServiceInterface' => 'Blog\Factory\PostServiceFactory',
                 'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory'
-            )
-        ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array( /** ControllerManager Config */ ),
-        'router'          => array( /** Router Config */ )
-    );
+            ],
+        ],
+        'view_manager'    => [ /** ViewManager Config */ ],
+        'controllers'     => [ /** ControllerManager Config */ ],
+        'router'          => [ /** Router Config */ ]
+    ];
 
 Note the new Service that we called ``Zend\Db\Adapter\Adapter``. Calling this Service will now always give back a
 running instance of the ``Zend\Db\Adapter\AdapterInterface`` depending on what driver we assign.
@@ -501,12 +501,12 @@ Refreshing the page you should now see the dump of a ``ResultSet`` object that h
    :emphasize-lines: 12
 
     object(Zend\Db\ResultSet\ResultSet)#304 (8) {
-      ["allowedReturnTypes":protected] => array(2) {
+      ["allowedReturnTypes":protected] => [2] {
         [0] => string(11) "arrayobject"
         [1] => string(5) "array"
       }
       ["arrayObjectPrototype":protected] => object(ArrayObject)#305 (1) {
-        ["storage":"ArrayObject":private] => array(0) {
+        ["storage":"ArrayObject":private] => [0] {
         }
       }
       ["returnType":protected] => string(11) "arrayobject"
@@ -691,7 +691,7 @@ There's one little thing that we have done that's not a best-practice. We use bo
                 return $resultSet->initialize($result);
             }
 
-            return array();
+            return [];
         }
     }
 
@@ -798,7 +798,7 @@ method.
         {
             $sql    = new Sql($this->dbAdapter);
             $select = $sql->select('posts');
-            $select->where(array('id = ?' => $id));
+            $select->where(['id = ?' => $id]);
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -827,7 +827,7 @@ method.
                 return $resultSet->initialize($result);
             }
 
-            return array();
+            return [];
         }
     }
 

@@ -109,7 +109,7 @@ You can populate the request with that information:
     {
         $this->getRequest()
             ->setMethod('POST')
-            ->setPost(new Parameters(array('argument' => 'value')));
+            ->setPost(new Parameters(['argument' => 'value']));
         $this->dispatch('/');
     }
 
@@ -120,7 +120,7 @@ You can populate GET or POST variables directly with the ``dispatch`` method :
 
     public function testIndexAction()
     {
-        $this->dispatch('/', 'POST', array('argument' => 'value'));
+        $this->dispatch('/', 'POST', ['argument' => 'value']);
     }
 
 You can use directly yours query args in the url :

@@ -58,13 +58,13 @@ then echo the helper to output it.
 
    <?php
    // setting links in a view script:
-   $this->headLink(array('rel' => 'icon', 'href' => '/img/favicon.ico'), 'PREPEND')
+   $this->headLink(['rel' => 'icon', 'href' => '/img/favicon.ico'], 'PREPEND')
         ->appendStylesheet('/styles/basic.css')
         ->prependStylesheet(
             '/styles/moz.css',
             'screen',
             true,
-            array('id' => 'my_stylesheet')
+            ['id' => 'my_stylesheet']
         );
 
    // rendering the links from the layout:

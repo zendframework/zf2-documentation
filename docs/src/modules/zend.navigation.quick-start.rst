@@ -12,38 +12,38 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
 
     <?php
     // your configuration file, e.g. config/autoload/global.php
-    return array(
+    return [
         // ...
 
-        'navigation' => array(
-            'default' => array(
-                array(
+        'navigation' => [
+            'default' => [
+                [
                     'label' => 'Home',
                     'route' => 'home',
-                ),
-                array(
+                ],
+                [
                     'label' => 'Page #1',
                     'route' => 'page-1',
-                    'pages' => array(
-                        array(
+                    'pages' => [
+                        [
                             'label' => 'Child #1',
                             'route' => 'page-1-child',
-                        ),
-                    ),
-                ),
-                array(
+                        ],
+                    ],
+                ],
+                [
                     'label' => 'Page #2',
                     'route' => 'page-2',
-                ),
-            ),
-        ),
-        'service_manager' => array(
-            'factories' => array(
+                ],
+            ],
+        ],
+        'service_manager' => [
+            'factories' => [
                 'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            ),
-        ),
+            ],
+        ],
         // ...
-    );
+    ];
 
 .. code-block:: html+php
    :linenos:
@@ -71,64 +71,64 @@ the ``default`` container.
 
    <?php
    // your configuration file, e.g. config/autoload/global.php
-   return array(
+   return [
        // ...
 
-       'navigation' => array(
+       'navigation' => [
 
            // navigation with name default
-           'default' => array(
-               array(
+           'default' => [
+               [
                    'label' => 'Home',
                    'route' => 'home',
-               ),
-               array(
+               ],
+               [
                    'label' => 'Page #1',
                    'route' => 'page-1',
-                   'pages' => array(
-                       array(
+                   'pages' => [
+                       [
                            'label' => 'Child #1',
                            'route' => 'page-1-child',
-                       ),
-                   ),
-               ),
-               array(
+                       ],
+                   ],
+               ],
+               [
                    'label' => 'Page #2',
                    'route' => 'page-2',
-               ),
-           ),
+               ],
+           ],
 
            // navigation with name special
-           'special' => array(
-               array(
+           'special' => [
+               [
                    'label' => 'Special',
                    'route' => 'special',
-               ),
-               array(
+               ],
+               [
                    'label' => 'Special Page #2',
                    'route' => 'special-2',
-               ),
-           ),
+               ],
+           ],
 
            // navigation with name sitemap
-           'sitemap' => array(
-               array(
+           'sitemap' => [
+               [
                    'label' => 'Sitemap',
                    'route' => 'sitemap',
-               ),
-               array(
+               ],
+               [
                    'label' => 'Sitemap Page #2',
                    'route' => 'sitemap-2',
-               ),
-           ),
-       ),
-       'service_manager' => array(
-           'abstract_factories' => array(
+               ],
+           ],
+       ],
+       'service_manager' => [
+           'abstract_factories' => [
                'Zend\Navigation\Service\NavigationAbstractServiceFactory'
-           ),
-       ),
+           ],
+       ],
        // ...
-   );
+   ];
 
 
 .. note::

@@ -65,9 +65,9 @@ form. This is done the following way inside your controller.
                 }
             }
 
-            return new ViewModel(array(
+            return new ViewModel([
                 'form' => $this->postForm
-            ));
+            ]);
         }
 
         public function editAction()
@@ -92,9 +92,9 @@ form. This is done the following way inside your controller.
                 }
             }
 
-            return new ViewModel(array(
+            return new ViewModel([
                 'form' => $this->postForm
-            ));
+            ]);
         }
     }
 
@@ -264,83 +264,83 @@ controller:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'db'              => array( /** Db Config */ ),
-        'service_manager' => array( /** ServiceManager Config */ ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array(
-            'factories' => array(
+    return [
+        'db'              => [ /** Db Config */ ],
+        'service_manager' => [ /** ServiceManager Config */ ],
+        'view_manager'    => [ /** ViewManager Config */ ],
+        'controllers'     => [
+            'factories' => [
                 'Blog\Controller\List'   => 'Blog\Factory\ListControllerFactory',
                 'Blog\Controller\Write'  => 'Blog\Factory\WriteControllerFactory',
                 'Blog\Controller\Delete' => 'Blog\Factory\DeleteControllerFactory'
-            )
-        ),
-        'router'          => array(
-            'routes' => array(
-                'post' => array(
+            ]
+        ],
+        'router'          => [
+            'routes' => [
+                'post' => [
                     'type' => 'literal',
-                    'options' => array(
+                    'options' => [
                         'route'    => '/blog',
-                        'defaults' => array(
+                        'defaults' => [
                             'controller' => 'Blog\Controller\List',
                             'action'     => 'index',
-                        )
-                    ),
+                        ]
+                    ],
                     'may_terminate' => true,
-                    'child_routes'  => array(
-                        'detail' => array(
+                    'child_routes'  => [
+                        'detail' => [
                             'type' => 'segment',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/:id',
-                                'defaults' => array(
+                                'defaults' => [
                                     'action' => 'detail'
-                                ),
-                                'constraints' => array(
+                                ],
+                                'constraints' => [
                                     'id' => '\d+'
-                                )
-                            )
-                        ),
-                        'add' => array(
+                                ]
+                            ]
+                        ],
+                        'add' => [
                             'type' => 'literal',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/add',
-                                'defaults' => array(
+                                'defaults' => [
                                     'controller' => 'Blog\Controller\Write',
                                     'action'     => 'add'
-                                )
-                            )
-                        ),
-                        'edit' => array(
+                                ]
+                            ]
+                        ],
+                        'edit' => [
                             'type' => 'segment',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/edit/:id',
-                                'defaults' => array(
+                                'defaults' => [
                                     'controller' => 'Blog\Controller\Write',
                                     'action'     => 'edit'
-                                ),
-                                'constraints' => array(
+                                ],
+                                'constraints' => [
                                     'id' => '\d+'
-                                )
-                            )
-                        ),
-                        'delete' => array(
+                                ]
+                            ]
+                        ],
+                        'delete' => [
                             'type' => 'segment',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/delete/:id',
-                                'defaults' => array(
+                                'defaults' => [
                                     'controller' => 'Blog\Controller\Delete',
                                     'action'     => 'delete'
-                                ),
-                                'constraints' => array(
+                                ],
+                                'constraints' => [
                                     'id' => '\d+'
-                                )
-                            )
-                        ),
-                    )
-                )
-            )
-        )
-    );
+                                ]
+                            ]
+                        ],
+                    ]
+                ]
+            ]
+        ]
+    ];
 
 Notice here that we have assigned yet another controller ``Blog\Controller\Delete``. This is due to the fact that this
 controller will **not** require the ``PostForm``. A ``DeleteForm`` is a perfect example for when you do not even need to
@@ -646,7 +646,7 @@ Now that we have declared the function inside the interface it's time to impleme
         {
             $sql    = new Sql($this->dbAdapter);
             $select = $sql->select('posts');
-            $select->where(array('id = ?' => $id));
+            $select->where(['id = ?' => $id]);
 
             $stmt   = $sql->prepareStatementForSqlObject($select);
             $result = $stmt->execute();
@@ -675,7 +675,7 @@ Now that we have declared the function inside the interface it's time to impleme
                 return $resultSet->initialize($result);
             }
 
-            return array();
+            return [];
         }
 
         /**
@@ -690,7 +690,7 @@ Now that we have declared the function inside the interface it's time to impleme
                 // ID present, it's an Update
                 $action = new Update('post');
                 $action->set($postData);
-                $action->where(array('id = ?' => $postObject->getId()));
+                $action->where(['id = ?' => $postObject->getId()]);
             } else {
                 // ID NOT present, it's an Insert
                 $action = new Insert('post');
@@ -719,7 +719,7 @@ Now that we have declared the function inside the interface it's time to impleme
         public function delete(PostInterface $postObject)
         {
             $action = new Delete('posts');
-            $action->where(array('id = ?' => $postObject->getId()));
+            $action->where(['id = ?' => $postObject->getId()]);
 
             $sql    = new Sql($this->dbAdapter);
             $stmt   = $sql->prepareStatementForSqlObject($action);
