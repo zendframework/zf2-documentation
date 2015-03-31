@@ -195,6 +195,35 @@ The above code sample would output:
    <a href="/news/details/42?commentPage=3#comments">Comment Section of News #42</a>
 
    
+.. _zend.view.helpers.initial.url.fully-qualified-domain-name:
+
+Fully Qualified Domain Name
+---------------------------
+
+Another possible entry within the ``$options`` array is to output a fully qualified domain name (absolute URL), denoted using the ``force_canonical`` key:
+ 
+.. code-block:: html+php
+   :linenos:
+
+   <?php
+   $url = $this->url(
+       'news',
+       array(),
+       array(
+           'force_canonical' => true,
+       )
+   );
+   ?>
+   <a href="<?php echo $url; ?>">News Index</a>
+   
+The above code sample would output:
+
+.. code-block:: html
+   :linenos:
+   
+   <a href="http://www.example.com/news">News Index</a>
+
+
 .. _zend.view.helpers.initial.url.reusing-matched-parameters:
 
 Reusing Matched Parameters
