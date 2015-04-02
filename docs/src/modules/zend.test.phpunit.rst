@@ -9,6 +9,7 @@ responsibilities. Probably the easiest way to understand what it can do is to se
 The following is a simple test case for a IndexController to verify things like HTTP code, controller and action name :
 
 .. code-block:: php
+   :linenos:
 
     <?php
 
@@ -53,6 +54,7 @@ you'd expect from PHPUnit -- as well as some scaffolding and assertions specific
 In order to test your MVC application, you will need to setup the application config. Use simply the the ``setApplicationConfig`` method :
 
 .. code-block:: php
+   :linenos:
 
     public function setUp()
     {
@@ -66,6 +68,7 @@ Once the application is set up, you can write your tests. To help debug tests, y
 throw MVC exception during the tests writing :
 
 .. code-block:: php
+   :linenos:
 
     <?php
 
@@ -89,6 +92,7 @@ suite, with a few minor differences.
 First, you will need to dispatch a URL to test, using the ``dispatch`` method of the TestCase:
 
 .. code-block:: php
+   :linenos:
 
     public function testIndexAction()
     {
@@ -99,6 +103,7 @@ There will be times, however, that you need to provide extra information -- GET 
 You can populate the request with that information:
 
 .. code-block:: php
+   :linenos:
 
     public function testIndexAction()
     {
@@ -111,6 +116,7 @@ You can populate the request with that information:
 You can populate GET or POST variables directly with the ``dispatch`` method :
 
 .. code-block:: php
+   :linenos:
 
     public function testIndexAction()
     {
@@ -120,6 +126,7 @@ You can populate GET or POST variables directly with the ``dispatch`` method :
 You can use directly yours query args in the url :
 
 .. code-block:: php
+   :linenos:
 
     public function testIndexAction()
     {
