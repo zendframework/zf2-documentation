@@ -65,6 +65,14 @@ Within the constructor of ``AlbumForm`` we do several things.  First, we set the
 of the form as we call the parent’s constructor.  we create four form elements: the id, title, artist, and submit button. For each item we set 
 various attributes and options, including the label to be displayed.
 
+.. note::
+
+    HTML-Forms can be sent using ``POST`` and ``GET``. ZF2s default is ``POST``, therefore you don't have to be
+    explicit in setting this option. If you want to change it to ``GET`` though, all you have to do is set the
+    specific attribute in the constructor.
+
+    ``$this->setAttribute('method', 'GET');``
+
 We also need to set up validation for this form. In Zend Framework 2 this is
 done using an input filter, which can either be standalone or defined within any class
 that implements the ``InputFilterAwareInterface`` interface, such as a model entity. In our case, we are
