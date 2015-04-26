@@ -45,7 +45,7 @@ the key name with the ``Zend\Navigation`` view helper to output the container.
         // ...
     );
 
-.. code-block:: html
+.. code-block:: html+php
    :linenos:
 
     <!-- in your layout -->
@@ -140,7 +140,7 @@ the ``default`` container.
 The following example demonstrates rendering the navigation menus for the named ``default``,
 ``special`` and ``sitemap`` containers.
 
-.. code-block:: html
+.. code-block:: html+php
    :linenos:
 
    <!-- in your layout -->
