@@ -29,8 +29,8 @@ Included Validators
 - :ref:`InArray <zend.validator.in_array>`
 - :ref:`Ip <zend.validator.ip>`
 - :ref:`Isbn <zend.validator.isbn>`
-- :ref:`IsFloat <zend.i18n.validator.float`
-- :ref:`IsInt <zend.i18n.validator.int`
+- :ref:`IsFloat <zend.i18n.validator.float>`
+- :ref:`IsInt <zend.i18n.validator.int>`
 - :ref:`LessThan <zend.validator.lessthan>`
 - :ref:`NotEmpty <zend.validator.notempty>`
 - :ref:`PostCode <zend.validator.post_code>`
