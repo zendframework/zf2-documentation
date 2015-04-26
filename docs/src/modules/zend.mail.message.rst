@@ -141,13 +141,15 @@ headers, and the message body.
    }
 
    // The logic below also works for the methods cc(), bcc(), to(), and replyTo()
-   foreach ($message->from() as $address) {
+   foreach ($message->getFrom() as $address) {
        printf("%s: %s\n", $address->getEmail(), $address->getName());
    }
 
    // Sender
    $address = $message->getSender();
-   printf("%s: %s\n", $address->getEmail(), $address->getName());
+   if(!is_null($address)) {
+      printf("%s: %s\n", $address->getEmail(), $address->getName());
+   }
 
    // Subject
    echo "Subject: ", $message->getSubject(), "\n";
@@ -248,8 +250,8 @@ Available Methods
 
 .. _zend.mail.message.methods.from:
 
-**from**
-   ``from()``
+**getFrom**
+   ``From()``
 
    Retrieve list of From senders
 
