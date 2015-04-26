@@ -47,7 +47,7 @@ Using the Plugin Manager
 ------------------------
 
 To every ``FilterChain`` object an instance of the ``FilterPluginManager`` is attached. Every filter that is used
-in a ``FilterChain`` must be know by this ``FilterPluginManager``. To add a filter that is known by the
+in a ``FilterChain`` must be known by this ``FilterPluginManager``. To add a filter that is known by the
 ``FilterPluginManager`` you can use the ``attachByName()`` method. The first parameter is the name of the filter
 within the ``FilterPluginManager``. The second parameter takes any options for creating the filter instance. The
 third parameter is the priority.
