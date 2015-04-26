@@ -97,6 +97,8 @@ Sometimes you may want to provide HTML content, or multi-part content. To do tha
 message object, and then set it as the body of your mail message object. When you do so, the ``Message`` class will
 automatically set a "MIME-Version" header, as well as an appropriate "Content-Type" header.
 
+In addition you can check how to add attachment to your message :ref:`E-mail Attachments<zend.mail.attachments>`.
+
 .. code-block:: php
    :linenos:
 
