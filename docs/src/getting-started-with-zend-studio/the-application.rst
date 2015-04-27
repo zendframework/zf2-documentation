@@ -45,6 +45,7 @@ We are going to use MySQL, via PHP's PDO driver, so create a database called
 to create the task_item table and some sample data:
 
 .. code:: sql
+   :linenos:
 
     CREATE TABLE task_item (
         id INT NOT NULL AUTO_INCREMENT,
@@ -251,6 +252,7 @@ entire router section of the array to be:
 **module/Checklist/src/config/module.config.php:**
 
 .. code-block:: php
+   :linenos:
 
     'router' => array(
         'routes' => array(
