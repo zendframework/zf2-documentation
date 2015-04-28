@@ -1,7 +1,12 @@
-.. _zend.service-manager.intro:
+.. _zend.service-manager:
 
 Zend\\ServiceManager
 ====================
+
+.. _zend.service-manager.intro:
+
+Introduction
+------------
 
 The `Service Locator design pattern`_ is implemented by the ``Zend\ServiceManager`` component.
 The Service Locator is a  service/object locator, tasked with retrieving other objects.
@@ -17,144 +22,179 @@ Following is the ``Zend\ServiceManager\ServiceLocatorInterface`` API:
        public function get($name);
        public function has($name);
    }
-	
+
 - ``has($name)``, tests whether the ``ServiceManager`` has a named service;
 
 - ``get($name)``, retrieves a service by the given name.
 
+.. _zend.service-manager.api:
+
+Additional API
+--------------
+
 A ``Zend\ServiceManager\ServiceManager`` is an implementation of the ``ServiceLocatorInterface``.
 In addition to the above described methods, the ``ServiceManager`` provides additional API:
 
-- **Service registration**. ``ServiceManager::setService`` allows you to register an object as a service:
+.. _zend.service-manager.api.service-registration:
 
-  .. code-block:: php
-     :linenos:
+Service registration
+^^^^^^^^^^^^^^^^^^^^
 
-     $serviceManager->setService('my-foo', new stdClass());
-     $serviceManager->setService('my-settings', array('password' => 'super-secret'));
+``ServiceManager::setService`` allows you to register an object as a service:
 
-     var_dump($serviceManager->get('my-foo')); // an instance of stdClass
-     var_dump($serviceManager->get('my-settings')); // array('password' => 'super-secret')
+.. code-block:: php
+   :linenos:
 
-- **Lazy-loaded service objects**. ``ServiceManager::setInvokableClass`` allows you to tell the
-  ``ServiceManager`` what class to instantiate when a particular service is requested:
+    $serviceManager->setService('my-foo', new stdClass());
+    $serviceManager->setService('my-settings', array('password' => 'super-secret'));
 
-  .. code-block:: php
-     :linenos:
+    var_dump($serviceManager->get('my-foo')); // an instance of stdClass
+    var_dump($serviceManager->get('my-settings')); // array('password' => 'super-secret')
 
-     $serviceManager->setInvokableClass('foo-service-name', 'Fully\Qualified\Classname');
+.. _zend.service-manager.api.lazy-loaded-objects:
 
-     var_dump($serviceManager->get('foo-service-name')); // an instance of Fully\Qualified\Classname
+Lazy-loaded service objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **Service factories**. Instead of an actual object instance or a class name, you can tell the
-  ``ServiceManager`` to invoke a provided factory in order to get the object instance. Factories
-  may be either a PHP `callback`_, an object implementing ``Zend\ServiceManager\FactoryInterface``,
-  or the name of a class implementing that interface:
+``ServiceManager::setInvokableClass`` allows you to tell the ``ServiceManager`` what class to instantiate when a
+particular service is requested:
 
-  .. code-block:: php
-     :linenos:
+.. code-block:: php
+   :linenos:
 
-     use Zend\ServiceManager\FactoryInterface;
-     use Zend\ServiceManager\ServiceLocatorInterface;
+   $serviceManager->setInvokableClass('foo-service-name', 'Fully\Qualified\Classname');
 
-     class MyFactory implements FactoryInterface
-     {
-         public function createService(ServiceLocatorInterface $serviceLocator)
-         {
-             return new \stdClass();
-         }
-     }
+   var_dump($serviceManager->get('foo-service-name')); // an instance of Fully\Qualified\Classname
 
-     // registering a factory instance
-     $serviceManager->setFactory('foo-service-name', new MyFactory());
+.. _zend.service-manager.api.service-factories:
 
-     // registering a factory by factory class name
-     $serviceManager->setFactory('bar-service-name', 'MyFactory');
+Service factories
+^^^^^^^^^^^^^^^^^
 
-     // registering a callback as a factory
-     $serviceManager->setFactory('baz-service-name', function () { return new \stdClass(); });
+Instead of an actual object instance or a class name, you can tell the ``ServiceManager`` to invoke
+a provided factory in order to get the object instance. Factories may be either a PHP `callback`_,
+an object implementing ``Zend\ServiceManager\FactoryInterface``, or the name of a class
+implementing that interface:
 
-     var_dump($serviceManager->get('foo-service-name')); // stdClass(1)
-     var_dump($serviceManager->get('bar-service-name')); // stdClass(2)
-     var_dump($serviceManager->get('baz-service-name')); // stdClass(3)
+.. code-block:: php
+   :linenos:
 
-- **Service aliasing**. With ``ServiceManager::setAlias`` you can create aliases of any registered
-  service, factory or invokable, or even other aliases:
+   use Zend\ServiceManager\FactoryInterface;
+   use Zend\ServiceManager\ServiceLocatorInterface;
 
-  .. code-block:: php
-     :linenos:
+   class MyFactory implements FactoryInterface
+   {
+       public function createService(ServiceLocatorInterface $serviceLocator)
+       {
+           return new \stdClass();
+       }
+   }
 
-     $foo      = new \stdClass();
-     $foo->bar = 'baz!';
+   // registering a factory instance
+   $serviceManager->setFactory('foo-service-name', new MyFactory());
 
-     $serviceManager->setService('my-foo', $foo);
-     $serviceManager->setAlias('my-bar', 'my-foo');
-     $serviceManager->setAlias('my-baz', 'my-bar');
+   // registering a factory by factory class name
+   $serviceManager->setFactory('bar-service-name', 'MyFactory');
 
-     var_dump($serviceManager->get('my-foo')->bar); // baz!
-     var_dump($serviceManager->get('my-bar')->bar); // baz!
-     var_dump($serviceManager->get('my-baz')->bar); // baz!
+   // registering a callback as a factory
+   $serviceManager->setFactory('baz-service-name', function () { return new \stdClass(); });
 
-- **Abstract factories**. An abstract factory can be considered as a "fallback" factory. If the
-  service manager was not able to find a service for the requested name, it will check the registered
-  abstract factories:
+   var_dump($serviceManager->get('foo-service-name')); // stdClass(1)
+   var_dump($serviceManager->get('bar-service-name')); // stdClass(2)
+   var_dump($serviceManager->get('baz-service-name')); // stdClass(3)
 
-  .. code-block:: php
-     :linenos:
+.. _zend.service-manager.api.service-aliasing:
 
-     use Zend\ServiceManager\ServiceLocatorInterface;
-     use Zend\ServiceManager\AbstractFactoryInterface;
+Service aliasing
+^^^^^^^^^^^^^^^^
 
-     class MyAbstractFactory implements AbstractFactoryInterface
-     {
-         public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
-         {
-             // this abstract factory only knows about 'foo' and 'bar'
-             return $requestedName === 'foo' || $requestedName === 'bar';
-         }
+With ``ServiceManager::setAlias`` you can create aliases of any registered
+service, factory or invokable, or even other aliases:
 
-         public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
-         {
-             $service = new \stdClass();
+.. code-block:: php
+   :linenos:
 
-             $service->name = $requestedName;
+   $foo      = new \stdClass();
+   $foo->bar = 'baz!';
 
-             return $service;
-         }
-     }
+   $serviceManager->setService('my-foo', $foo);
+   $serviceManager->setAlias('my-bar', 'my-foo');
+   $serviceManager->setAlias('my-baz', 'my-bar');
 
-     $serviceManager->addAbstractFactory('MyAbstractFactory');
+   var_dump($serviceManager->get('my-foo')->bar); // baz!
+   var_dump($serviceManager->get('my-bar')->bar); // baz!
+   var_dump($serviceManager->get('my-baz')->bar); // baz!
 
-     var_dump($serviceManager->get('foo')->name); // foo
-     var_dump($serviceManager->get('bar')->name); // bar
-     var_dump($serviceManager->get('baz')->name); // exception! Zend\ServiceManager\Exception\ServiceNotFoundException
+.. _zend.service-manager.api.abstract-factories:
 
-- **Initializers**. You may want certain injection points to be always called. As an example,
-  any object you load via the service manager that implements
-  ``Zend\EventManager\EventManagerAwareInterface`` should likely receive an ``EventManager``
-  instance. **Initializers** are PHP `callbacks`_ or classes implementing
-  ``Zend\ServiceManager\InitializerInterface``. They receive the new instance, and can then manipulate it:
+Abstract factories
+^^^^^^^^^^^^^^^^^^
 
-  .. code-block:: php
-     :linenos:
+An abstract factory can be considered as a "fallback" factory. If the
+service manager was not able to find a service for the requested name, it will check the registered
+abstract factories:
 
-     use Zend\ServiceManager\ServiceLocatorInterface;
-     use Zend\ServiceManager\InitializerInterface;
+.. code-block:: php
+   :linenos:
 
-     class MyInitializer implements InitializerInterface
-     {
-         public function initialize($instance, ServiceLocatorInterface $serviceLocator)
-         {
-             if ($instance instanceof \stdClass) {
-                 $instance->initialized = 'initialized!';
-             }
-         }
-     }
+   use Zend\ServiceManager\ServiceLocatorInterface;
+   use Zend\ServiceManager\AbstractFactoryInterface;
 
-     $serviceManager->addInitializer('MyInitializer');
-     $serviceManager->setInvokableClass('my-service', 'stdClass');
+   class MyAbstractFactory implements AbstractFactoryInterface
+   {
+       public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+       {
+           // this abstract factory only knows about 'foo' and 'bar'
+           return $requestedName === 'foo' || $requestedName === 'bar';
+       }
 
-     var_dump($serviceManager->get('my-service')->initialized); // initialized!
+       public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+       {
+           $service = new \stdClass();
+
+           $service->name = $requestedName;
+
+           return $service;
+       }
+   }
+
+   $serviceManager->addAbstractFactory('MyAbstractFactory');
+
+   var_dump($serviceManager->get('foo')->name); // foo
+   var_dump($serviceManager->get('bar')->name); // bar
+   var_dump($serviceManager->get('baz')->name); // exception! Zend\ServiceManager\Exception\ServiceNotFoundException
+
+.. _zend.service-manager.api.initializers:
+
+Initializers
+^^^^^^^^^^^^
+
+You may want certain injection points to be always called. As an example,
+any object you load via the service manager that implements
+``Zend\EventManager\EventManagerAwareInterface`` should likely receive an ``EventManager``
+instance. **Initializers** are PHP `callbacks`_ or classes implementing
+``Zend\ServiceManager\InitializerInterface``. They receive the new instance, and can then manipulate it:
+
+.. code-block:: php
+   :linenos:
+
+   use Zend\ServiceManager\ServiceLocatorInterface;
+   use Zend\ServiceManager\InitializerInterface;
+
+   class MyInitializer implements InitializerInterface
+   {
+       public function initialize($instance, ServiceLocatorInterface $serviceLocator)
+       {
+           if ($instance instanceof \stdClass) {
+               $instance->initialized = 'initialized!';
+           }
+       }
+   }
+
+   $serviceManager->addInitializer('MyInitializer');
+   $serviceManager->setInvokableClass('my-service', 'stdClass');
+
+   var_dump($serviceManager->get('my-service')->initialized); // initialized!
 
 In addition to the above, the ``ServiceManager`` also provides optional ties to ``Zend\Di``, allowing ``Di`` to act
 as an initializer or an abstract factory for the service manager.
