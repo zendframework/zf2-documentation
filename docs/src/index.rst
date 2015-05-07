@@ -236,7 +236,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.serializer.adapters
    modules/zend.server
    modules/zend.server.reflection
-   modules/zend.service-manager.intro
+   modules/zend.service-manager
    modules/zend.service-manager.quick-start
    modules/zend.service-manager.delegator-factories
    modules/zend.service-manager.lazy-services
@@ -860,7 +860,7 @@ Zend\\Server
 Zend\\ServiceManager
 ^^^^^^^^^^^^^^^^^^^^
 
-        * :doc:`modules/zend.service-manager.intro`
+        * :doc:`modules/zend.service-manager`
         * :doc:`modules/zend.service-manager.quick-start`
         * :doc:`modules/zend.service-manager.delegator-factories`
         * :doc:`modules/zend.service-manager.lazy-services`
