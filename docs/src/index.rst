@@ -294,6 +294,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
+   modules/zend.validator.timezone
    modules/zend.version
    modules/zend.view.quick-start
    modules/zend.view.renderer.php-renderer
@@ -962,6 +963,7 @@ Zend\\Validator
         * :doc:`modules/zend.validator.sitemap`
         * :doc:`modules/zend.validator.step`
         * :doc:`modules/zend.validator.string-length`
+        * :doc:`modules/zend.validator.timezone`
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`
