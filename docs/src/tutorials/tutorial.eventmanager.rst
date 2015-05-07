@@ -353,7 +353,7 @@ As an example:
         {
             foreach ($this->listeners as $index => $listener) {
                 if ($events->detach($listener)) {
-                    unset($this->listeners[$index];
+                    unset($this->listeners[$index]);
                 }
             }
         }
