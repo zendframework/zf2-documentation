@@ -183,6 +183,7 @@ Application module's ``layout.phtml`` view script:
 Remove this line:
 
 .. code-block:: html+php
+   :linenos:
         
     <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
 
