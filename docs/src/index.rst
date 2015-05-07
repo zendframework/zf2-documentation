@@ -896,10 +896,6 @@ Zend\\Stdlib
         * :doc:`modules/zend.stdlib.hydrator.filter`
         * :doc:`modules/zend.stdlib.hydrator.strategy`
         * :doc:`modules/zend.stdlib.hydrator.aggregate`
-
-Zend\\Stdlib\\Hydrator\\NamingStrategy
-^^^^^^^^^^^^
-
         * :doc:`modules/zend.stdlib.hydrator.namingstrategy.underscorenamingstrategy`
 
 .. _zend.tag:
