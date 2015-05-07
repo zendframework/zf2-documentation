@@ -254,6 +254,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.stdlib.hydrator.filter
    modules/zend.stdlib.hydrator.strategy
    modules/zend.stdlib.hydrator.aggregate
+   modules/zend.stdlib.hydrator.namingstrategy.mapnamingstrategy
    modules/zend.stdlib.hydrator.namingstrategy.underscorenamingstrategy
    modules/zend.tag.introduction
    modules/zend.tag.cloud
@@ -897,6 +898,7 @@ Zend\\Stdlib
         * :doc:`modules/zend.stdlib.hydrator.filter`
         * :doc:`modules/zend.stdlib.hydrator.strategy`
         * :doc:`modules/zend.stdlib.hydrator.aggregate`
+        * :doc:`modules/zend.stdlib.hydrator.namingstrategy.mapnamingstrategy`
         * :doc:`modules/zend.stdlib.hydrator.namingstrategy.underscorenamingstrategy`
 
 .. _zend.tag:
