@@ -53,8 +53,8 @@ Service registration
 
 .. _zend.service-manager.api.lazy-loaded-objects:
 
-Lazy-loaded service objects
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Invokables (constructor-less services)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``ServiceManager::setInvokableClass`` allows you to tell the ``ServiceManager`` what class to instantiate when a
 particular service is requested:
@@ -65,6 +65,9 @@ particular service is requested:
    $serviceManager->setInvokableClass('foo-service-name', 'Fully\Qualified\Classname');
 
    var_dump($serviceManager->get('foo-service-name')); // an instance of Fully\Qualified\Classname
+
+Classes registered as invokables must have no constructor defined, or constructors that allow
+passing no arguments.
 
 .. _zend.service-manager.api.service-factories:
 
@@ -169,11 +172,11 @@ abstract factories:
 Initializers
 ^^^^^^^^^^^^
 
-You may want certain injection points to be always called. As an example,
-any object you load via the service manager that implements
-``Zend\EventManager\EventManagerAwareInterface`` should likely receive an ``EventManager``
-instance. **Initializers** are PHP `callbacks`_ or classes implementing
-``Zend\ServiceManager\InitializerInterface``. They receive the new instance, and can then manipulate it:
+You may want certain injection points to be always called. As an example, any object you load via
+the service manager that implements ``Zend\EventManager\EventManagerAwareInterface`` should likely
+receive an ``EventManager`` instance. **Initializers** can be either PHP `callbacks`_ or classes
+implementing ``Zend\ServiceManager\InitializerInterface``. They receive the new instance, and can
+then manipulate it:
 
 .. code-block:: php
    :linenos:
