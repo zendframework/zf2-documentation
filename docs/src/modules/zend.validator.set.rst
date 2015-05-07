@@ -38,6 +38,7 @@ Included Validators
 - :ref:`Sitemap <zend.validator.sitemap>`
 - :ref:`Step <zend.validator.step>`
 - :ref:`StringLength <zend.validator.stringlength>`
+- :ref:`Timezone <zend.validator.timezone>`
 
 .. _zend.validator.set.deprecated-validators:
 
