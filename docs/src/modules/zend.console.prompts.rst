@@ -229,6 +229,37 @@ Example usage:
    :width: 614
    :align: center
 
+Password
+--------
+
+This prompt reads in a string, without echoing that string back to the console.
+Useful for password prompts.
+
+.. code-block:: php
+
+    Password(
+        string $promptText = 'Password : ',
+        boolean $echo = true
+    )
+
+**$promptText**
+    (`string`) The text to show with the prompt
+
+**$echo**
+    (`bool`) Display * in place of characters. Can be skipped, defaults to true
+
+Example usage:
+
+.. code-block:: php
+
+    use Zend\Console\Prompt\Password;
+
+    $password = Password::prompt('Enter the secret', true);
+
+    $console->write("Sh!, the password is $password");
+
+.. image:: ../images/zend.console.prompt6.png
+
 .. seealso::
 
     To learn more about accessing console, writing to and reading from it, make sure to
