@@ -19,3 +19,22 @@ The following options are supported for ``Zend\Validator\Uri``:
 - **allowRelative**: Defines if relative paths are allowed. This option defaults to ``TRUE``.
 
 - **allowAbsolute**: Defines if absolute paths are allowed. This option defaults to ``TRUE``.
+
+.. _zend.validator.uri.basic:
+
+Basic usage
+-----------
+
+A basic example of usage is below:
+
+.. code-block:: php
+   :linenos:
+
+   $validator = new Zend\Validator\Uri();
+   $uri = 'http://framework.zend.com/manual';
+
+   if ($validator->isValid($uri)) {
+       // $uri was valid
+   } else {
+       // false. You can use $validator->getMessages() to retrieve error messages
+   }
