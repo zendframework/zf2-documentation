@@ -1,7 +1,7 @@
 .. _zend.validator.uri:
 
 Uri Validator
-==================
+=============
 
 ``Zend\Validator\Uri`` allows you to validate a uri using the ``Zend\Uri\Uri`` handler to parse to uri.
 The validator allows for both validation of absolute and/or relative uris. There is the possibility to
@@ -9,8 +9,8 @@ exchange the handler for another one in case the parsing of the uri should be do
 
 .. _zend.validator.uri.options:
 
-Supported options for Zend\\Validator\\Uri
------------------------------------------------
+Supported options
+-----------------
 
 The following options are supported for ``Zend\Validator\Uri``:
 
