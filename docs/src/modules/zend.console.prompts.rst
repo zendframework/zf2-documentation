@@ -236,6 +236,7 @@ This prompt reads in a string, without echoing that string back to the console.
 Useful for password prompts.
 
 .. code-block:: php
+    :linenos:
 
     Password(
         string $promptText = 'Password : ',
@@ -251,6 +252,7 @@ Useful for password prompts.
 Example usage:
 
 .. code-block:: php
+    :linenos:
 
     use Zend\Console\Prompt\Password;
 
