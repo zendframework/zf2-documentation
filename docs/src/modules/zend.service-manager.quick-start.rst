@@ -132,7 +132,7 @@ As such, you have a variety of ways to override service manager configuration se
            'invokables' => array(
                // Keys are the service names
                // Values are valid class names to instantiate.
-               'UserInputFiler' => 'SomeModule\InputFilter\User',
+               'UserInputFilter' => 'SomeModule\InputFilter\User',
            ),
            'services' => array(
                // Keys are the service names
