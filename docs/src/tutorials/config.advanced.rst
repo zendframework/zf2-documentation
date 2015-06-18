@@ -60,7 +60,7 @@ in ``config/application.config.php``. The defaults look like this:
             // modules are loaded. These effectively overide configuration
             // provided by modules themselves. Paths may use GLOB_BRACE notation.
             'config_glob_paths' => array(
-                'config/autoload/{,*.}{global,local}.php',
+                'config/autoload/{{,*.}global,{,*.}local}.php',
             ),
     
             // Whether or not to enable a configuration cache.
@@ -174,7 +174,7 @@ We'll modify the ``config/application.config.php`` file to read as follows:
             ),
     
             'config_glob_paths' => array(
-                'config/autoload/{,*.}{global,local}.php',
+                'config/autoload/{{,*.}global,{,*.}local}.php',
             ),
     
             // Use the $env value to determine the state of the flag
@@ -212,7 +212,7 @@ defined by modules. You can override them at the application level via
 **system configuration** -- the ``module_listener_options.config_glob_paths``
 key from the previous examples.
 
-The default value for this is ``config/autoload/{,*.}{global,local}.php``. What
+The default value for this is ``config/autoload/{{,*.}global,{,*.}local}.php``. What
 this means is that it will look for **application configuration** files in the
 ``config/autoload`` directory, in the following order:
 
