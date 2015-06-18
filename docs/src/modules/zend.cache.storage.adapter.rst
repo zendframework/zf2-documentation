@@ -761,7 +761,7 @@ The Redis Adapter
    +--------------------+----------------------+-------------------------+--------------------------------------------------------------------------------------+
    |resource_manager    |``string``            |````                     |Set the redis resource manager to use                                                 |
    +--------------------+----------------------+-------------------------+--------------------------------------------------------------------------------------+
-   |servers             |                      |                         | Server can be described as follows:                                                  |
+   |server              |                      |                         | Server can be described as follows:                                                  |
    |                    |                      |                         |  - URI:   /path/to/sock.sock                                                         |
    |                    |                      |                         |  - Assoc: array('host' => <host>[, 'port' => <port>[, 'timeout' => <timeout>]])      |
    |                    |                      |                         |  - List:  array(<host>[, <port>, [, <timeout>]])                                     |
