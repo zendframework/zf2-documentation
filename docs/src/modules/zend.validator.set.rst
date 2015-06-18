@@ -39,6 +39,7 @@ Included Validators
 - :ref:`Step <zend.validator.step>`
 - :ref:`StringLength <zend.validator.stringlength>`
 - :ref:`Timezone <zend.validator.timezone>`
+- :ref:`Uri <zend.validator.uri>`
 
 .. _zend.validator.set.deprecated-validators:
 
