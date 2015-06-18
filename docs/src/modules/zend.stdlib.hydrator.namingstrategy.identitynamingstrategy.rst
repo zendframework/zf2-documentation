@@ -5,33 +5,33 @@ IdentityNamingStrategy
 
 ``Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy`` Will use the key it is given for hydration and extraction.
 
-Example Usage
--------------
+Basic Usage
+-----------
 
-.. code:: php
+.. code-block:: php
+   :linenos:
 
-    <?php
-    $namingStrategy = new \Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy();
+    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy();
+
     echo $namingStrategy->hydrate('foo'); // outputs: foo
     echo $namingStrategy->extract('bar'); // outputs: bar
-    ?>
 
 This strategy can be used in hydrators as well:
 
-.. code:: php
+.. code-block:: php
+   :linenos:
 
-    <?php
-    class Foo {
+    class Foo
+    {
         public $foo;
     }
 
-    $namingStrategy = new \Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy();
-    $hydrator = new \Zend\Stdlib\Hydrator\ObjectProperty();
+    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy();
+    $hydrator = new Zend\Stdlib\Hydrator\ObjectProperty();
     $hydrator->setNamingStrategy($namingStrategy);
 
     $foo = new Foo();
-    $hydrator->hydrate(['foo' => 123],$foo);
+    $hydrator->hydrate(array('foo' => 123), $foo);
 
     print_r($foo); // Foo Object ( [foo] => 123 )
     print_r($hydrator->extract($foo)); // Array ( [foo] => 123 )
-    ?>
