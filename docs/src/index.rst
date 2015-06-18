@@ -294,10 +294,10 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.validator.sitemap
    modules/zend.validator.step
    modules/zend.validator.stringlength
+   modules/zend.validator.timezone
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
-   modules/zend.validator.timezone
    modules/zend.version
    modules/zend.view.quick-start
    modules/zend.view.renderer.php-renderer
