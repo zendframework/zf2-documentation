@@ -1,26 +1,27 @@
 .. _zend.validator.timezone:
 
 Timezone Validator
-==============
+==================
 
 ``Zend\Validator\Timezone`` allows validating if an input string
 represents a timezone.
 
-Supported validation types for Zend\\Validator\\Timezone
---------------------------------------------------------
+Supported validation types
+--------------------------
 
 The ``Zend\Validator\Timezone`` validator is capable of validating the
 abbreviation (e.g. "ewt") as well as the location string (e.g.
 "America/Los\_Angeles"). These options are stored in the validator as
 ``LOCATION``, ``ABBREVIATION``, and ``ALL`` class constants.
 
-Example Usage
--------------
+Basic Usage
+-----------
 
 The default validation type will check again abbreviations as well as
 the location string.
 
-.. code:: php
+.. code-block:: php
+   :linenos:
 
     $validator = new Zend\Validator\Timezone();
 
@@ -30,7 +31,8 @@ the location string.
 
 To validate against only the location string you can set the type:
 
-.. code:: php
+.. code-block:: php
+   :linenos:
 
     $validator = new Zend\Validator\Timezone();
     $validator->setType(Zend\Validator\Timezone::LOCATION);

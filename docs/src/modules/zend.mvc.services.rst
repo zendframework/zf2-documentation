@@ -680,7 +680,7 @@ Default Configuration Options
 The following options are available when using the default services configured by the ``ServiceManagerConfig``
 and ``ViewManager``.
 
-These configuration directives can go to the ``config/autoload/{,*.}{global,local}.php`` files, or in the
+These configuration directives can go to the ``config/autoload/{{,*.}global,{,*.}local}.php`` files, or in the
 ``module/<module name>/config/module.config.php`` configuration files. The merging of these configuration
 files is done by the ``ModuleManager``. It first merges each module's ``module.config.php`` file, and then
 the files in ``config/autoload`` (first the ``*.global.php`` and then the ``*.local.php`` files). The order

@@ -749,7 +749,7 @@ And now the implementation of the save function.
       /**
        * @var \Blog\Model\PostInterface
        */
-      protected $blogPrototype;
+      protected $postPrototype;
 
       /**
        * @param AdapterInterface  $dbAdapter
