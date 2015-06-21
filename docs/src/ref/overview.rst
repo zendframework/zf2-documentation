@@ -13,7 +13,7 @@ downloads.
 
 .. note::
 
-    *ZF2* is not backward compatible with *ZF1*, because of the new features in PHP 5.4+ implemented by
+    *ZF2* is not backward compatible with *ZF1*, because of the new features in PHP 5.5+ implemented by
     the framework, and due to major rewrites of many components.
 
 The component structure of Zend Framework 2 is unique; each component is designed with few
