@@ -673,10 +673,10 @@ The ``fromRoute()`` method is the only public method defined, and has the follow
 
    Generate url string from given parameters:
    
-   string $name -- The name of the route you want to output
-   array $params -- An array of parameters that is defined within the respective route configuration
-   array $options -- An array of options that will be used to create the URL (e.g., force_canonical, query)
-   boolean $reuseMatchedParams -- A flag indicating if the currently matched route parameters should be used when generating the new URL
+   :param string $name: The name of the route you want to output
+   :param array $params: An array of parameters that is defined within the respective route configuration
+   :param array $options: An array of options that will be used to create the URL (e.g., force_canonical, query)
+   :param boolean $reuseMatchedParams: A flag indicating if the currently matched route parameters should be used when generating the new URL
 
    :rtype: ``string``
 
