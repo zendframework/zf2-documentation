@@ -15,7 +15,7 @@ Basic Usage
         'foo' => 'bar',
         'baz' => 'bash'
     ));
-    echo $namingStrategy->hydrate('foo'); // outputs: foo
+    echo $namingStrategy->hydrate('foo'); // outputs: bar
     echo $namingStrategy->hydrate('baz'); // outputs: bash
 
     echo $namingStrategy->extract('bar'); // outputs: foo
