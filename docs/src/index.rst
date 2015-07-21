@@ -295,6 +295,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.validator.step
    modules/zend.validator.stringlength
    modules/zend.validator.timezone
+   modules/zend.validator.uri
    modules/zend.validator.validator-chains
    modules/zend.validator.writing-validators
    modules/zend.validator.messages
@@ -970,6 +971,7 @@ Zend\\Validator
         * :doc:`modules/zend.validator.step`
         * :doc:`modules/zend.validator.string-length`
         * :doc:`modules/zend.validator.timezone`
+        * :doc:`modules/zend.validator.uri`
         * :doc:`modules/zend.validator.validator-chains`
         * :doc:`modules/zend.validator.writing-validators`
         * :doc:`modules/zend.validator.messages`
