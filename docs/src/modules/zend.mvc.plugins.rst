@@ -669,10 +669,16 @@ The ``Url`` helper makes this slightly more convenient:
 
 The ``fromRoute()`` method is the only public method defined, and has the following signature:
 
-.. code-block:: php
-   :linenos:
+.. function:: fromRoute(string $route = null, array $params = array(), array $options = array(), boolean $reuseMatchedParams = false)
 
-   public function fromRoute($route, array $params = array(), array $options = array())
+   Generate url string from given parameters:
+   
+   :param string $name: The name of the route you want to output
+   :param array $params: An array of parameters that is defined within the respective route configuration
+   :param array $options: An array of options that will be used to create the URL (e.g., force_canonical, query)
+   :param boolean $reuseMatchedParams: A flag indicating if the currently matched route parameters should be used when generating the new URL
+
+   :rtype: ``string``
 
 .. note::
 
