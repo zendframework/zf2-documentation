@@ -614,7 +614,7 @@ Refreshing the page you will now see all your blog posts listed on the page. Gre
 Refactoring hidden dependencies
 -------------------------------
 
-There's one little thing that we have done that's not a best-practice. We use both a Hydrator and an Object inside our
+There's one little thing that we have done that's not a best-practice. We use both a Hydrator and an Object inside our ``ZendDbSqlMapper``
 
 
 .. code-block:: php
