@@ -47,7 +47,7 @@ we will setup the client and prepare to send out messages.
    use ZendService\Apple\Apns\Message;
    use ZendService\Apple\Apns\Message\Alert;
    use ZendService\Apple\Apns\Response\Message as Response;
-   use ZendService\Apple\Apns\Exception\RuntimeException;
+   use ZendService\Apple\Exception\RuntimeException;
 
    $client = new Client();
    $client->open(Client::SANDBOX_URI, '/path/to/push-certificate.pem', 'optionalPassPhrase');
@@ -143,7 +143,7 @@ last send.
 
    use ZendService\Apple\Apns\Client\Feedback as Client;
    use ZendService\Apple\Apns\Response\Feedback as Response;
-   use ZendService\Apple\Apns\Exception\RuntimeException;
+   use ZendService\Apple\Exception\RuntimeException;
 
    $client = new Client();
    $client->open(Client::SANDBOX_URI, '/path/to/push-certificate.pem', 'optionalPassPhrase');
