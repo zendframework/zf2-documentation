@@ -12,7 +12,7 @@ Introduction
 ``ZendService\Apple\Apns\Client`` allows you to send data from servers to your iOS Applications.
 
 In order to leverage APNS you **must** follow the 
-`Provisioning and deployments steps outlined by Apple <http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ProvisioningDevelopment/ProvisioningDevelopment.html>`_.
+`Provisioning and Development steps outlined by Apple <https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ProvisioningDevelopment.html>`_.
 
 The service is composed of 3 distinct parts:
 
