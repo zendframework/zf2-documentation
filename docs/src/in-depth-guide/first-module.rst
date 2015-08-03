@@ -159,7 +159,7 @@ configuration file:
         )
     );
 
-We've now created a route called ``blog`` that listens to the URL ``localhost:8080/blog``. Whenever someone accesses this
+We've now created a route called ``post`` that listens to the URL ``localhost:8080/blog``. Whenever someone accesses this
 route, the ``indexAction()`` function of the class ``Blog\Controller\List`` will be executed. However, this controller
 does not exist yet, so if you reload the page you will see this error message:
 
