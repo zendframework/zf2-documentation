@@ -163,10 +163,12 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
             if (!$zf2Path) {
                 if (defined('ZF2_PATH')) {
                     $zf2Path = ZF2_PATH;
-                } elseif (is_dir($vendorPath . '/ZF2/library')) {
-                    $zf2Path = $vendorPath . '/ZF2/library';
-                } elseif (is_dir($vendorPath . '/zendframework/zendframework/library')) {
-                    $zf2Path = $vendorPath . '/zendframework/zendframework/library';
+                } elseif (is_dir($vendorPath . '/ZF2/library/Zend/Loader')) {
+                    $zf2Path = $vendorPath . '/ZF2/library/Zend/Loader';
+                } elseif (is_dir($vendorPath . '/zendframework/zendframework/library/Zend/Loader')) {
+                    $zf2Path = $vendorPath . '/zendframework/zendframework/library/Zend/Loader';
+                } elseif (is_dir($vendorPath . '/zendframework/zend-loader/src')) {
+                    $zf2Path = $vendorPath . '/zendframework/zend-loader/src';
                 }
             }
 
@@ -181,7 +183,7 @@ And a file called ``Bootstrap.php``, also under ``zf2-tutorial/module/Album/test
                 include $vendorPath . '/autoload.php';
             }
 
-            include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+            include $zf2Path . '/AutoloaderFactory.php';
             AutoloaderFactory::factory(array(
                 'Zend\Loader\StandardAutoloader' => array(
                     'autoregister_zf' => true,
@@ -261,7 +263,7 @@ the following contents:
         public function setUp()
         {
             $this->setApplicationConfig(
-                include '/var/www/zf2-tutorial/config/application.config.php'
+                include dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/config/application.config.php'
             );
             parent::setUp();
         }
