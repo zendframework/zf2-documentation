@@ -270,6 +270,9 @@ to create the controller class. Let's create this file now:
 
     class ListController
     {
+      public function listAction()
+      {
+      }
     }
 
 Reloading the page now will finally result into a new screen. The new error message looks like this:
