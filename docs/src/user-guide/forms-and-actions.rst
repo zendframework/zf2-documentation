@@ -80,7 +80,7 @@ going to add the input filter to the Album class, which resides in the ``Album.p
 
 .. code-block:: php
    :linenos:
-   :emphasize-lines: 5-7,9,14,23-84
+   :emphasize-lines: 4-7,9,14,23-84
 
     namespace Album\Model;
 
