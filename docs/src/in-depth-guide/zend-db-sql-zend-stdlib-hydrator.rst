@@ -119,7 +119,7 @@ will look like the following:
         ),
         'service_manager' => array(
             'factories' => array(
-                'Blog\Service\PostServiceInterface' => 'Blog\Service\Factory\PostServiceFactory',
+                'Blog\Service\PostServiceInterface' => 'Blog\Factory\PostServiceFactory',
                 'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory'
             )
         ),
