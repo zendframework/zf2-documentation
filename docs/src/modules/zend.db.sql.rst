@@ -59,7 +59,7 @@ To execute (using a Select object)
    $select->from('foo');
    $select->where(array('id' => 2));
 
-   $selectString = $sql->getSqlStringForSqlObject($select);
+   $selectString = $sql->buildSqlString($select);
    $results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
 
 Zend\\Db\\Sql\\Sql objects can also be bound to a particular table so that in getting a select, insert, update, or
