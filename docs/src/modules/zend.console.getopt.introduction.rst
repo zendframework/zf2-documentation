@@ -1,7 +1,7 @@
 .. _zend.console.getopt.introduction:
 
-Zend\Console\Getopt
-===================
+Zend\\Console\\Getopt
+=====================
 
 Introduction
 ------------
