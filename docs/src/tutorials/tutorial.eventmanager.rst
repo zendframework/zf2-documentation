@@ -100,7 +100,7 @@ gives event listeners access to the calling object, which can often be useful.
             return $this->events;
         }
         
-        public function do($foo, $baz)
+        public function doIt($foo, $baz)
         {
             $params = compact('foo', 'baz');
             $this->getEventManager()->trigger(__FUNCTION__, $this, $params);
@@ -110,7 +110,7 @@ gives event listeners access to the calling object, which can often be useful.
 
     $example = new Example();
 
-    $example->getEventManager()->attach('do', function($e) {
+    $example->getEventManager()->attach('doIt', function($e) {
         $event  = $e->getName();
         $target = get_class($e->getTarget()); // "Example"
         $params = $e->getParams();
@@ -122,7 +122,7 @@ gives event listeners access to the calling object, which can often be useful.
         );
     });
 
-    $example->do('bar', 'bat');
+    $example->doIt('bar', 'bat');
 
 The above is basically the same as the first example. The main difference is
 that we're now using that middle argument in order to pass the target, the
