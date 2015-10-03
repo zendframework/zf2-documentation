@@ -132,8 +132,24 @@ define a virtual host along these lines:
             AllowOverride All
             Order allow,deny
             Allow from all
-            # When you run Apache2 with a version higher than 2.4, include the next line
-            #Require all granted
+        </Directory>
+    </VirtualHost>
+
+or, if you are using Apache 2.4 or above:
+
+.. code-block:: apache
+   :linenos:
+
+    <VirtualHost *:80>
+        ServerName zf2-tutorial.localhost
+        DocumentRoot /path/to/zf2-tutorial/public
+        SetEnv APPLICATION_ENV "development"
+        <Directory /path/to/zf2-tutorial/public>
+            DirectoryIndex index.php
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+            Require all granted
         </Directory>
     </VirtualHost>
 
