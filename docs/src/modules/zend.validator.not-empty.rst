@@ -55,7 +55,7 @@ The following types can be handled:
 - **integer**: Returns ``FALSE`` when an integer **0** value is given. Per default this validation is not activated
   and returns ``TRUE`` on any integer values.
 
-- **float**: Returns ``FALSE`` when an float **0.0** value is given. Per default this validation is not activated
+- **float**: Returns ``FALSE`` when a float **0.0** value is given. Per default this validation is not activated
   and returns ``TRUE`` on any float values.
 
 - **string**: Returns ``FALSE`` when an empty string **''** is given.
