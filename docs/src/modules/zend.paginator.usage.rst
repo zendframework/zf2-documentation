@@ -103,7 +103,7 @@ Finally, you'll need to assign the paginator instance to your view. If you're us
 The DbSelect adapter
 --------------------
 
-The usage of most adapters is pretty straight-forward. However, the DBSelect adapter requires a more detailed
+The usage of most adapters is pretty straight-forward. However, the DbSelect adapter requires a more detailed
 explanation regarding the retrieval and count of the data from the database.
 
 To use the DbSelect adapter you don't have to retrieve the data upfront from the database. The adapter will do the
