@@ -67,11 +67,11 @@ file:
    :linenos:
 
    "require": {
-        "php": ">=5.3.23",
+        "php": ">=5.5",
         "zendframework/zendframework1": "1.12",
         ...
     }
-    
+
 After executing ``composer.phar update``, you can start to use ZF1 classes in your ZF2
 project. Since all ZF1 classes exist in the global namespace, you will need to
 refer to them by their full name; as examples, ``Zend_Date``,
@@ -103,7 +103,7 @@ the instructions in the note below):
 
 .. code-block:: apacheconf
    :linenos:
-   
+
    SetEnv APPLICATION_ENV development
    RewriteEngine On
    RewriteCond %{REQUEST_FILENAME} -s [OR]
