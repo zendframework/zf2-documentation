@@ -147,8 +147,6 @@ or, if you are using Apache 2.4 or above:
         <Directory /path/to/zf2-tutorial/public>
             DirectoryIndex index.php
             AllowOverride All
-            Order allow,deny
-            Allow from all
             Require all granted
         </Directory>
     </VirtualHost>
