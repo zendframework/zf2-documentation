@@ -135,6 +135,22 @@ define a virtual host along these lines:
         </Directory>
     </VirtualHost>
 
+or, if you are using Apache 2.4 or above:
+
+.. code-block:: apache
+   :linenos:
+
+    <VirtualHost *:80>
+        ServerName zf2-tutorial.localhost
+        DocumentRoot /path/to/zf2-tutorial/public
+        SetEnv APPLICATION_ENV "development"
+        <Directory /path/to/zf2-tutorial/public>
+            DirectoryIndex index.php
+            AllowOverride All
+            Require all granted
+        </Directory>
+    </VirtualHost>
+
 Make sure that you update your ``/etc/hosts`` or
 ``c:\windows\system32\drivers\etc\hosts`` file so that ``zf2-tutorial.localhost``
 is mapped to ``127.0.0.1``. The website can then be accessed using
