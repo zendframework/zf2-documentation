@@ -75,9 +75,39 @@ Available Implementations
   Any data key matching a setter method will be called in order to hydrate; any method matching a getter method
   will be called for extraction.
 
+- **Zend\\Stdlib\\Hydrator\\DelegatingHydrator**
+
+  Composes a hydrator locator containing hydrators and will delegate ``hydrate()`` and ``extract()`` calls to the 
+  appropriate one based upon the class name of the object being operated on.
+  
+.. code-block:: php
+   :linenos:
+
+    // Instantiate each hydrator you wish to delegate to
+    $albumHydrator = new Zend\Stdlib\Hydrator\ClassMethods;
+    $artistHydrator = new Zend\Stdlib\Hydrator\ClassMethods;
+
+    // Map the entity class name to the hydrator using the HydratorPluginManager
+    // In this case we have two entity classes, "Album" and "Artist"
+    $hydrators = new Zend\Stdlib\Hydrator\HydratorPluginManager;
+    $hydrators->setService('Album', $albumHydrator);
+    $hydrators->setService('Artist', $artistHydrator);
+
+    // Create the DelegatingHydrator and tell it to use our configured hydrator locator
+    $delegating = new Zend\Stdlib\Hydrator\DelegatingHydrator($hydrators);
+
+    // Now we can use $delegating to hydrate or extract any supported object    
+    $array = $delegating->extract(new Artist);
+    $artist = $delegating->hydrate($data, new Artist);
+  
 - **Zend\\Stdlib\\Hydrator\\ObjectProperty**
 
   Any data key matching a publicly accessible property will be hydrated; any public properties will be used for
   extraction.
+  
+- **Zend\\Stdlib\\Hydrator\\Reflection**
 
+  Similar to the ``ObjectProperty`` hydrator, but uses `PHP's reflection API <http://php.net/manual/en/intro.reflection.php>`_
+  to hydrate or extract properties of any visibility.  Any data key matching an existing property will be hydrated;
+  any existing properties will be used for extraction.
 
