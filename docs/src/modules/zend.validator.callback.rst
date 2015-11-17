@@ -175,7 +175,7 @@ Consider the following class and method definition:
    }
 
 There are two ways to inform the validator of additional options: pass them in the constructor, or pass them to the
-``setOptions()`` method.
+``setCallbackOptions()`` method.
 
 To pass them to the constructor, you would need to pass an array containing two keys, "callback" and "callbackOptions":
 
@@ -199,7 +199,7 @@ Otherwise, you may pass them to the validator after instantiation:
    :linenos:
 
    $valid = new Zend\Validator\Callback(array('MyClass', 'myMethod'));
-   $valid->setOptions($options);
+   $valid->setCallbackOptions($options);
 
    if ($valid->isValid($input)) {
        // input appears to be valid
@@ -214,7 +214,7 @@ When there are additional values given to ``isValid()`` then these values will b
    :linenos:
 
    $valid = new Zend\Validator\Callback(array('MyClass', 'myMethod'));
-   $valid->setOptions($options);
+   $valid->setCallbackOptions($options);
 
    if ($valid->isValid($input, $additional)) {
        // input appears to be valid
