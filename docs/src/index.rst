@@ -286,6 +286,7 @@ Programmer's Reference Guide of Zend Framework 2
    modules/zend.validator.in_array
    modules/zend.validator.ip
    modules/zend.validator.isbn
+   modules/zend.validator.isinstanceof
    modules/zend.i18n.validator.float
    modules/zend.i18n.validator.int
    modules/zend.validator.lessthan
@@ -963,6 +964,7 @@ Zend\\Validator
         * :doc:`modules/zend.validator.in-array`
         * :doc:`modules/zend.validator.ip`
         * :doc:`modules/zend.validator.isbn`
+        * :doc:`modules/zend.validator.isinstanceof`
         * :doc:`modules/zend.i18n.validator.float`
         * :doc:`modules/zend.i18n.validator.int`
         * :doc:`modules/zend.validator.less-than`
