@@ -67,26 +67,26 @@ Create the file ``/module/Blog/src/Blog/Form/PostFieldset.php`` and add the foll
    {
       public function __construct()
       {
-         $this->add(array(
+         $this->add([
             'type' => 'hidden',
             'name' => 'id'
-         ));
+         ]);
 
-         $this->add(array(
+         $this->add([
             'type' => 'text',
             'name' => 'text',
-            'options' => array(
+            'options' => [
               'label' => 'The Text'
-            )
-         ));
+            ]
+         ]);
 
-         $this->add(array(
+         $this->add([
             'type' => 'text',
             'name' => 'title',
-            'options' => array(
+            'options' => [
                'label' => 'Blog Title'
-            )
-         ));
+            ]
+         ]);
       }
    }
 
@@ -117,18 +117,18 @@ same directory under ``/module/Blog/src/Blog/Form/PostForm`` and add the ``PostF
     {
         public function __construct()
         {
-            $this->add(array(
+            $this->add([
                 'name' => 'post-fieldset',
                 'type' => 'Blog\Form\PostFieldset'
-            ));
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'type' => 'submit',
                 'name' => 'submit',
-                'attributes' => array(
+                'attributes' => [
                     'value' => 'Insert new Post'
-                )
-            ));
+                ]
+            ]);
         }
     }
 
@@ -166,18 +166,18 @@ controller-factory within the configuration:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'db'              => array( /** DB Config */ ),
-        'service_manager' => array( /** ServiceManager Config */),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array(
-            'factories' => array(
+    return [
+        'db'              => [ /** DB Config */ ],
+        'service_manager' => [ /** ServiceManager Config */],
+        'view_manager'    => [ /** ViewManager Config */ ],
+        'controllers'     => [
+            'factories' => [
                 'Blog\Controller\List'  => 'Blog\Factory\ListControllerFactory',
                 'Blog\Controller\Write' => 'Blog\Factory\WriteControllerFactory'
-            )
-        ),
-        'router'          => array( /** Router Config */ )
-    );
+            ]
+        ],
+        'router'          => [ /** Router Config */ ]
+    ];
 
 Next step would be to write the ``WriteControllerFactory``. Have the factory return the ``WriteController`` and add the
 required dependencies within the constructor.
@@ -255,51 +255,51 @@ Right on to creating the new route:
 
     <?php
     // Filename: /module/Blog/config/module.config.php
-    return array(
-        'db'              => array( /** Db Config */ ),
-        'service_manager' => array( /** ServiceManager Config */ ),
-        'view_manager'    => array( /** ViewManager Config */ ),
-        'controllers'     => array( /** Controller Config */ ),
-        'router'          => array(
-            'routes' => array(
-                'blog' => array(
+    return [
+        'db'              => [ /** Db Config */ ],
+        'service_manager' => [ /** ServiceManager Config */ ],
+        'view_manager'    => [ /** ViewManager Config */ ],
+        'controllers'     => [ /** Controller Config */ ],
+        'router'          => [
+            'routes' => [
+                'blog' => [
                     'type' => 'literal',
-                    'options' => array(
+                    'options' => [
                         'route'    => '/blog',
-                        'defaults' => array(
+                        'defaults' => [
                             'controller' => 'Blog\Controller\List',
                             'action'     => 'index',
-                        )
-                    ),
+                        ]
+                    ],
                     'may_terminate' => true,
-                    'child_routes'  => array(
-                        'detail' => array(
+                    'child_routes'  => [
+                        'detail' => [
                             'type' => 'segment',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/:id',
-                                'defaults' => array(
+                                'defaults' => [
                                     'action' => 'detail'
-                                ),
-                                'constraints' => array(
+                                ],
+                                'constraints' => [
                                     'id' => '\d+'
-                                )
-                            )
-                        ),
-                        'add' => array(
+                                ]
+                            ]
+                        ],
+                        'add' => [
                             'type' => 'literal',
-                            'options' => array(
+                            'options' => [
                                 'route'    => '/add',
-                                'defaults' => array(
+                                'defaults' => [
                                     'controller' => 'Blog\Controller\Write',
                                     'action'     => 'add'
-                                )
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    );
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ];
 
 And lastly let's create a dummy template:
 
@@ -349,22 +349,22 @@ include the signature of the ``__construct()`` function which accepts a couple o
 
     class PostForm extends Form
     {
-        public function __construct($name = null, $options = array())
+        public function __construct($name = null, $options = [])
         {
             parent::__construct($name, $options);
 
-            $this->add(array(
+            $this->add([
                 'name' => 'post-fieldset',
                 'type' => 'Blog\Form\PostFieldset'
-            ));
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'type' => 'submit',
                 'name' => 'submit',
-                'attributes' => array(
+                'attributes' => [
                     'value' => 'Insert new Post'
-                )
-            ));
+                ]
+            ]);
         }
     }
 
@@ -452,9 +452,9 @@ form is passed to the view.
 
         public function addAction()
         {
-            return new ViewModel(array(
+            return new ViewModel([
                 'form' => $this->postForm
-            ));
+            ]);
         }
     }
 
@@ -566,9 +566,9 @@ And all of this is really not that much code. Modify your ``WriteController`` to
                 }
             }
 
-            return new ViewModel(array(
+            return new ViewModel([
                 'form' => $this->postForm
-            ));
+            ]);
         }
     }
 
@@ -823,7 +823,7 @@ And now the implementation of the save function.
             // ID present, it's an Update
             $action = new Update('posts');
             $action->set($postData);
-            $action->where(array('id = ?' => $postObject->getId()));
+            $action->where(['id = ?' => $postObject->getId()]);
          } else {
             // ID NOT present, it's an Insert
             $action = new Insert('posts');
@@ -877,7 +877,7 @@ previous chapter, this is done through the use of hydrators.
 
     On the Update-Query you'll notice that we have assigned a condition to only update the row matching a given id
 
-    ``$action->where(array('id = ?' => $postObject->getId()));``
+    ``$action->where(['id = ?' => $postObject->getId()]);``
 
     You'll see here that the condition is: **id equals ?**. With the question-mark being the id of the post-object. In
     the same way you could assign a condition to update (or select) rows with all entries higher than a given id:
@@ -940,9 +940,9 @@ way we can easily notice all changes that the hydrator does. Modify your ``Write
                 }
             }
 
-            return new ViewModel(array(
+            return new ViewModel([
                 'form' => $this->postForm
-            ));
+            ]);
         }
     }
 
@@ -951,9 +951,9 @@ With this set up go ahead and submit the form once again. You should now see a d
 .. code-block:: text
    :linenos:
 
-    array(2) {
+    [2] {
       ["submit"] => string(16) "Insert new Post"
-      ["post-fieldset"] => array(3) {
+      ["post-fieldset"] => [3] {
         ["id"] => string(0) ""
         ["text"] => string(3) "foo"
         ["title"] => string(3) "bar"
@@ -977,33 +977,33 @@ the hydrator and the object prototype like this:
 
     class PostFieldset extends Fieldset
     {
-        public function __construct($name = null, $options = array())
+        public function __construct($name = null, $options = [])
         {
             parent::__construct($name, $options);
 
             $this->setHydrator(new ClassMethods(false));
             $this->setObject(new Post());
 
-            $this->add(array(
+            $this->add([
                 'type' => 'hidden',
                 'name' => 'id'
-            ));
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'type' => 'text',
                 'name' => 'text',
-                'options' => array(
+                'options' => [
                     'label' => 'The Text'
-                )
-            ));
+                ]
+            ]);
 
-            $this->add(array(
+            $this->add([
                 'type' => 'text',
                 'name' => 'title',
-                'options' => array(
+                'options' => [
                     'label' => 'Blog Title'
-                )
-            ));
+                ]
+            ]);
         }
     }
 

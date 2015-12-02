@@ -21,7 +21,7 @@ Here is one example.
    <?php if ($this->pageCount): ?>
    <!-- First page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->first]); ?>">
        First
      </a> |
    <?php else: ?>
@@ -30,7 +30,7 @@ Here is one example.
 
    <!-- Previous page link -->
    <?php if (isset($this->previous)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->previous]); ?>">
        < Previous
      </a> |
    <?php else: ?>
@@ -39,7 +39,7 @@ Here is one example.
 
    <!-- Next page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->next]); ?>">
        Next >
      </a> |
    <?php else: ?>
@@ -48,7 +48,7 @@ Here is one example.
 
    <!-- Last page link -->
    <?php if (isset($this->next)): ?>
-     <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
+     <a href="<?php echo $this->url(['page' => $this->last]); ?>">
        Last
      </a>
    <?php else: ?>

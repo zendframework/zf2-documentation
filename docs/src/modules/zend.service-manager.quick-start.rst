@@ -99,23 +99,23 @@ As such, you have a variety of ways to override service manager configuration se
 
    <?php
    // a module configuration, "module/SomeModule/config/module.config.php"
-   return array(
-       'service_manager' => array(
-           'abstract_factories' => array(
+   return [
+       'service_manager' => [
+           'abstract_factories' => [
                // Valid values include names of classes implementing
                // AbstractFactoryInterface, instances of classes implementing
                // AbstractFactoryInterface, or any PHP callbacks
                'SomeModule\Service\FallbackFactory',
-           ),
-           'aliases' => array(
+           ],
+           'aliases' => [
                // Aliasing a FQCN to a service name
                'SomeModule\Model\User' => 'User',
                // Aliasing a name to a known service name
                'AdminUser' => 'User',
                // Aliasing to an alias
                'SuperUser' => 'AdminUser',
-           ),
-           'factories' => array(
+           ],
+           'factories' => [
                // Keys are the service names.
                // Valid values include names of classes implementing
                // FactoryInterface, instances of classes implementing
@@ -128,25 +128,25 @@ As such, you have a variety of ways to override service manager configuration se
                    $form->setInputFilter($serviceManager->get('UserInputFilter'));
                    return $form;
                },
-           ),
-           'invokables' => array(
+           ],
+           'invokables' => [
                // Keys are the service names
                // Values are valid class names to instantiate.
                'UserInputFilter' => 'SomeModule\InputFilter\User',
-           ),
-           'services' => array(
+           ],
+           'services' => [
                // Keys are the service names
                // Values are objects
                'Auth' => new SomeModule\Authentication\AuthenticationService(),
-           ),
-           'shared' => array(
+           ],
+           'shared' => [
                // Usually, you'll only indicate services that should **NOT** be
                // shared -- i.e., ones where you want a different instance
                // every time.
                'UserForm' => false,
-           ),
-       ),
-   );
+           ],
+       ],
+   ];
 
 .. note::
 
@@ -159,18 +159,18 @@ As such, you have a variety of ways to override service manager configuration se
    For instances that require factories, write a factory. If you'd like to inject specific, configured instances,
    use the Module class to do so, or a listener.
 
-   Additionally you will lose the ability to use the caching feature of the configuration files when you use 
+   Additionally you will lose the ability to use the caching feature of the configuration files when you use
    closures within them. This is a limitation of PHP which can't (de)serialize closures.
 
 .. note::
 
    **Service names good practices**
 
-   When defining a new service, it is usually a good idea to use the fully qualified class name of the produced 
+   When defining a new service, it is usually a good idea to use the fully qualified class name of the produced
    instance or of one of the interfaces it implements as service name.
-   
-   Using a FQCN as service name makes collisions with other services very hard if the class is part of your 
-   own code base, and also aids the developer that consumes that service to have a clear overview on what the 
+
+   Using a FQCN as service name makes collisions with other services very hard if the class is part of your
+   own code base, and also aids the developer that consumes that service to have a clear overview on what the
    API of the service looks like.
 
    If the service is not an instance of a class/interface of your own code base, you should always consider

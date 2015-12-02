@@ -136,11 +136,11 @@ In order to display usage information, our Module class has to implement
          */
         public function getConsoleUsage(Console $console)
         {
-            return array(
+            return [
                 'show stats'             => 'Show application statistics',
                 'run cron'               => 'Run automated jobs',
                 '(enable|disable) debug' => 'Enable or disable debug mode for the application.'
-            );
+            ];
         }
     }
 
@@ -242,13 +242,13 @@ Below is an example:
 
     public function getConsoleUsage(Console $console)
     {
-        return array(
-            array( '<userEmail>'   , 'email of the user' ),
-            array( '--verbose'     , 'Turn on verbose mode' ),
-            array( '--quick'       , 'Perform a "quick" operation' ),
-            array( '-v'            , 'Same as --verbose' ),
-            array( '-w'            , 'Wide output')
-        );
+        return [
+            [ '<userEmail>'   , 'email of the user' ],
+            [ '--verbose'     , 'Turn on verbose mode' ],
+            [ '--quick'       , 'Perform a "quick" operation' ],
+            [ '-v'            , 'Same as --verbose' ],
+            [ '-w'            , 'Wide output']
+        ];
     }
 
 .. image:: ../images/zend.console.usage4.png
@@ -262,13 +262,13 @@ Using this method, we can display more than 2 columns of information, for exampl
 
     public function getConsoleUsage(Console $console)
     {
-        return array(
-            array( '<userEmail>' , 'user email'        , 'Full email address of the user to find.' ),
-            array( '--verbose'   , 'verbose mode'      , 'Display additional information during processing' ),
-            array( '--quick'     , '"quick" operation' , 'Do not check integrity, just make changes and finish' ),
-            array( '-v'          , 'Same as --verbose' , 'Display additional information during processing' ),
-            array( '-w'          , 'wide output'       , 'When listing users, use the whole available screen width' )
-        );
+        return [
+            [ '<userEmail>' , 'user email'        , 'Full email address of the user to find.' ],
+            [ '--verbose'   , 'verbose mode'      , 'Display additional information during processing' ],
+            [ '--quick'     , '"quick" operation' , 'Do not check integrity, just make changes and finish' ],
+            [ '-v'          , 'Same as --verbose' , 'Display additional information during processing' ],
+            [ '-w'          , 'wide output'       , 'When listing users, use the whole available screen width' ]
+        ];
     }
 
 .. image:: ../images/zend.console.usage5.png
@@ -279,7 +279,7 @@ Using this method, we can display more than 2 columns of information, for exampl
 
     All info will be aligned in one or more columns that fit inside Console window. If the window is
     resized, some texts might be wrapped but all content will be aligned accordingly. In case the number of columns
-    changes (i.e. the array() contains different number of elements) a new table will be started,
+    changes (i.e. the [] contains different number of elements) a new table will be started,
     with new alignment and different column widths.
 
     If you don't like this behavior, you can always return :ref:`free-form text <free-form>` that will not be

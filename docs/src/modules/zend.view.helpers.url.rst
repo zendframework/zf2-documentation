@@ -67,7 +67,7 @@ it:
 .. code-block:: html+php
    :linenos:
    
-   <a href="<?php echo $this->url('news', array('action' => 'details', 'id' =>42)); ?>">
+   <a href="<?php echo $this->url('news', ['action' => 'details', 'id' =>42]); ?>">
        Details of News #42
    </a>
    
@@ -121,12 +121,12 @@ argument using the ``query`` key like this:
    <?php
    $url = $this->url(
        'news',
-       array('action' => 'archive'),
-       array(
-           'query' => array(
+       ['action' => 'archive'],
+       [
+           'query' => [
                'page' => 13,
-           ).
-       )
+           ].
+       ]
    );
    ?>
    <a href="<?php echo $url; ?>">News Archive Page #13</a>
@@ -153,10 +153,10 @@ enter a link for users to directly jump to the comment section of a details page
    <?php
    $url = $this->url(
        'news',
-       array('action' => 'details', 'id' => 42),
-       array(
+       ['action' => 'details', 'id' => 42],
+       [
            'fragment' => 'comments',
-       )
+       ]
    );
    ?>
    <a href="<?php echo $url; ?>">Comment Section of News #42</a>
@@ -176,13 +176,13 @@ You can use ``fragment`` and ``query`` options at the same time!
    <?php
    $url = $this->url(
        'news',
-       array('action' => 'details', 'id' => 42),
-       array(
-           'query' => array(
+       ['action' => 'details', 'id' => 42],
+       [
+           'query' => [
                'commentPage' => 3,
-           ),
+           ],
            'fragment' => 'comments',
-       )
+       ]
    );
    ?>
    <a href="<?php echo $url; ?>">Comment Section of News #42</a>
@@ -242,8 +242,8 @@ do it:
    
    // Currently url /news/details/777
    
-   <a href="<?php echo $this->url('news', array('action' => 'edit'), null, true); ?>">Edit Me</a>
-   <a href="<?php echo $this->url('news', array('action' => 'delete'), null, true); ?>">Delete Me</a>
+   <a href="<?php echo $this->url('news', ['action' => 'edit'], null, true); ?>">Edit Me</a>
+   <a href="<?php echo $this->url('news', ['action' => 'delete'], null, true); ?>">Delete Me</a>
    
 Notice the ``true`` argument in the fourth position. This tells the view helper to use the matched
 ``id`` (``777``) when creating the new URL:

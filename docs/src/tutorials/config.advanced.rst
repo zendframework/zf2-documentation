@@ -39,55 +39,55 @@ in ``config/application.config.php``. The defaults look like this:
     :linenos:
 
     <?php
-    return array(
+    return [
         // This should be an array of module namespaces used in the application.
-        'modules' => array(
+        'modules' => [
             'Application',
-        ),
-    
+        ],
+
         // These are various options for the listeners attached to the ModuleManager
-        'module_listener_options' => array(
+        'module_listener_options' => [
             // This should be an array of paths in which modules reside.
             // If a string key is provided, the listener will consider that a module
             // namespace, the value of that key the specific path to that module's
             // Module class.
-            'module_paths' => array(
+            'module_paths' => [
                 './module',
                 './vendor',
-            ),
-    
+            ],
+
             // An array of paths from which to glob configuration files after
             // modules are loaded. These effectively overide configuration
             // provided by modules themselves. Paths may use GLOB_BRACE notation.
-            'config_glob_paths' => array(
+            'config_glob_paths' => [
                 'config/autoload/{{,*.}global,{,*.}local}.php',
-            ),
-    
+            ],
+            
             // Whether or not to enable a configuration cache.
             // If enabled, the merged configuration will be cached and used in
             // subsequent requests.
             //'config_cache_enabled' => $booleanValue,
-    
+
             // The key used to create the configuration cache file name.
             //'config_cache_key' => $stringKey,
-    
+
             // Whether or not to enable a module class map cache.
             // If enabled, creates a module class map cache which will be used
             // by in future requests, to reduce the autoloading process.
             //'module_map_cache_enabled' => $booleanValue,
-    
+
             // The key used to create the class map cache file name.
             //'module_map_cache_key' => $stringKey,
-    
+
             // The path in which to cache merged configuration.
             //'cache_dir' => $stringPath,
-    
+
             // Whether or not to enable modules dependency checking.
             // Enabled by default, prevents usage of modules that depend on other modules
             // that weren't loaded.
             // 'check_dependencies' => true,
-        ),
-    
+        ],
+
         // Used to create an own service manager. May contain one or more child arrays.
         //'service_listener_options' => array(
         //     array(
@@ -97,11 +97,11 @@ in ``config/application.config.php``. The defaults look like this:
         //         'method'          => $stringRequiredMethodName,
         //     ),
         // )
-    
+
        // Initial configuration with which to seed the ServiceManager.
        // Should be compatible with Zend\ServiceManager\Config.
        // 'service_manager' => array(),
-    );
+    ];
 
 The system configuration is for the bits and pieces related to the MVC that run
 before your application is ready. The configuration is usually brief, and quite
@@ -166,29 +166,29 @@ We'll modify the ``config/application.config.php`` file to read as follows:
 
     return array(
         'modules' => $modules,
-    
+
         'module_listener_options' => array(
             'module_paths' => array(
                 './module',
                 './vendor',
             ),
-    
+
             'config_glob_paths' => array(
                 'config/autoload/{{,*.}global,{,*.}local}.php',
             ),
-    
+
             // Use the $env value to determine the state of the flag
             'config_cache_enabled' => ($env == 'production'),
 
             'config_cache_key' => 'app_config',
-    
+
             // Use the $env value to determine the state of the flag
             'module_map_cache_enabled' => ($env == 'production'),
-    
+
             'module_map_cache_key' => 'module_map',
-    
+
             'cache_dir' => 'data/config/',
-    
+
             // Use the $env value to determine the state of the flag
             'check_dependencies' => ($env != 'production'),
         ),
@@ -237,9 +237,9 @@ path in the system configuration slightly:
 
 .. code-block:: php
 
-    'config_glob_paths' => array(
+    'config_glob_paths' => [
         sprintf('config/autoload/{,*.}{global,%s,local}.php', $env)
-    ),
+    ],
 
 The above will allow you to define an additional set of application
 configuration files per environment; furthermore, these will be loaded *only* if
@@ -298,11 +298,11 @@ of the ``getConfig()`` method is:
     }
 
 where ``module.config.php`` returns a PHP array. From that PHP array you can provide general configuration as
-well as configuration for all the available Manager classes provided by the ServiceManager. Please refer to 
+well as configuration for all the available Manager classes provided by the ServiceManager. Please refer to
 the `Configuration mapping table`_ to see which configuration key is used for each specific Manager.
 
 **Second**, modules can implement a number of interfaces and/or methods related to
-specific service manager or plugin manager configuration. You will find an overview of all 
+specific service manager or plugin manager configuration. You will find an overview of all
 interfaces and their matching Module Configuration functions inside the `Configuration mapping table`_.
 
 All interfaces are in the ``Zend\ModuleManager\Feature`` namespace, and
@@ -401,7 +401,7 @@ modify the merged configuration from your module, via the ``init()`` method.
 
             // Registering a listener at default priority, 1, which will trigger
             // after the ConfigListener merges config.
-            $events->attach(ModuleEvent::EVENT_MERGE_CONFIG, array($this, 'onMergeConfig'));
+            $events->attach(ModuleEvent::EVENT_MERGE_CONFIG, [$this, 'onMergeConfig']);
         }
 
         public function onMergeConfig(ModuleEvent $e)
