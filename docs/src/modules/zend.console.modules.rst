@@ -91,7 +91,8 @@ User module will add-on a short info about itself:
         /**
          * This method is defined in ConsoleBannerProviderInterface
          */
-        public function getConsoleBanner(Console $console){
+        public function getConsoleBanner(Console $console)
+        {
             return "User Module 0.0.1";
         }
     }
