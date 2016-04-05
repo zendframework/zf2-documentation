@@ -209,7 +209,7 @@ Here is the ``Brand`` fieldset:
     use Application\Entity\Brand;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+    use Zend\Hydrator\ClassMethods as ClassMethodsHydrator;
 
     class BrandFieldset extends Fieldset implements InputFilterProviderInterface
     {
@@ -287,7 +287,7 @@ Here is the ``Category`` fieldset:
     use Application\Entity\Category;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+    use Zend\Hydrator\ClassMethods as ClassMethodsHydrator;
 
     class CategoryFieldset extends Fieldset implements InputFilterProviderInterface
     {
@@ -338,7 +338,7 @@ And finally the ``Product`` fieldset:
     use Application\Entity\Product;
     use Zend\Form\Fieldset;
     use Zend\InputFilter\InputFilterProviderInterface;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+    use Zend\Hydrator\ClassMethods as ClassMethodsHydrator;
 
     class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     {
@@ -463,7 +463,7 @@ not forms. And only ``Form`` instances can be validated. So here is the form :
 
     use Zend\Form\Form;
     use Zend\InputFilter\InputFilter;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+    use Zend\Hydrator\ClassMethods as ClassMethodsHydrator;
 
     class CreateProduct extends Form
     {
@@ -800,7 +800,7 @@ all the elements we want to validate.  Our ``CreateProduct`` now looks like this
 
     use Zend\Form\Form;
     use Zend\InputFilter\InputFilter;
-    use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+    use Zend\Hydrator\ClassMethods as ClassMethodsHydrator;
 
     class CreateProduct extends Form
     {
