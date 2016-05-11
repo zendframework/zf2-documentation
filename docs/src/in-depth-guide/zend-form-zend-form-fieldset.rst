@@ -634,7 +634,9 @@ As you can see the ``savePost()`` function has been added and needs to be implem
     <?php
     // Filename: /module/Blog/src/Blog/Service/PostService.php
     namespace Blog\Service;
-
+    
+    use Blog\Model\Post;
+    use Blog\Model\PostInterface;
     use Blog\Mapper\PostMapperInterface;
     
 
