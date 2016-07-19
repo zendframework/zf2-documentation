@@ -636,7 +636,7 @@ As you can see the ``savePost()`` function has been added and needs to be implem
     namespace Blog\Service;
 
     use Blog\Mapper\PostMapperInterface;
-    
+    use Blog\Model\PostInterface;
 
     class PostService implements PostServiceInterface
     {
