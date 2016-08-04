@@ -3,7 +3,7 @@
 IdentityNamingStrategy
 ======================
 
-``Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy`` Will use the key it is given for hydration and extraction.
+``Zend\Stdlib\Hydrator\Strategy\NamingStrategy\IdentityNamingStrategy`` Will use the key it is given for hydration and extraction.
 
 Basic Usage
 -----------
@@ -11,7 +11,7 @@ Basic Usage
 .. code-block:: php
    :linenos:
 
-    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy();
+    $namingStrategy = new Zend\Stdlib\Hydrator\Strategy\NamingStrategy\IdentityNamingStrategy();
 
     echo $namingStrategy->hydrate('foo'); // outputs: foo
     echo $namingStrategy->extract('bar'); // outputs: bar
@@ -26,7 +26,7 @@ This strategy can be used in hydrators as well:
         public $foo;
     }
 
-    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\IdentityNamingStrategy();
+    $namingStrategy = new Zend\Stdlib\Hydrator\Strategy\NamingStrategy\IdentityNamingStrategy();
     $hydrator = new Zend\Stdlib\Hydrator\ObjectProperty();
     $hydrator->setNamingStrategy($namingStrategy);
 

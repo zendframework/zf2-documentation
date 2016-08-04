@@ -3,7 +3,7 @@
 MapNamingStrategy
 =================
 
-``Zend\Stdlib\Hydrator\NamingStrategy\MapNamingStrategy`` Maps keys based on a given map. 
+``Zend\Stdlib\Hydrator\Strategy\NamingStrategy\MapNamingStrategy`` Maps keys based on a given map.
 
 Basic Usage
 -----------
@@ -11,7 +11,7 @@ Basic Usage
 .. code-block:: php
    :linenos:
 
-    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\MapNamingStrategy(array(
+    $namingStrategy = new Zend\Stdlib\Hydrator\Strategy\NamingStrategy\MapNamingStrategy(array(
         'foo' => 'bar',
         'baz' => 'bash'
     ));
@@ -31,7 +31,7 @@ This strategy can be used in hydrators to dictate how keys should be mapped:
         public $bar;
     }
 
-    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\MapNamingStrategy(array(
+    $namingStrategy = new Zend\Stdlib\Hydrator\Strategy\NamingStrategy\MapNamingStrategy(array(
         'foo' => 'bar',
         'baz' => 'bash'
     ));

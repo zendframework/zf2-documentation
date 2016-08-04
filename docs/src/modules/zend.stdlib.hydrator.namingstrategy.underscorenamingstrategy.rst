@@ -3,7 +3,7 @@
 UnderscoreNamingStrategy
 ========================
 
-``Zend\Stdlib\Hydrator\NamingStrategy\UnderscoreNamingStrategy`` Converts snake case strings (e.g. foo_bar_baz) to studly case strings (e.g. fooBarBaz) and vice versa. 
+``Zend\Stdlib\Hydrator\Strategy\NamingStrategy\UnderscoreNamingStrategy`` Converts snake case strings (e.g. foo_bar_baz) to studly case strings (e.g. fooBarBaz) and vice versa.
 
 Basic Usage
 -----------
@@ -11,7 +11,7 @@ Basic Usage
 .. code-block:: php
    :linenos:
 
-    $namingStrategy = new Zend\Stdlib\Hydrator\NamingStrategy\UnderscoreNamingStrategy();
+    $namingStrategy = new Zend\Stdlib\Hydrator\Strategy\NamingStrategy\UnderscoreNamingStrategy();
 
     echo $namingStrategy->extract('foo_bar'); // outputs: foo_bar
     echo $namingStrategy->extract('Foo_Bar'); // outputs: foo_bar
@@ -32,7 +32,7 @@ This strategy can be used in hydrators to dictate how keys should be mapped.
     }
 
     $hydrator = new Zend\Stdlib\Hydrator\ObjectProperty();
-    $hydrator->setNamingStrategy(new Zend\Stdlib\Hydrator\NamingStrategy\UnderscoreNamingStrategy());
+    $hydrator->setNamingStrategy(new Zend\Stdlib\Hydrator\Strategy\NamingStrategy\UnderscoreNamingStrategy());
 
     $foo = new Foo();
     $hydrator->hydrate(array('foo_bar' => 123), $foo);
