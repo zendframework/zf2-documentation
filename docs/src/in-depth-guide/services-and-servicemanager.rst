@@ -528,7 +528,7 @@ always inject this using Dependency Injection as we have learned above. Let's im
 
 Now this looks complicated! Let's start to look at the ``$realServiceLocator``. When using a Factory-Class that will be
 called from the ``ControllerManager`` it will actually inject **itself** as the ``$serviceLocator``. However, we need the real
-``ServiceManager`` to get to our Service-Classes. This is why we call the function ``getServiceLocator()` who will give us
+``ServiceManager`` to get to our Service-Classes. This is why we call the function ``getServiceLocator()`` who will give us
 the real ``ServiceManager``.
 
 After we have the ``$realServiceLocator`` set up we try to get a Service called ``Blog\Service\PostServiceInterface``.
