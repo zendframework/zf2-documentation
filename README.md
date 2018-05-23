@@ -1,5 +1,15 @@
 # Welcome to the *Zend Framework 2* documentation
 
+> ## End-of-Life occurred 31 March 2018
+>
+> This repository mirrored Zend Framework through the 2.4 series; however, 2.4
+> reached its end of life on 31 March 2018.
+>
+> At this time, this repository has been archived, and is read-only.
+>
+> Current documentation is bundled directly in each component, and published at
+> https://docs.zendframework.com
+
 ## RELEASE INFORMATION
 
 This documentation is based on *Zend Framework 2* (master branch)
