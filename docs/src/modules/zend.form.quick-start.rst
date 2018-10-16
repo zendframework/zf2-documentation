@@ -571,6 +571,8 @@ additional user configuration!
     Some form elements may need a particular input filter, like ``Zend\Form\Element\File``: in this case it's mandatory to specify
     the ``type`` key in your custom specification to match the original one (in ex. for the file element it's ``Zend\InputFilter\FileInput``).
 
+    Remember that by default ``getInputFilterSpecification()`` is prefered over element and fieldset defaults. It may lead to serious security vulnerabilities like missing ``Zend\Validator\InArray`` validator for select elements. You can change this behavior by calling ``setPreferFormInputFilter(false)`` on corresponding form.
+
 .. _zend.form.quick-start.binding:
 
 Binding an object
