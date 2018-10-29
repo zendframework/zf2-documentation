@@ -172,4 +172,4 @@ Another way of configuring the service manager to use delegator factories is via
 .. _`decorator`: http://en.wikipedia.org/wiki/Decorator_pattern
 .. _`callable`: http://www.php.net/manual/en/language.types.callable.php
 .. _`delegators`: http://en.wikipedia.org/wiki/Delegation_pattern
-.. _`delegator factory interface`: https://github.com/zendframework/zf2/tree/master/library/Zend/ServiceManager/DelegatorFactoryInterface.php
+.. _`delegator factory interface`: https://github.com/zendframework/zend-servicemanager/blob/master/src/DelegatorFactoryInterface.php
