@@ -103,7 +103,7 @@ that "guest" is denied access to "someResource". This fact introduces an ambigui
 denied and allowed access to "someResource", by reason of having inherited conflicting rules from different parent
 roles.
 
-``Zend\Permissions\Acl\Acl`` resolves this ambiguity by completing a query when it finds the first rule that is directly
+``Zend\Permissions\Acl\Acl`` resolves this ambiguity by completing the query when it finds the first rule that is directly
 applicable to the query. In this case, since the "member" role is examined before the "guest" role, the example
 code would print "allowed".
 
