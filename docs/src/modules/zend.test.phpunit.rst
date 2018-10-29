@@ -133,6 +133,16 @@ You can use directly yours query args in the url :
         $this->dispatch('/tests?foo=bar&baz=foo');
     }
 
+If you would like to make more than one dispatch in your test, you must call the ``reset`` method in order for the state
+the ZF2 application to be reset. ``reset`` takes one boolean parameter ``$keepPersistence`` which defaults to false.
+Setting this to true will allow you to carry over the ``$_SESSION`` and ``$_COOKIE`` variables to the next dispatch.
+Testing anything to do with a session may require ``reset`` to be called before the next dispatch in the test.
+``reset`` is called from the ``setUp`` method, which is called before every test is begun, which is why it is good to call
+``parent::setUp()`` in your own ``setUp`` method.
+
+You may need to test if your application behaves correctly when triggering a certain event.
+``triggerApplicationEvent($eventName)`` can help you do this.
+
 Now that the request is made, it's time to start making assertions against it.
 
 .. _zend.test.phpunit.testing-controllers.assertions:
@@ -162,6 +172,10 @@ to assert against the route that was matched. The following assertions can help 
 * ``assertActionName($action)``: Assert that the given action was last dispatched.
 
 * ``assertMatchedRouteName($route)``: Assert that the given named route was matched by the router.
+
+* ``assertTemplateName($name)`` : Assert that a template was used somewhere in the view model tree.
+
+* ``assertApplicationException($type, $message = null)`` : Assert an application exception was thrown with an optional message.
 
 Each also has a 'Not' variant for negative assertions.
 
