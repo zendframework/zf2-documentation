@@ -344,7 +344,7 @@ by the lowercased controller name without the appendix 'controller' and lastly c
 accessing, again without the appendix 'action'. All in all it looks like this: ``/view/{namespace}/{controller}/{action}.phtml``.
 This has become a community standard but can potentionally be changed by you at any time.
 
-However creating this file alone is not enough and this brings as to the final topic of this part of the QuickStart. We
+However creating this file alone is not enough and this brings us to the final topic of this part of the QuickStart. We
 need to let the application know where to look for view files. We do this within our modules configuration file ``module.config.php``.
 
 .. code-block:: php
